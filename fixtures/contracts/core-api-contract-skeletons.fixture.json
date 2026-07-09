@@ -1,0 +1,238 @@
+[
+  {
+    "id": "core-api-core-domain-registry-api-contract",
+    "apiType": "core-domain-registry-api",
+    "name": "Core Domain Registry API Contract Skeleton",
+    "description": "Skeleton exposure boundary for Core domain registry references.",
+    "status": "active",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "purpose": "Establishes a contract-level API boundary for discovering Core domains without defining routes or handlers.",
+    "owns": [
+      "Core domain registry API contract boundary."
+    ],
+    "consumes": [
+      "Core domain registry contract references"
+    ],
+    "produces": [
+      "Core domain registry exposure references"
+    ],
+    "allowedOperations": [
+      "contract reference category",
+      "catalog read category",
+      "validation boundary category"
+    ],
+    "nonGoals": [
+      "Executable API server routes, handlers, middleware, or HTTP framework behavior.",
+      "Request or response DTO schemas, database access, service implementation, or business logic.",
+      "Book 03 execution runtime behavior, Product UI behavior, or AI agent authority."
+    ],
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-api-core-object-reference-api-contract",
+    "apiType": "core-object-reference-api",
+    "name": "Core Object Reference API Contract Skeleton",
+    "description": "Skeleton exposure boundary for Core object reference contracts.",
+    "status": "active",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "purpose": "Establishes a contract-level API boundary for Core object references without concrete DTO schemas.",
+    "owns": [
+      "Core object reference API contract boundary."
+    ],
+    "consumes": [
+      "Core object contract references"
+    ],
+    "produces": [
+      "Core object exposure references"
+    ],
+    "allowedOperations": [
+      "contract reference category",
+      "catalog read category",
+      "validation boundary category"
+    ],
+    "nonGoals": [
+      "Executable API server routes, handlers, middleware, or HTTP framework behavior.",
+      "Request or response DTO schemas, database access, service implementation, or business logic.",
+      "Book 03 execution runtime behavior, Product UI behavior, or AI agent authority."
+    ],
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-api-core-event-reference-api-contract",
+    "apiType": "core-event-reference-api",
+    "domainId": "event",
+    "name": "Core Event Reference API Contract Skeleton",
+    "description": "Skeleton exposure boundary for Core event reference contracts.",
+    "status": "active",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "purpose": "Establishes a contract-level API boundary for Core event references without event runtime behavior.",
+    "owns": [
+      "Core event reference API contract boundary."
+    ],
+    "consumes": [
+      "Core event contract references"
+    ],
+    "produces": [
+      "Core event exposure references"
+    ],
+    "allowedOperations": [
+      "contract reference category",
+      "catalog read category",
+      "validation boundary category"
+    ],
+    "nonGoals": [
+      "Executable API server routes, handlers, middleware, or HTTP framework behavior.",
+      "Request or response DTO schemas, database access, service implementation, or business logic.",
+      "Book 03 execution runtime behavior, Product UI behavior, or AI agent authority."
+    ],
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-api-core-task-reference-api-contract",
+    "apiType": "core-task-reference-api",
+    "domainId": "task",
+    "name": "Core Task Reference API Contract Skeleton",
+    "description": "Skeleton exposure boundary for Core task reference contracts.",
+    "status": "active",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "purpose": "Establishes a contract-level API boundary for Core task references without task runtime behavior.",
+    "owns": [
+      "Core task reference API contract boundary."
+    ],
+    "consumes": [
+      "Core task contract references"
+    ],
+    "produces": [
+      "Core task exposure references"
+    ],
+    "allowedOperations": [
+      "contract reference category",
+      "catalog read category",
+      "validation boundary category"
+    ],
+    "nonGoals": [
+      "Executable API server routes, handlers, middleware, or HTTP framework behavior.",
+      "Request or response DTO schemas, database access, service implementation, or business logic.",
+      "Book 03 execution runtime behavior, Product UI behavior, or AI agent authority."
+    ],
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-api-core-workflow-contract-reference-api-contract",
+    "apiType": "core-workflow-contract-reference-api",
+    "domainId": "workflow-contract",
+    "name": "Core Workflow Contract Reference API Contract Skeleton",
+    "description": "Skeleton exposure boundary for Core workflow contract references.",
+    "status": "active",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "purpose": "Establishes a contract-level API boundary for workflow contract references without workflow engine behavior.",
+    "owns": [
+      "Core workflow contract reference API contract boundary."
+    ],
+    "consumes": [
+      "Core workflow contract references"
+    ],
+    "produces": [
+      "Core workflow contract exposure references"
+    ],
+    "allowedOperations": [
+      "contract reference category",
+      "catalog read category",
+      "validation boundary category"
+    ],
+    "nonGoals": [
+      "Executable API server routes, handlers, middleware, or HTTP framework behavior.",
+      "Request or response DTO schemas, database access, service implementation, or business logic.",
+      "Book 03 execution runtime behavior, Product UI behavior, or AI agent authority."
+    ],
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-api-core-contract-index-api-contract",
+    "apiType": "core-contract-index-api",
+    "name": "Core Contract Index API Contract Skeleton",
+    "description": "Skeleton exposure boundary for the Core contract index.",
+    "status": "active",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "purpose": "Establishes a contract-level API boundary for the Core Contract Index without implementing an API server.",
+    "owns": [
+      "Core contract index API contract boundary."
+    ],
+    "consumes": [
+      "Core contract index references"
+    ],
+    "produces": [
+      "Core contract index exposure references"
+    ],
+    "allowedOperations": [
+      "contract reference category",
+      "catalog read category",
+      "validation boundary category"
+    ],
+    "nonGoals": [
+      "Executable API server routes, handlers, middleware, or HTTP framework behavior.",
+      "Request or response DTO schemas, database access, service implementation, or business logic.",
+      "Book 03 execution runtime behavior, Product UI behavior, or AI agent authority."
+    ],
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-api-core-validation-api-contract",
+    "apiType": "core-validation-api",
+    "domainId": "policy",
+    "name": "Core Validation API Contract Skeleton",
+    "description": "Skeleton exposure boundary for Core validation references.",
+    "status": "active",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "purpose": "Establishes a contract-level API boundary for validation references without service logic or database access.",
+    "owns": [
+      "Core validation API contract boundary."
+    ],
+    "consumes": [
+      "Core validation contract references"
+    ],
+    "produces": [
+      "Core validation exposure references"
+    ],
+    "allowedOperations": [
+      "contract reference category",
+      "catalog read category",
+      "validation boundary category"
+    ],
+    "nonGoals": [
+      "Executable API server routes, handlers, middleware, or HTTP framework behavior.",
+      "Request or response DTO schemas, database access, service implementation, or business logic.",
+      "Book 03 execution runtime behavior, Product UI behavior, or AI agent authority."
+    ],
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-api-core-health-api-contract",
+    "apiType": "core-health-api",
+    "name": "Core Health API Contract Skeleton",
+    "description": "Skeleton exposure boundary for Core health metadata.",
+    "status": "active",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "purpose": "Establishes a contract-level API boundary for health metadata without runtime monitoring implementation.",
+    "owns": [
+      "Core health API contract boundary."
+    ],
+    "consumes": [
+      "Core contract health references"
+    ],
+    "produces": [
+      "Core health exposure references"
+    ],
+    "allowedOperations": [
+      "contract reference category",
+      "catalog read category",
+      "validation boundary category"
+    ],
+    "nonGoals": [
+      "Executable API server routes, handlers, middleware, or HTTP framework behavior.",
+      "Request or response DTO schemas, database access, service implementation, or business logic.",
+      "Book 03 execution runtime behavior, Product UI behavior, or AI agent authority."
+    ],
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  }
+]

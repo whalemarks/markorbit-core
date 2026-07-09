@@ -7,6 +7,7 @@ import {
   validateCoreDomainContractSkeletonsFixture,
   validateCoreObjectContractSkeletonsFixture,
   validateCoreServiceContractSkeletonsFixture,
+  validateCoreApiContractSkeletonsFixture,
   validateCoreEventBaseFixture,
   validateCoreObjectBaseFixture,
   validateCoreTaskBaseFixture,
@@ -25,6 +26,7 @@ describe('core fixture validation', () => {
     assert.equal(validateCoreDomainContractSkeletonsFixture(await readFixture('fixtures/contracts/core-domain-contract-skeletons.fixture.json')).ok, true);
     assert.equal(validateCoreObjectContractSkeletonsFixture(await readFixture('fixtures/contracts/core-object-contract-skeletons.fixture.json')).ok, true);
     assert.equal(validateCoreServiceContractSkeletonsFixture(await readFixture('fixtures/contracts/core-service-contract-skeletons.fixture.json')).ok, true);
+    assert.equal(validateCoreApiContractSkeletonsFixture(await readFixture('fixtures/contracts/core-api-contract-skeletons.fixture.json')).ok, true);
   });
 
   it('each validator returns ok false for invalid non-array input', () => {
@@ -33,6 +35,7 @@ describe('core fixture validation', () => {
       validateCoreDomainContractSkeletonsFixture,
       validateCoreObjectContractSkeletonsFixture,
       validateCoreServiceContractSkeletonsFixture,
+  validateCoreApiContractSkeletonsFixture,
       validateCoreObjectBaseFixture,
       validateCoreEventBaseFixture,
       validateCoreTaskBaseFixture,
@@ -97,6 +100,26 @@ describe('core fixture validation', () => {
     const fixture = structuredClone(await readFixture('fixtures/contracts/core-service-contract-skeletons.fixture.json')) as Record<string, unknown>[];
     fixture[1].serviceType = fixture[0].serviceType;
     assert.equal(validateCoreServiceContractSkeletonsFixture(fixture).ok, false);
+  });
+
+
+
+  it('api skeleton validator rejects missing apiType', async () => {
+    const fixture = structuredClone(await readFixture('fixtures/contracts/core-api-contract-skeletons.fixture.json')) as Record<string, unknown>[];
+    delete fixture[0].apiType;
+    assert.equal(validateCoreApiContractSkeletonsFixture(fixture).ok, false);
+  });
+
+  it('api skeleton validator rejects unknown domainId', async () => {
+    const fixture = structuredClone(await readFixture('fixtures/contracts/core-api-contract-skeletons.fixture.json')) as Record<string, unknown>[];
+    fixture[0].domainId = 'unknown-domain';
+    assert.equal(validateCoreApiContractSkeletonsFixture(fixture).ok, false);
+  });
+
+  it('api skeleton validator rejects duplicate apiType', async () => {
+    const fixture = structuredClone(await readFixture('fixtures/contracts/core-api-contract-skeletons.fixture.json')) as Record<string, unknown>[];
+    fixture[1].apiType = fixture[0].apiType;
+    assert.equal(validateCoreApiContractSkeletonsFixture(fixture).ok, false);
   });
 
   it('object validator rejects unknown domainId', async () => {

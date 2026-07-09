@@ -10,7 +10,8 @@ import {
   validateCoreContractIndexFixture,
   validateCoreDomainContractSkeletonsFixture,
   validateCoreObjectContractSkeletonsFixture,
-  validateCoreServiceContractSkeletonsFixture
+  validateCoreServiceContractSkeletonsFixture,
+  validateCoreApiContractSkeletonsFixture
 } from '../src/validation/index.ts';
 
 const validators = {
@@ -22,7 +23,8 @@ const validators = {
   contract_index: validateCoreContractIndexFixture,
   domain_contract_skeletons: validateCoreDomainContractSkeletonsFixture,
   object_contract_skeletons: validateCoreObjectContractSkeletonsFixture,
-  service_contract_skeletons: validateCoreServiceContractSkeletonsFixture
+  service_contract_skeletons: validateCoreServiceContractSkeletonsFixture,
+  api_contract_skeletons: validateCoreApiContractSkeletonsFixture
 };
 
 let hasErrors = false;

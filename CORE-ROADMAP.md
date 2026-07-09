@@ -48,3 +48,8 @@
 
 - Core Service Contract Skeletons: completed/current.
 - Next: Core API Contract Skeletons.
+
+## Phase 2 Update — CORE-TASK-012
+
+- Core API Contract Skeletons: completed/current.
+- Next: CORE-TASK-013 — Core Event Catalog Skeleton.
