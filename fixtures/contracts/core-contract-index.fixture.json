@@ -1,0 +1,80 @@
+[
+  {
+    "id": "core-domain-registry-contract",
+    "type": "domain",
+    "name": "Core Domain Registry Contract",
+    "description": "Index entry for the Core Domain Registry foundation primitive.",
+    "status": "active",
+    "scope": {
+      "notes": "domain-level registry / all baseline domains"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-object-base-contract",
+    "type": "object",
+    "name": "Core Object Base Contract",
+    "description": "Index entry for the Core Object Base foundation primitive.",
+    "status": "active",
+    "scope": {
+      "notes": "object base primitives"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-event-primitive-contract",
+    "type": "event",
+    "name": "Core Event Primitive Contract",
+    "description": "Index entry for the Core Event Primitive foundation primitive.",
+    "status": "active",
+    "scope": {
+      "notes": "event primitive"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-task-primitive-contract",
+    "type": "task",
+    "name": "Core Task Primitive Contract",
+    "description": "Index entry for the Core Task Primitive foundation primitive.",
+    "status": "active",
+    "scope": {
+      "notes": "task primitive"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-workflow-contract-primitive-contract",
+    "type": "workflow",
+    "name": "Core Workflow Contract Primitive Contract",
+    "description": "Index entry for the Core Workflow Contract Primitive foundation primitive.",
+    "status": "active",
+    "scope": {
+      "notes": "workflow contract primitive"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-validation-fixture-system-contract",
+    "type": "validation",
+    "name": "Core Validation Fixture System Contract",
+    "description": "Index entry for the Core Validation Fixture System foundation primitive.",
+    "status": "active",
+    "scope": {
+      "notes": "validation fixture system"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  }
+]

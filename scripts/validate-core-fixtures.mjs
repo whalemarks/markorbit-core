@@ -6,7 +6,8 @@ import {
   validateCoreEventBaseFixture,
   validateCoreObjectBaseFixture,
   validateCoreTaskBaseFixture,
-  validateCoreWorkflowContractBaseFixture
+  validateCoreWorkflowContractBaseFixture,
+  validateCoreContractIndexFixture
 } from '../src/validation/index.ts';
 
 const validators = {
@@ -14,7 +15,8 @@ const validators = {
   object_base: validateCoreObjectBaseFixture,
   event_base: validateCoreEventBaseFixture,
   task_base: validateCoreTaskBaseFixture,
-  workflow_contract_base: validateCoreWorkflowContractBaseFixture
+  workflow_contract_base: validateCoreWorkflowContractBaseFixture,
+  contract_index: validateCoreContractIndexFixture
 };
 
 let hasErrors = false;

@@ -6,7 +6,7 @@
 
 ## Current phase
 
-Phase 1 foundation primitives complete.
+Phase 2 — Core Contract Layer started.
 
 ## Current status
 
@@ -19,6 +19,9 @@ Phase 1 foundation primitives complete.
 - Core Workflow Contract Primitive added.
 - Core Validation Fixture System added.
 - Phase 1 foundation primitives are now complete.
+- Phase 2 started.
+- Core Contract Index added.
+- Current index contains 6 foundation contract entries.
 
 ## Current scope
 
@@ -34,6 +37,7 @@ Phase 1 foundation primitives complete.
 - Core Task Primitive.
 - Core Workflow Contract Primitive.
 - Core Validation Fixture System.
+- Core Contract Index.
 - Placeholder package and source directories.
 
 ## Out of scope
@@ -66,4 +70,4 @@ Every change should keep the TypeScript project buildable, tests passing, lint c
 
 ## Next tasks
 
-- CORE-TASK-008 — Core Contract Index.
+- CORE-TASK-009 — Core Domain Contract Skeletons.

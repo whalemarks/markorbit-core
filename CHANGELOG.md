@@ -19,6 +19,26 @@
 
 All notable changes to MarkOrbit Core will be documented in this file.
 
+
+## CORE-TASK-008 — Core Contract Index
+
+- Added CoreContractId.
+- Added CoreContractType.
+- Added CoreContractStatus.
+- Added CoreContractScope.
+- Added CoreContractReference.
+- Added CoreContractDefinition.
+- Added CORE_CONTRACT_INDEX with 6 foundation entries.
+- Added contract index fixture.
+- Added contract index validation.
+- Added tests.
+- Started Phase 2 — Core Contract Layer.
+- No concrete business contracts added.
+- No service/API contracts added.
+- No Book 03 runtime contracts added.
+- No product UI contracts added.
+- No AI agent authority added.
+
 ## CORE-TASK-005 — Core Task Primitive
 
 - Added CoreTaskId.

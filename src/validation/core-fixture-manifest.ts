@@ -3,7 +3,8 @@ export const CORE_FIXTURE_TYPES = [
   'object_base',
   'event_base',
   'task_base',
-  'workflow_contract_base'
+  'workflow_contract_base',
+  'contract_index'
 ] as const;
 
 export type CoreFixtureType = (typeof CORE_FIXTURE_TYPES)[number];
@@ -45,6 +46,12 @@ export const CORE_FIXTURE_MANIFEST = [
     id: 'core-workflow-contract-base',
     type: 'workflow_contract_base',
     path: 'fixtures/workflows/core-workflow-contract-base.fixture.json',
+    required: true
+  },
+  {
+    id: 'core-contract-index',
+    type: 'contract_index',
+    path: 'fixtures/contracts/core-contract-index.fixture.json',
     required: true
   }
 ] as const satisfies readonly CoreFixtureManifestEntry[];

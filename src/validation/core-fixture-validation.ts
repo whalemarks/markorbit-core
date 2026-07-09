@@ -1,3 +1,4 @@
+import { CORE_CONTRACT_INDEX, validateCoreContractIndex } from '../contracts/index.ts';
 import { CORE_DOMAIN_REGISTRY } from '../domains/index.ts';
 import { CORE_OBJECT_STATUSES } from '../objects/index.ts';
 import type { CoreEvent } from '../events/index.ts';
@@ -135,5 +136,32 @@ export function validateCoreWorkflowContractBaseFixture(fixture: unknown): CoreV
     pushDomainIssue(issues, entry, path);
     pushForbiddenFields(issues, entry, workflowForbiddenFields, path, 'core.workflow_contract_base.runtime_field');
   });
+  return createCoreValidationResult(issues);
+}
+
+
+export function validateCoreContractIndexFixture(fixture: unknown): CoreValidationResult {
+  const nonArray = nonArrayResult(fixture, 'contract_index');
+  if (nonArray) return nonArray;
+  const array = fixture as readonly unknown[];
+  const issues: CoreValidationIssue[] = [];
+
+  if (array.length !== CORE_CONTRACT_INDEX.length) {
+    issues.push(error('core.contract_index.invalid_count', `Contract index fixture must contain exactly ${CORE_CONTRACT_INDEX.length} entries.`, 'contract_index'));
+  }
+
+  CORE_CONTRACT_INDEX.forEach((contract, index) => {
+    const entry = array[index];
+    if (!isRecord(entry)) {
+      issues.push(error('core.contract_index.invalid_entry', 'Contract index entry must be an object.', `contract_index[${index}]`));
+      return;
+    }
+    if (entry.id !== contract.id) issues.push(error('core.contract_index.id_mismatch', 'Contract id must match CORE_CONTRACT_INDEX exactly.', `contract_index[${index}].id`));
+    if (entry.name !== contract.name) issues.push(error('core.contract_index.name_mismatch', 'Contract name must match CORE_CONTRACT_INDEX exactly.', `contract_index[${index}].name`));
+    if (entry.type !== contract.type) issues.push(error('core.contract_index.type_mismatch', 'Contract type must match CORE_CONTRACT_INDEX exactly.', `contract_index[${index}].type`));
+    if (entry.status !== contract.status) issues.push(error('core.contract_index.status_mismatch', 'Contract status must match CORE_CONTRACT_INDEX exactly.', `contract_index[${index}].status`));
+  });
+
+  validateCoreContractIndex(array as never).forEach((message) => issues.push(error('core.contract_index.invalid_contract', message, 'contract_index')));
   return createCoreValidationResult(issues);
 }

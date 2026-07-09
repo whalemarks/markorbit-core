@@ -4,8 +4,8 @@ import { describe, it } from 'node:test';
 import { CORE_FIXTURE_MANIFEST, CORE_FIXTURE_TYPES } from '../../src/index.ts';
 
 describe('CORE_FIXTURE_MANIFEST', () => {
-  it('has exactly 5 entries', () => {
-    assert.equal(CORE_FIXTURE_MANIFEST.length, 5);
+  it('has exactly 6 entries', () => {
+    assert.equal(CORE_FIXTURE_MANIFEST.length, 6);
   });
 
   it('ids are unique', () => {
@@ -20,7 +20,7 @@ describe('CORE_FIXTURE_MANIFEST', () => {
     assert.ok(CORE_FIXTURE_MANIFEST.every((entry) => entry.required === true));
   });
 
-  it('CoreFixtureType contains exactly the required five fixture types', () => {
-    assert.deepEqual(CORE_FIXTURE_TYPES, ['domain_registry', 'object_base', 'event_base', 'task_base', 'workflow_contract_base']);
+  it('CoreFixtureType contains exactly the required fixture types', () => {
+    assert.deepEqual(CORE_FIXTURE_TYPES, ['domain_registry', 'object_base', 'event_base', 'task_base', 'workflow_contract_base', 'contract_index']);
   });
 });
