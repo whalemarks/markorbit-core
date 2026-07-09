@@ -4,6 +4,7 @@ import { describe, it } from 'node:test';
 
 import {
   validateCoreDomainRegistryFixture,
+  validateCoreDomainContractSkeletonsFixture,
   validateCoreEventBaseFixture,
   validateCoreObjectBaseFixture,
   validateCoreTaskBaseFixture,
@@ -19,11 +20,14 @@ describe('core fixture validation', () => {
     assert.equal(validateCoreEventBaseFixture(await readFixture('fixtures/events/core-event-base.fixture.json')).ok, true);
     assert.equal(validateCoreTaskBaseFixture(await readFixture('fixtures/tasks/core-task-base.fixture.json')).ok, true);
     assert.equal(validateCoreWorkflowContractBaseFixture(await readFixture('fixtures/workflows/core-workflow-contract-base.fixture.json')).ok, true);
+    assert.equal(validateCoreDomainContractSkeletonsFixture(await readFixture('fixtures/contracts/core-domain-contract-skeletons.fixture.json')).ok, true);
   });
 
   it('each validator returns ok false for invalid non-array input', () => {
     for (const validator of [
       validateCoreDomainRegistryFixture,
+      validateCoreDomainContractSkeletonsFixture,
+  validateCoreDomainContractSkeletonsFixture,
       validateCoreObjectBaseFixture,
       validateCoreEventBaseFixture,
       validateCoreTaskBaseFixture,
@@ -31,6 +35,24 @@ describe('core fixture validation', () => {
     ]) {
       assert.equal(validator({}).ok, false);
     }
+  });
+
+  it('domain skeleton validator rejects missing domainId', async () => {
+    const fixture = structuredClone(await readFixture('fixtures/contracts/core-domain-contract-skeletons.fixture.json')) as Record<string, unknown>[];
+    delete fixture[0].domainId;
+    assert.equal(validateCoreDomainContractSkeletonsFixture(fixture).ok, false);
+  });
+
+  it('domain skeleton validator rejects unknown domainId', async () => {
+    const fixture = structuredClone(await readFixture('fixtures/contracts/core-domain-contract-skeletons.fixture.json')) as Record<string, unknown>[];
+    fixture[0].domainId = 'unknown-domain';
+    assert.equal(validateCoreDomainContractSkeletonsFixture(fixture).ok, false);
+  });
+
+  it('domain skeleton validator rejects duplicate domainId', async () => {
+    const fixture = structuredClone(await readFixture('fixtures/contracts/core-domain-contract-skeletons.fixture.json')) as Record<string, unknown>[];
+    fixture[1].domainId = fixture[0].domainId;
+    assert.equal(validateCoreDomainContractSkeletonsFixture(fixture).ok, false);
   });
 
   it('object validator rejects unknown domainId', async () => {

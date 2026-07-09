@@ -9,7 +9,7 @@
       "notes": "domain-level registry / all baseline domains"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
   {
@@ -22,7 +22,7 @@
       "notes": "object base primitives"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
   {
@@ -35,7 +35,7 @@
       "notes": "event primitive"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
   {
@@ -48,7 +48,7 @@
       "notes": "task primitive"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
   {
@@ -61,7 +61,7 @@
       "notes": "workflow contract primitive"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
   {
@@ -74,7 +74,371 @@
       "notes": "validation fixture system"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-domain-identity-contract",
+    "type": "domain",
+    "name": "Identity Domain Contract Skeleton",
+    "description": "Skeleton contract boundary for the Identity Core Domain.",
+    "status": "active",
+    "scope": {
+      "domainId": "identity"
+    },
+    "version": 1,
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "source": "CORE_DOMAIN_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-domain-organization-contract",
+    "type": "domain",
+    "name": "Organization Domain Contract Skeleton",
+    "description": "Skeleton contract boundary for the Organization Core Domain.",
+    "status": "active",
+    "scope": {
+      "domainId": "organization"
+    },
+    "version": 1,
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "source": "CORE_DOMAIN_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-domain-user-contract",
+    "type": "domain",
+    "name": "User Domain Contract Skeleton",
+    "description": "Skeleton contract boundary for the User Core Domain.",
+    "status": "active",
+    "scope": {
+      "domainId": "user"
+    },
+    "version": 1,
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "source": "CORE_DOMAIN_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-domain-permission-contract",
+    "type": "domain",
+    "name": "Permission Domain Contract Skeleton",
+    "description": "Skeleton contract boundary for the Permission Core Domain.",
+    "status": "active",
+    "scope": {
+      "domainId": "permission"
+    },
+    "version": 1,
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "source": "CORE_DOMAIN_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-domain-policy-contract",
+    "type": "domain",
+    "name": "Policy Domain Contract Skeleton",
+    "description": "Skeleton contract boundary for the Policy Core Domain.",
+    "status": "active",
+    "scope": {
+      "domainId": "policy"
+    },
+    "version": 1,
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "source": "CORE_DOMAIN_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-domain-knowledge-contract",
+    "type": "domain",
+    "name": "Knowledge Domain Contract Skeleton",
+    "description": "Skeleton contract boundary for the Knowledge Core Domain.",
+    "status": "active",
+    "scope": {
+      "domainId": "knowledge"
+    },
+    "version": 1,
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "source": "CORE_DOMAIN_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-domain-brand-contract",
+    "type": "domain",
+    "name": "Brand Domain Contract Skeleton",
+    "description": "Skeleton contract boundary for the Brand Core Domain.",
+    "status": "active",
+    "scope": {
+      "domainId": "brand"
+    },
+    "version": 1,
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "source": "CORE_DOMAIN_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-domain-trademark-contract",
+    "type": "domain",
+    "name": "Trademark Domain Contract Skeleton",
+    "description": "Skeleton contract boundary for the Trademark Core Domain.",
+    "status": "active",
+    "scope": {
+      "domainId": "trademark"
+    },
+    "version": 1,
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "source": "CORE_DOMAIN_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-domain-jurisdiction-contract",
+    "type": "domain",
+    "name": "Jurisdiction Domain Contract Skeleton",
+    "description": "Skeleton contract boundary for the Jurisdiction Core Domain.",
+    "status": "active",
+    "scope": {
+      "domainId": "jurisdiction"
+    },
+    "version": 1,
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "source": "CORE_DOMAIN_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-domain-classification-contract",
+    "type": "domain",
+    "name": "Classification Domain Contract Skeleton",
+    "description": "Skeleton contract boundary for the Classification Core Domain.",
+    "status": "active",
+    "scope": {
+      "domainId": "classification"
+    },
+    "version": 1,
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "source": "CORE_DOMAIN_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-domain-document-contract",
+    "type": "domain",
+    "name": "Document Domain Contract Skeleton",
+    "description": "Skeleton contract boundary for the Document Core Domain.",
+    "status": "active",
+    "scope": {
+      "domainId": "document"
+    },
+    "version": 1,
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "source": "CORE_DOMAIN_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-domain-evidence-contract",
+    "type": "domain",
+    "name": "Evidence Domain Contract Skeleton",
+    "description": "Skeleton contract boundary for the Evidence Core Domain.",
+    "status": "active",
+    "scope": {
+      "domainId": "evidence"
+    },
+    "version": 1,
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "source": "CORE_DOMAIN_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-domain-customer-contract",
+    "type": "domain",
+    "name": "Customer Domain Contract Skeleton",
+    "description": "Skeleton contract boundary for the Customer Core Domain.",
+    "status": "active",
+    "scope": {
+      "domainId": "customer"
+    },
+    "version": 1,
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "source": "CORE_DOMAIN_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-domain-matter-contract",
+    "type": "domain",
+    "name": "Matter Domain Contract Skeleton",
+    "description": "Skeleton contract boundary for the Matter Core Domain.",
+    "status": "active",
+    "scope": {
+      "domainId": "matter"
+    },
+    "version": 1,
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "source": "CORE_DOMAIN_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-domain-order-contract",
+    "type": "domain",
+    "name": "Order Domain Contract Skeleton",
+    "description": "Skeleton contract boundary for the Order Core Domain.",
+    "status": "active",
+    "scope": {
+      "domainId": "order"
+    },
+    "version": 1,
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "source": "CORE_DOMAIN_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-domain-opportunity-contract",
+    "type": "domain",
+    "name": "Opportunity Domain Contract Skeleton",
+    "description": "Skeleton contract boundary for the Opportunity Core Domain.",
+    "status": "active",
+    "scope": {
+      "domainId": "opportunity"
+    },
+    "version": 1,
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "source": "CORE_DOMAIN_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-domain-workflow-contract-contract",
+    "type": "domain",
+    "name": "Workflow Contract Domain Contract Skeleton",
+    "description": "Skeleton contract boundary for the Workflow Contract Core Domain.",
+    "status": "active",
+    "scope": {
+      "domainId": "workflow-contract"
+    },
+    "version": 1,
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "source": "CORE_DOMAIN_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-domain-task-contract",
+    "type": "domain",
+    "name": "Task Domain Contract Skeleton",
+    "description": "Skeleton contract boundary for the Task Core Domain.",
+    "status": "active",
+    "scope": {
+      "domainId": "task"
+    },
+    "version": 1,
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "source": "CORE_DOMAIN_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-domain-event-contract",
+    "type": "domain",
+    "name": "Event Domain Contract Skeleton",
+    "description": "Skeleton contract boundary for the Event Core Domain.",
+    "status": "active",
+    "scope": {
+      "domainId": "event"
+    },
+    "version": 1,
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "source": "CORE_DOMAIN_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-domain-notification-contract",
+    "type": "domain",
+    "name": "Notification Domain Contract Skeleton",
+    "description": "Skeleton contract boundary for the Notification Core Domain.",
+    "status": "active",
+    "scope": {
+      "domainId": "notification"
+    },
+    "version": 1,
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "source": "CORE_DOMAIN_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-domain-partner-contract",
+    "type": "domain",
+    "name": "Partner Domain Contract Skeleton",
+    "description": "Skeleton contract boundary for the Partner Core Domain.",
+    "status": "active",
+    "scope": {
+      "domainId": "partner"
+    },
+    "version": 1,
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "source": "CORE_DOMAIN_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-domain-agent-contract",
+    "type": "domain",
+    "name": "Agent Domain Contract Skeleton",
+    "description": "Skeleton contract boundary for the Agent Core Domain.",
+    "status": "active",
+    "scope": {
+      "domainId": "agent"
+    },
+    "version": 1,
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "source": "CORE_DOMAIN_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-domain-service-provider-contract",
+    "type": "domain",
+    "name": "Service Provider Domain Contract Skeleton",
+    "description": "Skeleton contract boundary for the Service Provider Core Domain.",
+    "status": "active",
+    "scope": {
+      "domainId": "service-provider"
+    },
+    "version": 1,
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "source": "CORE_DOMAIN_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-domain-service-network-contract",
+    "type": "domain",
+    "name": "Service Network Domain Contract Skeleton",
+    "description": "Skeleton contract boundary for the Service Network Core Domain.",
+    "status": "active",
+    "scope": {
+      "domainId": "service-network"
+    },
+    "version": 1,
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "source": "CORE_DOMAIN_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-domain-routing-contract",
+    "type": "domain",
+    "name": "Routing Domain Contract Skeleton",
+    "description": "Skeleton contract boundary for the Routing Core Domain.",
+    "status": "active",
+    "scope": {
+      "domainId": "routing"
+    },
+    "version": 1,
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "source": "CORE_DOMAIN_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-domain-communication-contract",
+    "type": "domain",
+    "name": "Communication Domain Contract Skeleton",
+    "description": "Skeleton contract boundary for the Communication Core Domain.",
+    "status": "active",
+    "scope": {
+      "domainId": "communication"
+    },
+    "version": 1,
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "source": "CORE_DOMAIN_CONTRACT_SKELETONS",
     "createdAt": "2026-07-09T00:00:00.000Z"
   }
 ]
