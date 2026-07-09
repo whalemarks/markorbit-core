@@ -6,7 +6,7 @@
 - Governance files.
 - Project setup.
 
-## Phase 1
+## Phase 1 — Complete
 
 - [x] Core domain registry.
 - [x] Core object base types.
@@ -17,11 +17,13 @@
 
 ## Phase 2
 
-- Domain-specific contracts.
-- Object-specific contracts.
-- Service contracts.
-- API contract skeletons.
-- Event catalog.
+- [x] Core Contract Index.
+- [ ] Domain Contract Skeletons.
+- [ ] Object Contract Skeletons.
+- [ ] Service Contract Skeletons.
+- [ ] Event Catalog Skeleton.
+- [ ] Workflow Contract Catalog Skeleton.
+- [ ] API Contract Skeletons.
 
 ## Phase 3
 
