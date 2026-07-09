@@ -1,0 +1,470 @@
+[
+  {
+    "id": "core-domain-identity-contract",
+    "domainId": "identity",
+    "name": "Identity Domain Contract Skeleton",
+    "description": "Skeleton contract boundary for the Identity Core Domain.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Establishes the initial Core contract boundary for the Identity domain without defining business logic, services, APIs, schemas, or runtime behavior.",
+    "owns": [
+      "Identity domain boundary and contract placeholder."
+    ],
+    "nonGoals": [
+      "Business object schemas.",
+      "Service, API, workflow, or runtime behavior.",
+      "Product UI, database schema, or AI agent authority."
+    ],
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-domain-organization-contract",
+    "domainId": "organization",
+    "name": "Organization Domain Contract Skeleton",
+    "description": "Skeleton contract boundary for the Organization Core Domain.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Establishes the initial Core contract boundary for the Organization domain without defining business logic, services, APIs, schemas, or runtime behavior.",
+    "owns": [
+      "Organization domain boundary and contract placeholder."
+    ],
+    "nonGoals": [
+      "Business object schemas.",
+      "Service, API, workflow, or runtime behavior.",
+      "Product UI, database schema, or AI agent authority."
+    ],
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-domain-user-contract",
+    "domainId": "user",
+    "name": "User Domain Contract Skeleton",
+    "description": "Skeleton contract boundary for the User Core Domain.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Establishes the initial Core contract boundary for the User domain without defining business logic, services, APIs, schemas, or runtime behavior.",
+    "owns": [
+      "User domain boundary and contract placeholder."
+    ],
+    "nonGoals": [
+      "Business object schemas.",
+      "Service, API, workflow, or runtime behavior.",
+      "Product UI, database schema, or AI agent authority."
+    ],
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-domain-permission-contract",
+    "domainId": "permission",
+    "name": "Permission Domain Contract Skeleton",
+    "description": "Skeleton contract boundary for the Permission Core Domain.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Establishes the initial Core contract boundary for the Permission domain without defining business logic, services, APIs, schemas, or runtime behavior.",
+    "owns": [
+      "Permission domain boundary and contract placeholder."
+    ],
+    "nonGoals": [
+      "Business object schemas.",
+      "Service, API, workflow, or runtime behavior.",
+      "Product UI, database schema, or AI agent authority."
+    ],
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-domain-policy-contract",
+    "domainId": "policy",
+    "name": "Policy Domain Contract Skeleton",
+    "description": "Skeleton contract boundary for the Policy Core Domain.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Establishes the initial Core contract boundary for the Policy domain without defining business logic, services, APIs, schemas, or runtime behavior.",
+    "owns": [
+      "Policy domain boundary and contract placeholder."
+    ],
+    "nonGoals": [
+      "Business object schemas.",
+      "Service, API, workflow, or runtime behavior.",
+      "Product UI, database schema, or AI agent authority."
+    ],
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-domain-knowledge-contract",
+    "domainId": "knowledge",
+    "name": "Knowledge Domain Contract Skeleton",
+    "description": "Skeleton contract boundary for the Knowledge Core Domain.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Establishes the initial Core contract boundary for the Knowledge domain without defining business logic, services, APIs, schemas, or runtime behavior.",
+    "owns": [
+      "Knowledge domain boundary and contract placeholder."
+    ],
+    "nonGoals": [
+      "Business object schemas.",
+      "Service, API, workflow, or runtime behavior.",
+      "Product UI, database schema, or AI agent authority."
+    ],
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-domain-brand-contract",
+    "domainId": "brand",
+    "name": "Brand Domain Contract Skeleton",
+    "description": "Skeleton contract boundary for the Brand Core Domain.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Establishes the initial Core contract boundary for the Brand domain without defining business logic, services, APIs, schemas, or runtime behavior.",
+    "owns": [
+      "Brand domain boundary and contract placeholder."
+    ],
+    "nonGoals": [
+      "Business object schemas.",
+      "Service, API, workflow, or runtime behavior.",
+      "Product UI, database schema, or AI agent authority."
+    ],
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-domain-trademark-contract",
+    "domainId": "trademark",
+    "name": "Trademark Domain Contract Skeleton",
+    "description": "Skeleton contract boundary for the Trademark Core Domain.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Establishes the initial Core contract boundary for the Trademark domain without defining business logic, services, APIs, schemas, or runtime behavior.",
+    "owns": [
+      "Trademark domain boundary and contract placeholder."
+    ],
+    "nonGoals": [
+      "Business object schemas.",
+      "Service, API, workflow, or runtime behavior.",
+      "Product UI, database schema, or AI agent authority."
+    ],
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-domain-jurisdiction-contract",
+    "domainId": "jurisdiction",
+    "name": "Jurisdiction Domain Contract Skeleton",
+    "description": "Skeleton contract boundary for the Jurisdiction Core Domain.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Establishes the initial Core contract boundary for the Jurisdiction domain without defining business logic, services, APIs, schemas, or runtime behavior.",
+    "owns": [
+      "Jurisdiction domain boundary and contract placeholder."
+    ],
+    "nonGoals": [
+      "Business object schemas.",
+      "Service, API, workflow, or runtime behavior.",
+      "Product UI, database schema, or AI agent authority."
+    ],
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-domain-classification-contract",
+    "domainId": "classification",
+    "name": "Classification Domain Contract Skeleton",
+    "description": "Skeleton contract boundary for the Classification Core Domain.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Establishes the initial Core contract boundary for the Classification domain without defining business logic, services, APIs, schemas, or runtime behavior.",
+    "owns": [
+      "Classification domain boundary and contract placeholder."
+    ],
+    "nonGoals": [
+      "Business object schemas.",
+      "Service, API, workflow, or runtime behavior.",
+      "Product UI, database schema, or AI agent authority."
+    ],
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-domain-document-contract",
+    "domainId": "document",
+    "name": "Document Domain Contract Skeleton",
+    "description": "Skeleton contract boundary for the Document Core Domain.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Establishes the initial Core contract boundary for the Document domain without defining business logic, services, APIs, schemas, or runtime behavior.",
+    "owns": [
+      "Document domain boundary and contract placeholder."
+    ],
+    "nonGoals": [
+      "Business object schemas.",
+      "Service, API, workflow, or runtime behavior.",
+      "Product UI, database schema, or AI agent authority."
+    ],
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-domain-evidence-contract",
+    "domainId": "evidence",
+    "name": "Evidence Domain Contract Skeleton",
+    "description": "Skeleton contract boundary for the Evidence Core Domain.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Establishes the initial Core contract boundary for the Evidence domain without defining business logic, services, APIs, schemas, or runtime behavior.",
+    "owns": [
+      "Evidence domain boundary and contract placeholder."
+    ],
+    "nonGoals": [
+      "Business object schemas.",
+      "Service, API, workflow, or runtime behavior.",
+      "Product UI, database schema, or AI agent authority."
+    ],
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-domain-customer-contract",
+    "domainId": "customer",
+    "name": "Customer Domain Contract Skeleton",
+    "description": "Skeleton contract boundary for the Customer Core Domain.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Establishes the initial Core contract boundary for the Customer domain without defining business logic, services, APIs, schemas, or runtime behavior.",
+    "owns": [
+      "Customer domain boundary and contract placeholder."
+    ],
+    "nonGoals": [
+      "Business object schemas.",
+      "Service, API, workflow, or runtime behavior.",
+      "Product UI, database schema, or AI agent authority."
+    ],
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-domain-matter-contract",
+    "domainId": "matter",
+    "name": "Matter Domain Contract Skeleton",
+    "description": "Skeleton contract boundary for the Matter Core Domain.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Establishes the initial Core contract boundary for the Matter domain without defining business logic, services, APIs, schemas, or runtime behavior.",
+    "owns": [
+      "Matter domain boundary and contract placeholder."
+    ],
+    "nonGoals": [
+      "Business object schemas.",
+      "Service, API, workflow, or runtime behavior.",
+      "Product UI, database schema, or AI agent authority."
+    ],
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-domain-order-contract",
+    "domainId": "order",
+    "name": "Order Domain Contract Skeleton",
+    "description": "Skeleton contract boundary for the Order Core Domain.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Establishes the initial Core contract boundary for the Order domain without defining business logic, services, APIs, schemas, or runtime behavior.",
+    "owns": [
+      "Order domain boundary and contract placeholder."
+    ],
+    "nonGoals": [
+      "Business object schemas.",
+      "Service, API, workflow, or runtime behavior.",
+      "Product UI, database schema, or AI agent authority."
+    ],
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-domain-opportunity-contract",
+    "domainId": "opportunity",
+    "name": "Opportunity Domain Contract Skeleton",
+    "description": "Skeleton contract boundary for the Opportunity Core Domain.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Establishes the initial Core contract boundary for the Opportunity domain without defining business logic, services, APIs, schemas, or runtime behavior.",
+    "owns": [
+      "Opportunity domain boundary and contract placeholder."
+    ],
+    "nonGoals": [
+      "Business object schemas.",
+      "Service, API, workflow, or runtime behavior.",
+      "Product UI, database schema, or AI agent authority."
+    ],
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-domain-workflow-contract-contract",
+    "domainId": "workflow-contract",
+    "name": "Workflow Contract Domain Contract Skeleton",
+    "description": "Skeleton contract boundary for the Workflow Contract Core Domain.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Establishes the initial Core contract boundary for the Workflow Contract domain without defining business logic, services, APIs, schemas, or runtime behavior.",
+    "owns": [
+      "Workflow Contract domain boundary and contract placeholder."
+    ],
+    "nonGoals": [
+      "Business object schemas.",
+      "Service, API, workflow, or runtime behavior.",
+      "Product UI, database schema, or AI agent authority."
+    ],
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-domain-task-contract",
+    "domainId": "task",
+    "name": "Task Domain Contract Skeleton",
+    "description": "Skeleton contract boundary for the Task Core Domain.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Establishes the initial Core contract boundary for the Task domain without defining business logic, services, APIs, schemas, or runtime behavior.",
+    "owns": [
+      "Task domain boundary and contract placeholder."
+    ],
+    "nonGoals": [
+      "Business object schemas.",
+      "Service, API, workflow, or runtime behavior.",
+      "Product UI, database schema, or AI agent authority."
+    ],
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-domain-event-contract",
+    "domainId": "event",
+    "name": "Event Domain Contract Skeleton",
+    "description": "Skeleton contract boundary for the Event Core Domain.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Establishes the initial Core contract boundary for the Event domain without defining business logic, services, APIs, schemas, or runtime behavior.",
+    "owns": [
+      "Event domain boundary and contract placeholder."
+    ],
+    "nonGoals": [
+      "Business object schemas.",
+      "Service, API, workflow, or runtime behavior.",
+      "Product UI, database schema, or AI agent authority."
+    ],
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-domain-notification-contract",
+    "domainId": "notification",
+    "name": "Notification Domain Contract Skeleton",
+    "description": "Skeleton contract boundary for the Notification Core Domain.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Establishes the initial Core contract boundary for the Notification domain without defining business logic, services, APIs, schemas, or runtime behavior.",
+    "owns": [
+      "Notification domain boundary and contract placeholder."
+    ],
+    "nonGoals": [
+      "Business object schemas.",
+      "Service, API, workflow, or runtime behavior.",
+      "Product UI, database schema, or AI agent authority."
+    ],
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-domain-partner-contract",
+    "domainId": "partner",
+    "name": "Partner Domain Contract Skeleton",
+    "description": "Skeleton contract boundary for the Partner Core Domain.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Establishes the initial Core contract boundary for the Partner domain without defining business logic, services, APIs, schemas, or runtime behavior.",
+    "owns": [
+      "Partner domain boundary and contract placeholder."
+    ],
+    "nonGoals": [
+      "Business object schemas.",
+      "Service, API, workflow, or runtime behavior.",
+      "Product UI, database schema, or AI agent authority."
+    ],
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-domain-agent-contract",
+    "domainId": "agent",
+    "name": "Agent Domain Contract Skeleton",
+    "description": "Skeleton contract boundary for the Agent Core Domain.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Establishes the initial Core contract boundary for the Agent domain without defining business logic, services, APIs, schemas, or runtime behavior.",
+    "owns": [
+      "Agent domain boundary and contract placeholder."
+    ],
+    "nonGoals": [
+      "Business object schemas.",
+      "Service, API, workflow, or runtime behavior.",
+      "Product UI, database schema, or AI agent authority."
+    ],
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-domain-service-provider-contract",
+    "domainId": "service-provider",
+    "name": "Service Provider Domain Contract Skeleton",
+    "description": "Skeleton contract boundary for the Service Provider Core Domain.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Establishes the initial Core contract boundary for the Service Provider domain without defining business logic, services, APIs, schemas, or runtime behavior.",
+    "owns": [
+      "Service Provider domain boundary and contract placeholder."
+    ],
+    "nonGoals": [
+      "Business object schemas.",
+      "Service, API, workflow, or runtime behavior.",
+      "Product UI, database schema, or AI agent authority."
+    ],
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-domain-service-network-contract",
+    "domainId": "service-network",
+    "name": "Service Network Domain Contract Skeleton",
+    "description": "Skeleton contract boundary for the Service Network Core Domain.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Establishes the initial Core contract boundary for the Service Network domain without defining business logic, services, APIs, schemas, or runtime behavior.",
+    "owns": [
+      "Service Network domain boundary and contract placeholder."
+    ],
+    "nonGoals": [
+      "Business object schemas.",
+      "Service, API, workflow, or runtime behavior.",
+      "Product UI, database schema, or AI agent authority."
+    ],
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-domain-routing-contract",
+    "domainId": "routing",
+    "name": "Routing Domain Contract Skeleton",
+    "description": "Skeleton contract boundary for the Routing Core Domain.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Establishes the initial Core contract boundary for the Routing domain without defining business logic, services, APIs, schemas, or runtime behavior.",
+    "owns": [
+      "Routing domain boundary and contract placeholder."
+    ],
+    "nonGoals": [
+      "Business object schemas.",
+      "Service, API, workflow, or runtime behavior.",
+      "Product UI, database schema, or AI agent authority."
+    ],
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-domain-communication-contract",
+    "domainId": "communication",
+    "name": "Communication Domain Contract Skeleton",
+    "description": "Skeleton contract boundary for the Communication Core Domain.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Establishes the initial Core contract boundary for the Communication domain without defining business logic, services, APIs, schemas, or runtime behavior.",
+    "owns": [
+      "Communication domain boundary and contract placeholder."
+    ],
+    "nonGoals": [
+      "Business object schemas.",
+      "Service, API, workflow, or runtime behavior.",
+      "Product UI, database schema, or AI agent authority."
+    ],
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  }
+]

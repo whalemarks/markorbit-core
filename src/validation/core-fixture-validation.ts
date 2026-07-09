@@ -1,4 +1,4 @@
-import { CORE_CONTRACT_INDEX, validateCoreContractIndex } from '../contracts/index.ts';
+import { CORE_CONTRACT_INDEX, validateCoreContractIndex, validateCoreDomainContractSkeletons, type CoreDomainContract } from '../contracts/index.ts';
 import { CORE_DOMAIN_REGISTRY } from '../domains/index.ts';
 import { CORE_OBJECT_STATUSES } from '../objects/index.ts';
 import type { CoreEvent } from '../events/index.ts';
@@ -139,6 +139,16 @@ export function validateCoreWorkflowContractBaseFixture(fixture: unknown): CoreV
   return createCoreValidationResult(issues);
 }
 
+
+
+export function validateCoreDomainContractSkeletonsFixture(fixture: unknown): CoreValidationResult {
+  const nonArray = nonArrayResult(fixture, 'domain_contract_skeletons');
+  if (nonArray) return nonArray;
+  const issues = validateCoreDomainContractSkeletons(fixture as readonly CoreDomainContract[]).map((message) =>
+    error('core.domain_contract_skeletons.invalid_contract', message, 'domain_contract_skeletons')
+  );
+  return createCoreValidationResult(issues);
+}
 
 export function validateCoreContractIndexFixture(fixture: unknown): CoreValidationResult {
   const nonArray = nonArrayResult(fixture, 'contract_index');

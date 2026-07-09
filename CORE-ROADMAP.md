@@ -31,3 +31,9 @@
 - Generated SDK.
 - Documentation site.
 - Package publishing.
+
+## Phase 2 Update — CORE-TASK-009
+
+- Core Contract Index: completed.
+- Core Domain Contract Skeletons: completed/current.
+- Next: Core Object Contract Skeletons.

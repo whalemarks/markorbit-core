@@ -120,3 +120,18 @@ All notable changes to MarkOrbit Core will be documented in this file.
 - No Book 03 Workflow Coordination runtime added.
 - No product UI added.
 - No AI agent workflow authority added.
+
+## CORE-TASK-009 — Core Domain Contract Skeletons
+
+- Added `CoreDomainContract` type.
+- Added 26 Core Domain Contract Skeletons.
+- Added domain skeleton validator.
+- Added domain skeleton fixture.
+- Expanded `CORE_CONTRACT_INDEX` from 6 to 32 entries.
+- Updated fixture manifest and validation.
+- Added tests.
+- No concrete business contracts added.
+- No object/service/API contracts added.
+- No Book 03 runtime contracts added.
+- No product UI contracts added.
+- No AI agent authority added.

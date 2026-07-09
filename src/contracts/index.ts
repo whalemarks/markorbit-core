@@ -6,3 +6,4 @@ export * from './core-contract-reference.ts';
 export * from './core-contract-definition.ts';
 export * from './core-contract-index.ts';
 export * from './core-contract-index-validation.ts';
+export * from './domain/index.ts';
