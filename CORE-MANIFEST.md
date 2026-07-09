@@ -124,3 +124,16 @@ Next recommended task: CORE-TASK-013 — Core Event Catalog Skeleton.
   - 8 API contract entries
   - 12 event catalog entries
 - Next recommended task: CORE-TASK-014 — Core Workflow Catalog Skeleton.
+
+## CORE-TASK-014 — Core Workflow Catalog Skeleton
+
+- Core Workflow Catalog Skeleton added.
+- `CORE_CONTRACT_INDEX` now contains 82 entries:
+  - 6 foundation contract entries
+  - 26 domain contract entries
+  - 12 object contract entries
+  - 10 service contract entries
+  - 8 API contract entries
+  - 12 event catalog entries
+  - 8 workflow catalog entries
+- Next recommended task: CORE-TASK-015 — Core Permission Contract Skeletons.

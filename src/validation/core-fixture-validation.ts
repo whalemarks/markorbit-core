@@ -1,4 +1,4 @@
-import { CORE_CONTRACT_INDEX, validateCoreContractIndex, validateCoreDomainContractSkeletons, validateCoreObjectContractSkeletons, validateCoreServiceContractSkeletons, validateCoreApiContractSkeletons, validateCoreEventCatalogSkeletons, type CoreApiContract, type CoreDomainContract, type CoreObjectContract, type CoreServiceContract, type CoreEventCatalogEntry } from '../contracts/index.ts';
+import { CORE_CONTRACT_INDEX, validateCoreContractIndex, validateCoreDomainContractSkeletons, validateCoreObjectContractSkeletons, validateCoreServiceContractSkeletons, validateCoreApiContractSkeletons, validateCoreEventCatalogSkeletons, validateCoreWorkflowCatalogSkeletons, type CoreApiContract, type CoreDomainContract, type CoreObjectContract, type CoreServiceContract, type CoreEventCatalogEntry, type CoreWorkflowCatalogEntry } from '../contracts/index.ts';
 import { CORE_DOMAIN_REGISTRY } from '../domains/index.ts';
 import { CORE_OBJECT_STATUSES } from '../objects/index.ts';
 import type { CoreEvent } from '../events/index.ts';
@@ -18,6 +18,7 @@ const eventCatalogFields = ['catalogId', 'canonicalEventId', 'eventCatalog', 'ca
 const taskForbiddenFields = ['runtimeState', 'transitionHistory', 'executionContext', 'workflowRuntime'];
 const taskCatalogFields = ['catalogId', 'canonicalTaskId', 'taskCatalog', 'catalogMetadata'];
 const workflowForbiddenFields = ['runtimeState', 'executionState', 'executionContext', 'executionRuntime', 'currentStep', 'runningInstance'];
+const workflowCatalogForbiddenFields = ['engine', 'workflowEngine', 'runtimeState', 'executionState', 'executionContext', 'executionRuntime', 'currentStep', 'runningInstance', 'instanceId', 'transitionFunction'];
 
 function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === 'object' && value !== null && !Array.isArray(value);
@@ -186,6 +187,19 @@ export function validateCoreEventCatalogSkeletonsFixture(fixture: unknown): Core
   const issues = validateCoreEventCatalogSkeletons(fixture as readonly CoreEventCatalogEntry[]).map((message) =>
     error('core.event_catalog_skeletons.invalid_entry', message, 'event_catalog_skeletons')
   );
+  return createCoreValidationResult(issues);
+}
+
+export function validateCoreWorkflowCatalogSkeletonsFixture(fixture: unknown): CoreValidationResult {
+  const nonArray = nonArrayResult(fixture, 'workflow_catalog_skeletons');
+  if (nonArray) return nonArray;
+  const array = fixture as readonly unknown[];
+  const issues = validateCoreWorkflowCatalogSkeletons(fixture as readonly CoreWorkflowCatalogEntry[]).map((message) =>
+    error('core.workflow_catalog_skeletons.invalid_entry', message, 'workflow_catalog_skeletons')
+  );
+  array.forEach((entry, index) => {
+    if (isRecord(entry)) pushForbiddenFields(issues, entry, workflowCatalogForbiddenFields, `workflow_catalog_skeletons[${index}]`, 'core.workflow_catalog_skeletons.runtime_field');
+  });
   return createCoreValidationResult(issues);
 }
 

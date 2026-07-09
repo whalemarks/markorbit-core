@@ -12,7 +12,8 @@ import {
   validateCoreObjectContractSkeletonsFixture,
   validateCoreServiceContractSkeletonsFixture,
   validateCoreApiContractSkeletonsFixture,
-  validateCoreEventCatalogSkeletonsFixture
+  validateCoreEventCatalogSkeletonsFixture,
+  validateCoreWorkflowCatalogSkeletonsFixture
 } from '../src/validation/index.ts';
 
 const validators = {
@@ -26,7 +27,8 @@ const validators = {
   object_contract_skeletons: validateCoreObjectContractSkeletonsFixture,
   service_contract_skeletons: validateCoreServiceContractSkeletonsFixture,
   api_contract_skeletons: validateCoreApiContractSkeletonsFixture,
-  event_catalog_skeletons: validateCoreEventCatalogSkeletonsFixture
+  event_catalog_skeletons: validateCoreEventCatalogSkeletonsFixture,
+  workflow_catalog_skeletons: validateCoreWorkflowCatalogSkeletonsFixture
 };
 
 let hasErrors = false;

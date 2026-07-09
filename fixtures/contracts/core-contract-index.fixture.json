@@ -1044,5 +1044,125 @@
     "book": "Book 02 — MarkOrbit Core Specification",
     "source": "CORE_EVENT_CATALOG_SKELETONS",
     "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-workflow-core-record-preparation-workflow-contract",
+    "type": "workflow",
+    "name": "Core Record Preparation Workflow Catalog Skeleton",
+    "description": "Skeleton catalog entry for preparing Core records for review.",
+    "status": "active",
+    "scope": {
+      "domainId": "workflow-contract",
+      "workflowContractType": "core-record-preparation-workflow"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "source": "CORE_WORKFLOW_CATALOG_SKELETONS",
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-workflow-core-record-review-workflow-contract",
+    "type": "workflow",
+    "name": "Core Record Review Workflow Catalog Skeleton",
+    "description": "Skeleton catalog entry for reviewing Core records.",
+    "status": "active",
+    "scope": {
+      "domainId": "workflow-contract",
+      "workflowContractType": "core-record-review-workflow"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "source": "CORE_WORKFLOW_CATALOG_SKELETONS",
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-workflow-core-document-reference-workflow-contract",
+    "type": "workflow",
+    "name": "Core Document Reference Workflow Catalog Skeleton",
+    "description": "Skeleton catalog entry for referencing Core documents.",
+    "status": "active",
+    "scope": {
+      "domainId": "document",
+      "workflowContractType": "core-document-reference-workflow"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "source": "CORE_WORKFLOW_CATALOG_SKELETONS",
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-workflow-core-evidence-reference-workflow-contract",
+    "type": "workflow",
+    "name": "Core Evidence Reference Workflow Catalog Skeleton",
+    "description": "Skeleton catalog entry for referencing Core evidence.",
+    "status": "active",
+    "scope": {
+      "domainId": "evidence",
+      "workflowContractType": "core-evidence-reference-workflow"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "source": "CORE_WORKFLOW_CATALOG_SKELETONS",
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-workflow-core-task-review-workflow-contract",
+    "type": "workflow",
+    "name": "Core Task Review Workflow Catalog Skeleton",
+    "description": "Skeleton catalog entry for reviewing Core tasks.",
+    "status": "active",
+    "scope": {
+      "domainId": "task",
+      "workflowContractType": "core-task-review-workflow"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "source": "CORE_WORKFLOW_CATALOG_SKELETONS",
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-workflow-core-communication-review-workflow-contract",
+    "type": "workflow",
+    "name": "Core Communication Review Workflow Catalog Skeleton",
+    "description": "Skeleton catalog entry for reviewing Core communications.",
+    "status": "active",
+    "scope": {
+      "domainId": "communication",
+      "workflowContractType": "core-communication-review-workflow"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "source": "CORE_WORKFLOW_CATALOG_SKELETONS",
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-workflow-core-contract-registration-workflow-contract",
+    "type": "workflow",
+    "name": "Core Contract Registration Workflow Catalog Skeleton",
+    "description": "Skeleton catalog entry for registering Core contracts.",
+    "status": "active",
+    "scope": {
+      "domainId": "workflow-contract",
+      "workflowContractType": "core-contract-registration-workflow"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "source": "CORE_WORKFLOW_CATALOG_SKELETONS",
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-workflow-core-validation-review-workflow-contract",
+    "type": "workflow",
+    "name": "Core Validation Review Workflow Catalog Skeleton",
+    "description": "Skeleton catalog entry for reviewing Core validation results.",
+    "status": "active",
+    "scope": {
+      "domainId": "policy",
+      "workflowContractType": "core-validation-review-workflow"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "source": "CORE_WORKFLOW_CATALOG_SKELETONS",
+    "createdAt": "2026-07-09T00:00:00.000Z"
   }
 ]
