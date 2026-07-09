@@ -43,3 +43,8 @@
 
 - Core Object Contract Skeletons: completed/current.
 - Next: Core Service Contract Skeletons.
+
+## Phase 2 Update — CORE-TASK-011
+
+- Core Service Contract Skeletons: completed/current.
+- Next: Core API Contract Skeletons.
