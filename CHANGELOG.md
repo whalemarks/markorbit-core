@@ -1,3 +1,20 @@
+
+## CORE-TASK-007 — Core Validation Fixture System
+
+- Added CoreValidationResult.
+- Added CoreValidationContext.
+- Added CoreFixtureManifest.
+- Added fixture validators.
+- Added validate:fixtures script.
+- Added validation tests.
+- Added architecture note.
+- Phase 1 foundation primitives complete.
+- No business logic added.
+- No workflow runtime added.
+- No Book 03 runtime added.
+- No product UI added.
+- No AI agent authority added.
+
 # Changelog
 
 All notable changes to MarkOrbit Core will be documented in this file.
