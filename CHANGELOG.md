@@ -1,3 +1,19 @@
+## CORE-TASK-010 — Core Object Contract Skeletons
+
+- Added CoreObjectContract type.
+- Added 12 Core Object Contract Skeletons.
+- Added object skeleton validator.
+- Added object skeleton fixture.
+- Expanded CORE_CONTRACT_INDEX from 32 to 44 entries.
+- Updated fixture manifest and validation.
+- Added tests.
+- No full object schemas added.
+- No concrete business fields added.
+- No service/API contracts added.
+- No Book 03 runtime contracts added.
+- No product UI contracts added.
+- No AI agent authority added.
+
 
 ## CORE-TASK-007 — Core Validation Fixture System
 

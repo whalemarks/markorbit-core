@@ -1,4 +1,4 @@
-import { CORE_CONTRACT_INDEX, validateCoreContractIndex, validateCoreDomainContractSkeletons, type CoreDomainContract } from '../contracts/index.ts';
+import { CORE_CONTRACT_INDEX, validateCoreContractIndex, validateCoreDomainContractSkeletons, validateCoreObjectContractSkeletons, type CoreDomainContract, type CoreObjectContract } from '../contracts/index.ts';
 import { CORE_DOMAIN_REGISTRY } from '../domains/index.ts';
 import { CORE_OBJECT_STATUSES } from '../objects/index.ts';
 import type { CoreEvent } from '../events/index.ts';
@@ -146,6 +146,16 @@ export function validateCoreDomainContractSkeletonsFixture(fixture: unknown): Co
   if (nonArray) return nonArray;
   const issues = validateCoreDomainContractSkeletons(fixture as readonly CoreDomainContract[]).map((message) =>
     error('core.domain_contract_skeletons.invalid_contract', message, 'domain_contract_skeletons')
+  );
+  return createCoreValidationResult(issues);
+}
+
+
+export function validateCoreObjectContractSkeletonsFixture(fixture: unknown): CoreValidationResult {
+  const nonArray = nonArrayResult(fixture, 'object_contract_skeletons');
+  if (nonArray) return nonArray;
+  const issues = validateCoreObjectContractSkeletons(fixture as readonly CoreObjectContract[]).map((message) =>
+    error('core.object_contract_skeletons.invalid_contract', message, 'object_contract_skeletons')
   );
   return createCoreValidationResult(issues);
 }

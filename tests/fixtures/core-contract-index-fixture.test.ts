@@ -16,13 +16,13 @@ const fixture = JSON.parse(
   await readFile(new URL('../../fixtures/contracts/core-contract-index.fixture.json', import.meta.url), 'utf8')
 ) as readonly CoreContractIndexFixtureEntry[];
 
-const concreteBusinessIds = ['trademark-application', 'trademark-record', 'matter-lifecycle', 'communication-runtime'];
+const concreteBusinessIds = ['trademark-application', 'matter-lifecycle', 'communication-runtime'];
 const book03RuntimeIds = ['execution-context', 'execution-runtime'];
 const productUiIds = ['product', 'artifact', 'render', 'publish', 'distillery', 'workplace'];
 
 describe('core-contract-index fixture', () => {
-  it('has exactly 32 entries', () => {
-    assert.equal(fixture.length, 32);
+  it('has exactly 44 entries', () => {
+    assert.equal(fixture.length, 44);
   });
 
   it('fixture ids match CORE_CONTRACT_INDEX ids exactly', () => {
