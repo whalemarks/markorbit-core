@@ -2,6 +2,21 @@
 
 All notable changes to MarkOrbit Core will be documented in this file.
 
+## CORE-TASK-003 — Core Object Base Types
+
+- Added CoreObjectId.
+- Added CoreObjectType.
+- Added CoreObjectStatus.
+- Added CoreObjectReference.
+- Added CoreObjectVersion.
+- Added CoreObjectMetadata.
+- Added CoreObjectDefinition.
+- Added object base fixture.
+- Added object base tests.
+- No domain-specific business objects added.
+- No workflow logic added.
+- No product UI added.
+
 ## CORE-TASK-002 — Core Domain Registry
 
 - Added canonical 26-domain registry.

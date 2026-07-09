@@ -1,0 +1,44 @@
+[
+  {
+    "id": "trademark-record-sample-001",
+    "type": "trademark-record",
+    "domainId": "trademark",
+    "status": "draft",
+    "version": {
+      "version": 1,
+      "createdAt": "2026-07-09T00:00:00Z"
+    },
+    "metadata": {
+      "createdAt": "2026-07-09T00:00:00Z",
+      "tags": ["sample", "base-object"]
+    }
+  },
+  {
+    "id": "matter-record-sample-001",
+    "type": "matter-record",
+    "domainId": "matter",
+    "status": "active",
+    "version": {
+      "version": 1,
+      "createdAt": "2026-07-09T00:00:00Z"
+    },
+    "metadata": {
+      "createdAt": "2026-07-09T00:00:00Z",
+      "tags": ["sample", "base-object"]
+    }
+  },
+  {
+    "id": "communication-record-sample-001",
+    "type": "communication-record",
+    "domainId": "communication",
+    "status": "inactive",
+    "version": {
+      "version": 1,
+      "createdAt": "2026-07-09T00:00:00Z"
+    },
+    "metadata": {
+      "createdAt": "2026-07-09T00:00:00Z",
+      "tags": ["sample", "base-object"]
+    }
+  }
+]

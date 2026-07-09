@@ -13,6 +13,7 @@ Phase 1 started.
 - Core Domain Registry added.
 - Registry contains 26 baseline Core Domains from Book 02 — MarkOrbit Core Specification.
 - Domain registry fixture and tests added.
+- Core Object Base Types added.
 
 ## Current scope
 
@@ -23,6 +24,7 @@ Phase 1 started.
 - ESLint and Prettier configuration.
 - Governance and roadmap documentation.
 - Baseline Core Domain Registry.
+- Core Object Base Types.
 - Placeholder package and source directories.
 
 ## Out of scope
@@ -55,5 +57,5 @@ Every change should keep the TypeScript project buildable, tests passing, lint c
 
 ## Next tasks
 
-- CORE-TASK-003 — Core Object Base Types.
+- CORE-TASK-004 — Core Event Primitive.
 - Add base Core primitives in the order defined by the roadmap.
