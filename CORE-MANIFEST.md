@@ -79,3 +79,15 @@ Every change should keep the TypeScript project buildable, tests passing, lint c
   - 6 foundation contract entries.
   - 26 domain contract entries.
 - Next recommended task: CORE-TASK-010 — Core Object Contract Skeletons.
+
+## Current Status — CORE-TASK-011
+
+Core Service Contract Skeletons added.
+
+`CORE_CONTRACT_INDEX` now contains 54 entries:
+- 6 foundation contract entries
+- 26 domain contract entries
+- 12 object contract entries
+- 10 service contract entries
+
+Next recommended task: CORE-TASK-012 — Core API Contract Skeletons.

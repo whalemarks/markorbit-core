@@ -1,0 +1,170 @@
+[
+  {
+    "id": "core-object-identity-reference-contract",
+    "type": "object",
+    "name": "Identity Reference Object Contract Skeleton",
+    "description": "Skeleton index entry for identity reference Core objects.",
+    "status": "active",
+    "scope": {
+      "domainId": "identity"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "source": "CORE_OBJECT_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-object-organization-reference-contract",
+    "type": "object",
+    "name": "Organization Reference Object Contract Skeleton",
+    "description": "Skeleton index entry for organization reference Core objects.",
+    "status": "active",
+    "scope": {
+      "domainId": "organization"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "source": "CORE_OBJECT_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-object-user-reference-contract",
+    "type": "object",
+    "name": "User Reference Object Contract Skeleton",
+    "description": "Skeleton index entry for user reference Core objects.",
+    "status": "active",
+    "scope": {
+      "domainId": "user"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "source": "CORE_OBJECT_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-object-permission-reference-contract",
+    "type": "object",
+    "name": "Permission Reference Object Contract Skeleton",
+    "description": "Skeleton index entry for permission reference Core objects.",
+    "status": "active",
+    "scope": {
+      "domainId": "permission"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "source": "CORE_OBJECT_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-object-policy-reference-contract",
+    "type": "object",
+    "name": "Policy Reference Object Contract Skeleton",
+    "description": "Skeleton index entry for policy reference Core objects.",
+    "status": "active",
+    "scope": {
+      "domainId": "policy"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "source": "CORE_OBJECT_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-object-knowledge-reference-contract",
+    "type": "object",
+    "name": "Knowledge Reference Object Contract Skeleton",
+    "description": "Skeleton index entry for knowledge reference Core objects.",
+    "status": "active",
+    "scope": {
+      "domainId": "knowledge"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "source": "CORE_OBJECT_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-object-trademark-reference-contract",
+    "type": "object",
+    "name": "Trademark Reference Object Contract Skeleton",
+    "description": "Skeleton index entry for trademark reference Core objects.",
+    "status": "active",
+    "scope": {
+      "domainId": "trademark"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "source": "CORE_OBJECT_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-object-jurisdiction-reference-contract",
+    "type": "object",
+    "name": "Jurisdiction Reference Object Contract Skeleton",
+    "description": "Skeleton index entry for jurisdiction reference Core objects.",
+    "status": "active",
+    "scope": {
+      "domainId": "jurisdiction"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "source": "CORE_OBJECT_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-object-classification-reference-contract",
+    "type": "object",
+    "name": "Classification Reference Object Contract Skeleton",
+    "description": "Skeleton index entry for classification reference Core objects.",
+    "status": "active",
+    "scope": {
+      "domainId": "classification"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "source": "CORE_OBJECT_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-object-document-reference-contract",
+    "type": "object",
+    "name": "Document Reference Object Contract Skeleton",
+    "description": "Skeleton index entry for document reference Core objects.",
+    "status": "active",
+    "scope": {
+      "domainId": "document"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "source": "CORE_OBJECT_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-object-evidence-reference-contract",
+    "type": "object",
+    "name": "Evidence Reference Object Contract Skeleton",
+    "description": "Skeleton index entry for evidence reference Core objects.",
+    "status": "active",
+    "scope": {
+      "domainId": "evidence"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "source": "CORE_OBJECT_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-object-communication-reference-contract",
+    "type": "object",
+    "name": "Communication Reference Object Contract Skeleton",
+    "description": "Skeleton index entry for communication reference Core objects.",
+    "status": "active",
+    "scope": {
+      "domainId": "communication"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "source": "CORE_OBJECT_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  }
+]

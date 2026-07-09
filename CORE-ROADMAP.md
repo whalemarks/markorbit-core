@@ -37,3 +37,8 @@
 - Core Contract Index: completed.
 - Core Domain Contract Skeletons: completed/current.
 - Next: Core Object Contract Skeletons.
+
+## Phase 2 Update — CORE-TASK-011
+
+- Core Service Contract Skeletons: completed/current.
+- Next: Core API Contract Skeletons.

@@ -8,7 +8,9 @@ import {
   validateCoreTaskBaseFixture,
   validateCoreWorkflowContractBaseFixture,
   validateCoreContractIndexFixture,
-  validateCoreDomainContractSkeletonsFixture
+  validateCoreDomainContractSkeletonsFixture,
+  validateCoreObjectContractSkeletonsFixture,
+  validateCoreServiceContractSkeletonsFixture
 } from '../src/validation/index.ts';
 
 const validators = {
@@ -18,7 +20,9 @@ const validators = {
   task_base: validateCoreTaskBaseFixture,
   workflow_contract_base: validateCoreWorkflowContractBaseFixture,
   contract_index: validateCoreContractIndexFixture,
-  domain_contract_skeletons: validateCoreDomainContractSkeletonsFixture
+  domain_contract_skeletons: validateCoreDomainContractSkeletonsFixture,
+  object_contract_skeletons: validateCoreObjectContractSkeletonsFixture,
+  service_contract_skeletons: validateCoreServiceContractSkeletonsFixture
 };
 
 let hasErrors = false;

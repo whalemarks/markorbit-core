@@ -1,4 +1,4 @@
-import { CORE_CONTRACT_INDEX, validateCoreContractIndex, validateCoreDomainContractSkeletons, type CoreDomainContract } from '../contracts/index.ts';
+import { CORE_CONTRACT_INDEX, validateCoreContractIndex, validateCoreDomainContractSkeletons, validateCoreServiceContractSkeletons, type CoreDomainContract, type CoreServiceContract } from '../contracts/index.ts';
 import { CORE_DOMAIN_REGISTRY } from '../domains/index.ts';
 import { CORE_OBJECT_STATUSES } from '../objects/index.ts';
 import type { CoreEvent } from '../events/index.ts';
@@ -146,6 +146,25 @@ export function validateCoreDomainContractSkeletonsFixture(fixture: unknown): Co
   if (nonArray) return nonArray;
   const issues = validateCoreDomainContractSkeletons(fixture as readonly CoreDomainContract[]).map((message) =>
     error('core.domain_contract_skeletons.invalid_contract', message, 'domain_contract_skeletons')
+  );
+  return createCoreValidationResult(issues);
+}
+
+export function validateCoreObjectContractSkeletonsFixture(fixture: unknown): CoreValidationResult {
+  const nonArray = nonArrayResult(fixture, 'object_contract_skeletons');
+  if (nonArray) return nonArray;
+  const array = fixture as readonly unknown[];
+  const issues: CoreValidationIssue[] = [];
+  const objectEntries = CORE_CONTRACT_INDEX.filter((contract) => 'source' in contract && contract.source === 'CORE_OBJECT_CONTRACT_SKELETONS');
+  if (array.length !== objectEntries.length) issues.push(error('core.object_contract_skeletons.invalid_count', 'Object contract skeletons fixture must contain exactly 12 entries.', 'object_contract_skeletons'));
+  return createCoreValidationResult(issues);
+}
+
+export function validateCoreServiceContractSkeletonsFixture(fixture: unknown): CoreValidationResult {
+  const nonArray = nonArrayResult(fixture, 'service_contract_skeletons');
+  if (nonArray) return nonArray;
+  const issues = validateCoreServiceContractSkeletons(fixture as readonly CoreServiceContract[]).map((message) =>
+    error('core.service_contract_skeletons.invalid_contract', message, 'service_contract_skeletons')
   );
   return createCoreValidationResult(issues);
 }
