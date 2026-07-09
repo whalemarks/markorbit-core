@@ -1,0 +1,81 @@
+[
+  {
+    "id": "workflow-contract-record-preparation-base",
+    "type": "record-preparation-workflow",
+    "name": "Record Preparation Workflow Contract",
+    "description": "Generic contract definition for preparing a Core record before downstream coordination.",
+    "domainId": "trademark",
+    "status": "draft",
+    "version": 1,
+    "steps": [
+      {
+        "id": "collect-record-inputs",
+        "name": "Collect Record Inputs",
+        "description": "Define the expected preparation inputs for the record.",
+        "required": true,
+        "reviewRequired": false,
+        "protectedAction": false
+      },
+      {
+        "id": "prepare-record-summary",
+        "name": "Prepare Record Summary",
+        "description": "Define the expected preparation summary for later review.",
+        "required": true,
+        "reviewRequired": true,
+        "protectedAction": false
+      }
+    ],
+    "transitions": [
+      {
+        "fromStepId": "collect-record-inputs",
+        "toStepId": "prepare-record-summary",
+        "condition": "Record inputs are available for preparation."
+      }
+    ],
+    "createdAt": "2026-07-09T00:00:00.000Z",
+    "metadata": {
+      "fixture": true,
+      "scope": "generic-contract-definition"
+    }
+  },
+  {
+    "id": "workflow-contract-review-preparation-base",
+    "type": "review-preparation-workflow",
+    "name": "Review Preparation Workflow Contract",
+    "description": "Generic contract definition for preparing materials before a future human review process.",
+    "domainId": "matter",
+    "status": "active",
+    "version": 1,
+    "steps": [
+      {
+        "id": "assemble-review-materials",
+        "name": "Assemble Review Materials",
+        "description": "Define the expected review preparation materials.",
+        "required": true,
+        "reviewRequired": false,
+        "protectedAction": false
+      },
+      {
+        "id": "mark-review-needed",
+        "name": "Mark Review Needed",
+        "description": "Mark that a later execution system may require human review governance.",
+        "required": true,
+        "reviewRequired": true,
+        "protectedAction": true
+      }
+    ],
+    "transitions": [
+      {
+        "fromStepId": "assemble-review-materials",
+        "toStepId": "mark-review-needed",
+        "condition": "Review materials are ready for governance evaluation.",
+        "blockedByReview": true
+      }
+    ],
+    "createdAt": "2026-07-09T00:00:00.000Z",
+    "metadata": {
+      "fixture": true,
+      "scope": "generic-contract-definition"
+    }
+  }
+]

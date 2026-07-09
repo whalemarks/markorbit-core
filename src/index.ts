@@ -4,3 +4,5 @@ export * from './domains/index.ts';
 export * from './objects/index.ts';
 export * from './events/index.ts';
 export * from './tasks/index.ts';
+
+export * from './workflows/index.ts';
