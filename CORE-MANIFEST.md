@@ -6,16 +6,23 @@
 
 ## Current phase
 
-Phase 0 Initialization.
+Phase 1 started.
+
+## Current status
+
+- Core Domain Registry added.
+- Registry contains 26 baseline Core Domains from Book 02 — MarkOrbit Core Specification.
+- Domain registry fixture and tests added.
 
 ## Current scope
 
 - Repository structure.
 - TypeScript project setup.
 - pnpm package manager setup.
-- Vitest test setup.
+- Node test setup.
 - ESLint and Prettier configuration.
 - Governance and roadmap documentation.
+- Baseline Core Domain Registry.
 - Placeholder package and source directories.
 
 ## Out of scope
@@ -48,6 +55,5 @@ Every change should keep the TypeScript project buildable, tests passing, lint c
 
 ## Next tasks
 
-- CORE-TASK-002 — Core Domain Registry.
-- Define initial domain registry structure only after explicit approval.
+- CORE-TASK-003 — Core Object Base Types.
 - Add base Core primitives in the order defined by the roadmap.
