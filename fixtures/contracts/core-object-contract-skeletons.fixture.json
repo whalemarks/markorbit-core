@@ -1,0 +1,338 @@
+[
+  {
+    "id": "core-object-user-record-contract",
+    "objectType": "user-record",
+    "domainId": "user",
+    "name": "User Record Object Contract Skeleton",
+    "description": "Skeleton contract boundary for User Record Core objects.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Establishes the object contract placeholder for user records using only CoreObjectDefinition base fields.",
+    "base": "CoreObjectDefinition",
+    "owns": [
+      "Skeleton contract boundary for User Record Object Contract Skeleton."
+    ],
+    "requiredBaseFields": [
+      "id",
+      "type",
+      "domainId",
+      "status",
+      "version",
+      "metadata"
+    ],
+    "nonGoals": [
+      "Full object schema fields or business-specific data fields.",
+      "Service, API, workflow, runtime, database, or product UI behavior.",
+      "Book 03 execution runtime concepts or AI agent authority."
+    ],
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-object-organization-record-contract",
+    "objectType": "organization-record",
+    "domainId": "organization",
+    "name": "Organization Record Object Contract Skeleton",
+    "description": "Skeleton contract boundary for Organization Record Core objects.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Establishes the object contract placeholder for organization records using only CoreObjectDefinition base fields.",
+    "base": "CoreObjectDefinition",
+    "owns": [
+      "Skeleton contract boundary for Organization Record Object Contract Skeleton."
+    ],
+    "requiredBaseFields": [
+      "id",
+      "type",
+      "domainId",
+      "status",
+      "version",
+      "metadata"
+    ],
+    "nonGoals": [
+      "Full object schema fields or business-specific data fields.",
+      "Service, API, workflow, runtime, database, or product UI behavior.",
+      "Book 03 execution runtime concepts or AI agent authority."
+    ],
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-object-permission-policy-record-contract",
+    "objectType": "permission-policy-record",
+    "domainId": "policy",
+    "name": "Permission Policy Record Object Contract Skeleton",
+    "description": "Skeleton contract boundary for Permission Policy Record Core objects.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Establishes the object contract placeholder for permission policy records using only CoreObjectDefinition base fields.",
+    "base": "CoreObjectDefinition",
+    "owns": [
+      "Skeleton contract boundary for Permission Policy Record Object Contract Skeleton."
+    ],
+    "requiredBaseFields": [
+      "id",
+      "type",
+      "domainId",
+      "status",
+      "version",
+      "metadata"
+    ],
+    "nonGoals": [
+      "Full object schema fields or business-specific data fields.",
+      "Service, API, workflow, runtime, database, or product UI behavior.",
+      "Book 03 execution runtime concepts or AI agent authority."
+    ],
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-object-knowledge-source-record-contract",
+    "objectType": "knowledge-source-record",
+    "domainId": "knowledge",
+    "name": "Knowledge Source Record Object Contract Skeleton",
+    "description": "Skeleton contract boundary for Knowledge Source Record Core objects.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Establishes the object contract placeholder for knowledge source records using only CoreObjectDefinition base fields.",
+    "base": "CoreObjectDefinition",
+    "owns": [
+      "Skeleton contract boundary for Knowledge Source Record Object Contract Skeleton."
+    ],
+    "requiredBaseFields": [
+      "id",
+      "type",
+      "domainId",
+      "status",
+      "version",
+      "metadata"
+    ],
+    "nonGoals": [
+      "Full object schema fields or business-specific data fields.",
+      "Service, API, workflow, runtime, database, or product UI behavior.",
+      "Book 03 execution runtime concepts or AI agent authority."
+    ],
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-object-brand-record-contract",
+    "objectType": "brand-record",
+    "domainId": "brand",
+    "name": "Brand Record Object Contract Skeleton",
+    "description": "Skeleton contract boundary for Brand Record Core objects.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Establishes the object contract placeholder for brand records using only CoreObjectDefinition base fields.",
+    "base": "CoreObjectDefinition",
+    "owns": [
+      "Skeleton contract boundary for Brand Record Object Contract Skeleton."
+    ],
+    "requiredBaseFields": [
+      "id",
+      "type",
+      "domainId",
+      "status",
+      "version",
+      "metadata"
+    ],
+    "nonGoals": [
+      "Full object schema fields or business-specific data fields.",
+      "Service, API, workflow, runtime, database, or product UI behavior.",
+      "Book 03 execution runtime concepts or AI agent authority."
+    ],
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-object-trademark-record-contract",
+    "objectType": "trademark-record",
+    "domainId": "trademark",
+    "name": "Trademark Record Object Contract Skeleton",
+    "description": "Skeleton contract boundary for Trademark Record Core objects.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Establishes the object contract placeholder for trademark records using only CoreObjectDefinition base fields.",
+    "base": "CoreObjectDefinition",
+    "owns": [
+      "Skeleton contract boundary for Trademark Record Object Contract Skeleton."
+    ],
+    "requiredBaseFields": [
+      "id",
+      "type",
+      "domainId",
+      "status",
+      "version",
+      "metadata"
+    ],
+    "nonGoals": [
+      "Full object schema fields or business-specific data fields.",
+      "Service, API, workflow, runtime, database, or product UI behavior.",
+      "Book 03 execution runtime concepts or AI agent authority."
+    ],
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-object-jurisdiction-record-contract",
+    "objectType": "jurisdiction-record",
+    "domainId": "jurisdiction",
+    "name": "Jurisdiction Record Object Contract Skeleton",
+    "description": "Skeleton contract boundary for Jurisdiction Record Core objects.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Establishes the object contract placeholder for jurisdiction records using only CoreObjectDefinition base fields.",
+    "base": "CoreObjectDefinition",
+    "owns": [
+      "Skeleton contract boundary for Jurisdiction Record Object Contract Skeleton."
+    ],
+    "requiredBaseFields": [
+      "id",
+      "type",
+      "domainId",
+      "status",
+      "version",
+      "metadata"
+    ],
+    "nonGoals": [
+      "Full object schema fields or business-specific data fields.",
+      "Service, API, workflow, runtime, database, or product UI behavior.",
+      "Book 03 execution runtime concepts or AI agent authority."
+    ],
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-object-classification-record-contract",
+    "objectType": "classification-record",
+    "domainId": "classification",
+    "name": "Classification Record Object Contract Skeleton",
+    "description": "Skeleton contract boundary for Classification Record Core objects.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Establishes the object contract placeholder for classification records using only CoreObjectDefinition base fields.",
+    "base": "CoreObjectDefinition",
+    "owns": [
+      "Skeleton contract boundary for Classification Record Object Contract Skeleton."
+    ],
+    "requiredBaseFields": [
+      "id",
+      "type",
+      "domainId",
+      "status",
+      "version",
+      "metadata"
+    ],
+    "nonGoals": [
+      "Full object schema fields or business-specific data fields.",
+      "Service, API, workflow, runtime, database, or product UI behavior.",
+      "Book 03 execution runtime concepts or AI agent authority."
+    ],
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-object-document-record-contract",
+    "objectType": "document-record",
+    "domainId": "document",
+    "name": "Document Record Object Contract Skeleton",
+    "description": "Skeleton contract boundary for Document Record Core objects.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Establishes the object contract placeholder for document records using only CoreObjectDefinition base fields.",
+    "base": "CoreObjectDefinition",
+    "owns": [
+      "Skeleton contract boundary for Document Record Object Contract Skeleton."
+    ],
+    "requiredBaseFields": [
+      "id",
+      "type",
+      "domainId",
+      "status",
+      "version",
+      "metadata"
+    ],
+    "nonGoals": [
+      "Full object schema fields or business-specific data fields.",
+      "Service, API, workflow, runtime, database, or product UI behavior.",
+      "Book 03 execution runtime concepts or AI agent authority."
+    ],
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-object-evidence-record-contract",
+    "objectType": "evidence-record",
+    "domainId": "evidence",
+    "name": "Evidence Record Object Contract Skeleton",
+    "description": "Skeleton contract boundary for Evidence Record Core objects.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Establishes the object contract placeholder for evidence records using only CoreObjectDefinition base fields.",
+    "base": "CoreObjectDefinition",
+    "owns": [
+      "Skeleton contract boundary for Evidence Record Object Contract Skeleton."
+    ],
+    "requiredBaseFields": [
+      "id",
+      "type",
+      "domainId",
+      "status",
+      "version",
+      "metadata"
+    ],
+    "nonGoals": [
+      "Full object schema fields or business-specific data fields.",
+      "Service, API, workflow, runtime, database, or product UI behavior.",
+      "Book 03 execution runtime concepts or AI agent authority."
+    ],
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-object-matter-record-contract",
+    "objectType": "matter-record",
+    "domainId": "matter",
+    "name": "Matter Record Object Contract Skeleton",
+    "description": "Skeleton contract boundary for Matter Record Core objects.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Establishes the object contract placeholder for matter records using only CoreObjectDefinition base fields.",
+    "base": "CoreObjectDefinition",
+    "owns": [
+      "Skeleton contract boundary for Matter Record Object Contract Skeleton."
+    ],
+    "requiredBaseFields": [
+      "id",
+      "type",
+      "domainId",
+      "status",
+      "version",
+      "metadata"
+    ],
+    "nonGoals": [
+      "Full object schema fields or business-specific data fields.",
+      "Service, API, workflow, runtime, database, or product UI behavior.",
+      "Book 03 execution runtime concepts or AI agent authority."
+    ],
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-object-communication-record-contract",
+    "objectType": "communication-record",
+    "domainId": "communication",
+    "name": "Communication Record Object Contract Skeleton",
+    "description": "Skeleton contract boundary for Communication Record Core objects.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Establishes the object contract placeholder for communication records using only CoreObjectDefinition base fields.",
+    "base": "CoreObjectDefinition",
+    "owns": [
+      "Skeleton contract boundary for Communication Record Object Contract Skeleton."
+    ],
+    "requiredBaseFields": [
+      "id",
+      "type",
+      "domainId",
+      "status",
+      "version",
+      "metadata"
+    ],
+    "nonGoals": [
+      "Full object schema fields or business-specific data fields.",
+      "Service, API, workflow, runtime, database, or product UI behavior.",
+      "Book 03 execution runtime concepts or AI agent authority."
+    ],
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  }
+]
