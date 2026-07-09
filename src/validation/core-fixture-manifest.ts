@@ -7,7 +7,8 @@ export const CORE_FIXTURE_TYPES = [
   'contract_index',
   'domain_contract_skeletons',
   'object_contract_skeletons',
-  'service_contract_skeletons'
+  'service_contract_skeletons',
+  'api_contract_skeletons'
 ] as const;
 
 export type CoreFixtureType = (typeof CORE_FIXTURE_TYPES)[number];
@@ -73,6 +74,12 @@ export const CORE_FIXTURE_MANIFEST = [
     id: 'core-service-contract-skeletons',
     type: 'service_contract_skeletons',
     path: 'fixtures/contracts/core-service-contract-skeletons.fixture.json',
+    required: true
+  },
+  {
+    id: 'core-api-contract-skeletons',
+    type: 'api_contract_skeletons',
+    path: 'fixtures/contracts/core-api-contract-skeletons.fixture.json',
     required: true
   }
 ] as const satisfies readonly CoreFixtureManifestEntry[];

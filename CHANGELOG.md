@@ -167,3 +167,20 @@ All notable changes to MarkOrbit Core will be documented in this file.
 - No Book 03 runtime contracts added.
 - No product UI contracts added.
 - No AI agent authority added.
+
+## CORE-TASK-012 — Core API Contract Skeletons
+
+- Added CoreApiContract type.
+- Added 8 Core API Contract Skeletons.
+- Added API skeleton validator.
+- Added API skeleton fixture.
+- Expanded CORE_CONTRACT_INDEX from 54 to 62 entries.
+- Updated fixture manifest and validation.
+- Added tests.
+- No API server added.
+- No routes or handlers added.
+- No request/response DTO schemas added.
+- No service implementations added.
+- No Book 03 runtime contracts added.
+- No product UI contracts added.
+- No AI agent authority added.
