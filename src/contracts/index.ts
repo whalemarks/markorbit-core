@@ -8,3 +8,4 @@ export * from './core-contract-index.ts';
 export * from './core-contract-index-validation.ts';
 export * from './domain/index.ts';
 export * from './object/index.ts';
+export * from './service/index.ts';

@@ -620,5 +620,145 @@
     "book": "Book 02 — MarkOrbit Core Specification",
     "source": "CORE_OBJECT_CONTRACT_SKELETONS",
     "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-service-identity-resolution-service-contract",
+    "type": "service",
+    "name": "Identity Resolution Service Contract Skeleton",
+    "description": "Skeleton contract boundary for identity resolution service responsibilities.",
+    "status": "active",
+    "scope": {
+      "domainId": "identity"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "source": "CORE_SERVICE_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-service-permission-evaluation-service-contract",
+    "type": "service",
+    "name": "Permission Evaluation Service Contract Skeleton",
+    "description": "Skeleton contract boundary for permission evaluation service responsibilities.",
+    "status": "active",
+    "scope": {
+      "domainId": "permission"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "source": "CORE_SERVICE_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-service-policy-evaluation-service-contract",
+    "type": "service",
+    "name": "Policy Evaluation Service Contract Skeleton",
+    "description": "Skeleton contract boundary for policy evaluation service responsibilities.",
+    "status": "active",
+    "scope": {
+      "domainId": "policy"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "source": "CORE_SERVICE_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-service-knowledge-reference-service-contract",
+    "type": "service",
+    "name": "Knowledge Reference Service Contract Skeleton",
+    "description": "Skeleton contract boundary for knowledge reference service responsibilities.",
+    "status": "active",
+    "scope": {
+      "domainId": "knowledge"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "source": "CORE_SERVICE_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-service-trademark-reference-service-contract",
+    "type": "service",
+    "name": "Trademark Reference Service Contract Skeleton",
+    "description": "Skeleton contract boundary for trademark reference service responsibilities.",
+    "status": "active",
+    "scope": {
+      "domainId": "trademark"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "source": "CORE_SERVICE_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-service-jurisdiction-reference-service-contract",
+    "type": "service",
+    "name": "Jurisdiction Reference Service Contract Skeleton",
+    "description": "Skeleton contract boundary for jurisdiction reference service responsibilities.",
+    "status": "active",
+    "scope": {
+      "domainId": "jurisdiction"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "source": "CORE_SERVICE_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-service-classification-reference-service-contract",
+    "type": "service",
+    "name": "Classification Reference Service Contract Skeleton",
+    "description": "Skeleton contract boundary for classification reference service responsibilities.",
+    "status": "active",
+    "scope": {
+      "domainId": "classification"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "source": "CORE_SERVICE_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-service-document-reference-service-contract",
+    "type": "service",
+    "name": "Document Reference Service Contract Skeleton",
+    "description": "Skeleton contract boundary for document reference service responsibilities.",
+    "status": "active",
+    "scope": {
+      "domainId": "document"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "source": "CORE_SERVICE_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-service-evidence-reference-service-contract",
+    "type": "service",
+    "name": "Evidence Reference Service Contract Skeleton",
+    "description": "Skeleton contract boundary for evidence reference service responsibilities.",
+    "status": "active",
+    "scope": {
+      "domainId": "evidence"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "source": "CORE_SERVICE_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-service-communication-reference-service-contract",
+    "type": "service",
+    "name": "Communication Reference Service Contract Skeleton",
+    "description": "Skeleton contract boundary for communication reference service responsibilities.",
+    "status": "active",
+    "scope": {
+      "domainId": "communication"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "source": "CORE_SERVICE_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-09T00:00:00.000Z"
   }
 ]

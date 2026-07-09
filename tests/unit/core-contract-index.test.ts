@@ -23,7 +23,12 @@ const forbiddenContractIds = [
   'workplace',
   'workflow-runtime-instance',
   'task-runtime-instance',
-  'ai-agent-session'
+  'ai-agent-session',
+  'event-bus-service',
+  'workflow-engine-service',
+  'api-server-service',
+  'database-service',
+  'autonomous-agent-service'
 ];
 
 describe('Core Contract Index', () => {
@@ -52,8 +57,8 @@ describe('Core Contract Index', () => {
     assert.deepEqual(Object.values(CORE_CONTRACT_STATUSES), expectedStatuses);
   });
 
-  it('CORE_CONTRACT_INDEX has exactly 44 entries', () => {
-    assert.equal(CORE_CONTRACT_INDEX.length, 44);
+  it('CORE_CONTRACT_INDEX has exactly 54 entries', () => {
+    assert.equal(CORE_CONTRACT_INDEX.length, 54);
   });
 
 
@@ -67,6 +72,10 @@ describe('Core Contract Index', () => {
 
   it('includes exactly 12 object contract entries', () => {
     assert.equal(CORE_CONTRACT_INDEX.filter((contract) => contract.source === 'CORE_OBJECT_CONTRACT_SKELETONS').length, 12);
+  });
+
+  it('includes exactly 10 service contract entries', () => {
+    assert.equal(CORE_CONTRACT_INDEX.filter((contract) => contract.source === 'CORE_SERVICE_CONTRACT_SKELETONS').length, 10);
   });
 
   it('all ids are unique', () => {
