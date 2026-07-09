@@ -1,0 +1,36 @@
+[
+  {
+    "id": "task-prepare-record-001",
+    "type": "prepare-record",
+    "title": "Prepare core record",
+    "domainId": "trademark",
+    "status": "open",
+    "priority": "normal",
+    "createdAt": "2026-01-01T00:00:00.000Z",
+    "metadata": {
+      "fixture": true
+    }
+  },
+  {
+    "id": "task-review-record-001",
+    "type": "review-record",
+    "title": "Review core record",
+    "domainId": "matter",
+    "status": "review_required",
+    "priority": "high",
+    "createdAt": "2026-01-02T00:00:00.000Z",
+    "review": {
+      "required": true,
+      "reason": "Fixture human review requirement"
+    }
+  },
+  {
+    "id": "task-follow-up-001",
+    "type": "follow-up",
+    "title": "Follow up on communication",
+    "domainId": "communication",
+    "status": "waiting",
+    "priority": "low",
+    "createdAt": "2026-01-03T00:00:00.000Z"
+  }
+]

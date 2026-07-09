@@ -2,6 +2,25 @@
 
 All notable changes to MarkOrbit Core will be documented in this file.
 
+## CORE-TASK-005 — Core Task Primitive
+
+- Added CoreTaskId.
+- Added CoreTaskType.
+- Added CoreTaskStatus.
+- Added CoreTaskPriority.
+- Added CoreTaskActor.
+- Added CoreTaskReviewRequirement.
+- Added CoreTask.
+- Added CoreTask validation helper.
+- Added task base fixture.
+- Added task tests.
+- No task runtime added.
+- No task catalog added.
+- No workflow engine added.
+- No Book 03 Task Lifecycle runtime added.
+- No product UI added.
+- No AI agent task authority added.
+
 ## CORE-TASK-004 — Core Event Primitive
 
 - Added CoreEventId.

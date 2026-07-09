@@ -15,6 +15,7 @@ Phase 1 started.
 - Domain registry fixture and tests added.
 - Core Object Base Types added.
 - Core Event Primitive added.
+- Core Task Primitive added.
 
 ## Current scope
 
@@ -27,6 +28,7 @@ Phase 1 started.
 - Baseline Core Domain Registry.
 - Core Object Base Types.
 - Core Event Primitive.
+- Core Task Primitive.
 - Placeholder package and source directories.
 
 ## Out of scope
@@ -59,5 +61,5 @@ Every change should keep the TypeScript project buildable, tests passing, lint c
 
 ## Next tasks
 
-- CORE-TASK-005 — Core Task Primitive.
+- CORE-TASK-006 — Core Workflow Contract Primitive.
 - Add base Core primitives in the order defined by the roadmap.
