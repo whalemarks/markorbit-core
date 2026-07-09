@@ -1,0 +1,18 @@
+{
+  "name": "markorbit-core",
+  "version": "0.0.0",
+  "description": "Book 02 MarkOrbit Core Specification contracts, validation, fixtures, events, and workflow primitives.",
+  "type": "module",
+  "private": true,
+  "packageManager": "pnpm@10.28.1",
+  "scripts": {
+    "test": "node scripts/run-tests.mjs",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}
