@@ -1,4 +1,4 @@
-import { CORE_CONTRACT_INDEX, validateCoreContractIndex, validateCoreDomainContractSkeletons, validateCoreObjectContractSkeletons, validateCoreServiceContractSkeletons, validateCoreApiContractSkeletons, type CoreApiContract, type CoreDomainContract, type CoreObjectContract, type CoreServiceContract } from '../contracts/index.ts';
+import { CORE_CONTRACT_INDEX, validateCoreContractIndex, validateCoreDomainContractSkeletons, validateCoreObjectContractSkeletons, validateCoreServiceContractSkeletons, validateCoreApiContractSkeletons, validateCoreEventCatalogSkeletons, type CoreApiContract, type CoreDomainContract, type CoreObjectContract, type CoreServiceContract, type CoreEventCatalogEntry } from '../contracts/index.ts';
 import { CORE_DOMAIN_REGISTRY } from '../domains/index.ts';
 import { CORE_OBJECT_STATUSES } from '../objects/index.ts';
 import type { CoreEvent } from '../events/index.ts';
@@ -175,6 +175,16 @@ export function validateCoreApiContractSkeletonsFixture(fixture: unknown): CoreV
   if (nonArray) return nonArray;
   const issues = validateCoreApiContractSkeletons(fixture as readonly CoreApiContract[]).map((message) =>
     error('core.api_contract_skeletons.invalid_contract', message, 'api_contract_skeletons')
+  );
+  return createCoreValidationResult(issues);
+}
+
+
+export function validateCoreEventCatalogSkeletonsFixture(fixture: unknown): CoreValidationResult {
+  const nonArray = nonArrayResult(fixture, 'event_catalog_skeletons');
+  if (nonArray) return nonArray;
+  const issues = validateCoreEventCatalogSkeletons(fixture as readonly CoreEventCatalogEntry[]).map((message) =>
+    error('core.event_catalog_skeletons.invalid_entry', message, 'event_catalog_skeletons')
   );
   return createCoreValidationResult(issues);
 }

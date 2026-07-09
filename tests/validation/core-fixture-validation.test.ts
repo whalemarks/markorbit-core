@@ -11,7 +11,8 @@ import {
   validateCoreEventBaseFixture,
   validateCoreObjectBaseFixture,
   validateCoreTaskBaseFixture,
-  validateCoreWorkflowContractBaseFixture
+  validateCoreWorkflowContractBaseFixture,
+  validateCoreEventCatalogSkeletonsFixture
 } from '../../src/index.ts';
 
 const readFixture = async (path: string): Promise<unknown> => JSON.parse(await readFile(new URL(`../../${path}`, import.meta.url), 'utf8'));
@@ -27,6 +28,7 @@ describe('core fixture validation', () => {
     assert.equal(validateCoreObjectContractSkeletonsFixture(await readFixture('fixtures/contracts/core-object-contract-skeletons.fixture.json')).ok, true);
     assert.equal(validateCoreServiceContractSkeletonsFixture(await readFixture('fixtures/contracts/core-service-contract-skeletons.fixture.json')).ok, true);
     assert.equal(validateCoreApiContractSkeletonsFixture(await readFixture('fixtures/contracts/core-api-contract-skeletons.fixture.json')).ok, true);
+    assert.equal(validateCoreEventCatalogSkeletonsFixture(await readFixture('fixtures/contracts/core-event-catalog-skeletons.fixture.json')).ok, true);
   });
 
   it('each validator returns ok false for invalid non-array input', () => {
@@ -39,7 +41,8 @@ describe('core fixture validation', () => {
       validateCoreObjectBaseFixture,
       validateCoreEventBaseFixture,
       validateCoreTaskBaseFixture,
-      validateCoreWorkflowContractBaseFixture
+      validateCoreWorkflowContractBaseFixture,
+      validateCoreEventCatalogSkeletonsFixture
     ]) {
       assert.equal(validator({}).ok, false);
     }
@@ -144,5 +147,38 @@ describe('core fixture validation', () => {
     const fixture = structuredClone(await readFixture('fixtures/workflows/core-workflow-contract-base.fixture.json')) as Record<string, unknown>[];
     fixture[0].steps = [];
     assert.equal(validateCoreWorkflowContractBaseFixture(fixture).ok, false);
+  });
+
+
+  it('event catalog skeleton validator returns ok true for existing fixture', async () => {
+    assert.equal(validateCoreEventCatalogSkeletonsFixture(await readFixture('fixtures/contracts/core-event-catalog-skeletons.fixture.json')).ok, true);
+  });
+
+  it('event catalog skeleton validator rejects invalid non-array input', () => {
+    assert.equal(validateCoreEventCatalogSkeletonsFixture({}).ok, false);
+  });
+
+  it('event catalog skeleton validator rejects missing eventType', async () => {
+    const fixture = structuredClone(await readFixture('fixtures/contracts/core-event-catalog-skeletons.fixture.json')) as Record<string, unknown>[];
+    delete fixture[0].eventType;
+    assert.equal(validateCoreEventCatalogSkeletonsFixture(fixture).ok, false);
+  });
+
+  it('event catalog skeleton validator rejects unknown domainId', async () => {
+    const fixture = structuredClone(await readFixture('fixtures/contracts/core-event-catalog-skeletons.fixture.json')) as Record<string, unknown>[];
+    fixture[0].domainId = 'unknown-domain';
+    assert.equal(validateCoreEventCatalogSkeletonsFixture(fixture).ok, false);
+  });
+
+  it('event catalog skeleton validator rejects duplicate eventType', async () => {
+    const fixture = structuredClone(await readFixture('fixtures/contracts/core-event-catalog-skeletons.fixture.json')) as Record<string, unknown>[];
+    fixture[1].eventType = fixture[0].eventType;
+    assert.equal(validateCoreEventCatalogSkeletonsFixture(fixture).ok, false);
+  });
+
+  it('event catalog skeleton validator rejects concrete payload schema keywords', async () => {
+    const fixture = structuredClone(await readFixture('fixtures/contracts/core-event-catalog-skeletons.fixture.json')) as Record<string, unknown>[];
+    fixture[0].payloadShape = ['jsonSchema properties required'];
+    assert.equal(validateCoreEventCatalogSkeletonsFixture(fixture).ok, false);
   });
 });

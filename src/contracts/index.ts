@@ -10,3 +10,4 @@ export * from './domain/index.ts';
 export * from './object/index.ts';
 export * from './service/index.ts';
 export * from './api/index.ts';
+export * from './event/index.ts';

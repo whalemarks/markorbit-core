@@ -1,0 +1,290 @@
+[
+  {
+    "id": "core-event-core-object-created-contract",
+    "eventType": "core-object-created",
+    "domainId": "event",
+    "name": "Core Object Created Event Catalog Skeleton",
+    "description": "Skeleton catalog entry for Core object creation events.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Names the baseline event concept for recording that a Core object has been created.",
+    "action": "created",
+    "subject": "core-object",
+    "owns": [
+      "Catalog skeleton boundary for Core Object Created Event Catalog Skeleton."
+    ],
+    "payloadShape": [
+      "Textual placeholder only; concrete payload schema is intentionally not defined."
+    ],
+    "nonGoals": [
+      "Event bus, event stream, event sourcing, persistence, or runtime emission behavior.",
+      "Book 03 Event Trace, Audit, Replay, workflow runtime, product UI, or database behavior.",
+      "Concrete payload schemas or AI agent authority to independently emit governed Events."
+    ],
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-event-core-object-updated-contract",
+    "eventType": "core-object-updated",
+    "domainId": "event",
+    "name": "Core Object Updated Event Catalog Skeleton",
+    "description": "Skeleton catalog entry for Core object update events.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Names the baseline event concept for recording that a Core object has been updated.",
+    "action": "updated",
+    "subject": "core-object",
+    "owns": [
+      "Catalog skeleton boundary for Core Object Updated Event Catalog Skeleton."
+    ],
+    "payloadShape": [
+      "Textual placeholder only; concrete payload schema is intentionally not defined."
+    ],
+    "nonGoals": [
+      "Event bus, event stream, event sourcing, persistence, or runtime emission behavior.",
+      "Book 03 Event Trace, Audit, Replay, workflow runtime, product UI, or database behavior.",
+      "Concrete payload schemas or AI agent authority to independently emit governed Events."
+    ],
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-event-core-object-status-changed-contract",
+    "eventType": "core-object-status-changed",
+    "domainId": "event",
+    "name": "Core Object Status Changed Event Catalog Skeleton",
+    "description": "Skeleton catalog entry for Core object status change events.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Names the baseline event concept for recording that a Core object status has changed.",
+    "action": "status_changed",
+    "subject": "core-object",
+    "owns": [
+      "Catalog skeleton boundary for Core Object Status Changed Event Catalog Skeleton."
+    ],
+    "payloadShape": [
+      "Textual placeholder only; concrete payload schema is intentionally not defined."
+    ],
+    "nonGoals": [
+      "Event bus, event stream, event sourcing, persistence, or runtime emission behavior.",
+      "Book 03 Event Trace, Audit, Replay, workflow runtime, product UI, or database behavior.",
+      "Concrete payload schemas or AI agent authority to independently emit governed Events."
+    ],
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-event-core-object-archived-contract",
+    "eventType": "core-object-archived",
+    "domainId": "event",
+    "name": "Core Object Archived Event Catalog Skeleton",
+    "description": "Skeleton catalog entry for Core object archive events.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Names the baseline event concept for recording that a Core object has been archived.",
+    "action": "archived",
+    "subject": "core-object",
+    "owns": [
+      "Catalog skeleton boundary for Core Object Archived Event Catalog Skeleton."
+    ],
+    "payloadShape": [
+      "Textual placeholder only; concrete payload schema is intentionally not defined."
+    ],
+    "nonGoals": [
+      "Event bus, event stream, event sourcing, persistence, or runtime emission behavior.",
+      "Book 03 Event Trace, Audit, Replay, workflow runtime, product UI, or database behavior.",
+      "Concrete payload schemas or AI agent authority to independently emit governed Events."
+    ],
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-event-core-task-created-contract",
+    "eventType": "core-task-created",
+    "domainId": "task",
+    "name": "Core Task Created Event Catalog Skeleton",
+    "description": "Skeleton catalog entry for Core task creation events.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Names the baseline event concept for recording that a Core task has been created.",
+    "action": "created",
+    "subject": "core-task",
+    "owns": [
+      "Catalog skeleton boundary for Core Task Created Event Catalog Skeleton."
+    ],
+    "payloadShape": [
+      "Textual placeholder only; concrete payload schema is intentionally not defined."
+    ],
+    "nonGoals": [
+      "Event bus, event stream, event sourcing, persistence, or runtime emission behavior.",
+      "Book 03 Event Trace, Audit, Replay, workflow runtime, product UI, or database behavior.",
+      "Concrete payload schemas or AI agent authority to independently emit governed Events."
+    ],
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-event-core-task-status-changed-contract",
+    "eventType": "core-task-status-changed",
+    "domainId": "task",
+    "name": "Core Task Status Changed Event Catalog Skeleton",
+    "description": "Skeleton catalog entry for Core task status change events.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Names the baseline event concept for recording that a Core task status has changed.",
+    "action": "status_changed",
+    "subject": "core-task",
+    "owns": [
+      "Catalog skeleton boundary for Core Task Status Changed Event Catalog Skeleton."
+    ],
+    "payloadShape": [
+      "Textual placeholder only; concrete payload schema is intentionally not defined."
+    ],
+    "nonGoals": [
+      "Event bus, event stream, event sourcing, persistence, or runtime emission behavior.",
+      "Book 03 Event Trace, Audit, Replay, workflow runtime, product UI, or database behavior.",
+      "Concrete payload schemas or AI agent authority to independently emit governed Events."
+    ],
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-event-core-review-requested-contract",
+    "eventType": "core-review-requested",
+    "domainId": "task",
+    "name": "Core Review Requested Event Catalog Skeleton",
+    "description": "Skeleton catalog entry for Core review request events.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Names the baseline event concept for recording that a Core review has been requested.",
+    "action": "requested",
+    "subject": "core-review",
+    "owns": [
+      "Catalog skeleton boundary for Core Review Requested Event Catalog Skeleton."
+    ],
+    "payloadShape": [
+      "Textual placeholder only; concrete payload schema is intentionally not defined."
+    ],
+    "nonGoals": [
+      "Event bus, event stream, event sourcing, persistence, or runtime emission behavior.",
+      "Book 03 Event Trace, Audit, Replay, workflow runtime, product UI, or database behavior.",
+      "Concrete payload schemas or AI agent authority to independently emit governed Events."
+    ],
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-event-core-review-completed-contract",
+    "eventType": "core-review-completed",
+    "domainId": "task",
+    "name": "Core Review Completed Event Catalog Skeleton",
+    "description": "Skeleton catalog entry for Core review completion events.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Names the baseline event concept for recording that a Core review has been completed.",
+    "action": "completed",
+    "subject": "core-review",
+    "owns": [
+      "Catalog skeleton boundary for Core Review Completed Event Catalog Skeleton."
+    ],
+    "payloadShape": [
+      "Textual placeholder only; concrete payload schema is intentionally not defined."
+    ],
+    "nonGoals": [
+      "Event bus, event stream, event sourcing, persistence, or runtime emission behavior.",
+      "Book 03 Event Trace, Audit, Replay, workflow runtime, product UI, or database behavior.",
+      "Concrete payload schemas or AI agent authority to independently emit governed Events."
+    ],
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-event-core-workflow-contract-registered-contract",
+    "eventType": "core-workflow-contract-registered",
+    "domainId": "workflow-contract",
+    "name": "Core Workflow Contract Registered Event Catalog Skeleton",
+    "description": "Skeleton catalog entry for Core workflow contract registration events.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Names the baseline event concept for recording that a Core workflow contract has been registered.",
+    "action": "created",
+    "subject": "core-workflow-contract",
+    "owns": [
+      "Catalog skeleton boundary for Core Workflow Contract Registered Event Catalog Skeleton."
+    ],
+    "payloadShape": [
+      "Textual placeholder only; concrete payload schema is intentionally not defined."
+    ],
+    "nonGoals": [
+      "Event bus, event stream, event sourcing, persistence, or runtime emission behavior.",
+      "Book 03 Event Trace, Audit, Replay, workflow runtime, product UI, or database behavior.",
+      "Concrete payload schemas or AI agent authority to independently emit governed Events."
+    ],
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-event-core-workflow-step-defined-contract",
+    "eventType": "core-workflow-step-defined",
+    "domainId": "workflow-contract",
+    "name": "Core Workflow Step Defined Event Catalog Skeleton",
+    "description": "Skeleton catalog entry for Core workflow step definition events.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Names the baseline event concept for recording that a Core workflow step has been defined.",
+    "action": "created",
+    "subject": "core-workflow-step",
+    "owns": [
+      "Catalog skeleton boundary for Core Workflow Step Defined Event Catalog Skeleton."
+    ],
+    "payloadShape": [
+      "Textual placeholder only; concrete payload schema is intentionally not defined."
+    ],
+    "nonGoals": [
+      "Event bus, event stream, event sourcing, persistence, or runtime emission behavior.",
+      "Book 03 Event Trace, Audit, Replay, workflow runtime, product UI, or database behavior.",
+      "Concrete payload schemas or AI agent authority to independently emit governed Events."
+    ],
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-event-core-communication-draft-created-contract",
+    "eventType": "core-communication-draft-created",
+    "domainId": "communication",
+    "name": "Core Communication Draft Created Event Catalog Skeleton",
+    "description": "Skeleton catalog entry for Core communication draft creation events.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Names the baseline event concept for recording that a Core communication draft has been created.",
+    "action": "created",
+    "subject": "core-communication",
+    "owns": [
+      "Catalog skeleton boundary for Core Communication Draft Created Event Catalog Skeleton."
+    ],
+    "payloadShape": [
+      "Textual placeholder only; concrete payload schema is intentionally not defined."
+    ],
+    "nonGoals": [
+      "Event bus, event stream, event sourcing, persistence, or runtime emission behavior.",
+      "Book 03 Event Trace, Audit, Replay, workflow runtime, product UI, or database behavior.",
+      "Concrete payload schemas or AI agent authority to independently emit governed Events."
+    ],
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-event-core-communication-approved-contract",
+    "eventType": "core-communication-approved",
+    "domainId": "communication",
+    "name": "Core Communication Approved Event Catalog Skeleton",
+    "description": "Skeleton catalog entry for Core communication approval events.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Names the baseline event concept for recording that a Core communication has been approved.",
+    "action": "approved",
+    "subject": "core-communication",
+    "owns": [
+      "Catalog skeleton boundary for Core Communication Approved Event Catalog Skeleton."
+    ],
+    "payloadShape": [
+      "Textual placeholder only; concrete payload schema is intentionally not defined."
+    ],
+    "nonGoals": [
+      "Event bus, event stream, event sourcing, persistence, or runtime emission behavior.",
+      "Book 03 Event Trace, Audit, Replay, workflow runtime, product UI, or database behavior.",
+      "Concrete payload schemas or AI agent authority to independently emit governed Events."
+    ],
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  }
+]

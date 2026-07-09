@@ -11,6 +11,19 @@ import {
 const expectedTypes = ['domain', 'object', 'service', 'api', 'event', 'workflow', 'task', 'validation', 'permission', 'policy', 'ai_governance'];
 const expectedStatuses = ['draft', 'active', 'deprecated', 'archived'];
 const forbiddenContractIds = [
+  'event-bus-created',
+  'event-stream-appended',
+  'event-sourced-aggregate-updated',
+  'execution-runtime-started',
+  'execution-context-created',
+  'workflow-runtime-advanced',
+  'task-runtime-completed',
+  'ai-agent-emitted-event',
+  'autonomous-agent-approved',
+  'product-ui-event',
+  'artifact-rendered',
+  'publish-automated',
+  'distillery-output-published',
   'trademark-application',
     'matter-lifecycle',
   'communication-runtime',
@@ -65,8 +78,8 @@ describe('Core Contract Index', () => {
     assert.deepEqual(Object.values(CORE_CONTRACT_STATUSES), expectedStatuses);
   });
 
-  it('CORE_CONTRACT_INDEX has exactly 62 entries', () => {
-    assert.equal(CORE_CONTRACT_INDEX.length, 62);
+  it('CORE_CONTRACT_INDEX has exactly 74 entries', () => {
+    assert.equal(CORE_CONTRACT_INDEX.length, 74);
   });
 
 
@@ -90,6 +103,12 @@ describe('Core Contract Index', () => {
 
   it('includes exactly 8 API contract entries', () => {
     assert.equal(CORE_CONTRACT_INDEX.filter((contract) => contract.source === 'CORE_API_CONTRACT_SKELETONS').length, 8);
+  });
+
+
+
+  it('includes exactly 12 event catalog entries', () => {
+    assert.equal(CORE_CONTRACT_INDEX.filter((contract) => contract.source === 'CORE_EVENT_CATALOG_SKELETONS').length, 12);
   });
 
   it('all ids are unique', () => {
