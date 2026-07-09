@@ -6,7 +6,7 @@
 
 ## Current phase
 
-Phase 1 started.
+Phase 1 foundation primitives complete.
 
 ## Current status
 
@@ -17,6 +17,8 @@ Phase 1 started.
 - Core Event Primitive added.
 - Core Task Primitive added.
 - Core Workflow Contract Primitive added.
+- Core Validation Fixture System added.
+- Phase 1 foundation primitives are now complete.
 
 ## Current scope
 
@@ -31,6 +33,7 @@ Phase 1 started.
 - Core Event Primitive.
 - Core Task Primitive.
 - Core Workflow Contract Primitive.
+- Core Validation Fixture System.
 - Placeholder package and source directories.
 
 ## Out of scope
@@ -63,5 +66,4 @@ Every change should keep the TypeScript project buildable, tests passing, lint c
 
 ## Next tasks
 
-- CORE-TASK-007 — Core Validation Fixture System.
-- Add base Core primitives in the order defined by the roadmap.
+- CORE-TASK-008 — Core Contract Index.

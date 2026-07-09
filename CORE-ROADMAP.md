@@ -8,12 +8,12 @@
 
 ## Phase 1
 
-- Core domain registry.
-- Core object base types.
-- Event primitive.
-- Task primitive.
-- Workflow contract primitive.
-- Validation fixtures.
+- [x] Core domain registry.
+- [x] Core object base types.
+- [x] Event primitive.
+- [x] Task primitive.
+- [x] Workflow contract primitive.
+- [x] Validation fixture system.
 
 ## Phase 2
 

@@ -6,3 +6,5 @@ export * from './events/index.ts';
 export * from './tasks/index.ts';
 
 export * from './workflows/index.ts';
+
+export * from './validation/index.ts';
