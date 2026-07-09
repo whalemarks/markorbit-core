@@ -66,3 +66,20 @@ All notable changes to MarkOrbit Core will be documented in this file.
 ## 0.0.0
 
 - Initialize repository structure, project setup, governance files, and placeholder version export.
+
+## CORE-TASK-006 — Core Workflow Contract Primitive
+
+- Added CoreWorkflowContractId.
+- Added CoreWorkflowContractType.
+- Added CoreWorkflowContractStatus.
+- Added CoreWorkflowStep.
+- Added CoreWorkflowTransition.
+- Added CoreWorkflowContract.
+- Added workflow contract validation helper.
+- Added workflow contract base fixture.
+- Added workflow contract tests.
+- No workflow engine added.
+- No workflow runtime added.
+- No Book 03 Workflow Coordination runtime added.
+- No product UI added.
+- No AI agent workflow authority added.

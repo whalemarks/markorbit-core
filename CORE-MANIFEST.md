@@ -16,6 +16,7 @@ Phase 1 started.
 - Core Object Base Types added.
 - Core Event Primitive added.
 - Core Task Primitive added.
+- Core Workflow Contract Primitive added.
 
 ## Current scope
 
@@ -29,6 +30,7 @@ Phase 1 started.
 - Core Object Base Types.
 - Core Event Primitive.
 - Core Task Primitive.
+- Core Workflow Contract Primitive.
 - Placeholder package and source directories.
 
 ## Out of scope
@@ -61,5 +63,5 @@ Every change should keep the TypeScript project buildable, tests passing, lint c
 
 ## Next tasks
 
-- CORE-TASK-006 — Core Workflow Contract Primitive.
+- CORE-TASK-007 — Core Validation Fixture System.
 - Add base Core primitives in the order defined by the roadmap.
