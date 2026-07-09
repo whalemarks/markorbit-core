@@ -1,39 +1,23 @@
-## CORE-TASK-010 — Core Object Contract Skeletons
-
-- Added CoreObjectContract type.
-- Added 12 Core Object Contract Skeletons.
-- Added object skeleton validator.
-- Added object skeleton fixture.
-- Expanded CORE_CONTRACT_INDEX from 32 to 44 entries.
-- Updated fixture manifest and validation.
-- Added tests.
-- No full object schemas added.
-- No concrete business fields added.
-- No service/API contracts added.
-- No Book 03 runtime contracts added.
-- No product UI contracts added.
-- No AI agent authority added.
-
-
-## CORE-TASK-007 — Core Validation Fixture System
-
-- Added CoreValidationResult.
-- Added CoreValidationContext.
-- Added CoreFixtureManifest.
-- Added fixture validators.
-- Added validate:fixtures script.
-- Added validation tests.
-- Added architecture note.
-- Phase 1 foundation primitives complete.
-- No business logic added.
-- No workflow runtime added.
-- No Book 03 runtime added.
-- No product UI added.
-- No AI agent authority added.
-
 # Changelog
 
 All notable changes to MarkOrbit Core will be documented in this file.
+
+## CORE-TASK-013 — Core Event Catalog Skeleton
+
+- Added `CoreEventCatalogEntry` type.
+- Added 12 Core Event Catalog Skeletons.
+- Added event catalog skeleton validator.
+- Added event catalog skeleton fixture.
+- Expanded `CORE_CONTRACT_INDEX` from 62 to 74 entries.
+- Updated fixture manifest and validation.
+- Added tests.
+- No Event Bus added.
+- No Event Sourcing added.
+- No persistence added.
+- No concrete payload schemas added.
+- No Book 03 Event Trace runtime added.
+- No product UI contracts added.
+- No AI agent event authority added.
 
 ## CORE-TASK-011 — Core Service Contract Skeletons
 
