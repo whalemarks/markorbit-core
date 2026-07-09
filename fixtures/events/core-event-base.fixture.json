@@ -1,0 +1,38 @@
+[
+  {
+    "id": "event-trademark-001",
+    "type": "object-created",
+    "action": "created",
+    "domainId": "trademark",
+    "source": {
+      "actorType": "user",
+      "actorId": "user-001",
+      "actorLabel": "Fixture User"
+    },
+    "occurredAt": "2026-07-09T00:00:00Z",
+    "payload": {}
+  },
+  {
+    "id": "event-matter-001",
+    "type": "status-changed",
+    "action": "status_changed",
+    "domainId": "matter",
+    "source": {
+      "actorType": "system",
+      "actorId": "system-core"
+    },
+    "occurredAt": "2026-07-09T00:01:00Z",
+    "metadata": {}
+  },
+  {
+    "id": "event-communication-001",
+    "type": "review-requested",
+    "action": "requested",
+    "domainId": "communication",
+    "source": {
+      "actorType": "service",
+      "actorId": "service-review"
+    },
+    "occurredAt": "2026-07-09T00:02:00Z"
+  }
+]
