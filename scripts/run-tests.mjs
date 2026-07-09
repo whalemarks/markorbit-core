@@ -1,9 +1,42 @@
-import { readFile } from 'node:fs/promises';
+import { readdir } from 'node:fs/promises';
+import { join } from 'node:path';
+import { spawn } from 'node:child_process';
 
-const source = await readFile(new URL('../src/index.ts', import.meta.url), 'utf8');
+async function collectTestFiles(directory) {
+  const entries = await readdir(directory, { withFileTypes: true });
+  const files = await Promise.all(
+    entries.map(async (entry) => {
+      const path = join(directory, entry.name);
 
-if (!source.includes('MARKORBIT_CORE_VERSION')) {
-  throw new Error('MARKORBIT_CORE_VERSION export is missing.');
+      if (entry.isDirectory()) {
+        return collectTestFiles(path);
+      }
+
+      if (entry.isFile() && entry.name.endsWith('.test.ts')) {
+        return [path];
+      }
+
+      return [];
+    })
+  );
+
+  return files.flat().sort();
 }
 
-console.log('MARKORBIT_CORE_VERSION exists.');
+const testFiles = await collectTestFiles('tests');
+
+if (testFiles.length === 0) {
+  throw new Error('No test files found.');
+}
+
+const testProcess = spawn(process.execPath, ['--test', ...testFiles], {
+  stdio: 'inherit'
+});
+
+testProcess.on('exit', (code, signal) => {
+  if (signal) {
+    throw new Error(`Test process exited with signal ${signal}.`);
+  }
+
+  process.exit(code ?? 1);
+});

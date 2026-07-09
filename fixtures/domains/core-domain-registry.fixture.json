@@ -1,0 +1,210 @@
+[
+  {
+    "id": "identity",
+    "name": "Identity",
+    "category": "foundation",
+    "description": "Defines identity records and identity anchors for Core participants and entities.",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "status": "active"
+  },
+  {
+    "id": "organization",
+    "name": "Organization",
+    "category": "foundation",
+    "description": "Defines organizations that participate in Core relationships and operating structures.",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "status": "active"
+  },
+  {
+    "id": "user",
+    "name": "User",
+    "category": "foundation",
+    "description": "Defines human users that interact with Core records, permissions, and responsibilities.",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "status": "active"
+  },
+  {
+    "id": "permission",
+    "name": "Permission",
+    "category": "foundation",
+    "description": "Defines permission records used to express allowed access and actions across Core.",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "status": "active"
+  },
+  {
+    "id": "policy",
+    "name": "Policy",
+    "category": "foundation",
+    "description": "Defines policy records that constrain Core behavior, access, and governance.",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "status": "active"
+  },
+  {
+    "id": "knowledge",
+    "name": "Knowledge",
+    "category": "foundation",
+    "description": "Defines knowledge references and structured informational assets used by Core.",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "status": "active"
+  },
+  {
+    "id": "brand",
+    "name": "Brand",
+    "category": "professional",
+    "description": "Defines brand records and canonical brand information managed within Core.",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "status": "active"
+  },
+  {
+    "id": "trademark",
+    "name": "Trademark",
+    "category": "professional",
+    "description": "Defines trademark records as professional Core data without implementing trademark workflows.",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "status": "active"
+  },
+  {
+    "id": "jurisdiction",
+    "name": "Jurisdiction",
+    "category": "professional",
+    "description": "Defines jurisdiction records for legal, regional, and administrative context.",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "status": "active"
+  },
+  {
+    "id": "classification",
+    "name": "Classification",
+    "category": "professional",
+    "description": "Defines classification records used to organize professional Core concepts and references.",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "status": "active"
+  },
+  {
+    "id": "document",
+    "name": "Document",
+    "category": "professional",
+    "description": "Defines document records and document metadata held by Core.",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "status": "active"
+  },
+  {
+    "id": "evidence",
+    "name": "Evidence",
+    "category": "professional",
+    "description": "Defines evidence records and supporting proof references represented in Core.",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "status": "active"
+  },
+  {
+    "id": "customer",
+    "name": "Customer",
+    "category": "business_execution",
+    "description": "Defines customer records involved in Core business execution relationships.",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "status": "active"
+  },
+  {
+    "id": "matter",
+    "name": "Matter",
+    "category": "business_execution",
+    "description": "Defines matter records that group business execution context and related Core records.",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "status": "active"
+  },
+  {
+    "id": "order",
+    "name": "Order",
+    "category": "business_execution",
+    "description": "Defines order records for requested business execution outcomes without implementing fulfillment logic.",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "status": "active"
+  },
+  {
+    "id": "opportunity",
+    "name": "Opportunity",
+    "category": "business_execution",
+    "description": "Defines opportunity records for potential business execution relationships and outcomes.",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "status": "active"
+  },
+  {
+    "id": "workflow-contract",
+    "name": "Workflow Contract",
+    "category": "business_execution",
+    "description": "Defines workflow contract records as Core definitions without implementing a workflow engine.",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "status": "active"
+  },
+  {
+    "id": "task",
+    "name": "Task",
+    "category": "business_execution",
+    "description": "Defines task records used to represent units of work in Core without adding execution logic.",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "status": "active"
+  },
+  {
+    "id": "event",
+    "name": "Event",
+    "category": "business_execution",
+    "description": "Defines event records used to describe notable Core occurrences.",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "status": "active"
+  },
+  {
+    "id": "notification",
+    "name": "Notification",
+    "category": "business_execution",
+    "description": "Defines notification records for Core communication signals without implementing delivery services.",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "status": "active"
+  },
+  {
+    "id": "partner",
+    "name": "Partner",
+    "category": "collaboration_network",
+    "description": "Defines partner records that participate in the Core collaboration network.",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "status": "active"
+  },
+  {
+    "id": "agent",
+    "name": "Agent",
+    "category": "collaboration_network",
+    "description": "Defines agent records as network participants without introducing AI authority.",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "status": "active"
+  },
+  {
+    "id": "service-provider",
+    "name": "Service Provider",
+    "category": "collaboration_network",
+    "description": "Defines service provider records that can participate in Core service relationships.",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "status": "active"
+  },
+  {
+    "id": "service-network",
+    "name": "Service Network",
+    "category": "collaboration_network",
+    "description": "Defines service network records for organized collaboration among providers and participants.",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "status": "active"
+  },
+  {
+    "id": "routing",
+    "name": "Routing",
+    "category": "collaboration_network",
+    "description": "Defines routing records for collaboration-network direction without implementing routing services.",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "status": "active"
+  },
+  {
+    "id": "communication",
+    "name": "Communication",
+    "category": "collaboration_network",
+    "description": "Defines communication records for collaboration-network exchanges without implementing messaging services.",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "status": "active"
+  }
+]
