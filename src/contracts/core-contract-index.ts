@@ -7,6 +7,7 @@ import { CORE_OBJECT_CONTRACT_SKELETONS } from './object/core-object-contract-sk
 import { CORE_API_CONTRACT_SKELETONS } from './api/core-api-contract-skeletons.ts';
 import { CORE_SERVICE_CONTRACT_SKELETONS } from './service/core-service-contract-skeletons.ts';
 import { CORE_EVENT_CATALOG_SKELETONS } from './event/core-event-catalog-skeletons.ts';
+import { CORE_WORKFLOW_CATALOG_SKELETONS } from './workflow/core-workflow-catalog-skeletons.ts';
 
 const coreBook = 'Book 02 — MarkOrbit Core Specification';
 const createdAt = '2026-07-09T00:00:00.000Z';
@@ -136,6 +137,18 @@ export const CORE_CONTRACT_INDEX = [
     version: 1,
     book: coreBook,
     source: 'CORE_EVENT_CATALOG_SKELETONS',
+    createdAt: contract.createdAt
+  })),
+  ...CORE_WORKFLOW_CATALOG_SKELETONS.map((contract) => ({
+    id: contract.id,
+    type: CORE_CONTRACT_TYPES.workflow,
+    name: contract.name,
+    description: contract.description,
+    status: CORE_CONTRACT_STATUSES.active,
+    scope: { domainId: contract.domainId, workflowContractType: contract.workflowType },
+    version: 1,
+    book: coreBook,
+    source: 'CORE_WORKFLOW_CATALOG_SKELETONS',
     createdAt: contract.createdAt
   }))
 ] as const satisfies readonly CoreContractDefinition[];

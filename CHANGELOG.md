@@ -2,6 +2,22 @@
 
 All notable changes to MarkOrbit Core will be documented in this file.
 
+## CORE-TASK-014 — Core Workflow Catalog Skeleton
+
+- Added `CoreWorkflowCatalogEntry` type.
+- Added 8 Core Workflow Catalog Skeletons.
+- Added workflow catalog skeleton validator.
+- Added workflow catalog skeleton fixture.
+- Expanded `CORE_CONTRACT_INDEX` from 74 to 82 entries.
+- Updated fixture manifest and validation.
+- Added tests.
+- No workflow engine added.
+- No workflow runtime added.
+- No running workflow instances added.
+- No Book 03 Workflow Coordination runtime added.
+- No product UI contracts added.
+- No AI agent workflow authority added.
+
 ## CORE-TASK-013 — Core Event Catalog Skeleton
 
 - Added `CoreEventCatalogEntry` type.

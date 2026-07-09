@@ -1,0 +1,187 @@
+[
+  {
+    "id": "core-workflow-core-record-preparation-workflow-contract",
+    "workflowType": "core-record-preparation-workflow",
+    "domainId": "workflow-contract",
+    "name": "Core Record Preparation Workflow Catalog Skeleton",
+    "description": "Skeleton catalog entry for preparing Core records for review.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Names the baseline workflow concept for preparing Core records before governed review.",
+    "stepTypes": [
+      "preparation placeholder",
+      "review readiness placeholder"
+    ],
+    "owns": [
+      "Catalog skeleton boundary for Core Record Preparation Workflow Catalog Skeleton."
+    ],
+    "nonGoals": [
+      "Workflow engine, runtime execution, executable transitions, or running workflow instances.",
+      "Book 03 Workflow Coordination Model, Execution System, task runtime, or database behavior.",
+      "Product UI semantics or AI agent authority to advance, approve, complete, or execute workflows."
+    ],
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-workflow-core-record-review-workflow-contract",
+    "workflowType": "core-record-review-workflow",
+    "domainId": "workflow-contract",
+    "name": "Core Record Review Workflow Catalog Skeleton",
+    "description": "Skeleton catalog entry for reviewing Core records.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Names the baseline workflow concept for human review of Core records.",
+    "stepTypes": [
+      "review request placeholder",
+      "review outcome placeholder"
+    ],
+    "reviewRequired": true,
+    "protectedAction": true,
+    "owns": [
+      "Catalog skeleton boundary for Core Record Review Workflow Catalog Skeleton."
+    ],
+    "nonGoals": [
+      "Workflow engine, runtime execution, executable transitions, or running workflow instances.",
+      "Book 03 Workflow Coordination Model, Execution System, task runtime, or database behavior.",
+      "Product UI semantics or AI agent authority to advance, approve, complete, or execute workflows."
+    ],
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-workflow-core-document-reference-workflow-contract",
+    "workflowType": "core-document-reference-workflow",
+    "domainId": "document",
+    "name": "Core Document Reference Workflow Catalog Skeleton",
+    "description": "Skeleton catalog entry for referencing Core documents.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Names the baseline workflow concept for associating document references with Core records.",
+    "stepTypes": [
+      "document reference placeholder"
+    ],
+    "owns": [
+      "Catalog skeleton boundary for Core Document Reference Workflow Catalog Skeleton."
+    ],
+    "nonGoals": [
+      "Workflow engine, runtime execution, executable transitions, or running workflow instances.",
+      "Book 03 Workflow Coordination Model, Execution System, task runtime, or database behavior.",
+      "Product UI semantics or AI agent authority to advance, approve, complete, or execute workflows."
+    ],
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-workflow-core-evidence-reference-workflow-contract",
+    "workflowType": "core-evidence-reference-workflow",
+    "domainId": "evidence",
+    "name": "Core Evidence Reference Workflow Catalog Skeleton",
+    "description": "Skeleton catalog entry for referencing Core evidence.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Names the baseline workflow concept for associating evidence references with Core records.",
+    "stepTypes": [
+      "evidence reference placeholder"
+    ],
+    "owns": [
+      "Catalog skeleton boundary for Core Evidence Reference Workflow Catalog Skeleton."
+    ],
+    "nonGoals": [
+      "Workflow engine, runtime execution, executable transitions, or running workflow instances.",
+      "Book 03 Workflow Coordination Model, Execution System, task runtime, or database behavior.",
+      "Product UI semantics or AI agent authority to advance, approve, complete, or execute workflows."
+    ],
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-workflow-core-task-review-workflow-contract",
+    "workflowType": "core-task-review-workflow",
+    "domainId": "task",
+    "name": "Core Task Review Workflow Catalog Skeleton",
+    "description": "Skeleton catalog entry for reviewing Core tasks.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Names the baseline workflow concept for governed review of Core tasks.",
+    "stepTypes": [
+      "task review placeholder"
+    ],
+    "reviewRequired": true,
+    "owns": [
+      "Catalog skeleton boundary for Core Task Review Workflow Catalog Skeleton."
+    ],
+    "nonGoals": [
+      "Workflow engine, runtime execution, executable transitions, or running workflow instances.",
+      "Book 03 Workflow Coordination Model, Execution System, task runtime, or database behavior.",
+      "Product UI semantics or AI agent authority to advance, approve, complete, or execute workflows."
+    ],
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-workflow-core-communication-review-workflow-contract",
+    "workflowType": "core-communication-review-workflow",
+    "domainId": "communication",
+    "name": "Core Communication Review Workflow Catalog Skeleton",
+    "description": "Skeleton catalog entry for reviewing Core communications.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Names the baseline workflow concept for governed review of Core communications.",
+    "stepTypes": [
+      "communication review placeholder"
+    ],
+    "reviewRequired": true,
+    "protectedAction": true,
+    "owns": [
+      "Catalog skeleton boundary for Core Communication Review Workflow Catalog Skeleton."
+    ],
+    "nonGoals": [
+      "Workflow engine, runtime execution, executable transitions, or running workflow instances.",
+      "Book 03 Workflow Coordination Model, Execution System, task runtime, or database behavior.",
+      "Product UI semantics or AI agent authority to advance, approve, complete, or execute workflows."
+    ],
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-workflow-core-contract-registration-workflow-contract",
+    "workflowType": "core-contract-registration-workflow",
+    "domainId": "workflow-contract",
+    "name": "Core Contract Registration Workflow Catalog Skeleton",
+    "description": "Skeleton catalog entry for registering Core contracts.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Names the baseline workflow concept for registering Core contract definitions.",
+    "stepTypes": [
+      "registration placeholder"
+    ],
+    "protectedAction": true,
+    "owns": [
+      "Catalog skeleton boundary for Core Contract Registration Workflow Catalog Skeleton."
+    ],
+    "nonGoals": [
+      "Workflow engine, runtime execution, executable transitions, or running workflow instances.",
+      "Book 03 Workflow Coordination Model, Execution System, task runtime, or database behavior.",
+      "Product UI semantics or AI agent authority to advance, approve, complete, or execute workflows."
+    ],
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-workflow-core-validation-review-workflow-contract",
+    "workflowType": "core-validation-review-workflow",
+    "domainId": "policy",
+    "name": "Core Validation Review Workflow Catalog Skeleton",
+    "description": "Skeleton catalog entry for reviewing Core validation results.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Names the baseline workflow concept for governed review of Core validation outcomes.",
+    "stepTypes": [
+      "validation review placeholder"
+    ],
+    "reviewRequired": true,
+    "owns": [
+      "Catalog skeleton boundary for Core Validation Review Workflow Catalog Skeleton."
+    ],
+    "nonGoals": [
+      "Workflow engine, runtime execution, executable transitions, or running workflow instances.",
+      "Book 03 Workflow Coordination Model, Execution System, task runtime, or database behavior.",
+      "Product UI semantics or AI agent authority to advance, approve, complete, or execute workflows."
+    ],
+    "createdAt": "2026-07-09T00:00:00.000Z"
+  }
+]

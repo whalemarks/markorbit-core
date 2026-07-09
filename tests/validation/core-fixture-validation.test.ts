@@ -12,7 +12,8 @@ import {
   validateCoreObjectBaseFixture,
   validateCoreTaskBaseFixture,
   validateCoreWorkflowContractBaseFixture,
-  validateCoreEventCatalogSkeletonsFixture
+  validateCoreEventCatalogSkeletonsFixture,
+  validateCoreWorkflowCatalogSkeletonsFixture
 } from '../../src/index.ts';
 
 const readFixture = async (path: string): Promise<unknown> => JSON.parse(await readFile(new URL(`../../${path}`, import.meta.url), 'utf8'));
@@ -29,6 +30,7 @@ describe('core fixture validation', () => {
     assert.equal(validateCoreServiceContractSkeletonsFixture(await readFixture('fixtures/contracts/core-service-contract-skeletons.fixture.json')).ok, true);
     assert.equal(validateCoreApiContractSkeletonsFixture(await readFixture('fixtures/contracts/core-api-contract-skeletons.fixture.json')).ok, true);
     assert.equal(validateCoreEventCatalogSkeletonsFixture(await readFixture('fixtures/contracts/core-event-catalog-skeletons.fixture.json')).ok, true);
+    assert.equal(validateCoreWorkflowCatalogSkeletonsFixture(await readFixture('fixtures/contracts/core-workflow-catalog-skeletons.fixture.json')).ok, true);
   });
 
   it('each validator returns ok false for invalid non-array input', () => {
@@ -42,7 +44,8 @@ describe('core fixture validation', () => {
       validateCoreEventBaseFixture,
       validateCoreTaskBaseFixture,
       validateCoreWorkflowContractBaseFixture,
-      validateCoreEventCatalogSkeletonsFixture
+      validateCoreEventCatalogSkeletonsFixture,
+      validateCoreWorkflowCatalogSkeletonsFixture
     ]) {
       assert.equal(validator({}).ok, false);
     }
@@ -152,6 +155,7 @@ describe('core fixture validation', () => {
 
   it('event catalog skeleton validator returns ok true for existing fixture', async () => {
     assert.equal(validateCoreEventCatalogSkeletonsFixture(await readFixture('fixtures/contracts/core-event-catalog-skeletons.fixture.json')).ok, true);
+    assert.equal(validateCoreWorkflowCatalogSkeletonsFixture(await readFixture('fixtures/contracts/core-workflow-catalog-skeletons.fixture.json')).ok, true);
   });
 
   it('event catalog skeleton validator rejects invalid non-array input', () => {
@@ -180,5 +184,37 @@ describe('core fixture validation', () => {
     const fixture = structuredClone(await readFixture('fixtures/contracts/core-event-catalog-skeletons.fixture.json')) as Record<string, unknown>[];
     fixture[0].payloadShape = ['jsonSchema properties required'];
     assert.equal(validateCoreEventCatalogSkeletonsFixture(fixture).ok, false);
+  });
+
+  it('workflow catalog skeleton validator returns ok true for existing fixture', async () => {
+    assert.equal(validateCoreWorkflowCatalogSkeletonsFixture(await readFixture('fixtures/contracts/core-workflow-catalog-skeletons.fixture.json')).ok, true);
+  });
+
+  it('workflow catalog skeleton validator rejects invalid non-array input', () => {
+    assert.equal(validateCoreWorkflowCatalogSkeletonsFixture({}).ok, false);
+  });
+
+  it('workflow catalog skeleton validator rejects missing workflowType', async () => {
+    const fixture = structuredClone(await readFixture('fixtures/contracts/core-workflow-catalog-skeletons.fixture.json')) as Record<string, unknown>[];
+    delete fixture[0].workflowType;
+    assert.equal(validateCoreWorkflowCatalogSkeletonsFixture(fixture).ok, false);
+  });
+
+  it('workflow catalog skeleton validator rejects unknown domainId', async () => {
+    const fixture = structuredClone(await readFixture('fixtures/contracts/core-workflow-catalog-skeletons.fixture.json')) as Record<string, unknown>[];
+    fixture[0].domainId = 'unknown-domain';
+    assert.equal(validateCoreWorkflowCatalogSkeletonsFixture(fixture).ok, false);
+  });
+
+  it('workflow catalog skeleton validator rejects duplicate workflowType', async () => {
+    const fixture = structuredClone(await readFixture('fixtures/contracts/core-workflow-catalog-skeletons.fixture.json')) as Record<string, unknown>[];
+    fixture[1].workflowType = fixture[0].workflowType;
+    assert.equal(validateCoreWorkflowCatalogSkeletonsFixture(fixture).ok, false);
+  });
+
+  it('workflow catalog skeleton validator rejects executable workflow/runtime keywords', async () => {
+    const fixture = structuredClone(await readFixture('fixtures/contracts/core-workflow-catalog-skeletons.fixture.json')) as Record<string, unknown>[];
+    fixture[0].stepTypes = ['transitionFunction runtimeState'];
+    assert.equal(validateCoreWorkflowCatalogSkeletonsFixture(fixture).ok, false);
   });
 });

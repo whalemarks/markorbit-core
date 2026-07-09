@@ -66,3 +66,8 @@
   - 8 API contract entries
   - 12 event catalog entries
 - Next recommended task: CORE-TASK-014 — Core Workflow Catalog Skeleton.
+
+## CORE-TASK-014 — Core Workflow Catalog Skeleton
+
+- Core Workflow Catalog Skeleton: completed/current.
+- Next: CORE-TASK-015 — Core Permission Contract Skeletons.

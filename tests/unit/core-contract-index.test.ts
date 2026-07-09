@@ -24,8 +24,23 @@ const forbiddenContractIds = [
   'artifact-rendered',
   'publish-automated',
   'distillery-output-published',
+  'trademark-filing-workflow',
+  'trademark-application-workflow',
+  'matter-lifecycle-workflow',
+  'communication-runtime-workflow',
+  'execution-runtime-workflow',
+  'execution-context-workflow',
+  'workflow-engine-runtime',
+  'task-runtime-workflow',
+  'event-bus-workflow',
+  'artifact-render-workflow',
+  'publish-automation-workflow',
+  'distillery-runtime-workflow',
+  'ai-agent-execution-workflow',
+  'autonomous-agent-workflow',
+  'workplace-workflow',
   'trademark-application',
-    'matter-lifecycle',
+  'matter-lifecycle',
   'communication-runtime',
   'execution-context',
   'execution-runtime',
@@ -78,8 +93,8 @@ describe('Core Contract Index', () => {
     assert.deepEqual(Object.values(CORE_CONTRACT_STATUSES), expectedStatuses);
   });
 
-  it('CORE_CONTRACT_INDEX has exactly 74 entries', () => {
-    assert.equal(CORE_CONTRACT_INDEX.length, 74);
+  it('CORE_CONTRACT_INDEX has exactly 82 entries', () => {
+    assert.equal(CORE_CONTRACT_INDEX.length, 82);
   });
 
 
@@ -109,6 +124,10 @@ describe('Core Contract Index', () => {
 
   it('includes exactly 12 event catalog entries', () => {
     assert.equal(CORE_CONTRACT_INDEX.filter((contract) => contract.source === 'CORE_EVENT_CATALOG_SKELETONS').length, 12);
+  });
+
+  it('includes exactly 8 workflow catalog entries', () => {
+    assert.equal(CORE_CONTRACT_INDEX.filter((contract) => contract.source === 'CORE_WORKFLOW_CATALOG_SKELETONS').length, 8);
   });
 
   it('all ids are unique', () => {
