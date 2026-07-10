@@ -6,7 +6,7 @@
 
 ## Current phase
 
-Phase 2 — Core Contract Layer started.
+Phase 2 — Core Contract Layer complete.
 
 ## Current status
 
@@ -28,7 +28,8 @@ Phase 2 — Core Contract Layer started.
 - Core Event Catalog Skeleton added.
 - Core Workflow Catalog Skeleton added.
 - Core Policy Contract Skeletons added.
-- `CORE_CONTRACT_INDEX` now contains 98 entries:
+- Core AI Governance Contract Skeletons added and integrated.
+- `CORE_CONTRACT_INDEX` now contains 106 entries:
   - 6 foundation contract entries
   - 26 domain contract entries
   - 12 object contract entries
@@ -38,7 +39,9 @@ Phase 2 — Core Contract Layer started.
   - 8 workflow catalog entries
   - 8 permission contract entries
   - 8 policy contract entries
-- Next recommended task: CORE-TASK-017 — Core AI Governance Contract Skeletons.
+  - 8 AI governance contract entries
+- Required fixture manifest now contains 15 entries.
+- Next recommended task: CORE-TASK-018 — Phase 3 Contract Coverage Baseline.
 
 ## Current scope
 
@@ -63,6 +66,7 @@ Phase 2 — Core Contract Layer started.
 - Core Workflow Catalog Skeleton.
 - Core Permission Contract Skeletons.
 - Core Policy Contract Skeletons.
+- Core AI Governance Contract Skeletons.
 - Placeholder package and source directories.
 
 ## Out of scope
@@ -95,7 +99,7 @@ Every change should keep the TypeScript project buildable, tests passing, lint c
 
 ## Next tasks
 
-- CORE-TASK-015 — Core Permission Contract Skeletons.
+- CORE-TASK-018 — Phase 3 Contract Coverage Baseline.
 
 ## CORE-TASK-009 Status
 
@@ -104,7 +108,6 @@ Every change should keep the TypeScript project buildable, tests passing, lint c
   - 6 foundation contract entries.
   - 26 domain contract entries.
 - Next recommended task: CORE-TASK-010 — Core Object Contract Skeletons.
-
 
 ## CORE-TASK-010 Status
 
@@ -137,7 +140,6 @@ Core API Contract Skeletons added. CORE_CONTRACT_INDEX now contains 62 entries:
 
 Next recommended task: CORE-TASK-013 — Core Event Catalog Skeleton.
 
-
 ## CORE-TASK-013 — Core Event Catalog Skeleton
 
 - Core Event Catalog Skeleton added.
@@ -165,3 +167,13 @@ Next recommended task: CORE-TASK-013 — Core Event Catalog Skeleton.
   - 8 permission contract entries
   - 8 policy contract entries
 - Next recommended task: CORE-TASK-017 — Core AI Governance Contract Skeletons.
+
+## CORE-TASK-017 — Core AI Governance Contract Skeletons
+
+- Book 02 source inventory locked in CORE-TASK-017A.
+- `CoreAiGovernanceContract` and exactly 8 skeletons added in CORE-TASK-017B.
+- Validator, exact fixture, manifest integration, and Contract Index integration added in CORE-TASK-017C.
+- `CORE_CONTRACT_INDEX` now contains 106 entries.
+- Required fixture manifest now contains 15 entries.
+- Phase 2 Core Contract Layer is complete.
+- Next recommended task: CORE-TASK-018 — Phase 3 Contract Coverage Baseline.

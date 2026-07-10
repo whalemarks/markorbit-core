@@ -8,22 +8,26 @@ The index exists to protect contract expansion from uncontrolled drift. New cont
 
 ## What the index contains
 
-The current Core Contract Index contains only six foundation entries for primitives that already exist in Phase 1:
+The current Core Contract Index contains 106 entries:
 
-1. Core Domain Registry Contract
-2. Core Object Base Contract
-3. Core Event Primitive Contract
-4. Core Task Primitive Contract
-5. Core Workflow Contract Primitive Contract
-6. Core Validation Fixture System Contract
+- 6 foundation contract entries
+- 26 domain contract entries
+- 12 object contract entries
+- 10 service contract entries
+- 8 API contract entries
+- 12 event catalog entries
+- 8 workflow catalog entries
+- 8 permission contract entries
+- 8 policy contract entries
+- 8 AI governance contract entries
 
-Each entry is an index record. It identifies the contract id, type, status, version, source book, and high-level scope reference.
+Each entry is an index record. It identifies the contract id, type, status, version, source book, source contract collection, and high-level scope reference.
 
 ## What the index does not contain
 
 Core Contract Definition entries do not contain full contract bodies, concrete schemas, business-specific behavior, service implementations, API behavior, workflow runtime logic, database schema, or product UI behavior.
 
-Concrete domain, object, service, API, event, and workflow contracts will be added later through explicit tasks. Codex may not add new contract entries without explicit task approval.
+Full contract bodies and later execution integrations must be added through explicit tasks. Codex may not add new contract entries without explicit task approval.
 
 ## Explicit exclusions for this task
 

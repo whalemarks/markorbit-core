@@ -1388,5 +1388,117 @@
     "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_POLICY_CONTRACT_SKELETONS",
     "createdAt": "2026-07-10T00:00:00.000Z"
+  },
+  {
+    "id": "core-ai-governance-ai-agent-contract",
+    "type": "ai_governance",
+    "name": "Core AI Agent Governance Contract Skeleton",
+    "description": "Skeleton contract for the governed AI actor boundary.",
+    "status": "active",
+    "scope": {
+      "domainId": "agent"
+    },
+    "version": 1,
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "source": "CORE_AI_GOVERNANCE_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-10T00:00:00.000Z"
+  },
+  {
+    "id": "core-ai-governance-agent-contract",
+    "type": "ai_governance",
+    "name": "Core AI Agent Contract Skeleton",
+    "description": "Skeleton contract for the mandatory Agent Contract boundary.",
+    "status": "active",
+    "scope": {
+      "domainId": "agent"
+    },
+    "version": 1,
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "source": "CORE_AI_GOVERNANCE_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-10T00:00:00.000Z"
+  },
+  {
+    "id": "core-ai-governance-ai-capability-contract",
+    "type": "ai_governance",
+    "name": "Core AI Capability Governance Contract Skeleton",
+    "description": "Skeleton contract for declared AI assistance capability boundaries.",
+    "status": "active",
+    "scope": {
+      "domainId": "agent"
+    },
+    "version": 1,
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "source": "CORE_AI_GOVERNANCE_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-10T00:00:00.000Z"
+  },
+  {
+    "id": "core-ai-governance-ai-output-contract",
+    "type": "ai_governance",
+    "name": "Core AI Output Governance Contract Skeleton",
+    "description": "Skeleton contract for controlled AI-produced output boundaries.",
+    "status": "active",
+    "scope": {
+      "domainId": "agent"
+    },
+    "version": 1,
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "source": "CORE_AI_GOVERNANCE_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-10T00:00:00.000Z"
+  },
+  {
+    "id": "core-ai-governance-ai-recommendation-contract",
+    "type": "ai_governance",
+    "name": "Core AI Recommendation Governance Contract Skeleton",
+    "description": "Skeleton contract for advisory AI recommendation boundaries.",
+    "status": "active",
+    "scope": {
+      "domainId": "agent"
+    },
+    "version": 1,
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "source": "CORE_AI_GOVERNANCE_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-10T00:00:00.000Z"
+  },
+  {
+    "id": "core-ai-governance-ai-audit-record-contract",
+    "type": "ai_governance",
+    "name": "Core AI Audit Record Governance Contract Skeleton",
+    "description": "Skeleton contract for AI invocation and governance trace boundaries.",
+    "status": "active",
+    "scope": {
+      "domainId": "agent"
+    },
+    "version": 1,
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "source": "CORE_AI_GOVERNANCE_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-10T00:00:00.000Z"
+  },
+  {
+    "id": "core-ai-governance-structured-context-contract",
+    "type": "ai_governance",
+    "name": "Core Structured Context Governance Contract Skeleton",
+    "description": "Skeleton contract for authorized and bounded AI input context.",
+    "status": "active",
+    "scope": {
+      "domainId": "agent"
+    },
+    "version": 1,
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "source": "CORE_AI_GOVERNANCE_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-10T00:00:00.000Z"
+  },
+  {
+    "id": "core-ai-governance-human-review-requirement-contract",
+    "type": "ai_governance",
+    "name": "Core Human Review Requirement Governance Contract Skeleton",
+    "description": "Skeleton contract for risk-based AI human-review requirements.",
+    "status": "active",
+    "scope": {
+      "domainId": "agent"
+    },
+    "version": 1,
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "source": "CORE_AI_GOVERNANCE_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-10T00:00:00.000Z"
   }
 ]

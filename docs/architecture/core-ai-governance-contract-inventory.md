@@ -3,7 +3,7 @@
 ## Status
 
 - Task: `CORE-TASK-017A — AI Governance Source Inventory Lock`
-- Status: Locked for `CORE-TASK-017B`
+- Status: Implemented by `CORE-TASK-017B`; integrated by `CORE-TASK-017C`
 - Implementation baseline: `whalemarks/markorbit-core@8d5c933bf01a12af695bee51aefed533134e8755`
 - Specification authority: `whalemarks/markorbit-publication@3349ecb8955021a8714d023348f8b24f941eb98f`
 - Canonical Book path: `books/book-02-core-specification/`
@@ -86,7 +86,7 @@ Permission, Policy, Knowledge, Event, User, Task, Communication, Routing, and Wo
 
 ## Duplicate and overlap review
 
-The eight proposed IDs do not exist in the current 98-entry `CORE_CONTRACT_INDEX`.
+At the CORE-TASK-017A inventory lock, the eight proposed IDs did not exist in the 98-entry `CORE_CONTRACT_INDEX`.
 
 The accepted skeletons remain distinct from existing contract layers:
 
@@ -118,8 +118,10 @@ All eight skeletons must remain contract-only and metadata-only. They must colle
 - Unresolved concepts: 0
 - Owning existing Domain: `agent` for all 8
 - New Domain required: no
-- Current `CORE_CONTRACT_INDEX`: unchanged at 98
-- Current required fixture manifest: unchanged at 14
-- Ready for `CORE-TASK-017B`: yes
+- `CORE_CONTRACT_INDEX` at inventory lock: 98 entries
+- Required fixture manifest at inventory lock: 14 entries
+- `CORE_CONTRACT_INDEX` after CORE-TASK-017C: 106 entries, including the 8 locked AI Governance contracts
+- Required fixture manifest after CORE-TASK-017C: 15 entries, including the locked AI Governance fixture
+- Integrated validation: yes
 
-`CORE-TASK-017B` may implement the type and exactly eight contract skeletons from this inventory. Index, fixture, validator, documentation integration, and count changes remain outside 017A and must occur only in their explicitly approved follow-on tasks.
+`CORE-TASK-017B` implemented the type and exactly eight contract skeletons from this inventory. `CORE-TASK-017C` integrated their index entries, exact fixture, validation, documentation, and count changes without expanding the locked concept set.

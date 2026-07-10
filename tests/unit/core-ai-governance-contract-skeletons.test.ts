@@ -4,7 +4,10 @@ import { describe, it } from 'node:test';
 import {
   CORE_AI_GOVERNANCE_CONTRACT_SKELETONS,
   CORE_CONTRACT_STATUSES,
-  CORE_DOMAIN_REGISTRY
+  CORE_DOMAIN_REGISTRY,
+  EXCLUDED_CORE_AI_GOVERNANCE_CONCEPTS,
+  FORBIDDEN_CORE_AI_GOVERNANCE_EXECUTABLE_FIELDS,
+  validateCoreAiGovernanceContractSkeletons
 } from '../../src/index.ts';
 
 const expectedIds = [
@@ -18,23 +21,22 @@ const expectedIds = [
   'core-ai-governance-human-review-requirement-contract'
 ] as const;
 
-const executableKeys = new Set([
-  'execute',
-  'run',
-  'handler',
-  'prompt',
-  'model',
-  'approve',
-  'send',
-  'submit',
-  'mutate'
-]);
+const executableKeys = new Set(FORBIDDEN_CORE_AI_GOVERNANCE_EXECUTABLE_FIELDS);
 
 describe('Core AI Governance Contract Skeletons', () => {
   it('has exactly the 8 inventory-locked ids', () => {
     assert.deepEqual(
       CORE_AI_GOVERNANCE_CONTRACT_SKELETONS.map((entry) => entry.id),
       expectedIds
+    );
+  });
+
+  it('passes AI governance contract validation', () => {
+    assert.deepEqual(
+      validateCoreAiGovernanceContractSkeletons(
+        CORE_AI_GOVERNANCE_CONTRACT_SKELETONS
+      ),
+      []
     );
   });
 
@@ -101,5 +103,13 @@ describe('Core AI Governance Contract Skeletons', () => {
         assert.equal(executableKeys.has(key), false);
       assert.equal(entry.protectedAction, false);
     }
+  });
+
+  it('does not include excluded AI governance concepts', () => {
+    const serialized = JSON.stringify(
+      CORE_AI_GOVERNANCE_CONTRACT_SKELETONS
+    ).toLowerCase();
+    for (const concept of EXCLUDED_CORE_AI_GOVERNANCE_CONCEPTS)
+      assert.equal(serialized.includes(concept), false);
   });
 });
