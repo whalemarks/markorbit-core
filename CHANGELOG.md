@@ -1,5 +1,22 @@
 # Changelog
 
+## CORE-TASK-016 — Core Policy Contract Skeletons
+
+- Added `CorePolicyContract` type.
+- Added 8 Core Policy Contract Skeletons.
+- Added policy skeleton validator.
+- Added policy skeleton fixture.
+- Expanded `CORE_CONTRACT_INDEX` from 90 to 98 entries.
+- Updated fixture manifest and validation.
+- Added tests.
+- No policy engine added.
+- No rule evaluation added.
+- No runtime enforcement added.
+- No compliance decision logic added.
+- No Book 03 runtime contracts added.
+- No product UI contracts added.
+- No AI agent policy authority added.
+
 All notable changes to MarkOrbit Core will be documented in this file.
 
 ## CORE-TASK-015 — Core Permission Contract Skeletons

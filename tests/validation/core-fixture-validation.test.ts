@@ -14,7 +14,8 @@ import {
   validateCoreWorkflowContractBaseFixture,
   validateCoreEventCatalogSkeletonsFixture,
   validateCoreWorkflowCatalogSkeletonsFixture,
-  validateCorePermissionContractSkeletonsFixture
+  validateCorePermissionContractSkeletonsFixture,
+  validateCorePolicyContractSkeletonsFixture
 } from '../../src/index.ts';
 
 const readFixture = async (path: string): Promise<unknown> => JSON.parse(await readFile(new URL(`../../${path}`, import.meta.url), 'utf8'));
@@ -33,6 +34,7 @@ describe('core fixture validation', () => {
     assert.equal(validateCoreEventCatalogSkeletonsFixture(await readFixture('fixtures/contracts/core-event-catalog-skeletons.fixture.json')).ok, true);
     assert.equal(validateCoreWorkflowCatalogSkeletonsFixture(await readFixture('fixtures/contracts/core-workflow-catalog-skeletons.fixture.json')).ok, true);
     assert.equal(validateCorePermissionContractSkeletonsFixture(await readFixture('fixtures/contracts/core-permission-contract-skeletons.fixture.json')).ok, true);
+    assert.equal(validateCorePolicyContractSkeletonsFixture(await readFixture('fixtures/contracts/core-policy-contract-skeletons.fixture.json')).ok, true);
   });
 
   it('each validator returns ok false for invalid non-array input', () => {
@@ -48,7 +50,8 @@ describe('core fixture validation', () => {
       validateCoreWorkflowContractBaseFixture,
       validateCoreEventCatalogSkeletonsFixture,
       validateCoreWorkflowCatalogSkeletonsFixture,
-      validateCorePermissionContractSkeletonsFixture
+      validateCorePermissionContractSkeletonsFixture,
+      validateCorePolicyContractSkeletonsFixture
     ]) {
       assert.equal(validator({}).ok, false);
     }
@@ -254,6 +257,41 @@ describe('core fixture validation', () => {
       const fixture = structuredClone(await readFixture('fixtures/contracts/core-permission-contract-skeletons.fixture.json')) as Record<string, unknown>[];
       fixture[0].permissionType = keyword;
       assert.equal(validateCorePermissionContractSkeletonsFixture(fixture).ok, false);
+    }
+  });
+
+
+  it('policy skeleton validator returns ok true for existing fixture', async () => {
+    assert.equal(validateCorePolicyContractSkeletonsFixture(await readFixture('fixtures/contracts/core-policy-contract-skeletons.fixture.json')).ok, true);
+  });
+
+  it('policy skeleton validator rejects invalid non-array input', () => {
+    assert.equal(validateCorePolicyContractSkeletonsFixture({}).ok, false);
+  });
+
+  it('policy skeleton validator rejects missing policyType', async () => {
+    const fixture = structuredClone(await readFixture('fixtures/contracts/core-policy-contract-skeletons.fixture.json')) as Record<string, unknown>[];
+    delete fixture[0].policyType;
+    assert.equal(validateCorePolicyContractSkeletonsFixture(fixture).ok, false);
+  });
+
+  it('policy skeleton validator rejects unknown domainId', async () => {
+    const fixture = structuredClone(await readFixture('fixtures/contracts/core-policy-contract-skeletons.fixture.json')) as Record<string, unknown>[];
+    fixture[0].domainId = 'unknown-domain';
+    assert.equal(validateCorePolicyContractSkeletonsFixture(fixture).ok, false);
+  });
+
+  it('policy skeleton validator rejects duplicate policyType', async () => {
+    const fixture = structuredClone(await readFixture('fixtures/contracts/core-policy-contract-skeletons.fixture.json')) as Record<string, unknown>[];
+    fixture[1].policyType = fixture[0].policyType;
+    assert.equal(validateCorePolicyContractSkeletonsFixture(fixture).ok, false);
+  });
+
+  it('policy skeleton validator rejects bypass/runtime/engine/autonomous-agent policy keywords', async () => {
+    for (const keyword of ['bypass-review-policy', 'execution-runtime-policy', 'workflow-engine-policy', 'autonomous-agent-policy']) {
+      const fixture = structuredClone(await readFixture('fixtures/contracts/core-policy-contract-skeletons.fixture.json')) as Record<string, unknown>[];
+      fixture[0].policyType = keyword;
+      assert.equal(validateCorePolicyContractSkeletonsFixture(fixture).ok, false);
     }
   });
 

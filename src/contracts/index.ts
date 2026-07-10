@@ -13,3 +13,4 @@ export * from './api/index.ts';
 export * from './event/index.ts';
 export * from './workflow/index.ts';
 export * from './permission/index.ts';
+export * from './policy/index.ts';
