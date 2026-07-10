@@ -1,0 +1,186 @@
+[
+  {
+    "id": "core-policy-core-data-access-policy-contract",
+    "policyType": "core-data-access-policy",
+    "domainId": "policy",
+    "name": "Core Data Access Policy Contract Skeleton",
+    "description": "Skeleton contract for Core data access policy boundaries.",
+    "status": "active",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "purpose": "Defines the placeholder boundary for Core data access policy semantics without evaluating access.",
+    "appliesTo": [
+      "Textual Core policy contract boundary only."
+    ],
+    "protectedAction": true,
+    "requiresHumanReview": false,
+    "owns": [
+      "core-data-access-policy skeleton boundary"
+    ],
+    "nonGoals": [
+      "Executable policy evaluation, policy engine behavior, rule evaluation, compliance decisions, or runtime enforcement.",
+      "Book 03 execution runtime, product UI behavior, database schema, API server behavior, or AI agent policy authority."
+    ],
+    "createdAt": "2026-07-10T00:00:00.000Z"
+  },
+  {
+    "id": "core-policy-core-data-retention-policy-contract",
+    "policyType": "core-data-retention-policy",
+    "domainId": "policy",
+    "name": "Core Data Retention Policy Contract Skeleton",
+    "description": "Skeleton contract for Core data retention policy boundaries.",
+    "status": "active",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "purpose": "Defines the placeholder boundary for Core data retention policy semantics without applying retention decisions.",
+    "appliesTo": [
+      "Textual Core policy contract boundary only."
+    ],
+    "protectedAction": true,
+    "requiresHumanReview": false,
+    "owns": [
+      "core-data-retention-policy skeleton boundary"
+    ],
+    "nonGoals": [
+      "Executable policy evaluation, policy engine behavior, rule evaluation, compliance decisions, or runtime enforcement.",
+      "Book 03 execution runtime, product UI behavior, database schema, API server behavior, or AI agent policy authority."
+    ],
+    "createdAt": "2026-07-10T00:00:00.000Z"
+  },
+  {
+    "id": "core-policy-core-review-policy-contract",
+    "policyType": "core-review-policy",
+    "domainId": "policy",
+    "name": "Core Review Policy Contract Skeleton",
+    "description": "Skeleton contract for Core review policy boundaries.",
+    "status": "active",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "purpose": "Defines the placeholder boundary for Core review policy semantics as a human-reviewed protected action flag only.",
+    "appliesTo": [
+      "Textual Core policy contract boundary only."
+    ],
+    "protectedAction": true,
+    "requiresHumanReview": true,
+    "owns": [
+      "core-review-policy skeleton boundary"
+    ],
+    "nonGoals": [
+      "Executable policy evaluation, policy engine behavior, rule evaluation, compliance decisions, or runtime enforcement.",
+      "Book 03 execution runtime, product UI behavior, database schema, API server behavior, or AI agent policy authority."
+    ],
+    "createdAt": "2026-07-10T00:00:00.000Z"
+  },
+  {
+    "id": "core-policy-core-approval-policy-contract",
+    "policyType": "core-approval-policy",
+    "domainId": "policy",
+    "name": "Core Approval Policy Contract Skeleton",
+    "description": "Skeleton contract for Core approval policy boundaries.",
+    "status": "active",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "purpose": "Defines the placeholder boundary for Core approval policy semantics as a human-reviewed protected action flag only.",
+    "appliesTo": [
+      "Textual Core policy contract boundary only."
+    ],
+    "protectedAction": true,
+    "requiresHumanReview": true,
+    "owns": [
+      "core-approval-policy skeleton boundary"
+    ],
+    "nonGoals": [
+      "Executable policy evaluation, policy engine behavior, rule evaluation, compliance decisions, or runtime enforcement.",
+      "Book 03 execution runtime, product UI behavior, database schema, API server behavior, or AI agent policy authority."
+    ],
+    "createdAt": "2026-07-10T00:00:00.000Z"
+  },
+  {
+    "id": "core-policy-core-communication-policy-contract",
+    "policyType": "core-communication-policy",
+    "domainId": "policy",
+    "name": "Core Communication Policy Contract Skeleton",
+    "description": "Skeleton contract for Core communication policy boundaries.",
+    "status": "active",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "purpose": "Defines the placeholder boundary for Core communication policy semantics as a human-reviewed protected action flag only.",
+    "appliesTo": [
+      "Textual Core policy contract boundary only."
+    ],
+    "protectedAction": true,
+    "requiresHumanReview": true,
+    "owns": [
+      "core-communication-policy skeleton boundary"
+    ],
+    "nonGoals": [
+      "Executable policy evaluation, policy engine behavior, rule evaluation, compliance decisions, or runtime enforcement.",
+      "Book 03 execution runtime, product UI behavior, database schema, API server behavior, or AI agent policy authority."
+    ],
+    "createdAt": "2026-07-10T00:00:00.000Z"
+  },
+  {
+    "id": "core-policy-core-ai-assistance-policy-contract",
+    "policyType": "core-ai-assistance-policy",
+    "domainId": "policy",
+    "name": "Core AI Assistance Policy Contract Skeleton",
+    "description": "Skeleton contract for Core AI assistance policy boundaries.",
+    "status": "active",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "purpose": "Defines the placeholder boundary for Core AI assistance policy semantics without granting AI agent policy authority.",
+    "appliesTo": [
+      "Textual Core policy contract boundary only."
+    ],
+    "protectedAction": true,
+    "requiresHumanReview": true,
+    "owns": [
+      "core-ai-assistance-policy skeleton boundary"
+    ],
+    "nonGoals": [
+      "Executable policy evaluation, policy engine behavior, rule evaluation, compliance decisions, or runtime enforcement.",
+      "Book 03 execution runtime, product UI behavior, database schema, API server behavior, or AI agent policy authority."
+    ],
+    "createdAt": "2026-07-10T00:00:00.000Z"
+  },
+  {
+    "id": "core-policy-core-audit-policy-contract",
+    "policyType": "core-audit-policy",
+    "domainId": "policy",
+    "name": "Core Audit Policy Contract Skeleton",
+    "description": "Skeleton contract for Core audit policy boundaries.",
+    "status": "active",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "purpose": "Defines the placeholder boundary for Core audit policy semantics without enforcing audit workflows.",
+    "appliesTo": [
+      "Textual Core policy contract boundary only."
+    ],
+    "protectedAction": true,
+    "requiresHumanReview": false,
+    "owns": [
+      "core-audit-policy skeleton boundary"
+    ],
+    "nonGoals": [
+      "Executable policy evaluation, policy engine behavior, rule evaluation, compliance decisions, or runtime enforcement.",
+      "Book 03 execution runtime, product UI behavior, database schema, API server behavior, or AI agent policy authority."
+    ],
+    "createdAt": "2026-07-10T00:00:00.000Z"
+  },
+  {
+    "id": "core-policy-core-change-control-policy-contract",
+    "policyType": "core-change-control-policy",
+    "domainId": "policy",
+    "name": "Core Change Control Policy Contract Skeleton",
+    "description": "Skeleton contract for Core change control policy boundaries.",
+    "status": "active",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "purpose": "Defines the placeholder boundary for Core change control policy semantics as a human-reviewed protected action flag only.",
+    "appliesTo": [
+      "Textual Core policy contract boundary only."
+    ],
+    "protectedAction": true,
+    "requiresHumanReview": true,
+    "owns": [
+      "core-change-control-policy skeleton boundary"
+    ],
+    "nonGoals": [
+      "Executable policy evaluation, policy engine behavior, rule evaluation, compliance decisions, or runtime enforcement.",
+      "Book 03 execution runtime, product UI behavior, database schema, API server behavior, or AI agent policy authority."
+    ],
+    "createdAt": "2026-07-10T00:00:00.000Z"
+  }
+]

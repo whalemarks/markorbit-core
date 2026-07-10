@@ -79,7 +79,22 @@ const forbiddenContractIds = [
   'ai-agent-approval-permission',
   'autonomous-agent-permission',
   'bypass-review-permission',
-  'bypass-policy-permission'
+  'bypass-policy-permission',
+  'execution-runtime-policy',
+  'execution-context-policy',
+  'workflow-engine-policy',
+  'task-runtime-policy',
+  'event-bus-policy',
+  'api-server-policy',
+  'database-root-policy',
+  'product-ui-policy',
+  'artifact-render-policy',
+  'publish-automation-policy',
+  'distillery-runtime-policy',
+  'ai-agent-approval-policy',
+  'autonomous-agent-policy',
+  'bypass-review-policy',
+  'bypass-permission-policy'
 ];
 
 describe('Core Contract Index', () => {
@@ -108,8 +123,8 @@ describe('Core Contract Index', () => {
     assert.deepEqual(Object.values(CORE_CONTRACT_STATUSES), expectedStatuses);
   });
 
-  it('CORE_CONTRACT_INDEX has exactly 90 entries', () => {
-    assert.equal(CORE_CONTRACT_INDEX.length, 90);
+  it('CORE_CONTRACT_INDEX has exactly 98 entries', () => {
+    assert.equal(CORE_CONTRACT_INDEX.length, 98);
   });
 
 
@@ -147,6 +162,10 @@ describe('Core Contract Index', () => {
 
   it('includes exactly 8 permission contract entries', () => {
     assert.equal(CORE_CONTRACT_INDEX.filter((contract) => contract.source === 'CORE_PERMISSION_CONTRACT_SKELETONS').length, 8);
+  });
+
+  it('includes exactly 8 policy contract entries', () => {
+    assert.equal(CORE_CONTRACT_INDEX.filter((contract) => contract.source === 'CORE_POLICY_CONTRACT_SKELETONS').length, 8);
   });
 
   it('all ids are unique', () => {

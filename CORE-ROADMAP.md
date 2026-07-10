@@ -24,8 +24,9 @@
 - [x] API Contract Skeletons.
 - [x] Event Catalog Skeleton.
 - [x] Core Workflow Catalog Skeleton.
-- [x] Core Permission Contract Skeletons: completed/current.
-- [ ] Core Policy Contract Skeletons.
+- [x] Core Permission Contract Skeletons.
+- [x] Core Policy Contract Skeletons: completed/current.
+- [ ] Core AI Governance Contract Skeletons.
 
 ## Phase 3
 
@@ -72,5 +73,6 @@
 ## CORE-TASK-014 — Core Workflow Catalog Skeleton
 
 - Core Workflow Catalog Skeleton: completed.
-- Core Permission Contract Skeletons: completed/current.
-- Next: CORE-TASK-016 — Core Policy Contract Skeletons.
+- Core Permission Contract Skeletons: completed.
+- Core Policy Contract Skeletons: completed/current.
+- Next: CORE-TASK-017 — Core AI Governance Contract Skeletons.

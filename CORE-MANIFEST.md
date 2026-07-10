@@ -27,8 +27,8 @@ Phase 2 — Core Contract Layer started.
 - Core API Contract Skeletons added.
 - Core Event Catalog Skeleton added.
 - Core Workflow Catalog Skeleton added.
-- Core Permission Contract Skeletons added.
-- `CORE_CONTRACT_INDEX` now contains 90 entries:
+- Core Policy Contract Skeletons added.
+- `CORE_CONTRACT_INDEX` now contains 98 entries:
   - 6 foundation contract entries
   - 26 domain contract entries
   - 12 object contract entries
@@ -37,7 +37,8 @@ Phase 2 — Core Contract Layer started.
   - 12 event catalog entries
   - 8 workflow catalog entries
   - 8 permission contract entries
-- Next recommended task: CORE-TASK-016 — Core Policy Contract Skeletons.
+  - 8 policy contract entries
+- Next recommended task: CORE-TASK-017 — Core AI Governance Contract Skeletons.
 
 ## Current scope
 
@@ -61,6 +62,7 @@ Phase 2 — Core Contract Layer started.
 - Core Event Catalog Skeleton.
 - Core Workflow Catalog Skeleton.
 - Core Permission Contract Skeletons.
+- Core Policy Contract Skeletons.
 - Placeholder package and source directories.
 
 ## Out of scope
@@ -151,8 +153,8 @@ Next recommended task: CORE-TASK-013 — Core Event Catalog Skeleton.
 ## CORE-TASK-014 — Core Workflow Catalog Skeleton
 
 - Core Workflow Catalog Skeleton added.
-- Core Permission Contract Skeletons added.
-- `CORE_CONTRACT_INDEX` now contains 90 entries:
+- Core Policy Contract Skeletons added.
+- `CORE_CONTRACT_INDEX` now contains 98 entries:
   - 6 foundation contract entries
   - 26 domain contract entries
   - 12 object contract entries
@@ -161,4 +163,5 @@ Next recommended task: CORE-TASK-013 — Core Event Catalog Skeleton.
   - 12 event catalog entries
   - 8 workflow catalog entries
   - 8 permission contract entries
-- Next recommended task: CORE-TASK-016 — Core Policy Contract Skeletons.
+  - 8 policy contract entries
+- Next recommended task: CORE-TASK-017 — Core AI Governance Contract Skeletons.

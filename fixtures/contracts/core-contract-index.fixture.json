@@ -9,7 +9,7 @@
       "notes": "domain-level registry / all baseline domains"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
   {
@@ -22,7 +22,7 @@
       "notes": "object base primitives"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
   {
@@ -35,7 +35,7 @@
       "notes": "event primitive"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
   {
@@ -48,7 +48,7 @@
       "notes": "task primitive"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
   {
@@ -61,7 +61,7 @@
       "notes": "workflow contract primitive"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
   {
@@ -74,7 +74,7 @@
       "notes": "validation fixture system"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
   {
@@ -87,7 +87,7 @@
       "domainId": "identity"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_DOMAIN_CONTRACT_SKELETONS",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
@@ -101,7 +101,7 @@
       "domainId": "organization"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_DOMAIN_CONTRACT_SKELETONS",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
@@ -115,7 +115,7 @@
       "domainId": "user"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_DOMAIN_CONTRACT_SKELETONS",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
@@ -129,7 +129,7 @@
       "domainId": "permission"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_DOMAIN_CONTRACT_SKELETONS",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
@@ -143,7 +143,7 @@
       "domainId": "policy"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_DOMAIN_CONTRACT_SKELETONS",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
@@ -157,7 +157,7 @@
       "domainId": "knowledge"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_DOMAIN_CONTRACT_SKELETONS",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
@@ -171,7 +171,7 @@
       "domainId": "brand"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_DOMAIN_CONTRACT_SKELETONS",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
@@ -185,7 +185,7 @@
       "domainId": "trademark"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_DOMAIN_CONTRACT_SKELETONS",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
@@ -199,7 +199,7 @@
       "domainId": "jurisdiction"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_DOMAIN_CONTRACT_SKELETONS",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
@@ -213,7 +213,7 @@
       "domainId": "classification"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_DOMAIN_CONTRACT_SKELETONS",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
@@ -227,7 +227,7 @@
       "domainId": "document"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_DOMAIN_CONTRACT_SKELETONS",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
@@ -241,7 +241,7 @@
       "domainId": "evidence"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_DOMAIN_CONTRACT_SKELETONS",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
@@ -255,7 +255,7 @@
       "domainId": "customer"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_DOMAIN_CONTRACT_SKELETONS",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
@@ -269,7 +269,7 @@
       "domainId": "matter"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_DOMAIN_CONTRACT_SKELETONS",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
@@ -283,7 +283,7 @@
       "domainId": "order"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_DOMAIN_CONTRACT_SKELETONS",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
@@ -297,7 +297,7 @@
       "domainId": "opportunity"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_DOMAIN_CONTRACT_SKELETONS",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
@@ -311,7 +311,7 @@
       "domainId": "workflow-contract"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_DOMAIN_CONTRACT_SKELETONS",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
@@ -325,7 +325,7 @@
       "domainId": "task"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_DOMAIN_CONTRACT_SKELETONS",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
@@ -339,7 +339,7 @@
       "domainId": "event"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_DOMAIN_CONTRACT_SKELETONS",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
@@ -353,7 +353,7 @@
       "domainId": "notification"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_DOMAIN_CONTRACT_SKELETONS",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
@@ -367,7 +367,7 @@
       "domainId": "partner"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_DOMAIN_CONTRACT_SKELETONS",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
@@ -381,7 +381,7 @@
       "domainId": "agent"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_DOMAIN_CONTRACT_SKELETONS",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
@@ -395,7 +395,7 @@
       "domainId": "service-provider"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_DOMAIN_CONTRACT_SKELETONS",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
@@ -409,7 +409,7 @@
       "domainId": "service-network"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_DOMAIN_CONTRACT_SKELETONS",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
@@ -423,7 +423,7 @@
       "domainId": "routing"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_DOMAIN_CONTRACT_SKELETONS",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
@@ -437,7 +437,7 @@
       "domainId": "communication"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_DOMAIN_CONTRACT_SKELETONS",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
@@ -452,7 +452,7 @@
       "objectType": "user-record"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_OBJECT_CONTRACT_SKELETONS",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
@@ -467,7 +467,7 @@
       "objectType": "organization-record"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_OBJECT_CONTRACT_SKELETONS",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
@@ -482,7 +482,7 @@
       "objectType": "permission-policy-record"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_OBJECT_CONTRACT_SKELETONS",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
@@ -497,7 +497,7 @@
       "objectType": "knowledge-source-record"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_OBJECT_CONTRACT_SKELETONS",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
@@ -512,7 +512,7 @@
       "objectType": "brand-record"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_OBJECT_CONTRACT_SKELETONS",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
@@ -527,7 +527,7 @@
       "objectType": "trademark-record"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_OBJECT_CONTRACT_SKELETONS",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
@@ -542,7 +542,7 @@
       "objectType": "jurisdiction-record"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_OBJECT_CONTRACT_SKELETONS",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
@@ -557,7 +557,7 @@
       "objectType": "classification-record"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_OBJECT_CONTRACT_SKELETONS",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
@@ -572,7 +572,7 @@
       "objectType": "document-record"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_OBJECT_CONTRACT_SKELETONS",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
@@ -587,7 +587,7 @@
       "objectType": "evidence-record"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_OBJECT_CONTRACT_SKELETONS",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
@@ -602,7 +602,7 @@
       "objectType": "matter-record"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_OBJECT_CONTRACT_SKELETONS",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
@@ -617,7 +617,7 @@
       "objectType": "communication-record"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_OBJECT_CONTRACT_SKELETONS",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
@@ -631,7 +631,7 @@
       "domainId": "identity"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_SERVICE_CONTRACT_SKELETONS",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
@@ -645,7 +645,7 @@
       "domainId": "permission"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_SERVICE_CONTRACT_SKELETONS",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
@@ -659,7 +659,7 @@
       "domainId": "policy"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_SERVICE_CONTRACT_SKELETONS",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
@@ -673,7 +673,7 @@
       "domainId": "knowledge"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_SERVICE_CONTRACT_SKELETONS",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
@@ -687,7 +687,7 @@
       "domainId": "trademark"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_SERVICE_CONTRACT_SKELETONS",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
@@ -701,7 +701,7 @@
       "domainId": "jurisdiction"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_SERVICE_CONTRACT_SKELETONS",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
@@ -715,7 +715,7 @@
       "domainId": "classification"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_SERVICE_CONTRACT_SKELETONS",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
@@ -729,7 +729,7 @@
       "domainId": "document"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_SERVICE_CONTRACT_SKELETONS",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
@@ -743,7 +743,7 @@
       "domainId": "evidence"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_SERVICE_CONTRACT_SKELETONS",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
@@ -757,7 +757,7 @@
       "domainId": "communication"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_SERVICE_CONTRACT_SKELETONS",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
@@ -769,7 +769,7 @@
     "status": "active",
     "scope": {},
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_API_CONTRACT_SKELETONS",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
@@ -781,7 +781,7 @@
     "status": "active",
     "scope": {},
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_API_CONTRACT_SKELETONS",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
@@ -795,7 +795,7 @@
       "domainId": "event"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_API_CONTRACT_SKELETONS",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
@@ -809,7 +809,7 @@
       "domainId": "task"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_API_CONTRACT_SKELETONS",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
@@ -823,7 +823,7 @@
       "domainId": "workflow-contract"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_API_CONTRACT_SKELETONS",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
@@ -835,7 +835,7 @@
     "status": "active",
     "scope": {},
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_API_CONTRACT_SKELETONS",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
@@ -849,7 +849,7 @@
       "domainId": "policy"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_API_CONTRACT_SKELETONS",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
@@ -861,7 +861,7 @@
     "status": "active",
     "scope": {},
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_API_CONTRACT_SKELETONS",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
@@ -876,7 +876,7 @@
       "eventType": "core-object-created"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_EVENT_CATALOG_SKELETONS",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
@@ -891,7 +891,7 @@
       "eventType": "core-object-updated"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_EVENT_CATALOG_SKELETONS",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
@@ -906,7 +906,7 @@
       "eventType": "core-object-status-changed"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_EVENT_CATALOG_SKELETONS",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
@@ -921,7 +921,7 @@
       "eventType": "core-object-archived"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_EVENT_CATALOG_SKELETONS",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
@@ -936,7 +936,7 @@
       "eventType": "core-task-created"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_EVENT_CATALOG_SKELETONS",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
@@ -951,7 +951,7 @@
       "eventType": "core-task-status-changed"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_EVENT_CATALOG_SKELETONS",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
@@ -966,7 +966,7 @@
       "eventType": "core-review-requested"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_EVENT_CATALOG_SKELETONS",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
@@ -981,7 +981,7 @@
       "eventType": "core-review-completed"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_EVENT_CATALOG_SKELETONS",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
@@ -996,7 +996,7 @@
       "eventType": "core-workflow-contract-registered"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_EVENT_CATALOG_SKELETONS",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
@@ -1011,7 +1011,7 @@
       "eventType": "core-workflow-step-defined"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_EVENT_CATALOG_SKELETONS",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
@@ -1026,7 +1026,7 @@
       "eventType": "core-communication-draft-created"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_EVENT_CATALOG_SKELETONS",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
@@ -1041,7 +1041,7 @@
       "eventType": "core-communication-approved"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_EVENT_CATALOG_SKELETONS",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
@@ -1056,7 +1056,7 @@
       "workflowContractType": "core-record-preparation-workflow"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_WORKFLOW_CATALOG_SKELETONS",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
@@ -1071,7 +1071,7 @@
       "workflowContractType": "core-record-review-workflow"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_WORKFLOW_CATALOG_SKELETONS",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
@@ -1086,7 +1086,7 @@
       "workflowContractType": "core-document-reference-workflow"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_WORKFLOW_CATALOG_SKELETONS",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
@@ -1101,7 +1101,7 @@
       "workflowContractType": "core-evidence-reference-workflow"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_WORKFLOW_CATALOG_SKELETONS",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
@@ -1116,7 +1116,7 @@
       "workflowContractType": "core-task-review-workflow"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_WORKFLOW_CATALOG_SKELETONS",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
@@ -1131,7 +1131,7 @@
       "workflowContractType": "core-communication-review-workflow"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_WORKFLOW_CATALOG_SKELETONS",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
@@ -1146,7 +1146,7 @@
       "workflowContractType": "core-contract-registration-workflow"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_WORKFLOW_CATALOG_SKELETONS",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
@@ -1161,7 +1161,7 @@
       "workflowContractType": "core-validation-review-workflow"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_WORKFLOW_CATALOG_SKELETONS",
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
@@ -1175,7 +1175,7 @@
       "domainId": "permission"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_PERMISSION_CONTRACT_SKELETONS",
     "createdAt": "2026-07-10T00:00:00.000Z"
   },
@@ -1189,7 +1189,7 @@
       "domainId": "permission"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_PERMISSION_CONTRACT_SKELETONS",
     "createdAt": "2026-07-10T00:00:00.000Z"
   },
@@ -1203,7 +1203,7 @@
       "domainId": "permission"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_PERMISSION_CONTRACT_SKELETONS",
     "createdAt": "2026-07-10T00:00:00.000Z"
   },
@@ -1217,7 +1217,7 @@
       "domainId": "permission"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_PERMISSION_CONTRACT_SKELETONS",
     "createdAt": "2026-07-10T00:00:00.000Z"
   },
@@ -1231,7 +1231,7 @@
       "domainId": "permission"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_PERMISSION_CONTRACT_SKELETONS",
     "createdAt": "2026-07-10T00:00:00.000Z"
   },
@@ -1245,7 +1245,7 @@
       "domainId": "permission"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_PERMISSION_CONTRACT_SKELETONS",
     "createdAt": "2026-07-10T00:00:00.000Z"
   },
@@ -1259,7 +1259,7 @@
       "domainId": "permission"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_PERMISSION_CONTRACT_SKELETONS",
     "createdAt": "2026-07-10T00:00:00.000Z"
   },
@@ -1273,8 +1273,120 @@
       "domainId": "permission"
     },
     "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_PERMISSION_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-10T00:00:00.000Z"
+  },
+  {
+    "id": "core-policy-core-data-access-policy-contract",
+    "type": "policy",
+    "name": "Core Data Access Policy Contract Skeleton",
+    "description": "Skeleton contract for Core data access policy boundaries.",
+    "status": "active",
+    "scope": {
+      "domainId": "policy"
+    },
+    "version": 1,
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "source": "CORE_POLICY_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-10T00:00:00.000Z"
+  },
+  {
+    "id": "core-policy-core-data-retention-policy-contract",
+    "type": "policy",
+    "name": "Core Data Retention Policy Contract Skeleton",
+    "description": "Skeleton contract for Core data retention policy boundaries.",
+    "status": "active",
+    "scope": {
+      "domainId": "policy"
+    },
+    "version": 1,
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "source": "CORE_POLICY_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-10T00:00:00.000Z"
+  },
+  {
+    "id": "core-policy-core-review-policy-contract",
+    "type": "policy",
+    "name": "Core Review Policy Contract Skeleton",
+    "description": "Skeleton contract for Core review policy boundaries.",
+    "status": "active",
+    "scope": {
+      "domainId": "policy"
+    },
+    "version": 1,
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "source": "CORE_POLICY_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-10T00:00:00.000Z"
+  },
+  {
+    "id": "core-policy-core-approval-policy-contract",
+    "type": "policy",
+    "name": "Core Approval Policy Contract Skeleton",
+    "description": "Skeleton contract for Core approval policy boundaries.",
+    "status": "active",
+    "scope": {
+      "domainId": "policy"
+    },
+    "version": 1,
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "source": "CORE_POLICY_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-10T00:00:00.000Z"
+  },
+  {
+    "id": "core-policy-core-communication-policy-contract",
+    "type": "policy",
+    "name": "Core Communication Policy Contract Skeleton",
+    "description": "Skeleton contract for Core communication policy boundaries.",
+    "status": "active",
+    "scope": {
+      "domainId": "policy"
+    },
+    "version": 1,
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "source": "CORE_POLICY_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-10T00:00:00.000Z"
+  },
+  {
+    "id": "core-policy-core-ai-assistance-policy-contract",
+    "type": "policy",
+    "name": "Core AI Assistance Policy Contract Skeleton",
+    "description": "Skeleton contract for Core AI assistance policy boundaries.",
+    "status": "active",
+    "scope": {
+      "domainId": "policy"
+    },
+    "version": 1,
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "source": "CORE_POLICY_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-10T00:00:00.000Z"
+  },
+  {
+    "id": "core-policy-core-audit-policy-contract",
+    "type": "policy",
+    "name": "Core Audit Policy Contract Skeleton",
+    "description": "Skeleton contract for Core audit policy boundaries.",
+    "status": "active",
+    "scope": {
+      "domainId": "policy"
+    },
+    "version": 1,
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "source": "CORE_POLICY_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-10T00:00:00.000Z"
+  },
+  {
+    "id": "core-policy-core-change-control-policy-contract",
+    "type": "policy",
+    "name": "Core Change Control Policy Contract Skeleton",
+    "description": "Skeleton contract for Core change control policy boundaries.",
+    "status": "active",
+    "scope": {
+      "domainId": "policy"
+    },
+    "version": 1,
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "source": "CORE_POLICY_CONTRACT_SKELETONS",
     "createdAt": "2026-07-10T00:00:00.000Z"
   }
 ]
