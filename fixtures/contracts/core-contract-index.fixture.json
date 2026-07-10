@@ -1164,5 +1164,117 @@
     "book": "Book 02 — MarkOrbit Core Specification",
     "source": "CORE_WORKFLOW_CATALOG_SKELETONS",
     "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-permission-core-read-permission-contract",
+    "type": "permission",
+    "name": "Core Read Permission Contract Skeleton",
+    "description": "Skeleton contract for Core read permission boundaries.",
+    "status": "active",
+    "scope": {
+      "domainId": "permission"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "source": "CORE_PERMISSION_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-10T00:00:00.000Z"
+  },
+  {
+    "id": "core-permission-core-create-permission-contract",
+    "type": "permission",
+    "name": "Core Create Permission Contract Skeleton",
+    "description": "Skeleton contract for Core create permission boundaries.",
+    "status": "active",
+    "scope": {
+      "domainId": "permission"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "source": "CORE_PERMISSION_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-10T00:00:00.000Z"
+  },
+  {
+    "id": "core-permission-core-update-permission-contract",
+    "type": "permission",
+    "name": "Core Update Permission Contract Skeleton",
+    "description": "Skeleton contract for Core update permission boundaries.",
+    "status": "active",
+    "scope": {
+      "domainId": "permission"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "source": "CORE_PERMISSION_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-10T00:00:00.000Z"
+  },
+  {
+    "id": "core-permission-core-delete-permission-contract",
+    "type": "permission",
+    "name": "Core Delete Permission Contract Skeleton",
+    "description": "Skeleton contract for Core delete permission boundaries.",
+    "status": "active",
+    "scope": {
+      "domainId": "permission"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "source": "CORE_PERMISSION_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-10T00:00:00.000Z"
+  },
+  {
+    "id": "core-permission-core-review-permission-contract",
+    "type": "permission",
+    "name": "Core Review Permission Contract Skeleton",
+    "description": "Skeleton contract for Core review permission boundaries.",
+    "status": "active",
+    "scope": {
+      "domainId": "permission"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "source": "CORE_PERMISSION_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-10T00:00:00.000Z"
+  },
+  {
+    "id": "core-permission-core-approve-permission-contract",
+    "type": "permission",
+    "name": "Core Approve Permission Contract Skeleton",
+    "description": "Skeleton contract for Core approve permission boundaries.",
+    "status": "active",
+    "scope": {
+      "domainId": "permission"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "source": "CORE_PERMISSION_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-10T00:00:00.000Z"
+  },
+  {
+    "id": "core-permission-core-send-permission-contract",
+    "type": "permission",
+    "name": "Core Send Permission Contract Skeleton",
+    "description": "Skeleton contract for Core send permission boundaries.",
+    "status": "active",
+    "scope": {
+      "domainId": "permission"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "source": "CORE_PERMISSION_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-10T00:00:00.000Z"
+  },
+  {
+    "id": "core-permission-core-admin-permission-contract",
+    "type": "permission",
+    "name": "Core Admin Permission Contract Skeleton",
+    "description": "Skeleton contract for Core admin permission boundaries.",
+    "status": "active",
+    "scope": {
+      "domainId": "permission"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "source": "CORE_PERMISSION_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-10T00:00:00.000Z"
   }
 ]

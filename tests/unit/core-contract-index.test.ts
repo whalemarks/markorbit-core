@@ -64,7 +64,22 @@ const forbiddenContractIds = [
   'product-ui-api',
   'artifact-render-api',
   'publish-automation-api',
-  'ai-agent-execution-api'
+  'ai-agent-execution-api',
+  'execution-runtime-permission',
+  'execution-context-permission',
+  'workflow-engine-permission',
+  'task-runtime-permission',
+  'event-bus-permission',
+  'api-server-permission',
+  'database-root-permission',
+  'product-ui-permission',
+  'artifact-render-permission',
+  'publish-automation-permission',
+  'distillery-runtime-permission',
+  'ai-agent-approval-permission',
+  'autonomous-agent-permission',
+  'bypass-review-permission',
+  'bypass-policy-permission'
 ];
 
 describe('Core Contract Index', () => {
@@ -93,8 +108,8 @@ describe('Core Contract Index', () => {
     assert.deepEqual(Object.values(CORE_CONTRACT_STATUSES), expectedStatuses);
   });
 
-  it('CORE_CONTRACT_INDEX has exactly 82 entries', () => {
-    assert.equal(CORE_CONTRACT_INDEX.length, 82);
+  it('CORE_CONTRACT_INDEX has exactly 90 entries', () => {
+    assert.equal(CORE_CONTRACT_INDEX.length, 90);
   });
 
 
@@ -128,6 +143,10 @@ describe('Core Contract Index', () => {
 
   it('includes exactly 8 workflow catalog entries', () => {
     assert.equal(CORE_CONTRACT_INDEX.filter((contract) => contract.source === 'CORE_WORKFLOW_CATALOG_SKELETONS').length, 8);
+  });
+
+  it('includes exactly 8 permission contract entries', () => {
+    assert.equal(CORE_CONTRACT_INDEX.filter((contract) => contract.source === 'CORE_PERMISSION_CONTRACT_SKELETONS').length, 8);
   });
 
   it('all ids are unique', () => {

@@ -13,7 +13,8 @@ import {
   validateCoreTaskBaseFixture,
   validateCoreWorkflowContractBaseFixture,
   validateCoreEventCatalogSkeletonsFixture,
-  validateCoreWorkflowCatalogSkeletonsFixture
+  validateCoreWorkflowCatalogSkeletonsFixture,
+  validateCorePermissionContractSkeletonsFixture
 } from '../../src/index.ts';
 
 const readFixture = async (path: string): Promise<unknown> => JSON.parse(await readFile(new URL(`../../${path}`, import.meta.url), 'utf8'));
@@ -31,6 +32,7 @@ describe('core fixture validation', () => {
     assert.equal(validateCoreApiContractSkeletonsFixture(await readFixture('fixtures/contracts/core-api-contract-skeletons.fixture.json')).ok, true);
     assert.equal(validateCoreEventCatalogSkeletonsFixture(await readFixture('fixtures/contracts/core-event-catalog-skeletons.fixture.json')).ok, true);
     assert.equal(validateCoreWorkflowCatalogSkeletonsFixture(await readFixture('fixtures/contracts/core-workflow-catalog-skeletons.fixture.json')).ok, true);
+    assert.equal(validateCorePermissionContractSkeletonsFixture(await readFixture('fixtures/contracts/core-permission-contract-skeletons.fixture.json')).ok, true);
   });
 
   it('each validator returns ok false for invalid non-array input', () => {
@@ -45,7 +47,8 @@ describe('core fixture validation', () => {
       validateCoreTaskBaseFixture,
       validateCoreWorkflowContractBaseFixture,
       validateCoreEventCatalogSkeletonsFixture,
-      validateCoreWorkflowCatalogSkeletonsFixture
+      validateCoreWorkflowCatalogSkeletonsFixture,
+      validateCorePermissionContractSkeletonsFixture
     ]) {
       assert.equal(validator({}).ok, false);
     }
@@ -156,6 +159,7 @@ describe('core fixture validation', () => {
   it('event catalog skeleton validator returns ok true for existing fixture', async () => {
     assert.equal(validateCoreEventCatalogSkeletonsFixture(await readFixture('fixtures/contracts/core-event-catalog-skeletons.fixture.json')).ok, true);
     assert.equal(validateCoreWorkflowCatalogSkeletonsFixture(await readFixture('fixtures/contracts/core-workflow-catalog-skeletons.fixture.json')).ok, true);
+    assert.equal(validateCorePermissionContractSkeletonsFixture(await readFixture('fixtures/contracts/core-permission-contract-skeletons.fixture.json')).ok, true);
   });
 
   it('event catalog skeleton validator rejects invalid non-array input', () => {
@@ -188,6 +192,7 @@ describe('core fixture validation', () => {
 
   it('workflow catalog skeleton validator returns ok true for existing fixture', async () => {
     assert.equal(validateCoreWorkflowCatalogSkeletonsFixture(await readFixture('fixtures/contracts/core-workflow-catalog-skeletons.fixture.json')).ok, true);
+    assert.equal(validateCorePermissionContractSkeletonsFixture(await readFixture('fixtures/contracts/core-permission-contract-skeletons.fixture.json')).ok, true);
   });
 
   it('workflow catalog skeleton validator rejects invalid non-array input', () => {
@@ -217,4 +222,39 @@ describe('core fixture validation', () => {
     fixture[0].stepTypes = ['transitionFunction runtimeState'];
     assert.equal(validateCoreWorkflowCatalogSkeletonsFixture(fixture).ok, false);
   });
+
+  it('permission skeleton validator returns ok true for existing fixture', async () => {
+    assert.equal(validateCorePermissionContractSkeletonsFixture(await readFixture('fixtures/contracts/core-permission-contract-skeletons.fixture.json')).ok, true);
+  });
+
+  it('permission skeleton validator rejects invalid non-array input', () => {
+    assert.equal(validateCorePermissionContractSkeletonsFixture({}).ok, false);
+  });
+
+  it('permission skeleton validator rejects missing permissionType', async () => {
+    const fixture = structuredClone(await readFixture('fixtures/contracts/core-permission-contract-skeletons.fixture.json')) as Record<string, unknown>[];
+    delete fixture[0].permissionType;
+    assert.equal(validateCorePermissionContractSkeletonsFixture(fixture).ok, false);
+  });
+
+  it('permission skeleton validator rejects unknown domainId', async () => {
+    const fixture = structuredClone(await readFixture('fixtures/contracts/core-permission-contract-skeletons.fixture.json')) as Record<string, unknown>[];
+    fixture[0].domainId = 'unknown-domain';
+    assert.equal(validateCorePermissionContractSkeletonsFixture(fixture).ok, false);
+  });
+
+  it('permission skeleton validator rejects duplicate permissionType', async () => {
+    const fixture = structuredClone(await readFixture('fixtures/contracts/core-permission-contract-skeletons.fixture.json')) as Record<string, unknown>[];
+    fixture[1].permissionType = fixture[0].permissionType;
+    assert.equal(validateCorePermissionContractSkeletonsFixture(fixture).ok, false);
+  });
+
+  it('permission skeleton validator rejects bypass/runtime/engine/autonomous-agent permission keywords', async () => {
+    for (const keyword of ['bypass-review-permission', 'execution-runtime-permission', 'workflow-engine-permission', 'autonomous-agent-permission']) {
+      const fixture = structuredClone(await readFixture('fixtures/contracts/core-permission-contract-skeletons.fixture.json')) as Record<string, unknown>[];
+      fixture[0].permissionType = keyword;
+      assert.equal(validateCorePermissionContractSkeletonsFixture(fixture).ok, false);
+    }
+  });
+
 });
