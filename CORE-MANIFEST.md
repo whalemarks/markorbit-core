@@ -21,7 +21,21 @@ Phase 2 — Core Contract Layer started.
 - Phase 1 foundation primitives are now complete.
 - Phase 2 started.
 - Core Contract Index added.
-- Current index contains 6 foundation contract entries.
+- Core Domain Contract Skeletons added.
+- Core Object Contract Skeletons added.
+- Core Service Contract Skeletons added.
+- Core API Contract Skeletons added.
+- Core Event Catalog Skeleton added.
+- Core Workflow Catalog Skeleton added.
+- `CORE_CONTRACT_INDEX` now contains 82 entries:
+  - 6 foundation contract entries
+  - 26 domain contract entries
+  - 12 object contract entries
+  - 10 service contract entries
+  - 8 API contract entries
+  - 12 event catalog entries
+  - 8 workflow catalog entries
+- Next recommended task: CORE-TASK-015 — Core Permission Contract Skeletons.
 
 ## Current scope
 
@@ -38,6 +52,12 @@ Phase 2 — Core Contract Layer started.
 - Core Workflow Contract Primitive.
 - Core Validation Fixture System.
 - Core Contract Index.
+- Core Domain Contract Skeletons.
+- Core Object Contract Skeletons.
+- Core Service Contract Skeletons.
+- Core API Contract Skeletons.
+- Core Event Catalog Skeleton.
+- Core Workflow Catalog Skeleton.
 - Placeholder package and source directories.
 
 ## Out of scope
@@ -70,7 +90,7 @@ Every change should keep the TypeScript project buildable, tests passing, lint c
 
 ## Next tasks
 
-- CORE-TASK-009 — Core Domain Contract Skeletons.
+- CORE-TASK-015 — Core Permission Contract Skeletons.
 
 ## CORE-TASK-009 Status
 

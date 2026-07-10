@@ -18,12 +18,13 @@
 ## Phase 2
 
 - [x] Core Contract Index.
-- [ ] Domain Contract Skeletons.
-- [ ] Object Contract Skeletons.
-- [ ] Service Contract Skeletons.
-- [ ] Event Catalog Skeleton.
-- [ ] Workflow Contract Catalog Skeleton.
-- [ ] API Contract Skeletons.
+- [x] Domain Contract Skeletons.
+- [x] Object Contract Skeletons.
+- [x] Service Contract Skeletons.
+- [x] API Contract Skeletons.
+- [x] Event Catalog Skeleton.
+- [x] Core Workflow Catalog Skeleton: completed/current.
+- [ ] Core Permission Contract Skeletons.
 
 ## Phase 3
 
