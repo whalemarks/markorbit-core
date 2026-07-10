@@ -16,7 +16,8 @@ import {
   validateCoreWorkflowCatalogSkeletonsFixture,
   validateCorePermissionContractSkeletonsFixture,
   validateCorePolicyContractSkeletonsFixture,
-  validateCoreAiGovernanceContractSkeletonsFixture
+  validateCoreAiGovernanceContractSkeletonsFixture,
+  validateCoreContractCoverageBaselineFixture
 } from '../../src/index.ts';
 
 const readFixture = async (path: string): Promise<unknown> => JSON.parse(await readFile(new URL(`../../${path}`, import.meta.url), 'utf8'));
@@ -37,6 +38,7 @@ describe('core fixture validation', () => {
     assert.equal(validateCorePermissionContractSkeletonsFixture(await readFixture('fixtures/contracts/core-permission-contract-skeletons.fixture.json')).ok, true);
     assert.equal(validateCorePolicyContractSkeletonsFixture(await readFixture('fixtures/contracts/core-policy-contract-skeletons.fixture.json')).ok, true);
     assert.equal(validateCoreAiGovernanceContractSkeletonsFixture(await readFixture('fixtures/contracts/core-ai-governance-contract-skeletons.fixture.json')).ok, true);
+    assert.equal(validateCoreContractCoverageBaselineFixture(await readFixture('fixtures/contract-coverage/core-contract-coverage-baseline.fixture.json')).ok, true);
   });
 
   it('each validator returns ok false for invalid non-array input', () => {
@@ -330,6 +332,17 @@ describe('core fixture validation', () => {
     const fixture = structuredClone(await readFixture('fixtures/contracts/core-ai-governance-contract-skeletons.fixture.json')) as Record<string, unknown>[];
     fixture[0].execute = 'not allowed';
     assert.equal(validateCoreAiGovernanceContractSkeletonsFixture(fixture).ok, false);
+  });
+
+  it('contract coverage baseline validator rejects non-object input', () => {
+    assert.equal(validateCoreContractCoverageBaselineFixture([]).ok, false);
+  });
+
+  it('contract coverage baseline validator rejects stale summary counts', async () => {
+    const fixture = structuredClone(await readFixture('fixtures/contract-coverage/core-contract-coverage-baseline.fixture.json')) as Record<string, unknown>;
+    const summary = fixture.summary as Record<string, unknown>;
+    summary.indexedContractCount = 105;
+    assert.equal(validateCoreContractCoverageBaselineFixture(fixture).ok, false);
   });
 
 });

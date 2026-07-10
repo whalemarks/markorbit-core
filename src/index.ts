@@ -10,3 +10,5 @@ export * from './workflows/index.ts';
 export * from './validation/index.ts';
 
 export * from './contracts/index.ts';
+
+export * from './contract-coverage/index.ts';

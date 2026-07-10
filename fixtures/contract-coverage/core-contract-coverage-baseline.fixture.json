@@ -1,0 +1,1038 @@
+{
+  "id": "core-contract-coverage-baseline-v0-1",
+  "version": "0.1.0",
+  "createdAt": "2026-07-10T00:00:00.000Z",
+  "scope": "contract_structure_only",
+  "authority": {
+    "specificationRepository": "whalemarks/markorbit-publication",
+    "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+    "specificationPath": "books/book-02-core-specification/",
+    "traceability": "books/book-02-core-specification/core-specs/TRACEABILITY.md",
+    "mvpCut": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
+    "validation": "books/book-02-core-specification/core-specs/validation/traceability-validation.md"
+  },
+  "assessmentBoundary": {
+    "structuralCoverageAssessed": true,
+    "sourceAlignmentCoverageAssessed": false,
+    "runtimeCoverageAssessed": false,
+    "behaviorCoverageAssessed": false,
+    "productionReadinessAssessed": false
+  },
+  "contractFamilies": [
+    {
+      "family": "foundation",
+      "indexedCount": 6,
+      "fixtureIds": [
+        "core-domain-registry",
+        "core-object-base",
+        "core-event-base",
+        "core-task-base",
+        "core-workflow-contract-base",
+        "core-contract-index"
+      ],
+      "fixtureCoverage": "required",
+      "validatorCoverage": "present",
+      "testCoverage": "collection"
+    },
+    {
+      "family": "domain",
+      "source": "CORE_DOMAIN_CONTRACT_SKELETONS",
+      "indexedCount": 26,
+      "fixtureIds": ["core-domain-contract-skeletons"],
+      "fixtureCoverage": "required",
+      "validatorCoverage": "present",
+      "testCoverage": "collection"
+    },
+    {
+      "family": "object",
+      "source": "CORE_OBJECT_CONTRACT_SKELETONS",
+      "indexedCount": 12,
+      "fixtureIds": ["core-object-contract-skeletons"],
+      "fixtureCoverage": "required",
+      "validatorCoverage": "present",
+      "testCoverage": "collection"
+    },
+    {
+      "family": "service",
+      "source": "CORE_SERVICE_CONTRACT_SKELETONS",
+      "indexedCount": 10,
+      "fixtureIds": ["core-service-contract-skeletons"],
+      "fixtureCoverage": "required",
+      "validatorCoverage": "present",
+      "testCoverage": "collection"
+    },
+    {
+      "family": "api",
+      "source": "CORE_API_CONTRACT_SKELETONS",
+      "indexedCount": 8,
+      "fixtureIds": ["core-api-contract-skeletons"],
+      "fixtureCoverage": "required",
+      "validatorCoverage": "present",
+      "testCoverage": "collection"
+    },
+    {
+      "family": "event",
+      "source": "CORE_EVENT_CATALOG_SKELETONS",
+      "indexedCount": 12,
+      "fixtureIds": ["core-event-catalog-skeletons"],
+      "fixtureCoverage": "required",
+      "validatorCoverage": "present",
+      "testCoverage": "collection"
+    },
+    {
+      "family": "workflow",
+      "source": "CORE_WORKFLOW_CATALOG_SKELETONS",
+      "indexedCount": 8,
+      "fixtureIds": ["core-workflow-catalog-skeletons"],
+      "fixtureCoverage": "required",
+      "validatorCoverage": "present",
+      "testCoverage": "collection"
+    },
+    {
+      "family": "permission",
+      "source": "CORE_PERMISSION_CONTRACT_SKELETONS",
+      "indexedCount": 8,
+      "fixtureIds": ["core-permission-contract-skeletons"],
+      "fixtureCoverage": "required",
+      "validatorCoverage": "present",
+      "testCoverage": "collection"
+    },
+    {
+      "family": "policy",
+      "source": "CORE_POLICY_CONTRACT_SKELETONS",
+      "indexedCount": 8,
+      "fixtureIds": ["core-policy-contract-skeletons"],
+      "fixtureCoverage": "required",
+      "validatorCoverage": "present",
+      "testCoverage": "collection"
+    },
+    {
+      "family": "ai_governance",
+      "source": "CORE_AI_GOVERNANCE_CONTRACT_SKELETONS",
+      "indexedCount": 8,
+      "fixtureIds": ["core-ai-governance-contract-skeletons"],
+      "fixtureCoverage": "required",
+      "validatorCoverage": "present",
+      "testCoverage": "collection"
+    }
+  ],
+  "domains": [
+    {
+      "domainId": "identity",
+      "requirement": "must_build_now",
+      "layers": {
+        "domain": {
+          "status": "validated_skeleton",
+          "contractIds": ["core-domain-identity-contract"]
+        },
+        "object": {
+          "status": "missing",
+          "contractIds": []
+        },
+        "service": {
+          "status": "validated_skeleton",
+          "contractIds": ["core-service-identity-resolution-service-contract"]
+        },
+        "api": {
+          "status": "missing",
+          "contractIds": []
+        },
+        "event": {
+          "status": "missing",
+          "contractIds": []
+        },
+        "workflow": {
+          "status": "missing",
+          "contractIds": []
+        }
+      },
+      "testCoverage": "collection_validation_only",
+      "missingRequiredLayers": ["object", "api"],
+      "requiredLayerState": "partial"
+    },
+    {
+      "domainId": "organization",
+      "requirement": "must_build_now",
+      "layers": {
+        "domain": {
+          "status": "validated_skeleton",
+          "contractIds": ["core-domain-organization-contract"]
+        },
+        "object": {
+          "status": "validated_skeleton",
+          "contractIds": ["core-object-organization-record-contract"]
+        },
+        "service": {
+          "status": "missing",
+          "contractIds": []
+        },
+        "api": {
+          "status": "missing",
+          "contractIds": []
+        },
+        "event": {
+          "status": "missing",
+          "contractIds": []
+        },
+        "workflow": {
+          "status": "missing",
+          "contractIds": []
+        }
+      },
+      "testCoverage": "collection_validation_only",
+      "missingRequiredLayers": ["service", "api"],
+      "requiredLayerState": "partial"
+    },
+    {
+      "domainId": "user",
+      "requirement": "must_build_now",
+      "layers": {
+        "domain": {
+          "status": "validated_skeleton",
+          "contractIds": ["core-domain-user-contract"]
+        },
+        "object": {
+          "status": "validated_skeleton",
+          "contractIds": ["core-object-user-record-contract"]
+        },
+        "service": {
+          "status": "missing",
+          "contractIds": []
+        },
+        "api": {
+          "status": "missing",
+          "contractIds": []
+        },
+        "event": {
+          "status": "missing",
+          "contractIds": []
+        },
+        "workflow": {
+          "status": "missing",
+          "contractIds": []
+        }
+      },
+      "testCoverage": "collection_validation_only",
+      "missingRequiredLayers": ["service", "api"],
+      "requiredLayerState": "partial"
+    },
+    {
+      "domainId": "permission",
+      "requirement": "must_build_now",
+      "layers": {
+        "domain": {
+          "status": "validated_skeleton",
+          "contractIds": ["core-domain-permission-contract"]
+        },
+        "object": {
+          "status": "missing",
+          "contractIds": []
+        },
+        "service": {
+          "status": "validated_skeleton",
+          "contractIds": ["core-service-permission-evaluation-service-contract"]
+        },
+        "api": {
+          "status": "missing",
+          "contractIds": []
+        },
+        "event": {
+          "status": "missing",
+          "contractIds": []
+        },
+        "workflow": {
+          "status": "missing",
+          "contractIds": []
+        }
+      },
+      "testCoverage": "collection_validation_only",
+      "missingRequiredLayers": ["object", "api"],
+      "requiredLayerState": "partial"
+    },
+    {
+      "domainId": "policy",
+      "requirement": "must_build_now",
+      "layers": {
+        "domain": {
+          "status": "validated_skeleton",
+          "contractIds": ["core-domain-policy-contract"]
+        },
+        "object": {
+          "status": "validated_skeleton",
+          "contractIds": ["core-object-permission-policy-record-contract"]
+        },
+        "service": {
+          "status": "validated_skeleton",
+          "contractIds": ["core-service-policy-evaluation-service-contract"]
+        },
+        "api": {
+          "status": "validated_skeleton",
+          "contractIds": ["core-api-core-validation-api-contract"]
+        },
+        "event": {
+          "status": "missing",
+          "contractIds": []
+        },
+        "workflow": {
+          "status": "validated_skeleton",
+          "contractIds": [
+            "core-workflow-core-validation-review-workflow-contract"
+          ]
+        }
+      },
+      "testCoverage": "collection_validation_only",
+      "missingRequiredLayers": [],
+      "requiredLayerState": "required_layers_present"
+    },
+    {
+      "domainId": "knowledge",
+      "requirement": "stub_now",
+      "layers": {
+        "domain": {
+          "status": "validated_skeleton",
+          "contractIds": ["core-domain-knowledge-contract"]
+        },
+        "object": {
+          "status": "validated_skeleton",
+          "contractIds": ["core-object-knowledge-source-record-contract"]
+        },
+        "service": {
+          "status": "validated_skeleton",
+          "contractIds": ["core-service-knowledge-reference-service-contract"]
+        },
+        "api": {
+          "status": "missing",
+          "contractIds": []
+        },
+        "event": {
+          "status": "missing",
+          "contractIds": []
+        },
+        "workflow": {
+          "status": "missing",
+          "contractIds": []
+        }
+      },
+      "testCoverage": "collection_validation_only",
+      "missingRequiredLayers": ["api"],
+      "requiredLayerState": "partial"
+    },
+    {
+      "domainId": "brand",
+      "requirement": "must_build_now",
+      "layers": {
+        "domain": {
+          "status": "validated_skeleton",
+          "contractIds": ["core-domain-brand-contract"]
+        },
+        "object": {
+          "status": "validated_skeleton",
+          "contractIds": ["core-object-brand-record-contract"]
+        },
+        "service": {
+          "status": "missing",
+          "contractIds": []
+        },
+        "api": {
+          "status": "missing",
+          "contractIds": []
+        },
+        "event": {
+          "status": "missing",
+          "contractIds": []
+        },
+        "workflow": {
+          "status": "missing",
+          "contractIds": []
+        }
+      },
+      "testCoverage": "collection_validation_only",
+      "missingRequiredLayers": ["service", "api"],
+      "requiredLayerState": "partial"
+    },
+    {
+      "domainId": "trademark",
+      "requirement": "must_build_now",
+      "layers": {
+        "domain": {
+          "status": "validated_skeleton",
+          "contractIds": ["core-domain-trademark-contract"]
+        },
+        "object": {
+          "status": "validated_skeleton",
+          "contractIds": ["core-object-trademark-record-contract"]
+        },
+        "service": {
+          "status": "validated_skeleton",
+          "contractIds": ["core-service-trademark-reference-service-contract"]
+        },
+        "api": {
+          "status": "missing",
+          "contractIds": []
+        },
+        "event": {
+          "status": "missing",
+          "contractIds": []
+        },
+        "workflow": {
+          "status": "missing",
+          "contractIds": []
+        }
+      },
+      "testCoverage": "collection_validation_only",
+      "missingRequiredLayers": ["api"],
+      "requiredLayerState": "partial"
+    },
+    {
+      "domainId": "jurisdiction",
+      "requirement": "must_build_now",
+      "layers": {
+        "domain": {
+          "status": "validated_skeleton",
+          "contractIds": ["core-domain-jurisdiction-contract"]
+        },
+        "object": {
+          "status": "validated_skeleton",
+          "contractIds": ["core-object-jurisdiction-record-contract"]
+        },
+        "service": {
+          "status": "validated_skeleton",
+          "contractIds": [
+            "core-service-jurisdiction-reference-service-contract"
+          ]
+        },
+        "api": {
+          "status": "missing",
+          "contractIds": []
+        },
+        "event": {
+          "status": "missing",
+          "contractIds": []
+        },
+        "workflow": {
+          "status": "missing",
+          "contractIds": []
+        }
+      },
+      "testCoverage": "collection_validation_only",
+      "missingRequiredLayers": ["api"],
+      "requiredLayerState": "partial"
+    },
+    {
+      "domainId": "classification",
+      "requirement": "must_build_now",
+      "layers": {
+        "domain": {
+          "status": "validated_skeleton",
+          "contractIds": ["core-domain-classification-contract"]
+        },
+        "object": {
+          "status": "validated_skeleton",
+          "contractIds": ["core-object-classification-record-contract"]
+        },
+        "service": {
+          "status": "validated_skeleton",
+          "contractIds": [
+            "core-service-classification-reference-service-contract"
+          ]
+        },
+        "api": {
+          "status": "missing",
+          "contractIds": []
+        },
+        "event": {
+          "status": "missing",
+          "contractIds": []
+        },
+        "workflow": {
+          "status": "missing",
+          "contractIds": []
+        }
+      },
+      "testCoverage": "collection_validation_only",
+      "missingRequiredLayers": ["api"],
+      "requiredLayerState": "partial"
+    },
+    {
+      "domainId": "document",
+      "requirement": "must_build_now",
+      "layers": {
+        "domain": {
+          "status": "validated_skeleton",
+          "contractIds": ["core-domain-document-contract"]
+        },
+        "object": {
+          "status": "validated_skeleton",
+          "contractIds": ["core-object-document-record-contract"]
+        },
+        "service": {
+          "status": "validated_skeleton",
+          "contractIds": ["core-service-document-reference-service-contract"]
+        },
+        "api": {
+          "status": "missing",
+          "contractIds": []
+        },
+        "event": {
+          "status": "missing",
+          "contractIds": []
+        },
+        "workflow": {
+          "status": "validated_skeleton",
+          "contractIds": [
+            "core-workflow-core-document-reference-workflow-contract"
+          ]
+        }
+      },
+      "testCoverage": "collection_validation_only",
+      "missingRequiredLayers": ["api"],
+      "requiredLayerState": "partial"
+    },
+    {
+      "domainId": "evidence",
+      "requirement": "must_build_now",
+      "layers": {
+        "domain": {
+          "status": "validated_skeleton",
+          "contractIds": ["core-domain-evidence-contract"]
+        },
+        "object": {
+          "status": "validated_skeleton",
+          "contractIds": ["core-object-evidence-record-contract"]
+        },
+        "service": {
+          "status": "validated_skeleton",
+          "contractIds": ["core-service-evidence-reference-service-contract"]
+        },
+        "api": {
+          "status": "missing",
+          "contractIds": []
+        },
+        "event": {
+          "status": "missing",
+          "contractIds": []
+        },
+        "workflow": {
+          "status": "validated_skeleton",
+          "contractIds": [
+            "core-workflow-core-evidence-reference-workflow-contract"
+          ]
+        }
+      },
+      "testCoverage": "collection_validation_only",
+      "missingRequiredLayers": ["api"],
+      "requiredLayerState": "partial"
+    },
+    {
+      "domainId": "customer",
+      "requirement": "must_build_now",
+      "layers": {
+        "domain": {
+          "status": "validated_skeleton",
+          "contractIds": ["core-domain-customer-contract"]
+        },
+        "object": {
+          "status": "missing",
+          "contractIds": []
+        },
+        "service": {
+          "status": "missing",
+          "contractIds": []
+        },
+        "api": {
+          "status": "missing",
+          "contractIds": []
+        },
+        "event": {
+          "status": "missing",
+          "contractIds": []
+        },
+        "workflow": {
+          "status": "missing",
+          "contractIds": []
+        }
+      },
+      "testCoverage": "collection_validation_only",
+      "missingRequiredLayers": ["object", "service", "api"],
+      "requiredLayerState": "partial"
+    },
+    {
+      "domainId": "matter",
+      "requirement": "must_build_now",
+      "layers": {
+        "domain": {
+          "status": "validated_skeleton",
+          "contractIds": ["core-domain-matter-contract"]
+        },
+        "object": {
+          "status": "validated_skeleton",
+          "contractIds": ["core-object-matter-record-contract"]
+        },
+        "service": {
+          "status": "missing",
+          "contractIds": []
+        },
+        "api": {
+          "status": "missing",
+          "contractIds": []
+        },
+        "event": {
+          "status": "missing",
+          "contractIds": []
+        },
+        "workflow": {
+          "status": "missing",
+          "contractIds": []
+        }
+      },
+      "testCoverage": "collection_validation_only",
+      "missingRequiredLayers": ["service", "api"],
+      "requiredLayerState": "partial"
+    },
+    {
+      "domainId": "order",
+      "requirement": "must_build_now",
+      "layers": {
+        "domain": {
+          "status": "validated_skeleton",
+          "contractIds": ["core-domain-order-contract"]
+        },
+        "object": {
+          "status": "missing",
+          "contractIds": []
+        },
+        "service": {
+          "status": "missing",
+          "contractIds": []
+        },
+        "api": {
+          "status": "missing",
+          "contractIds": []
+        },
+        "event": {
+          "status": "missing",
+          "contractIds": []
+        },
+        "workflow": {
+          "status": "missing",
+          "contractIds": []
+        }
+      },
+      "testCoverage": "collection_validation_only",
+      "missingRequiredLayers": ["object", "service", "api"],
+      "requiredLayerState": "partial"
+    },
+    {
+      "domainId": "opportunity",
+      "requirement": "stub_now",
+      "layers": {
+        "domain": {
+          "status": "validated_skeleton",
+          "contractIds": ["core-domain-opportunity-contract"]
+        },
+        "object": {
+          "status": "missing",
+          "contractIds": []
+        },
+        "service": {
+          "status": "missing",
+          "contractIds": []
+        },
+        "api": {
+          "status": "missing",
+          "contractIds": []
+        },
+        "event": {
+          "status": "missing",
+          "contractIds": []
+        },
+        "workflow": {
+          "status": "missing",
+          "contractIds": []
+        }
+      },
+      "testCoverage": "collection_validation_only",
+      "missingRequiredLayers": ["object", "service", "api"],
+      "requiredLayerState": "partial"
+    },
+    {
+      "domainId": "workflow-contract",
+      "requirement": "must_build_now",
+      "layers": {
+        "domain": {
+          "status": "validated_skeleton",
+          "contractIds": ["core-domain-workflow-contract-contract"]
+        },
+        "object": {
+          "status": "missing",
+          "contractIds": []
+        },
+        "service": {
+          "status": "missing",
+          "contractIds": []
+        },
+        "api": {
+          "status": "validated_skeleton",
+          "contractIds": [
+            "core-api-core-workflow-contract-reference-api-contract"
+          ]
+        },
+        "event": {
+          "status": "validated_skeleton",
+          "contractIds": [
+            "core-event-core-workflow-contract-registered-contract",
+            "core-event-core-workflow-step-defined-contract"
+          ]
+        },
+        "workflow": {
+          "status": "validated_skeleton",
+          "contractIds": [
+            "core-workflow-core-record-preparation-workflow-contract",
+            "core-workflow-core-record-review-workflow-contract",
+            "core-workflow-core-contract-registration-workflow-contract"
+          ]
+        }
+      },
+      "testCoverage": "collection_validation_only",
+      "missingRequiredLayers": ["object", "service"],
+      "requiredLayerState": "partial"
+    },
+    {
+      "domainId": "task",
+      "requirement": "must_build_now",
+      "layers": {
+        "domain": {
+          "status": "validated_skeleton",
+          "contractIds": ["core-domain-task-contract"]
+        },
+        "object": {
+          "status": "missing",
+          "contractIds": []
+        },
+        "service": {
+          "status": "missing",
+          "contractIds": []
+        },
+        "api": {
+          "status": "validated_skeleton",
+          "contractIds": ["core-api-core-task-reference-api-contract"]
+        },
+        "event": {
+          "status": "validated_skeleton",
+          "contractIds": [
+            "core-event-core-task-created-contract",
+            "core-event-core-task-status-changed-contract",
+            "core-event-core-review-requested-contract",
+            "core-event-core-review-completed-contract"
+          ]
+        },
+        "workflow": {
+          "status": "validated_skeleton",
+          "contractIds": ["core-workflow-core-task-review-workflow-contract"]
+        }
+      },
+      "testCoverage": "collection_validation_only",
+      "missingRequiredLayers": ["object", "service"],
+      "requiredLayerState": "partial"
+    },
+    {
+      "domainId": "event",
+      "requirement": "must_build_now",
+      "layers": {
+        "domain": {
+          "status": "validated_skeleton",
+          "contractIds": ["core-domain-event-contract"]
+        },
+        "object": {
+          "status": "missing",
+          "contractIds": []
+        },
+        "service": {
+          "status": "missing",
+          "contractIds": []
+        },
+        "api": {
+          "status": "validated_skeleton",
+          "contractIds": ["core-api-core-event-reference-api-contract"]
+        },
+        "event": {
+          "status": "validated_skeleton",
+          "contractIds": [
+            "core-event-core-object-created-contract",
+            "core-event-core-object-updated-contract",
+            "core-event-core-object-status-changed-contract",
+            "core-event-core-object-archived-contract"
+          ]
+        },
+        "workflow": {
+          "status": "missing",
+          "contractIds": []
+        }
+      },
+      "testCoverage": "collection_validation_only",
+      "missingRequiredLayers": ["object", "service"],
+      "requiredLayerState": "partial"
+    },
+    {
+      "domainId": "notification",
+      "requirement": "stub_now",
+      "layers": {
+        "domain": {
+          "status": "validated_skeleton",
+          "contractIds": ["core-domain-notification-contract"]
+        },
+        "object": {
+          "status": "missing",
+          "contractIds": []
+        },
+        "service": {
+          "status": "missing",
+          "contractIds": []
+        },
+        "api": {
+          "status": "missing",
+          "contractIds": []
+        },
+        "event": {
+          "status": "missing",
+          "contractIds": []
+        },
+        "workflow": {
+          "status": "missing",
+          "contractIds": []
+        }
+      },
+      "testCoverage": "collection_validation_only",
+      "missingRequiredLayers": ["object", "service", "api"],
+      "requiredLayerState": "partial"
+    },
+    {
+      "domainId": "partner",
+      "requirement": "stub_now",
+      "layers": {
+        "domain": {
+          "status": "validated_skeleton",
+          "contractIds": ["core-domain-partner-contract"]
+        },
+        "object": {
+          "status": "missing",
+          "contractIds": []
+        },
+        "service": {
+          "status": "missing",
+          "contractIds": []
+        },
+        "api": {
+          "status": "missing",
+          "contractIds": []
+        },
+        "event": {
+          "status": "missing",
+          "contractIds": []
+        },
+        "workflow": {
+          "status": "missing",
+          "contractIds": []
+        }
+      },
+      "testCoverage": "collection_validation_only",
+      "missingRequiredLayers": ["object", "service", "api"],
+      "requiredLayerState": "partial"
+    },
+    {
+      "domainId": "agent",
+      "requirement": "stub_now",
+      "layers": {
+        "domain": {
+          "status": "validated_skeleton",
+          "contractIds": ["core-domain-agent-contract"]
+        },
+        "object": {
+          "status": "missing",
+          "contractIds": []
+        },
+        "service": {
+          "status": "missing",
+          "contractIds": []
+        },
+        "api": {
+          "status": "missing",
+          "contractIds": []
+        },
+        "event": {
+          "status": "missing",
+          "contractIds": []
+        },
+        "workflow": {
+          "status": "missing",
+          "contractIds": []
+        }
+      },
+      "testCoverage": "collection_validation_only",
+      "missingRequiredLayers": ["object", "service", "api"],
+      "requiredLayerState": "partial"
+    },
+    {
+      "domainId": "service-provider",
+      "requirement": "stub_now",
+      "layers": {
+        "domain": {
+          "status": "validated_skeleton",
+          "contractIds": ["core-domain-service-provider-contract"]
+        },
+        "object": {
+          "status": "missing",
+          "contractIds": []
+        },
+        "service": {
+          "status": "missing",
+          "contractIds": []
+        },
+        "api": {
+          "status": "missing",
+          "contractIds": []
+        },
+        "event": {
+          "status": "missing",
+          "contractIds": []
+        },
+        "workflow": {
+          "status": "missing",
+          "contractIds": []
+        }
+      },
+      "testCoverage": "collection_validation_only",
+      "missingRequiredLayers": ["object", "service", "api"],
+      "requiredLayerState": "partial"
+    },
+    {
+      "domainId": "service-network",
+      "requirement": "stub_now",
+      "layers": {
+        "domain": {
+          "status": "validated_skeleton",
+          "contractIds": ["core-domain-service-network-contract"]
+        },
+        "object": {
+          "status": "missing",
+          "contractIds": []
+        },
+        "service": {
+          "status": "missing",
+          "contractIds": []
+        },
+        "api": {
+          "status": "missing",
+          "contractIds": []
+        },
+        "event": {
+          "status": "missing",
+          "contractIds": []
+        },
+        "workflow": {
+          "status": "missing",
+          "contractIds": []
+        }
+      },
+      "testCoverage": "collection_validation_only",
+      "missingRequiredLayers": ["object", "service", "api"],
+      "requiredLayerState": "partial"
+    },
+    {
+      "domainId": "routing",
+      "requirement": "stub_now",
+      "layers": {
+        "domain": {
+          "status": "validated_skeleton",
+          "contractIds": ["core-domain-routing-contract"]
+        },
+        "object": {
+          "status": "missing",
+          "contractIds": []
+        },
+        "service": {
+          "status": "missing",
+          "contractIds": []
+        },
+        "api": {
+          "status": "missing",
+          "contractIds": []
+        },
+        "event": {
+          "status": "missing",
+          "contractIds": []
+        },
+        "workflow": {
+          "status": "missing",
+          "contractIds": []
+        }
+      },
+      "testCoverage": "collection_validation_only",
+      "missingRequiredLayers": ["object", "service", "api"],
+      "requiredLayerState": "partial"
+    },
+    {
+      "domainId": "communication",
+      "requirement": "must_build_now",
+      "layers": {
+        "domain": {
+          "status": "validated_skeleton",
+          "contractIds": ["core-domain-communication-contract"]
+        },
+        "object": {
+          "status": "validated_skeleton",
+          "contractIds": ["core-object-communication-record-contract"]
+        },
+        "service": {
+          "status": "validated_skeleton",
+          "contractIds": [
+            "core-service-communication-reference-service-contract"
+          ]
+        },
+        "api": {
+          "status": "missing",
+          "contractIds": []
+        },
+        "event": {
+          "status": "validated_skeleton",
+          "contractIds": [
+            "core-event-core-communication-draft-created-contract",
+            "core-event-core-communication-approved-contract"
+          ]
+        },
+        "workflow": {
+          "status": "validated_skeleton",
+          "contractIds": [
+            "core-workflow-core-communication-review-workflow-contract"
+          ]
+        }
+      },
+      "testCoverage": "collection_validation_only",
+      "missingRequiredLayers": ["api"],
+      "requiredLayerState": "partial"
+    }
+  ],
+  "summary": {
+    "indexedContractCount": 106,
+    "structurallyCoveredContractFamilyCount": 10,
+    "totalContractFamilyCount": 10,
+    "totalDomainCount": 26,
+    "mustBuildNowDomainCount": 18,
+    "stubNowDomainCount": 8,
+    "layerDomainCounts": {
+      "domain": 26,
+      "object": 12,
+      "service": 10,
+      "api": 4,
+      "event": 4,
+      "workflow": 6
+    },
+    "requiredLayerCompleteDomainCount": 1,
+    "mustBuildNowRequiredLayerCompleteDomainCount": 1,
+    "stubNowRequiredLayerCompleteDomainCount": 0,
+    "missingRequiredLayerSlotCount": 52,
+    "collectionValidatedDomainCount": 26,
+    "domainBehaviorTestedCount": 0,
+    "globalApiSkeletonCount": 4
+  }
+}

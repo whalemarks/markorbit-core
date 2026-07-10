@@ -6,7 +6,7 @@
 
 ## Current phase
 
-Phase 2 — Core Contract Layer complete.
+Phase 3 — Contract Coverage started.
 
 ## Current status
 
@@ -29,6 +29,8 @@ Phase 2 — Core Contract Layer complete.
 - Core Workflow Catalog Skeleton added.
 - Core Policy Contract Skeletons added.
 - Core AI Governance Contract Skeletons added and integrated.
+- Phase 2 Core Contract Layer completed.
+- Phase 3 Contract Coverage Baseline added.
 - `CORE_CONTRACT_INDEX` now contains 106 entries:
   - 6 foundation contract entries
   - 26 domain contract entries
@@ -40,8 +42,10 @@ Phase 2 — Core Contract Layer complete.
   - 8 permission contract entries
   - 8 policy contract entries
   - 8 AI governance contract entries
-- Required fixture manifest now contains 15 entries.
-- Next recommended task: CORE-TASK-018 — Phase 3 Contract Coverage Baseline.
+- Current coverage baseline reports 106 structurally assured indexed contracts across 10 contract families.
+- Current Domain-layer coverage is 26 Domain, 12 Object, 10 Service, 4 Domain-mapped API, 4 Event, and 6 Workflow.
+- Required fixture manifest now contains 16 entries.
+- Next recommended task: CORE-TASK-019 — Book 2 Contract Gap Inventory Lock.
 
 ## Current scope
 
@@ -67,6 +71,7 @@ Phase 2 — Core Contract Layer complete.
 - Core Permission Contract Skeletons.
 - Core Policy Contract Skeletons.
 - Core AI Governance Contract Skeletons.
+- Core Contract Coverage Baseline.
 - Placeholder package and source directories.
 
 ## Out of scope
@@ -99,7 +104,7 @@ Every change should keep the TypeScript project buildable, tests passing, lint c
 
 ## Next tasks
 
-- CORE-TASK-018 — Phase 3 Contract Coverage Baseline.
+- CORE-TASK-019 — Book 2 Contract Gap Inventory Lock.
 
 ## CORE-TASK-009 Status
 
@@ -177,3 +182,14 @@ Next recommended task: CORE-TASK-013 — Core Event Catalog Skeleton.
 - Required fixture manifest now contains 15 entries.
 - Phase 2 Core Contract Layer is complete.
 - Next recommended task: CORE-TASK-018 — Phase 3 Contract Coverage Baseline.
+
+## CORE-TASK-018 — Phase 3 Contract Coverage Baseline
+
+- Machine-readable coverage baseline added for 106 indexed contracts and all 26 Core Domains.
+- Structural assurance confirmed for all 10 current contract families.
+- Domain-layer gaps measured against Book 2 Traceability and MVP Cut sources.
+- 1 of 26 Domains currently has Domain, Object, Service, and API skeleton layers present.
+- 52 required Object, Service, or API layer slots remain open.
+- Required fixture manifest now contains 16 entries.
+- No runtime or behavior completeness is claimed.
+- Next recommended task: CORE-TASK-019 — Book 2 Contract Gap Inventory Lock.
