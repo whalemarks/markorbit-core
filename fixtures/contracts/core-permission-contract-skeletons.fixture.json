@@ -1,0 +1,194 @@
+[
+  {
+    "id": "core-permission-core-read-permission-contract",
+    "permissionType": "core-read-permission",
+    "domainId": "permission",
+    "name": "Core Read Permission Contract Skeleton",
+    "description": "Skeleton contract for Core read permission boundaries.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Defines the placeholder boundary for Core read permission semantics without evaluating access.",
+    "appliesTo": [
+      "Textual Core permission contract boundary only."
+    ],
+    "protectedAction": false,
+    "requiresHumanReview": false,
+    "owns": [
+      "Core Read Permission Contract Skeleton boundary."
+    ],
+    "nonGoals": [
+      "Executable permission evaluation, runtime authorization checks, or API guards.",
+      "RBAC, authentication, login, session, or authorization middleware behavior.",
+      "Book 03 execution runtime, product UI behavior, database schema, or AI agent permission authority."
+    ],
+    "createdAt": "2026-07-10T00:00:00.000Z"
+  },
+  {
+    "id": "core-permission-core-create-permission-contract",
+    "permissionType": "core-create-permission",
+    "domainId": "permission",
+    "name": "Core Create Permission Contract Skeleton",
+    "description": "Skeleton contract for Core create permission boundaries.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Defines the placeholder boundary for Core create permission semantics without evaluating access.",
+    "appliesTo": [
+      "Textual Core permission contract boundary only."
+    ],
+    "protectedAction": false,
+    "requiresHumanReview": false,
+    "owns": [
+      "Core Create Permission Contract Skeleton boundary."
+    ],
+    "nonGoals": [
+      "Executable permission evaluation, runtime authorization checks, or API guards.",
+      "RBAC, authentication, login, session, or authorization middleware behavior.",
+      "Book 03 execution runtime, product UI behavior, database schema, or AI agent permission authority."
+    ],
+    "createdAt": "2026-07-10T00:00:00.000Z"
+  },
+  {
+    "id": "core-permission-core-update-permission-contract",
+    "permissionType": "core-update-permission",
+    "domainId": "permission",
+    "name": "Core Update Permission Contract Skeleton",
+    "description": "Skeleton contract for Core update permission boundaries.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Defines the placeholder boundary for Core update permission semantics without evaluating access.",
+    "appliesTo": [
+      "Textual Core permission contract boundary only."
+    ],
+    "protectedAction": false,
+    "requiresHumanReview": false,
+    "owns": [
+      "Core Update Permission Contract Skeleton boundary."
+    ],
+    "nonGoals": [
+      "Executable permission evaluation, runtime authorization checks, or API guards.",
+      "RBAC, authentication, login, session, or authorization middleware behavior.",
+      "Book 03 execution runtime, product UI behavior, database schema, or AI agent permission authority."
+    ],
+    "createdAt": "2026-07-10T00:00:00.000Z"
+  },
+  {
+    "id": "core-permission-core-delete-permission-contract",
+    "permissionType": "core-delete-permission",
+    "domainId": "permission",
+    "name": "Core Delete Permission Contract Skeleton",
+    "description": "Skeleton contract for Core delete permission boundaries.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Defines the placeholder boundary for Core delete permission semantics without evaluating access.",
+    "appliesTo": [
+      "Textual Core permission contract boundary only."
+    ],
+    "protectedAction": false,
+    "requiresHumanReview": false,
+    "owns": [
+      "Core Delete Permission Contract Skeleton boundary."
+    ],
+    "nonGoals": [
+      "Executable permission evaluation, runtime authorization checks, or API guards.",
+      "RBAC, authentication, login, session, or authorization middleware behavior.",
+      "Book 03 execution runtime, product UI behavior, database schema, or AI agent permission authority."
+    ],
+    "createdAt": "2026-07-10T00:00:00.000Z"
+  },
+  {
+    "id": "core-permission-core-review-permission-contract",
+    "permissionType": "core-review-permission",
+    "domainId": "permission",
+    "name": "Core Review Permission Contract Skeleton",
+    "description": "Skeleton contract for Core review permission boundaries.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Defines the placeholder boundary for Core review permission semantics as a human-reviewed protected action flag only.",
+    "appliesTo": [
+      "Textual Core permission contract boundary only."
+    ],
+    "protectedAction": true,
+    "requiresHumanReview": true,
+    "owns": [
+      "Core Review Permission Contract Skeleton boundary."
+    ],
+    "nonGoals": [
+      "Executable permission evaluation, runtime authorization checks, or API guards.",
+      "RBAC, authentication, login, session, or authorization middleware behavior.",
+      "Book 03 execution runtime, product UI behavior, database schema, or AI agent permission authority."
+    ],
+    "createdAt": "2026-07-10T00:00:00.000Z"
+  },
+  {
+    "id": "core-permission-core-approve-permission-contract",
+    "permissionType": "core-approve-permission",
+    "domainId": "permission",
+    "name": "Core Approve Permission Contract Skeleton",
+    "description": "Skeleton contract for Core approve permission boundaries.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Defines the placeholder boundary for Core approve permission semantics as a human-reviewed protected action flag only.",
+    "appliesTo": [
+      "Textual Core permission contract boundary only."
+    ],
+    "protectedAction": true,
+    "requiresHumanReview": true,
+    "owns": [
+      "Core Approve Permission Contract Skeleton boundary."
+    ],
+    "nonGoals": [
+      "Executable permission evaluation, runtime authorization checks, or API guards.",
+      "RBAC, authentication, login, session, or authorization middleware behavior.",
+      "Book 03 execution runtime, product UI behavior, database schema, or AI agent permission authority."
+    ],
+    "createdAt": "2026-07-10T00:00:00.000Z"
+  },
+  {
+    "id": "core-permission-core-send-permission-contract",
+    "permissionType": "core-send-permission",
+    "domainId": "permission",
+    "name": "Core Send Permission Contract Skeleton",
+    "description": "Skeleton contract for Core send permission boundaries.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Defines the placeholder boundary for Core send permission semantics as a human-reviewed protected action flag only.",
+    "appliesTo": [
+      "Textual Core permission contract boundary only."
+    ],
+    "protectedAction": true,
+    "requiresHumanReview": true,
+    "owns": [
+      "Core Send Permission Contract Skeleton boundary."
+    ],
+    "nonGoals": [
+      "Executable permission evaluation, runtime authorization checks, or API guards.",
+      "RBAC, authentication, login, session, or authorization middleware behavior.",
+      "Book 03 execution runtime, product UI behavior, database schema, or AI agent permission authority."
+    ],
+    "createdAt": "2026-07-10T00:00:00.000Z"
+  },
+  {
+    "id": "core-permission-core-admin-permission-contract",
+    "permissionType": "core-admin-permission",
+    "domainId": "permission",
+    "name": "Core Admin Permission Contract Skeleton",
+    "description": "Skeleton contract for Core admin permission boundaries.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Defines the placeholder boundary for Core admin permission semantics as a human-reviewed protected action flag only.",
+    "appliesTo": [
+      "Textual Core permission contract boundary only."
+    ],
+    "protectedAction": true,
+    "requiresHumanReview": true,
+    "owns": [
+      "Core Admin Permission Contract Skeleton boundary."
+    ],
+    "nonGoals": [
+      "Executable permission evaluation, runtime authorization checks, or API guards.",
+      "RBAC, authentication, login, session, or authorization middleware behavior.",
+      "Book 03 execution runtime, product UI behavior, database schema, or AI agent permission authority."
+    ],
+    "createdAt": "2026-07-10T00:00:00.000Z"
+  }
+]

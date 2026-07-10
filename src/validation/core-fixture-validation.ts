@@ -1,4 +1,4 @@
-import { CORE_CONTRACT_INDEX, validateCoreContractIndex, validateCoreDomainContractSkeletons, validateCoreObjectContractSkeletons, validateCoreServiceContractSkeletons, validateCoreApiContractSkeletons, validateCoreEventCatalogSkeletons, validateCoreWorkflowCatalogSkeletons, type CoreApiContract, type CoreDomainContract, type CoreObjectContract, type CoreServiceContract, type CoreEventCatalogEntry, type CoreWorkflowCatalogEntry } from '../contracts/index.ts';
+import { CORE_CONTRACT_INDEX, validateCoreContractIndex, validateCoreDomainContractSkeletons, validateCoreObjectContractSkeletons, validateCoreServiceContractSkeletons, validateCoreApiContractSkeletons, validateCoreEventCatalogSkeletons, validateCoreWorkflowCatalogSkeletons, validateCorePermissionContractSkeletons, type CoreApiContract, type CoreDomainContract, type CoreObjectContract, type CoreServiceContract, type CoreEventCatalogEntry, type CoreWorkflowCatalogEntry, type CorePermissionContract } from '../contracts/index.ts';
 import { CORE_DOMAIN_REGISTRY } from '../domains/index.ts';
 import { CORE_OBJECT_STATUSES } from '../objects/index.ts';
 import type { CoreEvent } from '../events/index.ts';
@@ -200,6 +200,16 @@ export function validateCoreWorkflowCatalogSkeletonsFixture(fixture: unknown): C
   array.forEach((entry, index) => {
     if (isRecord(entry)) pushForbiddenFields(issues, entry, workflowCatalogForbiddenFields, `workflow_catalog_skeletons[${index}]`, 'core.workflow_catalog_skeletons.runtime_field');
   });
+  return createCoreValidationResult(issues);
+}
+
+
+export function validateCorePermissionContractSkeletonsFixture(fixture: unknown): CoreValidationResult {
+  const nonArray = nonArrayResult(fixture, 'permission_contract_skeletons');
+  if (nonArray) return nonArray;
+  const issues = validateCorePermissionContractSkeletons(fixture as readonly CorePermissionContract[]).map((message) =>
+    error('core.permission_contract_skeletons.invalid_contract', message, 'permission_contract_skeletons')
+  );
   return createCoreValidationResult(issues);
 }
 

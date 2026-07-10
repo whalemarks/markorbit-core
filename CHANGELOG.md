@@ -2,6 +2,23 @@
 
 All notable changes to MarkOrbit Core will be documented in this file.
 
+## CORE-TASK-015 — Core Permission Contract Skeletons
+
+- Added `CorePermissionContract` type.
+- Added 8 Core Permission Contract Skeletons.
+- Added permission skeleton validator.
+- Added permission skeleton fixture.
+- Expanded `CORE_CONTRACT_INDEX` from 82 to 90 entries.
+- Updated fixture manifest and validation.
+- Added tests.
+- No permission engine added.
+- No RBAC added.
+- No authentication or authorization middleware added.
+- No API guards added.
+- No Book 03 runtime contracts added.
+- No product UI contracts added.
+- No AI agent permission authority added.
+
 ## CORE-TASK-014 — Core Workflow Catalog Skeleton
 
 - Added `CoreWorkflowCatalogEntry` type.

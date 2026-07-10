@@ -13,7 +13,8 @@ import {
   validateCoreServiceContractSkeletonsFixture,
   validateCoreApiContractSkeletonsFixture,
   validateCoreEventCatalogSkeletonsFixture,
-  validateCoreWorkflowCatalogSkeletonsFixture
+  validateCoreWorkflowCatalogSkeletonsFixture,
+  validateCorePermissionContractSkeletonsFixture
 } from '../src/validation/index.ts';
 
 const validators = {
@@ -28,7 +29,8 @@ const validators = {
   service_contract_skeletons: validateCoreServiceContractSkeletonsFixture,
   api_contract_skeletons: validateCoreApiContractSkeletonsFixture,
   event_catalog_skeletons: validateCoreEventCatalogSkeletonsFixture,
-  workflow_catalog_skeletons: validateCoreWorkflowCatalogSkeletonsFixture
+  workflow_catalog_skeletons: validateCoreWorkflowCatalogSkeletonsFixture,
+  permission_contract_skeletons: validateCorePermissionContractSkeletonsFixture
 };
 
 let hasErrors = false;
