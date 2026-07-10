@@ -1,5 +1,19 @@
 # Changelog
 
+## CORE-TASK-017 — Core AI Governance Contract Skeletons
+
+- Locked Book 02 AI Governance sources and exactly 8 contract identifiers.
+- Added `CoreAiGovernanceContract` and 8 metadata-only skeletons.
+- Added source, Domain, protected-action, and executable-field validation.
+- Added the exact AI Governance skeleton fixture.
+- Expanded `CORE_CONTRACT_INDEX` from 98 to 106 entries.
+- Expanded the required fixture manifest from 14 to 15 entries.
+- Added fixture, validator, index, and boundary tests.
+- No model or prompt execution added.
+- No agent runtime, orchestration, or autonomous authority added.
+- No permission, policy, review, workflow, event, service, API, database, Product UI, or state-mutation behavior added.
+- Phase 2 Core Contract Layer completed; Phase 3 contract coverage is next.
+
 ## CORE-TASK-016 — Core Policy Contract Skeletons
 
 - Added `CorePolicyContract` type.
@@ -84,7 +98,6 @@ All notable changes to MarkOrbit Core will be documented in this file.
 - No Book 03 runtime contracts added.
 - No product UI contracts added.
 - No AI agent authority added.
-
 
 ## CORE-TASK-008 — Core Contract Index
 

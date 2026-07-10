@@ -123,8 +123,8 @@ describe('Core Contract Index', () => {
     assert.deepEqual(Object.values(CORE_CONTRACT_STATUSES), expectedStatuses);
   });
 
-  it('CORE_CONTRACT_INDEX has exactly 98 entries', () => {
-    assert.equal(CORE_CONTRACT_INDEX.length, 98);
+  it('CORE_CONTRACT_INDEX has exactly 106 entries', () => {
+    assert.equal(CORE_CONTRACT_INDEX.length, 106);
   });
 
 
@@ -166,6 +166,10 @@ describe('Core Contract Index', () => {
 
   it('includes exactly 8 policy contract entries', () => {
     assert.equal(CORE_CONTRACT_INDEX.filter((contract) => contract.source === 'CORE_POLICY_CONTRACT_SKELETONS').length, 8);
+  });
+
+  it('includes exactly 8 AI governance contract entries', () => {
+    assert.equal(CORE_CONTRACT_INDEX.filter((contract) => contract.source === 'CORE_AI_GOVERNANCE_CONTRACT_SKELETONS').length, 8);
   });
 
   it('all ids are unique', () => {

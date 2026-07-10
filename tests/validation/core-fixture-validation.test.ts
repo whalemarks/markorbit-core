@@ -15,7 +15,8 @@ import {
   validateCoreEventCatalogSkeletonsFixture,
   validateCoreWorkflowCatalogSkeletonsFixture,
   validateCorePermissionContractSkeletonsFixture,
-  validateCorePolicyContractSkeletonsFixture
+  validateCorePolicyContractSkeletonsFixture,
+  validateCoreAiGovernanceContractSkeletonsFixture
 } from '../../src/index.ts';
 
 const readFixture = async (path: string): Promise<unknown> => JSON.parse(await readFile(new URL(`../../${path}`, import.meta.url), 'utf8'));
@@ -35,6 +36,7 @@ describe('core fixture validation', () => {
     assert.equal(validateCoreWorkflowCatalogSkeletonsFixture(await readFixture('fixtures/contracts/core-workflow-catalog-skeletons.fixture.json')).ok, true);
     assert.equal(validateCorePermissionContractSkeletonsFixture(await readFixture('fixtures/contracts/core-permission-contract-skeletons.fixture.json')).ok, true);
     assert.equal(validateCorePolicyContractSkeletonsFixture(await readFixture('fixtures/contracts/core-policy-contract-skeletons.fixture.json')).ok, true);
+    assert.equal(validateCoreAiGovernanceContractSkeletonsFixture(await readFixture('fixtures/contracts/core-ai-governance-contract-skeletons.fixture.json')).ok, true);
   });
 
   it('each validator returns ok false for invalid non-array input', () => {
@@ -51,7 +53,8 @@ describe('core fixture validation', () => {
       validateCoreEventCatalogSkeletonsFixture,
       validateCoreWorkflowCatalogSkeletonsFixture,
       validateCorePermissionContractSkeletonsFixture,
-      validateCorePolicyContractSkeletonsFixture
+      validateCorePolicyContractSkeletonsFixture,
+      validateCoreAiGovernanceContractSkeletonsFixture
     ]) {
       assert.equal(validator({}).ok, false);
     }
@@ -293,6 +296,40 @@ describe('core fixture validation', () => {
       fixture[0].policyType = keyword;
       assert.equal(validateCorePolicyContractSkeletonsFixture(fixture).ok, false);
     }
+  });
+
+  it('AI governance skeleton validator returns ok true for the locked fixture', async () => {
+    assert.equal(validateCoreAiGovernanceContractSkeletonsFixture(await readFixture('fixtures/contracts/core-ai-governance-contract-skeletons.fixture.json')).ok, true);
+  });
+
+  it('AI governance skeleton validator rejects a missing governanceType', async () => {
+    const fixture = structuredClone(await readFixture('fixtures/contracts/core-ai-governance-contract-skeletons.fixture.json')) as Record<string, unknown>[];
+    delete fixture[0].governanceType;
+    assert.equal(validateCoreAiGovernanceContractSkeletonsFixture(fixture).ok, false);
+  });
+
+  it('AI governance skeleton validator rejects a changed locked id', async () => {
+    const fixture = structuredClone(await readFixture('fixtures/contracts/core-ai-governance-contract-skeletons.fixture.json')) as Record<string, unknown>[];
+    fixture[0].id = 'core-ai-governance-unlocked-contract';
+    assert.equal(validateCoreAiGovernanceContractSkeletonsFixture(fixture).ok, false);
+  });
+
+  it('AI governance skeleton validator rejects a non-agent domain', async () => {
+    const fixture = structuredClone(await readFixture('fixtures/contracts/core-ai-governance-contract-skeletons.fixture.json')) as Record<string, unknown>[];
+    fixture[0].domainId = 'policy';
+    assert.equal(validateCoreAiGovernanceContractSkeletonsFixture(fixture).ok, false);
+  });
+
+  it('AI governance skeleton validator rejects protected-action authority', async () => {
+    const fixture = structuredClone(await readFixture('fixtures/contracts/core-ai-governance-contract-skeletons.fixture.json')) as Record<string, unknown>[];
+    fixture[0].protectedAction = true;
+    assert.equal(validateCoreAiGovernanceContractSkeletonsFixture(fixture).ok, false);
+  });
+
+  it('AI governance skeleton validator rejects executable fields', async () => {
+    const fixture = structuredClone(await readFixture('fixtures/contracts/core-ai-governance-contract-skeletons.fixture.json')) as Record<string, unknown>[];
+    fixture[0].execute = 'not allowed';
+    assert.equal(validateCoreAiGovernanceContractSkeletonsFixture(fixture).ok, false);
   });
 
 });
