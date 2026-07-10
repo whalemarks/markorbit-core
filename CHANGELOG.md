@@ -1,5 +1,18 @@
 # Changelog
 
+## CORE-TASK-018 — Phase 3 Contract Coverage Baseline
+
+- Added a machine-readable coverage baseline for all 106 indexed contracts and 26 Core Domains.
+- Distinguished structural family assurance from Book 2 Domain-layer completeness.
+- Added coverage types, generated Domain mappings, exact validation, a required fixture, and a reporting command.
+- Expanded the required fixture manifest from 15 to 16 entries.
+- Confirmed 10/10 current contract families have structural fixture, validator, and collection-test coverage.
+- Reported current Domain coverage: 26 Domain, 12 Object, 10 Service, 4 Domain-mapped API, 4 Event, and 6 Workflow.
+- Reported 1/26 Domains with all required structural layers present and 52 missing required layer slots.
+- Explicitly left canonical Book 2 Common, API, Workflow, and Test Contract source alignment for the next governed inventory lock.
+- Did not claim runtime, behavior, production, Book 3, or Product coverage.
+- Started Phase 3 with contract coverage as the first acceptance result.
+
 ## CORE-TASK-017 — Core AI Governance Contract Skeletons
 
 - Locked Book 02 AI Governance sources and exactly 8 contract identifiers.

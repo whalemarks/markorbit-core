@@ -13,7 +13,8 @@ export const CORE_FIXTURE_TYPES = [
   'workflow_catalog_skeletons',
   'permission_contract_skeletons',
   'policy_contract_skeletons',
-  'ai_governance_contract_skeletons'
+  'ai_governance_contract_skeletons',
+  'contract_coverage_baseline'
 ] as const;
 
 export type CoreFixtureType = (typeof CORE_FIXTURE_TYPES)[number];
@@ -115,6 +116,12 @@ export const CORE_FIXTURE_MANIFEST = [
     id: 'core-ai-governance-contract-skeletons',
     type: 'ai_governance_contract_skeletons',
     path: 'fixtures/contracts/core-ai-governance-contract-skeletons.fixture.json',
+    required: true
+  },
+  {
+    id: 'core-contract-coverage-baseline',
+    type: 'contract_coverage_baseline',
+    path: 'fixtures/contract-coverage/core-contract-coverage-baseline.fixture.json',
     required: true
   }
 ] as const satisfies readonly CoreFixtureManifestEntry[];

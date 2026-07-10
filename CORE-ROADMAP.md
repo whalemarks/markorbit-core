@@ -28,9 +28,10 @@
 - [x] Core Policy Contract Skeletons.
 - [x] Core AI Governance Contract Skeletons: completed/current.
 
-## Phase 3
+## Phase 3 — Started
 
-- Contract coverage baseline — first acceptance result.
+- [x] Contract coverage baseline — first acceptance result/current.
+- [ ] Book 2 Contract Gap Inventory Lock.
 - Integration with Execution System.
 - Generated SDK.
 - Documentation site.
@@ -83,3 +84,12 @@
 - Validator, fixture, manifest, and 106-entry Contract Index integration: completed/current.
 - Phase 2: complete.
 - Next: CORE-TASK-018 — Phase 3 Contract Coverage Baseline.
+
+## CORE-TASK-018 — Phase 3 Contract Coverage Baseline
+
+- 106 indexed contracts mapped across 10 structurally assured contract families.
+- All 26 Core Domains mapped to current Object, Service, API, Event, Workflow, and collection-test coverage.
+- Required-layer completeness: 1 / 26 Domains.
+- Missing required Object, Service, or API layer slots: 52.
+- Runtime and behavior completeness: not assessed.
+- Next: CORE-TASK-019 — Book 2 Contract Gap Inventory Lock.
