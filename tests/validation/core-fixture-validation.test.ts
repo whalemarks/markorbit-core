@@ -17,6 +17,8 @@ import {
   validateCorePermissionContractSkeletonsFixture,
   validateCorePolicyContractSkeletonsFixture,
   validateCoreAiGovernanceContractSkeletonsFixture,
+  validateCoreCommonContractSkeletonsFixture,
+  validateCoreTestContractSkeletonsFixture,
   validateCoreContractCoverageBaselineFixture,
   validateCoreContractGapInventoryFixture
 } from '../../src/index.ts';
@@ -39,6 +41,8 @@ describe('core fixture validation', () => {
     assert.equal(validateCorePermissionContractSkeletonsFixture(await readFixture('fixtures/contracts/core-permission-contract-skeletons.fixture.json')).ok, true);
     assert.equal(validateCorePolicyContractSkeletonsFixture(await readFixture('fixtures/contracts/core-policy-contract-skeletons.fixture.json')).ok, true);
     assert.equal(validateCoreAiGovernanceContractSkeletonsFixture(await readFixture('fixtures/contracts/core-ai-governance-contract-skeletons.fixture.json')).ok, true);
+    assert.equal(validateCoreCommonContractSkeletonsFixture(await readFixture('fixtures/contracts/core-common-contract-skeletons.fixture.json')).ok, true);
+    assert.equal(validateCoreTestContractSkeletonsFixture(await readFixture('fixtures/contracts/core-test-contract-skeletons.fixture.json')).ok, true);
     assert.equal(validateCoreContractCoverageBaselineFixture(await readFixture('fixtures/contract-coverage/core-contract-coverage-baseline.fixture.json')).ok, true);
     assert.equal(validateCoreContractGapInventoryFixture(await readFixture('fixtures/contract-coverage/core-contract-gap-inventory.fixture.json')).ok, true);
   });
@@ -58,7 +62,9 @@ describe('core fixture validation', () => {
       validateCoreWorkflowCatalogSkeletonsFixture,
       validateCorePermissionContractSkeletonsFixture,
       validateCorePolicyContractSkeletonsFixture,
-      validateCoreAiGovernanceContractSkeletonsFixture
+      validateCoreAiGovernanceContractSkeletonsFixture,
+      validateCoreCommonContractSkeletonsFixture,
+      validateCoreTestContractSkeletonsFixture
     ]) {
       assert.equal(validator({}).ok, false);
     }
@@ -338,6 +344,18 @@ describe('core fixture validation', () => {
 
   it('contract coverage baseline validator rejects non-object input', () => {
     assert.equal(validateCoreContractCoverageBaselineFixture([]).ok, false);
+  });
+
+  it('Common Contract fixture validator rejects a changed source path', async () => {
+    const fixture = structuredClone(await readFixture('fixtures/contracts/core-common-contract-skeletons.fixture.json')) as Record<string, unknown>[];
+    fixture[0].sourcePath = 'wrong.md';
+    assert.equal(validateCoreCommonContractSkeletonsFixture(fixture).ok, false);
+  });
+
+  it('Test Contract fixture validator rejects executable fields', async () => {
+    const fixture = structuredClone(await readFixture('fixtures/contracts/core-test-contract-skeletons.fixture.json')) as Record<string, unknown>[];
+    fixture[0].assertions = ['not allowed'];
+    assert.equal(validateCoreTestContractSkeletonsFixture(fixture).ok, false);
   });
 
   it('contract coverage baseline validator rejects stale summary counts', async () => {

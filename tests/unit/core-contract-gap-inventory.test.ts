@@ -5,6 +5,7 @@ import {
   CORE_CANONICAL_LAYER_TARGETS,
   CORE_CONTRACT_GAP_IMPLEMENTATION_BATCHES,
   CORE_CONTRACT_GAP_INVENTORY,
+  CORE_CONTRACT_GAP_PROGRESS,
   CORE_CONTRACT_INDEX,
   CORE_DOMAIN_CONTRACT_TARGETS,
   CORE_DOMAIN_REGISTRY,
@@ -76,7 +77,7 @@ describe('Core Book 2 Contract Gap Inventory', () => {
     );
   });
 
-  it('locks 81 unique new ids that do not exist in the current index', () => {
+  it('locks 81 unique ids and tracks the completed 17-target first batch', () => {
     const newTargets = [
       ...CORE_DOMAIN_CONTRACT_TARGETS.filter(
         (target) => target.disposition === 'add_canonical_skeleton'
@@ -89,7 +90,9 @@ describe('Core Book 2 Contract Gap Inventory', () => {
     );
     assert.equal(ids.length, 81);
     assert.equal(new Set(ids).size, ids.length);
-    assert.ok(ids.every((id) => !currentIds.has(id)));
+    assert.equal(ids.filter((id) => currentIds.has(id)).length, 17);
+    assert.equal(CORE_CONTRACT_GAP_PROGRESS.completedCanonicalTargetCount, 17);
+    assert.equal(CORE_CONTRACT_GAP_PROGRESS.remainingCanonicalTargetCount, 64);
   });
 
   it('sequences all additions into five controlled batches', () => {
@@ -129,8 +132,12 @@ describe('Core Book 2 Contract Gap Inventory', () => {
     );
   });
 
-  it('does not change the current index and projects 187 after all batches', () => {
-    assert.equal(CORE_CONTRACT_INDEX.length, 106);
+  it('preserves the 106-entry inventory baseline and projects 187 after all batches', () => {
+    assert.equal(CORE_CONTRACT_INDEX.length, 123);
+    assert.equal(
+      CORE_CONTRACT_GAP_INVENTORY.summary.currentIndexedContractCount,
+      106
+    );
     assert.equal(
       CORE_CONTRACT_GAP_INVENTORY.summary.currentIndexChangedByThisTask,
       false
@@ -138,6 +145,14 @@ describe('Core Book 2 Contract Gap Inventory', () => {
     assert.equal(
       CORE_CONTRACT_GAP_INVENTORY.summary.projectedIndexedContractCount,
       187
+    );
+    assert.deepEqual(CORE_CONTRACT_GAP_PROGRESS.completedBatchIds, [
+      'CORE-TASK-020'
+    ]);
+    assert.deepEqual(CORE_CONTRACT_GAP_PROGRESS.partialBatchIds, []);
+    assert.equal(
+      CORE_CONTRACT_GAP_PROGRESS.currentIndexMatchesCompletedTargets,
+      true
     );
   });
 });

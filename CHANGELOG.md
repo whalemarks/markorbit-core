@@ -1,5 +1,17 @@
 # Changelog
 
+## CORE-TASK-020 — Common and Test Contract Foundations
+
+- Added the `common` and `test` Core Contract types.
+- Added exactly 10 canonical Common Contract skeletons and 7 canonical Test Contract skeletons from the locked Book 2 sources.
+- Added exact source, identity, metadata, boundary, and executable-field validation for both families.
+- Added two required fixtures and fixture validation, expanding the manifest from 17 to 19 entries.
+- Expanded `CORE_CONTRACT_INDEX` from 106 to 123 entries.
+- Expanded structural coverage from 10 to 12 contract families.
+- Added batch progress reporting: CORE-TASK-020 is 17/17 complete, with 64 canonical targets remaining.
+- Added unit, fixture, index, coverage, inventory-progress, and validation tests.
+- Added no Common primitive runtime, executable Test Contract cases, API routes, workflow execution, permission or policy decisions, AI execution, Book 3 integration, or Product behavior.
+
 ## CORE-TASK-019 — Book 2 Contract Gap Inventory Lock
 
 - Locked 78 Domain Object/Service/API targets against the Book 2 source tree.

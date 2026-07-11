@@ -4,6 +4,7 @@ import {
   CORE_CANONICAL_LAYER_TARGETS,
   CORE_CONTRACT_GAP_IMPLEMENTATION_BATCHES,
   CORE_CONTRACT_GAP_INVENTORY,
+  CORE_CONTRACT_GAP_PROGRESS,
   CORE_DOMAIN_CONTRACT_TARGETS
 } from './core-contract-gap-inventory.ts';
 
@@ -75,14 +76,24 @@ export function validateCoreContractGapInventory(
   for (const id of ids)
     if (!kebabCasePattern.test(id))
       errors.push(`New canonical target id must be kebab-case: ${id}.`);
-  const currentIds = new Set<string>(
-    CORE_CONTRACT_INDEX.map((contract) => contract.id)
-  );
-  for (const id of ids)
-    if (currentIds.has(id))
+  const currentContracts = new Map<
+    string,
+    (typeof CORE_CONTRACT_INDEX)[number]
+  >(CORE_CONTRACT_INDEX.map((contract) => [contract.id, contract]));
+  for (const target of allTargets) {
+    const contract = currentContracts.get(target.targetContractId);
+    if (contract !== undefined && contract.type !== target.layer)
       errors.push(
-        `New canonical target id already exists in the index: ${id}.`
+        `Implemented canonical target type must match ${target.layer}: ${target.targetContractId}.`
       );
+  }
+
+  if (CORE_CONTRACT_GAP_PROGRESS.partialBatchIds.length > 0)
+    errors.push('Canonical target batches must not be partially implemented.');
+  if (!CORE_CONTRACT_GAP_PROGRESS.currentIndexMatchesCompletedTargets)
+    errors.push(
+      'Current index count must equal the inventory baseline plus completed canonical targets.'
+    );
 
   if (CORE_DOMAIN_CONTRACT_TARGETS.length !== CORE_DOMAIN_REGISTRY.length * 3)
     errors.push(

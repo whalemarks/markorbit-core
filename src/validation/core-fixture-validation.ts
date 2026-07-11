@@ -1,4 +1,4 @@
-import { CORE_CONTRACT_INDEX, validateCoreContractIndex, validateCoreDomainContractSkeletons, validateCoreObjectContractSkeletons, validateCoreServiceContractSkeletons, validateCoreApiContractSkeletons, validateCoreEventCatalogSkeletons, validateCoreWorkflowCatalogSkeletons, validateCorePermissionContractSkeletons, validateCorePolicyContractSkeletons, validateCoreAiGovernanceContractSkeletons, type CoreApiContract, type CoreDomainContract, type CoreObjectContract, type CoreServiceContract, type CoreEventCatalogEntry, type CoreWorkflowCatalogEntry, type CorePermissionContract, type CorePolicyContract, type CoreAiGovernanceContract } from '../contracts/index.ts';
+import { CORE_CONTRACT_INDEX, validateCoreContractIndex, validateCoreDomainContractSkeletons, validateCoreObjectContractSkeletons, validateCoreServiceContractSkeletons, validateCoreApiContractSkeletons, validateCoreEventCatalogSkeletons, validateCoreWorkflowCatalogSkeletons, validateCorePermissionContractSkeletons, validateCorePolicyContractSkeletons, validateCoreAiGovernanceContractSkeletons, validateCoreCommonContractSkeletons, validateCoreTestContractSkeletons, type CoreApiContract, type CoreDomainContract, type CoreObjectContract, type CoreServiceContract, type CoreEventCatalogEntry, type CoreWorkflowCatalogEntry, type CorePermissionContract, type CorePolicyContract, type CoreAiGovernanceContract, type CoreCommonContract, type CoreTestContract } from '../contracts/index.ts';
 import { validateCoreContractCoverageBaseline } from '../contract-coverage/index.ts';
 import { validateCoreContractGapInventory } from '../contract-coverage/index.ts';
 import { CORE_DOMAIN_REGISTRY } from '../domains/index.ts';
@@ -230,6 +230,24 @@ export function validateCoreAiGovernanceContractSkeletonsFixture(fixture: unknow
   if (nonArray) return nonArray;
   const issues = validateCoreAiGovernanceContractSkeletons(fixture as readonly CoreAiGovernanceContract[]).map((message) =>
     error('core.ai_governance_contract_skeletons.invalid_contract', message, 'ai_governance_contract_skeletons')
+  );
+  return createCoreValidationResult(issues);
+}
+
+export function validateCoreCommonContractSkeletonsFixture(fixture: unknown): CoreValidationResult {
+  const nonArray = nonArrayResult(fixture, 'common_contract_skeletons');
+  if (nonArray) return nonArray;
+  const issues = validateCoreCommonContractSkeletons(fixture as readonly CoreCommonContract[]).map((message) =>
+    error('core.common_contract_skeletons.invalid_contract', message, 'common_contract_skeletons')
+  );
+  return createCoreValidationResult(issues);
+}
+
+export function validateCoreTestContractSkeletonsFixture(fixture: unknown): CoreValidationResult {
+  const nonArray = nonArrayResult(fixture, 'test_contract_skeletons');
+  if (nonArray) return nonArray;
+  const issues = validateCoreTestContractSkeletons(fixture as readonly CoreTestContract[]).map((message) =>
+    error('core.test_contract_skeletons.invalid_contract', message, 'test_contract_skeletons')
   );
   return createCoreValidationResult(issues);
 }

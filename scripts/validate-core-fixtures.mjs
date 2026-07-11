@@ -17,6 +17,8 @@ import {
   validateCorePermissionContractSkeletonsFixture,
   validateCorePolicyContractSkeletonsFixture,
   validateCoreAiGovernanceContractSkeletonsFixture,
+  validateCoreCommonContractSkeletonsFixture,
+  validateCoreTestContractSkeletonsFixture,
   validateCoreContractCoverageBaselineFixture,
   validateCoreContractGapInventoryFixture
 } from '../src/validation/index.ts';
@@ -37,6 +39,8 @@ const validators = {
   permission_contract_skeletons: validateCorePermissionContractSkeletonsFixture,
   policy_contract_skeletons: validateCorePolicyContractSkeletonsFixture,
   ai_governance_contract_skeletons: validateCoreAiGovernanceContractSkeletonsFixture,
+  common_contract_skeletons: validateCoreCommonContractSkeletonsFixture,
+  test_contract_skeletons: validateCoreTestContractSkeletonsFixture,
   contract_coverage_baseline: validateCoreContractCoverageBaselineFixture,
   contract_gap_inventory: validateCoreContractGapInventoryFixture
 };

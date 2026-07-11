@@ -1500,5 +1500,243 @@
     "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_AI_GOVERNANCE_CONTRACT_SKELETONS",
     "createdAt": "2026-07-10T00:00:00.000Z"
+  },
+  {
+    "id": "core-common-references-contract",
+    "type": "common",
+    "name": "Core References Contract Skeleton",
+    "description": "Canonical metadata skeleton for public and cross-domain reference boundaries.",
+    "status": "active",
+    "scope": {
+      "notes": "references"
+    },
+    "version": 1,
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "source": "CORE_COMMON_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-11T00:00:00.000Z"
+  },
+  {
+    "id": "core-common-errors-contract",
+    "type": "common",
+    "name": "Core Errors Contract Skeleton",
+    "description": "Canonical metadata skeleton for controlled and safe Core error boundaries.",
+    "status": "active",
+    "scope": {
+      "notes": "errors"
+    },
+    "version": 1,
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "source": "CORE_COMMON_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-11T00:00:00.000Z"
+  },
+  {
+    "id": "core-common-pagination-contract",
+    "type": "common",
+    "name": "Core Pagination Contract Skeleton",
+    "description": "Canonical metadata skeleton for policy-aware list pagination boundaries.",
+    "status": "active",
+    "scope": {
+      "notes": "pagination"
+    },
+    "version": 1,
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "source": "CORE_COMMON_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-11T00:00:00.000Z"
+  },
+  {
+    "id": "core-common-audit-context-contract",
+    "type": "common",
+    "name": "Core Audit Context Contract Skeleton",
+    "description": "Canonical metadata skeleton for correlation and event-trace context boundaries.",
+    "status": "active",
+    "scope": {
+      "notes": "audit-context"
+    },
+    "version": 1,
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "source": "CORE_COMMON_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-11T00:00:00.000Z"
+  },
+  {
+    "id": "core-common-ai-context-contract",
+    "type": "common",
+    "name": "Core AI Context Contract Skeleton",
+    "description": "Canonical metadata skeleton for bounded AI assistance context.",
+    "status": "active",
+    "scope": {
+      "notes": "ai-context"
+    },
+    "version": 1,
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "source": "CORE_COMMON_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-11T00:00:00.000Z"
+  },
+  {
+    "id": "core-common-human-review-contract",
+    "type": "common",
+    "name": "Core Human Review Contract Skeleton",
+    "description": "Canonical metadata skeleton for accountable human-review boundaries.",
+    "status": "active",
+    "scope": {
+      "notes": "human-review"
+    },
+    "version": 1,
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "source": "CORE_COMMON_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-11T00:00:00.000Z"
+  },
+  {
+    "id": "core-common-permission-context-contract",
+    "type": "common",
+    "name": "Core Permission Context Contract Skeleton",
+    "description": "Canonical metadata skeleton for permission-decision context boundaries.",
+    "status": "active",
+    "scope": {
+      "notes": "permission-context"
+    },
+    "version": 1,
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "source": "CORE_COMMON_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-11T00:00:00.000Z"
+  },
+  {
+    "id": "core-common-policy-context-contract",
+    "type": "common",
+    "name": "Core Policy Context Contract Skeleton",
+    "description": "Canonical metadata skeleton for policy restriction context boundaries.",
+    "status": "active",
+    "scope": {
+      "notes": "policy-context"
+    },
+    "version": 1,
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "source": "CORE_COMMON_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-11T00:00:00.000Z"
+  },
+  {
+    "id": "core-common-idempotency-contract",
+    "type": "common",
+    "name": "Core Idempotency Contract Skeleton",
+    "description": "Canonical metadata skeleton for duplicate-safe operation boundaries.",
+    "status": "active",
+    "scope": {
+      "notes": "idempotency"
+    },
+    "version": 1,
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "source": "CORE_COMMON_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-11T00:00:00.000Z"
+  },
+  {
+    "id": "core-common-versioning-contract",
+    "type": "common",
+    "name": "Core Versioning Contract Skeleton",
+    "description": "Canonical metadata skeleton for compatibility and version-trace boundaries.",
+    "status": "active",
+    "scope": {
+      "notes": "versioning"
+    },
+    "version": 1,
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "source": "CORE_COMMON_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-11T00:00:00.000Z"
+  },
+  {
+    "id": "core-test-common-contract-tests-contract",
+    "type": "test",
+    "name": "Core Common Contract Test Skeleton",
+    "description": "Canonical metadata skeleton for Common Contract acceptance-test boundaries.",
+    "status": "active",
+    "scope": {
+      "notes": "common-contract-tests"
+    },
+    "version": 1,
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "source": "CORE_TEST_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-11T00:00:00.000Z"
+  },
+  {
+    "id": "core-test-api-contract-tests-contract",
+    "type": "test",
+    "name": "Core API Contract Test Skeleton",
+    "description": "Canonical metadata skeleton for API Contract acceptance-test boundaries.",
+    "status": "active",
+    "scope": {
+      "notes": "api-contract-tests"
+    },
+    "version": 1,
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "source": "CORE_TEST_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-11T00:00:00.000Z"
+  },
+  {
+    "id": "core-test-workflow-contract-tests-contract",
+    "type": "test",
+    "name": "Core Workflow Contract Test Skeleton",
+    "description": "Canonical metadata skeleton for Workflow Contract acceptance-test boundaries.",
+    "status": "active",
+    "scope": {
+      "notes": "workflow-contract-tests"
+    },
+    "version": 1,
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "source": "CORE_TEST_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-11T00:00:00.000Z"
+  },
+  {
+    "id": "core-test-agent-boundary-tests-contract",
+    "type": "test",
+    "name": "Core Agent Boundary Test Skeleton",
+    "description": "Canonical metadata skeleton for governed Agent boundary tests.",
+    "status": "active",
+    "scope": {
+      "notes": "agent-boundary-tests"
+    },
+    "version": 1,
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "source": "CORE_TEST_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-11T00:00:00.000Z"
+  },
+  {
+    "id": "core-test-permission-policy-tests-contract",
+    "type": "test",
+    "name": "Core Permission Policy Test Skeleton",
+    "description": "Canonical metadata skeleton for Permission and Policy acceptance-test boundaries.",
+    "status": "active",
+    "scope": {
+      "notes": "permission-policy-tests"
+    },
+    "version": 1,
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "source": "CORE_TEST_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-11T00:00:00.000Z"
+  },
+  {
+    "id": "core-test-idempotency-event-tests-contract",
+    "type": "test",
+    "name": "Core Idempotency Event Test Skeleton",
+    "description": "Canonical metadata skeleton for duplicate-safety and event-trace tests.",
+    "status": "active",
+    "scope": {
+      "notes": "idempotency-event-tests"
+    },
+    "version": 1,
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "source": "CORE_TEST_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-11T00:00:00.000Z"
+  },
+  {
+    "id": "core-test-error-versioning-tests-contract",
+    "type": "test",
+    "name": "Core Error Versioning Test Skeleton",
+    "description": "Canonical metadata skeleton for safe-error and compatibility tests.",
+    "status": "active",
+    "scope": {
+      "notes": "error-versioning-tests"
+    },
+    "version": 1,
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "source": "CORE_TEST_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-11T00:00:00.000Z"
   }
 ]

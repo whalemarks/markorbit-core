@@ -230,6 +230,11 @@ const newDomainTargets = CORE_DOMAIN_CONTRACT_TARGETS.filter(
   (target) => target.disposition === 'add_canonical_skeleton'
 );
 
+const allNewTargets = [
+  ...newDomainTargets,
+  ...CORE_CANONICAL_LAYER_TARGETS
+] as const;
+
 function batchTargetCount(batchId: string): number {
   return (
     newDomainTargets.filter((target) => target.implementationBatch === batchId)
@@ -283,6 +288,57 @@ export const CORE_CONTRACT_GAP_IMPLEMENTATION_BATCHES = [
   }
 ] as const satisfies readonly CoreGapImplementationBatch[];
 
+const inventoryBaselineIndexedContractCount = 106;
+const currentContractIds = new Set<string>(
+  CORE_CONTRACT_INDEX.map((contract) => contract.id)
+);
+
+const batchProgress = CORE_CONTRACT_GAP_IMPLEMENTATION_BATCHES.map((batch) => {
+  const targets = allNewTargets.filter(
+    (target) => target.implementationBatch === batch.id
+  );
+  const completedTargetCount = targets.filter((target) =>
+    currentContractIds.has(target.targetContractId)
+  ).length;
+  return {
+    id: batch.id,
+    targetCount: targets.length,
+    completedTargetCount,
+    remainingTargetCount: targets.length - completedTargetCount,
+    state:
+      completedTargetCount === 0
+        ? 'pending'
+        : completedTargetCount === targets.length
+          ? 'completed'
+          : 'partial'
+  } as const;
+});
+
+const completedCanonicalTargetCount = allNewTargets.filter((target) =>
+  currentContractIds.has(target.targetContractId)
+).length;
+
+export const CORE_CONTRACT_GAP_PROGRESS = {
+  inventoryBaselineIndexedContractCount,
+  currentIndexedContractCount: CORE_CONTRACT_INDEX.length,
+  totalCanonicalTargetCount: allNewTargets.length,
+  completedCanonicalTargetCount,
+  remainingCanonicalTargetCount:
+    allNewTargets.length - completedCanonicalTargetCount,
+  projectedIndexedContractCount:
+    inventoryBaselineIndexedContractCount + allNewTargets.length,
+  currentIndexMatchesCompletedTargets:
+    CORE_CONTRACT_INDEX.length ===
+    inventoryBaselineIndexedContractCount + completedCanonicalTargetCount,
+  completedBatchIds: batchProgress
+    .filter((batch) => batch.state === 'completed')
+    .map((batch) => batch.id),
+  partialBatchIds: batchProgress
+    .filter((batch) => batch.state === 'partial')
+    .map((batch) => batch.id),
+  batches: batchProgress
+} as const;
+
 export const CORE_CONTRACT_GAP_INVENTORY = {
   id: 'core-book2-contract-gap-inventory-v0-1',
   version: '0.1.0',
@@ -323,7 +379,7 @@ export const CORE_CONTRACT_GAP_INVENTORY = {
   ],
   implementationBatches: CORE_CONTRACT_GAP_IMPLEMENTATION_BATCHES,
   summary: {
-    currentIndexedContractCount: CORE_CONTRACT_INDEX.length,
+    currentIndexedContractCount: inventoryBaselineIndexedContractCount,
     domainTargetCount: CORE_DOMAIN_CONTRACT_TARGETS.length,
     mappedExistingDomainTargetCount: CORE_DOMAIN_CONTRACT_TARGETS.filter(
       (target) => target.disposition === 'map_existing_skeleton'
@@ -347,12 +403,9 @@ export const CORE_CONTRACT_GAP_INVENTORY = {
     newTestTargetCount: CORE_CANONICAL_LAYER_TARGETS.filter(
       (target) => target.layer === 'test'
     ).length,
-    totalNewCanonicalTargetCount:
-      newDomainTargets.length + CORE_CANONICAL_LAYER_TARGETS.length,
+    totalNewCanonicalTargetCount: allNewTargets.length,
     projectedIndexedContractCount:
-      CORE_CONTRACT_INDEX.length +
-      newDomainTargets.length +
-      CORE_CANONICAL_LAYER_TARGETS.length,
+      inventoryBaselineIndexedContractCount + allNewTargets.length,
     implementationBatchCount: CORE_CONTRACT_GAP_IMPLEMENTATION_BATCHES.length,
     currentIndexChangedByThisTask: false
   }

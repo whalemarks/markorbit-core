@@ -7,8 +7,8 @@
 - Canonical path: `books/book-02-core-specification/`
 - Primary sources: `core-specs/TRACEABILITY.md`, `core-specs/implementation/mvp-cut-v0.1.md`, and `core-specs/validation/traceability-validation.md`
 - Baseline version: `0.1.0`
-- Contract Index entries: 106
-- Required fixtures after this task: 16
+- Current Contract Index entries: 123
+- Current required fixtures: 19
 
 ## Purpose
 
@@ -17,16 +17,16 @@ This baseline separates two different meanings of coverage:
 1. **Structural family coverage** — whether the existing indexed skeleton families have required fixtures, validators, and collection tests.
 2. **Book 2 Domain-layer coverage** — whether each of the 26 Core Domains has mapped Domain, Object, Service, API, Event, Workflow, and Test contract coverage.
 
-The first is complete for the current 106-entry index. The second is not. A validated skeleton means only that a structural placeholder exists and passes its collection checks; it does not mean that Book 2 behavior, runtime enforcement, or production readiness exists.
+The first is complete for the current 123-entry index. The second is not. A validated skeleton means only that a structural placeholder exists and passes its collection checks; it does not mean that Book 2 behavior, runtime enforcement, or production readiness exists.
 
-Canonical source alignment for Book 2 Common, API, Workflow, and Test Contracts is explicitly not assessed in CORE-TASK-018. Current skeleton names and Domain mappings are measured as they exist; they are not silently treated as replacements for canonical Book 2 contract files.
+CORE-TASK-020 adds canonical source-aligned Common and Test Contract skeleton families. Canonical Domain API and Workflow Contract source alignment remains pending in later governed batches. Current Domain mappings are not silently treated as replacements for those future canonical contracts.
 
 ## Baseline result
 
 | Measure                                                     |       Result |
 | ----------------------------------------------------------- | -----------: |
-| Structurally covered contract families                      |      10 / 10 |
-| Indexed contracts under structural assurance                |    106 / 106 |
+| Structurally covered contract families                      |      12 / 12 |
+| Indexed contracts under structural assurance                |    123 / 123 |
 | Domain skeleton coverage                                    |      26 / 26 |
 | Object skeleton Domain coverage                             |      12 / 26 |
 | Service skeleton Domain coverage                            |      10 / 26 |
@@ -37,7 +37,8 @@ Canonical source alignment for Book 2 Common, API, Workflow, and Test Contracts 
 | Missing required layer slots                                |           52 |
 | Domains with collection-level structural validation         |      26 / 26 |
 | Domains with contract behavior tests                        |       0 / 26 |
-| Canonical Book 2 contract source alignment                  | Not assessed |
+| Canonical Common and Test source alignment                  |      17 / 17 |
+| Canonical Domain API and Workflow source alignment          |      Pending |
 
 Four additional API skeletons are global Core APIs without a Domain mapping. They remain structurally covered but do not satisfy Book 2's requirement for 26 Domain API Contracts.
 
@@ -82,4 +83,4 @@ This task does not add full contracts, runtime behavior, service execution, API 
 
 ## Governed follow-on
 
-CORE-TASK-019 locks canonical Common, API, Workflow, and Test Contract targets and the Object, Service, and API gaps for all 26 Domains. It converts the baseline into 81 controlled additions across CORE-TASK-020 through CORE-TASK-024. The first implementation batch is CORE-TASK-020 — Common and Test Contract Foundations.
+CORE-TASK-019 locks canonical Common, API, Workflow, and Test Contract targets and the Object, Service, and API gaps for all 26 Domains. It converts the baseline into 81 controlled additions across CORE-TASK-020 through CORE-TASK-024. CORE-TASK-020 completed the first 17 targets. The next batch is CORE-TASK-021 — Must-Build Object and Service Gaps.

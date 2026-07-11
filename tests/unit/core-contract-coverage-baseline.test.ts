@@ -18,18 +18,18 @@ describe('Core Contract Coverage Baseline', () => {
     );
   });
 
-  it('covers all 106 indexed contracts across 10 structural families', () => {
-    assert.equal(CORE_CONTRACT_FAMILY_COVERAGE.length, 10);
+  it('covers all 123 indexed contracts across 12 structural families', () => {
+    assert.equal(CORE_CONTRACT_FAMILY_COVERAGE.length, 12);
     assert.equal(
       CORE_CONTRACT_FAMILY_COVERAGE.reduce(
         (total, family) => total + family.indexedCount,
         0
       ),
-      106
+      123
     );
     assert.equal(
       CORE_CONTRACT_COVERAGE_BASELINE.summary.indexedContractCount,
-      106
+      123
     );
   });
 

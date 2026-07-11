@@ -9,7 +9,9 @@ export const CORE_CONTRACT_TYPES = {
   validation: 'validation',
   permission: 'permission',
   policy: 'policy',
-  ai_governance: 'ai_governance'
+  ai_governance: 'ai_governance',
+  common: 'common',
+  test: 'test'
 } as const;
 
 export type CoreContractType = (typeof CORE_CONTRACT_TYPES)[keyof typeof CORE_CONTRACT_TYPES];

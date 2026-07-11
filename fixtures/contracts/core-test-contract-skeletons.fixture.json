@@ -1,0 +1,278 @@
+[
+  {
+    "id": "core-test-common-contract-tests-contract",
+    "testType": "common-contract-tests",
+    "name": "Core Common Contract Test Skeleton",
+    "description": "Canonical metadata skeleton for Common Contract acceptance-test boundaries.",
+    "status": "active",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "sourcePath": "books/book-02-core-specification/core-specs/contracts/tests/common-contract-tests.md",
+    "purpose": "Defines acceptance-level test subjects for shared Common Contract primitives, safe failures, negative cases, and cross-contract consistency without implementing those tests.",
+    "testSubjects": [
+      "References, errors, pagination, audit context, AI context, and human review.",
+      "Permission context, policy context, idempotency, and versioning.",
+      "Cross-contract consistency, safe failure, and negative-case expectations."
+    ],
+    "requiredFixtureFamilies": [
+      "references",
+      "errors",
+      "permissions",
+      "policies",
+      "ai",
+      "human-review",
+      "idempotency",
+      "events",
+      "versions"
+    ],
+    "nonGoals": [
+      "Executable test cases, assertions, runners, setup, teardown, mocks, generated fixtures, coverage execution, or production-like data.",
+      "Implementation or proof of Common, API, Workflow, Event, Agent, Permission, Policy, service, or runtime behavior.",
+      "Product UI, external integration, production readiness, Book 3 execution, or replacement of the canonical Book 2 Test Contract.",
+      "Primitive behavior verification, hidden ad hoc fixtures, or weakening fail-closed and non-disclosure boundaries."
+    ],
+    "implementationDepth": "validated_skeleton",
+    "createdAt": "2026-07-11T00:00:00.000Z",
+    "metadata": {
+      "specificationRepository": "whalemarks/markorbit-publication",
+      "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+      "specificationPath": "books/book-02-core-specification/",
+      "implementationTask": "CORE-TASK-020"
+    }
+  },
+  {
+    "id": "core-test-api-contract-tests-contract",
+    "testType": "api-contract-tests",
+    "name": "Core API Contract Test Skeleton",
+    "description": "Canonical metadata skeleton for API Contract acceptance-test boundaries.",
+    "status": "active",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "sourcePath": "books/book-02-core-specification/core-specs/contracts/tests/api-contract-tests.md",
+    "purpose": "Defines acceptance-level API contract test subjects for request, response, references, errors, permissions, policies, idempotency, versioning, and service ownership without issuing requests.",
+    "testSubjects": [
+      "API request, response, error, pagination, and reference contract boundaries.",
+      "Permission, policy, idempotency, versioning, and non-disclosure behavior.",
+      "API-to-service ownership and no-direct-event-emission boundaries."
+    ],
+    "requiredFixtureFamilies": [
+      "api-requests",
+      "api-responses",
+      "references",
+      "errors",
+      "permissions",
+      "policies",
+      "idempotency",
+      "versions"
+    ],
+    "nonGoals": [
+      "Executable test cases, assertions, runners, setup, teardown, mocks, generated fixtures, coverage execution, or production-like data.",
+      "Implementation or proof of Common, API, Workflow, Event, Agent, Permission, Policy, service, or runtime behavior.",
+      "Product UI, external integration, production readiness, Book 3 execution, or replacement of the canonical Book 2 Test Contract.",
+      "HTTP servers, routes, handlers, network requests, service calls, DTO execution, or API runtime assertions."
+    ],
+    "implementationDepth": "validated_skeleton",
+    "createdAt": "2026-07-11T00:00:00.000Z",
+    "metadata": {
+      "specificationRepository": "whalemarks/markorbit-publication",
+      "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+      "specificationPath": "books/book-02-core-specification/",
+      "implementationTask": "CORE-TASK-020"
+    }
+  },
+  {
+    "id": "core-test-workflow-contract-tests-contract",
+    "testType": "workflow-contract-tests",
+    "name": "Core Workflow Contract Test Skeleton",
+    "description": "Canonical metadata skeleton for Workflow Contract acceptance-test boundaries.",
+    "status": "active",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "sourcePath": "books/book-02-core-specification/core-specs/contracts/tests/workflow-contract-tests.md",
+    "purpose": "Defines acceptance-level workflow contract test subjects for preview, apply, validation, task, event, review, permission, policy, idempotency, and versioning boundaries without executing workflows.",
+    "testSubjects": [
+      "Workflow definition, preview, apply, validation, and state-transition boundaries.",
+      "Task, event, human-review, permission, policy, and idempotency interactions.",
+      "Version preservation, safe failure, and non-runtime contract expectations."
+    ],
+    "requiredFixtureFamilies": [
+      "workflows",
+      "tasks",
+      "events",
+      "human-review",
+      "permissions",
+      "policies",
+      "idempotency",
+      "versions"
+    ],
+    "nonGoals": [
+      "Executable test cases, assertions, runners, setup, teardown, mocks, generated fixtures, coverage execution, or production-like data.",
+      "Implementation or proof of Common, API, Workflow, Event, Agent, Permission, Policy, service, or runtime behavior.",
+      "Product UI, external integration, production readiness, Book 3 execution, or replacement of the canonical Book 2 Test Contract.",
+      "Workflow engine execution, transition functions, task mutation, event emission, or apply-side effects."
+    ],
+    "implementationDepth": "validated_skeleton",
+    "createdAt": "2026-07-11T00:00:00.000Z",
+    "metadata": {
+      "specificationRepository": "whalemarks/markorbit-publication",
+      "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+      "specificationPath": "books/book-02-core-specification/",
+      "implementationTask": "CORE-TASK-020"
+    }
+  },
+  {
+    "id": "core-test-agent-boundary-tests-contract",
+    "testType": "agent-boundary-tests",
+    "name": "Core Agent Boundary Test Skeleton",
+    "description": "Canonical metadata skeleton for governed Agent boundary tests.",
+    "status": "active",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "sourcePath": "books/book-02-core-specification/core-specs/contracts/tests/agent-boundary-tests.md",
+    "purpose": "Defines acceptance-level Agent boundary test subjects for capability, context, source, permission, policy, review, forbidden action, trace, error, and version boundaries without invoking agents.",
+    "testSubjects": [
+      "Agent contract, capability, AI context, and authorized source boundaries.",
+      "Permission, policy, human-review, forbidden-action, and downstream-service boundaries.",
+      "Idempotency, event trace, safe error, and version preservation expectations."
+    ],
+    "requiredFixtureFamilies": [
+      "agents",
+      "ai",
+      "permissions",
+      "policies",
+      "human-review",
+      "idempotency",
+      "events",
+      "versions"
+    ],
+    "nonGoals": [
+      "Executable test cases, assertions, runners, setup, teardown, mocks, generated fixtures, coverage execution, or production-like data.",
+      "Implementation or proof of Common, API, Workflow, Event, Agent, Permission, Policy, service, or runtime behavior.",
+      "Product UI, external integration, production readiness, Book 3 execution, or replacement of the canonical Book 2 Test Contract.",
+      "Model or prompt execution, agent orchestration, tool calls, autonomous authority, professional judgment, or downstream mutation."
+    ],
+    "implementationDepth": "validated_skeleton",
+    "createdAt": "2026-07-11T00:00:00.000Z",
+    "metadata": {
+      "specificationRepository": "whalemarks/markorbit-publication",
+      "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+      "specificationPath": "books/book-02-core-specification/",
+      "implementationTask": "CORE-TASK-020"
+    }
+  },
+  {
+    "id": "core-test-permission-policy-tests-contract",
+    "testType": "permission-policy-tests",
+    "name": "Core Permission Policy Test Skeleton",
+    "description": "Canonical metadata skeleton for Permission and Policy acceptance-test boundaries.",
+    "status": "active",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "sourcePath": "books/book-02-core-specification/core-specs/contracts/tests/permission-policy-tests.md",
+    "purpose": "Defines acceptance-level test subjects for permission and policy matrices, contexts, redaction, non-disclosure, cross-organization limits, review, visibility, errors, and versioning without evaluating decisions.",
+    "testSubjects": [
+      "Permission and policy matrix, context, fail-closed, and precedence boundaries.",
+      "Redaction, non-disclosure, cross-organization, and human-review interactions.",
+      "API, workflow, agent, event visibility, safe error, and version expectations."
+    ],
+    "requiredFixtureFamilies": [
+      "permissions",
+      "policies",
+      "organizations",
+      "human-review",
+      "apis",
+      "workflows",
+      "agents",
+      "events",
+      "versions"
+    ],
+    "nonGoals": [
+      "Executable test cases, assertions, runners, setup, teardown, mocks, generated fixtures, coverage execution, or production-like data.",
+      "Implementation or proof of Common, API, Workflow, Event, Agent, Permission, Policy, service, or runtime behavior.",
+      "Product UI, external integration, production readiness, Book 3 execution, or replacement of the canonical Book 2 Test Contract.",
+      "RBAC, policy engines, rule evaluation, authorization decisions, redaction execution, or protected-action approval."
+    ],
+    "implementationDepth": "validated_skeleton",
+    "createdAt": "2026-07-11T00:00:00.000Z",
+    "metadata": {
+      "specificationRepository": "whalemarks/markorbit-publication",
+      "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+      "specificationPath": "books/book-02-core-specification/",
+      "implementationTask": "CORE-TASK-020"
+    }
+  },
+  {
+    "id": "core-test-idempotency-event-tests-contract",
+    "testType": "idempotency-event-tests",
+    "name": "Core Idempotency Event Test Skeleton",
+    "description": "Canonical metadata skeleton for duplicate-safety and event-trace tests.",
+    "status": "active",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "sourcePath": "books/book-02-core-specification/core-specs/contracts/tests/idempotency-event-tests.md",
+    "purpose": "Defines acceptance-level test subjects for idempotency keys, replay, conflict, duplicate prevention, event ownership, trace, visibility, errors, and versioning without performing side effects.",
+    "testSubjects": [
+      "Idempotency key, semantic replay, conflict, and duplicate-effect boundaries.",
+      "Event ownership, references, trace, visibility, and non-duplication expectations.",
+      "Workflow apply, agent-prepared action, permission, policy, error, and version interactions."
+    ],
+    "requiredFixtureFamilies": [
+      "idempotency",
+      "events",
+      "audit-context",
+      "workflows",
+      "apis",
+      "agents",
+      "permissions",
+      "policies",
+      "versions"
+    ],
+    "nonGoals": [
+      "Executable test cases, assertions, runners, setup, teardown, mocks, generated fixtures, coverage execution, or production-like data.",
+      "Implementation or proof of Common, API, Workflow, Event, Agent, Permission, Policy, service, or runtime behavior.",
+      "Product UI, external integration, production readiness, Book 3 execution, or replacement of the canonical Book 2 Test Contract.",
+      "Idempotency stores, fingerprints, replay execution, object creation, task creation, event emission, or side-effect verification."
+    ],
+    "implementationDepth": "validated_skeleton",
+    "createdAt": "2026-07-11T00:00:00.000Z",
+    "metadata": {
+      "specificationRepository": "whalemarks/markorbit-publication",
+      "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+      "specificationPath": "books/book-02-core-specification/",
+      "implementationTask": "CORE-TASK-020"
+    }
+  },
+  {
+    "id": "core-test-error-versioning-tests-contract",
+    "testType": "error-versioning-tests",
+    "name": "Core Error Versioning Test Skeleton",
+    "description": "Canonical metadata skeleton for safe-error and compatibility tests.",
+    "status": "active",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "sourcePath": "books/book-02-core-specification/core-specs/contracts/tests/error-versioning-tests.md",
+    "purpose": "Defines acceptance-level test subjects for safe errors, controlled codes, leakage prevention, supported and unsupported versions, breaking changes, history, and deprecation without throwing errors or migrating data.",
+    "testSubjects": [
+      "Safe error shape, controlled code, correlation, retryability, and non-disclosure boundaries.",
+      "Supported, missing, unsupported, mismatched, breaking, and deprecated version expectations.",
+      "Historical API, workflow, event, and Agent version trace preservation."
+    ],
+    "requiredFixtureFamilies": [
+      "errors",
+      "versions",
+      "permissions",
+      "policies",
+      "apis",
+      "workflows",
+      "events",
+      "agents"
+    ],
+    "nonGoals": [
+      "Executable test cases, assertions, runners, setup, teardown, mocks, generated fixtures, coverage execution, or production-like data.",
+      "Implementation or proof of Common, API, Workflow, Event, Agent, Permission, Policy, service, or runtime behavior.",
+      "Product UI, external integration, production readiness, Book 3 execution, or replacement of the canonical Book 2 Test Contract.",
+      "Runtime exceptions, stack inspection, data migration, compatibility adapters, version negotiation, or historical record mutation."
+    ],
+    "implementationDepth": "validated_skeleton",
+    "createdAt": "2026-07-11T00:00:00.000Z",
+    "metadata": {
+      "specificationRepository": "whalemarks/markorbit-publication",
+      "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+      "specificationPath": "books/book-02-core-specification/",
+      "implementationTask": "CORE-TASK-020"
+    }
+  }
+]

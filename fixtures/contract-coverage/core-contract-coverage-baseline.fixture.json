@@ -114,6 +114,24 @@
       "fixtureCoverage": "required",
       "validatorCoverage": "present",
       "testCoverage": "collection"
+    },
+    {
+      "family": "common",
+      "source": "CORE_COMMON_CONTRACT_SKELETONS",
+      "indexedCount": 10,
+      "fixtureIds": ["core-common-contract-skeletons"],
+      "fixtureCoverage": "required",
+      "validatorCoverage": "present",
+      "testCoverage": "collection"
+    },
+    {
+      "family": "test",
+      "source": "CORE_TEST_CONTRACT_SKELETONS",
+      "indexedCount": 7,
+      "fixtureIds": ["core-test-contract-skeletons"],
+      "fixtureCoverage": "required",
+      "validatorCoverage": "present",
+      "testCoverage": "collection"
     }
   ],
   "domains": [
@@ -1013,9 +1031,9 @@
     }
   ],
   "summary": {
-    "indexedContractCount": 106,
-    "structurallyCoveredContractFamilyCount": 10,
-    "totalContractFamilyCount": 10,
+    "indexedContractCount": 123,
+    "structurallyCoveredContractFamilyCount": 12,
+    "totalContractFamilyCount": 12,
     "totalDomainCount": 26,
     "mustBuildNowDomainCount": 18,
     "stubNowDomainCount": 8,

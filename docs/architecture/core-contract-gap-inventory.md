@@ -6,7 +6,10 @@
 - Authority: `whalemarks/markorbit-publication@3349ecb8955021a8714d023348f8b24f941eb98f`
 - Canonical path: `books/book-02-core-specification/`
 - Inventory version: `0.1.0`
-- Current Contract Index: 106 entries
+- Inventory baseline Contract Index: 106 entries
+- Current Contract Index: 123 entries
+- Completed canonical targets: 17
+- Remaining canonical targets: 64
 - Contract Index change in this task: none
 
 ## Purpose
@@ -30,7 +33,7 @@ The inventory is metadata-only. It does not add contract types, contract skeleto
 | Total new canonical skeleton targets                          |    81 |
 | Projected Contract Index after all batches                    |   187 |
 
-Book 2 Common and Test Contracts require two future `CoreContractType` additions: `common` and `test`. CORE-TASK-019 locks that requirement but does not change the type registry.
+Book 2 Common and Test Contracts required two `CoreContractType` additions: `common` and `test`. CORE-TASK-019 locked that requirement, and CORE-TASK-020 has now satisfied it together with all 17 Common/Test targets.
 
 ## Existing skeleton mappings
 
@@ -50,6 +53,7 @@ No current scaffold may be silently deleted, renamed, treated as canonical, or d
 - 10 Common Contracts: References, Errors, Pagination, Audit Context, AI Context, Human Review, Permission Context, Policy Context, Idempotency, and Versioning.
 - 7 Test Contracts: Common, API, Workflow, Agent Boundary, Permission/Policy, Idempotency/Event, and Error/Versioning.
 - Adds `common` and `test` contract types.
+- Status: completed; indexed and structurally validated at metadata-only skeleton depth.
 
 ### CORE-TASK-021 — Must-Build Object and Service Gaps (16)
 
@@ -79,4 +83,4 @@ These contracts must not add a workflow engine, running instances, transition ex
 
 CORE-TASK-019 is accepted when the exact 81-target inventory, 22 existing mappings, two retained scaffold families, two required contract-type additions, five batch counts, and Book 2 source paths are reproducible and drift-validated.
 
-Acceptance does not require implementing any target. The first implementation batch after this inventory is `CORE-TASK-020 — Common and Test Contract Foundations`.
+Acceptance does not require implementing every target. CORE-TASK-020 has completed the first batch; the next implementation batch is `CORE-TASK-021 — Must-Build Object and Service Gaps`.
