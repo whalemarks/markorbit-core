@@ -18,18 +18,18 @@ describe('Core Contract Coverage Baseline', () => {
     );
   });
 
-  it('covers all 123 indexed contracts across 12 structural families', () => {
+  it('covers all 139 indexed contracts across 12 structural families', () => {
     assert.equal(CORE_CONTRACT_FAMILY_COVERAGE.length, 12);
     assert.equal(
       CORE_CONTRACT_FAMILY_COVERAGE.reduce(
         (total, family) => total + family.indexedCount,
         0
       ),
-      123
+      139
     );
     assert.equal(
       CORE_CONTRACT_COVERAGE_BASELINE.summary.indexedContractCount,
-      123
+      139
     );
   });
 
@@ -61,8 +61,8 @@ describe('Core Contract Coverage Baseline', () => {
       CORE_CONTRACT_COVERAGE_BASELINE.summary.layerDomainCounts,
       {
         domain: 26,
-        object: 12,
-        service: 10,
+        object: 19,
+        service: 19,
         api: 4,
         event: 4,
         workflow: 6
@@ -84,17 +84,17 @@ describe('Core Contract Coverage Baseline', () => {
     );
   });
 
-  it('identifies one required-layer-complete domain and 52 missing slots', () => {
+  it('identifies four required-layer-complete domains and 36 missing slots', () => {
     const completeDomains = CORE_DOMAIN_CONTRACT_COVERAGE.filter(
       (entry) => entry.requiredLayerState === 'required_layers_present'
     );
     assert.deepEqual(
       completeDomains.map((entry) => entry.domainId),
-      ['policy']
+      ['policy', 'workflow-contract', 'task', 'event']
     );
     assert.equal(
       CORE_CONTRACT_COVERAGE_BASELINE.summary.missingRequiredLayerSlotCount,
-      52
+      36
     );
   });
 

@@ -33,7 +33,7 @@
 - [x] Contract coverage baseline — first acceptance result/current.
 - [x] Book 2 Contract Gap Inventory Lock — completed/current.
 - [x] Common and Test Contract Foundations — completed/current.
-- [ ] Must-Build Object and Service Gaps.
+- [x] Must-Build Object and Service Gaps — completed/current.
 - [ ] Must-Build Canonical Domain APIs.
 - [ ] Stub Domain Contract Gaps.
 - [ ] Canonical Workflow Contracts.
@@ -118,3 +118,15 @@
 - Gap inventory progress: 17 completed, 64 remaining.
 - Runtime and contract behavior: not implemented.
 - Next: CORE-TASK-021 — Must-Build Object and Service Gaps.
+
+## CORE-TASK-021 — Must-Build Object and Service Gaps
+
+- 7 missing Must Build Now Object skeletons: completed/current.
+- 9 missing Must Build Now Service skeletons: completed/current.
+- Original 22 Object/Service mappings: preserved.
+- Contract Index: 139 entries.
+- Object coverage: 19 / 26 Domains; Service coverage: 19 / 26 Domains.
+- Required-layer-complete Domains: 4 / 26.
+- Gap inventory progress: 33 completed, 48 remaining.
+- Runtime and contract behavior: not implemented.
+- Next: CORE-TASK-022 — Must-Build Canonical Domain APIs.

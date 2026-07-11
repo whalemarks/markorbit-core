@@ -1,5 +1,16 @@
 # Changelog
 
+## CORE-TASK-021 — Must-Build Object and Service Gaps
+
+- Added exactly 7 inventory-locked Object skeletons and 9 inventory-locked Service skeletons for Must Build Now Domains.
+- Preserved all 12 existing Object and 10 existing Service skeletons without renaming, duplicating, or reclassifying their locked mappings.
+- Added canonical Book 2 source path, pinned publication commit, implementation-task, and validated-skeleton metadata to the 16 new entries.
+- Expanded `CORE_CONTRACT_INDEX` from 123 to 139 entries.
+- Expanded Object Domain coverage from 12/26 to 19/26 and Service Domain coverage from 10/26 to 19/26.
+- Increased required-layer-complete Domains from 1 to 4 and reduced missing required layer slots from 52 to 36.
+- Completed 33/81 inventory targets; 48 remain.
+- Added no object schemas, executable service methods, state mutation, workflow execution, task execution, event dispatch, database behavior, Book 3 integration, or Product behavior.
+
 ## CORE-TASK-020 — Common and Test Contract Foundations
 
 - Added the `common` and `test` Core Contract types.

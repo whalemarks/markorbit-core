@@ -77,7 +77,7 @@ describe('Core Book 2 Contract Gap Inventory', () => {
     );
   });
 
-  it('locks 81 unique ids and tracks the completed 17-target first batch', () => {
+  it('locks 81 unique ids and tracks the first two completed batches', () => {
     const newTargets = [
       ...CORE_DOMAIN_CONTRACT_TARGETS.filter(
         (target) => target.disposition === 'add_canonical_skeleton'
@@ -90,9 +90,9 @@ describe('Core Book 2 Contract Gap Inventory', () => {
     );
     assert.equal(ids.length, 81);
     assert.equal(new Set(ids).size, ids.length);
-    assert.equal(ids.filter((id) => currentIds.has(id)).length, 17);
-    assert.equal(CORE_CONTRACT_GAP_PROGRESS.completedCanonicalTargetCount, 17);
-    assert.equal(CORE_CONTRACT_GAP_PROGRESS.remainingCanonicalTargetCount, 64);
+    assert.equal(ids.filter((id) => currentIds.has(id)).length, 33);
+    assert.equal(CORE_CONTRACT_GAP_PROGRESS.completedCanonicalTargetCount, 33);
+    assert.equal(CORE_CONTRACT_GAP_PROGRESS.remainingCanonicalTargetCount, 48);
   });
 
   it('sequences all additions into five controlled batches', () => {
@@ -133,7 +133,7 @@ describe('Core Book 2 Contract Gap Inventory', () => {
   });
 
   it('preserves the 106-entry inventory baseline and projects 187 after all batches', () => {
-    assert.equal(CORE_CONTRACT_INDEX.length, 123);
+    assert.equal(CORE_CONTRACT_INDEX.length, 139);
     assert.equal(
       CORE_CONTRACT_GAP_INVENTORY.summary.currentIndexedContractCount,
       106
@@ -147,7 +147,8 @@ describe('Core Book 2 Contract Gap Inventory', () => {
       187
     );
     assert.deepEqual(CORE_CONTRACT_GAP_PROGRESS.completedBatchIds, [
-      'CORE-TASK-020'
+      'CORE-TASK-020',
+      'CORE-TASK-021'
     ]);
     assert.deepEqual(CORE_CONTRACT_GAP_PROGRESS.partialBatchIds, []);
     assert.equal(

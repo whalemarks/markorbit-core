@@ -5,6 +5,9 @@ import type { CoreObjectContract } from './core-object-contract.ts';
 
 const coreBook = 'Book 02 — MarkOrbit Core Specification';
 const createdAt = '2026-07-09T00:00:00.000Z';
+const canonicalCreatedAt = '2026-07-11T00:00:00.000Z';
+const specificationPath = 'books/book-02-core-specification/';
+const objectSourceRoot = `${specificationPath}core-specs/objects/`;
 const base = 'CoreObjectDefinition';
 const requiredBaseFields = ['id', 'type', 'domainId', 'status', 'version', 'metadata'] as const;
 const nonGoals = [
@@ -29,6 +32,35 @@ const objectSkeleton = (objectType: string, domainId: CoreObjectContract['domain
   createdAt
 });
 
+const canonicalObjectSkeleton = (
+  objectType: string,
+  domainId: CoreObjectContract['domainId'],
+  name: string,
+  sourceFile: string,
+  purpose: string,
+  owns: readonly string[],
+  specificNonGoals: readonly string[]
+): CoreObjectContract => ({
+  ...objectSkeleton(
+    objectType,
+    domainId,
+    name,
+    `Canonical metadata skeleton for the ${domainId} Core Object boundary.`,
+    purpose
+  ),
+  owns,
+  nonGoals: [...nonGoals, ...specificNonGoals],
+  sourcePath: `${objectSourceRoot}${sourceFile}`,
+  implementationDepth: 'validated_skeleton',
+  createdAt: canonicalCreatedAt,
+  metadata: {
+    specificationRepository: 'whalemarks/markorbit-publication',
+    specificationCommit: '3349ecb8955021a8714d023348f8b24f941eb98f',
+    specificationPath,
+    implementationTask: 'CORE-TASK-021'
+  }
+});
+
 export const CORE_OBJECT_CONTRACT_SKELETONS = [
   objectSkeleton('user-record', 'user', 'User Record Object Contract Skeleton', 'Skeleton contract boundary for User Record Core objects.', 'Establishes the object contract placeholder for user records using only CoreObjectDefinition base fields.'),
   objectSkeleton('organization-record', 'organization', 'Organization Record Object Contract Skeleton', 'Skeleton contract boundary for Organization Record Core objects.', 'Establishes the object contract placeholder for organization records using only CoreObjectDefinition base fields.'),
@@ -41,5 +73,68 @@ export const CORE_OBJECT_CONTRACT_SKELETONS = [
   objectSkeleton('document-record', 'document', 'Document Record Object Contract Skeleton', 'Skeleton contract boundary for Document Record Core objects.', 'Establishes the object contract placeholder for document records using only CoreObjectDefinition base fields.'),
   objectSkeleton('evidence-record', 'evidence', 'Evidence Record Object Contract Skeleton', 'Skeleton contract boundary for Evidence Record Core objects.', 'Establishes the object contract placeholder for evidence records using only CoreObjectDefinition base fields.'),
   objectSkeleton('matter-record', 'matter', 'Matter Record Object Contract Skeleton', 'Skeleton contract boundary for Matter Record Core objects.', 'Establishes the object contract placeholder for matter records using only CoreObjectDefinition base fields.'),
-  objectSkeleton('communication-record', 'communication', 'Communication Record Object Contract Skeleton', 'Skeleton contract boundary for Communication Record Core objects.', 'Establishes the object contract placeholder for communication records using only CoreObjectDefinition base fields.')
+  objectSkeleton('communication-record', 'communication', 'Communication Record Object Contract Skeleton', 'Skeleton contract boundary for Communication Record Core objects.', 'Establishes the object contract placeholder for communication records using only CoreObjectDefinition base fields.'),
+  canonicalObjectSkeleton(
+    'identity-record',
+    'identity',
+    'Core Identity Object Contract Skeleton',
+    'identity.md',
+    'Defines the Core-recognized actor-reference object boundary without implementing identity resolution, authentication, permission, role, membership, or account lifecycle behavior.',
+    ['Identity actor-reference object contract boundary.'],
+    ['Authentication, account lifecycle, permission grants, role assignment, or organization membership.']
+  ),
+  canonicalObjectSkeleton(
+    'permission-record',
+    'permission',
+    'Core Permission Object Contract Skeleton',
+    'permission.md',
+    'Defines the controlled-action authorization-rule object boundary without evaluating permissions, enforcing access, or granting authority.',
+    ['Permission rule, controlled action, actor, and scope object boundary.'],
+    ['Permission evaluation, authorization middleware, role administration, policy enforcement, or protected-action execution.']
+  ),
+  canonicalObjectSkeleton(
+    'customer-record',
+    'customer',
+    'Core Customer Object Contract Skeleton',
+    'customer.md',
+    'Defines the demand-side commercial-party object boundary without implementing intake, billing, order processing, relationship management, or product behavior.',
+    ['Customer commercial-party and relationship-reference object boundary.'],
+    ['Customer intake execution, billing accounts, CRM automation, order creation, or organization identity.']
+  ),
+  canonicalObjectSkeleton(
+    'order-record',
+    'order',
+    'Core Order Object Contract Skeleton',
+    'order.md',
+    'Defines the commercial service-request object boundary without implementing payment, invoicing, pricing, professional execution, checkout, or matter lifecycle behavior.',
+    ['Order commercial service-request and related-reference object boundary.'],
+    ['Payment, invoice, pricing engine, checkout, matter execution, task work, or workflow execution.']
+  ),
+  canonicalObjectSkeleton(
+    'workflow-contract-record',
+    'workflow-contract',
+    'Core Workflow Contract Object Contract Skeleton',
+    'workflow-contract.md',
+    'Defines the governed workflow-structure object boundary without implementing transitions, guards, task creation, event emission, automation, or a workflow engine.',
+    ['Workflow Contract definition, state, transition, guard, responsibility, and reference boundary.'],
+    ['Workflow runtime, transition execution, running instances, direct mutation, task creation, or event emission.']
+  ),
+  canonicalObjectSkeleton(
+    'task-record',
+    'task',
+    'Core Task Object Contract Skeleton',
+    'task.md',
+    'Defines the actionable work-unit object boundary without implementing assignment, scheduling, completion, review, notification, or professional decisions.',
+    ['Task work-unit, assignee, status, priority, due-reference, and trace boundary.'],
+    ['Task execution, assignment automation, scheduling engine, completion decisions, review approval, or notification delivery.']
+  ),
+  canonicalObjectSkeleton(
+    'event-record',
+    'event',
+    'Core Event Object Contract Skeleton',
+    'event.md',
+    'Defines the meaningful-occurrence record boundary without implementing event emission, dispatch, consumption, persistence, sourcing, or workflow logic.',
+    ['Event occurrence, source, subject, actor, correlation, causation, and trace boundary.'],
+    ['Event bus, event sourcing, dispatch, subscription, persistence, workflow execution, or implementation logging.']
+  )
 ] as const satisfies readonly CoreObjectContract[];

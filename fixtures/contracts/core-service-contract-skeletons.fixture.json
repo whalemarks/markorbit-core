@@ -6,17 +6,11 @@
     "name": "Identity Resolution Service Contract Skeleton",
     "description": "Skeleton contract boundary for identity resolution service responsibilities.",
     "status": "active",
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "purpose": "Establishes a service contract placeholder for identity ownership boundaries without resolving identities in executable form.",
-    "owns": [
-      "Identity resolution service contract boundary."
-    ],
-    "consumes": [
-      "identity domain references"
-    ],
-    "produces": [
-      "identity boundary references"
-    ],
+    "owns": ["Identity resolution service contract boundary."],
+    "consumes": ["identity domain references"],
+    "produces": ["identity boundary references"],
     "allowedOperations": [
       "reference lookup category",
       "boundary evaluation category",
@@ -36,18 +30,14 @@
     "name": "Permission Evaluation Service Contract Skeleton",
     "description": "Skeleton contract boundary for permission evaluation service responsibilities.",
     "status": "active",
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "purpose": "Establishes a service contract placeholder for permission ownership boundaries without implementing permission decisions.",
-    "owns": [
-      "Permission evaluation service contract boundary."
-    ],
+    "owns": ["Permission evaluation service contract boundary."],
     "consumes": [
       "permission domain references",
       "identity boundary references"
     ],
-    "produces": [
-      "permission evaluation references"
-    ],
+    "produces": ["permission evaluation references"],
     "allowedOperations": [
       "reference lookup category",
       "boundary evaluation category",
@@ -67,17 +57,11 @@
     "name": "Policy Evaluation Service Contract Skeleton",
     "description": "Skeleton contract boundary for policy evaluation service responsibilities.",
     "status": "active",
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "purpose": "Establishes a service contract placeholder for policy ownership boundaries without implementing policy execution.",
-    "owns": [
-      "Policy evaluation service contract boundary."
-    ],
-    "consumes": [
-      "policy domain references"
-    ],
-    "produces": [
-      "policy evaluation references"
-    ],
+    "owns": ["Policy evaluation service contract boundary."],
+    "consumes": ["policy domain references"],
+    "produces": ["policy evaluation references"],
     "allowedOperations": [
       "reference lookup category",
       "boundary evaluation category",
@@ -97,17 +81,11 @@
     "name": "Knowledge Reference Service Contract Skeleton",
     "description": "Skeleton contract boundary for knowledge reference service responsibilities.",
     "status": "active",
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "purpose": "Establishes a service contract placeholder for knowledge reference boundaries without implementing retrieval behavior.",
-    "owns": [
-      "Knowledge reference service contract boundary."
-    ],
-    "consumes": [
-      "knowledge domain references"
-    ],
-    "produces": [
-      "knowledge reference outputs"
-    ],
+    "owns": ["Knowledge reference service contract boundary."],
+    "consumes": ["knowledge domain references"],
+    "produces": ["knowledge reference outputs"],
     "allowedOperations": [
       "reference lookup category",
       "boundary evaluation category",
@@ -127,17 +105,11 @@
     "name": "Trademark Reference Service Contract Skeleton",
     "description": "Skeleton contract boundary for trademark reference service responsibilities.",
     "status": "active",
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "purpose": "Establishes a service contract placeholder for trademark references without trademark-specific service behavior.",
-    "owns": [
-      "Trademark reference service contract boundary."
-    ],
-    "consumes": [
-      "trademark domain references"
-    ],
-    "produces": [
-      "trademark reference outputs"
-    ],
+    "owns": ["Trademark reference service contract boundary."],
+    "consumes": ["trademark domain references"],
+    "produces": ["trademark reference outputs"],
     "allowedOperations": [
       "reference lookup category",
       "boundary evaluation category",
@@ -157,17 +129,11 @@
     "name": "Jurisdiction Reference Service Contract Skeleton",
     "description": "Skeleton contract boundary for jurisdiction reference service responsibilities.",
     "status": "active",
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "purpose": "Establishes a service contract placeholder for jurisdiction references without implementing legal lookup behavior.",
-    "owns": [
-      "Jurisdiction reference service contract boundary."
-    ],
-    "consumes": [
-      "jurisdiction domain references"
-    ],
-    "produces": [
-      "jurisdiction reference outputs"
-    ],
+    "owns": ["Jurisdiction reference service contract boundary."],
+    "consumes": ["jurisdiction domain references"],
+    "produces": ["jurisdiction reference outputs"],
     "allowedOperations": [
       "reference lookup category",
       "boundary evaluation category",
@@ -187,17 +153,11 @@
     "name": "Classification Reference Service Contract Skeleton",
     "description": "Skeleton contract boundary for classification reference service responsibilities.",
     "status": "active",
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "purpose": "Establishes a service contract placeholder for classification references without implementing classification behavior.",
-    "owns": [
-      "Classification reference service contract boundary."
-    ],
-    "consumes": [
-      "classification domain references"
-    ],
-    "produces": [
-      "classification reference outputs"
-    ],
+    "owns": ["Classification reference service contract boundary."],
+    "consumes": ["classification domain references"],
+    "produces": ["classification reference outputs"],
     "allowedOperations": [
       "reference lookup category",
       "boundary evaluation category",
@@ -217,17 +177,11 @@
     "name": "Document Reference Service Contract Skeleton",
     "description": "Skeleton contract boundary for document reference service responsibilities.",
     "status": "active",
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "purpose": "Establishes a service contract placeholder for document references without document storage or rendering behavior.",
-    "owns": [
-      "Document reference service contract boundary."
-    ],
-    "consumes": [
-      "document domain references"
-    ],
-    "produces": [
-      "document reference outputs"
-    ],
+    "owns": ["Document reference service contract boundary."],
+    "consumes": ["document domain references"],
+    "produces": ["document reference outputs"],
     "allowedOperations": [
       "reference lookup category",
       "boundary evaluation category",
@@ -247,17 +201,11 @@
     "name": "Evidence Reference Service Contract Skeleton",
     "description": "Skeleton contract boundary for evidence reference service responsibilities.",
     "status": "active",
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "purpose": "Establishes a service contract placeholder for evidence references without evidence processing behavior.",
-    "owns": [
-      "Evidence reference service contract boundary."
-    ],
-    "consumes": [
-      "evidence domain references"
-    ],
-    "produces": [
-      "evidence reference outputs"
-    ],
+    "owns": ["Evidence reference service contract boundary."],
+    "consumes": ["evidence domain references"],
+    "produces": ["evidence reference outputs"],
     "allowedOperations": [
       "reference lookup category",
       "boundary evaluation category",
@@ -277,17 +225,11 @@
     "name": "Communication Reference Service Contract Skeleton",
     "description": "Skeleton contract boundary for communication reference service responsibilities.",
     "status": "active",
-    "book": "Book 02 — MarkOrbit Core Specification",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "purpose": "Establishes a service contract placeholder for communication references without communication runtime behavior.",
-    "owns": [
-      "Communication reference service contract boundary."
-    ],
-    "consumes": [
-      "communication domain references"
-    ],
-    "produces": [
-      "communication reference outputs"
-    ],
+    "owns": ["Communication reference service contract boundary."],
+    "consumes": ["communication domain references"],
+    "produces": ["communication reference outputs"],
     "allowedOperations": [
       "reference lookup category",
       "boundary evaluation category",
@@ -299,5 +241,330 @@
       "Product UI behavior, concrete business logic, or AI agent authority."
     ],
     "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-service-organization-service-contract",
+    "serviceType": "organization-service",
+    "domainId": "organization",
+    "name": "Core Organization Service Contract Skeleton",
+    "description": "Canonical metadata skeleton for the organization Core Service boundary.",
+    "status": "active",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "purpose": "Defines the Organization service ownership boundary for governed operating-context records without implementing creation, mutation, linkage, membership, permission, policy, or tenant behavior.",
+    "owns": [
+      "Organization service ownership, validation, linkage, and reference boundary."
+    ],
+    "consumes": ["organization references", "identity and user references"],
+    "produces": ["organization boundary references"],
+    "allowedOperations": [
+      "reference lookup category",
+      "boundary evaluation category",
+      "contract-owned coordination category"
+    ],
+    "nonGoals": [
+      "Executable service method definitions or service implementations.",
+      "API routes, database access, workflow runtime, or Book 03 execution behavior.",
+      "Product UI behavior, concrete business logic, or AI agent authority.",
+      "Organization mutation, tenant runtime, membership administration, permission evaluation, policy enforcement, or billing accounts."
+    ],
+    "createdAt": "2026-07-11T00:00:00.000Z",
+    "sourcePath": "books/book-02-core-specification/core-specs/services/organization-service.md",
+    "implementationDepth": "validated_skeleton",
+    "metadata": {
+      "specificationRepository": "whalemarks/markorbit-publication",
+      "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+      "specificationPath": "books/book-02-core-specification/",
+      "implementationTask": "CORE-TASK-021"
+    }
+  },
+  {
+    "id": "core-service-user-service-contract",
+    "serviceType": "user-service",
+    "domainId": "user",
+    "name": "Core User Service Contract Skeleton",
+    "description": "Canonical metadata skeleton for the user Core Service boundary.",
+    "status": "active",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "purpose": "Defines the User service ownership boundary for account-participant records without implementing accounts, authentication, lifecycle mutation, identity resolution, or membership behavior.",
+    "owns": [
+      "User service ownership, validation, identity-linkage, organization-linkage, and reference boundary."
+    ],
+    "consumes": ["user, identity, and organization references"],
+    "produces": ["user boundary references"],
+    "allowedOperations": [
+      "reference lookup category",
+      "boundary evaluation category",
+      "contract-owned coordination category"
+    ],
+    "nonGoals": [
+      "Executable service method definitions or service implementations.",
+      "API routes, database access, workflow runtime, or Book 03 execution behavior.",
+      "Product UI behavior, concrete business logic, or AI agent authority.",
+      "Account runtime, authentication, credential handling, user mutation, membership administration, or permission grants."
+    ],
+    "createdAt": "2026-07-11T00:00:00.000Z",
+    "sourcePath": "books/book-02-core-specification/core-specs/services/user-service.md",
+    "implementationDepth": "validated_skeleton",
+    "metadata": {
+      "specificationRepository": "whalemarks/markorbit-publication",
+      "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+      "specificationPath": "books/book-02-core-specification/",
+      "implementationTask": "CORE-TASK-021"
+    }
+  },
+  {
+    "id": "core-service-brand-service-contract",
+    "serviceType": "brand-service",
+    "domainId": "brand",
+    "name": "Core Brand Service Contract Skeleton",
+    "description": "Canonical metadata skeleton for the brand Core Service boundary.",
+    "status": "active",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "purpose": "Defines the Brand service ownership boundary for commercial-identity records without implementing intake, naming, trademark linkage mutation, recommendation, or product behavior.",
+    "owns": [
+      "Brand service ownership, validation, relationship, and reference boundary."
+    ],
+    "consumes": ["brand, customer, and trademark references"],
+    "produces": ["brand boundary references"],
+    "allowedOperations": [
+      "reference lookup category",
+      "boundary evaluation category",
+      "contract-owned coordination category"
+    ],
+    "nonGoals": [
+      "Executable service method definitions or service implementations.",
+      "API routes, database access, workflow runtime, or Book 03 execution behavior.",
+      "Product UI behavior, concrete business logic, or AI agent authority.",
+      "Brand intake execution, naming generation, trademark filing, AI recommendations, record mutation, or product catalog behavior."
+    ],
+    "createdAt": "2026-07-11T00:00:00.000Z",
+    "sourcePath": "books/book-02-core-specification/core-specs/services/brand-service.md",
+    "implementationDepth": "validated_skeleton",
+    "metadata": {
+      "specificationRepository": "whalemarks/markorbit-publication",
+      "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+      "specificationPath": "books/book-02-core-specification/",
+      "implementationTask": "CORE-TASK-021"
+    }
+  },
+  {
+    "id": "core-service-customer-service-contract",
+    "serviceType": "customer-service",
+    "domainId": "customer",
+    "name": "Core Customer Service Contract Skeleton",
+    "description": "Canonical metadata skeleton for the customer Core Service boundary.",
+    "status": "active",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "purpose": "Defines the Customer service ownership boundary for demand-side commercial-party records without implementing intake, CRM, billing, order creation, or relationship mutation.",
+    "owns": [
+      "Customer service ownership, validation, linkage, and reference boundary."
+    ],
+    "consumes": ["customer, organization, brand, and opportunity references"],
+    "produces": ["customer boundary references"],
+    "allowedOperations": [
+      "reference lookup category",
+      "boundary evaluation category",
+      "contract-owned coordination category"
+    ],
+    "nonGoals": [
+      "Executable service method definitions or service implementations.",
+      "API routes, database access, workflow runtime, or Book 03 execution behavior.",
+      "Product UI behavior, concrete business logic, or AI agent authority.",
+      "Customer intake execution, CRM automation, billing accounts, order creation, relationship mutation, or contact management."
+    ],
+    "createdAt": "2026-07-11T00:00:00.000Z",
+    "sourcePath": "books/book-02-core-specification/core-specs/services/customer-service.md",
+    "implementationDepth": "validated_skeleton",
+    "metadata": {
+      "specificationRepository": "whalemarks/markorbit-publication",
+      "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+      "specificationPath": "books/book-02-core-specification/",
+      "implementationTask": "CORE-TASK-021"
+    }
+  },
+  {
+    "id": "core-service-matter-service-contract",
+    "serviceType": "matter-service",
+    "domainId": "matter",
+    "name": "Core Matter Service Contract Skeleton",
+    "description": "Canonical metadata skeleton for the matter Core Service boundary.",
+    "status": "active",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "purpose": "Defines the Matter service ownership boundary for professional-execution containers without implementing case work, workflow application, task creation, status mutation, or professional decisions.",
+    "owns": [
+      "Matter service ownership, validation, linkage, lifecycle-reference, and boundary coordination."
+    ],
+    "consumes": [
+      "matter, order, workflow, task, document, and evidence references"
+    ],
+    "produces": ["matter boundary references"],
+    "allowedOperations": [
+      "reference lookup category",
+      "boundary evaluation category",
+      "contract-owned coordination category"
+    ],
+    "nonGoals": [
+      "Executable service method definitions or service implementations.",
+      "API routes, database access, workflow runtime, or Book 03 execution behavior.",
+      "Product UI behavior, concrete business logic, or AI agent authority.",
+      "Professional execution, case decisions, workflow apply, task creation, status mutation, filing, or Product UI case cards."
+    ],
+    "createdAt": "2026-07-11T00:00:00.000Z",
+    "sourcePath": "books/book-02-core-specification/core-specs/services/matter-service.md",
+    "implementationDepth": "validated_skeleton",
+    "metadata": {
+      "specificationRepository": "whalemarks/markorbit-publication",
+      "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+      "specificationPath": "books/book-02-core-specification/",
+      "implementationTask": "CORE-TASK-021"
+    }
+  },
+  {
+    "id": "core-service-order-service-contract",
+    "serviceType": "order-service",
+    "domainId": "order",
+    "name": "Core Order Service Contract Skeleton",
+    "description": "Canonical metadata skeleton for the order Core Service boundary.",
+    "status": "active",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "purpose": "Defines the Order service ownership boundary for commercial service requests without implementing conversion, pricing, payment, invoicing, matter creation, or workflow execution.",
+    "owns": [
+      "Order service ownership, validation, linkage, conversion-boundary, and reference coordination."
+    ],
+    "consumes": [
+      "order, customer, opportunity, brand, trademark, and matter references"
+    ],
+    "produces": ["order boundary references"],
+    "allowedOperations": [
+      "reference lookup category",
+      "boundary evaluation category",
+      "contract-owned coordination category"
+    ],
+    "nonGoals": [
+      "Executable service method definitions or service implementations.",
+      "API routes, database access, workflow runtime, or Book 03 execution behavior.",
+      "Product UI behavior, concrete business logic, or AI agent authority.",
+      "Order mutation, pricing engine, payment, invoicing, checkout, matter creation, workflow execution, or professional work."
+    ],
+    "createdAt": "2026-07-11T00:00:00.000Z",
+    "sourcePath": "books/book-02-core-specification/core-specs/services/order-service.md",
+    "implementationDepth": "validated_skeleton",
+    "metadata": {
+      "specificationRepository": "whalemarks/markorbit-publication",
+      "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+      "specificationPath": "books/book-02-core-specification/",
+      "implementationTask": "CORE-TASK-021"
+    }
+  },
+  {
+    "id": "core-service-workflow-contract-service-contract",
+    "serviceType": "workflow-contract-service",
+    "domainId": "workflow-contract",
+    "name": "Core Workflow Contract Service Contract Skeleton",
+    "description": "Canonical metadata skeleton for the workflow-contract Core Service boundary.",
+    "status": "active",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "purpose": "Defines the Workflow Contract service ownership boundary for governed execution structures without implementing creation, transition validation, apply, task creation, event emission, or workflow runtime.",
+    "owns": [
+      "Workflow Contract service ownership, definition validation, reference, and governance boundary."
+    ],
+    "consumes": [
+      "workflow contract, matter, task, event, permission, and policy references"
+    ],
+    "produces": ["workflow contract boundary references"],
+    "allowedOperations": [
+      "reference lookup category",
+      "boundary evaluation category",
+      "contract-owned coordination category"
+    ],
+    "nonGoals": [
+      "Executable service method definitions or service implementations.",
+      "API routes, database access, workflow runtime, or Book 03 execution behavior.",
+      "Product UI behavior, concrete business logic, or AI agent authority.",
+      "Workflow engine, running instances, transition execution, direct mutation, task creation, event emission, or review decisions."
+    ],
+    "createdAt": "2026-07-11T00:00:00.000Z",
+    "sourcePath": "books/book-02-core-specification/core-specs/services/workflow-contract-service.md",
+    "implementationDepth": "validated_skeleton",
+    "metadata": {
+      "specificationRepository": "whalemarks/markorbit-publication",
+      "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+      "specificationPath": "books/book-02-core-specification/",
+      "implementationTask": "CORE-TASK-021"
+    }
+  },
+  {
+    "id": "core-service-task-service-contract",
+    "serviceType": "task-service",
+    "domainId": "task",
+    "name": "Core Task Service Contract Skeleton",
+    "description": "Canonical metadata skeleton for the task Core Service boundary.",
+    "status": "active",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "purpose": "Defines the Task service ownership boundary for actionable work units without implementing creation, assignment, scheduling, completion, review, status mutation, or event emission.",
+    "owns": [
+      "Task service ownership, validation, assignment-reference, scheduling-reference, and lifecycle boundary."
+    ],
+    "consumes": [
+      "task, matter, workflow, user, permission, policy, and event references"
+    ],
+    "produces": ["task boundary references"],
+    "allowedOperations": [
+      "reference lookup category",
+      "boundary evaluation category",
+      "contract-owned coordination category"
+    ],
+    "nonGoals": [
+      "Executable service method definitions or service implementations.",
+      "API routes, database access, workflow runtime, or Book 03 execution behavior.",
+      "Product UI behavior, concrete business logic, or AI agent authority.",
+      "Task execution, assignment automation, scheduling engine, completion, review approval, status mutation, notification, or event emission."
+    ],
+    "createdAt": "2026-07-11T00:00:00.000Z",
+    "sourcePath": "books/book-02-core-specification/core-specs/services/task-service.md",
+    "implementationDepth": "validated_skeleton",
+    "metadata": {
+      "specificationRepository": "whalemarks/markorbit-publication",
+      "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+      "specificationPath": "books/book-02-core-specification/",
+      "implementationTask": "CORE-TASK-021"
+    }
+  },
+  {
+    "id": "core-service-event-service-contract",
+    "serviceType": "event-service",
+    "domainId": "event",
+    "name": "Core Event Service Contract Skeleton",
+    "description": "Canonical metadata skeleton for the event Core Service boundary.",
+    "status": "active",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "purpose": "Defines the Event service ownership boundary for meaningful-occurrence records without implementing recording, dispatch, publication, consumption, persistence, or integration triggers.",
+    "owns": [
+      "Event service ownership, validation, source, visibility, reference, and trace boundary."
+    ],
+    "consumes": [
+      "event, source-domain, source-object, actor, correlation, and causation references"
+    ],
+    "produces": ["event boundary references"],
+    "allowedOperations": [
+      "reference lookup category",
+      "boundary evaluation category",
+      "contract-owned coordination category"
+    ],
+    "nonGoals": [
+      "Executable service method definitions or service implementations.",
+      "API routes, database access, workflow runtime, or Book 03 execution behavior.",
+      "Product UI behavior, concrete business logic, or AI agent authority.",
+      "Event recording, dispatch, bus, sourcing, subscription, persistence, trigger execution, audit logging, or product activity feeds."
+    ],
+    "createdAt": "2026-07-11T00:00:00.000Z",
+    "sourcePath": "books/book-02-core-specification/core-specs/services/event-service.md",
+    "implementationDepth": "validated_skeleton",
+    "metadata": {
+      "specificationRepository": "whalemarks/markorbit-publication",
+      "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+      "specificationPath": "books/book-02-core-specification/",
+      "implementationTask": "CORE-TASK-021"
+    }
   }
 ]
