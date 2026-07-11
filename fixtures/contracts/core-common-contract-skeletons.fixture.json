@@ -1,0 +1,292 @@
+[
+  {
+    "id": "core-common-references-contract",
+    "commonType": "references",
+    "name": "Core References Contract Skeleton",
+    "description": "Canonical metadata skeleton for public and cross-domain reference boundaries.",
+    "status": "active",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "sourcePath": "books/book-02-core-specification/core-specs/contracts/common/references.md",
+    "purpose": "Defines the canonical reference naming, typing, trace, validation, and safe-exposure boundary without implementing reference resolution.",
+    "owns": [
+      "Canonical reference field naming and typed-reference boundary.",
+      "Cross-domain, actor, subject, target, agent, and correlation reference rules.",
+      "Safe reference validation and exposure expectations."
+    ],
+    "nonGoals": [
+      "Executable validation, decision, replay, migration, redaction, review, authorization, storage, or side-effect behavior.",
+      "Service, API, workflow, event bus, permission engine, policy engine, AI runtime, database, Product UI, or Book 3 execution implementation.",
+      "Production data, production readiness, domain-specific business behavior, or replacement of the canonical Book 2 source contract.",
+      "Reference resolvers, database ID mapping, existence disclosure, permission inference, or cross-domain service calls."
+    ],
+    "implementationDepth": "validated_skeleton",
+    "createdAt": "2026-07-11T00:00:00.000Z",
+    "metadata": {
+      "specificationRepository": "whalemarks/markorbit-publication",
+      "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+      "specificationPath": "books/book-02-core-specification/",
+      "implementationTask": "CORE-TASK-020"
+    }
+  },
+  {
+    "id": "core-common-errors-contract",
+    "commonType": "errors",
+    "name": "Core Errors Contract Skeleton",
+    "description": "Canonical metadata skeleton for controlled and safe Core error boundaries.",
+    "status": "active",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "sourcePath": "books/book-02-core-specification/core-specs/contracts/common/errors.md",
+    "purpose": "Defines controlled error shape, categorization, correlation, retryability, non-disclosure, and leakage-prevention boundaries without throwing runtime errors.",
+    "owns": [
+      "Controlled error-code and safe-message boundary.",
+      "Correlation, retryability, next-step, and restricted-field omission expectations.",
+      "Non-disclosure and sensitive-internal leakage prevention rules."
+    ],
+    "nonGoals": [
+      "Executable validation, decision, replay, migration, redaction, review, authorization, storage, or side-effect behavior.",
+      "Service, API, workflow, event bus, permission engine, policy engine, AI runtime, database, Product UI, or Book 3 execution implementation.",
+      "Production data, production readiness, domain-specific business behavior, or replacement of the canonical Book 2 source contract.",
+      "Runtime exception classes, stack handling, transport status mapping, logging, retries, or error recovery execution."
+    ],
+    "implementationDepth": "validated_skeleton",
+    "createdAt": "2026-07-11T00:00:00.000Z",
+    "metadata": {
+      "specificationRepository": "whalemarks/markorbit-publication",
+      "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+      "specificationPath": "books/book-02-core-specification/",
+      "implementationTask": "CORE-TASK-020"
+    }
+  },
+  {
+    "id": "core-common-pagination-contract",
+    "commonType": "pagination",
+    "name": "Core Pagination Contract Skeleton",
+    "description": "Canonical metadata skeleton for policy-aware list pagination boundaries.",
+    "status": "active",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "sourcePath": "books/book-02-core-specification/core-specs/contracts/common/pagination.md",
+    "purpose": "Defines request, response, cursor, limit, sorting, count, filtering, and safe-empty-result boundaries without implementing queries.",
+    "owns": [
+      "Pagination request, response, cursor, and list-envelope boundary.",
+      "Limit, sorting, filtering, and empty-result expectations.",
+      "Policy-aware total-count omission and safe exposure rules."
+    ],
+    "nonGoals": [
+      "Executable validation, decision, replay, migration, redaction, review, authorization, storage, or side-effect behavior.",
+      "Service, API, workflow, event bus, permission engine, policy engine, AI runtime, database, Product UI, or Book 3 execution implementation.",
+      "Production data, production readiness, domain-specific business behavior, or replacement of the canonical Book 2 source contract.",
+      "Database queries, cursor encoding, search execution, result filtering, count computation, or collection mutation."
+    ],
+    "implementationDepth": "validated_skeleton",
+    "createdAt": "2026-07-11T00:00:00.000Z",
+    "metadata": {
+      "specificationRepository": "whalemarks/markorbit-publication",
+      "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+      "specificationPath": "books/book-02-core-specification/",
+      "implementationTask": "CORE-TASK-020"
+    }
+  },
+  {
+    "id": "core-common-audit-context-contract",
+    "commonType": "audit-context",
+    "name": "Core Audit Context Contract Skeleton",
+    "description": "Canonical metadata skeleton for correlation and event-trace context boundaries.",
+    "status": "active",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "sourcePath": "books/book-02-core-specification/core-specs/contracts/common/audit-context.md",
+    "purpose": "Defines correlation, causation, actor, service, event-reference, and trace context boundaries while preserving that audit references are not commands.",
+    "owns": [
+      "Correlation, causation, actor, service, and event-reference context boundary.",
+      "Trace preservation and audit visibility expectations.",
+      "Event references as historical trace rather than executable commands."
+    ],
+    "nonGoals": [
+      "Executable validation, decision, replay, migration, redaction, review, authorization, storage, or side-effect behavior.",
+      "Service, API, workflow, event bus, permission engine, policy engine, AI runtime, database, Product UI, or Book 3 execution implementation.",
+      "Production data, production readiness, domain-specific business behavior, or replacement of the canonical Book 2 source contract.",
+      "Audit logging infrastructure, event emission, command dispatch, compliance conclusions, or trace persistence."
+    ],
+    "implementationDepth": "validated_skeleton",
+    "createdAt": "2026-07-11T00:00:00.000Z",
+    "metadata": {
+      "specificationRepository": "whalemarks/markorbit-publication",
+      "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+      "specificationPath": "books/book-02-core-specification/",
+      "implementationTask": "CORE-TASK-020"
+    }
+  },
+  {
+    "id": "core-common-ai-context-contract",
+    "commonType": "ai-context",
+    "name": "Core AI Context Contract Skeleton",
+    "description": "Canonical metadata skeleton for bounded AI assistance context.",
+    "status": "active",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "sourcePath": "books/book-02-core-specification/core-specs/contracts/common/ai-context.md",
+    "purpose": "Defines authorized source, capability, policy-omission, risk, output, review, and trace context boundaries without assembling prompts or executing AI.",
+    "owns": [
+      "Authorized source and capability scope boundary.",
+      "Policy omission, restricted-field, risk, review, and output metadata expectations.",
+      "AI-origin, uncertainty, and downstream-use disclosure boundary."
+    ],
+    "nonGoals": [
+      "Executable validation, decision, replay, migration, redaction, review, authorization, storage, or side-effect behavior.",
+      "Service, API, workflow, event bus, permission engine, policy engine, AI runtime, database, Product UI, or Book 3 execution implementation.",
+      "Production data, production readiness, domain-specific business behavior, or replacement of the canonical Book 2 source contract.",
+      "Prompt construction, model invocation, RAG, vector retrieval, autonomous action, hidden reasoning, or output approval."
+    ],
+    "implementationDepth": "validated_skeleton",
+    "createdAt": "2026-07-11T00:00:00.000Z",
+    "metadata": {
+      "specificationRepository": "whalemarks/markorbit-publication",
+      "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+      "specificationPath": "books/book-02-core-specification/",
+      "implementationTask": "CORE-TASK-020"
+    }
+  },
+  {
+    "id": "core-common-human-review-contract",
+    "commonType": "human-review",
+    "name": "Core Human Review Contract Skeleton",
+    "description": "Canonical metadata skeleton for accountable human-review boundaries.",
+    "status": "active",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "sourcePath": "books/book-02-core-specification/core-specs/contracts/common/human-review.md",
+    "purpose": "Defines review requirement, status, decision-record, reviewer, source, scope, and trace boundaries without making review decisions.",
+    "owns": [
+      "Human-review requirement, status, scope, reviewer, and source boundary.",
+      "Accountable review-record and reference expectations.",
+      "Protected-use gating and downstream-use restriction boundary."
+    ],
+    "nonGoals": [
+      "Executable validation, decision, replay, migration, redaction, review, authorization, storage, or side-effect behavior.",
+      "Service, API, workflow, event bus, permission engine, policy engine, AI runtime, database, Product UI, or Book 3 execution implementation.",
+      "Production data, production readiness, domain-specific business behavior, or replacement of the canonical Book 2 source contract.",
+      "Reviewer assignment, approval or rejection decisions, workflow gates, downstream execution, or bypass authority."
+    ],
+    "implementationDepth": "validated_skeleton",
+    "createdAt": "2026-07-11T00:00:00.000Z",
+    "metadata": {
+      "specificationRepository": "whalemarks/markorbit-publication",
+      "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+      "specificationPath": "books/book-02-core-specification/",
+      "implementationTask": "CORE-TASK-020"
+    }
+  },
+  {
+    "id": "core-common-permission-context-contract",
+    "commonType": "permission-context",
+    "name": "Core Permission Context Contract Skeleton",
+    "description": "Canonical metadata skeleton for permission-decision context boundaries.",
+    "status": "active",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "sourcePath": "books/book-02-core-specification/core-specs/contracts/common/permission-context.md",
+    "purpose": "Defines actor, operation, permission-key, decision, reason, scope, and trace context boundaries without evaluating or granting permissions.",
+    "owns": [
+      "Actor, operation, permission-key, decision, reason, and scope context boundary.",
+      "Fail-closed and protected-action permission expectations.",
+      "Permission trace and safe error boundary."
+    ],
+    "nonGoals": [
+      "Executable validation, decision, replay, migration, redaction, review, authorization, storage, or side-effect behavior.",
+      "Service, API, workflow, event bus, permission engine, policy engine, AI runtime, database, Product UI, or Book 3 execution implementation.",
+      "Production data, production readiness, domain-specific business behavior, or replacement of the canonical Book 2 source contract.",
+      "Permission grants, RBAC administration, authorization middleware, permission evaluation, or protected-action execution."
+    ],
+    "implementationDepth": "validated_skeleton",
+    "createdAt": "2026-07-11T00:00:00.000Z",
+    "metadata": {
+      "specificationRepository": "whalemarks/markorbit-publication",
+      "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+      "specificationPath": "books/book-02-core-specification/",
+      "implementationTask": "CORE-TASK-020"
+    }
+  },
+  {
+    "id": "core-common-policy-context-contract",
+    "commonType": "policy-context",
+    "name": "Core Policy Context Contract Skeleton",
+    "description": "Canonical metadata skeleton for policy restriction context boundaries.",
+    "status": "active",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "sourcePath": "books/book-02-core-specification/core-specs/contracts/common/policy-context.md",
+    "purpose": "Defines actor, operation, policy decision, restriction, redaction, omission, review, data-access, and trace context boundaries without policy evaluation.",
+    "owns": [
+      "Policy decision, restriction, redaction, omission, and review context boundary.",
+      "Data-access scope and cross-organization policy expectations.",
+      "Fail-closed policy trace and safe exposure rules."
+    ],
+    "nonGoals": [
+      "Executable validation, decision, replay, migration, redaction, review, authorization, storage, or side-effect behavior.",
+      "Service, API, workflow, event bus, permission engine, policy engine, AI runtime, database, Product UI, or Book 3 execution implementation.",
+      "Production data, production readiness, domain-specific business behavior, or replacement of the canonical Book 2 source contract.",
+      "Policy authoring, rule evaluation, enforcement, redaction execution, data filtering, or compliance decisions."
+    ],
+    "implementationDepth": "validated_skeleton",
+    "createdAt": "2026-07-11T00:00:00.000Z",
+    "metadata": {
+      "specificationRepository": "whalemarks/markorbit-publication",
+      "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+      "specificationPath": "books/book-02-core-specification/",
+      "implementationTask": "CORE-TASK-020"
+    }
+  },
+  {
+    "id": "core-common-idempotency-contract",
+    "commonType": "idempotency",
+    "name": "Core Idempotency Contract Skeleton",
+    "description": "Canonical metadata skeleton for duplicate-safe operation boundaries.",
+    "status": "active",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "sourcePath": "books/book-02-core-specification/core-specs/contracts/common/idempotency.md",
+    "purpose": "Defines idempotency key, scope, fingerprint, replay, conflict, retry, result, and event-safety boundaries without implementing an idempotency store.",
+    "owns": [
+      "Idempotency key, scope, fingerprint, status, and result boundary.",
+      "Identical replay, conflicting replay, and safe retry expectations.",
+      "Duplicate side-effect and duplicate event prevention boundary."
+    ],
+    "nonGoals": [
+      "Executable validation, decision, replay, migration, redaction, review, authorization, storage, or side-effect behavior.",
+      "Service, API, workflow, event bus, permission engine, policy engine, AI runtime, database, Product UI, or Book 3 execution implementation.",
+      "Production data, production readiness, domain-specific business behavior, or replacement of the canonical Book 2 source contract.",
+      "Fingerprint computation, idempotency persistence, atomic side effects, replay execution, locking, or duplicate detection runtime."
+    ],
+    "implementationDepth": "validated_skeleton",
+    "createdAt": "2026-07-11T00:00:00.000Z",
+    "metadata": {
+      "specificationRepository": "whalemarks/markorbit-publication",
+      "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+      "specificationPath": "books/book-02-core-specification/",
+      "implementationTask": "CORE-TASK-020"
+    }
+  },
+  {
+    "id": "core-common-versioning-contract",
+    "commonType": "versioning",
+    "name": "Core Versioning Contract Skeleton",
+    "description": "Canonical metadata skeleton for compatibility and version-trace boundaries.",
+    "status": "active",
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "sourcePath": "books/book-02-core-specification/core-specs/contracts/common/versioning.md",
+    "purpose": "Defines contract, schema, API, service, event, agent, workflow, compatibility, breaking-change, deprecation, and migration boundaries without performing migrations.",
+    "owns": [
+      "Canonical version field, format, and compatibility boundary.",
+      "Breaking-change, deprecation, migration, and historical-version expectations.",
+      "Version preservation across APIs, services, events, agents, and workflows."
+    ],
+    "nonGoals": [
+      "Executable validation, decision, replay, migration, redaction, review, authorization, storage, or side-effect behavior.",
+      "Service, API, workflow, event bus, permission engine, policy engine, AI runtime, database, Product UI, or Book 3 execution implementation.",
+      "Production data, production readiness, domain-specific business behavior, or replacement of the canonical Book 2 source contract.",
+      "Schema migration execution, compatibility adapters, version negotiation, data rewriting, deployment, or deprecation enforcement."
+    ],
+    "implementationDepth": "validated_skeleton",
+    "createdAt": "2026-07-11T00:00:00.000Z",
+    "metadata": {
+      "specificationRepository": "whalemarks/markorbit-publication",
+      "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+      "specificationPath": "books/book-02-core-specification/",
+      "implementationTask": "CORE-TASK-020"
+    }
+  }
+]

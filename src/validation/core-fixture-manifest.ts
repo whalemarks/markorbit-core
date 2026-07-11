@@ -14,6 +14,8 @@ export const CORE_FIXTURE_TYPES = [
   'permission_contract_skeletons',
   'policy_contract_skeletons',
   'ai_governance_contract_skeletons',
+  'common_contract_skeletons',
+  'test_contract_skeletons',
   'contract_coverage_baseline',
   'contract_gap_inventory'
 ] as const;
@@ -117,6 +119,18 @@ export const CORE_FIXTURE_MANIFEST = [
     id: 'core-ai-governance-contract-skeletons',
     type: 'ai_governance_contract_skeletons',
     path: 'fixtures/contracts/core-ai-governance-contract-skeletons.fixture.json',
+    required: true
+  },
+  {
+    id: 'core-common-contract-skeletons',
+    type: 'common_contract_skeletons',
+    path: 'fixtures/contracts/core-common-contract-skeletons.fixture.json',
+    required: true
+  },
+  {
+    id: 'core-test-contract-skeletons',
+    type: 'test_contract_skeletons',
+    path: 'fixtures/contracts/core-test-contract-skeletons.fixture.json',
     required: true
   },
   {

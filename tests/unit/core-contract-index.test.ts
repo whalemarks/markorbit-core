@@ -8,7 +8,7 @@ import {
   createCoreContractId
 } from '../../src/index.ts';
 
-const expectedTypes = ['domain', 'object', 'service', 'api', 'event', 'workflow', 'task', 'validation', 'permission', 'policy', 'ai_governance'];
+const expectedTypes = ['domain', 'object', 'service', 'api', 'event', 'workflow', 'task', 'validation', 'permission', 'policy', 'ai_governance', 'common', 'test'];
 const expectedStatuses = ['draft', 'active', 'deprecated', 'archived'];
 const forbiddenContractIds = [
   'event-bus-created',
@@ -123,8 +123,8 @@ describe('Core Contract Index', () => {
     assert.deepEqual(Object.values(CORE_CONTRACT_STATUSES), expectedStatuses);
   });
 
-  it('CORE_CONTRACT_INDEX has exactly 106 entries', () => {
-    assert.equal(CORE_CONTRACT_INDEX.length, 106);
+  it('CORE_CONTRACT_INDEX has exactly 123 entries', () => {
+    assert.equal(CORE_CONTRACT_INDEX.length, 123);
   });
 
 
@@ -170,6 +170,14 @@ describe('Core Contract Index', () => {
 
   it('includes exactly 8 AI governance contract entries', () => {
     assert.equal(CORE_CONTRACT_INDEX.filter((contract) => contract.source === 'CORE_AI_GOVERNANCE_CONTRACT_SKELETONS').length, 8);
+  });
+
+  it('includes exactly 10 Common Contract entries', () => {
+    assert.equal(CORE_CONTRACT_INDEX.filter((contract) => contract.source === 'CORE_COMMON_CONTRACT_SKELETONS').length, 10);
+  });
+
+  it('includes exactly 7 Test Contract entries', () => {
+    assert.equal(CORE_CONTRACT_INDEX.filter((contract) => contract.source === 'CORE_TEST_CONTRACT_SKELETONS').length, 7);
   });
 
   it('all ids are unique', () => {

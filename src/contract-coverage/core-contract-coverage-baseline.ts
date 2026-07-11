@@ -1,6 +1,7 @@
 import {
   CORE_AI_GOVERNANCE_CONTRACT_SKELETONS,
   CORE_API_CONTRACT_SKELETONS,
+  CORE_COMMON_CONTRACT_SKELETONS,
   CORE_CONTRACT_INDEX,
   CORE_DOMAIN_CONTRACT_SKELETONS,
   CORE_EVENT_CATALOG_SKELETONS,
@@ -8,6 +9,7 @@ import {
   CORE_PERMISSION_CONTRACT_SKELETONS,
   CORE_POLICY_CONTRACT_SKELETONS,
   CORE_SERVICE_CONTRACT_SKELETONS,
+  CORE_TEST_CONTRACT_SKELETONS,
   CORE_WORKFLOW_CATALOG_SKELETONS
 } from '../contracts/index.ts';
 import { CORE_DOMAIN_REGISTRY, type CoreDomainId } from '../domains/index.ts';
@@ -64,7 +66,9 @@ export interface CoreContractFamilyCoverage {
     | 'workflow'
     | 'permission'
     | 'policy'
-    | 'ai_governance';
+    | 'ai_governance'
+    | 'common'
+    | 'test';
   readonly source?: string;
   readonly indexedCount: number;
   readonly fixtureIds: readonly string[];
@@ -259,6 +263,24 @@ export const CORE_CONTRACT_FAMILY_COVERAGE = [
     source: 'CORE_AI_GOVERNANCE_CONTRACT_SKELETONS',
     indexedCount: CORE_AI_GOVERNANCE_CONTRACT_SKELETONS.length,
     fixtureIds: ['core-ai-governance-contract-skeletons'],
+    fixtureCoverage: 'required',
+    validatorCoverage: 'present',
+    testCoverage: 'collection'
+  },
+  {
+    family: 'common',
+    source: 'CORE_COMMON_CONTRACT_SKELETONS',
+    indexedCount: CORE_COMMON_CONTRACT_SKELETONS.length,
+    fixtureIds: ['core-common-contract-skeletons'],
+    fixtureCoverage: 'required',
+    validatorCoverage: 'present',
+    testCoverage: 'collection'
+  },
+  {
+    family: 'test',
+    source: 'CORE_TEST_CONTRACT_SKELETONS',
+    indexedCount: CORE_TEST_CONTRACT_SKELETONS.length,
+    fixtureIds: ['core-test-contract-skeletons'],
     fixtureCoverage: 'required',
     validatorCoverage: 'present',
     testCoverage: 'collection'

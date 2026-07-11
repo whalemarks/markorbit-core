@@ -32,7 +32,11 @@
 
 - [x] Contract coverage baseline — first acceptance result/current.
 - [x] Book 2 Contract Gap Inventory Lock — completed/current.
-- [ ] Common and Test Contract Foundations.
+- [x] Common and Test Contract Foundations — completed/current.
+- [ ] Must-Build Object and Service Gaps.
+- [ ] Must-Build Canonical Domain APIs.
+- [ ] Stub Domain Contract Gaps.
+- [ ] Canonical Workflow Contracts.
 - Integration with Execution System.
 - Generated SDK.
 - Documentation site.
@@ -103,3 +107,14 @@
 - Five controlled implementation batches defined.
 - Contract Index remains 106.
 - Next: CORE-TASK-020 — Common and Test Contract Foundations.
+
+## CORE-TASK-020 — Common and Test Contract Foundations
+
+- `common` and `test` contract types: completed.
+- 10 Common Contract skeletons: completed/current.
+- 7 Test Contract skeletons: completed/current.
+- Contract Index: 123 entries.
+- Structural coverage: 12 / 12 current families.
+- Gap inventory progress: 17 completed, 64 remaining.
+- Runtime and contract behavior: not implemented.
+- Next: CORE-TASK-021 — Must-Build Object and Service Gaps.

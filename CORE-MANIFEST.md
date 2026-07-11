@@ -32,7 +32,8 @@ Phase 3 — Contract Coverage started.
 - Phase 2 Core Contract Layer completed.
 - Phase 3 Contract Coverage Baseline added.
 - Book 2 Contract Gap Inventory locked.
-- `CORE_CONTRACT_INDEX` now contains 106 entries:
+- Common and Test Contract Foundations added.
+- `CORE_CONTRACT_INDEX` now contains 123 entries:
   - 6 foundation contract entries
   - 26 domain contract entries
   - 12 object contract entries
@@ -43,11 +44,14 @@ Phase 3 — Contract Coverage started.
   - 8 permission contract entries
   - 8 policy contract entries
   - 8 AI governance contract entries
-- Current coverage baseline reports 106 structurally assured indexed contracts across 10 contract families.
+  - 10 Common Contract entries
+  - 7 Test Contract entries
+- Current coverage baseline reports 123 structurally assured indexed contracts across 12 contract families.
 - Current Domain-layer coverage is 26 Domain, 12 Object, 10 Service, 4 Domain-mapped API, 4 Event, and 6 Workflow.
-- Gap Inventory maps 22 existing Domain targets and locks 81 new canonical skeleton targets across five batches.
-- Required fixture manifest now contains 17 entries.
-- Next recommended task: CORE-TASK-020 — Common and Test Contract Foundations.
+- Gap Inventory maps 22 existing Domain targets and locks 81 canonical skeleton additions across five batches.
+- CORE-TASK-020 has completed 17 targets; 64 canonical targets remain.
+- Required fixture manifest now contains 19 entries.
+- Next recommended task: CORE-TASK-021 — Must-Build Object and Service Gaps.
 
 ## Current scope
 
@@ -75,6 +79,8 @@ Phase 3 — Contract Coverage started.
 - Core AI Governance Contract Skeletons.
 - Core Contract Coverage Baseline.
 - Book 2 Contract Gap Inventory.
+- Core Common Contract Skeletons.
+- Core Test Contract Skeletons.
 - Placeholder package and source directories.
 
 ## Out of scope
@@ -107,7 +113,7 @@ Every change should keep the TypeScript project buildable, tests passing, lint c
 
 ## Next tasks
 
-- CORE-TASK-020 — Common and Test Contract Foundations.
+- CORE-TASK-021 — Must-Build Object and Service Gaps.
 
 ## CORE-TASK-009 Status
 
@@ -208,3 +214,15 @@ Next recommended task: CORE-TASK-013 — Core Event Catalog Skeleton.
 - `CORE_CONTRACT_INDEX` remains unchanged at 106 entries.
 - Required fixture manifest now contains 17 entries.
 - Next recommended task: CORE-TASK-020 — Common and Test Contract Foundations.
+
+## CORE-TASK-020 — Common and Test Contract Foundations
+
+- Added `common` and `test` to `CORE_CONTRACT_TYPES`.
+- Added 10 canonical Common Contract skeletons and 7 canonical Test Contract skeletons.
+- Added exact validators, required fixtures, fixture routing, and collection tests.
+- Expanded `CORE_CONTRACT_INDEX` from 106 to 123 entries.
+- Expanded structural coverage from 10 to 12 families.
+- Completed the first inventory batch: 17 / 81 canonical targets.
+- Remaining inventory targets: 64.
+- No executable Common primitive or Test Contract behavior added.
+- Next recommended task: CORE-TASK-021 — Must-Build Object and Service Gaps.

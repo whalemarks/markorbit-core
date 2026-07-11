@@ -11,6 +11,8 @@ import { CORE_WORKFLOW_CATALOG_SKELETONS } from './workflow/core-workflow-catalo
 import { CORE_PERMISSION_CONTRACT_SKELETONS } from './permission/core-permission-contract-skeletons.ts';
 import { CORE_POLICY_CONTRACT_SKELETONS } from './policy/core-policy-contract-skeletons.ts';
 import { CORE_AI_GOVERNANCE_CONTRACT_SKELETONS } from './ai-governance/core-ai-governance-contract-skeletons.ts';
+import { CORE_COMMON_CONTRACT_SKELETONS } from './common/core-common-contract-skeletons.ts';
+import { CORE_TEST_CONTRACT_SKELETONS } from './test/core-test-contract-skeletons.ts';
 
 const coreBook = 'Book 02 — MarkOrbit Core Specification';
 const createdAt = '2026-07-09T00:00:00.000Z';
@@ -188,6 +190,30 @@ export const CORE_CONTRACT_INDEX = [
     version: 1,
     book: coreBook,
     source: 'CORE_AI_GOVERNANCE_CONTRACT_SKELETONS',
+    createdAt: contract.createdAt
+  })),
+  ...CORE_COMMON_CONTRACT_SKELETONS.map((contract) => ({
+    id: contract.id,
+    type: CORE_CONTRACT_TYPES.common,
+    name: contract.name,
+    description: contract.description,
+    status: CORE_CONTRACT_STATUSES.active,
+    scope: { notes: contract.commonType },
+    version: 1,
+    book: coreBook,
+    source: 'CORE_COMMON_CONTRACT_SKELETONS',
+    createdAt: contract.createdAt
+  })),
+  ...CORE_TEST_CONTRACT_SKELETONS.map((contract) => ({
+    id: contract.id,
+    type: CORE_CONTRACT_TYPES.test,
+    name: contract.name,
+    description: contract.description,
+    status: CORE_CONTRACT_STATUSES.active,
+    scope: { notes: contract.testType },
+    version: 1,
+    book: coreBook,
+    source: 'CORE_TEST_CONTRACT_SKELETONS',
     createdAt: contract.createdAt
   }))
 ] as const satisfies readonly CoreContractDefinition[];

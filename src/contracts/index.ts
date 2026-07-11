@@ -15,3 +15,5 @@ export * from './workflow/index.ts';
 export * from './permission/index.ts';
 export * from './policy/index.ts';
 export * from './ai-governance/index.ts';
+export * from './common/index.ts';
+export * from './test/index.ts';
