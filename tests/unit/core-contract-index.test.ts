@@ -123,8 +123,8 @@ describe('Core Contract Index', () => {
     assert.deepEqual(Object.values(CORE_CONTRACT_STATUSES), expectedStatuses);
   });
 
-  it('CORE_CONTRACT_INDEX has exactly 139 entries', () => {
-    assert.equal(CORE_CONTRACT_INDEX.length, 139);
+  it('CORE_CONTRACT_INDEX has exactly 157 entries', () => {
+    assert.equal(CORE_CONTRACT_INDEX.length, 157);
   });
 
 
@@ -146,8 +146,8 @@ describe('Core Contract Index', () => {
 
 
 
-  it('includes exactly 8 API contract entries', () => {
-    assert.equal(CORE_CONTRACT_INDEX.filter((contract) => contract.source === 'CORE_API_CONTRACT_SKELETONS').length, 8);
+  it('includes exactly 26 API contract entries', () => {
+    assert.equal(CORE_CONTRACT_INDEX.filter((contract) => contract.source === 'CORE_API_CONTRACT_SKELETONS').length, 26);
   });
 
 

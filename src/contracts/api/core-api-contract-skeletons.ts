@@ -5,6 +5,9 @@ import type { CoreApiContract } from './core-api-contract.ts';
 
 const coreBook = 'Book 02 — MarkOrbit Core Specification';
 const createdAt = '2026-07-09T00:00:00.000Z';
+const canonicalCreatedAt = '2026-07-11T00:00:00.000Z';
+const specificationPath = 'books/book-02-core-specification/';
+const apiSourceRoot = `${specificationPath}core-specs/contracts/api/`;
 const nonGoals = [
   'Executable API server routes, handlers, middleware, or HTTP framework behavior.',
   'Request or response DTO schemas, database access, service implementation, or business logic.',
@@ -29,6 +32,55 @@ const apiSkeleton = (apiType: string, name: string, description: string, purpose
   createdAt
 });
 
+const canonicalApiTargets = [
+  ['identity', 'Identity'],
+  ['organization', 'Organization'],
+  ['user', 'User'],
+  ['permission', 'Permission'],
+  ['policy', 'Policy'],
+  ['brand', 'Brand'],
+  ['trademark', 'Trademark'],
+  ['jurisdiction', 'Jurisdiction'],
+  ['classification', 'Classification'],
+  ['document', 'Document'],
+  ['evidence', 'Evidence'],
+  ['customer', 'Customer'],
+  ['matter', 'Matter'],
+  ['order', 'Order'],
+  ['workflow-contract', 'Workflow Contract'],
+  ['task', 'Task'],
+  ['event', 'Event'],
+  ['communication', 'Communication']
+] as const satisfies readonly (readonly [CoreDomainId, string])[];
+
+const canonicalApiSkeleton = (
+  domainId: CoreDomainId,
+  domainName: string
+): CoreApiContract => ({
+  ...apiSkeleton(
+    `${domainId}-api`,
+    `Core ${domainName} API Contract Skeleton`,
+    `Canonical metadata skeleton for the ${domainName} API boundary.`,
+    `Defines the governed request and safe-response contract boundary for ${domainName} operations without implementing routes, handlers, service behavior, mutation, or DTO schemas.`,
+    [`${domainName} API contract boundary and owning-service delegation reference.`],
+    domainId,
+    [
+      `${domainName} Domain, Object, and Service contract references.`,
+      'Common contract context references.'
+    ],
+    [`Governed ${domainName} API response-boundary references.`]
+  ),
+  sourcePath: `${apiSourceRoot}${domainId}-api-contract.md`,
+  implementationDepth: 'validated_skeleton',
+  createdAt: canonicalCreatedAt,
+  metadata: {
+    specificationRepository: 'whalemarks/markorbit-publication',
+    specificationCommit: '3349ecb8955021a8714d023348f8b24f941eb98f',
+    specificationPath,
+    implementationTask: 'CORE-TASK-022'
+  }
+});
+
 export const CORE_API_CONTRACT_SKELETONS = [
   apiSkeleton('core-domain-registry-api', 'Core Domain Registry API Contract Skeleton', 'Skeleton exposure boundary for Core domain registry references.', 'Establishes a contract-level API boundary for discovering Core domains without defining routes or handlers.', ['Core domain registry API contract boundary.'], undefined, ['Core domain registry contract references'], ['Core domain registry exposure references']),
   apiSkeleton('core-object-reference-api', 'Core Object Reference API Contract Skeleton', 'Skeleton exposure boundary for Core object reference contracts.', 'Establishes a contract-level API boundary for Core object references without concrete DTO schemas.', ['Core object reference API contract boundary.'], undefined, ['Core object contract references'], ['Core object exposure references']),
@@ -37,5 +89,8 @@ export const CORE_API_CONTRACT_SKELETONS = [
   apiSkeleton('core-workflow-contract-reference-api', 'Core Workflow Contract Reference API Contract Skeleton', 'Skeleton exposure boundary for Core workflow contract references.', 'Establishes a contract-level API boundary for workflow contract references without workflow engine behavior.', ['Core workflow contract reference API contract boundary.'], 'workflow-contract', ['Core workflow contract references'], ['Core workflow contract exposure references']),
   apiSkeleton('core-contract-index-api', 'Core Contract Index API Contract Skeleton', 'Skeleton exposure boundary for the Core contract index.', 'Establishes a contract-level API boundary for the Core Contract Index without implementing an API server.', ['Core contract index API contract boundary.'], undefined, ['Core contract index references'], ['Core contract index exposure references']),
   apiSkeleton('core-validation-api', 'Core Validation API Contract Skeleton', 'Skeleton exposure boundary for Core validation references.', 'Establishes a contract-level API boundary for validation references without service logic or database access.', ['Core validation API contract boundary.'], 'policy', ['Core validation contract references'], ['Core validation exposure references']),
-  apiSkeleton('core-health-api', 'Core Health API Contract Skeleton', 'Skeleton exposure boundary for Core health metadata.', 'Establishes a contract-level API boundary for health metadata without runtime monitoring implementation.', ['Core health API contract boundary.'], undefined, ['Core contract health references'], ['Core health exposure references'])
+  apiSkeleton('core-health-api', 'Core Health API Contract Skeleton', 'Skeleton exposure boundary for Core health metadata.', 'Establishes a contract-level API boundary for health metadata without runtime monitoring implementation.', ['Core health API contract boundary.'], undefined, ['Core contract health references'], ['Core health exposure references']),
+  ...canonicalApiTargets.map(([domainId, domainName]) =>
+    canonicalApiSkeleton(domainId, domainName)
+  )
 ] as const satisfies readonly CoreApiContract[];

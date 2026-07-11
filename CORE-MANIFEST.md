@@ -34,12 +34,13 @@ Phase 3 — Contract Coverage started.
 - Book 2 Contract Gap Inventory locked.
 - Common and Test Contract Foundations added.
 - Must-Build Object and Service gaps completed.
-- `CORE_CONTRACT_INDEX` now contains 139 entries:
+- Must-Build Canonical Domain APIs completed.
+- `CORE_CONTRACT_INDEX` now contains 157 entries:
   - 6 foundation contract entries
   - 26 domain contract entries
   - 19 object contract entries
   - 19 service contract entries
-  - 8 API contract entries
+  - 26 API contract entries
   - 12 event catalog entries
   - 8 workflow catalog entries
   - 8 permission contract entries
@@ -47,12 +48,12 @@ Phase 3 — Contract Coverage started.
   - 8 AI governance contract entries
   - 10 Common Contract entries
   - 7 Test Contract entries
-- Current coverage baseline reports 139 structurally assured indexed contracts across 12 contract families.
-- Current Domain-layer coverage is 26 Domain, 19 Object, 19 Service, 4 Domain-mapped API, 4 Event, and 6 Workflow.
+- Current coverage baseline reports 157 structurally assured indexed contracts across 12 contract families.
+- Current Domain-layer coverage is 26 Domain, 19 Object, 19 Service, 18 Domain-mapped API, 4 Event, and 6 Workflow.
 - Gap Inventory maps 22 existing Domain targets and locks 81 canonical skeleton additions across five batches.
-- CORE-TASK-020 and CORE-TASK-021 have completed 33 targets; 48 canonical targets remain.
+- CORE-TASK-020 through CORE-TASK-022 have completed 51 targets; 30 canonical targets remain.
 - Required fixture manifest now contains 19 entries.
-- Next recommended task: CORE-TASK-022 — Must-Build Canonical Domain APIs.
+- Next recommended task: CORE-TASK-023 — Stub Domain Contract Gaps.
 
 ## Current scope
 
@@ -114,7 +115,7 @@ Every change should keep the TypeScript project buildable, tests passing, lint c
 
 ## Next tasks
 
-- CORE-TASK-022 — Must-Build Canonical Domain APIs.
+- CORE-TASK-023 — Stub Domain Contract Gaps.
 
 ## CORE-TASK-009 Status
 
@@ -239,3 +240,14 @@ Next recommended task: CORE-TASK-013 — Core Event Catalog Skeleton.
 - Gap inventory progress: 33 completed, 48 remaining.
 - No object schemas, executable service methods, runtime behavior, or state mutation added.
 - Next recommended task: CORE-TASK-022 — Must-Build Canonical Domain APIs.
+
+## CORE-TASK-022 — Must-Build Canonical Domain APIs
+
+- Added 18 canonical Domain API skeletons for all Must Build Now Domains.
+- Preserved the original 8 Phase 2 API scaffolds as noncanonical compatibility entries.
+- Expanded `CORE_CONTRACT_INDEX` from 139 to 157 entries.
+- API Domain coverage: 18 / 26.
+- Required-layer-complete Domains: 18 / 26; missing required layer slots: 22.
+- Gap inventory progress: 51 completed, 30 remaining.
+- No routes, handlers, middleware, DTO implementation, service execution, runtime behavior, or state mutation added.
+- Next recommended task: CORE-TASK-023 — Stub Domain Contract Gaps.

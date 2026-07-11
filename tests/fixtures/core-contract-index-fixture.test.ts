@@ -21,8 +21,8 @@ const book03RuntimeIds = ['execution-context', 'execution-runtime'];
 const productUiIds = ['product', 'artifact', 'render', 'publish', 'distillery', 'workplace'];
 
 describe('core-contract-index fixture', () => {
-  it('has exactly 139 entries', () => {
-    assert.equal(fixture.length, 139);
+  it('has exactly 157 entries', () => {
+    assert.equal(fixture.length, 157);
   });
 
   it('fixture ids match CORE_CONTRACT_INDEX ids exactly', () => {

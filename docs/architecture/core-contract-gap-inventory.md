@@ -7,9 +7,9 @@
 - Canonical path: `books/book-02-core-specification/`
 - Inventory version: `0.1.0`
 - Inventory baseline Contract Index: 106 entries
-- Current Contract Index: 139 entries
-- Completed canonical targets: 33
-- Remaining canonical targets: 48
+- Current Contract Index: 157 entries
+- Completed canonical targets: 51
+- Remaining canonical targets: 30
 - Contract Index change in this task: none
 
 ## Purpose
@@ -68,6 +68,8 @@ Identity, Organization, User, Permission, Policy, Brand, Trademark, Jurisdiction
 
 These are contract skeletons only: no routes, handlers, service execution, request/response DTO implementation, authentication middleware, or API server.
 
+- Status: completed; all 18 targets are indexed and exact-source validated.
+
 ### CORE-TASK-023 — Stub Domain Contract Gaps (22)
 
 - Knowledge: API only; current Object and Service mappings remain.
@@ -84,4 +86,4 @@ These contracts must not add a workflow engine, running instances, transition ex
 
 CORE-TASK-019 is accepted when the exact 81-target inventory, 22 existing mappings, two retained scaffold families, two required contract-type additions, five batch counts, and Book 2 source paths are reproducible and drift-validated.
 
-Acceptance does not require implementing every target. CORE-TASK-020 and CORE-TASK-021 have completed the first two batches; the next implementation batch is `CORE-TASK-022 — Must-Build Canonical Domain APIs`.
+Acceptance does not require implementing every target. CORE-TASK-020 through CORE-TASK-022 have completed the first three batches; the next implementation batch is `CORE-TASK-023 — Stub Domain Contract Gaps`.

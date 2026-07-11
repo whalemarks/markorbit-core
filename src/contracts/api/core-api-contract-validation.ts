@@ -5,6 +5,29 @@ import type { CoreApiContract } from './core-api-contract.ts';
 const domainIds = new Set<string>(CORE_DOMAIN_REGISTRY.map((domain) => domain.id));
 const statuses = new Set<string>(Object.values(CORE_CONTRACT_STATUSES));
 const kebabCasePattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+const existingApiSkeletonCount = 8;
+const canonicalApiEntries = [
+  ['identity', 'Identity'],
+  ['organization', 'Organization'],
+  ['user', 'User'],
+  ['permission', 'Permission'],
+  ['policy', 'Policy'],
+  ['brand', 'Brand'],
+  ['trademark', 'Trademark'],
+  ['jurisdiction', 'Jurisdiction'],
+  ['classification', 'Classification'],
+  ['document', 'Document'],
+  ['evidence', 'Evidence'],
+  ['customer', 'Customer'],
+  ['matter', 'Matter'],
+  ['order', 'Order'],
+  ['workflow-contract', 'Workflow Contract'],
+  ['task', 'Task'],
+  ['event', 'Event'],
+  ['communication', 'Communication']
+] as const;
+const canonicalApiSourceRoot =
+  'books/book-02-core-specification/core-specs/contracts/api/';
 
 export const EXCLUDED_CORE_API_CONCEPTS = [
   'trademark-filing-api',
@@ -37,7 +60,7 @@ export function validateCoreApiContractSkeletons(contracts: readonly CoreApiCont
   const ids = new Set<string>();
   const apiTypes = new Set<string>();
 
-  if (contracts.length !== 8) errors.push('Core API contract skeletons must contain exactly 8 entries.');
+  if (contracts.length !== 26) errors.push('Core API contract skeletons must contain exactly 26 entries.');
 
   contracts.forEach((contract, index) => {
     const path = `contracts[${index}]`;
@@ -60,6 +83,24 @@ export function validateCoreApiContractSkeletons(contracts: readonly CoreApiCont
     if (typeof contract.domainId === 'string' && !domainIds.has(contract.domainId)) errors.push(`${path}.domainId must exist in CORE_DOMAIN_REGISTRY.`);
     if (typeof contract.status === 'string' && !statuses.has(contract.status)) errors.push(`${path}.status must be a valid CoreContractStatus.`);
     if (contract.metadata !== undefined && !isPlainObject(contract.metadata)) errors.push(`${path}.metadata must be a plain object.`);
+    const canonicalEntry = canonicalApiEntries[index - existingApiSkeletonCount];
+    if (canonicalEntry !== undefined) {
+      const [domainId, domainName] = canonicalEntry;
+      if (contract.id !== `core-api-${domainId}-api-contract`) errors.push(`${path}.id must match the locked CORE-TASK-022 target.`);
+      if (contract.apiType !== `${domainId}-api`) errors.push(`${path}.apiType must match the locked CORE-TASK-022 target.`);
+      if (contract.domainId !== domainId) errors.push(`${path}.domainId must match the locked CORE-TASK-022 target.`);
+      if (contract.name !== `Core ${domainName} API Contract Skeleton`) errors.push(`${path}.name must match the locked CORE-TASK-022 target.`);
+      if (contract.sourcePath !== `${canonicalApiSourceRoot}${domainId}-api-contract.md`) errors.push(`${path}.sourcePath must match the locked Book 2 source.`);
+      if (contract.implementationDepth !== 'validated_skeleton') errors.push(`${path}.implementationDepth must be validated_skeleton.`);
+      if (!isPlainObject(contract.metadata)) {
+        errors.push(`${path}.metadata must be present for canonical additions.`);
+      } else {
+        if (contract.metadata.specificationRepository !== 'whalemarks/markorbit-publication') errors.push(`${path}.metadata.specificationRepository must match the locked repository.`);
+        if (contract.metadata.specificationCommit !== '3349ecb8955021a8714d023348f8b24f941eb98f') errors.push(`${path}.metadata.specificationCommit must match the locked commit.`);
+        if (contract.metadata.specificationPath !== 'books/book-02-core-specification/') errors.push(`${path}.metadata.specificationPath must match the locked Book 2 path.`);
+        if (contract.metadata.implementationTask !== 'CORE-TASK-022') errors.push(`${path}.metadata.implementationTask must be CORE-TASK-022.`);
+      }
+    }
     const serialized = JSON.stringify(contract).toLowerCase();
     for (const concept of EXCLUDED_CORE_API_CONCEPTS) if (serialized.includes(concept)) errors.push(`${path} must not include excluded API concept ${concept}.`);
   });

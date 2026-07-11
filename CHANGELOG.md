@@ -1,5 +1,16 @@
 # Changelog
 
+## CORE-TASK-022 — Must-Build Canonical Domain APIs
+
+- Added exactly 18 inventory-locked canonical Domain API skeletons for Must Build Now Domains.
+- Preserved all 8 Phase 2 global/reference API scaffolds as noncanonical compatibility entries.
+- Locked canonical Book 2 source paths, publication commit, implementation task, and validated-skeleton depth for every addition.
+- Expanded `CORE_CONTRACT_INDEX` from 139 to 157 entries and the API family from 8 to 26 entries.
+- Expanded API Domain coverage from 4/26 to 18/26.
+- Increased required-layer-complete Domains from 4 to 18 and reduced missing required layer slots from 36 to 22.
+- Completed 51/81 inventory targets; 30 remain.
+- Added no API routes, handlers, middleware, request/response DTOs, service execution, state mutation, event emission, database behavior, Book 3 integration, or Product behavior.
+
 ## CORE-TASK-021 — Must-Build Object and Service Gaps
 
 - Added exactly 7 inventory-locked Object skeletons and 9 inventory-locked Service skeletons for Must Build Now Domains.

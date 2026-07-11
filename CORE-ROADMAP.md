@@ -34,7 +34,7 @@
 - [x] Book 2 Contract Gap Inventory Lock — completed/current.
 - [x] Common and Test Contract Foundations — completed/current.
 - [x] Must-Build Object and Service Gaps — completed/current.
-- [ ] Must-Build Canonical Domain APIs.
+- [x] Must-Build Canonical Domain APIs — completed/current.
 - [ ] Stub Domain Contract Gaps.
 - [ ] Canonical Workflow Contracts.
 - Integration with Execution System.
@@ -130,3 +130,14 @@
 - Gap inventory progress: 33 completed, 48 remaining.
 - Runtime and contract behavior: not implemented.
 - Next: CORE-TASK-022 — Must-Build Canonical Domain APIs.
+
+## CORE-TASK-022 — Must-Build Canonical Domain APIs
+
+- 18 Must Build Now canonical Domain API skeletons: completed/current.
+- Original 8 Phase 2 API scaffolds: preserved as noncanonical compatibility entries.
+- Contract Index: 157 entries.
+- API coverage: 18 / 26 Domains.
+- Required-layer-complete Domains: 18 / 26.
+- Gap inventory progress: 51 completed, 30 remaining.
+- Runtime and API behavior: not implemented.
+- Next: CORE-TASK-023 — Stub Domain Contract Gaps.
