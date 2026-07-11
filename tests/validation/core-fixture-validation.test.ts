@@ -107,6 +107,12 @@ describe('core fixture validation', () => {
     assert.equal(validateCoreObjectContractSkeletonsFixture(fixture).ok, false);
   });
 
+  it('object skeleton validator rejects changed canonical source path', async () => {
+    const fixture = structuredClone(await readFixture('fixtures/contracts/core-object-contract-skeletons.fixture.json')) as Record<string, unknown>[];
+    fixture[12].sourcePath = 'wrong.md';
+    assert.equal(validateCoreObjectContractSkeletonsFixture(fixture).ok, false);
+  });
+
 
 
   it('service skeleton validator rejects missing serviceType', async () => {
@@ -124,6 +130,13 @@ describe('core fixture validation', () => {
   it('service skeleton validator rejects duplicate serviceType', async () => {
     const fixture = structuredClone(await readFixture('fixtures/contracts/core-service-contract-skeletons.fixture.json')) as Record<string, unknown>[];
     fixture[1].serviceType = fixture[0].serviceType;
+    assert.equal(validateCoreServiceContractSkeletonsFixture(fixture).ok, false);
+  });
+
+  it('service skeleton validator rejects changed canonical source commit', async () => {
+    const fixture = structuredClone(await readFixture('fixtures/contracts/core-service-contract-skeletons.fixture.json')) as Record<string, unknown>[];
+    const metadata = fixture[10].metadata as Record<string, unknown>;
+    metadata.specificationCommit = 'wrong';
     assert.equal(validateCoreServiceContractSkeletonsFixture(fixture).ok, false);
   });
 

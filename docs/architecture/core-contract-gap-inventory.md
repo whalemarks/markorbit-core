@@ -7,9 +7,9 @@
 - Canonical path: `books/book-02-core-specification/`
 - Inventory version: `0.1.0`
 - Inventory baseline Contract Index: 106 entries
-- Current Contract Index: 123 entries
-- Completed canonical targets: 17
-- Remaining canonical targets: 64
+- Current Contract Index: 139 entries
+- Completed canonical targets: 33
+- Remaining canonical targets: 48
 - Contract Index change in this task: none
 
 ## Purpose
@@ -60,6 +60,7 @@ No current scaffold may be silently deleted, renamed, treated as canonical, or d
 - Object: Identity, Permission, Customer, Order, Workflow Contract, Task, Event.
 - Service: Organization, User, Brand, Customer, Matter, Order, Workflow Contract, Task, Event.
 - Preserves the 22 existing Object/Service mappings.
+- Status: completed; 7 Object and 9 Service skeletons indexed and source-validated.
 
 ### CORE-TASK-022 — Must-Build Canonical Domain APIs (18)
 
@@ -83,4 +84,4 @@ These contracts must not add a workflow engine, running instances, transition ex
 
 CORE-TASK-019 is accepted when the exact 81-target inventory, 22 existing mappings, two retained scaffold families, two required contract-type additions, five batch counts, and Book 2 source paths are reproducible and drift-validated.
 
-Acceptance does not require implementing every target. CORE-TASK-020 has completed the first batch; the next implementation batch is `CORE-TASK-021 — Must-Build Object and Service Gaps`.
+Acceptance does not require implementing every target. CORE-TASK-020 and CORE-TASK-021 have completed the first two batches; the next implementation batch is `CORE-TASK-022 — Must-Build Canonical Domain APIs`.

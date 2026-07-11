@@ -622,6 +622,111 @@
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
   {
+    "id": "core-object-identity-record-contract",
+    "type": "object",
+    "name": "Core Identity Object Contract Skeleton",
+    "description": "Canonical metadata skeleton for the identity Core Object boundary.",
+    "status": "active",
+    "scope": {
+      "domainId": "identity",
+      "objectType": "identity-record"
+    },
+    "version": 1,
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "source": "CORE_OBJECT_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-11T00:00:00.000Z"
+  },
+  {
+    "id": "core-object-permission-record-contract",
+    "type": "object",
+    "name": "Core Permission Object Contract Skeleton",
+    "description": "Canonical metadata skeleton for the permission Core Object boundary.",
+    "status": "active",
+    "scope": {
+      "domainId": "permission",
+      "objectType": "permission-record"
+    },
+    "version": 1,
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "source": "CORE_OBJECT_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-11T00:00:00.000Z"
+  },
+  {
+    "id": "core-object-customer-record-contract",
+    "type": "object",
+    "name": "Core Customer Object Contract Skeleton",
+    "description": "Canonical metadata skeleton for the customer Core Object boundary.",
+    "status": "active",
+    "scope": {
+      "domainId": "customer",
+      "objectType": "customer-record"
+    },
+    "version": 1,
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "source": "CORE_OBJECT_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-11T00:00:00.000Z"
+  },
+  {
+    "id": "core-object-order-record-contract",
+    "type": "object",
+    "name": "Core Order Object Contract Skeleton",
+    "description": "Canonical metadata skeleton for the order Core Object boundary.",
+    "status": "active",
+    "scope": {
+      "domainId": "order",
+      "objectType": "order-record"
+    },
+    "version": 1,
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "source": "CORE_OBJECT_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-11T00:00:00.000Z"
+  },
+  {
+    "id": "core-object-workflow-contract-record-contract",
+    "type": "object",
+    "name": "Core Workflow Contract Object Contract Skeleton",
+    "description": "Canonical metadata skeleton for the workflow-contract Core Object boundary.",
+    "status": "active",
+    "scope": {
+      "domainId": "workflow-contract",
+      "objectType": "workflow-contract-record"
+    },
+    "version": 1,
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "source": "CORE_OBJECT_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-11T00:00:00.000Z"
+  },
+  {
+    "id": "core-object-task-record-contract",
+    "type": "object",
+    "name": "Core Task Object Contract Skeleton",
+    "description": "Canonical metadata skeleton for the task Core Object boundary.",
+    "status": "active",
+    "scope": {
+      "domainId": "task",
+      "objectType": "task-record"
+    },
+    "version": 1,
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "source": "CORE_OBJECT_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-11T00:00:00.000Z"
+  },
+  {
+    "id": "core-object-event-record-contract",
+    "type": "object",
+    "name": "Core Event Object Contract Skeleton",
+    "description": "Canonical metadata skeleton for the event Core Object boundary.",
+    "status": "active",
+    "scope": {
+      "domainId": "event",
+      "objectType": "event-record"
+    },
+    "version": 1,
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "source": "CORE_OBJECT_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-11T00:00:00.000Z"
+  },
+  {
     "id": "core-service-identity-resolution-service-contract",
     "type": "service",
     "name": "Identity Resolution Service Contract Skeleton",
@@ -760,6 +865,132 @@
     "book": "Book 02 \u2014 MarkOrbit Core Specification",
     "source": "CORE_SERVICE_CONTRACT_SKELETONS",
     "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-service-organization-service-contract",
+    "type": "service",
+    "name": "Core Organization Service Contract Skeleton",
+    "description": "Canonical metadata skeleton for the organization Core Service boundary.",
+    "status": "active",
+    "scope": {
+      "domainId": "organization"
+    },
+    "version": 1,
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "source": "CORE_SERVICE_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-11T00:00:00.000Z"
+  },
+  {
+    "id": "core-service-user-service-contract",
+    "type": "service",
+    "name": "Core User Service Contract Skeleton",
+    "description": "Canonical metadata skeleton for the user Core Service boundary.",
+    "status": "active",
+    "scope": {
+      "domainId": "user"
+    },
+    "version": 1,
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "source": "CORE_SERVICE_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-11T00:00:00.000Z"
+  },
+  {
+    "id": "core-service-brand-service-contract",
+    "type": "service",
+    "name": "Core Brand Service Contract Skeleton",
+    "description": "Canonical metadata skeleton for the brand Core Service boundary.",
+    "status": "active",
+    "scope": {
+      "domainId": "brand"
+    },
+    "version": 1,
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "source": "CORE_SERVICE_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-11T00:00:00.000Z"
+  },
+  {
+    "id": "core-service-customer-service-contract",
+    "type": "service",
+    "name": "Core Customer Service Contract Skeleton",
+    "description": "Canonical metadata skeleton for the customer Core Service boundary.",
+    "status": "active",
+    "scope": {
+      "domainId": "customer"
+    },
+    "version": 1,
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "source": "CORE_SERVICE_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-11T00:00:00.000Z"
+  },
+  {
+    "id": "core-service-matter-service-contract",
+    "type": "service",
+    "name": "Core Matter Service Contract Skeleton",
+    "description": "Canonical metadata skeleton for the matter Core Service boundary.",
+    "status": "active",
+    "scope": {
+      "domainId": "matter"
+    },
+    "version": 1,
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "source": "CORE_SERVICE_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-11T00:00:00.000Z"
+  },
+  {
+    "id": "core-service-order-service-contract",
+    "type": "service",
+    "name": "Core Order Service Contract Skeleton",
+    "description": "Canonical metadata skeleton for the order Core Service boundary.",
+    "status": "active",
+    "scope": {
+      "domainId": "order"
+    },
+    "version": 1,
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "source": "CORE_SERVICE_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-11T00:00:00.000Z"
+  },
+  {
+    "id": "core-service-workflow-contract-service-contract",
+    "type": "service",
+    "name": "Core Workflow Contract Service Contract Skeleton",
+    "description": "Canonical metadata skeleton for the workflow-contract Core Service boundary.",
+    "status": "active",
+    "scope": {
+      "domainId": "workflow-contract"
+    },
+    "version": 1,
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "source": "CORE_SERVICE_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-11T00:00:00.000Z"
+  },
+  {
+    "id": "core-service-task-service-contract",
+    "type": "service",
+    "name": "Core Task Service Contract Skeleton",
+    "description": "Canonical metadata skeleton for the task Core Service boundary.",
+    "status": "active",
+    "scope": {
+      "domainId": "task"
+    },
+    "version": 1,
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "source": "CORE_SERVICE_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-11T00:00:00.000Z"
+  },
+  {
+    "id": "core-service-event-service-contract",
+    "type": "service",
+    "name": "Core Event Service Contract Skeleton",
+    "description": "Canonical metadata skeleton for the event Core Service boundary.",
+    "status": "active",
+    "scope": {
+      "domainId": "event"
+    },
+    "version": 1,
+    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "source": "CORE_SERVICE_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-11T00:00:00.000Z"
   },
   {
     "id": "core-api-core-domain-registry-api-contract",

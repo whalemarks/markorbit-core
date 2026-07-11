@@ -1,16 +1,16 @@
 import assert from 'node:assert/strict';
 import { describe, it } from 'node:test';
 
-import { CORE_DOMAIN_REGISTRY, CORE_OBJECT_CONTRACT_SKELETONS, validateCoreObjectContractSkeletons } from '../../src/index.ts';
+import { CORE_DOMAIN_CONTRACT_TARGETS, CORE_DOMAIN_REGISTRY, CORE_OBJECT_CONTRACT_SKELETONS, validateCoreObjectContractSkeletons } from '../../src/index.ts';
 
 const requiredBaseFields = ['id', 'type', 'domainId', 'status', 'version', 'metadata'];
 const excludedConcepts = ['execution-context', 'execution-runtime', 'artifact', 'render-job', 'publish-package', 'distillery-output', 'workplace-item', 'lite-record', 'markreg-case', 'product-screen', 'workflow-runtime-instance', 'task-runtime-instance', 'ai-agent-session'];
 
 describe('CORE_OBJECT_CONTRACT_SKELETONS', () => {
-  it('has exactly 12 entries', () => assert.equal(CORE_OBJECT_CONTRACT_SKELETONS.length, 12));
+  it('has exactly 19 entries', () => assert.equal(CORE_OBJECT_CONTRACT_SKELETONS.length, 19));
   it('validateCoreObjectContractSkeletons returns no errors', () => assert.deepEqual(validateCoreObjectContractSkeletons(CORE_OBJECT_CONTRACT_SKELETONS), []));
-  it('all skeleton ids are unique', () => assert.equal(new Set(CORE_OBJECT_CONTRACT_SKELETONS.map((c) => c.id)).size, 12));
-  it('all objectTypes are unique', () => assert.equal(new Set(CORE_OBJECT_CONTRACT_SKELETONS.map((c) => c.objectType)).size, 12));
+  it('all skeleton ids are unique', () => assert.equal(new Set(CORE_OBJECT_CONTRACT_SKELETONS.map((c) => c.id)).size, 19));
+  it('all objectTypes are unique', () => assert.equal(new Set(CORE_OBJECT_CONTRACT_SKELETONS.map((c) => c.objectType)).size, 19));
   it('every domainId exists in CORE_DOMAIN_REGISTRY', () => {
     const domainIds = new Set(CORE_DOMAIN_REGISTRY.map((domain) => domain.id));
     assert.ok(CORE_OBJECT_CONTRACT_SKELETONS.every((contract) => domainIds.has(contract.domainId)));
@@ -26,5 +26,13 @@ describe('CORE_OBJECT_CONTRACT_SKELETONS', () => {
       assert.ok(Array.isArray(contract.nonGoals));
       for (const field of requiredBaseFields) assert.ok(contract.requiredBaseFields.includes(field));
     }
+  });
+  it('adds exactly the 7 locked CORE-TASK-021 Object targets', () => {
+    const targets = CORE_DOMAIN_CONTRACT_TARGETS.filter((target) => target.implementationBatch === 'CORE-TASK-021' && target.layer === 'object');
+    const additions = CORE_OBJECT_CONTRACT_SKELETONS.slice(12);
+    assert.deepEqual(additions.map((entry) => entry.id), targets.map((target) => target.targetContractId));
+    assert.deepEqual(additions.map((entry) => entry.name), targets.map((target) => target.targetName));
+    assert.deepEqual(additions.map((entry) => entry.sourcePath), targets.map((target) => target.sourcePath));
+    assert.ok(additions.every((entry) => entry.metadata?.implementationTask === 'CORE-TASK-021'));
   });
 });

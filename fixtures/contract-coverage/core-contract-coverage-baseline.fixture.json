@@ -46,7 +46,7 @@
     {
       "family": "object",
       "source": "CORE_OBJECT_CONTRACT_SKELETONS",
-      "indexedCount": 12,
+      "indexedCount": 19,
       "fixtureIds": ["core-object-contract-skeletons"],
       "fixtureCoverage": "required",
       "validatorCoverage": "present",
@@ -55,7 +55,7 @@
     {
       "family": "service",
       "source": "CORE_SERVICE_CONTRACT_SKELETONS",
-      "indexedCount": 10,
+      "indexedCount": 19,
       "fixtureIds": ["core-service-contract-skeletons"],
       "fixtureCoverage": "required",
       "validatorCoverage": "present",
@@ -144,8 +144,8 @@
           "contractIds": ["core-domain-identity-contract"]
         },
         "object": {
-          "status": "missing",
-          "contractIds": []
+          "status": "validated_skeleton",
+          "contractIds": ["core-object-identity-record-contract"]
         },
         "service": {
           "status": "validated_skeleton",
@@ -165,7 +165,7 @@
         }
       },
       "testCoverage": "collection_validation_only",
-      "missingRequiredLayers": ["object", "api"],
+      "missingRequiredLayers": ["api"],
       "requiredLayerState": "partial"
     },
     {
@@ -181,8 +181,8 @@
           "contractIds": ["core-object-organization-record-contract"]
         },
         "service": {
-          "status": "missing",
-          "contractIds": []
+          "status": "validated_skeleton",
+          "contractIds": ["core-service-organization-service-contract"]
         },
         "api": {
           "status": "missing",
@@ -198,7 +198,7 @@
         }
       },
       "testCoverage": "collection_validation_only",
-      "missingRequiredLayers": ["service", "api"],
+      "missingRequiredLayers": ["api"],
       "requiredLayerState": "partial"
     },
     {
@@ -214,8 +214,8 @@
           "contractIds": ["core-object-user-record-contract"]
         },
         "service": {
-          "status": "missing",
-          "contractIds": []
+          "status": "validated_skeleton",
+          "contractIds": ["core-service-user-service-contract"]
         },
         "api": {
           "status": "missing",
@@ -231,7 +231,7 @@
         }
       },
       "testCoverage": "collection_validation_only",
-      "missingRequiredLayers": ["service", "api"],
+      "missingRequiredLayers": ["api"],
       "requiredLayerState": "partial"
     },
     {
@@ -243,8 +243,8 @@
           "contractIds": ["core-domain-permission-contract"]
         },
         "object": {
-          "status": "missing",
-          "contractIds": []
+          "status": "validated_skeleton",
+          "contractIds": ["core-object-permission-record-contract"]
         },
         "service": {
           "status": "validated_skeleton",
@@ -264,7 +264,7 @@
         }
       },
       "testCoverage": "collection_validation_only",
-      "missingRequiredLayers": ["object", "api"],
+      "missingRequiredLayers": ["api"],
       "requiredLayerState": "partial"
     },
     {
@@ -348,8 +348,8 @@
           "contractIds": ["core-object-brand-record-contract"]
         },
         "service": {
-          "status": "missing",
-          "contractIds": []
+          "status": "validated_skeleton",
+          "contractIds": ["core-service-brand-service-contract"]
         },
         "api": {
           "status": "missing",
@@ -365,7 +365,7 @@
         }
       },
       "testCoverage": "collection_validation_only",
-      "missingRequiredLayers": ["service", "api"],
+      "missingRequiredLayers": ["api"],
       "requiredLayerState": "partial"
     },
     {
@@ -550,12 +550,12 @@
           "contractIds": ["core-domain-customer-contract"]
         },
         "object": {
-          "status": "missing",
-          "contractIds": []
+          "status": "validated_skeleton",
+          "contractIds": ["core-object-customer-record-contract"]
         },
         "service": {
-          "status": "missing",
-          "contractIds": []
+          "status": "validated_skeleton",
+          "contractIds": ["core-service-customer-service-contract"]
         },
         "api": {
           "status": "missing",
@@ -571,7 +571,7 @@
         }
       },
       "testCoverage": "collection_validation_only",
-      "missingRequiredLayers": ["object", "service", "api"],
+      "missingRequiredLayers": ["api"],
       "requiredLayerState": "partial"
     },
     {
@@ -587,8 +587,8 @@
           "contractIds": ["core-object-matter-record-contract"]
         },
         "service": {
-          "status": "missing",
-          "contractIds": []
+          "status": "validated_skeleton",
+          "contractIds": ["core-service-matter-service-contract"]
         },
         "api": {
           "status": "missing",
@@ -604,7 +604,7 @@
         }
       },
       "testCoverage": "collection_validation_only",
-      "missingRequiredLayers": ["service", "api"],
+      "missingRequiredLayers": ["api"],
       "requiredLayerState": "partial"
     },
     {
@@ -616,12 +616,12 @@
           "contractIds": ["core-domain-order-contract"]
         },
         "object": {
-          "status": "missing",
-          "contractIds": []
+          "status": "validated_skeleton",
+          "contractIds": ["core-object-order-record-contract"]
         },
         "service": {
-          "status": "missing",
-          "contractIds": []
+          "status": "validated_skeleton",
+          "contractIds": ["core-service-order-service-contract"]
         },
         "api": {
           "status": "missing",
@@ -637,7 +637,7 @@
         }
       },
       "testCoverage": "collection_validation_only",
-      "missingRequiredLayers": ["object", "service", "api"],
+      "missingRequiredLayers": ["api"],
       "requiredLayerState": "partial"
     },
     {
@@ -682,12 +682,12 @@
           "contractIds": ["core-domain-workflow-contract-contract"]
         },
         "object": {
-          "status": "missing",
-          "contractIds": []
+          "status": "validated_skeleton",
+          "contractIds": ["core-object-workflow-contract-record-contract"]
         },
         "service": {
-          "status": "missing",
-          "contractIds": []
+          "status": "validated_skeleton",
+          "contractIds": ["core-service-workflow-contract-service-contract"]
         },
         "api": {
           "status": "validated_skeleton",
@@ -712,8 +712,8 @@
         }
       },
       "testCoverage": "collection_validation_only",
-      "missingRequiredLayers": ["object", "service"],
-      "requiredLayerState": "partial"
+      "missingRequiredLayers": [],
+      "requiredLayerState": "required_layers_present"
     },
     {
       "domainId": "task",
@@ -724,12 +724,12 @@
           "contractIds": ["core-domain-task-contract"]
         },
         "object": {
-          "status": "missing",
-          "contractIds": []
+          "status": "validated_skeleton",
+          "contractIds": ["core-object-task-record-contract"]
         },
         "service": {
-          "status": "missing",
-          "contractIds": []
+          "status": "validated_skeleton",
+          "contractIds": ["core-service-task-service-contract"]
         },
         "api": {
           "status": "validated_skeleton",
@@ -750,8 +750,8 @@
         }
       },
       "testCoverage": "collection_validation_only",
-      "missingRequiredLayers": ["object", "service"],
-      "requiredLayerState": "partial"
+      "missingRequiredLayers": [],
+      "requiredLayerState": "required_layers_present"
     },
     {
       "domainId": "event",
@@ -762,12 +762,12 @@
           "contractIds": ["core-domain-event-contract"]
         },
         "object": {
-          "status": "missing",
-          "contractIds": []
+          "status": "validated_skeleton",
+          "contractIds": ["core-object-event-record-contract"]
         },
         "service": {
-          "status": "missing",
-          "contractIds": []
+          "status": "validated_skeleton",
+          "contractIds": ["core-service-event-service-contract"]
         },
         "api": {
           "status": "validated_skeleton",
@@ -788,8 +788,8 @@
         }
       },
       "testCoverage": "collection_validation_only",
-      "missingRequiredLayers": ["object", "service"],
-      "requiredLayerState": "partial"
+      "missingRequiredLayers": [],
+      "requiredLayerState": "required_layers_present"
     },
     {
       "domainId": "notification",
@@ -1031,7 +1031,7 @@
     }
   ],
   "summary": {
-    "indexedContractCount": 123,
+    "indexedContractCount": 139,
     "structurallyCoveredContractFamilyCount": 12,
     "totalContractFamilyCount": 12,
     "totalDomainCount": 26,
@@ -1039,16 +1039,16 @@
     "stubNowDomainCount": 8,
     "layerDomainCounts": {
       "domain": 26,
-      "object": 12,
-      "service": 10,
+      "object": 19,
+      "service": 19,
       "api": 4,
       "event": 4,
       "workflow": 6
     },
-    "requiredLayerCompleteDomainCount": 1,
-    "mustBuildNowRequiredLayerCompleteDomainCount": 1,
+    "requiredLayerCompleteDomainCount": 4,
+    "mustBuildNowRequiredLayerCompleteDomainCount": 4,
     "stubNowRequiredLayerCompleteDomainCount": 0,
-    "missingRequiredLayerSlotCount": 52,
+    "missingRequiredLayerSlotCount": 36,
     "collectionValidatedDomainCount": 26,
     "domainBehaviorTestedCount": 0,
     "globalApiSkeletonCount": 4

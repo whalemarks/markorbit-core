@@ -66,8 +66,8 @@ function idsByDomain(
 }
 
 const existingIdsByLayer = {
-  object: idsByDomain(CORE_OBJECT_CONTRACT_SKELETONS),
-  service: idsByDomain(CORE_SERVICE_CONTRACT_SKELETONS),
+  object: idsByDomain(CORE_OBJECT_CONTRACT_SKELETONS.slice(0, 12)),
+  service: idsByDomain(CORE_SERVICE_CONTRACT_SKELETONS.slice(0, 10)),
   api: new Map<CoreDomainId, readonly string[]>()
 } as const satisfies Readonly<
   Record<CoreDomainGapLayer, ReadonlyMap<CoreDomainId, readonly string[]>>
