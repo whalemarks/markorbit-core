@@ -36,7 +36,7 @@
 - [x] Must-Build Object and Service Gaps — completed/current.
 - [x] Must-Build Canonical Domain APIs — completed/current.
 - [x] Stub Domain Contract Gaps — completed/current.
-- [ ] Canonical Workflow Contracts.
+- [x] Canonical Workflow Contracts — completed/current.
 - Integration with Execution System.
 - Generated SDK.
 - Documentation site.
@@ -153,3 +153,13 @@
 - Gap inventory progress: 73 completed, 8 remaining.
 - Runtime and contract behavior: not implemented.
 - Next: CORE-TASK-024 — Canonical Workflow Contracts.
+
+## CORE-TASK-024 — Canonical Workflow Contracts
+
+- 8 canonical Workflow Contract skeletons: completed/current.
+- Original 8 Phase 2 Workflow catalog scaffolds: preserved.
+- Contract Index: projected final 187 entries reached.
+- Gap inventory progress: 81 completed, 0 remaining.
+- Five controlled implementation batches: completed.
+- Runtime and workflow behavior: not implemented.
+- Next: CORE-TASK-025 — Phase 3 Contract Coverage Acceptance Lock.

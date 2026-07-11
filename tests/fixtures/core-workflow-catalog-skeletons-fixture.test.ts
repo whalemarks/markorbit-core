@@ -17,7 +17,7 @@ function fixtureHasKey(value: unknown, key: string): boolean {
 }
 
 describe('core-workflow-catalog-skeletons fixture', () => {
-  it('has exactly 8 entries', () => assert.equal(fixture.length, 8));
+  it('has exactly 16 entries', () => assert.equal(fixture.length, 16));
   it('fixture ids match CORE_WORKFLOW_CATALOG_SKELETONS ids exactly', () => assert.deepEqual(fixture.map((entry) => entry.id), CORE_WORKFLOW_CATALOG_SKELETONS.map((entry) => entry.id)));
   it('fixture workflowTypes match CORE_WORKFLOW_CATALOG_SKELETONS workflowTypes exactly', () => assert.deepEqual(fixture.map((entry) => entry.workflowType), CORE_WORKFLOW_CATALOG_SKELETONS.map((entry) => entry.workflowType)));
   it('fixture names match CORE_WORKFLOW_CATALOG_SKELETONS names exactly', () => assert.deepEqual(fixture.map((entry) => entry.name), CORE_WORKFLOW_CATALOG_SKELETONS.map((entry) => entry.name)));

@@ -1964,6 +1964,126 @@
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
   {
+    "id": "core-workflow-customer-intake-workflow-contract",
+    "type": "workflow",
+    "name": "Core Customer Intake Workflow Contract Skeleton",
+    "description": "Canonical metadata skeleton for the Customer Intake Workflow contract boundary.",
+    "status": "active",
+    "scope": {
+      "domainId": "workflow-contract",
+      "workflowContractType": "customer-intake-workflow"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "source": "CORE_WORKFLOW_CATALOG_SKELETONS",
+    "createdAt": "2026-07-11T00:00:00.000Z"
+  },
+  {
+    "id": "core-workflow-trademark-application-workflow-contract",
+    "type": "workflow",
+    "name": "Core Trademark Application Workflow Contract Skeleton",
+    "description": "Canonical metadata skeleton for the Trademark Application Workflow contract boundary.",
+    "status": "active",
+    "scope": {
+      "domainId": "workflow-contract",
+      "workflowContractType": "trademark-application-workflow"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "source": "CORE_WORKFLOW_CATALOG_SKELETONS",
+    "createdAt": "2026-07-11T00:00:00.000Z"
+  },
+  {
+    "id": "core-workflow-office-action-response-workflow-contract",
+    "type": "workflow",
+    "name": "Core Office Action Response Workflow Contract Skeleton",
+    "description": "Canonical metadata skeleton for the Office Action Response Workflow contract boundary.",
+    "status": "active",
+    "scope": {
+      "domainId": "workflow-contract",
+      "workflowContractType": "office-action-response-workflow"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "source": "CORE_WORKFLOW_CATALOG_SKELETONS",
+    "createdAt": "2026-07-11T00:00:00.000Z"
+  },
+  {
+    "id": "core-workflow-provider-routing-workflow-contract",
+    "type": "workflow",
+    "name": "Core Provider Routing Workflow Contract Skeleton",
+    "description": "Canonical metadata skeleton for the Provider Routing Workflow contract boundary.",
+    "status": "active",
+    "scope": {
+      "domainId": "workflow-contract",
+      "workflowContractType": "provider-routing-workflow"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "source": "CORE_WORKFLOW_CATALOG_SKELETONS",
+    "createdAt": "2026-07-11T00:00:00.000Z"
+  },
+  {
+    "id": "core-workflow-communication-review-workflow-contract",
+    "type": "workflow",
+    "name": "Core Communication Review Workflow Contract Skeleton",
+    "description": "Canonical metadata skeleton for the Communication Review Workflow contract boundary.",
+    "status": "active",
+    "scope": {
+      "domainId": "workflow-contract",
+      "workflowContractType": "communication-review-workflow"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "source": "CORE_WORKFLOW_CATALOG_SKELETONS",
+    "createdAt": "2026-07-11T00:00:00.000Z"
+  },
+  {
+    "id": "core-workflow-renewal-workflow-contract",
+    "type": "workflow",
+    "name": "Core Renewal Workflow Contract Skeleton",
+    "description": "Canonical metadata skeleton for the Renewal Workflow contract boundary.",
+    "status": "active",
+    "scope": {
+      "domainId": "workflow-contract",
+      "workflowContractType": "renewal-workflow"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "source": "CORE_WORKFLOW_CATALOG_SKELETONS",
+    "createdAt": "2026-07-11T00:00:00.000Z"
+  },
+  {
+    "id": "core-workflow-assignment-workflow-contract",
+    "type": "workflow",
+    "name": "Core Assignment Workflow Contract Skeleton",
+    "description": "Canonical metadata skeleton for the Assignment Workflow contract boundary.",
+    "status": "active",
+    "scope": {
+      "domainId": "workflow-contract",
+      "workflowContractType": "assignment-workflow"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "source": "CORE_WORKFLOW_CATALOG_SKELETONS",
+    "createdAt": "2026-07-11T00:00:00.000Z"
+  },
+  {
+    "id": "core-workflow-evidence-review-workflow-contract",
+    "type": "workflow",
+    "name": "Core Evidence Review Workflow Contract Skeleton",
+    "description": "Canonical metadata skeleton for the Evidence Review Workflow contract boundary.",
+    "status": "active",
+    "scope": {
+      "domainId": "workflow-contract",
+      "workflowContractType": "evidence-review-workflow"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "source": "CORE_WORKFLOW_CATALOG_SKELETONS",
+    "createdAt": "2026-07-11T00:00:00.000Z"
+  },
+  {
     "id": "core-permission-core-read-permission-contract",
     "type": "permission",
     "name": "Core Read Permission Contract Skeleton",

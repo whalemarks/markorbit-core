@@ -82,7 +82,7 @@
     {
       "family": "workflow",
       "source": "CORE_WORKFLOW_CATALOG_SKELETONS",
-      "indexedCount": 8,
+      "indexedCount": 16,
       "fixtureIds": ["core-workflow-catalog-skeletons"],
       "fixtureCoverage": "required",
       "validatorCoverage": "present",
@@ -711,7 +711,15 @@
           "contractIds": [
             "core-workflow-core-record-preparation-workflow-contract",
             "core-workflow-core-record-review-workflow-contract",
-            "core-workflow-core-contract-registration-workflow-contract"
+            "core-workflow-core-contract-registration-workflow-contract",
+            "core-workflow-customer-intake-workflow-contract",
+            "core-workflow-trademark-application-workflow-contract",
+            "core-workflow-office-action-response-workflow-contract",
+            "core-workflow-provider-routing-workflow-contract",
+            "core-workflow-communication-review-workflow-contract",
+            "core-workflow-renewal-workflow-contract",
+            "core-workflow-assignment-workflow-contract",
+            "core-workflow-evidence-review-workflow-contract"
           ]
         }
       },
@@ -1041,7 +1049,7 @@
     }
   ],
   "summary": {
-    "indexedContractCount": 179,
+    "indexedContractCount": 187,
     "structurallyCoveredContractFamilyCount": 12,
     "totalContractFamilyCount": 12,
     "totalDomainCount": 26,

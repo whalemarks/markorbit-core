@@ -270,6 +270,12 @@ describe('core fixture validation', () => {
     assert.equal(validateCoreWorkflowCatalogSkeletonsFixture(fixture).ok, false);
   });
 
+  it('workflow catalog skeleton validator rejects changed canonical source path', async () => {
+    const fixture = structuredClone(await readFixture('fixtures/contracts/core-workflow-catalog-skeletons.fixture.json')) as Record<string, unknown>[];
+    fixture[8].sourcePath = 'wrong.md';
+    assert.equal(validateCoreWorkflowCatalogSkeletonsFixture(fixture).ok, false);
+  });
+
   it('permission skeleton validator returns ok true for existing fixture', async () => {
     assert.equal(validateCorePermissionContractSkeletonsFixture(await readFixture('fixtures/contracts/core-permission-contract-skeletons.fixture.json')).ok, true);
   });
