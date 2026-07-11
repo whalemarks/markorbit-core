@@ -1,5 +1,13 @@
 # Changelog
 
+## CORE-TASK-025 — Phase 3 Contract Coverage Acceptance Lock
+
+- Locked the final Phase 3 structural acceptance state at 187 indexed contracts across 12/12 structurally covered families.
+- Accepted required Domain, Object, Service, and API layers for 26/26 Domains with 0 missing required slots.
+- Accepted all 81/81 Gap Inventory targets and all five controlled implementation batches.
+- Added an exact validator, required fixture, tests, architecture record, and `pnpm acceptance:contracts` report.
+- Preserved the boundary that runtime, behavior, workflow execution, production readiness, and Product/Book 3 behavior are not accepted.
+
 ## CORE-TASK-024 — Canonical Workflow Contracts
 
 - Added exactly 8 inventory-locked canonical Workflow Contract skeletons from the pinned Book 2 sources.

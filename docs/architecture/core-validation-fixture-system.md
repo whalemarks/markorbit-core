@@ -2,7 +2,7 @@
 
 CORE-TASK-007 adds the Core Validation Fixture System as a validation spine for MarkOrbit Core. It checks that the canonical Core domain registry and foundation primitive fixtures remain aligned as Core contracts evolve.
 
-The system currently protects 19 required fixtures across the domain registry, foundation primitives, Contract Index, every Phase 2 contract family, the Phase 3 coverage and gap controls, and the canonical Common and Test Contract skeleton families. It validates structure, registry domain references, exact locked collections where required, primitive compatibility, coverage and gap count drift, canonical target mappings, and prohibited runtime or business-specific fields.
+The system currently protects 20 required fixtures across the domain registry, foundation primitives, Contract Index, every Phase 2 contract family, the Phase 3 coverage, gap, and acceptance controls, and the canonical Common and Test Contract skeleton families. It validates structure, registry domain references, exact locked collections where required, primitive compatibility, coverage and gap count drift, canonical target mappings, and prohibited runtime or business-specific fields.
 
 This is validation infrastructure only. It does not add business logic, trademark-specific validation, service logic, product UI, database schema, API server behavior, AI agent authority, Book 03 execution runtime, or a workflow engine.
 

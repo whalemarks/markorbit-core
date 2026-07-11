@@ -20,7 +20,8 @@ import {
   validateCoreCommonContractSkeletonsFixture,
   validateCoreTestContractSkeletonsFixture,
   validateCoreContractCoverageBaselineFixture,
-  validateCoreContractGapInventoryFixture
+  validateCoreContractGapInventoryFixture,
+  validateCoreContractCoverageAcceptanceLockFixture
 } from '../../src/index.ts';
 
 const readFixture = async (path: string): Promise<unknown> => JSON.parse(await readFile(new URL(`../../${path}`, import.meta.url), 'utf8'));
@@ -45,6 +46,14 @@ describe('core fixture validation', () => {
     assert.equal(validateCoreTestContractSkeletonsFixture(await readFixture('fixtures/contracts/core-test-contract-skeletons.fixture.json')).ok, true);
     assert.equal(validateCoreContractCoverageBaselineFixture(await readFixture('fixtures/contract-coverage/core-contract-coverage-baseline.fixture.json')).ok, true);
     assert.equal(validateCoreContractGapInventoryFixture(await readFixture('fixtures/contract-coverage/core-contract-gap-inventory.fixture.json')).ok, true);
+    assert.equal(validateCoreContractCoverageAcceptanceLockFixture(await readFixture('fixtures/contract-coverage/core-contract-coverage-acceptance-lock.fixture.json')).ok, true);
+  });
+
+  it('acceptance lock validator rejects structural acceptance drift', async () => {
+    const fixture = structuredClone(await readFixture('fixtures/contract-coverage/core-contract-coverage-acceptance-lock.fixture.json')) as Record<string, unknown>;
+    const acceptedState = fixture.acceptedState as Record<string, unknown>;
+    acceptedState.indexedContractCount = 188;
+    assert.equal(validateCoreContractCoverageAcceptanceLockFixture(fixture).ok, false);
   });
 
   it('each validator returns ok false for invalid non-array input', () => {

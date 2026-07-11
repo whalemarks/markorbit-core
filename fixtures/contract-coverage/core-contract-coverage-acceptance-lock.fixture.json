@@ -1,0 +1,78 @@
+{
+  "id": "core-contract-coverage-acceptance-lock-v0-1",
+  "version": "0.1.0",
+  "acceptedAt": "2026-07-11T00:00:00.000Z",
+  "task": "CORE-TASK-025",
+  "scope": "phase_3_contract_structure_acceptance_only",
+  "authority": {
+    "specificationRepository": "whalemarks/markorbit-publication",
+    "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+    "specificationPath": "books/book-02-core-specification/",
+    "traceability": "books/book-02-core-specification/core-specs/TRACEABILITY.md",
+    "mvpCut": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
+    "validation": "books/book-02-core-specification/core-specs/validation/traceability-validation.md"
+  },
+  "acceptedState": {
+    "indexedContractCount": 187,
+    "structurallyCoveredContractFamilyCount": 12,
+    "totalContractFamilyCount": 12,
+    "totalDomainCount": 26,
+    "requiredLayerCompleteDomainCount": 26,
+    "missingRequiredLayerSlotCount": 0,
+    "completedCanonicalTargetCount": 81,
+    "remainingCanonicalTargetCount": 0,
+    "implementationBatches": [
+      {
+        "id": "CORE-TASK-020",
+        "targetCount": 17,
+        "completedTargetCount": 17,
+        "status": "accepted"
+      },
+      {
+        "id": "CORE-TASK-021",
+        "targetCount": 16,
+        "completedTargetCount": 16,
+        "status": "accepted"
+      },
+      {
+        "id": "CORE-TASK-022",
+        "targetCount": 18,
+        "completedTargetCount": 18,
+        "status": "accepted"
+      },
+      {
+        "id": "CORE-TASK-023",
+        "targetCount": 22,
+        "completedTargetCount": 22,
+        "status": "accepted"
+      },
+      {
+        "id": "CORE-TASK-024",
+        "targetCount": 8,
+        "completedTargetCount": 8,
+        "status": "accepted"
+      }
+    ]
+  },
+  "acceptanceChecks": {
+    "indexMatchesProjectedFinalCount": true,
+    "allContractFamiliesStructurallyCovered": true,
+    "allDomainsHaveRequiredLayers": true,
+    "allCanonicalTargetsCompleted": true,
+    "noPartialImplementationBatch": true,
+    "currentIndexMatchesCompletedTargets": true
+  },
+  "assessmentBoundary": {
+    "structuralCoverageAccepted": true,
+    "sourceAlignmentAcceptedForLockedTargets": true,
+    "runtimeCoverageAccepted": false,
+    "behaviorCoverageAccepted": false,
+    "productionReadinessAccepted": false
+  },
+  "nonGoals": [
+    "No runtime behavior is accepted by this lock.",
+    "No contract implementation completeness is asserted beyond validated skeleton structure.",
+    "No workflow execution, state mutation, Task creation, or Event emission is authorized.",
+    "No Product or Book 3 behavior is included."
+  ]
+}

@@ -28,7 +28,7 @@
 - [x] Core Policy Contract Skeletons.
 - [x] Core AI Governance Contract Skeletons: completed/current.
 
-## Phase 3 — Started
+## Phase 3 — Contract Coverage Accepted
 
 - [x] Contract coverage baseline — first acceptance result/current.
 - [x] Book 2 Contract Gap Inventory Lock — completed/current.
@@ -37,6 +37,7 @@
 - [x] Must-Build Canonical Domain APIs — completed/current.
 - [x] Stub Domain Contract Gaps — completed/current.
 - [x] Canonical Workflow Contracts — completed/current.
+- [x] Phase 3 Contract Coverage Acceptance Lock — completed/current.
 - Integration with Execution System.
 - Generated SDK.
 - Documentation site.
@@ -163,3 +164,13 @@
 - Five controlled implementation batches: completed.
 - Runtime and workflow behavior: not implemented.
 - Next: CORE-TASK-025 — Phase 3 Contract Coverage Acceptance Lock.
+
+## CORE-TASK-025 — Phase 3 Contract Coverage Acceptance Lock
+
+- Final Contract Index: 187 entries accepted/current.
+- Structurally covered contract families: 12 / 12 accepted/current.
+- Required Domain, Object, Service, and API layers: 26 / 26 Domains accepted/current.
+- Gap Inventory: 81 / 81 targets complete; 0 remaining.
+- Controlled implementation batches: 5 / 5 accepted.
+- Runtime, behavior, and production readiness: not accepted.
+- Phase 3 contract coverage: completed/current.
