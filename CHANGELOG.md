@@ -1,5 +1,16 @@
 # Changelog
 
+## CORE-TASK-023 — Stub Domain Contract Gaps
+
+- Added exactly 7 Object, 7 Service, and 8 API inventory-locked safe stubs for all 8 Stub Now Domains.
+- Preserved the existing Knowledge Object and Service mappings and added only its missing canonical API target.
+- Locked exact Book 2 source paths, publication commit, `stub_now` requirement, implementation task, and validated-skeleton depth.
+- Expanded `CORE_CONTRACT_INDEX` from 157 to 179 entries: 26 Object, 26 Service, and 34 API entries.
+- Completed Object, Service, and API Domain coverage at 26/26 without claiming runtime or behavior coverage.
+- Increased required-layer-complete Domains from 18 to 26 and reduced missing required layer slots from 22 to 0.
+- Completed 73/81 inventory targets; 8 canonical Workflow Contract targets remain.
+- Added no fake success, operational availability, object schemas, service methods, API endpoints, state mutation, persistence, Book 3 integration, or Product behavior.
+
 ## CORE-TASK-022 — Must-Build Canonical Domain APIs
 
 - Added exactly 18 inventory-locked canonical Domain API skeletons for Must Build Now Domains.

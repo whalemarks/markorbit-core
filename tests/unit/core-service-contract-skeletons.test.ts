@@ -7,7 +7,7 @@ const domainIds = new Set(CORE_DOMAIN_REGISTRY.map((domain) => domain.id));
 const kebabCasePattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 
 describe('CORE_SERVICE_CONTRACT_SKELETONS', () => {
-  it('has exactly 19 entries', () => assert.equal(CORE_SERVICE_CONTRACT_SKELETONS.length, 19));
+  it('has exactly 26 entries', () => assert.equal(CORE_SERVICE_CONTRACT_SKELETONS.length, 26));
   it('validateCoreServiceContractSkeletons returns no errors', () => assert.deepEqual(validateCoreServiceContractSkeletons(CORE_SERVICE_CONTRACT_SKELETONS), []));
   it('all skeleton ids are unique', () => assert.equal(new Set(CORE_SERVICE_CONTRACT_SKELETONS.map((contract) => contract.id)).size, CORE_SERVICE_CONTRACT_SKELETONS.length));
   it('all serviceTypes are unique', () => assert.equal(new Set(CORE_SERVICE_CONTRACT_SKELETONS.map((contract) => contract.serviceType)).size, CORE_SERVICE_CONTRACT_SKELETONS.length));
@@ -22,10 +22,18 @@ describe('CORE_SERVICE_CONTRACT_SKELETONS', () => {
   it('serviceType values are kebab-case', () => assert.ok(CORE_SERVICE_CONTRACT_SKELETONS.every((contract) => kebabCasePattern.test(contract.serviceType))));
   it('adds exactly the 9 locked CORE-TASK-021 Service targets', () => {
     const targets = CORE_DOMAIN_CONTRACT_TARGETS.filter((target) => target.implementationBatch === 'CORE-TASK-021' && target.layer === 'service');
-    const additions = CORE_SERVICE_CONTRACT_SKELETONS.slice(10);
+    const additions = CORE_SERVICE_CONTRACT_SKELETONS.slice(10, 19);
     assert.deepEqual(additions.map((entry) => entry.id), targets.map((target) => target.targetContractId));
     assert.deepEqual(additions.map((entry) => entry.name), targets.map((target) => target.targetName));
     assert.deepEqual(additions.map((entry) => entry.sourcePath), targets.map((target) => target.sourcePath));
     assert.ok(additions.every((entry) => entry.metadata?.implementationTask === 'CORE-TASK-021'));
+  });
+  it('adds exactly the 7 safe CORE-TASK-023 Service stubs', () => {
+    const targets = CORE_DOMAIN_CONTRACT_TARGETS.filter((target) => target.implementationBatch === 'CORE-TASK-023' && target.layer === 'service');
+    const additions = CORE_SERVICE_CONTRACT_SKELETONS.slice(19);
+    assert.deepEqual(additions.map((entry) => entry.id), targets.map((target) => target.targetContractId));
+    assert.deepEqual(additions.map((entry) => entry.name), targets.map((target) => target.targetName));
+    assert.deepEqual(additions.map((entry) => entry.sourcePath), targets.map((target) => target.sourcePath));
+    assert.ok(additions.every((entry) => entry.metadata?.implementationTask === 'CORE-TASK-023' && entry.metadata.mvpRequirement === 'stub_now'));
   });
 });

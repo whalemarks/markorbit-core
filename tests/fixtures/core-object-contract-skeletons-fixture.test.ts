@@ -10,7 +10,7 @@ const excludedConcepts = ['execution-context', 'execution-runtime', 'artifact', 
 const businessFields = ['filingDate', 'goods', 'services', 'clientInstruction', 'legalOpinion', 'evidenceFiles', 'providerFee', 'workflowState'];
 
 describe('core-object-contract-skeletons fixture', () => {
-  it('has exactly 19 entries', () => assert.equal(fixture.length, 19));
+  it('has exactly 26 entries', () => assert.equal(fixture.length, 26));
   it('fixture ids match CORE_OBJECT_CONTRACT_SKELETONS ids exactly', () => assert.deepEqual(fixture.map((c) => c.id), CORE_OBJECT_CONTRACT_SKELETONS.map((c) => c.id)));
   it('fixture objectTypes match CORE_OBJECT_CONTRACT_SKELETONS objectTypes exactly', () => assert.deepEqual(fixture.map((c) => c.objectType), CORE_OBJECT_CONTRACT_SKELETONS.map((c) => c.objectType)));
   it('fixture domainIds match CORE_OBJECT_CONTRACT_SKELETONS domainIds exactly', () => assert.deepEqual(fixture.map((c) => c.domainId), CORE_OBJECT_CONTRACT_SKELETONS.map((c) => c.domainId)));

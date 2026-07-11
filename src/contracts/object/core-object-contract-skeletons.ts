@@ -61,6 +61,44 @@ const canonicalObjectSkeleton = (
   }
 });
 
+const stubObjectTargets = [
+  ['opportunity', 'Opportunity'],
+  ['notification', 'Notification'],
+  ['partner', 'Partner'],
+  ['agent', 'Agent'],
+  ['service-provider', 'Service Provider'],
+  ['service-network', 'Service Network'],
+  ['routing', 'Routing']
+] as const satisfies readonly (readonly [CoreObjectContract['domainId'], string])[];
+
+const stubObjectSkeleton = (
+  domainId: CoreObjectContract['domainId'],
+  domainName: string
+): CoreObjectContract => ({
+  ...objectSkeleton(
+    `${domainId}-record`,
+    domainId,
+    `Core ${domainName} Object Contract Skeleton`,
+    `Safe metadata-only stub for the ${domainName} Core Object boundary.`,
+    `Reserves the canonical ${domainName} object boundary without claiming schema, persistence, lifecycle, validation, or runtime capability.`
+  ),
+  owns: [`${domainName} structural object-reference boundary.`],
+  nonGoals: [
+    ...nonGoals,
+    'Operational availability, successful execution, production readiness, or implemented domain behavior.'
+  ],
+  sourcePath: `${objectSourceRoot}${domainId}.md`,
+  implementationDepth: 'validated_skeleton',
+  createdAt: canonicalCreatedAt,
+  metadata: {
+    specificationRepository: 'whalemarks/markorbit-publication',
+    specificationCommit: '3349ecb8955021a8714d023348f8b24f941eb98f',
+    specificationPath,
+    implementationTask: 'CORE-TASK-023',
+    mvpRequirement: 'stub_now'
+  }
+});
+
 export const CORE_OBJECT_CONTRACT_SKELETONS = [
   objectSkeleton('user-record', 'user', 'User Record Object Contract Skeleton', 'Skeleton contract boundary for User Record Core objects.', 'Establishes the object contract placeholder for user records using only CoreObjectDefinition base fields.'),
   objectSkeleton('organization-record', 'organization', 'Organization Record Object Contract Skeleton', 'Skeleton contract boundary for Organization Record Core objects.', 'Establishes the object contract placeholder for organization records using only CoreObjectDefinition base fields.'),
@@ -136,5 +174,8 @@ export const CORE_OBJECT_CONTRACT_SKELETONS = [
     'Defines the meaningful-occurrence record boundary without implementing event emission, dispatch, consumption, persistence, sourcing, or workflow logic.',
     ['Event occurrence, source, subject, actor, correlation, causation, and trace boundary.'],
     ['Event bus, event sourcing, dispatch, subscription, persistence, workflow execution, or implementation logging.']
+  ),
+  ...stubObjectTargets.map(([domainId, domainName]) =>
+    stubObjectSkeleton(domainId, domainName)
   )
 ] as const satisfies readonly CoreObjectContract[];

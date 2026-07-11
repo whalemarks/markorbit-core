@@ -19,3 +19,7 @@ Execution Context and Execution Runtime belong to Book 03 and are not object con
 ## Future Expansion
 
 Future tasks may expand selected object skeletons into full object contracts, but only through explicit approval. Any such expansion must keep Core, Execution, Product, service/API, workflow runtime, database, and AI agent authority boundaries intact.
+
+## CORE-TASK-023 safe stub expansion
+
+CORE-TASK-023 appends 7 canonical Object skeletons for Opportunity, Notification, Partner, Agent, Service Provider, Service Network, and Routing. Each is explicitly marked `stub_now` and reserves only a structural object-reference boundary; none claims a full schema, persistence, lifecycle, validation, operational availability, or production readiness.

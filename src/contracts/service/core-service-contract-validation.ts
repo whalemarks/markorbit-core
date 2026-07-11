@@ -7,15 +7,22 @@ const statuses = new Set<string>(Object.values(CORE_CONTRACT_STATUSES));
 const kebabCasePattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const existingServiceSkeletonCount = 10;
 const canonicalServiceEntries = [
-  ['organization-service', 'organization', 'Core Organization Service Contract Skeleton', 'organization-service.md'],
-  ['user-service', 'user', 'Core User Service Contract Skeleton', 'user-service.md'],
-  ['brand-service', 'brand', 'Core Brand Service Contract Skeleton', 'brand-service.md'],
-  ['customer-service', 'customer', 'Core Customer Service Contract Skeleton', 'customer-service.md'],
-  ['matter-service', 'matter', 'Core Matter Service Contract Skeleton', 'matter-service.md'],
-  ['order-service', 'order', 'Core Order Service Contract Skeleton', 'order-service.md'],
-  ['workflow-contract-service', 'workflow-contract', 'Core Workflow Contract Service Contract Skeleton', 'workflow-contract-service.md'],
-  ['task-service', 'task', 'Core Task Service Contract Skeleton', 'task-service.md'],
-  ['event-service', 'event', 'Core Event Service Contract Skeleton', 'event-service.md']
+  ['organization-service', 'organization', 'Core Organization Service Contract Skeleton', 'organization-service.md', 'CORE-TASK-021'],
+  ['user-service', 'user', 'Core User Service Contract Skeleton', 'user-service.md', 'CORE-TASK-021'],
+  ['brand-service', 'brand', 'Core Brand Service Contract Skeleton', 'brand-service.md', 'CORE-TASK-021'],
+  ['customer-service', 'customer', 'Core Customer Service Contract Skeleton', 'customer-service.md', 'CORE-TASK-021'],
+  ['matter-service', 'matter', 'Core Matter Service Contract Skeleton', 'matter-service.md', 'CORE-TASK-021'],
+  ['order-service', 'order', 'Core Order Service Contract Skeleton', 'order-service.md', 'CORE-TASK-021'],
+  ['workflow-contract-service', 'workflow-contract', 'Core Workflow Contract Service Contract Skeleton', 'workflow-contract-service.md', 'CORE-TASK-021'],
+  ['task-service', 'task', 'Core Task Service Contract Skeleton', 'task-service.md', 'CORE-TASK-021'],
+  ['event-service', 'event', 'Core Event Service Contract Skeleton', 'event-service.md', 'CORE-TASK-021'],
+  ['opportunity-service', 'opportunity', 'Core Opportunity Service Contract Skeleton', 'opportunity-service.md', 'CORE-TASK-023'],
+  ['notification-service', 'notification', 'Core Notification Service Contract Skeleton', 'notification-service.md', 'CORE-TASK-023'],
+  ['partner-service', 'partner', 'Core Partner Service Contract Skeleton', 'partner-service.md', 'CORE-TASK-023'],
+  ['agent-service', 'agent', 'Core Agent Service Contract Skeleton', 'agent-service.md', 'CORE-TASK-023'],
+  ['service-provider-service', 'service-provider', 'Core Service Provider Service Contract Skeleton', 'service-provider-service.md', 'CORE-TASK-023'],
+  ['service-network-service', 'service-network', 'Core Service Network Service Contract Skeleton', 'service-network-service.md', 'CORE-TASK-023'],
+  ['routing-service', 'routing', 'Core Routing Service Contract Skeleton', 'routing-service.md', 'CORE-TASK-023']
 ] as const;
 const canonicalServiceSourceRoot = 'books/book-02-core-specification/core-specs/services/';
 
@@ -48,7 +55,7 @@ export function validateCoreServiceContractSkeletons(contracts: readonly CoreSer
   const ids = new Set<string>();
   const serviceTypes = new Set<string>();
 
-  if (contracts.length !== 19) errors.push('Core service contract skeletons must contain exactly 19 entries.');
+  if (contracts.length !== 26) errors.push('Core service contract skeletons must contain exactly 26 entries.');
 
   contracts.forEach((contract, index) => {
     const path = `contracts[${index}]`;
@@ -83,10 +90,11 @@ export function validateCoreServiceContractSkeletons(contracts: readonly CoreSer
 
     const canonicalEntry = canonicalServiceEntries[index - existingServiceSkeletonCount];
     if (canonicalEntry !== undefined) {
-      if (contract.id !== `core-service-${canonicalEntry[0]}-contract`) errors.push(`${path}.id must match the locked CORE-TASK-021 target.`);
-      if (contract.serviceType !== canonicalEntry[0]) errors.push(`${path}.serviceType must match the locked CORE-TASK-021 target.`);
-      if (contract.domainId !== canonicalEntry[1]) errors.push(`${path}.domainId must match the locked CORE-TASK-021 target.`);
-      if (contract.name !== canonicalEntry[2]) errors.push(`${path}.name must match the locked CORE-TASK-021 target.`);
+      const implementationTask = canonicalEntry[4];
+      if (contract.id !== `core-service-${canonicalEntry[0]}-contract`) errors.push(`${path}.id must match the locked ${implementationTask} target.`);
+      if (contract.serviceType !== canonicalEntry[0]) errors.push(`${path}.serviceType must match the locked ${implementationTask} target.`);
+      if (contract.domainId !== canonicalEntry[1]) errors.push(`${path}.domainId must match the locked ${implementationTask} target.`);
+      if (contract.name !== canonicalEntry[2]) errors.push(`${path}.name must match the locked ${implementationTask} target.`);
       if (contract.sourcePath !== `${canonicalServiceSourceRoot}${canonicalEntry[3]}`) errors.push(`${path}.sourcePath must match the locked Book 2 source.`);
       if (contract.implementationDepth !== 'validated_skeleton') errors.push(`${path}.implementationDepth must be validated_skeleton.`);
       if (!isPlainObject(contract.metadata)) {
@@ -95,7 +103,8 @@ export function validateCoreServiceContractSkeletons(contracts: readonly CoreSer
         if (contract.metadata.specificationRepository !== 'whalemarks/markorbit-publication') errors.push(`${path}.metadata.specificationRepository must match the locked repository.`);
         if (contract.metadata.specificationCommit !== '3349ecb8955021a8714d023348f8b24f941eb98f') errors.push(`${path}.metadata.specificationCommit must match the locked commit.`);
         if (contract.metadata.specificationPath !== 'books/book-02-core-specification/') errors.push(`${path}.metadata.specificationPath must match the locked Book 2 path.`);
-        if (contract.metadata.implementationTask !== 'CORE-TASK-021') errors.push(`${path}.metadata.implementationTask must be CORE-TASK-021.`);
+        if (contract.metadata.implementationTask !== implementationTask) errors.push(`${path}.metadata.implementationTask must be ${implementationTask}.`);
+        if (implementationTask === 'CORE-TASK-023' && contract.metadata.mvpRequirement !== 'stub_now') errors.push(`${path}.metadata.mvpRequirement must be stub_now.`);
       }
     }
 

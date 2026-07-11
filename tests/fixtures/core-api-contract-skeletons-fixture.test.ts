@@ -9,7 +9,7 @@ const readFixture = async (): Promise<Record<string, unknown>[]> => JSON.parse(a
 describe('core API contract skeletons fixture', () => {
   it('matches CORE_API_CONTRACT_SKELETONS identity fields', async () => {
     const fixture = await readFixture();
-    assert.equal(fixture.length, 26);
+    assert.equal(fixture.length, 34);
     assert.deepEqual(fixture.map((entry) => entry.id), CORE_API_CONTRACT_SKELETONS.map((entry) => entry.id));
     assert.deepEqual(fixture.map((entry) => entry.apiType), CORE_API_CONTRACT_SKELETONS.map((entry) => entry.apiType));
     assert.deepEqual(fixture.map((entry) => entry.name), CORE_API_CONTRACT_SKELETONS.map((entry) => entry.name));

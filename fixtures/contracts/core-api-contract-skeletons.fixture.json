@@ -854,5 +854,299 @@
       "specificationPath": "books/book-02-core-specification/",
       "implementationTask": "CORE-TASK-022"
     }
+  },
+  {
+    "id": "core-api-knowledge-api-contract",
+    "apiType": "knowledge-api",
+    "domainId": "knowledge",
+    "name": "Core Knowledge API Contract Skeleton",
+    "description": "Safe metadata-only stub for the Knowledge API boundary.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Reserves the canonical Knowledge request and safe-response boundary without claiming endpoints, handlers, DTOs, service execution, or API availability.",
+    "owns": [
+      "Knowledge structural API and owning-service delegation boundary."
+    ],
+    "consumes": ["Knowledge Domain, Object, and Service contract references."],
+    "produces": ["Knowledge structural API response-boundary references."],
+    "allowedOperations": [
+      "contract reference category",
+      "catalog read category",
+      "validation boundary category"
+    ],
+    "nonGoals": [
+      "Executable API server routes, handlers, middleware, or HTTP framework behavior.",
+      "Request or response DTO schemas, database access, service implementation, or business logic.",
+      "Book 03 execution runtime behavior, Product UI behavior, or AI agent authority.",
+      "Operational availability, fake success, production readiness, or implemented API behavior."
+    ],
+    "createdAt": "2026-07-11T00:00:00.000Z",
+    "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/knowledge-api-contract.md",
+    "implementationDepth": "validated_skeleton",
+    "metadata": {
+      "specificationRepository": "whalemarks/markorbit-publication",
+      "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+      "specificationPath": "books/book-02-core-specification/",
+      "implementationTask": "CORE-TASK-023",
+      "mvpRequirement": "stub_now"
+    }
+  },
+  {
+    "id": "core-api-opportunity-api-contract",
+    "apiType": "opportunity-api",
+    "domainId": "opportunity",
+    "name": "Core Opportunity API Contract Skeleton",
+    "description": "Safe metadata-only stub for the Opportunity API boundary.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Reserves the canonical Opportunity request and safe-response boundary without claiming endpoints, handlers, DTOs, service execution, or API availability.",
+    "owns": [
+      "Opportunity structural API and owning-service delegation boundary."
+    ],
+    "consumes": [
+      "Opportunity Domain, Object, and Service contract references."
+    ],
+    "produces": ["Opportunity structural API response-boundary references."],
+    "allowedOperations": [
+      "contract reference category",
+      "catalog read category",
+      "validation boundary category"
+    ],
+    "nonGoals": [
+      "Executable API server routes, handlers, middleware, or HTTP framework behavior.",
+      "Request or response DTO schemas, database access, service implementation, or business logic.",
+      "Book 03 execution runtime behavior, Product UI behavior, or AI agent authority.",
+      "Operational availability, fake success, production readiness, or implemented API behavior."
+    ],
+    "createdAt": "2026-07-11T00:00:00.000Z",
+    "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/opportunity-api-contract.md",
+    "implementationDepth": "validated_skeleton",
+    "metadata": {
+      "specificationRepository": "whalemarks/markorbit-publication",
+      "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+      "specificationPath": "books/book-02-core-specification/",
+      "implementationTask": "CORE-TASK-023",
+      "mvpRequirement": "stub_now"
+    }
+  },
+  {
+    "id": "core-api-notification-api-contract",
+    "apiType": "notification-api",
+    "domainId": "notification",
+    "name": "Core Notification API Contract Skeleton",
+    "description": "Safe metadata-only stub for the Notification API boundary.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Reserves the canonical Notification request and safe-response boundary without claiming endpoints, handlers, DTOs, service execution, or API availability.",
+    "owns": [
+      "Notification structural API and owning-service delegation boundary."
+    ],
+    "consumes": [
+      "Notification Domain, Object, and Service contract references."
+    ],
+    "produces": ["Notification structural API response-boundary references."],
+    "allowedOperations": [
+      "contract reference category",
+      "catalog read category",
+      "validation boundary category"
+    ],
+    "nonGoals": [
+      "Executable API server routes, handlers, middleware, or HTTP framework behavior.",
+      "Request or response DTO schemas, database access, service implementation, or business logic.",
+      "Book 03 execution runtime behavior, Product UI behavior, or AI agent authority.",
+      "Operational availability, fake success, production readiness, or implemented API behavior."
+    ],
+    "createdAt": "2026-07-11T00:00:00.000Z",
+    "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/notification-api-contract.md",
+    "implementationDepth": "validated_skeleton",
+    "metadata": {
+      "specificationRepository": "whalemarks/markorbit-publication",
+      "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+      "specificationPath": "books/book-02-core-specification/",
+      "implementationTask": "CORE-TASK-023",
+      "mvpRequirement": "stub_now"
+    }
+  },
+  {
+    "id": "core-api-partner-api-contract",
+    "apiType": "partner-api",
+    "domainId": "partner",
+    "name": "Core Partner API Contract Skeleton",
+    "description": "Safe metadata-only stub for the Partner API boundary.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Reserves the canonical Partner request and safe-response boundary without claiming endpoints, handlers, DTOs, service execution, or API availability.",
+    "owns": ["Partner structural API and owning-service delegation boundary."],
+    "consumes": ["Partner Domain, Object, and Service contract references."],
+    "produces": ["Partner structural API response-boundary references."],
+    "allowedOperations": [
+      "contract reference category",
+      "catalog read category",
+      "validation boundary category"
+    ],
+    "nonGoals": [
+      "Executable API server routes, handlers, middleware, or HTTP framework behavior.",
+      "Request or response DTO schemas, database access, service implementation, or business logic.",
+      "Book 03 execution runtime behavior, Product UI behavior, or AI agent authority.",
+      "Operational availability, fake success, production readiness, or implemented API behavior."
+    ],
+    "createdAt": "2026-07-11T00:00:00.000Z",
+    "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/partner-api-contract.md",
+    "implementationDepth": "validated_skeleton",
+    "metadata": {
+      "specificationRepository": "whalemarks/markorbit-publication",
+      "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+      "specificationPath": "books/book-02-core-specification/",
+      "implementationTask": "CORE-TASK-023",
+      "mvpRequirement": "stub_now"
+    }
+  },
+  {
+    "id": "core-api-agent-api-contract",
+    "apiType": "agent-api",
+    "domainId": "agent",
+    "name": "Core Agent API Contract Skeleton",
+    "description": "Safe metadata-only stub for the Agent API boundary.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Reserves the canonical Agent request and safe-response boundary without claiming endpoints, handlers, DTOs, service execution, or API availability.",
+    "owns": ["Agent structural API and owning-service delegation boundary."],
+    "consumes": ["Agent Domain, Object, and Service contract references."],
+    "produces": ["Agent structural API response-boundary references."],
+    "allowedOperations": [
+      "contract reference category",
+      "catalog read category",
+      "validation boundary category"
+    ],
+    "nonGoals": [
+      "Executable API server routes, handlers, middleware, or HTTP framework behavior.",
+      "Request or response DTO schemas, database access, service implementation, or business logic.",
+      "Book 03 execution runtime behavior, Product UI behavior, or AI agent authority.",
+      "Operational availability, fake success, production readiness, or implemented API behavior."
+    ],
+    "createdAt": "2026-07-11T00:00:00.000Z",
+    "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/agent-api-contract.md",
+    "implementationDepth": "validated_skeleton",
+    "metadata": {
+      "specificationRepository": "whalemarks/markorbit-publication",
+      "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+      "specificationPath": "books/book-02-core-specification/",
+      "implementationTask": "CORE-TASK-023",
+      "mvpRequirement": "stub_now"
+    }
+  },
+  {
+    "id": "core-api-service-provider-api-contract",
+    "apiType": "service-provider-api",
+    "domainId": "service-provider",
+    "name": "Core Service Provider API Contract Skeleton",
+    "description": "Safe metadata-only stub for the Service Provider API boundary.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Reserves the canonical Service Provider request and safe-response boundary without claiming endpoints, handlers, DTOs, service execution, or API availability.",
+    "owns": [
+      "Service Provider structural API and owning-service delegation boundary."
+    ],
+    "consumes": [
+      "Service Provider Domain, Object, and Service contract references."
+    ],
+    "produces": [
+      "Service Provider structural API response-boundary references."
+    ],
+    "allowedOperations": [
+      "contract reference category",
+      "catalog read category",
+      "validation boundary category"
+    ],
+    "nonGoals": [
+      "Executable API server routes, handlers, middleware, or HTTP framework behavior.",
+      "Request or response DTO schemas, database access, service implementation, or business logic.",
+      "Book 03 execution runtime behavior, Product UI behavior, or AI agent authority.",
+      "Operational availability, fake success, production readiness, or implemented API behavior."
+    ],
+    "createdAt": "2026-07-11T00:00:00.000Z",
+    "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/service-provider-api-contract.md",
+    "implementationDepth": "validated_skeleton",
+    "metadata": {
+      "specificationRepository": "whalemarks/markorbit-publication",
+      "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+      "specificationPath": "books/book-02-core-specification/",
+      "implementationTask": "CORE-TASK-023",
+      "mvpRequirement": "stub_now"
+    }
+  },
+  {
+    "id": "core-api-service-network-api-contract",
+    "apiType": "service-network-api",
+    "domainId": "service-network",
+    "name": "Core Service Network API Contract Skeleton",
+    "description": "Safe metadata-only stub for the Service Network API boundary.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Reserves the canonical Service Network request and safe-response boundary without claiming endpoints, handlers, DTOs, service execution, or API availability.",
+    "owns": [
+      "Service Network structural API and owning-service delegation boundary."
+    ],
+    "consumes": [
+      "Service Network Domain, Object, and Service contract references."
+    ],
+    "produces": [
+      "Service Network structural API response-boundary references."
+    ],
+    "allowedOperations": [
+      "contract reference category",
+      "catalog read category",
+      "validation boundary category"
+    ],
+    "nonGoals": [
+      "Executable API server routes, handlers, middleware, or HTTP framework behavior.",
+      "Request or response DTO schemas, database access, service implementation, or business logic.",
+      "Book 03 execution runtime behavior, Product UI behavior, or AI agent authority.",
+      "Operational availability, fake success, production readiness, or implemented API behavior."
+    ],
+    "createdAt": "2026-07-11T00:00:00.000Z",
+    "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/service-network-api-contract.md",
+    "implementationDepth": "validated_skeleton",
+    "metadata": {
+      "specificationRepository": "whalemarks/markorbit-publication",
+      "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+      "specificationPath": "books/book-02-core-specification/",
+      "implementationTask": "CORE-TASK-023",
+      "mvpRequirement": "stub_now"
+    }
+  },
+  {
+    "id": "core-api-routing-api-contract",
+    "apiType": "routing-api",
+    "domainId": "routing",
+    "name": "Core Routing API Contract Skeleton",
+    "description": "Safe metadata-only stub for the Routing API boundary.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Reserves the canonical Routing request and safe-response boundary without claiming endpoints, handlers, DTOs, service execution, or API availability.",
+    "owns": ["Routing structural API and owning-service delegation boundary."],
+    "consumes": ["Routing Domain, Object, and Service contract references."],
+    "produces": ["Routing structural API response-boundary references."],
+    "allowedOperations": [
+      "contract reference category",
+      "catalog read category",
+      "validation boundary category"
+    ],
+    "nonGoals": [
+      "Executable API server routes, handlers, middleware, or HTTP framework behavior.",
+      "Request or response DTO schemas, database access, service implementation, or business logic.",
+      "Book 03 execution runtime behavior, Product UI behavior, or AI agent authority.",
+      "Operational availability, fake success, production readiness, or implemented API behavior."
+    ],
+    "createdAt": "2026-07-11T00:00:00.000Z",
+    "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/routing-api-contract.md",
+    "implementationDepth": "validated_skeleton",
+    "metadata": {
+      "specificationRepository": "whalemarks/markorbit-publication",
+      "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+      "specificationPath": "books/book-02-core-specification/",
+      "implementationTask": "CORE-TASK-023",
+      "mvpRequirement": "stub_now"
+    }
   }
 ]

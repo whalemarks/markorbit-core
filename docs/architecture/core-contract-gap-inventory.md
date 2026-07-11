@@ -7,9 +7,9 @@
 - Canonical path: `books/book-02-core-specification/`
 - Inventory version: `0.1.0`
 - Inventory baseline Contract Index: 106 entries
-- Current Contract Index: 157 entries
-- Completed canonical targets: 51
-- Remaining canonical targets: 30
+- Current Contract Index: 179 entries
+- Completed canonical targets: 73
+- Remaining canonical targets: 8
 - Contract Index change in this task: none
 
 ## Purpose
@@ -75,6 +75,7 @@ These are contract skeletons only: no routes, handlers, service execution, reque
 - Knowledge: API only; current Object and Service mappings remain.
 - Opportunity, Notification, Partner, Agent, Service Provider, Service Network, and Routing: Object, Service, and API skeletons.
 - All remain safe stubs without fake success or runtime capability.
+- Status: completed; all 22 targets are indexed, source-validated, and marked `stub_now`.
 
 ### CORE-TASK-024 — Canonical Workflow Contracts (8)
 
@@ -86,4 +87,4 @@ These contracts must not add a workflow engine, running instances, transition ex
 
 CORE-TASK-019 is accepted when the exact 81-target inventory, 22 existing mappings, two retained scaffold families, two required contract-type additions, five batch counts, and Book 2 source paths are reproducible and drift-validated.
 
-Acceptance does not require implementing every target. CORE-TASK-020 through CORE-TASK-022 have completed the first three batches; the next implementation batch is `CORE-TASK-023 — Stub Domain Contract Gaps`.
+Acceptance does not require implementing every target. CORE-TASK-020 through CORE-TASK-023 have completed the first four batches; the final implementation batch is `CORE-TASK-024 — Canonical Workflow Contracts`.
