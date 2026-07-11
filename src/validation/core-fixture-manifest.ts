@@ -18,7 +18,8 @@ export const CORE_FIXTURE_TYPES = [
   'test_contract_skeletons',
   'contract_coverage_baseline',
   'contract_gap_inventory',
-  'contract_coverage_acceptance_lock'
+  'contract_coverage_acceptance_lock',
+  'contract_behavior_coverage_baseline'
 ] as const;
 
 export type CoreFixtureType = (typeof CORE_FIXTURE_TYPES)[number];
@@ -150,6 +151,12 @@ export const CORE_FIXTURE_MANIFEST = [
     id: 'core-contract-coverage-acceptance-lock',
     type: 'contract_coverage_acceptance_lock',
     path: 'fixtures/contract-coverage/core-contract-coverage-acceptance-lock.fixture.json',
+    required: true
+  },
+  {
+    id: 'core-contract-behavior-coverage-baseline',
+    type: 'contract_behavior_coverage_baseline',
+    path: 'fixtures/behavior-coverage/core-contract-behavior-coverage-baseline.fixture.json',
     required: true
   }
 ] as const satisfies readonly CoreFixtureManifestEntry[];

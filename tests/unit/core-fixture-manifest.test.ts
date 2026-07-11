@@ -4,8 +4,8 @@ import { describe, it } from 'node:test';
 import { CORE_FIXTURE_MANIFEST, CORE_FIXTURE_TYPES } from '../../src/index.ts';
 
 describe('CORE_FIXTURE_MANIFEST', () => {
-  it('has exactly 20 entries', () => {
-    assert.equal(CORE_FIXTURE_MANIFEST.length, 20);
+  it('has exactly 21 entries', () => {
+    assert.equal(CORE_FIXTURE_MANIFEST.length, 21);
   });
 
   it('includes permission_contract_skeletons type', () => {
@@ -32,6 +32,10 @@ describe('CORE_FIXTURE_MANIFEST', () => {
     assert.equal(CORE_FIXTURE_TYPES.includes('contract_coverage_acceptance_lock'), true);
   });
 
+  it('includes contract_behavior_coverage_baseline type', () => {
+    assert.equal(CORE_FIXTURE_TYPES.includes('contract_behavior_coverage_baseline'), true);
+  });
+
   it('includes Common and Test Contract skeleton types', () => {
     assert.equal(CORE_FIXTURE_TYPES.includes('common_contract_skeletons'), true);
     assert.equal(CORE_FIXTURE_TYPES.includes('test_contract_skeletons'), true);
@@ -50,6 +54,6 @@ describe('CORE_FIXTURE_MANIFEST', () => {
   });
 
   it('CoreFixtureType contains exactly the required fixture types', () => {
-    assert.deepEqual(CORE_FIXTURE_TYPES, ['domain_registry', 'object_base', 'event_base', 'task_base', 'workflow_contract_base', 'contract_index', 'domain_contract_skeletons', 'object_contract_skeletons', 'service_contract_skeletons', 'api_contract_skeletons', 'event_catalog_skeletons', 'workflow_catalog_skeletons', 'permission_contract_skeletons', 'policy_contract_skeletons', 'ai_governance_contract_skeletons', 'common_contract_skeletons', 'test_contract_skeletons', 'contract_coverage_baseline', 'contract_gap_inventory', 'contract_coverage_acceptance_lock']);
+    assert.deepEqual(CORE_FIXTURE_TYPES, ['domain_registry', 'object_base', 'event_base', 'task_base', 'workflow_contract_base', 'contract_index', 'domain_contract_skeletons', 'object_contract_skeletons', 'service_contract_skeletons', 'api_contract_skeletons', 'event_catalog_skeletons', 'workflow_catalog_skeletons', 'permission_contract_skeletons', 'policy_contract_skeletons', 'ai_governance_contract_skeletons', 'common_contract_skeletons', 'test_contract_skeletons', 'contract_coverage_baseline', 'contract_gap_inventory', 'contract_coverage_acceptance_lock', 'contract_behavior_coverage_baseline']);
   });
 });

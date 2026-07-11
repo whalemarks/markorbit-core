@@ -6,7 +6,7 @@
 
 ## Current phase
 
-Phase 3 — Contract Coverage accepted.
+Phase 4 — Contract Behavior Coverage started.
 
 ## Current status
 
@@ -55,7 +55,7 @@ Phase 3 — Contract Coverage accepted.
 - Current Domain-layer coverage is 26 Domain, 26 Object, 26 Service, 26 Domain-mapped API, 4 Event, and 6 Workflow.
 - Gap Inventory maps 22 existing Domain targets and locks 81 canonical skeleton additions across five batches.
 - CORE-TASK-020 through CORE-TASK-024 have completed all 81 canonical targets; 0 remain.
-- Required fixture manifest now contains 20 entries.
+- Required fixture manifest now contains 21 entries.
 - CORE-TASK-025 locks the final structural acceptance state: 187 indexed contracts, 12/12 families, 26/26 required-layer-complete Domains, and 81/81 controlled targets.
 - Runtime, behavior, and production readiness remain outside the accepted scope.
 
@@ -119,7 +119,7 @@ Every change should keep the TypeScript project buildable, tests passing, lint c
 
 ## Next tasks
 
-- Phase 4 direction requires an explicit scope decision after CORE-TASK-025.
+- CORE-TASK-027 — Contract Behavior Gap Inventory Lock.
 
 ## CORE-TASK-009 Status
 
@@ -285,3 +285,12 @@ Next recommended task: CORE-TASK-013 — Core Event Catalog Skeleton.
 - Added unit, fixture, and validation coverage plus `pnpm acceptance:contracts`.
 - Accepted Phase 3 contract structure only; runtime behavior, workflow execution, production readiness, and Product/Book 3 behavior remain excluded.
 - Phase 3 contract coverage is complete.
+
+## CORE-TASK-026 — Phase 4 Contract Behavior Coverage Baseline
+
+- Added a Book 2-aligned Level 0–4 behavior depth model covering 14 governed capabilities.
+- Current result: 2 targets meet minimum depth, 1 is partial, and 11 are not implemented.
+- Must Build Now result: 0 / 11 meet minimum behavior depth.
+- Added an exact baseline validator, required fixture, tests, architecture record, and `pnpm coverage:behavior`.
+- No new contract behavior or Execution System runtime was implemented.
+- Next recommended task: CORE-TASK-027 — Contract Behavior Gap Inventory Lock.

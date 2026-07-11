@@ -21,7 +21,8 @@ import {
   validateCoreTestContractSkeletonsFixture,
   validateCoreContractCoverageBaselineFixture,
   validateCoreContractGapInventoryFixture,
-  validateCoreContractCoverageAcceptanceLockFixture
+  validateCoreContractCoverageAcceptanceLockFixture,
+  validateCoreContractBehaviorCoverageBaselineFixture
 } from '../../src/index.ts';
 
 const readFixture = async (path: string): Promise<unknown> => JSON.parse(await readFile(new URL(`../../${path}`, import.meta.url), 'utf8'));
@@ -47,6 +48,14 @@ describe('core fixture validation', () => {
     assert.equal(validateCoreContractCoverageBaselineFixture(await readFixture('fixtures/contract-coverage/core-contract-coverage-baseline.fixture.json')).ok, true);
     assert.equal(validateCoreContractGapInventoryFixture(await readFixture('fixtures/contract-coverage/core-contract-gap-inventory.fixture.json')).ok, true);
     assert.equal(validateCoreContractCoverageAcceptanceLockFixture(await readFixture('fixtures/contract-coverage/core-contract-coverage-acceptance-lock.fixture.json')).ok, true);
+    assert.equal(validateCoreContractBehaviorCoverageBaselineFixture(await readFixture('fixtures/behavior-coverage/core-contract-behavior-coverage-baseline.fixture.json')).ok, true);
+  });
+
+  it('behavior baseline validator rejects inflated depth', async () => {
+    const fixture = structuredClone(await readFixture('fixtures/behavior-coverage/core-contract-behavior-coverage-baseline.fixture.json')) as Record<string, unknown>;
+    const targets = fixture.targets as Record<string, unknown>[];
+    targets[0].currentDepth = 3;
+    assert.equal(validateCoreContractBehaviorCoverageBaselineFixture(fixture).ok, false);
   });
 
   it('acceptance lock validator rejects structural acceptance drift', async () => {

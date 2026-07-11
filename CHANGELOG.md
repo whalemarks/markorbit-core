@@ -1,5 +1,13 @@
 # Changelog
 
+## CORE-TASK-026 — Phase 4 Contract Behavior Coverage Baseline
+
+- Started Phase 4 with contract behavior coverage as the first acceptance result.
+- Added the Book 2 Level 0–4 behavior depth model and 14 governed behavior targets.
+- Measured 2 targets at minimum depth, 1 partial target, and 11 not implemented targets; 0/11 Must Build Now targets currently meet minimum depth.
+- Added an exact validator, required fixture, tests, architecture record, and `pnpm coverage:behavior` report.
+- Added no contract behavior, Execution System runtime, or production-readiness claim.
+
 ## CORE-TASK-025 — Phase 3 Contract Coverage Acceptance Lock
 
 - Locked the final Phase 3 structural acceptance state at 187 indexed contracts across 12/12 structurally covered families.

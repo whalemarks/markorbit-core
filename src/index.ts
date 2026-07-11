@@ -12,3 +12,4 @@ export * from './validation/index.ts';
 export * from './contracts/index.ts';
 
 export * from './contract-coverage/index.ts';
+export * from './behavior-coverage/index.ts';
