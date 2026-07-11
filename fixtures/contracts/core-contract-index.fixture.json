@@ -727,6 +727,111 @@
     "createdAt": "2026-07-11T00:00:00.000Z"
   },
   {
+    "id": "core-object-opportunity-record-contract",
+    "type": "object",
+    "name": "Core Opportunity Object Contract Skeleton",
+    "description": "Safe metadata-only stub for the Opportunity Core Object boundary.",
+    "status": "active",
+    "scope": {
+      "domainId": "opportunity",
+      "objectType": "opportunity-record"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "source": "CORE_OBJECT_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-11T00:00:00.000Z"
+  },
+  {
+    "id": "core-object-notification-record-contract",
+    "type": "object",
+    "name": "Core Notification Object Contract Skeleton",
+    "description": "Safe metadata-only stub for the Notification Core Object boundary.",
+    "status": "active",
+    "scope": {
+      "domainId": "notification",
+      "objectType": "notification-record"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "source": "CORE_OBJECT_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-11T00:00:00.000Z"
+  },
+  {
+    "id": "core-object-partner-record-contract",
+    "type": "object",
+    "name": "Core Partner Object Contract Skeleton",
+    "description": "Safe metadata-only stub for the Partner Core Object boundary.",
+    "status": "active",
+    "scope": {
+      "domainId": "partner",
+      "objectType": "partner-record"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "source": "CORE_OBJECT_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-11T00:00:00.000Z"
+  },
+  {
+    "id": "core-object-agent-record-contract",
+    "type": "object",
+    "name": "Core Agent Object Contract Skeleton",
+    "description": "Safe metadata-only stub for the Agent Core Object boundary.",
+    "status": "active",
+    "scope": {
+      "domainId": "agent",
+      "objectType": "agent-record"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "source": "CORE_OBJECT_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-11T00:00:00.000Z"
+  },
+  {
+    "id": "core-object-service-provider-record-contract",
+    "type": "object",
+    "name": "Core Service Provider Object Contract Skeleton",
+    "description": "Safe metadata-only stub for the Service Provider Core Object boundary.",
+    "status": "active",
+    "scope": {
+      "domainId": "service-provider",
+      "objectType": "service-provider-record"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "source": "CORE_OBJECT_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-11T00:00:00.000Z"
+  },
+  {
+    "id": "core-object-service-network-record-contract",
+    "type": "object",
+    "name": "Core Service Network Object Contract Skeleton",
+    "description": "Safe metadata-only stub for the Service Network Core Object boundary.",
+    "status": "active",
+    "scope": {
+      "domainId": "service-network",
+      "objectType": "service-network-record"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "source": "CORE_OBJECT_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-11T00:00:00.000Z"
+  },
+  {
+    "id": "core-object-routing-record-contract",
+    "type": "object",
+    "name": "Core Routing Object Contract Skeleton",
+    "description": "Safe metadata-only stub for the Routing Core Object boundary.",
+    "status": "active",
+    "scope": {
+      "domainId": "routing",
+      "objectType": "routing-record"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "source": "CORE_OBJECT_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-11T00:00:00.000Z"
+  },
+  {
     "id": "core-service-identity-resolution-service-contract",
     "type": "service",
     "name": "Identity Resolution Service Contract Skeleton",
@@ -986,6 +1091,104 @@
     "status": "active",
     "scope": {
       "domainId": "event"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "source": "CORE_SERVICE_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-11T00:00:00.000Z"
+  },
+  {
+    "id": "core-service-opportunity-service-contract",
+    "type": "service",
+    "name": "Core Opportunity Service Contract Skeleton",
+    "description": "Safe metadata-only stub for the Opportunity Core Service boundary.",
+    "status": "active",
+    "scope": {
+      "domainId": "opportunity"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "source": "CORE_SERVICE_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-11T00:00:00.000Z"
+  },
+  {
+    "id": "core-service-notification-service-contract",
+    "type": "service",
+    "name": "Core Notification Service Contract Skeleton",
+    "description": "Safe metadata-only stub for the Notification Core Service boundary.",
+    "status": "active",
+    "scope": {
+      "domainId": "notification"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "source": "CORE_SERVICE_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-11T00:00:00.000Z"
+  },
+  {
+    "id": "core-service-partner-service-contract",
+    "type": "service",
+    "name": "Core Partner Service Contract Skeleton",
+    "description": "Safe metadata-only stub for the Partner Core Service boundary.",
+    "status": "active",
+    "scope": {
+      "domainId": "partner"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "source": "CORE_SERVICE_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-11T00:00:00.000Z"
+  },
+  {
+    "id": "core-service-agent-service-contract",
+    "type": "service",
+    "name": "Core Agent Service Contract Skeleton",
+    "description": "Safe metadata-only stub for the Agent Core Service boundary.",
+    "status": "active",
+    "scope": {
+      "domainId": "agent"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "source": "CORE_SERVICE_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-11T00:00:00.000Z"
+  },
+  {
+    "id": "core-service-service-provider-service-contract",
+    "type": "service",
+    "name": "Core Service Provider Service Contract Skeleton",
+    "description": "Safe metadata-only stub for the Service Provider Core Service boundary.",
+    "status": "active",
+    "scope": {
+      "domainId": "service-provider"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "source": "CORE_SERVICE_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-11T00:00:00.000Z"
+  },
+  {
+    "id": "core-service-service-network-service-contract",
+    "type": "service",
+    "name": "Core Service Network Service Contract Skeleton",
+    "description": "Safe metadata-only stub for the Service Network Core Service boundary.",
+    "status": "active",
+    "scope": {
+      "domainId": "service-network"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "source": "CORE_SERVICE_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-11T00:00:00.000Z"
+  },
+  {
+    "id": "core-service-routing-service-contract",
+    "type": "service",
+    "name": "Core Routing Service Contract Skeleton",
+    "description": "Safe metadata-only stub for the Routing Core Service boundary.",
+    "status": "active",
+    "scope": {
+      "domainId": "routing"
     },
     "version": 1,
     "book": "Book 02 — MarkOrbit Core Specification",
@@ -1342,6 +1545,118 @@
     "status": "active",
     "scope": {
       "domainId": "communication"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "source": "CORE_API_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-11T00:00:00.000Z"
+  },
+  {
+    "id": "core-api-knowledge-api-contract",
+    "type": "api",
+    "name": "Core Knowledge API Contract Skeleton",
+    "description": "Safe metadata-only stub for the Knowledge API boundary.",
+    "status": "active",
+    "scope": {
+      "domainId": "knowledge"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "source": "CORE_API_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-11T00:00:00.000Z"
+  },
+  {
+    "id": "core-api-opportunity-api-contract",
+    "type": "api",
+    "name": "Core Opportunity API Contract Skeleton",
+    "description": "Safe metadata-only stub for the Opportunity API boundary.",
+    "status": "active",
+    "scope": {
+      "domainId": "opportunity"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "source": "CORE_API_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-11T00:00:00.000Z"
+  },
+  {
+    "id": "core-api-notification-api-contract",
+    "type": "api",
+    "name": "Core Notification API Contract Skeleton",
+    "description": "Safe metadata-only stub for the Notification API boundary.",
+    "status": "active",
+    "scope": {
+      "domainId": "notification"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "source": "CORE_API_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-11T00:00:00.000Z"
+  },
+  {
+    "id": "core-api-partner-api-contract",
+    "type": "api",
+    "name": "Core Partner API Contract Skeleton",
+    "description": "Safe metadata-only stub for the Partner API boundary.",
+    "status": "active",
+    "scope": {
+      "domainId": "partner"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "source": "CORE_API_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-11T00:00:00.000Z"
+  },
+  {
+    "id": "core-api-agent-api-contract",
+    "type": "api",
+    "name": "Core Agent API Contract Skeleton",
+    "description": "Safe metadata-only stub for the Agent API boundary.",
+    "status": "active",
+    "scope": {
+      "domainId": "agent"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "source": "CORE_API_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-11T00:00:00.000Z"
+  },
+  {
+    "id": "core-api-service-provider-api-contract",
+    "type": "api",
+    "name": "Core Service Provider API Contract Skeleton",
+    "description": "Safe metadata-only stub for the Service Provider API boundary.",
+    "status": "active",
+    "scope": {
+      "domainId": "service-provider"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "source": "CORE_API_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-11T00:00:00.000Z"
+  },
+  {
+    "id": "core-api-service-network-api-contract",
+    "type": "api",
+    "name": "Core Service Network API Contract Skeleton",
+    "description": "Safe metadata-only stub for the Service Network API boundary.",
+    "status": "active",
+    "scope": {
+      "domainId": "service-network"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "source": "CORE_API_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-11T00:00:00.000Z"
+  },
+  {
+    "id": "core-api-routing-api-contract",
+    "type": "api",
+    "name": "Core Routing API Contract Skeleton",
+    "description": "Safe metadata-only stub for the Routing API boundary.",
+    "status": "active",
+    "scope": {
+      "domainId": "routing"
     },
     "version": 1,
     "book": "Book 02 — MarkOrbit Core Specification",

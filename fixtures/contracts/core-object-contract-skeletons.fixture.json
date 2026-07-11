@@ -6,7 +6,7 @@
     "name": "User Record Object Contract Skeleton",
     "description": "Skeleton contract boundary for User Record Core objects.",
     "status": "active",
-    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "book": "Book 02 — MarkOrbit Core Specification",
     "purpose": "Establishes the object contract placeholder for user records using only CoreObjectDefinition base fields.",
     "base": "CoreObjectDefinition",
     "owns": [
@@ -34,7 +34,7 @@
     "name": "Organization Record Object Contract Skeleton",
     "description": "Skeleton contract boundary for Organization Record Core objects.",
     "status": "active",
-    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "book": "Book 02 — MarkOrbit Core Specification",
     "purpose": "Establishes the object contract placeholder for organization records using only CoreObjectDefinition base fields.",
     "base": "CoreObjectDefinition",
     "owns": [
@@ -62,7 +62,7 @@
     "name": "Permission Policy Record Object Contract Skeleton",
     "description": "Skeleton contract boundary for Permission Policy Record Core objects.",
     "status": "active",
-    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "book": "Book 02 — MarkOrbit Core Specification",
     "purpose": "Establishes the object contract placeholder for permission policy records using only CoreObjectDefinition base fields.",
     "base": "CoreObjectDefinition",
     "owns": [
@@ -90,7 +90,7 @@
     "name": "Knowledge Source Record Object Contract Skeleton",
     "description": "Skeleton contract boundary for Knowledge Source Record Core objects.",
     "status": "active",
-    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "book": "Book 02 — MarkOrbit Core Specification",
     "purpose": "Establishes the object contract placeholder for knowledge source records using only CoreObjectDefinition base fields.",
     "base": "CoreObjectDefinition",
     "owns": [
@@ -118,7 +118,7 @@
     "name": "Brand Record Object Contract Skeleton",
     "description": "Skeleton contract boundary for Brand Record Core objects.",
     "status": "active",
-    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "book": "Book 02 — MarkOrbit Core Specification",
     "purpose": "Establishes the object contract placeholder for brand records using only CoreObjectDefinition base fields.",
     "base": "CoreObjectDefinition",
     "owns": [
@@ -146,7 +146,7 @@
     "name": "Trademark Record Object Contract Skeleton",
     "description": "Skeleton contract boundary for Trademark Record Core objects.",
     "status": "active",
-    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "book": "Book 02 — MarkOrbit Core Specification",
     "purpose": "Establishes the object contract placeholder for trademark records using only CoreObjectDefinition base fields.",
     "base": "CoreObjectDefinition",
     "owns": [
@@ -174,7 +174,7 @@
     "name": "Jurisdiction Record Object Contract Skeleton",
     "description": "Skeleton contract boundary for Jurisdiction Record Core objects.",
     "status": "active",
-    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "book": "Book 02 — MarkOrbit Core Specification",
     "purpose": "Establishes the object contract placeholder for jurisdiction records using only CoreObjectDefinition base fields.",
     "base": "CoreObjectDefinition",
     "owns": [
@@ -202,7 +202,7 @@
     "name": "Classification Record Object Contract Skeleton",
     "description": "Skeleton contract boundary for Classification Record Core objects.",
     "status": "active",
-    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "book": "Book 02 — MarkOrbit Core Specification",
     "purpose": "Establishes the object contract placeholder for classification records using only CoreObjectDefinition base fields.",
     "base": "CoreObjectDefinition",
     "owns": [
@@ -230,7 +230,7 @@
     "name": "Document Record Object Contract Skeleton",
     "description": "Skeleton contract boundary for Document Record Core objects.",
     "status": "active",
-    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "book": "Book 02 — MarkOrbit Core Specification",
     "purpose": "Establishes the object contract placeholder for document records using only CoreObjectDefinition base fields.",
     "base": "CoreObjectDefinition",
     "owns": [
@@ -258,7 +258,7 @@
     "name": "Evidence Record Object Contract Skeleton",
     "description": "Skeleton contract boundary for Evidence Record Core objects.",
     "status": "active",
-    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "book": "Book 02 — MarkOrbit Core Specification",
     "purpose": "Establishes the object contract placeholder for evidence records using only CoreObjectDefinition base fields.",
     "base": "CoreObjectDefinition",
     "owns": [
@@ -286,7 +286,7 @@
     "name": "Matter Record Object Contract Skeleton",
     "description": "Skeleton contract boundary for Matter Record Core objects.",
     "status": "active",
-    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "book": "Book 02 — MarkOrbit Core Specification",
     "purpose": "Establishes the object contract placeholder for matter records using only CoreObjectDefinition base fields.",
     "base": "CoreObjectDefinition",
     "owns": [
@@ -314,7 +314,7 @@
     "name": "Communication Record Object Contract Skeleton",
     "description": "Skeleton contract boundary for Communication Record Core objects.",
     "status": "active",
-    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "book": "Book 02 — MarkOrbit Core Specification",
     "purpose": "Establishes the object contract placeholder for communication records using only CoreObjectDefinition base fields.",
     "base": "CoreObjectDefinition",
     "owns": [
@@ -342,7 +342,7 @@
     "name": "Core Identity Object Contract Skeleton",
     "description": "Canonical metadata skeleton for the identity Core Object boundary.",
     "status": "active",
-    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "book": "Book 02 — MarkOrbit Core Specification",
     "purpose": "Defines the Core-recognized actor-reference object boundary without implementing identity resolution, authentication, permission, role, membership, or account lifecycle behavior.",
     "base": "CoreObjectDefinition",
     "owns": ["Identity actor-reference object contract boundary."],
@@ -377,7 +377,7 @@
     "name": "Core Permission Object Contract Skeleton",
     "description": "Canonical metadata skeleton for the permission Core Object boundary.",
     "status": "active",
-    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "book": "Book 02 — MarkOrbit Core Specification",
     "purpose": "Defines the controlled-action authorization-rule object boundary without evaluating permissions, enforcing access, or granting authority.",
     "base": "CoreObjectDefinition",
     "owns": [
@@ -414,7 +414,7 @@
     "name": "Core Customer Object Contract Skeleton",
     "description": "Canonical metadata skeleton for the customer Core Object boundary.",
     "status": "active",
-    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "book": "Book 02 — MarkOrbit Core Specification",
     "purpose": "Defines the demand-side commercial-party object boundary without implementing intake, billing, order processing, relationship management, or product behavior.",
     "base": "CoreObjectDefinition",
     "owns": [
@@ -451,7 +451,7 @@
     "name": "Core Order Object Contract Skeleton",
     "description": "Canonical metadata skeleton for the order Core Object boundary.",
     "status": "active",
-    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "book": "Book 02 — MarkOrbit Core Specification",
     "purpose": "Defines the commercial service-request object boundary without implementing payment, invoicing, pricing, professional execution, checkout, or matter lifecycle behavior.",
     "base": "CoreObjectDefinition",
     "owns": [
@@ -488,7 +488,7 @@
     "name": "Core Workflow Contract Object Contract Skeleton",
     "description": "Canonical metadata skeleton for the workflow-contract Core Object boundary.",
     "status": "active",
-    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "book": "Book 02 — MarkOrbit Core Specification",
     "purpose": "Defines the governed workflow-structure object boundary without implementing transitions, guards, task creation, event emission, automation, or a workflow engine.",
     "base": "CoreObjectDefinition",
     "owns": [
@@ -525,7 +525,7 @@
     "name": "Core Task Object Contract Skeleton",
     "description": "Canonical metadata skeleton for the task Core Object boundary.",
     "status": "active",
-    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "book": "Book 02 — MarkOrbit Core Specification",
     "purpose": "Defines the actionable work-unit object boundary without implementing assignment, scheduling, completion, review, notification, or professional decisions.",
     "base": "CoreObjectDefinition",
     "owns": [
@@ -562,7 +562,7 @@
     "name": "Core Event Object Contract Skeleton",
     "description": "Canonical metadata skeleton for the event Core Object boundary.",
     "status": "active",
-    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "book": "Book 02 — MarkOrbit Core Specification",
     "purpose": "Defines the meaningful-occurrence record boundary without implementing event emission, dispatch, consumption, persistence, sourcing, or workflow logic.",
     "base": "CoreObjectDefinition",
     "owns": [
@@ -590,6 +590,258 @@
       "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
       "specificationPath": "books/book-02-core-specification/",
       "implementationTask": "CORE-TASK-021"
+    }
+  },
+  {
+    "id": "core-object-opportunity-record-contract",
+    "objectType": "opportunity-record",
+    "domainId": "opportunity",
+    "name": "Core Opportunity Object Contract Skeleton",
+    "description": "Safe metadata-only stub for the Opportunity Core Object boundary.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Reserves the canonical Opportunity object boundary without claiming schema, persistence, lifecycle, validation, or runtime capability.",
+    "base": "CoreObjectDefinition",
+    "owns": ["Opportunity structural object-reference boundary."],
+    "requiredBaseFields": [
+      "id",
+      "type",
+      "domainId",
+      "status",
+      "version",
+      "metadata"
+    ],
+    "nonGoals": [
+      "Full object schema fields or business-specific data fields.",
+      "Service, API, workflow, runtime, database, or product UI behavior.",
+      "Book 03 execution runtime concepts or AI agent authority.",
+      "Operational availability, successful execution, production readiness, or implemented domain behavior."
+    ],
+    "createdAt": "2026-07-11T00:00:00.000Z",
+    "sourcePath": "books/book-02-core-specification/core-specs/objects/opportunity.md",
+    "implementationDepth": "validated_skeleton",
+    "metadata": {
+      "specificationRepository": "whalemarks/markorbit-publication",
+      "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+      "specificationPath": "books/book-02-core-specification/",
+      "implementationTask": "CORE-TASK-023",
+      "mvpRequirement": "stub_now"
+    }
+  },
+  {
+    "id": "core-object-notification-record-contract",
+    "objectType": "notification-record",
+    "domainId": "notification",
+    "name": "Core Notification Object Contract Skeleton",
+    "description": "Safe metadata-only stub for the Notification Core Object boundary.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Reserves the canonical Notification object boundary without claiming schema, persistence, lifecycle, validation, or runtime capability.",
+    "base": "CoreObjectDefinition",
+    "owns": ["Notification structural object-reference boundary."],
+    "requiredBaseFields": [
+      "id",
+      "type",
+      "domainId",
+      "status",
+      "version",
+      "metadata"
+    ],
+    "nonGoals": [
+      "Full object schema fields or business-specific data fields.",
+      "Service, API, workflow, runtime, database, or product UI behavior.",
+      "Book 03 execution runtime concepts or AI agent authority.",
+      "Operational availability, successful execution, production readiness, or implemented domain behavior."
+    ],
+    "createdAt": "2026-07-11T00:00:00.000Z",
+    "sourcePath": "books/book-02-core-specification/core-specs/objects/notification.md",
+    "implementationDepth": "validated_skeleton",
+    "metadata": {
+      "specificationRepository": "whalemarks/markorbit-publication",
+      "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+      "specificationPath": "books/book-02-core-specification/",
+      "implementationTask": "CORE-TASK-023",
+      "mvpRequirement": "stub_now"
+    }
+  },
+  {
+    "id": "core-object-partner-record-contract",
+    "objectType": "partner-record",
+    "domainId": "partner",
+    "name": "Core Partner Object Contract Skeleton",
+    "description": "Safe metadata-only stub for the Partner Core Object boundary.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Reserves the canonical Partner object boundary without claiming schema, persistence, lifecycle, validation, or runtime capability.",
+    "base": "CoreObjectDefinition",
+    "owns": ["Partner structural object-reference boundary."],
+    "requiredBaseFields": [
+      "id",
+      "type",
+      "domainId",
+      "status",
+      "version",
+      "metadata"
+    ],
+    "nonGoals": [
+      "Full object schema fields or business-specific data fields.",
+      "Service, API, workflow, runtime, database, or product UI behavior.",
+      "Book 03 execution runtime concepts or AI agent authority.",
+      "Operational availability, successful execution, production readiness, or implemented domain behavior."
+    ],
+    "createdAt": "2026-07-11T00:00:00.000Z",
+    "sourcePath": "books/book-02-core-specification/core-specs/objects/partner.md",
+    "implementationDepth": "validated_skeleton",
+    "metadata": {
+      "specificationRepository": "whalemarks/markorbit-publication",
+      "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+      "specificationPath": "books/book-02-core-specification/",
+      "implementationTask": "CORE-TASK-023",
+      "mvpRequirement": "stub_now"
+    }
+  },
+  {
+    "id": "core-object-agent-record-contract",
+    "objectType": "agent-record",
+    "domainId": "agent",
+    "name": "Core Agent Object Contract Skeleton",
+    "description": "Safe metadata-only stub for the Agent Core Object boundary.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Reserves the canonical Agent object boundary without claiming schema, persistence, lifecycle, validation, or runtime capability.",
+    "base": "CoreObjectDefinition",
+    "owns": ["Agent structural object-reference boundary."],
+    "requiredBaseFields": [
+      "id",
+      "type",
+      "domainId",
+      "status",
+      "version",
+      "metadata"
+    ],
+    "nonGoals": [
+      "Full object schema fields or business-specific data fields.",
+      "Service, API, workflow, runtime, database, or product UI behavior.",
+      "Book 03 execution runtime concepts or AI agent authority.",
+      "Operational availability, successful execution, production readiness, or implemented domain behavior."
+    ],
+    "createdAt": "2026-07-11T00:00:00.000Z",
+    "sourcePath": "books/book-02-core-specification/core-specs/objects/agent.md",
+    "implementationDepth": "validated_skeleton",
+    "metadata": {
+      "specificationRepository": "whalemarks/markorbit-publication",
+      "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+      "specificationPath": "books/book-02-core-specification/",
+      "implementationTask": "CORE-TASK-023",
+      "mvpRequirement": "stub_now"
+    }
+  },
+  {
+    "id": "core-object-service-provider-record-contract",
+    "objectType": "service-provider-record",
+    "domainId": "service-provider",
+    "name": "Core Service Provider Object Contract Skeleton",
+    "description": "Safe metadata-only stub for the Service Provider Core Object boundary.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Reserves the canonical Service Provider object boundary without claiming schema, persistence, lifecycle, validation, or runtime capability.",
+    "base": "CoreObjectDefinition",
+    "owns": ["Service Provider structural object-reference boundary."],
+    "requiredBaseFields": [
+      "id",
+      "type",
+      "domainId",
+      "status",
+      "version",
+      "metadata"
+    ],
+    "nonGoals": [
+      "Full object schema fields or business-specific data fields.",
+      "Service, API, workflow, runtime, database, or product UI behavior.",
+      "Book 03 execution runtime concepts or AI agent authority.",
+      "Operational availability, successful execution, production readiness, or implemented domain behavior."
+    ],
+    "createdAt": "2026-07-11T00:00:00.000Z",
+    "sourcePath": "books/book-02-core-specification/core-specs/objects/service-provider.md",
+    "implementationDepth": "validated_skeleton",
+    "metadata": {
+      "specificationRepository": "whalemarks/markorbit-publication",
+      "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+      "specificationPath": "books/book-02-core-specification/",
+      "implementationTask": "CORE-TASK-023",
+      "mvpRequirement": "stub_now"
+    }
+  },
+  {
+    "id": "core-object-service-network-record-contract",
+    "objectType": "service-network-record",
+    "domainId": "service-network",
+    "name": "Core Service Network Object Contract Skeleton",
+    "description": "Safe metadata-only stub for the Service Network Core Object boundary.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Reserves the canonical Service Network object boundary without claiming schema, persistence, lifecycle, validation, or runtime capability.",
+    "base": "CoreObjectDefinition",
+    "owns": ["Service Network structural object-reference boundary."],
+    "requiredBaseFields": [
+      "id",
+      "type",
+      "domainId",
+      "status",
+      "version",
+      "metadata"
+    ],
+    "nonGoals": [
+      "Full object schema fields or business-specific data fields.",
+      "Service, API, workflow, runtime, database, or product UI behavior.",
+      "Book 03 execution runtime concepts or AI agent authority.",
+      "Operational availability, successful execution, production readiness, or implemented domain behavior."
+    ],
+    "createdAt": "2026-07-11T00:00:00.000Z",
+    "sourcePath": "books/book-02-core-specification/core-specs/objects/service-network.md",
+    "implementationDepth": "validated_skeleton",
+    "metadata": {
+      "specificationRepository": "whalemarks/markorbit-publication",
+      "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+      "specificationPath": "books/book-02-core-specification/",
+      "implementationTask": "CORE-TASK-023",
+      "mvpRequirement": "stub_now"
+    }
+  },
+  {
+    "id": "core-object-routing-record-contract",
+    "objectType": "routing-record",
+    "domainId": "routing",
+    "name": "Core Routing Object Contract Skeleton",
+    "description": "Safe metadata-only stub for the Routing Core Object boundary.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Reserves the canonical Routing object boundary without claiming schema, persistence, lifecycle, validation, or runtime capability.",
+    "base": "CoreObjectDefinition",
+    "owns": ["Routing structural object-reference boundary."],
+    "requiredBaseFields": [
+      "id",
+      "type",
+      "domainId",
+      "status",
+      "version",
+      "metadata"
+    ],
+    "nonGoals": [
+      "Full object schema fields or business-specific data fields.",
+      "Service, API, workflow, runtime, database, or product UI behavior.",
+      "Book 03 execution runtime concepts or AI agent authority.",
+      "Operational availability, successful execution, production readiness, or implemented domain behavior."
+    ],
+    "createdAt": "2026-07-11T00:00:00.000Z",
+    "sourcePath": "books/book-02-core-specification/core-specs/objects/routing.md",
+    "implementationDepth": "validated_skeleton",
+    "metadata": {
+      "specificationRepository": "whalemarks/markorbit-publication",
+      "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+      "specificationPath": "books/book-02-core-specification/",
+      "implementationTask": "CORE-TASK-023",
+      "mvpRequirement": "stub_now"
     }
   }
 ]

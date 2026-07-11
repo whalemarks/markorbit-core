@@ -18,18 +18,18 @@ describe('Core Contract Coverage Baseline', () => {
     );
   });
 
-  it('covers all 157 indexed contracts across 12 structural families', () => {
+  it('covers all 179 indexed contracts across 12 structural families', () => {
     assert.equal(CORE_CONTRACT_FAMILY_COVERAGE.length, 12);
     assert.equal(
       CORE_CONTRACT_FAMILY_COVERAGE.reduce(
         (total, family) => total + family.indexedCount,
         0
       ),
-      157
+      179
     );
     assert.equal(
       CORE_CONTRACT_COVERAGE_BASELINE.summary.indexedContractCount,
-      157
+      179
     );
   });
 
@@ -61,9 +61,9 @@ describe('Core Contract Coverage Baseline', () => {
       CORE_CONTRACT_COVERAGE_BASELINE.summary.layerDomainCounts,
       {
         domain: 26,
-        object: 19,
-        service: 19,
-        api: 18,
+        object: 26,
+        service: 26,
+        api: 26,
         event: 4,
         workflow: 6
       }
@@ -84,36 +84,17 @@ describe('Core Contract Coverage Baseline', () => {
     );
   });
 
-  it('identifies all 18 must-build domains as required-layer complete and 22 missing slots', () => {
+  it('identifies all 26 domains as required-layer complete with no missing slots', () => {
     const completeDomains = CORE_DOMAIN_CONTRACT_COVERAGE.filter(
       (entry) => entry.requiredLayerState === 'required_layers_present'
     );
     assert.deepEqual(
       completeDomains.map((entry) => entry.domainId),
-      [
-        'identity',
-        'organization',
-        'user',
-        'permission',
-        'policy',
-        'brand',
-        'trademark',
-        'jurisdiction',
-        'classification',
-        'document',
-        'evidence',
-        'customer',
-        'matter',
-        'order',
-        'workflow-contract',
-        'task',
-        'event',
-        'communication'
-      ]
+      CORE_DOMAIN_REGISTRY.map((domain) => domain.id)
     );
     assert.equal(
       CORE_CONTRACT_COVERAGE_BASELINE.summary.missingRequiredLayerSlotCount,
-      22
+      0
     );
   });
 

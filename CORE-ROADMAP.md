@@ -35,7 +35,7 @@
 - [x] Common and Test Contract Foundations — completed/current.
 - [x] Must-Build Object and Service Gaps — completed/current.
 - [x] Must-Build Canonical Domain APIs — completed/current.
-- [ ] Stub Domain Contract Gaps.
+- [x] Stub Domain Contract Gaps — completed/current.
 - [ ] Canonical Workflow Contracts.
 - Integration with Execution System.
 - Generated SDK.
@@ -141,3 +141,15 @@
 - Gap inventory progress: 51 completed, 30 remaining.
 - Runtime and API behavior: not implemented.
 - Next: CORE-TASK-023 — Stub Domain Contract Gaps.
+
+## CORE-TASK-023 — Stub Domain Contract Gaps
+
+- 7 safe Object stubs: completed/current.
+- 7 safe Service stubs: completed/current.
+- 8 safe API stubs: completed/current.
+- Contract Index: 179 entries.
+- Object, Service, and API coverage: 26 / 26 Domains each.
+- Required-layer-complete Domains: 26 / 26.
+- Gap inventory progress: 73 completed, 8 remaining.
+- Runtime and contract behavior: not implemented.
+- Next: CORE-TASK-024 — Canonical Workflow Contracts.

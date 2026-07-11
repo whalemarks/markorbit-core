@@ -65,6 +65,46 @@ const canonicalServiceSkeleton = (
   }
 });
 
+const stubServiceTargets = [
+  ['opportunity', 'Opportunity'],
+  ['notification', 'Notification'],
+  ['partner', 'Partner'],
+  ['agent', 'Agent'],
+  ['service-provider', 'Service Provider'],
+  ['service-network', 'Service Network'],
+  ['routing', 'Routing']
+] as const satisfies readonly (readonly [CoreDomainId, string])[];
+
+const stubServiceSkeleton = (
+  domainId: CoreDomainId,
+  domainName: string
+): CoreServiceContract => ({
+  ...serviceSkeleton(
+    `${domainId}-service`,
+    domainId,
+    `Core ${domainName} Service Contract Skeleton`,
+    `Safe metadata-only stub for the ${domainName} Core Service boundary.`,
+    `Reserves the canonical ${domainName} service ownership boundary without claiming methods, coordination, mutation, execution, or runtime availability.`,
+    [`${domainName} structural service ownership and reference boundary.`],
+    [`${domainName} Domain and Object contract references.`],
+    [`${domainName} structural service-boundary references.`]
+  ),
+  nonGoals: [
+    ...nonGoals,
+    'Operational availability, fake success, production readiness, or implemented service behavior.'
+  ],
+  sourcePath: `${serviceSourceRoot}${domainId}-service.md`,
+  implementationDepth: 'validated_skeleton',
+  createdAt: canonicalCreatedAt,
+  metadata: {
+    specificationRepository: 'whalemarks/markorbit-publication',
+    specificationCommit: '3349ecb8955021a8714d023348f8b24f941eb98f',
+    specificationPath,
+    implementationTask: 'CORE-TASK-023',
+    mvpRequirement: 'stub_now'
+  }
+});
+
 export const CORE_SERVICE_CONTRACT_SKELETONS = [
   serviceSkeleton('identity-resolution-service', 'identity', 'Identity Resolution Service Contract Skeleton', 'Skeleton contract boundary for identity resolution service responsibilities.', 'Establishes a service contract placeholder for identity ownership boundaries without resolving identities in executable form.', ['Identity resolution service contract boundary.'], ['identity domain references'], ['identity boundary references']),
   serviceSkeleton('permission-evaluation-service', 'permission', 'Permission Evaluation Service Contract Skeleton', 'Skeleton contract boundary for permission evaluation service responsibilities.', 'Establishes a service contract placeholder for permission ownership boundaries without implementing permission decisions.', ['Permission evaluation service contract boundary.'], ['permission domain references', 'identity boundary references'], ['permission evaluation references']),
@@ -174,5 +214,8 @@ export const CORE_SERVICE_CONTRACT_SKELETONS = [
     ['event, source-domain, source-object, actor, correlation, and causation references'],
     ['event boundary references'],
     ['Event recording, dispatch, bus, sourcing, subscription, persistence, trigger execution, audit logging, or product activity feeds.']
+  ),
+  ...stubServiceTargets.map(([domainId, domainName]) =>
+    stubServiceSkeleton(domainId, domainName)
   )
 ] as const satisfies readonly CoreServiceContract[];

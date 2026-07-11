@@ -15,3 +15,7 @@ Book 03 Execution Runtime remains outside this task. Event Bus, Workflow Engine,
 CORE-TASK-022 preserves the original 8 Phase 2 API scaffolds and appends 18 canonical, source-locked Domain API skeletons for the Must Build Now Domains. The API family now contains 26 entries: 8 retained global/reference scaffolds and 18 Book 2 canonical Domain API targets.
 
 Each canonical addition records its exact Book 2 source file, pinned `markorbit-publication` commit, implementation task, Domain mapping, and `validated_skeleton` depth. This expansion does not implement the endpoint sets, request or response schemas, handlers, middleware, service delegation, Permission or Policy evaluation, idempotency behavior, event trace behavior, or version behavior described by the source contracts.
+
+## CORE-TASK-023 safe stub expansion
+
+CORE-TASK-023 appends 8 canonical API skeletons for Knowledge, Opportunity, Notification, Partner, Agent, Service Provider, Service Network, and Routing. Each is explicitly marked `stub_now` and reserves only a request/safe-response boundary; none claims endpoints, handlers, DTOs, service execution, API availability, fake success, or production readiness.

@@ -7,24 +7,32 @@ const statuses = new Set<string>(Object.values(CORE_CONTRACT_STATUSES));
 const kebabCasePattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const existingApiSkeletonCount = 8;
 const canonicalApiEntries = [
-  ['identity', 'Identity'],
-  ['organization', 'Organization'],
-  ['user', 'User'],
-  ['permission', 'Permission'],
-  ['policy', 'Policy'],
-  ['brand', 'Brand'],
-  ['trademark', 'Trademark'],
-  ['jurisdiction', 'Jurisdiction'],
-  ['classification', 'Classification'],
-  ['document', 'Document'],
-  ['evidence', 'Evidence'],
-  ['customer', 'Customer'],
-  ['matter', 'Matter'],
-  ['order', 'Order'],
-  ['workflow-contract', 'Workflow Contract'],
-  ['task', 'Task'],
-  ['event', 'Event'],
-  ['communication', 'Communication']
+  ['identity', 'Identity', 'CORE-TASK-022'],
+  ['organization', 'Organization', 'CORE-TASK-022'],
+  ['user', 'User', 'CORE-TASK-022'],
+  ['permission', 'Permission', 'CORE-TASK-022'],
+  ['policy', 'Policy', 'CORE-TASK-022'],
+  ['brand', 'Brand', 'CORE-TASK-022'],
+  ['trademark', 'Trademark', 'CORE-TASK-022'],
+  ['jurisdiction', 'Jurisdiction', 'CORE-TASK-022'],
+  ['classification', 'Classification', 'CORE-TASK-022'],
+  ['document', 'Document', 'CORE-TASK-022'],
+  ['evidence', 'Evidence', 'CORE-TASK-022'],
+  ['customer', 'Customer', 'CORE-TASK-022'],
+  ['matter', 'Matter', 'CORE-TASK-022'],
+  ['order', 'Order', 'CORE-TASK-022'],
+  ['workflow-contract', 'Workflow Contract', 'CORE-TASK-022'],
+  ['task', 'Task', 'CORE-TASK-022'],
+  ['event', 'Event', 'CORE-TASK-022'],
+  ['communication', 'Communication', 'CORE-TASK-022'],
+  ['knowledge', 'Knowledge', 'CORE-TASK-023'],
+  ['opportunity', 'Opportunity', 'CORE-TASK-023'],
+  ['notification', 'Notification', 'CORE-TASK-023'],
+  ['partner', 'Partner', 'CORE-TASK-023'],
+  ['agent', 'Agent', 'CORE-TASK-023'],
+  ['service-provider', 'Service Provider', 'CORE-TASK-023'],
+  ['service-network', 'Service Network', 'CORE-TASK-023'],
+  ['routing', 'Routing', 'CORE-TASK-023']
 ] as const;
 const canonicalApiSourceRoot =
   'books/book-02-core-specification/core-specs/contracts/api/';
@@ -60,7 +68,7 @@ export function validateCoreApiContractSkeletons(contracts: readonly CoreApiCont
   const ids = new Set<string>();
   const apiTypes = new Set<string>();
 
-  if (contracts.length !== 26) errors.push('Core API contract skeletons must contain exactly 26 entries.');
+  if (contracts.length !== 34) errors.push('Core API contract skeletons must contain exactly 34 entries.');
 
   contracts.forEach((contract, index) => {
     const path = `contracts[${index}]`;
@@ -85,11 +93,11 @@ export function validateCoreApiContractSkeletons(contracts: readonly CoreApiCont
     if (contract.metadata !== undefined && !isPlainObject(contract.metadata)) errors.push(`${path}.metadata must be a plain object.`);
     const canonicalEntry = canonicalApiEntries[index - existingApiSkeletonCount];
     if (canonicalEntry !== undefined) {
-      const [domainId, domainName] = canonicalEntry;
-      if (contract.id !== `core-api-${domainId}-api-contract`) errors.push(`${path}.id must match the locked CORE-TASK-022 target.`);
-      if (contract.apiType !== `${domainId}-api`) errors.push(`${path}.apiType must match the locked CORE-TASK-022 target.`);
-      if (contract.domainId !== domainId) errors.push(`${path}.domainId must match the locked CORE-TASK-022 target.`);
-      if (contract.name !== `Core ${domainName} API Contract Skeleton`) errors.push(`${path}.name must match the locked CORE-TASK-022 target.`);
+      const [domainId, domainName, implementationTask] = canonicalEntry;
+      if (contract.id !== `core-api-${domainId}-api-contract`) errors.push(`${path}.id must match the locked ${implementationTask} target.`);
+      if (contract.apiType !== `${domainId}-api`) errors.push(`${path}.apiType must match the locked ${implementationTask} target.`);
+      if (contract.domainId !== domainId) errors.push(`${path}.domainId must match the locked ${implementationTask} target.`);
+      if (contract.name !== `Core ${domainName} API Contract Skeleton`) errors.push(`${path}.name must match the locked ${implementationTask} target.`);
       if (contract.sourcePath !== `${canonicalApiSourceRoot}${domainId}-api-contract.md`) errors.push(`${path}.sourcePath must match the locked Book 2 source.`);
       if (contract.implementationDepth !== 'validated_skeleton') errors.push(`${path}.implementationDepth must be validated_skeleton.`);
       if (!isPlainObject(contract.metadata)) {
@@ -98,7 +106,8 @@ export function validateCoreApiContractSkeletons(contracts: readonly CoreApiCont
         if (contract.metadata.specificationRepository !== 'whalemarks/markorbit-publication') errors.push(`${path}.metadata.specificationRepository must match the locked repository.`);
         if (contract.metadata.specificationCommit !== '3349ecb8955021a8714d023348f8b24f941eb98f') errors.push(`${path}.metadata.specificationCommit must match the locked commit.`);
         if (contract.metadata.specificationPath !== 'books/book-02-core-specification/') errors.push(`${path}.metadata.specificationPath must match the locked Book 2 path.`);
-        if (contract.metadata.implementationTask !== 'CORE-TASK-022') errors.push(`${path}.metadata.implementationTask must be CORE-TASK-022.`);
+        if (contract.metadata.implementationTask !== implementationTask) errors.push(`${path}.metadata.implementationTask must be ${implementationTask}.`);
+        if (implementationTask === 'CORE-TASK-023' && contract.metadata.mvpRequirement !== 'stub_now') errors.push(`${path}.metadata.mvpRequirement must be stub_now.`);
       }
     }
     const serialized = JSON.stringify(contract).toLowerCase();

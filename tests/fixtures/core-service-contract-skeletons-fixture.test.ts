@@ -9,7 +9,7 @@ const fixture = JSON.parse(await readFile(new URL('../../fixtures/contracts/core
 const executableMethodFields = ['methods', 'method', 'handler', 'function', 'execute', 'implementation', 'resolver'];
 
 describe('core-service-contract-skeletons fixture', () => {
-  it('fixture has exactly 19 entries', () => assert.equal(fixture.length, 19));
+  it('fixture has exactly 26 entries', () => assert.equal(fixture.length, 26));
   it('fixture ids match CORE_SERVICE_CONTRACT_SKELETONS ids exactly', () => assert.deepEqual(fixture.map((c) => c.id), CORE_SERVICE_CONTRACT_SKELETONS.map((c) => c.id)));
   it('fixture serviceTypes match CORE_SERVICE_CONTRACT_SKELETONS serviceTypes exactly', () => assert.deepEqual(fixture.map((c) => c.serviceType), CORE_SERVICE_CONTRACT_SKELETONS.map((c) => c.serviceType)));
   it('fixture domainIds match CORE_SERVICE_CONTRACT_SKELETONS domainIds exactly', () => assert.deepEqual(fixture.map((c) => c.domainId), CORE_SERVICE_CONTRACT_SKELETONS.map((c) => c.domainId)));

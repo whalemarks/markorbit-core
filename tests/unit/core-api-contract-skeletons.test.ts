@@ -7,8 +7,8 @@ const kebabCasePattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const domainIds = new Set(CORE_DOMAIN_REGISTRY.map((domain) => domain.id));
 
 describe('Core API Contract Skeletons', () => {
-  it('has exactly 26 entries', () => {
-    assert.equal(CORE_API_CONTRACT_SKELETONS.length, 26);
+  it('has exactly 34 entries', () => {
+    assert.equal(CORE_API_CONTRACT_SKELETONS.length, 34);
   });
 
   it('validates without errors', () => {
@@ -48,7 +48,7 @@ describe('Core API Contract Skeletons', () => {
     for (const contract of CORE_API_CONTRACT_SKELETONS) assert.match(contract.apiType, kebabCasePattern);
   });
   it('adds exactly the 18 locked CORE-TASK-022 API targets', () => {
-    const additions = CORE_API_CONTRACT_SKELETONS.slice(8);
+    const additions = CORE_API_CONTRACT_SKELETONS.slice(8, 26);
     const targets = CORE_DOMAIN_CONTRACT_TARGETS.filter(
       (target) => target.implementationBatch === 'CORE-TASK-022'
     );
@@ -77,6 +77,17 @@ describe('Core API Contract Skeletons', () => {
       );
       assert.equal(entry.metadata?.implementationTask, 'CORE-TASK-022');
     }
+  });
+
+  it('adds exactly the 8 safe CORE-TASK-023 API stubs', () => {
+    const additions = CORE_API_CONTRACT_SKELETONS.slice(26);
+    const targets = CORE_DOMAIN_CONTRACT_TARGETS.filter(
+      (target) => target.implementationBatch === 'CORE-TASK-023' && target.layer === 'api'
+    );
+    assert.deepEqual(additions.map((entry) => entry.id), targets.map((target) => target.targetContractId));
+    assert.deepEqual(additions.map((entry) => entry.name), targets.map((target) => target.targetName));
+    assert.deepEqual(additions.map((entry) => entry.sourcePath), targets.map((target) => target.sourcePath));
+    assert.ok(additions.every((entry) => entry.metadata?.implementationTask === 'CORE-TASK-023' && entry.metadata.mvpRequirement === 'stub_now'));
   });
 
 });

@@ -166,6 +166,18 @@ describe('core fixture validation', () => {
     assert.equal(validateCoreApiContractSkeletonsFixture(fixture).ok, false);
   });
 
+  it('stub skeleton validators reject changed MVP requirement metadata', async () => {
+    const objectFixture = structuredClone(await readFixture('fixtures/contracts/core-object-contract-skeletons.fixture.json')) as Record<string, unknown>[];
+    const serviceFixture = structuredClone(await readFixture('fixtures/contracts/core-service-contract-skeletons.fixture.json')) as Record<string, unknown>[];
+    const apiFixture = structuredClone(await readFixture('fixtures/contracts/core-api-contract-skeletons.fixture.json')) as Record<string, unknown>[];
+    (objectFixture[19].metadata as Record<string, unknown>).mvpRequirement = 'must_build_now';
+    (serviceFixture[19].metadata as Record<string, unknown>).mvpRequirement = 'must_build_now';
+    (apiFixture[26].metadata as Record<string, unknown>).mvpRequirement = 'must_build_now';
+    assert.equal(validateCoreObjectContractSkeletonsFixture(objectFixture).ok, false);
+    assert.equal(validateCoreServiceContractSkeletonsFixture(serviceFixture).ok, false);
+    assert.equal(validateCoreApiContractSkeletonsFixture(apiFixture).ok, false);
+  });
+
   it('object validator rejects unknown domainId', async () => {
     const fixture = structuredClone(await readFixture('fixtures/objects/core-object-base.fixture.json')) as Record<string, unknown>[];
     fixture[0].domainId = 'unknown-domain';
