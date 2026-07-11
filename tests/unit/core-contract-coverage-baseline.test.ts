@@ -18,18 +18,18 @@ describe('Core Contract Coverage Baseline', () => {
     );
   });
 
-  it('covers all 139 indexed contracts across 12 structural families', () => {
+  it('covers all 157 indexed contracts across 12 structural families', () => {
     assert.equal(CORE_CONTRACT_FAMILY_COVERAGE.length, 12);
     assert.equal(
       CORE_CONTRACT_FAMILY_COVERAGE.reduce(
         (total, family) => total + family.indexedCount,
         0
       ),
-      139
+      157
     );
     assert.equal(
       CORE_CONTRACT_COVERAGE_BASELINE.summary.indexedContractCount,
-      139
+      157
     );
   });
 
@@ -63,7 +63,7 @@ describe('Core Contract Coverage Baseline', () => {
         domain: 26,
         object: 19,
         service: 19,
-        api: 4,
+        api: 18,
         event: 4,
         workflow: 6
       }
@@ -84,17 +84,36 @@ describe('Core Contract Coverage Baseline', () => {
     );
   });
 
-  it('identifies four required-layer-complete domains and 36 missing slots', () => {
+  it('identifies all 18 must-build domains as required-layer complete and 22 missing slots', () => {
     const completeDomains = CORE_DOMAIN_CONTRACT_COVERAGE.filter(
       (entry) => entry.requiredLayerState === 'required_layers_present'
     );
     assert.deepEqual(
       completeDomains.map((entry) => entry.domainId),
-      ['policy', 'workflow-contract', 'task', 'event']
+      [
+        'identity',
+        'organization',
+        'user',
+        'permission',
+        'policy',
+        'brand',
+        'trademark',
+        'jurisdiction',
+        'classification',
+        'document',
+        'evidence',
+        'customer',
+        'matter',
+        'order',
+        'workflow-contract',
+        'task',
+        'event',
+        'communication'
+      ]
     );
     assert.equal(
       CORE_CONTRACT_COVERAGE_BASELINE.summary.missingRequiredLayerSlotCount,
-      36
+      22
     );
   });
 

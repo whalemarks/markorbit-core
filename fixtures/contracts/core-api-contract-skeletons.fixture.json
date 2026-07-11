@@ -5,17 +5,11 @@
     "name": "Core Domain Registry API Contract Skeleton",
     "description": "Skeleton exposure boundary for Core domain registry references.",
     "status": "active",
-    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "book": "Book 02 — MarkOrbit Core Specification",
     "purpose": "Establishes a contract-level API boundary for discovering Core domains without defining routes or handlers.",
-    "owns": [
-      "Core domain registry API contract boundary."
-    ],
-    "consumes": [
-      "Core domain registry contract references"
-    ],
-    "produces": [
-      "Core domain registry exposure references"
-    ],
+    "owns": ["Core domain registry API contract boundary."],
+    "consumes": ["Core domain registry contract references"],
+    "produces": ["Core domain registry exposure references"],
     "allowedOperations": [
       "contract reference category",
       "catalog read category",
@@ -34,17 +28,11 @@
     "name": "Core Object Reference API Contract Skeleton",
     "description": "Skeleton exposure boundary for Core object reference contracts.",
     "status": "active",
-    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "book": "Book 02 — MarkOrbit Core Specification",
     "purpose": "Establishes a contract-level API boundary for Core object references without concrete DTO schemas.",
-    "owns": [
-      "Core object reference API contract boundary."
-    ],
-    "consumes": [
-      "Core object contract references"
-    ],
-    "produces": [
-      "Core object exposure references"
-    ],
+    "owns": ["Core object reference API contract boundary."],
+    "consumes": ["Core object contract references"],
+    "produces": ["Core object exposure references"],
     "allowedOperations": [
       "contract reference category",
       "catalog read category",
@@ -64,17 +52,11 @@
     "name": "Core Event Reference API Contract Skeleton",
     "description": "Skeleton exposure boundary for Core event reference contracts.",
     "status": "active",
-    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "book": "Book 02 — MarkOrbit Core Specification",
     "purpose": "Establishes a contract-level API boundary for Core event references without event runtime behavior.",
-    "owns": [
-      "Core event reference API contract boundary."
-    ],
-    "consumes": [
-      "Core event contract references"
-    ],
-    "produces": [
-      "Core event exposure references"
-    ],
+    "owns": ["Core event reference API contract boundary."],
+    "consumes": ["Core event contract references"],
+    "produces": ["Core event exposure references"],
     "allowedOperations": [
       "contract reference category",
       "catalog read category",
@@ -94,17 +76,11 @@
     "name": "Core Task Reference API Contract Skeleton",
     "description": "Skeleton exposure boundary for Core task reference contracts.",
     "status": "active",
-    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "book": "Book 02 — MarkOrbit Core Specification",
     "purpose": "Establishes a contract-level API boundary for Core task references without task runtime behavior.",
-    "owns": [
-      "Core task reference API contract boundary."
-    ],
-    "consumes": [
-      "Core task contract references"
-    ],
-    "produces": [
-      "Core task exposure references"
-    ],
+    "owns": ["Core task reference API contract boundary."],
+    "consumes": ["Core task contract references"],
+    "produces": ["Core task exposure references"],
     "allowedOperations": [
       "contract reference category",
       "catalog read category",
@@ -124,17 +100,11 @@
     "name": "Core Workflow Contract Reference API Contract Skeleton",
     "description": "Skeleton exposure boundary for Core workflow contract references.",
     "status": "active",
-    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "book": "Book 02 — MarkOrbit Core Specification",
     "purpose": "Establishes a contract-level API boundary for workflow contract references without workflow engine behavior.",
-    "owns": [
-      "Core workflow contract reference API contract boundary."
-    ],
-    "consumes": [
-      "Core workflow contract references"
-    ],
-    "produces": [
-      "Core workflow contract exposure references"
-    ],
+    "owns": ["Core workflow contract reference API contract boundary."],
+    "consumes": ["Core workflow contract references"],
+    "produces": ["Core workflow contract exposure references"],
     "allowedOperations": [
       "contract reference category",
       "catalog read category",
@@ -153,17 +123,11 @@
     "name": "Core Contract Index API Contract Skeleton",
     "description": "Skeleton exposure boundary for the Core contract index.",
     "status": "active",
-    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "book": "Book 02 — MarkOrbit Core Specification",
     "purpose": "Establishes a contract-level API boundary for the Core Contract Index without implementing an API server.",
-    "owns": [
-      "Core contract index API contract boundary."
-    ],
-    "consumes": [
-      "Core contract index references"
-    ],
-    "produces": [
-      "Core contract index exposure references"
-    ],
+    "owns": ["Core contract index API contract boundary."],
+    "consumes": ["Core contract index references"],
+    "produces": ["Core contract index exposure references"],
     "allowedOperations": [
       "contract reference category",
       "catalog read category",
@@ -183,17 +147,11 @@
     "name": "Core Validation API Contract Skeleton",
     "description": "Skeleton exposure boundary for Core validation references.",
     "status": "active",
-    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "book": "Book 02 — MarkOrbit Core Specification",
     "purpose": "Establishes a contract-level API boundary for validation references without service logic or database access.",
-    "owns": [
-      "Core validation API contract boundary."
-    ],
-    "consumes": [
-      "Core validation contract references"
-    ],
-    "produces": [
-      "Core validation exposure references"
-    ],
+    "owns": ["Core validation API contract boundary."],
+    "consumes": ["Core validation contract references"],
+    "produces": ["Core validation exposure references"],
     "allowedOperations": [
       "contract reference category",
       "catalog read category",
@@ -212,17 +170,11 @@
     "name": "Core Health API Contract Skeleton",
     "description": "Skeleton exposure boundary for Core health metadata.",
     "status": "active",
-    "book": "Book 02 \u2014 MarkOrbit Core Specification",
+    "book": "Book 02 — MarkOrbit Core Specification",
     "purpose": "Establishes a contract-level API boundary for health metadata without runtime monitoring implementation.",
-    "owns": [
-      "Core health API contract boundary."
-    ],
-    "consumes": [
-      "Core contract health references"
-    ],
-    "produces": [
-      "Core health exposure references"
-    ],
+    "owns": ["Core health API contract boundary."],
+    "consumes": ["Core contract health references"],
+    "produces": ["Core health exposure references"],
     "allowedOperations": [
       "contract reference category",
       "catalog read category",
@@ -234,5 +186,673 @@
       "Book 03 execution runtime behavior, Product UI behavior, or AI agent authority."
     ],
     "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-api-identity-api-contract",
+    "apiType": "identity-api",
+    "domainId": "identity",
+    "name": "Core Identity API Contract Skeleton",
+    "description": "Canonical metadata skeleton for the Identity API boundary.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Defines the governed request and safe-response contract boundary for Identity operations without implementing routes, handlers, service behavior, mutation, or DTO schemas.",
+    "owns": [
+      "Identity API contract boundary and owning-service delegation reference."
+    ],
+    "consumes": [
+      "Identity Domain, Object, and Service contract references.",
+      "Common contract context references."
+    ],
+    "produces": ["Governed Identity API response-boundary references."],
+    "allowedOperations": [
+      "contract reference category",
+      "catalog read category",
+      "validation boundary category"
+    ],
+    "nonGoals": [
+      "Executable API server routes, handlers, middleware, or HTTP framework behavior.",
+      "Request or response DTO schemas, database access, service implementation, or business logic.",
+      "Book 03 execution runtime behavior, Product UI behavior, or AI agent authority."
+    ],
+    "createdAt": "2026-07-11T00:00:00.000Z",
+    "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/identity-api-contract.md",
+    "implementationDepth": "validated_skeleton",
+    "metadata": {
+      "specificationRepository": "whalemarks/markorbit-publication",
+      "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+      "specificationPath": "books/book-02-core-specification/",
+      "implementationTask": "CORE-TASK-022"
+    }
+  },
+  {
+    "id": "core-api-organization-api-contract",
+    "apiType": "organization-api",
+    "domainId": "organization",
+    "name": "Core Organization API Contract Skeleton",
+    "description": "Canonical metadata skeleton for the Organization API boundary.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Defines the governed request and safe-response contract boundary for Organization operations without implementing routes, handlers, service behavior, mutation, or DTO schemas.",
+    "owns": [
+      "Organization API contract boundary and owning-service delegation reference."
+    ],
+    "consumes": [
+      "Organization Domain, Object, and Service contract references.",
+      "Common contract context references."
+    ],
+    "produces": ["Governed Organization API response-boundary references."],
+    "allowedOperations": [
+      "contract reference category",
+      "catalog read category",
+      "validation boundary category"
+    ],
+    "nonGoals": [
+      "Executable API server routes, handlers, middleware, or HTTP framework behavior.",
+      "Request or response DTO schemas, database access, service implementation, or business logic.",
+      "Book 03 execution runtime behavior, Product UI behavior, or AI agent authority."
+    ],
+    "createdAt": "2026-07-11T00:00:00.000Z",
+    "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/organization-api-contract.md",
+    "implementationDepth": "validated_skeleton",
+    "metadata": {
+      "specificationRepository": "whalemarks/markorbit-publication",
+      "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+      "specificationPath": "books/book-02-core-specification/",
+      "implementationTask": "CORE-TASK-022"
+    }
+  },
+  {
+    "id": "core-api-user-api-contract",
+    "apiType": "user-api",
+    "domainId": "user",
+    "name": "Core User API Contract Skeleton",
+    "description": "Canonical metadata skeleton for the User API boundary.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Defines the governed request and safe-response contract boundary for User operations without implementing routes, handlers, service behavior, mutation, or DTO schemas.",
+    "owns": [
+      "User API contract boundary and owning-service delegation reference."
+    ],
+    "consumes": [
+      "User Domain, Object, and Service contract references.",
+      "Common contract context references."
+    ],
+    "produces": ["Governed User API response-boundary references."],
+    "allowedOperations": [
+      "contract reference category",
+      "catalog read category",
+      "validation boundary category"
+    ],
+    "nonGoals": [
+      "Executable API server routes, handlers, middleware, or HTTP framework behavior.",
+      "Request or response DTO schemas, database access, service implementation, or business logic.",
+      "Book 03 execution runtime behavior, Product UI behavior, or AI agent authority."
+    ],
+    "createdAt": "2026-07-11T00:00:00.000Z",
+    "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/user-api-contract.md",
+    "implementationDepth": "validated_skeleton",
+    "metadata": {
+      "specificationRepository": "whalemarks/markorbit-publication",
+      "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+      "specificationPath": "books/book-02-core-specification/",
+      "implementationTask": "CORE-TASK-022"
+    }
+  },
+  {
+    "id": "core-api-permission-api-contract",
+    "apiType": "permission-api",
+    "domainId": "permission",
+    "name": "Core Permission API Contract Skeleton",
+    "description": "Canonical metadata skeleton for the Permission API boundary.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Defines the governed request and safe-response contract boundary for Permission operations without implementing routes, handlers, service behavior, mutation, or DTO schemas.",
+    "owns": [
+      "Permission API contract boundary and owning-service delegation reference."
+    ],
+    "consumes": [
+      "Permission Domain, Object, and Service contract references.",
+      "Common contract context references."
+    ],
+    "produces": ["Governed Permission API response-boundary references."],
+    "allowedOperations": [
+      "contract reference category",
+      "catalog read category",
+      "validation boundary category"
+    ],
+    "nonGoals": [
+      "Executable API server routes, handlers, middleware, or HTTP framework behavior.",
+      "Request or response DTO schemas, database access, service implementation, or business logic.",
+      "Book 03 execution runtime behavior, Product UI behavior, or AI agent authority."
+    ],
+    "createdAt": "2026-07-11T00:00:00.000Z",
+    "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/permission-api-contract.md",
+    "implementationDepth": "validated_skeleton",
+    "metadata": {
+      "specificationRepository": "whalemarks/markorbit-publication",
+      "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+      "specificationPath": "books/book-02-core-specification/",
+      "implementationTask": "CORE-TASK-022"
+    }
+  },
+  {
+    "id": "core-api-policy-api-contract",
+    "apiType": "policy-api",
+    "domainId": "policy",
+    "name": "Core Policy API Contract Skeleton",
+    "description": "Canonical metadata skeleton for the Policy API boundary.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Defines the governed request and safe-response contract boundary for Policy operations without implementing routes, handlers, service behavior, mutation, or DTO schemas.",
+    "owns": [
+      "Policy API contract boundary and owning-service delegation reference."
+    ],
+    "consumes": [
+      "Policy Domain, Object, and Service contract references.",
+      "Common contract context references."
+    ],
+    "produces": ["Governed Policy API response-boundary references."],
+    "allowedOperations": [
+      "contract reference category",
+      "catalog read category",
+      "validation boundary category"
+    ],
+    "nonGoals": [
+      "Executable API server routes, handlers, middleware, or HTTP framework behavior.",
+      "Request or response DTO schemas, database access, service implementation, or business logic.",
+      "Book 03 execution runtime behavior, Product UI behavior, or AI agent authority."
+    ],
+    "createdAt": "2026-07-11T00:00:00.000Z",
+    "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/policy-api-contract.md",
+    "implementationDepth": "validated_skeleton",
+    "metadata": {
+      "specificationRepository": "whalemarks/markorbit-publication",
+      "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+      "specificationPath": "books/book-02-core-specification/",
+      "implementationTask": "CORE-TASK-022"
+    }
+  },
+  {
+    "id": "core-api-brand-api-contract",
+    "apiType": "brand-api",
+    "domainId": "brand",
+    "name": "Core Brand API Contract Skeleton",
+    "description": "Canonical metadata skeleton for the Brand API boundary.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Defines the governed request and safe-response contract boundary for Brand operations without implementing routes, handlers, service behavior, mutation, or DTO schemas.",
+    "owns": [
+      "Brand API contract boundary and owning-service delegation reference."
+    ],
+    "consumes": [
+      "Brand Domain, Object, and Service contract references.",
+      "Common contract context references."
+    ],
+    "produces": ["Governed Brand API response-boundary references."],
+    "allowedOperations": [
+      "contract reference category",
+      "catalog read category",
+      "validation boundary category"
+    ],
+    "nonGoals": [
+      "Executable API server routes, handlers, middleware, or HTTP framework behavior.",
+      "Request or response DTO schemas, database access, service implementation, or business logic.",
+      "Book 03 execution runtime behavior, Product UI behavior, or AI agent authority."
+    ],
+    "createdAt": "2026-07-11T00:00:00.000Z",
+    "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/brand-api-contract.md",
+    "implementationDepth": "validated_skeleton",
+    "metadata": {
+      "specificationRepository": "whalemarks/markorbit-publication",
+      "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+      "specificationPath": "books/book-02-core-specification/",
+      "implementationTask": "CORE-TASK-022"
+    }
+  },
+  {
+    "id": "core-api-trademark-api-contract",
+    "apiType": "trademark-api",
+    "domainId": "trademark",
+    "name": "Core Trademark API Contract Skeleton",
+    "description": "Canonical metadata skeleton for the Trademark API boundary.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Defines the governed request and safe-response contract boundary for Trademark operations without implementing routes, handlers, service behavior, mutation, or DTO schemas.",
+    "owns": [
+      "Trademark API contract boundary and owning-service delegation reference."
+    ],
+    "consumes": [
+      "Trademark Domain, Object, and Service contract references.",
+      "Common contract context references."
+    ],
+    "produces": ["Governed Trademark API response-boundary references."],
+    "allowedOperations": [
+      "contract reference category",
+      "catalog read category",
+      "validation boundary category"
+    ],
+    "nonGoals": [
+      "Executable API server routes, handlers, middleware, or HTTP framework behavior.",
+      "Request or response DTO schemas, database access, service implementation, or business logic.",
+      "Book 03 execution runtime behavior, Product UI behavior, or AI agent authority."
+    ],
+    "createdAt": "2026-07-11T00:00:00.000Z",
+    "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/trademark-api-contract.md",
+    "implementationDepth": "validated_skeleton",
+    "metadata": {
+      "specificationRepository": "whalemarks/markorbit-publication",
+      "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+      "specificationPath": "books/book-02-core-specification/",
+      "implementationTask": "CORE-TASK-022"
+    }
+  },
+  {
+    "id": "core-api-jurisdiction-api-contract",
+    "apiType": "jurisdiction-api",
+    "domainId": "jurisdiction",
+    "name": "Core Jurisdiction API Contract Skeleton",
+    "description": "Canonical metadata skeleton for the Jurisdiction API boundary.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Defines the governed request and safe-response contract boundary for Jurisdiction operations without implementing routes, handlers, service behavior, mutation, or DTO schemas.",
+    "owns": [
+      "Jurisdiction API contract boundary and owning-service delegation reference."
+    ],
+    "consumes": [
+      "Jurisdiction Domain, Object, and Service contract references.",
+      "Common contract context references."
+    ],
+    "produces": ["Governed Jurisdiction API response-boundary references."],
+    "allowedOperations": [
+      "contract reference category",
+      "catalog read category",
+      "validation boundary category"
+    ],
+    "nonGoals": [
+      "Executable API server routes, handlers, middleware, or HTTP framework behavior.",
+      "Request or response DTO schemas, database access, service implementation, or business logic.",
+      "Book 03 execution runtime behavior, Product UI behavior, or AI agent authority."
+    ],
+    "createdAt": "2026-07-11T00:00:00.000Z",
+    "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/jurisdiction-api-contract.md",
+    "implementationDepth": "validated_skeleton",
+    "metadata": {
+      "specificationRepository": "whalemarks/markorbit-publication",
+      "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+      "specificationPath": "books/book-02-core-specification/",
+      "implementationTask": "CORE-TASK-022"
+    }
+  },
+  {
+    "id": "core-api-classification-api-contract",
+    "apiType": "classification-api",
+    "domainId": "classification",
+    "name": "Core Classification API Contract Skeleton",
+    "description": "Canonical metadata skeleton for the Classification API boundary.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Defines the governed request and safe-response contract boundary for Classification operations without implementing routes, handlers, service behavior, mutation, or DTO schemas.",
+    "owns": [
+      "Classification API contract boundary and owning-service delegation reference."
+    ],
+    "consumes": [
+      "Classification Domain, Object, and Service contract references.",
+      "Common contract context references."
+    ],
+    "produces": ["Governed Classification API response-boundary references."],
+    "allowedOperations": [
+      "contract reference category",
+      "catalog read category",
+      "validation boundary category"
+    ],
+    "nonGoals": [
+      "Executable API server routes, handlers, middleware, or HTTP framework behavior.",
+      "Request or response DTO schemas, database access, service implementation, or business logic.",
+      "Book 03 execution runtime behavior, Product UI behavior, or AI agent authority."
+    ],
+    "createdAt": "2026-07-11T00:00:00.000Z",
+    "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/classification-api-contract.md",
+    "implementationDepth": "validated_skeleton",
+    "metadata": {
+      "specificationRepository": "whalemarks/markorbit-publication",
+      "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+      "specificationPath": "books/book-02-core-specification/",
+      "implementationTask": "CORE-TASK-022"
+    }
+  },
+  {
+    "id": "core-api-document-api-contract",
+    "apiType": "document-api",
+    "domainId": "document",
+    "name": "Core Document API Contract Skeleton",
+    "description": "Canonical metadata skeleton for the Document API boundary.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Defines the governed request and safe-response contract boundary for Document operations without implementing routes, handlers, service behavior, mutation, or DTO schemas.",
+    "owns": [
+      "Document API contract boundary and owning-service delegation reference."
+    ],
+    "consumes": [
+      "Document Domain, Object, and Service contract references.",
+      "Common contract context references."
+    ],
+    "produces": ["Governed Document API response-boundary references."],
+    "allowedOperations": [
+      "contract reference category",
+      "catalog read category",
+      "validation boundary category"
+    ],
+    "nonGoals": [
+      "Executable API server routes, handlers, middleware, or HTTP framework behavior.",
+      "Request or response DTO schemas, database access, service implementation, or business logic.",
+      "Book 03 execution runtime behavior, Product UI behavior, or AI agent authority."
+    ],
+    "createdAt": "2026-07-11T00:00:00.000Z",
+    "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/document-api-contract.md",
+    "implementationDepth": "validated_skeleton",
+    "metadata": {
+      "specificationRepository": "whalemarks/markorbit-publication",
+      "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+      "specificationPath": "books/book-02-core-specification/",
+      "implementationTask": "CORE-TASK-022"
+    }
+  },
+  {
+    "id": "core-api-evidence-api-contract",
+    "apiType": "evidence-api",
+    "domainId": "evidence",
+    "name": "Core Evidence API Contract Skeleton",
+    "description": "Canonical metadata skeleton for the Evidence API boundary.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Defines the governed request and safe-response contract boundary for Evidence operations without implementing routes, handlers, service behavior, mutation, or DTO schemas.",
+    "owns": [
+      "Evidence API contract boundary and owning-service delegation reference."
+    ],
+    "consumes": [
+      "Evidence Domain, Object, and Service contract references.",
+      "Common contract context references."
+    ],
+    "produces": ["Governed Evidence API response-boundary references."],
+    "allowedOperations": [
+      "contract reference category",
+      "catalog read category",
+      "validation boundary category"
+    ],
+    "nonGoals": [
+      "Executable API server routes, handlers, middleware, or HTTP framework behavior.",
+      "Request or response DTO schemas, database access, service implementation, or business logic.",
+      "Book 03 execution runtime behavior, Product UI behavior, or AI agent authority."
+    ],
+    "createdAt": "2026-07-11T00:00:00.000Z",
+    "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/evidence-api-contract.md",
+    "implementationDepth": "validated_skeleton",
+    "metadata": {
+      "specificationRepository": "whalemarks/markorbit-publication",
+      "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+      "specificationPath": "books/book-02-core-specification/",
+      "implementationTask": "CORE-TASK-022"
+    }
+  },
+  {
+    "id": "core-api-customer-api-contract",
+    "apiType": "customer-api",
+    "domainId": "customer",
+    "name": "Core Customer API Contract Skeleton",
+    "description": "Canonical metadata skeleton for the Customer API boundary.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Defines the governed request and safe-response contract boundary for Customer operations without implementing routes, handlers, service behavior, mutation, or DTO schemas.",
+    "owns": [
+      "Customer API contract boundary and owning-service delegation reference."
+    ],
+    "consumes": [
+      "Customer Domain, Object, and Service contract references.",
+      "Common contract context references."
+    ],
+    "produces": ["Governed Customer API response-boundary references."],
+    "allowedOperations": [
+      "contract reference category",
+      "catalog read category",
+      "validation boundary category"
+    ],
+    "nonGoals": [
+      "Executable API server routes, handlers, middleware, or HTTP framework behavior.",
+      "Request or response DTO schemas, database access, service implementation, or business logic.",
+      "Book 03 execution runtime behavior, Product UI behavior, or AI agent authority."
+    ],
+    "createdAt": "2026-07-11T00:00:00.000Z",
+    "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/customer-api-contract.md",
+    "implementationDepth": "validated_skeleton",
+    "metadata": {
+      "specificationRepository": "whalemarks/markorbit-publication",
+      "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+      "specificationPath": "books/book-02-core-specification/",
+      "implementationTask": "CORE-TASK-022"
+    }
+  },
+  {
+    "id": "core-api-matter-api-contract",
+    "apiType": "matter-api",
+    "domainId": "matter",
+    "name": "Core Matter API Contract Skeleton",
+    "description": "Canonical metadata skeleton for the Matter API boundary.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Defines the governed request and safe-response contract boundary for Matter operations without implementing routes, handlers, service behavior, mutation, or DTO schemas.",
+    "owns": [
+      "Matter API contract boundary and owning-service delegation reference."
+    ],
+    "consumes": [
+      "Matter Domain, Object, and Service contract references.",
+      "Common contract context references."
+    ],
+    "produces": ["Governed Matter API response-boundary references."],
+    "allowedOperations": [
+      "contract reference category",
+      "catalog read category",
+      "validation boundary category"
+    ],
+    "nonGoals": [
+      "Executable API server routes, handlers, middleware, or HTTP framework behavior.",
+      "Request or response DTO schemas, database access, service implementation, or business logic.",
+      "Book 03 execution runtime behavior, Product UI behavior, or AI agent authority."
+    ],
+    "createdAt": "2026-07-11T00:00:00.000Z",
+    "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/matter-api-contract.md",
+    "implementationDepth": "validated_skeleton",
+    "metadata": {
+      "specificationRepository": "whalemarks/markorbit-publication",
+      "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+      "specificationPath": "books/book-02-core-specification/",
+      "implementationTask": "CORE-TASK-022"
+    }
+  },
+  {
+    "id": "core-api-order-api-contract",
+    "apiType": "order-api",
+    "domainId": "order",
+    "name": "Core Order API Contract Skeleton",
+    "description": "Canonical metadata skeleton for the Order API boundary.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Defines the governed request and safe-response contract boundary for Order operations without implementing routes, handlers, service behavior, mutation, or DTO schemas.",
+    "owns": [
+      "Order API contract boundary and owning-service delegation reference."
+    ],
+    "consumes": [
+      "Order Domain, Object, and Service contract references.",
+      "Common contract context references."
+    ],
+    "produces": ["Governed Order API response-boundary references."],
+    "allowedOperations": [
+      "contract reference category",
+      "catalog read category",
+      "validation boundary category"
+    ],
+    "nonGoals": [
+      "Executable API server routes, handlers, middleware, or HTTP framework behavior.",
+      "Request or response DTO schemas, database access, service implementation, or business logic.",
+      "Book 03 execution runtime behavior, Product UI behavior, or AI agent authority."
+    ],
+    "createdAt": "2026-07-11T00:00:00.000Z",
+    "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/order-api-contract.md",
+    "implementationDepth": "validated_skeleton",
+    "metadata": {
+      "specificationRepository": "whalemarks/markorbit-publication",
+      "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+      "specificationPath": "books/book-02-core-specification/",
+      "implementationTask": "CORE-TASK-022"
+    }
+  },
+  {
+    "id": "core-api-workflow-contract-api-contract",
+    "apiType": "workflow-contract-api",
+    "domainId": "workflow-contract",
+    "name": "Core Workflow Contract API Contract Skeleton",
+    "description": "Canonical metadata skeleton for the Workflow Contract API boundary.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Defines the governed request and safe-response contract boundary for Workflow Contract operations without implementing routes, handlers, service behavior, mutation, or DTO schemas.",
+    "owns": [
+      "Workflow Contract API contract boundary and owning-service delegation reference."
+    ],
+    "consumes": [
+      "Workflow Contract Domain, Object, and Service contract references.",
+      "Common contract context references."
+    ],
+    "produces": [
+      "Governed Workflow Contract API response-boundary references."
+    ],
+    "allowedOperations": [
+      "contract reference category",
+      "catalog read category",
+      "validation boundary category"
+    ],
+    "nonGoals": [
+      "Executable API server routes, handlers, middleware, or HTTP framework behavior.",
+      "Request or response DTO schemas, database access, service implementation, or business logic.",
+      "Book 03 execution runtime behavior, Product UI behavior, or AI agent authority."
+    ],
+    "createdAt": "2026-07-11T00:00:00.000Z",
+    "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/workflow-contract-api-contract.md",
+    "implementationDepth": "validated_skeleton",
+    "metadata": {
+      "specificationRepository": "whalemarks/markorbit-publication",
+      "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+      "specificationPath": "books/book-02-core-specification/",
+      "implementationTask": "CORE-TASK-022"
+    }
+  },
+  {
+    "id": "core-api-task-api-contract",
+    "apiType": "task-api",
+    "domainId": "task",
+    "name": "Core Task API Contract Skeleton",
+    "description": "Canonical metadata skeleton for the Task API boundary.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Defines the governed request and safe-response contract boundary for Task operations without implementing routes, handlers, service behavior, mutation, or DTO schemas.",
+    "owns": [
+      "Task API contract boundary and owning-service delegation reference."
+    ],
+    "consumes": [
+      "Task Domain, Object, and Service contract references.",
+      "Common contract context references."
+    ],
+    "produces": ["Governed Task API response-boundary references."],
+    "allowedOperations": [
+      "contract reference category",
+      "catalog read category",
+      "validation boundary category"
+    ],
+    "nonGoals": [
+      "Executable API server routes, handlers, middleware, or HTTP framework behavior.",
+      "Request or response DTO schemas, database access, service implementation, or business logic.",
+      "Book 03 execution runtime behavior, Product UI behavior, or AI agent authority."
+    ],
+    "createdAt": "2026-07-11T00:00:00.000Z",
+    "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/task-api-contract.md",
+    "implementationDepth": "validated_skeleton",
+    "metadata": {
+      "specificationRepository": "whalemarks/markorbit-publication",
+      "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+      "specificationPath": "books/book-02-core-specification/",
+      "implementationTask": "CORE-TASK-022"
+    }
+  },
+  {
+    "id": "core-api-event-api-contract",
+    "apiType": "event-api",
+    "domainId": "event",
+    "name": "Core Event API Contract Skeleton",
+    "description": "Canonical metadata skeleton for the Event API boundary.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Defines the governed request and safe-response contract boundary for Event operations without implementing routes, handlers, service behavior, mutation, or DTO schemas.",
+    "owns": [
+      "Event API contract boundary and owning-service delegation reference."
+    ],
+    "consumes": [
+      "Event Domain, Object, and Service contract references.",
+      "Common contract context references."
+    ],
+    "produces": ["Governed Event API response-boundary references."],
+    "allowedOperations": [
+      "contract reference category",
+      "catalog read category",
+      "validation boundary category"
+    ],
+    "nonGoals": [
+      "Executable API server routes, handlers, middleware, or HTTP framework behavior.",
+      "Request or response DTO schemas, database access, service implementation, or business logic.",
+      "Book 03 execution runtime behavior, Product UI behavior, or AI agent authority."
+    ],
+    "createdAt": "2026-07-11T00:00:00.000Z",
+    "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/event-api-contract.md",
+    "implementationDepth": "validated_skeleton",
+    "metadata": {
+      "specificationRepository": "whalemarks/markorbit-publication",
+      "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+      "specificationPath": "books/book-02-core-specification/",
+      "implementationTask": "CORE-TASK-022"
+    }
+  },
+  {
+    "id": "core-api-communication-api-contract",
+    "apiType": "communication-api",
+    "domainId": "communication",
+    "name": "Core Communication API Contract Skeleton",
+    "description": "Canonical metadata skeleton for the Communication API boundary.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Defines the governed request and safe-response contract boundary for Communication operations without implementing routes, handlers, service behavior, mutation, or DTO schemas.",
+    "owns": [
+      "Communication API contract boundary and owning-service delegation reference."
+    ],
+    "consumes": [
+      "Communication Domain, Object, and Service contract references.",
+      "Common contract context references."
+    ],
+    "produces": ["Governed Communication API response-boundary references."],
+    "allowedOperations": [
+      "contract reference category",
+      "catalog read category",
+      "validation boundary category"
+    ],
+    "nonGoals": [
+      "Executable API server routes, handlers, middleware, or HTTP framework behavior.",
+      "Request or response DTO schemas, database access, service implementation, or business logic.",
+      "Book 03 execution runtime behavior, Product UI behavior, or AI agent authority."
+    ],
+    "createdAt": "2026-07-11T00:00:00.000Z",
+    "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/communication-api-contract.md",
+    "implementationDepth": "validated_skeleton",
+    "metadata": {
+      "specificationRepository": "whalemarks/markorbit-publication",
+      "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+      "specificationPath": "books/book-02-core-specification/",
+      "implementationTask": "CORE-TASK-022"
+    }
   }
 ]

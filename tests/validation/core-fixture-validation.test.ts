@@ -160,6 +160,12 @@ describe('core fixture validation', () => {
     assert.equal(validateCoreApiContractSkeletonsFixture(fixture).ok, false);
   });
 
+  it('api skeleton validator rejects changed canonical source path', async () => {
+    const fixture = structuredClone(await readFixture('fixtures/contracts/core-api-contract-skeletons.fixture.json')) as Record<string, unknown>[];
+    fixture[8].sourcePath = 'wrong.md';
+    assert.equal(validateCoreApiContractSkeletonsFixture(fixture).ok, false);
+  });
+
   it('object validator rejects unknown domainId', async () => {
     const fixture = structuredClone(await readFixture('fixtures/objects/core-object-base.fixture.json')) as Record<string, unknown>[];
     fixture[0].domainId = 'unknown-domain';

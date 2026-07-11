@@ -1,14 +1,14 @@
 import assert from 'node:assert/strict';
 import { describe, it } from 'node:test';
 
-import { CORE_API_CONTRACT_SKELETONS, CORE_DOMAIN_REGISTRY, EXCLUDED_CORE_API_CONCEPTS, validateCoreApiContractSkeletons } from '../../src/index.ts';
+import { CORE_API_CONTRACT_SKELETONS, CORE_DOMAIN_CONTRACT_TARGETS, CORE_DOMAIN_REGISTRY, EXCLUDED_CORE_API_CONCEPTS, validateCoreApiContractSkeletons } from '../../src/index.ts';
 
 const kebabCasePattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const domainIds = new Set(CORE_DOMAIN_REGISTRY.map((domain) => domain.id));
 
 describe('Core API Contract Skeletons', () => {
-  it('has exactly 8 entries', () => {
-    assert.equal(CORE_API_CONTRACT_SKELETONS.length, 8);
+  it('has exactly 26 entries', () => {
+    assert.equal(CORE_API_CONTRACT_SKELETONS.length, 26);
   });
 
   it('validates without errors', () => {
@@ -47,4 +47,36 @@ describe('Core API Contract Skeletons', () => {
   it('apiType values are kebab-case', () => {
     for (const contract of CORE_API_CONTRACT_SKELETONS) assert.match(contract.apiType, kebabCasePattern);
   });
+  it('adds exactly the 18 locked CORE-TASK-022 API targets', () => {
+    const additions = CORE_API_CONTRACT_SKELETONS.slice(8);
+    const targets = CORE_DOMAIN_CONTRACT_TARGETS.filter(
+      (target) => target.implementationBatch === 'CORE-TASK-022'
+    );
+    assert.equal(additions.length, 18);
+    assert.deepEqual(
+      additions.map((entry) => entry.id),
+      targets.map((target) => target.targetContractId)
+    );
+    assert.deepEqual(
+      additions.map((entry) => entry.name),
+      targets.map((target) => target.targetName)
+    );
+    assert.deepEqual(
+      additions.map((entry) => entry.sourcePath),
+      targets.map((target) => target.sourcePath)
+    );
+    for (const entry of additions) {
+      assert.equal(entry.implementationDepth, 'validated_skeleton');
+      assert.equal(
+        entry.metadata?.specificationRepository,
+        'whalemarks/markorbit-publication'
+      );
+      assert.equal(
+        entry.metadata?.specificationCommit,
+        '3349ecb8955021a8714d023348f8b24f941eb98f'
+      );
+      assert.equal(entry.metadata?.implementationTask, 'CORE-TASK-022');
+    }
+  });
+
 });

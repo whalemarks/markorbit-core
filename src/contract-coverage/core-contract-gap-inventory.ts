@@ -362,7 +362,9 @@ export const CORE_CONTRACT_GAP_INVENTORY = {
   retainedNoncanonicalScaffolds: [
     {
       family: 'api',
-      contractIds: CORE_API_CONTRACT_SKELETONS.map((entry) => entry.id),
+      contractIds: CORE_API_CONTRACT_SKELETONS.slice(0, 8).map(
+        (entry) => entry.id
+      ),
       disposition: 'retain_during_canonical_expansion',
       satisfiesCanonicalTargets: false,
       reason:
