@@ -80,6 +80,6 @@ CORE-TASK-018 is accepted when the baseline is reproducible and rejects stale co
 
 This task does not add full contracts, runtime behavior, service execution, API routes, event emission, workflow execution, permission or policy decisions, AI execution, Product UI, database behavior, Book 3 integration, or production-readiness claims.
 
-## Next task
+## Governed follow-on
 
-The 52 gaps must not be filled in one uncontrolled implementation. The next task is `CORE-TASK-019 — Book 2 Contract Gap Inventory Lock`, which should lock canonical Common, API, Workflow, and Test Contract targets and prioritize the Object, Service, and API gaps for the 18 Must Build Now Domains before implementation batches begin.
+CORE-TASK-019 locks canonical Common, API, Workflow, and Test Contract targets and the Object, Service, and API gaps for all 26 Domains. It converts the baseline into 81 controlled additions across CORE-TASK-020 through CORE-TASK-024. The first implementation batch is CORE-TASK-020 — Common and Test Contract Foundations.

@@ -17,7 +17,8 @@ import {
   validateCorePermissionContractSkeletonsFixture,
   validateCorePolicyContractSkeletonsFixture,
   validateCoreAiGovernanceContractSkeletonsFixture,
-  validateCoreContractCoverageBaselineFixture
+  validateCoreContractCoverageBaselineFixture,
+  validateCoreContractGapInventoryFixture
 } from '../../src/index.ts';
 
 const readFixture = async (path: string): Promise<unknown> => JSON.parse(await readFile(new URL(`../../${path}`, import.meta.url), 'utf8'));
@@ -39,6 +40,7 @@ describe('core fixture validation', () => {
     assert.equal(validateCorePolicyContractSkeletonsFixture(await readFixture('fixtures/contracts/core-policy-contract-skeletons.fixture.json')).ok, true);
     assert.equal(validateCoreAiGovernanceContractSkeletonsFixture(await readFixture('fixtures/contracts/core-ai-governance-contract-skeletons.fixture.json')).ok, true);
     assert.equal(validateCoreContractCoverageBaselineFixture(await readFixture('fixtures/contract-coverage/core-contract-coverage-baseline.fixture.json')).ok, true);
+    assert.equal(validateCoreContractGapInventoryFixture(await readFixture('fixtures/contract-coverage/core-contract-gap-inventory.fixture.json')).ok, true);
   });
 
   it('each validator returns ok false for invalid non-array input', () => {
@@ -343,6 +345,17 @@ describe('core fixture validation', () => {
     const summary = fixture.summary as Record<string, unknown>;
     summary.indexedContractCount = 105;
     assert.equal(validateCoreContractCoverageBaselineFixture(fixture).ok, false);
+  });
+
+  it('contract gap inventory validator rejects non-object input', () => {
+    assert.equal(validateCoreContractGapInventoryFixture([]).ok, false);
+  });
+
+  it('contract gap inventory validator rejects changed batch counts', async () => {
+    const fixture = structuredClone(await readFixture('fixtures/contract-coverage/core-contract-gap-inventory.fixture.json')) as Record<string, unknown>;
+    const batches = fixture.implementationBatches as Record<string, unknown>[];
+    batches[0].targetCount = 16;
+    assert.equal(validateCoreContractGapInventoryFixture(fixture).ok, false);
   });
 
 });

@@ -31,7 +31,8 @@
 ## Phase 3 — Started
 
 - [x] Contract coverage baseline — first acceptance result/current.
-- [ ] Book 2 Contract Gap Inventory Lock.
+- [x] Book 2 Contract Gap Inventory Lock — completed/current.
+- [ ] Common and Test Contract Foundations.
 - Integration with Execution System.
 - Generated SDK.
 - Documentation site.
@@ -93,3 +94,12 @@
 - Missing required Object, Service, or API layer slots: 52.
 - Runtime and behavior completeness: not assessed.
 - Next: CORE-TASK-019 — Book 2 Contract Gap Inventory Lock.
+
+## CORE-TASK-019 — Book 2 Contract Gap Inventory Lock
+
+- 22 existing Domain targets mapped.
+- 81 new canonical targets locked.
+- Existing generic API and Workflow scaffolds retained but not counted as canonical.
+- Five controlled implementation batches defined.
+- Contract Index remains 106.
+- Next: CORE-TASK-020 — Common and Test Contract Foundations.

@@ -4,8 +4,8 @@ import { describe, it } from 'node:test';
 import { CORE_FIXTURE_MANIFEST, CORE_FIXTURE_TYPES } from '../../src/index.ts';
 
 describe('CORE_FIXTURE_MANIFEST', () => {
-  it('has exactly 16 entries', () => {
-    assert.equal(CORE_FIXTURE_MANIFEST.length, 16);
+  it('has exactly 17 entries', () => {
+    assert.equal(CORE_FIXTURE_MANIFEST.length, 17);
   });
 
   it('includes permission_contract_skeletons type', () => {
@@ -24,6 +24,10 @@ describe('CORE_FIXTURE_MANIFEST', () => {
     assert.equal(CORE_FIXTURE_TYPES.includes('contract_coverage_baseline'), true);
   });
 
+  it('includes contract_gap_inventory type', () => {
+    assert.equal(CORE_FIXTURE_TYPES.includes('contract_gap_inventory'), true);
+  });
+
   it('ids are unique', () => {
     assert.equal(new Set(CORE_FIXTURE_MANIFEST.map((entry) => entry.id)).size, CORE_FIXTURE_MANIFEST.length);
   });
@@ -37,6 +41,6 @@ describe('CORE_FIXTURE_MANIFEST', () => {
   });
 
   it('CoreFixtureType contains exactly the required fixture types', () => {
-    assert.deepEqual(CORE_FIXTURE_TYPES, ['domain_registry', 'object_base', 'event_base', 'task_base', 'workflow_contract_base', 'contract_index', 'domain_contract_skeletons', 'object_contract_skeletons', 'service_contract_skeletons', 'api_contract_skeletons', 'event_catalog_skeletons', 'workflow_catalog_skeletons', 'permission_contract_skeletons', 'policy_contract_skeletons', 'ai_governance_contract_skeletons', 'contract_coverage_baseline']);
+    assert.deepEqual(CORE_FIXTURE_TYPES, ['domain_registry', 'object_base', 'event_base', 'task_base', 'workflow_contract_base', 'contract_index', 'domain_contract_skeletons', 'object_contract_skeletons', 'service_contract_skeletons', 'api_contract_skeletons', 'event_catalog_skeletons', 'workflow_catalog_skeletons', 'permission_contract_skeletons', 'policy_contract_skeletons', 'ai_governance_contract_skeletons', 'contract_coverage_baseline', 'contract_gap_inventory']);
   });
 });

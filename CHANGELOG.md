@@ -1,5 +1,18 @@
 # Changelog
 
+## CORE-TASK-019 — Book 2 Contract Gap Inventory Lock
+
+- Locked 78 Domain Object/Service/API targets against the Book 2 source tree.
+- Mapped 22 targets to existing Phase 2 Object or Service skeletons.
+- Locked 56 new Domain-layer targets: 14 Object, 16 Service, and 26 canonical Domain API skeletons.
+- Locked 25 canonical contract-layer targets: 10 Common, 8 Workflow, and 7 Test Contracts.
+- Required future `common` and `test` contract types.
+- Retained the existing 8 API and 8 Workflow scaffolds without treating them as canonical targets.
+- Sequenced 81 additions into five controlled batches: 17, 16, 18, 22, and 8 targets.
+- Kept `CORE_CONTRACT_INDEX` unchanged at 106 entries.
+- Added exact inventory validation, a required fixture, tests, and `pnpm gaps:contracts`.
+- No contract skeleton, runtime, API route, workflow engine, Book 3 integration, or Product behavior added.
+
 ## CORE-TASK-018 — Phase 3 Contract Coverage Baseline
 
 - Added a machine-readable coverage baseline for all 106 indexed contracts and 26 Core Domains.
