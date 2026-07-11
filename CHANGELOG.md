@@ -1,5 +1,16 @@
 # Changelog
 
+## CORE-TASK-024 — Canonical Workflow Contracts
+
+- Added exactly 8 inventory-locked canonical Workflow Contract skeletons from the pinned Book 2 sources.
+- Preserved the original 8 Phase 2 Workflow catalog scaffolds as noncanonical compatibility entries.
+- Locked canonical ids, names, source paths, publication commit, implementation task, and validated-skeleton depth.
+- Expanded `CORE_CONTRACT_INDEX` from 179 to the projected 187 entries and the Workflow family from 8 to 16 entries.
+- Completed all five controlled batches and all 81/81 Gap Inventory targets; 0 remain.
+- Added exact collection, source-drift, index, fixture, coverage, and final-progress validation.
+- Added no workflow engine, running instances, executable transitions, direct domain mutation, active Task creation, Event emission, external communication, professional decisions, Book 3 integration, or Product behavior.
+- Phase 3 implementation batches are complete; formal Contract Coverage Acceptance Lock remains the next closeout step.
+
 ## CORE-TASK-023 — Stub Domain Contract Gaps
 
 - Added exactly 7 Object, 7 Service, and 8 API inventory-locked safe stubs for all 8 Stub Now Domains.

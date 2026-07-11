@@ -123,8 +123,8 @@ describe('Core Contract Index', () => {
     assert.deepEqual(Object.values(CORE_CONTRACT_STATUSES), expectedStatuses);
   });
 
-  it('CORE_CONTRACT_INDEX has exactly 179 entries', () => {
-    assert.equal(CORE_CONTRACT_INDEX.length, 179);
+  it('CORE_CONTRACT_INDEX has exactly 187 entries', () => {
+    assert.equal(CORE_CONTRACT_INDEX.length, 187);
   });
 
 
@@ -156,8 +156,8 @@ describe('Core Contract Index', () => {
     assert.equal(CORE_CONTRACT_INDEX.filter((contract) => contract.source === 'CORE_EVENT_CATALOG_SKELETONS').length, 12);
   });
 
-  it('includes exactly 8 workflow catalog entries', () => {
-    assert.equal(CORE_CONTRACT_INDEX.filter((contract) => contract.source === 'CORE_WORKFLOW_CATALOG_SKELETONS').length, 8);
+  it('includes exactly 16 workflow catalog entries', () => {
+    assert.equal(CORE_CONTRACT_INDEX.filter((contract) => contract.source === 'CORE_WORKFLOW_CATALOG_SKELETONS').length, 16);
   });
 
   it('includes exactly 8 permission contract entries', () => {

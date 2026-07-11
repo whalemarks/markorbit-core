@@ -8,7 +8,7 @@ The index exists to protect contract expansion from uncontrolled drift. New cont
 
 ## What the index contains
 
-The current Core Contract Index contains 179 entries:
+The current Core Contract Index contains 187 entries:
 
 - 6 foundation contract entries
 - 26 domain contract entries
@@ -16,7 +16,7 @@ The current Core Contract Index contains 179 entries:
 - 26 service contract entries
 - 34 API contract entries
 - 12 event catalog entries
-- 8 workflow catalog entries
+- 16 workflow contract/catalog entries
 - 8 permission contract entries
 - 8 policy contract entries
 - 8 AI governance contract entries

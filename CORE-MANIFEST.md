@@ -36,25 +36,27 @@ Phase 3 — Contract Coverage started.
 - Must-Build Object and Service gaps completed.
 - Must-Build Canonical Domain APIs completed.
 - Stub Domain Contract gaps completed.
-- `CORE_CONTRACT_INDEX` now contains 179 entries:
+- Canonical Workflow Contracts completed.
+- All five Gap Inventory implementation batches completed.
+- `CORE_CONTRACT_INDEX` now contains 187 entries:
   - 6 foundation contract entries
   - 26 domain contract entries
   - 26 object contract entries
   - 26 service contract entries
   - 34 API contract entries
   - 12 event catalog entries
-  - 8 workflow catalog entries
+  - 16 workflow contract/catalog entries
   - 8 permission contract entries
   - 8 policy contract entries
   - 8 AI governance contract entries
   - 10 Common Contract entries
   - 7 Test Contract entries
-- Current coverage baseline reports 179 structurally assured indexed contracts across 12 contract families.
+- Current coverage baseline reports 187 structurally assured indexed contracts across 12 contract families.
 - Current Domain-layer coverage is 26 Domain, 26 Object, 26 Service, 26 Domain-mapped API, 4 Event, and 6 Workflow.
 - Gap Inventory maps 22 existing Domain targets and locks 81 canonical skeleton additions across five batches.
-- CORE-TASK-020 through CORE-TASK-023 have completed 73 targets; 8 canonical targets remain.
+- CORE-TASK-020 through CORE-TASK-024 have completed all 81 canonical targets; 0 remain.
 - Required fixture manifest now contains 19 entries.
-- Next recommended task: CORE-TASK-024 — Canonical Workflow Contracts.
+- Next recommended task: CORE-TASK-025 — Phase 3 Contract Coverage Acceptance Lock.
 
 ## Current scope
 
@@ -116,7 +118,7 @@ Every change should keep the TypeScript project buildable, tests passing, lint c
 
 ## Next tasks
 
-- CORE-TASK-024 — Canonical Workflow Contracts.
+- CORE-TASK-025 — Phase 3 Contract Coverage Acceptance Lock.
 
 ## CORE-TASK-009 Status
 
@@ -263,3 +265,14 @@ Next recommended task: CORE-TASK-013 — Core Event Catalog Skeleton.
 - Gap inventory progress: 73 completed, 8 remaining.
 - No fake success, operational availability, executable behavior, runtime, or state mutation added.
 - Next recommended task: CORE-TASK-024 — Canonical Workflow Contracts.
+
+## CORE-TASK-024 — Canonical Workflow Contracts
+
+- Added 8 canonical Workflow Contract skeletons.
+- Preserved the original 8 Phase 2 Workflow catalog scaffolds as noncanonical compatibility entries.
+- Expanded `CORE_CONTRACT_INDEX` from 179 to the projected 187 entries.
+- Workflow family entries: 16.
+- Gap inventory progress: 81 completed, 0 remaining.
+- All five controlled implementation batches: completed.
+- No workflow engine, execution runtime, Task creation, Event emission, or state mutation added.
+- Next recommended task: CORE-TASK-025 — Phase 3 Contract Coverage Acceptance Lock.

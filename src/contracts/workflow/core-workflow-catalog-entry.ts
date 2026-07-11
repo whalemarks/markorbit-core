@@ -20,6 +20,8 @@ export interface CoreWorkflowCatalogEntry {
   readonly produces?: readonly string[];
   readonly nonGoals: readonly string[];
   readonly futureExtensions?: readonly string[];
+  readonly sourcePath?: string;
+  readonly implementationDepth?: 'validated_skeleton';
   readonly createdAt: string;
   readonly updatedAt?: string;
   readonly metadata?: Record<string, unknown>;

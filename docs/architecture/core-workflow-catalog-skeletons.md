@@ -14,4 +14,10 @@ They also do not implement Book 03 Workflow Coordination Model behavior or Book 
 
 AI assistants and agents may not independently advance, approve, complete, or execute workflows based on these catalog entries. Product UI may display workflow catalog information in the future, but it must not invent workflow semantics or execution behavior.
 
+## CORE-TASK-024 canonical expansion
+
+CORE-TASK-024 preserves the original 8 Phase 2 Workflow catalog scaffolds and appends 8 canonical, source-locked Workflow Contract skeletons: Customer Intake, Trademark Application, Office Action Response, Provider Routing, Communication Review, Renewal, Assignment, and Evidence Review.
+
+Each canonical addition records its exact Book 2 source file, pinned `markorbit-publication` commit, implementation task, `workflow-contract` Domain mapping, and `validated_skeleton` depth. These entries define only workflow structure, responsibility, review-gate, and trace-reference boundaries; they do not implement transitions, execution, running instances, Task creation, Event emission, direct mutation, external communication, or professional decisions.
+
 Future tasks may expand selected workflow skeletons into full Workflow contracts through explicit approval while preserving Core / Execution / Product boundaries.

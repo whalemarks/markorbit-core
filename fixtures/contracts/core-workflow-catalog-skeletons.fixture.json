@@ -8,10 +8,7 @@
     "status": "active",
     "book": "Book 02 — MarkOrbit Core Specification",
     "purpose": "Names the baseline workflow concept for preparing Core records before governed review.",
-    "stepTypes": [
-      "preparation placeholder",
-      "review readiness placeholder"
-    ],
+    "stepTypes": ["preparation placeholder", "review readiness placeholder"],
     "owns": [
       "Catalog skeleton boundary for Core Record Preparation Workflow Catalog Skeleton."
     ],
@@ -31,10 +28,7 @@
     "status": "active",
     "book": "Book 02 — MarkOrbit Core Specification",
     "purpose": "Names the baseline workflow concept for human review of Core records.",
-    "stepTypes": [
-      "review request placeholder",
-      "review outcome placeholder"
-    ],
+    "stepTypes": ["review request placeholder", "review outcome placeholder"],
     "reviewRequired": true,
     "protectedAction": true,
     "owns": [
@@ -56,9 +50,7 @@
     "status": "active",
     "book": "Book 02 — MarkOrbit Core Specification",
     "purpose": "Names the baseline workflow concept for associating document references with Core records.",
-    "stepTypes": [
-      "document reference placeholder"
-    ],
+    "stepTypes": ["document reference placeholder"],
     "owns": [
       "Catalog skeleton boundary for Core Document Reference Workflow Catalog Skeleton."
     ],
@@ -78,9 +70,7 @@
     "status": "active",
     "book": "Book 02 — MarkOrbit Core Specification",
     "purpose": "Names the baseline workflow concept for associating evidence references with Core records.",
-    "stepTypes": [
-      "evidence reference placeholder"
-    ],
+    "stepTypes": ["evidence reference placeholder"],
     "owns": [
       "Catalog skeleton boundary for Core Evidence Reference Workflow Catalog Skeleton."
     ],
@@ -100,9 +90,7 @@
     "status": "active",
     "book": "Book 02 — MarkOrbit Core Specification",
     "purpose": "Names the baseline workflow concept for governed review of Core tasks.",
-    "stepTypes": [
-      "task review placeholder"
-    ],
+    "stepTypes": ["task review placeholder"],
     "reviewRequired": true,
     "owns": [
       "Catalog skeleton boundary for Core Task Review Workflow Catalog Skeleton."
@@ -123,9 +111,7 @@
     "status": "active",
     "book": "Book 02 — MarkOrbit Core Specification",
     "purpose": "Names the baseline workflow concept for governed review of Core communications.",
-    "stepTypes": [
-      "communication review placeholder"
-    ],
+    "stepTypes": ["communication review placeholder"],
     "reviewRequired": true,
     "protectedAction": true,
     "owns": [
@@ -147,9 +133,7 @@
     "status": "active",
     "book": "Book 02 — MarkOrbit Core Specification",
     "purpose": "Names the baseline workflow concept for registering Core contract definitions.",
-    "stepTypes": [
-      "registration placeholder"
-    ],
+    "stepTypes": ["registration placeholder"],
     "protectedAction": true,
     "owns": [
       "Catalog skeleton boundary for Core Contract Registration Workflow Catalog Skeleton."
@@ -170,9 +154,7 @@
     "status": "active",
     "book": "Book 02 — MarkOrbit Core Specification",
     "purpose": "Names the baseline workflow concept for governed review of Core validation outcomes.",
-    "stepTypes": [
-      "validation review placeholder"
-    ],
+    "stepTypes": ["validation review placeholder"],
     "reviewRequired": true,
     "owns": [
       "Catalog skeleton boundary for Core Validation Review Workflow Catalog Skeleton."
@@ -183,5 +165,301 @@
       "Product UI semantics or AI agent authority to advance, approve, complete, or execute workflows."
     ],
     "createdAt": "2026-07-09T00:00:00.000Z"
+  },
+  {
+    "id": "core-workflow-customer-intake-workflow-contract",
+    "workflowType": "customer-intake-workflow",
+    "domainId": "workflow-contract",
+    "name": "Core Customer Intake Workflow Contract Skeleton",
+    "description": "Canonical metadata skeleton for the Customer Intake Workflow contract boundary.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Defines the governed Customer Intake Workflow structure and responsibility boundary without implementing transitions, execution, running instances, Task creation, Event emission, or domain mutation.",
+    "stepTypes": [
+      "canonical workflow definition reference",
+      "human review gate reference"
+    ],
+    "owns": [
+      "Customer Intake Workflow definition, responsibility, and reference boundary."
+    ],
+    "nonGoals": [
+      "Workflow engine, runtime execution, executable transitions, or running workflow instances.",
+      "Book 03 Workflow Coordination Model, Execution System, task runtime, or database behavior.",
+      "Product UI semantics or AI agent authority to advance, approve, complete, or execute workflows.",
+      "Direct domain mutation, active Task creation, Event emission, external communication, or professional decisions."
+    ],
+    "createdAt": "2026-07-11T00:00:00.000Z",
+    "consumes": [
+      "Domain and Object contract references.",
+      "Permission, Policy, AI Context, and Human Review contract references."
+    ],
+    "produces": ["Governed workflow structure and trace-reference boundaries."],
+    "sourcePath": "books/book-02-core-specification/core-specs/contracts/workflows/customer-intake-workflow-contract.md",
+    "implementationDepth": "validated_skeleton",
+    "metadata": {
+      "specificationRepository": "whalemarks/markorbit-publication",
+      "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+      "specificationPath": "books/book-02-core-specification/",
+      "implementationTask": "CORE-TASK-024"
+    }
+  },
+  {
+    "id": "core-workflow-trademark-application-workflow-contract",
+    "workflowType": "trademark-application-workflow",
+    "domainId": "workflow-contract",
+    "name": "Core Trademark Application Workflow Contract Skeleton",
+    "description": "Canonical metadata skeleton for the Trademark Application Workflow contract boundary.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Defines the governed Trademark Application Workflow structure and responsibility boundary without implementing transitions, execution, running instances, Task creation, Event emission, or domain mutation.",
+    "stepTypes": [
+      "canonical workflow definition reference",
+      "human review gate reference"
+    ],
+    "owns": [
+      "Trademark Application Workflow definition, responsibility, and reference boundary."
+    ],
+    "nonGoals": [
+      "Workflow engine, runtime execution, executable transitions, or running workflow instances.",
+      "Book 03 Workflow Coordination Model, Execution System, task runtime, or database behavior.",
+      "Product UI semantics or AI agent authority to advance, approve, complete, or execute workflows.",
+      "Direct domain mutation, active Task creation, Event emission, external communication, or professional decisions."
+    ],
+    "createdAt": "2026-07-11T00:00:00.000Z",
+    "consumes": [
+      "Domain and Object contract references.",
+      "Permission, Policy, AI Context, and Human Review contract references."
+    ],
+    "produces": ["Governed workflow structure and trace-reference boundaries."],
+    "sourcePath": "books/book-02-core-specification/core-specs/contracts/workflows/trademark-application-workflow-contract.md",
+    "implementationDepth": "validated_skeleton",
+    "metadata": {
+      "specificationRepository": "whalemarks/markorbit-publication",
+      "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+      "specificationPath": "books/book-02-core-specification/",
+      "implementationTask": "CORE-TASK-024"
+    }
+  },
+  {
+    "id": "core-workflow-office-action-response-workflow-contract",
+    "workflowType": "office-action-response-workflow",
+    "domainId": "workflow-contract",
+    "name": "Core Office Action Response Workflow Contract Skeleton",
+    "description": "Canonical metadata skeleton for the Office Action Response Workflow contract boundary.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Defines the governed Office Action Response Workflow structure and responsibility boundary without implementing transitions, execution, running instances, Task creation, Event emission, or domain mutation.",
+    "stepTypes": [
+      "canonical workflow definition reference",
+      "human review gate reference"
+    ],
+    "owns": [
+      "Office Action Response Workflow definition, responsibility, and reference boundary."
+    ],
+    "nonGoals": [
+      "Workflow engine, runtime execution, executable transitions, or running workflow instances.",
+      "Book 03 Workflow Coordination Model, Execution System, task runtime, or database behavior.",
+      "Product UI semantics or AI agent authority to advance, approve, complete, or execute workflows.",
+      "Direct domain mutation, active Task creation, Event emission, external communication, or professional decisions."
+    ],
+    "createdAt": "2026-07-11T00:00:00.000Z",
+    "consumes": [
+      "Domain and Object contract references.",
+      "Permission, Policy, AI Context, and Human Review contract references."
+    ],
+    "produces": ["Governed workflow structure and trace-reference boundaries."],
+    "sourcePath": "books/book-02-core-specification/core-specs/contracts/workflows/office-action-response-workflow-contract.md",
+    "implementationDepth": "validated_skeleton",
+    "metadata": {
+      "specificationRepository": "whalemarks/markorbit-publication",
+      "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+      "specificationPath": "books/book-02-core-specification/",
+      "implementationTask": "CORE-TASK-024"
+    }
+  },
+  {
+    "id": "core-workflow-provider-routing-workflow-contract",
+    "workflowType": "provider-routing-workflow",
+    "domainId": "workflow-contract",
+    "name": "Core Provider Routing Workflow Contract Skeleton",
+    "description": "Canonical metadata skeleton for the Provider Routing Workflow contract boundary.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Defines the governed Provider Routing Workflow structure and responsibility boundary without implementing transitions, execution, running instances, Task creation, Event emission, or domain mutation.",
+    "stepTypes": [
+      "canonical workflow definition reference",
+      "human review gate reference"
+    ],
+    "owns": [
+      "Provider Routing Workflow definition, responsibility, and reference boundary."
+    ],
+    "nonGoals": [
+      "Workflow engine, runtime execution, executable transitions, or running workflow instances.",
+      "Book 03 Workflow Coordination Model, Execution System, task runtime, or database behavior.",
+      "Product UI semantics or AI agent authority to advance, approve, complete, or execute workflows.",
+      "Direct domain mutation, active Task creation, Event emission, external communication, or professional decisions."
+    ],
+    "createdAt": "2026-07-11T00:00:00.000Z",
+    "consumes": [
+      "Domain and Object contract references.",
+      "Permission, Policy, AI Context, and Human Review contract references."
+    ],
+    "produces": ["Governed workflow structure and trace-reference boundaries."],
+    "sourcePath": "books/book-02-core-specification/core-specs/contracts/workflows/provider-routing-workflow-contract.md",
+    "implementationDepth": "validated_skeleton",
+    "metadata": {
+      "specificationRepository": "whalemarks/markorbit-publication",
+      "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+      "specificationPath": "books/book-02-core-specification/",
+      "implementationTask": "CORE-TASK-024"
+    }
+  },
+  {
+    "id": "core-workflow-communication-review-workflow-contract",
+    "workflowType": "communication-review-workflow",
+    "domainId": "workflow-contract",
+    "name": "Core Communication Review Workflow Contract Skeleton",
+    "description": "Canonical metadata skeleton for the Communication Review Workflow contract boundary.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Defines the governed Communication Review Workflow structure and responsibility boundary without implementing transitions, execution, running instances, Task creation, Event emission, or domain mutation.",
+    "stepTypes": [
+      "canonical workflow definition reference",
+      "human review gate reference"
+    ],
+    "owns": [
+      "Communication Review Workflow definition, responsibility, and reference boundary."
+    ],
+    "nonGoals": [
+      "Workflow engine, runtime execution, executable transitions, or running workflow instances.",
+      "Book 03 Workflow Coordination Model, Execution System, task runtime, or database behavior.",
+      "Product UI semantics or AI agent authority to advance, approve, complete, or execute workflows.",
+      "Direct domain mutation, active Task creation, Event emission, external communication, or professional decisions."
+    ],
+    "createdAt": "2026-07-11T00:00:00.000Z",
+    "consumes": [
+      "Domain and Object contract references.",
+      "Permission, Policy, AI Context, and Human Review contract references."
+    ],
+    "produces": ["Governed workflow structure and trace-reference boundaries."],
+    "sourcePath": "books/book-02-core-specification/core-specs/contracts/workflows/communication-review-workflow-contract.md",
+    "implementationDepth": "validated_skeleton",
+    "metadata": {
+      "specificationRepository": "whalemarks/markorbit-publication",
+      "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+      "specificationPath": "books/book-02-core-specification/",
+      "implementationTask": "CORE-TASK-024"
+    }
+  },
+  {
+    "id": "core-workflow-renewal-workflow-contract",
+    "workflowType": "renewal-workflow",
+    "domainId": "workflow-contract",
+    "name": "Core Renewal Workflow Contract Skeleton",
+    "description": "Canonical metadata skeleton for the Renewal Workflow contract boundary.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Defines the governed Renewal Workflow structure and responsibility boundary without implementing transitions, execution, running instances, Task creation, Event emission, or domain mutation.",
+    "stepTypes": [
+      "canonical workflow definition reference",
+      "human review gate reference"
+    ],
+    "owns": [
+      "Renewal Workflow definition, responsibility, and reference boundary."
+    ],
+    "nonGoals": [
+      "Workflow engine, runtime execution, executable transitions, or running workflow instances.",
+      "Book 03 Workflow Coordination Model, Execution System, task runtime, or database behavior.",
+      "Product UI semantics or AI agent authority to advance, approve, complete, or execute workflows.",
+      "Direct domain mutation, active Task creation, Event emission, external communication, or professional decisions."
+    ],
+    "createdAt": "2026-07-11T00:00:00.000Z",
+    "consumes": [
+      "Domain and Object contract references.",
+      "Permission, Policy, AI Context, and Human Review contract references."
+    ],
+    "produces": ["Governed workflow structure and trace-reference boundaries."],
+    "sourcePath": "books/book-02-core-specification/core-specs/contracts/workflows/renewal-workflow-contract.md",
+    "implementationDepth": "validated_skeleton",
+    "metadata": {
+      "specificationRepository": "whalemarks/markorbit-publication",
+      "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+      "specificationPath": "books/book-02-core-specification/",
+      "implementationTask": "CORE-TASK-024"
+    }
+  },
+  {
+    "id": "core-workflow-assignment-workflow-contract",
+    "workflowType": "assignment-workflow",
+    "domainId": "workflow-contract",
+    "name": "Core Assignment Workflow Contract Skeleton",
+    "description": "Canonical metadata skeleton for the Assignment Workflow contract boundary.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Defines the governed Assignment Workflow structure and responsibility boundary without implementing transitions, execution, running instances, Task creation, Event emission, or domain mutation.",
+    "stepTypes": [
+      "canonical workflow definition reference",
+      "human review gate reference"
+    ],
+    "owns": [
+      "Assignment Workflow definition, responsibility, and reference boundary."
+    ],
+    "nonGoals": [
+      "Workflow engine, runtime execution, executable transitions, or running workflow instances.",
+      "Book 03 Workflow Coordination Model, Execution System, task runtime, or database behavior.",
+      "Product UI semantics or AI agent authority to advance, approve, complete, or execute workflows.",
+      "Direct domain mutation, active Task creation, Event emission, external communication, or professional decisions."
+    ],
+    "createdAt": "2026-07-11T00:00:00.000Z",
+    "consumes": [
+      "Domain and Object contract references.",
+      "Permission, Policy, AI Context, and Human Review contract references."
+    ],
+    "produces": ["Governed workflow structure and trace-reference boundaries."],
+    "sourcePath": "books/book-02-core-specification/core-specs/contracts/workflows/assignment-workflow-contract.md",
+    "implementationDepth": "validated_skeleton",
+    "metadata": {
+      "specificationRepository": "whalemarks/markorbit-publication",
+      "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+      "specificationPath": "books/book-02-core-specification/",
+      "implementationTask": "CORE-TASK-024"
+    }
+  },
+  {
+    "id": "core-workflow-evidence-review-workflow-contract",
+    "workflowType": "evidence-review-workflow",
+    "domainId": "workflow-contract",
+    "name": "Core Evidence Review Workflow Contract Skeleton",
+    "description": "Canonical metadata skeleton for the Evidence Review Workflow contract boundary.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Defines the governed Evidence Review Workflow structure and responsibility boundary without implementing transitions, execution, running instances, Task creation, Event emission, or domain mutation.",
+    "stepTypes": [
+      "canonical workflow definition reference",
+      "human review gate reference"
+    ],
+    "owns": [
+      "Evidence Review Workflow definition, responsibility, and reference boundary."
+    ],
+    "nonGoals": [
+      "Workflow engine, runtime execution, executable transitions, or running workflow instances.",
+      "Book 03 Workflow Coordination Model, Execution System, task runtime, or database behavior.",
+      "Product UI semantics or AI agent authority to advance, approve, complete, or execute workflows.",
+      "Direct domain mutation, active Task creation, Event emission, external communication, or professional decisions."
+    ],
+    "createdAt": "2026-07-11T00:00:00.000Z",
+    "consumes": [
+      "Domain and Object contract references.",
+      "Permission, Policy, AI Context, and Human Review contract references."
+    ],
+    "produces": ["Governed workflow structure and trace-reference boundaries."],
+    "sourcePath": "books/book-02-core-specification/core-specs/contracts/workflows/evidence-review-workflow-contract.md",
+    "implementationDepth": "validated_skeleton",
+    "metadata": {
+      "specificationRepository": "whalemarks/markorbit-publication",
+      "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+      "specificationPath": "books/book-02-core-specification/",
+      "implementationTask": "CORE-TASK-024"
+    }
   }
 ]

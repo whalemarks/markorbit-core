@@ -7,9 +7,9 @@
 - Canonical path: `books/book-02-core-specification/`
 - Inventory version: `0.1.0`
 - Inventory baseline Contract Index: 106 entries
-- Current Contract Index: 179 entries
-- Completed canonical targets: 73
-- Remaining canonical targets: 8
+- Current Contract Index: 187 entries
+- Completed canonical targets: 81
+- Remaining canonical targets: 0
 - Contract Index change in this task: none
 
 ## Purpose
@@ -83,8 +83,10 @@ Customer Intake, Trademark Application, Office Action Response, Provider Routing
 
 These contracts must not add a workflow engine, running instances, transition execution, direct domain mutation, active Task creation, or event emission.
 
+- Status: completed; all 8 targets are indexed and exact-source validated.
+
 ## Acceptance boundary
 
 CORE-TASK-019 is accepted when the exact 81-target inventory, 22 existing mappings, two retained scaffold families, two required contract-type additions, five batch counts, and Book 2 source paths are reproducible and drift-validated.
 
-Acceptance does not require implementing every target. CORE-TASK-020 through CORE-TASK-023 have completed the first four batches; the final implementation batch is `CORE-TASK-024 — Canonical Workflow Contracts`.
+All 81 targets across CORE-TASK-020 through CORE-TASK-024 are now complete. The next closeout task is `CORE-TASK-025 — Phase 3 Contract Coverage Acceptance Lock`.
