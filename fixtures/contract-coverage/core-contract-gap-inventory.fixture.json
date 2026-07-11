@@ -1,0 +1,1288 @@
+{
+  "id": "core-book2-contract-gap-inventory-v0-1",
+  "version": "0.1.0",
+  "createdAt": "2026-07-10T00:00:00.000Z",
+  "scope": "inventory_lock_only",
+  "authority": {
+    "specificationRepository": "whalemarks/markorbit-publication",
+    "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+    "specificationPath": "books/book-02-core-specification/",
+    "contractIndex": "books/book-02-core-specification/core-specs/contracts/index.md",
+    "contractManifest": "books/book-02-core-specification/core-specs/contracts/MANIFEST.md",
+    "traceability": "books/book-02-core-specification/core-specs/TRACEABILITY.md",
+    "mvpCut": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md"
+  },
+  "requiredContractTypeAdditions": ["common", "test"],
+  "domainTargets": [
+    {
+      "domainId": "identity",
+      "requirement": "must_build_now",
+      "layer": "object",
+      "sourcePath": "books/book-02-core-specification/core-specs/objects/identity.md",
+      "targetContractId": "core-object-identity-record-contract",
+      "targetName": "Core Identity Object Contract Skeleton",
+      "disposition": "add_canonical_skeleton",
+      "existingContractIds": [],
+      "implementationBatch": "CORE-TASK-021",
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "domainId": "identity",
+      "requirement": "must_build_now",
+      "layer": "service",
+      "sourcePath": "books/book-02-core-specification/core-specs/services/identity-service.md",
+      "targetContractId": "core-service-identity-resolution-service-contract",
+      "targetName": "Core Identity Service Contract Skeleton",
+      "disposition": "map_existing_skeleton",
+      "existingContractIds": [
+        "core-service-identity-resolution-service-contract"
+      ],
+      "implementationBatch": null,
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "domainId": "identity",
+      "requirement": "must_build_now",
+      "layer": "api",
+      "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/identity-api-contract.md",
+      "targetContractId": "core-api-identity-api-contract",
+      "targetName": "Core Identity API Contract Skeleton",
+      "disposition": "add_canonical_skeleton",
+      "existingContractIds": [],
+      "implementationBatch": "CORE-TASK-022",
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "domainId": "organization",
+      "requirement": "must_build_now",
+      "layer": "object",
+      "sourcePath": "books/book-02-core-specification/core-specs/objects/organization.md",
+      "targetContractId": "core-object-organization-record-contract",
+      "targetName": "Core Organization Object Contract Skeleton",
+      "disposition": "map_existing_skeleton",
+      "existingContractIds": ["core-object-organization-record-contract"],
+      "implementationBatch": null,
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "domainId": "organization",
+      "requirement": "must_build_now",
+      "layer": "service",
+      "sourcePath": "books/book-02-core-specification/core-specs/services/organization-service.md",
+      "targetContractId": "core-service-organization-service-contract",
+      "targetName": "Core Organization Service Contract Skeleton",
+      "disposition": "add_canonical_skeleton",
+      "existingContractIds": [],
+      "implementationBatch": "CORE-TASK-021",
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "domainId": "organization",
+      "requirement": "must_build_now",
+      "layer": "api",
+      "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/organization-api-contract.md",
+      "targetContractId": "core-api-organization-api-contract",
+      "targetName": "Core Organization API Contract Skeleton",
+      "disposition": "add_canonical_skeleton",
+      "existingContractIds": [],
+      "implementationBatch": "CORE-TASK-022",
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "domainId": "user",
+      "requirement": "must_build_now",
+      "layer": "object",
+      "sourcePath": "books/book-02-core-specification/core-specs/objects/user.md",
+      "targetContractId": "core-object-user-record-contract",
+      "targetName": "Core User Object Contract Skeleton",
+      "disposition": "map_existing_skeleton",
+      "existingContractIds": ["core-object-user-record-contract"],
+      "implementationBatch": null,
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "domainId": "user",
+      "requirement": "must_build_now",
+      "layer": "service",
+      "sourcePath": "books/book-02-core-specification/core-specs/services/user-service.md",
+      "targetContractId": "core-service-user-service-contract",
+      "targetName": "Core User Service Contract Skeleton",
+      "disposition": "add_canonical_skeleton",
+      "existingContractIds": [],
+      "implementationBatch": "CORE-TASK-021",
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "domainId": "user",
+      "requirement": "must_build_now",
+      "layer": "api",
+      "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/user-api-contract.md",
+      "targetContractId": "core-api-user-api-contract",
+      "targetName": "Core User API Contract Skeleton",
+      "disposition": "add_canonical_skeleton",
+      "existingContractIds": [],
+      "implementationBatch": "CORE-TASK-022",
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "domainId": "permission",
+      "requirement": "must_build_now",
+      "layer": "object",
+      "sourcePath": "books/book-02-core-specification/core-specs/objects/permission.md",
+      "targetContractId": "core-object-permission-record-contract",
+      "targetName": "Core Permission Object Contract Skeleton",
+      "disposition": "add_canonical_skeleton",
+      "existingContractIds": [],
+      "implementationBatch": "CORE-TASK-021",
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "domainId": "permission",
+      "requirement": "must_build_now",
+      "layer": "service",
+      "sourcePath": "books/book-02-core-specification/core-specs/services/permission-service.md",
+      "targetContractId": "core-service-permission-evaluation-service-contract",
+      "targetName": "Core Permission Service Contract Skeleton",
+      "disposition": "map_existing_skeleton",
+      "existingContractIds": [
+        "core-service-permission-evaluation-service-contract"
+      ],
+      "implementationBatch": null,
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "domainId": "permission",
+      "requirement": "must_build_now",
+      "layer": "api",
+      "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/permission-api-contract.md",
+      "targetContractId": "core-api-permission-api-contract",
+      "targetName": "Core Permission API Contract Skeleton",
+      "disposition": "add_canonical_skeleton",
+      "existingContractIds": [],
+      "implementationBatch": "CORE-TASK-022",
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "domainId": "policy",
+      "requirement": "must_build_now",
+      "layer": "object",
+      "sourcePath": "books/book-02-core-specification/core-specs/objects/policy.md",
+      "targetContractId": "core-object-permission-policy-record-contract",
+      "targetName": "Core Policy Object Contract Skeleton",
+      "disposition": "map_existing_skeleton",
+      "existingContractIds": ["core-object-permission-policy-record-contract"],
+      "implementationBatch": null,
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "domainId": "policy",
+      "requirement": "must_build_now",
+      "layer": "service",
+      "sourcePath": "books/book-02-core-specification/core-specs/services/policy-service.md",
+      "targetContractId": "core-service-policy-evaluation-service-contract",
+      "targetName": "Core Policy Service Contract Skeleton",
+      "disposition": "map_existing_skeleton",
+      "existingContractIds": [
+        "core-service-policy-evaluation-service-contract"
+      ],
+      "implementationBatch": null,
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "domainId": "policy",
+      "requirement": "must_build_now",
+      "layer": "api",
+      "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/policy-api-contract.md",
+      "targetContractId": "core-api-policy-api-contract",
+      "targetName": "Core Policy API Contract Skeleton",
+      "disposition": "add_canonical_skeleton",
+      "existingContractIds": [],
+      "implementationBatch": "CORE-TASK-022",
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "domainId": "knowledge",
+      "requirement": "stub_now",
+      "layer": "object",
+      "sourcePath": "books/book-02-core-specification/core-specs/objects/knowledge.md",
+      "targetContractId": "core-object-knowledge-source-record-contract",
+      "targetName": "Core Knowledge Object Contract Skeleton",
+      "disposition": "map_existing_skeleton",
+      "existingContractIds": ["core-object-knowledge-source-record-contract"],
+      "implementationBatch": null,
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "domainId": "knowledge",
+      "requirement": "stub_now",
+      "layer": "service",
+      "sourcePath": "books/book-02-core-specification/core-specs/services/knowledge-service.md",
+      "targetContractId": "core-service-knowledge-reference-service-contract",
+      "targetName": "Core Knowledge Service Contract Skeleton",
+      "disposition": "map_existing_skeleton",
+      "existingContractIds": [
+        "core-service-knowledge-reference-service-contract"
+      ],
+      "implementationBatch": null,
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "domainId": "knowledge",
+      "requirement": "stub_now",
+      "layer": "api",
+      "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/knowledge-api-contract.md",
+      "targetContractId": "core-api-knowledge-api-contract",
+      "targetName": "Core Knowledge API Contract Skeleton",
+      "disposition": "add_canonical_skeleton",
+      "existingContractIds": [],
+      "implementationBatch": "CORE-TASK-023",
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "domainId": "brand",
+      "requirement": "must_build_now",
+      "layer": "object",
+      "sourcePath": "books/book-02-core-specification/core-specs/objects/brand.md",
+      "targetContractId": "core-object-brand-record-contract",
+      "targetName": "Core Brand Object Contract Skeleton",
+      "disposition": "map_existing_skeleton",
+      "existingContractIds": ["core-object-brand-record-contract"],
+      "implementationBatch": null,
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "domainId": "brand",
+      "requirement": "must_build_now",
+      "layer": "service",
+      "sourcePath": "books/book-02-core-specification/core-specs/services/brand-service.md",
+      "targetContractId": "core-service-brand-service-contract",
+      "targetName": "Core Brand Service Contract Skeleton",
+      "disposition": "add_canonical_skeleton",
+      "existingContractIds": [],
+      "implementationBatch": "CORE-TASK-021",
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "domainId": "brand",
+      "requirement": "must_build_now",
+      "layer": "api",
+      "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/brand-api-contract.md",
+      "targetContractId": "core-api-brand-api-contract",
+      "targetName": "Core Brand API Contract Skeleton",
+      "disposition": "add_canonical_skeleton",
+      "existingContractIds": [],
+      "implementationBatch": "CORE-TASK-022",
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "domainId": "trademark",
+      "requirement": "must_build_now",
+      "layer": "object",
+      "sourcePath": "books/book-02-core-specification/core-specs/objects/trademark.md",
+      "targetContractId": "core-object-trademark-record-contract",
+      "targetName": "Core Trademark Object Contract Skeleton",
+      "disposition": "map_existing_skeleton",
+      "existingContractIds": ["core-object-trademark-record-contract"],
+      "implementationBatch": null,
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "domainId": "trademark",
+      "requirement": "must_build_now",
+      "layer": "service",
+      "sourcePath": "books/book-02-core-specification/core-specs/services/trademark-service.md",
+      "targetContractId": "core-service-trademark-reference-service-contract",
+      "targetName": "Core Trademark Service Contract Skeleton",
+      "disposition": "map_existing_skeleton",
+      "existingContractIds": [
+        "core-service-trademark-reference-service-contract"
+      ],
+      "implementationBatch": null,
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "domainId": "trademark",
+      "requirement": "must_build_now",
+      "layer": "api",
+      "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/trademark-api-contract.md",
+      "targetContractId": "core-api-trademark-api-contract",
+      "targetName": "Core Trademark API Contract Skeleton",
+      "disposition": "add_canonical_skeleton",
+      "existingContractIds": [],
+      "implementationBatch": "CORE-TASK-022",
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "domainId": "jurisdiction",
+      "requirement": "must_build_now",
+      "layer": "object",
+      "sourcePath": "books/book-02-core-specification/core-specs/objects/jurisdiction.md",
+      "targetContractId": "core-object-jurisdiction-record-contract",
+      "targetName": "Core Jurisdiction Object Contract Skeleton",
+      "disposition": "map_existing_skeleton",
+      "existingContractIds": ["core-object-jurisdiction-record-contract"],
+      "implementationBatch": null,
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "domainId": "jurisdiction",
+      "requirement": "must_build_now",
+      "layer": "service",
+      "sourcePath": "books/book-02-core-specification/core-specs/services/jurisdiction-service.md",
+      "targetContractId": "core-service-jurisdiction-reference-service-contract",
+      "targetName": "Core Jurisdiction Service Contract Skeleton",
+      "disposition": "map_existing_skeleton",
+      "existingContractIds": [
+        "core-service-jurisdiction-reference-service-contract"
+      ],
+      "implementationBatch": null,
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "domainId": "jurisdiction",
+      "requirement": "must_build_now",
+      "layer": "api",
+      "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/jurisdiction-api-contract.md",
+      "targetContractId": "core-api-jurisdiction-api-contract",
+      "targetName": "Core Jurisdiction API Contract Skeleton",
+      "disposition": "add_canonical_skeleton",
+      "existingContractIds": [],
+      "implementationBatch": "CORE-TASK-022",
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "domainId": "classification",
+      "requirement": "must_build_now",
+      "layer": "object",
+      "sourcePath": "books/book-02-core-specification/core-specs/objects/classification.md",
+      "targetContractId": "core-object-classification-record-contract",
+      "targetName": "Core Classification Object Contract Skeleton",
+      "disposition": "map_existing_skeleton",
+      "existingContractIds": ["core-object-classification-record-contract"],
+      "implementationBatch": null,
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "domainId": "classification",
+      "requirement": "must_build_now",
+      "layer": "service",
+      "sourcePath": "books/book-02-core-specification/core-specs/services/classification-service.md",
+      "targetContractId": "core-service-classification-reference-service-contract",
+      "targetName": "Core Classification Service Contract Skeleton",
+      "disposition": "map_existing_skeleton",
+      "existingContractIds": [
+        "core-service-classification-reference-service-contract"
+      ],
+      "implementationBatch": null,
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "domainId": "classification",
+      "requirement": "must_build_now",
+      "layer": "api",
+      "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/classification-api-contract.md",
+      "targetContractId": "core-api-classification-api-contract",
+      "targetName": "Core Classification API Contract Skeleton",
+      "disposition": "add_canonical_skeleton",
+      "existingContractIds": [],
+      "implementationBatch": "CORE-TASK-022",
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "domainId": "document",
+      "requirement": "must_build_now",
+      "layer": "object",
+      "sourcePath": "books/book-02-core-specification/core-specs/objects/document.md",
+      "targetContractId": "core-object-document-record-contract",
+      "targetName": "Core Document Object Contract Skeleton",
+      "disposition": "map_existing_skeleton",
+      "existingContractIds": ["core-object-document-record-contract"],
+      "implementationBatch": null,
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "domainId": "document",
+      "requirement": "must_build_now",
+      "layer": "service",
+      "sourcePath": "books/book-02-core-specification/core-specs/services/document-service.md",
+      "targetContractId": "core-service-document-reference-service-contract",
+      "targetName": "Core Document Service Contract Skeleton",
+      "disposition": "map_existing_skeleton",
+      "existingContractIds": [
+        "core-service-document-reference-service-contract"
+      ],
+      "implementationBatch": null,
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "domainId": "document",
+      "requirement": "must_build_now",
+      "layer": "api",
+      "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/document-api-contract.md",
+      "targetContractId": "core-api-document-api-contract",
+      "targetName": "Core Document API Contract Skeleton",
+      "disposition": "add_canonical_skeleton",
+      "existingContractIds": [],
+      "implementationBatch": "CORE-TASK-022",
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "domainId": "evidence",
+      "requirement": "must_build_now",
+      "layer": "object",
+      "sourcePath": "books/book-02-core-specification/core-specs/objects/evidence.md",
+      "targetContractId": "core-object-evidence-record-contract",
+      "targetName": "Core Evidence Object Contract Skeleton",
+      "disposition": "map_existing_skeleton",
+      "existingContractIds": ["core-object-evidence-record-contract"],
+      "implementationBatch": null,
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "domainId": "evidence",
+      "requirement": "must_build_now",
+      "layer": "service",
+      "sourcePath": "books/book-02-core-specification/core-specs/services/evidence-service.md",
+      "targetContractId": "core-service-evidence-reference-service-contract",
+      "targetName": "Core Evidence Service Contract Skeleton",
+      "disposition": "map_existing_skeleton",
+      "existingContractIds": [
+        "core-service-evidence-reference-service-contract"
+      ],
+      "implementationBatch": null,
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "domainId": "evidence",
+      "requirement": "must_build_now",
+      "layer": "api",
+      "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/evidence-api-contract.md",
+      "targetContractId": "core-api-evidence-api-contract",
+      "targetName": "Core Evidence API Contract Skeleton",
+      "disposition": "add_canonical_skeleton",
+      "existingContractIds": [],
+      "implementationBatch": "CORE-TASK-022",
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "domainId": "customer",
+      "requirement": "must_build_now",
+      "layer": "object",
+      "sourcePath": "books/book-02-core-specification/core-specs/objects/customer.md",
+      "targetContractId": "core-object-customer-record-contract",
+      "targetName": "Core Customer Object Contract Skeleton",
+      "disposition": "add_canonical_skeleton",
+      "existingContractIds": [],
+      "implementationBatch": "CORE-TASK-021",
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "domainId": "customer",
+      "requirement": "must_build_now",
+      "layer": "service",
+      "sourcePath": "books/book-02-core-specification/core-specs/services/customer-service.md",
+      "targetContractId": "core-service-customer-service-contract",
+      "targetName": "Core Customer Service Contract Skeleton",
+      "disposition": "add_canonical_skeleton",
+      "existingContractIds": [],
+      "implementationBatch": "CORE-TASK-021",
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "domainId": "customer",
+      "requirement": "must_build_now",
+      "layer": "api",
+      "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/customer-api-contract.md",
+      "targetContractId": "core-api-customer-api-contract",
+      "targetName": "Core Customer API Contract Skeleton",
+      "disposition": "add_canonical_skeleton",
+      "existingContractIds": [],
+      "implementationBatch": "CORE-TASK-022",
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "domainId": "matter",
+      "requirement": "must_build_now",
+      "layer": "object",
+      "sourcePath": "books/book-02-core-specification/core-specs/objects/matter.md",
+      "targetContractId": "core-object-matter-record-contract",
+      "targetName": "Core Matter Object Contract Skeleton",
+      "disposition": "map_existing_skeleton",
+      "existingContractIds": ["core-object-matter-record-contract"],
+      "implementationBatch": null,
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "domainId": "matter",
+      "requirement": "must_build_now",
+      "layer": "service",
+      "sourcePath": "books/book-02-core-specification/core-specs/services/matter-service.md",
+      "targetContractId": "core-service-matter-service-contract",
+      "targetName": "Core Matter Service Contract Skeleton",
+      "disposition": "add_canonical_skeleton",
+      "existingContractIds": [],
+      "implementationBatch": "CORE-TASK-021",
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "domainId": "matter",
+      "requirement": "must_build_now",
+      "layer": "api",
+      "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/matter-api-contract.md",
+      "targetContractId": "core-api-matter-api-contract",
+      "targetName": "Core Matter API Contract Skeleton",
+      "disposition": "add_canonical_skeleton",
+      "existingContractIds": [],
+      "implementationBatch": "CORE-TASK-022",
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "domainId": "order",
+      "requirement": "must_build_now",
+      "layer": "object",
+      "sourcePath": "books/book-02-core-specification/core-specs/objects/order.md",
+      "targetContractId": "core-object-order-record-contract",
+      "targetName": "Core Order Object Contract Skeleton",
+      "disposition": "add_canonical_skeleton",
+      "existingContractIds": [],
+      "implementationBatch": "CORE-TASK-021",
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "domainId": "order",
+      "requirement": "must_build_now",
+      "layer": "service",
+      "sourcePath": "books/book-02-core-specification/core-specs/services/order-service.md",
+      "targetContractId": "core-service-order-service-contract",
+      "targetName": "Core Order Service Contract Skeleton",
+      "disposition": "add_canonical_skeleton",
+      "existingContractIds": [],
+      "implementationBatch": "CORE-TASK-021",
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "domainId": "order",
+      "requirement": "must_build_now",
+      "layer": "api",
+      "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/order-api-contract.md",
+      "targetContractId": "core-api-order-api-contract",
+      "targetName": "Core Order API Contract Skeleton",
+      "disposition": "add_canonical_skeleton",
+      "existingContractIds": [],
+      "implementationBatch": "CORE-TASK-022",
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "domainId": "opportunity",
+      "requirement": "stub_now",
+      "layer": "object",
+      "sourcePath": "books/book-02-core-specification/core-specs/objects/opportunity.md",
+      "targetContractId": "core-object-opportunity-record-contract",
+      "targetName": "Core Opportunity Object Contract Skeleton",
+      "disposition": "add_canonical_skeleton",
+      "existingContractIds": [],
+      "implementationBatch": "CORE-TASK-023",
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "domainId": "opportunity",
+      "requirement": "stub_now",
+      "layer": "service",
+      "sourcePath": "books/book-02-core-specification/core-specs/services/opportunity-service.md",
+      "targetContractId": "core-service-opportunity-service-contract",
+      "targetName": "Core Opportunity Service Contract Skeleton",
+      "disposition": "add_canonical_skeleton",
+      "existingContractIds": [],
+      "implementationBatch": "CORE-TASK-023",
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "domainId": "opportunity",
+      "requirement": "stub_now",
+      "layer": "api",
+      "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/opportunity-api-contract.md",
+      "targetContractId": "core-api-opportunity-api-contract",
+      "targetName": "Core Opportunity API Contract Skeleton",
+      "disposition": "add_canonical_skeleton",
+      "existingContractIds": [],
+      "implementationBatch": "CORE-TASK-023",
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "domainId": "workflow-contract",
+      "requirement": "must_build_now",
+      "layer": "object",
+      "sourcePath": "books/book-02-core-specification/core-specs/objects/workflow-contract.md",
+      "targetContractId": "core-object-workflow-contract-record-contract",
+      "targetName": "Core Workflow Contract Object Contract Skeleton",
+      "disposition": "add_canonical_skeleton",
+      "existingContractIds": [],
+      "implementationBatch": "CORE-TASK-021",
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "domainId": "workflow-contract",
+      "requirement": "must_build_now",
+      "layer": "service",
+      "sourcePath": "books/book-02-core-specification/core-specs/services/workflow-contract-service.md",
+      "targetContractId": "core-service-workflow-contract-service-contract",
+      "targetName": "Core Workflow Contract Service Contract Skeleton",
+      "disposition": "add_canonical_skeleton",
+      "existingContractIds": [],
+      "implementationBatch": "CORE-TASK-021",
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "domainId": "workflow-contract",
+      "requirement": "must_build_now",
+      "layer": "api",
+      "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/workflow-contract-api-contract.md",
+      "targetContractId": "core-api-workflow-contract-api-contract",
+      "targetName": "Core Workflow Contract API Contract Skeleton",
+      "disposition": "add_canonical_skeleton",
+      "existingContractIds": [],
+      "implementationBatch": "CORE-TASK-022",
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "domainId": "task",
+      "requirement": "must_build_now",
+      "layer": "object",
+      "sourcePath": "books/book-02-core-specification/core-specs/objects/task.md",
+      "targetContractId": "core-object-task-record-contract",
+      "targetName": "Core Task Object Contract Skeleton",
+      "disposition": "add_canonical_skeleton",
+      "existingContractIds": [],
+      "implementationBatch": "CORE-TASK-021",
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "domainId": "task",
+      "requirement": "must_build_now",
+      "layer": "service",
+      "sourcePath": "books/book-02-core-specification/core-specs/services/task-service.md",
+      "targetContractId": "core-service-task-service-contract",
+      "targetName": "Core Task Service Contract Skeleton",
+      "disposition": "add_canonical_skeleton",
+      "existingContractIds": [],
+      "implementationBatch": "CORE-TASK-021",
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "domainId": "task",
+      "requirement": "must_build_now",
+      "layer": "api",
+      "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/task-api-contract.md",
+      "targetContractId": "core-api-task-api-contract",
+      "targetName": "Core Task API Contract Skeleton",
+      "disposition": "add_canonical_skeleton",
+      "existingContractIds": [],
+      "implementationBatch": "CORE-TASK-022",
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "domainId": "event",
+      "requirement": "must_build_now",
+      "layer": "object",
+      "sourcePath": "books/book-02-core-specification/core-specs/objects/event.md",
+      "targetContractId": "core-object-event-record-contract",
+      "targetName": "Core Event Object Contract Skeleton",
+      "disposition": "add_canonical_skeleton",
+      "existingContractIds": [],
+      "implementationBatch": "CORE-TASK-021",
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "domainId": "event",
+      "requirement": "must_build_now",
+      "layer": "service",
+      "sourcePath": "books/book-02-core-specification/core-specs/services/event-service.md",
+      "targetContractId": "core-service-event-service-contract",
+      "targetName": "Core Event Service Contract Skeleton",
+      "disposition": "add_canonical_skeleton",
+      "existingContractIds": [],
+      "implementationBatch": "CORE-TASK-021",
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "domainId": "event",
+      "requirement": "must_build_now",
+      "layer": "api",
+      "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/event-api-contract.md",
+      "targetContractId": "core-api-event-api-contract",
+      "targetName": "Core Event API Contract Skeleton",
+      "disposition": "add_canonical_skeleton",
+      "existingContractIds": [],
+      "implementationBatch": "CORE-TASK-022",
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "domainId": "notification",
+      "requirement": "stub_now",
+      "layer": "object",
+      "sourcePath": "books/book-02-core-specification/core-specs/objects/notification.md",
+      "targetContractId": "core-object-notification-record-contract",
+      "targetName": "Core Notification Object Contract Skeleton",
+      "disposition": "add_canonical_skeleton",
+      "existingContractIds": [],
+      "implementationBatch": "CORE-TASK-023",
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "domainId": "notification",
+      "requirement": "stub_now",
+      "layer": "service",
+      "sourcePath": "books/book-02-core-specification/core-specs/services/notification-service.md",
+      "targetContractId": "core-service-notification-service-contract",
+      "targetName": "Core Notification Service Contract Skeleton",
+      "disposition": "add_canonical_skeleton",
+      "existingContractIds": [],
+      "implementationBatch": "CORE-TASK-023",
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "domainId": "notification",
+      "requirement": "stub_now",
+      "layer": "api",
+      "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/notification-api-contract.md",
+      "targetContractId": "core-api-notification-api-contract",
+      "targetName": "Core Notification API Contract Skeleton",
+      "disposition": "add_canonical_skeleton",
+      "existingContractIds": [],
+      "implementationBatch": "CORE-TASK-023",
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "domainId": "partner",
+      "requirement": "stub_now",
+      "layer": "object",
+      "sourcePath": "books/book-02-core-specification/core-specs/objects/partner.md",
+      "targetContractId": "core-object-partner-record-contract",
+      "targetName": "Core Partner Object Contract Skeleton",
+      "disposition": "add_canonical_skeleton",
+      "existingContractIds": [],
+      "implementationBatch": "CORE-TASK-023",
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "domainId": "partner",
+      "requirement": "stub_now",
+      "layer": "service",
+      "sourcePath": "books/book-02-core-specification/core-specs/services/partner-service.md",
+      "targetContractId": "core-service-partner-service-contract",
+      "targetName": "Core Partner Service Contract Skeleton",
+      "disposition": "add_canonical_skeleton",
+      "existingContractIds": [],
+      "implementationBatch": "CORE-TASK-023",
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "domainId": "partner",
+      "requirement": "stub_now",
+      "layer": "api",
+      "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/partner-api-contract.md",
+      "targetContractId": "core-api-partner-api-contract",
+      "targetName": "Core Partner API Contract Skeleton",
+      "disposition": "add_canonical_skeleton",
+      "existingContractIds": [],
+      "implementationBatch": "CORE-TASK-023",
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "domainId": "agent",
+      "requirement": "stub_now",
+      "layer": "object",
+      "sourcePath": "books/book-02-core-specification/core-specs/objects/agent.md",
+      "targetContractId": "core-object-agent-record-contract",
+      "targetName": "Core Agent Object Contract Skeleton",
+      "disposition": "add_canonical_skeleton",
+      "existingContractIds": [],
+      "implementationBatch": "CORE-TASK-023",
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "domainId": "agent",
+      "requirement": "stub_now",
+      "layer": "service",
+      "sourcePath": "books/book-02-core-specification/core-specs/services/agent-service.md",
+      "targetContractId": "core-service-agent-service-contract",
+      "targetName": "Core Agent Service Contract Skeleton",
+      "disposition": "add_canonical_skeleton",
+      "existingContractIds": [],
+      "implementationBatch": "CORE-TASK-023",
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "domainId": "agent",
+      "requirement": "stub_now",
+      "layer": "api",
+      "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/agent-api-contract.md",
+      "targetContractId": "core-api-agent-api-contract",
+      "targetName": "Core Agent API Contract Skeleton",
+      "disposition": "add_canonical_skeleton",
+      "existingContractIds": [],
+      "implementationBatch": "CORE-TASK-023",
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "domainId": "service-provider",
+      "requirement": "stub_now",
+      "layer": "object",
+      "sourcePath": "books/book-02-core-specification/core-specs/objects/service-provider.md",
+      "targetContractId": "core-object-service-provider-record-contract",
+      "targetName": "Core Service Provider Object Contract Skeleton",
+      "disposition": "add_canonical_skeleton",
+      "existingContractIds": [],
+      "implementationBatch": "CORE-TASK-023",
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "domainId": "service-provider",
+      "requirement": "stub_now",
+      "layer": "service",
+      "sourcePath": "books/book-02-core-specification/core-specs/services/service-provider-service.md",
+      "targetContractId": "core-service-service-provider-service-contract",
+      "targetName": "Core Service Provider Service Contract Skeleton",
+      "disposition": "add_canonical_skeleton",
+      "existingContractIds": [],
+      "implementationBatch": "CORE-TASK-023",
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "domainId": "service-provider",
+      "requirement": "stub_now",
+      "layer": "api",
+      "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/service-provider-api-contract.md",
+      "targetContractId": "core-api-service-provider-api-contract",
+      "targetName": "Core Service Provider API Contract Skeleton",
+      "disposition": "add_canonical_skeleton",
+      "existingContractIds": [],
+      "implementationBatch": "CORE-TASK-023",
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "domainId": "service-network",
+      "requirement": "stub_now",
+      "layer": "object",
+      "sourcePath": "books/book-02-core-specification/core-specs/objects/service-network.md",
+      "targetContractId": "core-object-service-network-record-contract",
+      "targetName": "Core Service Network Object Contract Skeleton",
+      "disposition": "add_canonical_skeleton",
+      "existingContractIds": [],
+      "implementationBatch": "CORE-TASK-023",
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "domainId": "service-network",
+      "requirement": "stub_now",
+      "layer": "service",
+      "sourcePath": "books/book-02-core-specification/core-specs/services/service-network-service.md",
+      "targetContractId": "core-service-service-network-service-contract",
+      "targetName": "Core Service Network Service Contract Skeleton",
+      "disposition": "add_canonical_skeleton",
+      "existingContractIds": [],
+      "implementationBatch": "CORE-TASK-023",
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "domainId": "service-network",
+      "requirement": "stub_now",
+      "layer": "api",
+      "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/service-network-api-contract.md",
+      "targetContractId": "core-api-service-network-api-contract",
+      "targetName": "Core Service Network API Contract Skeleton",
+      "disposition": "add_canonical_skeleton",
+      "existingContractIds": [],
+      "implementationBatch": "CORE-TASK-023",
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "domainId": "routing",
+      "requirement": "stub_now",
+      "layer": "object",
+      "sourcePath": "books/book-02-core-specification/core-specs/objects/routing.md",
+      "targetContractId": "core-object-routing-record-contract",
+      "targetName": "Core Routing Object Contract Skeleton",
+      "disposition": "add_canonical_skeleton",
+      "existingContractIds": [],
+      "implementationBatch": "CORE-TASK-023",
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "domainId": "routing",
+      "requirement": "stub_now",
+      "layer": "service",
+      "sourcePath": "books/book-02-core-specification/core-specs/services/routing-service.md",
+      "targetContractId": "core-service-routing-service-contract",
+      "targetName": "Core Routing Service Contract Skeleton",
+      "disposition": "add_canonical_skeleton",
+      "existingContractIds": [],
+      "implementationBatch": "CORE-TASK-023",
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "domainId": "routing",
+      "requirement": "stub_now",
+      "layer": "api",
+      "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/routing-api-contract.md",
+      "targetContractId": "core-api-routing-api-contract",
+      "targetName": "Core Routing API Contract Skeleton",
+      "disposition": "add_canonical_skeleton",
+      "existingContractIds": [],
+      "implementationBatch": "CORE-TASK-023",
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "domainId": "communication",
+      "requirement": "must_build_now",
+      "layer": "object",
+      "sourcePath": "books/book-02-core-specification/core-specs/objects/communication.md",
+      "targetContractId": "core-object-communication-record-contract",
+      "targetName": "Core Communication Object Contract Skeleton",
+      "disposition": "map_existing_skeleton",
+      "existingContractIds": ["core-object-communication-record-contract"],
+      "implementationBatch": null,
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "domainId": "communication",
+      "requirement": "must_build_now",
+      "layer": "service",
+      "sourcePath": "books/book-02-core-specification/core-specs/services/communication-service.md",
+      "targetContractId": "core-service-communication-reference-service-contract",
+      "targetName": "Core Communication Service Contract Skeleton",
+      "disposition": "map_existing_skeleton",
+      "existingContractIds": [
+        "core-service-communication-reference-service-contract"
+      ],
+      "implementationBatch": null,
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "domainId": "communication",
+      "requirement": "must_build_now",
+      "layer": "api",
+      "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/communication-api-contract.md",
+      "targetContractId": "core-api-communication-api-contract",
+      "targetName": "Core Communication API Contract Skeleton",
+      "disposition": "add_canonical_skeleton",
+      "existingContractIds": [],
+      "implementationBatch": "CORE-TASK-022",
+      "targetDepth": "validated_skeleton"
+    }
+  ],
+  "canonicalLayerTargets": [
+    {
+      "layer": "common",
+      "sourcePath": "books/book-02-core-specification/core-specs/contracts/common/references.md",
+      "targetContractId": "core-common-references-contract",
+      "targetName": "Core References Contract Skeleton",
+      "disposition": "add_canonical_skeleton",
+      "implementationBatch": "CORE-TASK-020",
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "layer": "common",
+      "sourcePath": "books/book-02-core-specification/core-specs/contracts/common/errors.md",
+      "targetContractId": "core-common-errors-contract",
+      "targetName": "Core Errors Contract Skeleton",
+      "disposition": "add_canonical_skeleton",
+      "implementationBatch": "CORE-TASK-020",
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "layer": "common",
+      "sourcePath": "books/book-02-core-specification/core-specs/contracts/common/pagination.md",
+      "targetContractId": "core-common-pagination-contract",
+      "targetName": "Core Pagination Contract Skeleton",
+      "disposition": "add_canonical_skeleton",
+      "implementationBatch": "CORE-TASK-020",
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "layer": "common",
+      "sourcePath": "books/book-02-core-specification/core-specs/contracts/common/audit-context.md",
+      "targetContractId": "core-common-audit-context-contract",
+      "targetName": "Core Audit Context Contract Skeleton",
+      "disposition": "add_canonical_skeleton",
+      "implementationBatch": "CORE-TASK-020",
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "layer": "common",
+      "sourcePath": "books/book-02-core-specification/core-specs/contracts/common/ai-context.md",
+      "targetContractId": "core-common-ai-context-contract",
+      "targetName": "Core AI Context Contract Skeleton",
+      "disposition": "add_canonical_skeleton",
+      "implementationBatch": "CORE-TASK-020",
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "layer": "common",
+      "sourcePath": "books/book-02-core-specification/core-specs/contracts/common/human-review.md",
+      "targetContractId": "core-common-human-review-contract",
+      "targetName": "Core Human Review Contract Skeleton",
+      "disposition": "add_canonical_skeleton",
+      "implementationBatch": "CORE-TASK-020",
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "layer": "common",
+      "sourcePath": "books/book-02-core-specification/core-specs/contracts/common/permission-context.md",
+      "targetContractId": "core-common-permission-context-contract",
+      "targetName": "Core Permission Context Contract Skeleton",
+      "disposition": "add_canonical_skeleton",
+      "implementationBatch": "CORE-TASK-020",
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "layer": "common",
+      "sourcePath": "books/book-02-core-specification/core-specs/contracts/common/policy-context.md",
+      "targetContractId": "core-common-policy-context-contract",
+      "targetName": "Core Policy Context Contract Skeleton",
+      "disposition": "add_canonical_skeleton",
+      "implementationBatch": "CORE-TASK-020",
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "layer": "common",
+      "sourcePath": "books/book-02-core-specification/core-specs/contracts/common/idempotency.md",
+      "targetContractId": "core-common-idempotency-contract",
+      "targetName": "Core Idempotency Contract Skeleton",
+      "disposition": "add_canonical_skeleton",
+      "implementationBatch": "CORE-TASK-020",
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "layer": "common",
+      "sourcePath": "books/book-02-core-specification/core-specs/contracts/common/versioning.md",
+      "targetContractId": "core-common-versioning-contract",
+      "targetName": "Core Versioning Contract Skeleton",
+      "disposition": "add_canonical_skeleton",
+      "implementationBatch": "CORE-TASK-020",
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "layer": "workflow",
+      "sourcePath": "books/book-02-core-specification/core-specs/contracts/workflows/customer-intake-workflow-contract.md",
+      "targetContractId": "core-workflow-customer-intake-workflow-contract",
+      "targetName": "Core Customer Intake Workflow Contract Skeleton",
+      "disposition": "add_canonical_skeleton",
+      "implementationBatch": "CORE-TASK-024",
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "layer": "workflow",
+      "sourcePath": "books/book-02-core-specification/core-specs/contracts/workflows/trademark-application-workflow-contract.md",
+      "targetContractId": "core-workflow-trademark-application-workflow-contract",
+      "targetName": "Core Trademark Application Workflow Contract Skeleton",
+      "disposition": "add_canonical_skeleton",
+      "implementationBatch": "CORE-TASK-024",
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "layer": "workflow",
+      "sourcePath": "books/book-02-core-specification/core-specs/contracts/workflows/office-action-response-workflow-contract.md",
+      "targetContractId": "core-workflow-office-action-response-workflow-contract",
+      "targetName": "Core Office Action Response Workflow Contract Skeleton",
+      "disposition": "add_canonical_skeleton",
+      "implementationBatch": "CORE-TASK-024",
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "layer": "workflow",
+      "sourcePath": "books/book-02-core-specification/core-specs/contracts/workflows/provider-routing-workflow-contract.md",
+      "targetContractId": "core-workflow-provider-routing-workflow-contract",
+      "targetName": "Core Provider Routing Workflow Contract Skeleton",
+      "disposition": "add_canonical_skeleton",
+      "implementationBatch": "CORE-TASK-024",
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "layer": "workflow",
+      "sourcePath": "books/book-02-core-specification/core-specs/contracts/workflows/communication-review-workflow-contract.md",
+      "targetContractId": "core-workflow-communication-review-workflow-contract",
+      "targetName": "Core Communication Review Workflow Contract Skeleton",
+      "disposition": "add_canonical_skeleton",
+      "implementationBatch": "CORE-TASK-024",
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "layer": "workflow",
+      "sourcePath": "books/book-02-core-specification/core-specs/contracts/workflows/renewal-workflow-contract.md",
+      "targetContractId": "core-workflow-renewal-workflow-contract",
+      "targetName": "Core Renewal Workflow Contract Skeleton",
+      "disposition": "add_canonical_skeleton",
+      "implementationBatch": "CORE-TASK-024",
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "layer": "workflow",
+      "sourcePath": "books/book-02-core-specification/core-specs/contracts/workflows/assignment-workflow-contract.md",
+      "targetContractId": "core-workflow-assignment-workflow-contract",
+      "targetName": "Core Assignment Workflow Contract Skeleton",
+      "disposition": "add_canonical_skeleton",
+      "implementationBatch": "CORE-TASK-024",
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "layer": "workflow",
+      "sourcePath": "books/book-02-core-specification/core-specs/contracts/workflows/evidence-review-workflow-contract.md",
+      "targetContractId": "core-workflow-evidence-review-workflow-contract",
+      "targetName": "Core Evidence Review Workflow Contract Skeleton",
+      "disposition": "add_canonical_skeleton",
+      "implementationBatch": "CORE-TASK-024",
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "layer": "test",
+      "sourcePath": "books/book-02-core-specification/core-specs/contracts/tests/common-contract-tests.md",
+      "targetContractId": "core-test-common-contract-tests-contract",
+      "targetName": "Core Common Contract Test Skeleton",
+      "disposition": "add_canonical_skeleton",
+      "implementationBatch": "CORE-TASK-020",
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "layer": "test",
+      "sourcePath": "books/book-02-core-specification/core-specs/contracts/tests/api-contract-tests.md",
+      "targetContractId": "core-test-api-contract-tests-contract",
+      "targetName": "Core API Contract Test Skeleton",
+      "disposition": "add_canonical_skeleton",
+      "implementationBatch": "CORE-TASK-020",
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "layer": "test",
+      "sourcePath": "books/book-02-core-specification/core-specs/contracts/tests/workflow-contract-tests.md",
+      "targetContractId": "core-test-workflow-contract-tests-contract",
+      "targetName": "Core Workflow Contract Test Skeleton",
+      "disposition": "add_canonical_skeleton",
+      "implementationBatch": "CORE-TASK-020",
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "layer": "test",
+      "sourcePath": "books/book-02-core-specification/core-specs/contracts/tests/agent-boundary-tests.md",
+      "targetContractId": "core-test-agent-boundary-tests-contract",
+      "targetName": "Core Agent Boundary Test Skeleton",
+      "disposition": "add_canonical_skeleton",
+      "implementationBatch": "CORE-TASK-020",
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "layer": "test",
+      "sourcePath": "books/book-02-core-specification/core-specs/contracts/tests/permission-policy-tests.md",
+      "targetContractId": "core-test-permission-policy-tests-contract",
+      "targetName": "Core Permission Policy Test Skeleton",
+      "disposition": "add_canonical_skeleton",
+      "implementationBatch": "CORE-TASK-020",
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "layer": "test",
+      "sourcePath": "books/book-02-core-specification/core-specs/contracts/tests/idempotency-event-tests.md",
+      "targetContractId": "core-test-idempotency-event-tests-contract",
+      "targetName": "Core Idempotency Event Test Skeleton",
+      "disposition": "add_canonical_skeleton",
+      "implementationBatch": "CORE-TASK-020",
+      "targetDepth": "validated_skeleton"
+    },
+    {
+      "layer": "test",
+      "sourcePath": "books/book-02-core-specification/core-specs/contracts/tests/error-versioning-tests.md",
+      "targetContractId": "core-test-error-versioning-tests-contract",
+      "targetName": "Core Error Versioning Test Skeleton",
+      "disposition": "add_canonical_skeleton",
+      "implementationBatch": "CORE-TASK-020",
+      "targetDepth": "validated_skeleton"
+    }
+  ],
+  "retainedNoncanonicalScaffolds": [
+    {
+      "family": "api",
+      "contractIds": [
+        "core-api-core-domain-registry-api-contract",
+        "core-api-core-object-reference-api-contract",
+        "core-api-core-event-reference-api-contract",
+        "core-api-core-task-reference-api-contract",
+        "core-api-core-workflow-contract-reference-api-contract",
+        "core-api-core-contract-index-api-contract",
+        "core-api-core-validation-api-contract",
+        "core-api-core-health-api-contract"
+      ],
+      "disposition": "retain_during_canonical_expansion",
+      "satisfiesCanonicalTargets": false,
+      "reason": "Phase 2 global/reference API skeletons are not the 26 canonical Book 2 Domain API Contracts."
+    },
+    {
+      "family": "workflow",
+      "contractIds": [
+        "core-workflow-core-record-preparation-workflow-contract",
+        "core-workflow-core-record-review-workflow-contract",
+        "core-workflow-core-document-reference-workflow-contract",
+        "core-workflow-core-evidence-reference-workflow-contract",
+        "core-workflow-core-task-review-workflow-contract",
+        "core-workflow-core-communication-review-workflow-contract",
+        "core-workflow-core-contract-registration-workflow-contract",
+        "core-workflow-core-validation-review-workflow-contract"
+      ],
+      "disposition": "retain_during_canonical_expansion",
+      "satisfiesCanonicalTargets": false,
+      "reason": "Phase 2 generic workflow catalog skeletons are not the 8 canonical Book 2 Workflow Contracts."
+    }
+  ],
+  "implementationBatches": [
+    {
+      "id": "CORE-TASK-020",
+      "name": "Common and Test Contract Foundations",
+      "targetCount": 17,
+      "layers": ["common", "test"],
+      "boundary": "Add canonical metadata-only Common and Test Contract skeleton families and their contract types."
+    },
+    {
+      "id": "CORE-TASK-021",
+      "name": "Must-Build Object and Service Gaps",
+      "targetCount": 16,
+      "layers": ["object", "service"],
+      "boundary": "Add only missing validated skeletons for Must Build Now Domains; preserve existing mapped skeletons."
+    },
+    {
+      "id": "CORE-TASK-022",
+      "name": "Must-Build Canonical Domain APIs",
+      "targetCount": 18,
+      "layers": ["api"],
+      "boundary": "Add 18 canonical Domain API skeletons without routes, handlers, service execution, or DTO implementation."
+    },
+    {
+      "id": "CORE-TASK-023",
+      "name": "Stub Domain Contract Gaps",
+      "targetCount": 22,
+      "layers": ["object", "service", "api"],
+      "boundary": "Add safe validated skeletons for the 8 Stub Now Domains without pretending to implement runtime behavior."
+    },
+    {
+      "id": "CORE-TASK-024",
+      "name": "Canonical Workflow Contracts",
+      "targetCount": 8,
+      "layers": ["workflow"],
+      "boundary": "Add the 8 canonical Book 2 Workflow Contract skeletons without a workflow engine or execution runtime."
+    }
+  ],
+  "summary": {
+    "currentIndexedContractCount": 106,
+    "domainTargetCount": 78,
+    "mappedExistingDomainTargetCount": 22,
+    "newDomainTargetCount": 56,
+    "newObjectTargetCount": 14,
+    "newServiceTargetCount": 16,
+    "newApiTargetCount": 26,
+    "newCommonTargetCount": 10,
+    "newWorkflowTargetCount": 8,
+    "newTestTargetCount": 7,
+    "totalNewCanonicalTargetCount": 81,
+    "projectedIndexedContractCount": 187,
+    "implementationBatchCount": 5,
+    "currentIndexChangedByThisTask": false
+  }
+}

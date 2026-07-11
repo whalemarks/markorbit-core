@@ -1,5 +1,6 @@
 import { CORE_CONTRACT_INDEX, validateCoreContractIndex, validateCoreDomainContractSkeletons, validateCoreObjectContractSkeletons, validateCoreServiceContractSkeletons, validateCoreApiContractSkeletons, validateCoreEventCatalogSkeletons, validateCoreWorkflowCatalogSkeletons, validateCorePermissionContractSkeletons, validateCorePolicyContractSkeletons, validateCoreAiGovernanceContractSkeletons, type CoreApiContract, type CoreDomainContract, type CoreObjectContract, type CoreServiceContract, type CoreEventCatalogEntry, type CoreWorkflowCatalogEntry, type CorePermissionContract, type CorePolicyContract, type CoreAiGovernanceContract } from '../contracts/index.ts';
 import { validateCoreContractCoverageBaseline } from '../contract-coverage/index.ts';
+import { validateCoreContractGapInventory } from '../contract-coverage/index.ts';
 import { CORE_DOMAIN_REGISTRY } from '../domains/index.ts';
 import { CORE_OBJECT_STATUSES } from '../objects/index.ts';
 import type { CoreEvent } from '../events/index.ts';
@@ -236,6 +237,13 @@ export function validateCoreAiGovernanceContractSkeletonsFixture(fixture: unknow
 export function validateCoreContractCoverageBaselineFixture(fixture: unknown): CoreValidationResult {
   const issues = validateCoreContractCoverageBaseline(fixture).map((message) =>
     error('core.contract_coverage_baseline.invalid', message, 'contract_coverage_baseline')
+  );
+  return createCoreValidationResult(issues);
+}
+
+export function validateCoreContractGapInventoryFixture(fixture: unknown): CoreValidationResult {
+  const issues = validateCoreContractGapInventory(fixture).map((message) =>
+    error('core.contract_gap_inventory.invalid', message, 'contract_gap_inventory')
   );
   return createCoreValidationResult(issues);
 }

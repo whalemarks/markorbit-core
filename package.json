@@ -12,7 +12,8 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "validate:fixtures": "node scripts/validate-core-fixtures.mjs",
-    "coverage:contracts": "node scripts/report-core-contract-coverage.mjs"
+    "coverage:contracts": "node scripts/report-core-contract-coverage.mjs",
+    "gaps:contracts": "node scripts/report-core-contract-gaps.mjs"
   },
   "engines": {
     "node": ">=20.0.0"
