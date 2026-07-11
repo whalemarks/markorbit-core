@@ -6,7 +6,7 @@
 
 ## Current phase
 
-Phase 3 — Contract Coverage started.
+Phase 3 — Contract Coverage accepted.
 
 ## Current status
 
@@ -55,8 +55,9 @@ Phase 3 — Contract Coverage started.
 - Current Domain-layer coverage is 26 Domain, 26 Object, 26 Service, 26 Domain-mapped API, 4 Event, and 6 Workflow.
 - Gap Inventory maps 22 existing Domain targets and locks 81 canonical skeleton additions across five batches.
 - CORE-TASK-020 through CORE-TASK-024 have completed all 81 canonical targets; 0 remain.
-- Required fixture manifest now contains 19 entries.
-- Next recommended task: CORE-TASK-025 — Phase 3 Contract Coverage Acceptance Lock.
+- Required fixture manifest now contains 20 entries.
+- CORE-TASK-025 locks the final structural acceptance state: 187 indexed contracts, 12/12 families, 26/26 required-layer-complete Domains, and 81/81 controlled targets.
+- Runtime, behavior, and production readiness remain outside the accepted scope.
 
 ## Current scope
 
@@ -118,7 +119,7 @@ Every change should keep the TypeScript project buildable, tests passing, lint c
 
 ## Next tasks
 
-- CORE-TASK-025 — Phase 3 Contract Coverage Acceptance Lock.
+- Phase 4 direction requires an explicit scope decision after CORE-TASK-025.
 
 ## CORE-TASK-009 Status
 
@@ -276,3 +277,11 @@ Next recommended task: CORE-TASK-013 — Core Event Catalog Skeleton.
 - All five controlled implementation batches: completed.
 - No workflow engine, execution runtime, Task creation, Event emission, or state mutation added.
 - Next recommended task: CORE-TASK-025 — Phase 3 Contract Coverage Acceptance Lock.
+
+## CORE-TASK-025 — Phase 3 Contract Coverage Acceptance Lock
+
+- Added `CORE_CONTRACT_COVERAGE_ACCEPTANCE_LOCK` with exact accepted counts, batches, authority, and assessment boundaries.
+- Added a required acceptance-lock fixture and exact drift validation.
+- Added unit, fixture, and validation coverage plus `pnpm acceptance:contracts`.
+- Accepted Phase 3 contract structure only; runtime behavior, workflow execution, production readiness, and Product/Book 3 behavior remain excluded.
+- Phase 3 contract coverage is complete.
