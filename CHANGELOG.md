@@ -1,5 +1,13 @@
 # Changelog
 
+## CORE-TASK-030 — Governance Context and Review Hooks
+
+- Added fail-closed Permission decision enforcement and Policy context validation.
+- Added Policy-triggered Human Review gates for protected actions.
+- Added required Audit Context validation and immutable safe trace handoff.
+- Updated behavior coverage to 12 minimum-satisfied, 1 partial, and 1 not implemented target; 9/11 Must Build Now targets now meet minimum depth.
+- Added no role system, Policy Engine, Event persistence, downstream execution, or professional conclusion.
+
 ## CORE-TASK-029 — Idempotency Enforcement
 
 - Added opaque key validation and canonical SHA-256 request fingerprints.

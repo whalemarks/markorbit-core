@@ -57,14 +57,14 @@
       "mvpCategory": "must_build_now",
       "requiredMinimumDepth": 2,
       "requiredMaximumDepth": 3,
-      "currentDepth": 0,
+      "currentDepth": 2,
       "sourcePath": "books/book-02-core-specification/core-specs/contracts/common/permission-context.md",
-      "currentEvidence": ["Permission and Permission Context skeletons only."],
-      "missingBehavior": [
-        "Service permission hook.",
-        "Fail-closed protected-action enforcement."
+      "currentEvidence": [
+        "Permission context validation and decision-reference enforcement.",
+        "Fail-closed protected-action permission hook."
       ],
-      "status": "not_implemented"
+      "missingBehavior": [],
+      "status": "meets_minimum_depth"
     },
     {
       "id": "policy",
@@ -72,14 +72,13 @@
       "mvpCategory": "must_build_now",
       "requiredMinimumDepth": 1,
       "requiredMaximumDepth": 2,
-      "currentDepth": 0,
+      "currentDepth": 1,
       "sourcePath": "books/book-02-core-specification/core-specs/contracts/common/policy-context.md",
-      "currentEvidence": ["Policy and Policy Context skeletons only."],
-      "missingBehavior": [
-        "Policy context schema validation.",
-        "Service policy hook."
+      "currentEvidence": [
+        "Policy context validation, restriction handling, and human-review requirement propagation."
       ],
-      "status": "not_implemented"
+      "missingBehavior": ["Service policy hook."],
+      "status": "meets_minimum_depth"
     },
     {
       "id": "idempotency",
@@ -105,14 +104,14 @@
       "mvpCategory": "must_build_now",
       "requiredMinimumDepth": 2,
       "requiredMaximumDepth": 2,
-      "currentDepth": 0,
+      "currentDepth": 2,
       "sourcePath": "books/book-02-core-specification/core-specs/contracts/common/audit-context.md",
-      "currentEvidence": ["Validated Audit Context Contract skeleton only."],
-      "missingBehavior": [
-        "Audit context schema validation.",
-        "Service trace hook."
+      "currentEvidence": [
+        "Required audit trace validation.",
+        "Immutable safe audit-context handoff from governed actions."
       ],
-      "status": "not_implemented"
+      "missingBehavior": [],
+      "status": "meets_minimum_depth"
     },
     {
       "id": "events",
@@ -187,16 +186,14 @@
       "mvpCategory": "must_build_now",
       "requiredMinimumDepth": 2,
       "requiredMaximumDepth": 2,
-      "currentDepth": 0,
+      "currentDepth": 2,
       "sourcePath": "books/book-02-core-specification/core-specs/contracts/common/human-review.md",
       "currentEvidence": [
-        "Validated Human Review Contract skeleton and generic review outcome type only."
+        "Human Review context and completed-decision validation.",
+        "Policy-triggered protected-action review gate."
       ],
-      "missingBehavior": [
-        "Review context schema validation.",
-        "Protected-action review gate."
-      ],
-      "status": "not_implemented"
+      "missingBehavior": [],
+      "status": "meets_minimum_depth"
     },
     {
       "id": "agent-runtime",
@@ -249,11 +246,11 @@
   ],
   "summary": {
     "totalTargetCount": 14,
-    "meetsMinimumDepthCount": 8,
+    "meetsMinimumDepthCount": 12,
     "partialTargetCount": 1,
-    "notImplementedTargetCount": 5,
+    "notImplementedTargetCount": 1,
     "mustBuildNowTargetCount": 11,
-    "mustBuildNowMeetsMinimumDepthCount": 5,
+    "mustBuildNowMeetsMinimumDepthCount": 9,
     "behaviorAcceptanceReady": false
   },
   "assessmentBoundary": {
