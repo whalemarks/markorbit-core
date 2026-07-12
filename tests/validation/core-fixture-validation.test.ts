@@ -22,7 +22,8 @@ import {
   validateCoreContractCoverageBaselineFixture,
   validateCoreContractGapInventoryFixture,
   validateCoreContractCoverageAcceptanceLockFixture,
-  validateCoreContractBehaviorCoverageBaselineFixture
+  validateCoreContractBehaviorCoverageBaselineFixture,
+  validateCoreContractBehaviorGapInventoryFixture
 } from '../../src/index.ts';
 
 const readFixture = async (path: string): Promise<unknown> => JSON.parse(await readFile(new URL(`../../${path}`, import.meta.url), 'utf8'));
@@ -49,6 +50,14 @@ describe('core fixture validation', () => {
     assert.equal(validateCoreContractGapInventoryFixture(await readFixture('fixtures/contract-coverage/core-contract-gap-inventory.fixture.json')).ok, true);
     assert.equal(validateCoreContractCoverageAcceptanceLockFixture(await readFixture('fixtures/contract-coverage/core-contract-coverage-acceptance-lock.fixture.json')).ok, true);
     assert.equal(validateCoreContractBehaviorCoverageBaselineFixture(await readFixture('fixtures/behavior-coverage/core-contract-behavior-coverage-baseline.fixture.json')).ok, true);
+    assert.equal(validateCoreContractBehaviorGapInventoryFixture(await readFixture('fixtures/behavior-coverage/core-contract-behavior-gap-inventory.fixture.json')).ok, true);
+  });
+
+  it('behavior gap inventory validator rejects changed batch', async () => {
+    const fixture = structuredClone(await readFixture('fixtures/behavior-coverage/core-contract-behavior-gap-inventory.fixture.json')) as Record<string, unknown>;
+    const targets = fixture.targets as Record<string, unknown>[];
+    targets[0].implementationBatch = 'CORE-TASK-999';
+    assert.equal(validateCoreContractBehaviorGapInventoryFixture(fixture).ok, false);
   });
 
   it('behavior baseline validator rejects inflated depth', async () => {

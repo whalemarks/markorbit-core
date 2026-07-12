@@ -1,0 +1,256 @@
+{
+  "id": "core-contract-behavior-gap-inventory-v0-1",
+  "version": "0.1.0",
+  "createdAt": "2026-07-12T00:00:00.000Z",
+  "task": "CORE-TASK-027",
+  "scope": "behavior_gap_inventory_lock_only",
+  "authority": {
+    "specificationRepository": "whalemarks/markorbit-publication",
+    "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+    "mvpCut": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
+    "traceability": "books/book-02-core-specification/core-specs/TRACEABILITY.md",
+    "validation": "books/book-02-core-specification/core-specs/validation/traceability-validation.md"
+  },
+  "targets": [
+    {
+      "behaviorId": "references",
+      "currentDepth": 0,
+      "targetDepth": 3,
+      "depthIncrement": 3,
+      "sourcePath": "books/book-02-core-specification/core-specs/contracts/common/references.md",
+      "requiredBehavior": [
+        "Validate public reference shape and type.",
+        "Resolve references without exposing database identifiers.",
+        "Fail closed for missing, invalid, or inaccessible references."
+      ],
+      "dependencies": [],
+      "implementationBatch": "CORE-TASK-028"
+    },
+    {
+      "behaviorId": "errors",
+      "currentDepth": 0,
+      "targetDepth": 3,
+      "depthIncrement": 3,
+      "sourcePath": "books/book-02-core-specification/core-specs/contracts/common/errors.md",
+      "requiredBehavior": [
+        "Construct controlled Core errors.",
+        "Prevent unsafe internal detail leakage.",
+        "Enforce safe failure for unsupported behavior."
+      ],
+      "dependencies": [],
+      "implementationBatch": "CORE-TASK-028"
+    },
+    {
+      "behaviorId": "versioning",
+      "currentDepth": 0,
+      "targetDepth": 1,
+      "depthIncrement": 1,
+      "sourcePath": "books/book-02-core-specification/core-specs/contracts/common/versioning.md",
+      "requiredBehavior": [
+        "Validate supported contract versions.",
+        "Fail closed for unsupported versions."
+      ],
+      "dependencies": [],
+      "implementationBatch": "CORE-TASK-028"
+    },
+    {
+      "behaviorId": "ai-context",
+      "currentDepth": 0,
+      "targetDepth": 1,
+      "depthIncrement": 1,
+      "sourcePath": "books/book-02-core-specification/core-specs/contracts/common/ai-context.md",
+      "requiredBehavior": [
+        "Validate AI context shape.",
+        "Validate source, capability, boundary, and review metadata."
+      ],
+      "dependencies": [],
+      "implementationBatch": "CORE-TASK-028"
+    },
+    {
+      "behaviorId": "agent-runtime",
+      "currentDepth": 0,
+      "targetDepth": 1,
+      "depthIncrement": 1,
+      "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
+      "requiredBehavior": [
+        "Validate the boundary-safe capability registry.",
+        "Reject forbidden Agent actions in boundary tests."
+      ],
+      "dependencies": [],
+      "implementationBatch": "CORE-TASK-028"
+    },
+    {
+      "behaviorId": "idempotency",
+      "currentDepth": 0,
+      "targetDepth": 3,
+      "depthIncrement": 3,
+      "sourcePath": "books/book-02-core-specification/core-specs/contracts/common/idempotency.md",
+      "requiredBehavior": [
+        "Validate idempotency keys for duplicate-sensitive actions.",
+        "Return the recorded result for valid replay.",
+        "Reject key reuse with conflicting input.",
+        "Prevent duplicate effects."
+      ],
+      "dependencies": ["references", "errors", "versioning"],
+      "implementationBatch": "CORE-TASK-029"
+    },
+    {
+      "behaviorId": "permission",
+      "currentDepth": 0,
+      "targetDepth": 2,
+      "depthIncrement": 2,
+      "sourcePath": "books/book-02-core-specification/core-specs/contracts/common/permission-context.md",
+      "requiredBehavior": [
+        "Validate Permission Context.",
+        "Provide a service permission hook.",
+        "Fail closed for denied protected actions."
+      ],
+      "dependencies": ["references", "errors"],
+      "implementationBatch": "CORE-TASK-030"
+    },
+    {
+      "behaviorId": "policy",
+      "currentDepth": 0,
+      "targetDepth": 1,
+      "depthIncrement": 1,
+      "sourcePath": "books/book-02-core-specification/core-specs/contracts/common/policy-context.md",
+      "requiredBehavior": [
+        "Validate Policy Context.",
+        "Provide a service policy hook.",
+        "Block or redact restricted behavior."
+      ],
+      "dependencies": ["references", "errors"],
+      "implementationBatch": "CORE-TASK-030"
+    },
+    {
+      "behaviorId": "audit-context",
+      "currentDepth": 0,
+      "targetDepth": 2,
+      "depthIncrement": 2,
+      "sourcePath": "books/book-02-core-specification/core-specs/contracts/common/audit-context.md",
+      "requiredBehavior": [
+        "Validate Audit Context.",
+        "Provide a service trace hook without implementing production observability."
+      ],
+      "dependencies": ["references", "errors"],
+      "implementationBatch": "CORE-TASK-030"
+    },
+    {
+      "behaviorId": "human-review",
+      "currentDepth": 0,
+      "targetDepth": 2,
+      "depthIncrement": 2,
+      "sourcePath": "books/book-02-core-specification/core-specs/contracts/common/human-review.md",
+      "requiredBehavior": [
+        "Validate Human Review Context.",
+        "Block gated actions until a valid review outcome exists."
+      ],
+      "dependencies": ["permission", "policy", "audit-context"],
+      "implementationBatch": "CORE-TASK-030"
+    },
+    {
+      "behaviorId": "events",
+      "currentDepth": 1,
+      "targetDepth": 2,
+      "depthIncrement": 1,
+      "sourcePath": "books/book-02-core-specification/core-specs/objects/event-object.md",
+      "requiredBehavior": [
+        "Provide Event trace handoff through Event Service.",
+        "Maintain a persisted or fixture-backed MVP Event trace.",
+        "Apply the visibility policy hook.",
+        "Keep Event references non-commanding."
+      ],
+      "dependencies": [
+        "references",
+        "errors",
+        "permission",
+        "policy",
+        "audit-context",
+        "idempotency"
+      ],
+      "implementationBatch": "CORE-TASK-031"
+    },
+    {
+      "behaviorId": "pagination",
+      "currentDepth": 0,
+      "targetDepth": 2,
+      "depthIncrement": 2,
+      "sourcePath": "books/book-02-core-specification/core-specs/contracts/common/pagination.md",
+      "requiredBehavior": [
+        "Validate pagination input and output.",
+        "Provide basic list and search pagination.",
+        "Apply policy-aware count behavior."
+      ],
+      "dependencies": ["references", "errors", "permission", "policy"],
+      "implementationBatch": "CORE-TASK-031"
+    }
+  ],
+  "implementationBatches": [
+    {
+      "id": "CORE-TASK-028",
+      "name": "Safety and Boundary Foundations",
+      "behaviorIds": [
+        "references",
+        "errors",
+        "versioning",
+        "ai-context",
+        "agent-runtime"
+      ],
+      "targetCount": 5,
+      "depthIncrement": 9,
+      "dependsOn": [],
+      "boundary": "Implement only Book 2 reference, safe error, version, AI context, and Agent boundary behavior; no business service mutation."
+    },
+    {
+      "id": "CORE-TASK-029",
+      "name": "Idempotency Enforcement",
+      "behaviorIds": ["idempotency"],
+      "targetCount": 1,
+      "depthIncrement": 3,
+      "dependsOn": ["CORE-TASK-028"],
+      "boundary": "Implement deterministic replay and conflict protection without introducing external persistence infrastructure."
+    },
+    {
+      "id": "CORE-TASK-030",
+      "name": "Governance Context and Review Hooks",
+      "behaviorIds": ["permission", "policy", "audit-context", "human-review"],
+      "targetCount": 4,
+      "depthIncrement": 7,
+      "dependsOn": ["CORE-TASK-028"],
+      "boundary": "Implement Permission, Policy, Audit, and Human Review validation/hooks without a full Policy Engine or professional decision authority."
+    },
+    {
+      "id": "CORE-TASK-031",
+      "name": "Event Trace and Pagination Hooks",
+      "behaviorIds": ["events", "pagination"],
+      "targetCount": 2,
+      "depthIncrement": 3,
+      "dependsOn": ["CORE-TASK-029", "CORE-TASK-030"],
+      "boundary": "Implement fixture-backed Event trace and basic pagination hooks without an event bus, workflow engine, database, or production integration."
+    }
+  ],
+  "excludedFromMinimumDepthWork": [
+    {
+      "behaviorId": "workflow-engine",
+      "reason": "Current Level 1 meets the Stub Now minimum; Level 2 remains optional within the Book 2 range."
+    },
+    {
+      "behaviorId": "policy-engine",
+      "reason": "Current Level 0 meets the Document Only minimum; a full Policy Engine remains outside MVP."
+    }
+  ],
+  "summary": {
+    "baselineTargetCount": 14,
+    "gapTargetCount": 12,
+    "totalDepthIncrement": 22,
+    "implementationBatchCount": 4,
+    "excludedMinimumSatisfiedTargetCount": 2,
+    "behaviorImplementedByThisTask": false
+  },
+  "nonGoals": [
+    "No behavior implementation is added by this inventory task.",
+    "No full Workflow Engine or Policy Engine is authorized.",
+    "No database, event bus, external integration, or Product behavior is authorized.",
+    "No AI or automated professional decision authority is authorized."
+  ]
+}
