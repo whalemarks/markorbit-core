@@ -19,11 +19,11 @@ describe('Core Contract Behavior Coverage Baseline', () => {
 
   it('reports the current behavior depth without treating skeletons as behavior', () => {
     const summary = CORE_CONTRACT_BEHAVIOR_COVERAGE_BASELINE.summary;
-    assert.equal(summary.meetsMinimumDepthCount, 12);
-    assert.equal(summary.partialTargetCount, 1);
-    assert.equal(summary.notImplementedTargetCount, 1);
-    assert.equal(summary.mustBuildNowMeetsMinimumDepthCount, 9);
-    assert.equal(summary.behaviorAcceptanceReady, false);
+    assert.equal(summary.meetsMinimumDepthCount, 14);
+    assert.equal(summary.partialTargetCount, 0);
+    assert.equal(summary.notImplementedTargetCount, 0);
+    assert.equal(summary.mustBuildNowMeetsMinimumDepthCount, 11);
+    assert.equal(summary.behaviorAcceptanceReady, true);
   });
 
   it('credits only existing generic Event and Workflow validation evidence', () => {
@@ -33,8 +33,8 @@ describe('Core Contract Behavior Coverage Baseline', () => {
     const workflow = CORE_CONTRACT_BEHAVIOR_COVERAGE_TARGETS.find(
       (entry) => entry.id === 'workflow-engine'
     );
-    assert.equal(events?.currentDepth, 1);
-    assert.equal(events?.status, 'partial');
+    assert.equal(events?.currentDepth, 2);
+    assert.equal(events?.status, 'meets_minimum_depth');
     assert.equal(workflow?.currentDepth, 1);
     assert.equal(workflow?.status, 'meets_minimum_depth');
   });

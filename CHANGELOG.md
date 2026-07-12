@@ -1,5 +1,13 @@
 # Changelog
 
+## CORE-TASK-031 — Event Trace and Pagination Hooks
+
+- Added append-only Event trace handoff, duplicate protection, and visibility filtering.
+- Added bounded cursor pagination with signed query-bound cursors, safe sorting, governance filtering, redaction, and total-count omission.
+- Added stricter Agent pagination limits and fail-closed cursor, limit, sort, Permission, and Policy behavior.
+- Reached minimum depth for all 14 behavior targets and all 11 Must Build Now targets.
+- Added no database, Event bus, search engine, unrestricted export, or production-readiness claim.
+
 ## CORE-TASK-030 — Governance Context and Review Hooks
 
 - Added fail-closed Permission decision enforcement and Policy context validation.
