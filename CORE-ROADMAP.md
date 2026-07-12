@@ -43,13 +43,13 @@
 - Documentation site.
 - Package publishing.
 
-## Phase 4 — Contract Behavior Coverage Started
+## Phase 4 — Selected Behavior Hook Acceptance Complete
 
 - [x] Contract Behavior Coverage Baseline — completed/current.
 - [x] Contract Behavior Gap Inventory Lock — completed/current.
-- [ ] Controlled behavior implementation batches.
-- [ ] Contract Behavior Coverage Acceptance Lock.
-- [x] Validation and traceability tooling lock — completed/current without accepting Phase 4.
+- [x] Controlled behavior implementation batches — CORE-TASK-028 through CORE-TASK-031 completed/current.
+- [x] Contract Behavior Coverage Acceptance Lock — completed/current.
+- [x] Validation and traceability tooling lock — completed/current.
 
 ## Phase 2 Update — CORE-TASK-009
 
@@ -218,12 +218,4 @@
 - Repository-local validation commands and Node.js 20/22 CI matrix locked.
 - Event behavior-coverage traceability now references `objects/event.md` instead of the legacy `objects/event-object.md`.
 - No repository-wide formatting baseline added.
-- Phase 4 remains formally unaccepted and Book 02 MVP remains incomplete.
-
-## Phase 4 Acceptance
-
-- [x] Contract Behavior Coverage Acceptance Lock.
-- [ ] Integration with Execution System.
-- [ ] Generated SDK.
-- [ ] Package publishing.
-- [ ] Production readiness.
+- Phase 4 acceptance is completed by CORE-TASK-033 for selected behavior hooks only; Book 02 MVP remains incomplete.

@@ -20,6 +20,32 @@ export type CoreBehaviorAcceptanceEvidence = {
   readonly evidenceDescription: readonly string[];
 };
 
+export const CORE_BEHAVIOR_ACCEPTANCE_REQUIRED_NON_GOALS = [
+  'production_ready',
+  'execution_system_complete',
+  'book_02_mvp_complete',
+  'domain_behavior_complete',
+  'workflow_engine_complete',
+  'policy_engine_complete',
+  'database_complete',
+  'external_integrations_complete',
+  'ai_autonomous_authority',
+  'professional_decision_authority'
+] as const;
+
+function deriveExpectedImplementationBatches(): readonly string[] {
+  return Object.freeze([
+    ...new Set(
+      CORE_CONTRACT_BEHAVIOR_GAP_INVENTORY.targets.map(
+        (target) => target.implementationBatch
+      )
+    )
+  ]);
+}
+
+export const CORE_BEHAVIOR_ACCEPTANCE_EXPECTED_IMPLEMENTATION_BATCHES =
+  deriveExpectedImplementationBatches();
+
 export const CORE_CONTRACT_BEHAVIOR_ACCEPTANCE_EVIDENCE = [
   {
     behaviorId: 'references',
@@ -198,18 +224,7 @@ export const CORE_CONTRACT_BEHAVIOR_ACCEPTANCE_LOCK = {
     'CORE-TASK-030',
     'CORE-TASK-031'
   ],
-  nonGoals: [
-    'production_ready',
-    'execution_system_complete',
-    'book_02_mvp_complete',
-    'domain_behavior_complete',
-    'workflow_engine_complete',
-    'policy_engine_complete',
-    'database_complete',
-    'external_integrations_complete',
-    'ai_autonomous_authority',
-    'professional_decision_authority'
-  ]
+  nonGoals: CORE_BEHAVIOR_ACCEPTANCE_REQUIRED_NON_GOALS
 } as const;
 
 export type CoreBehaviorAcceptanceLock =
@@ -250,9 +265,58 @@ export function deriveCoreContractBehaviorAcceptanceSummary(
   } as const;
 }
 
-const REQUIRED_NON_GOALS = CORE_CONTRACT_BEHAVIOR_ACCEPTANCE_LOCK.nonGoals;
-const EXPECTED_BATCHES =
-  CORE_CONTRACT_BEHAVIOR_ACCEPTANCE_LOCK.acceptedImplementationBatches;
+function isPlainObject(value: unknown): value is Record<string, unknown> {
+  if (typeof value !== 'object' || value === null || Array.isArray(value))
+    return false;
+  const prototype = Object.getPrototypeOf(value);
+  return prototype === Object.prototype || prototype === null;
+}
+
+function stringArray(value: unknown): readonly string[] | undefined {
+  return Array.isArray(value) &&
+    value.every((entry) => typeof entry === 'string')
+    ? value
+    : undefined;
+}
+
+function evidenceArray(
+  value: unknown
+): readonly CoreBehaviorAcceptanceEvidence[] | undefined {
+  if (!Array.isArray(value)) return undefined;
+  const entries: CoreBehaviorAcceptanceEvidence[] = [];
+  for (const entry of value) {
+    if (!isPlainObject(entry)) return undefined;
+    const implementationTasks = stringArray(entry.implementationTasks);
+    const sourceFiles = stringArray(entry.sourceFiles);
+    const testFiles = stringArray(entry.testFiles);
+    const fixtureFiles =
+      entry.fixtureFiles === undefined
+        ? undefined
+        : stringArray(entry.fixtureFiles);
+    const evidenceDescription = stringArray(entry.evidenceDescription);
+    if (
+      typeof entry.behaviorId !== 'string' ||
+      (entry.acceptanceBasis !== 'implemented_batch' &&
+        entry.acceptanceBasis !== 'preexisting_minimum') ||
+      implementationTasks === undefined ||
+      sourceFiles === undefined ||
+      testFiles === undefined ||
+      (fixtureFiles === undefined && entry.fixtureFiles !== undefined) ||
+      evidenceDescription === undefined
+    )
+      return undefined;
+    entries.push({
+      behaviorId: entry.behaviorId,
+      acceptanceBasis: entry.acceptanceBasis,
+      implementationTasks,
+      sourceFiles,
+      testFiles,
+      ...(fixtureFiles === undefined ? {} : { fixtureFiles }),
+      evidenceDescription
+    });
+  }
+  return entries;
+}
 
 function validPath(path: string, prefix: string): string | undefined {
   if (isAbsolute(path) || path.includes('..'))
@@ -263,25 +327,54 @@ function validPath(path: string, prefix: string): string | undefined {
 }
 
 export function validateCoreContractBehaviorAcceptanceLock(
-  value: {
-    readonly evidence?: readonly CoreBehaviorAcceptanceEvidence[];
-    readonly acceptedImplementationBatches?: readonly string[];
-    readonly nonGoals?: readonly string[];
-    readonly scope?: string;
-  },
+  value: unknown,
   baseline: {
     readonly targets: readonly CoreBehaviorCoverageTarget[];
   } = CORE_CONTRACT_BEHAVIOR_COVERAGE_BASELINE
 ): readonly string[] {
+  if (!isPlainObject(value))
+    return ['Behavior acceptance lock must be a plain object.'];
+
   const errors: string[] = [];
+  if (value.id !== 'core-contract-behavior-acceptance-lock-v0-1')
+    errors.push('Behavior acceptance lock id must match the canonical id.');
+  if (value.version !== '0.1.0')
+    errors.push(
+      'Behavior acceptance lock version must match the canonical version.'
+    );
+  if (value.task !== 'CORE-TASK-033')
+    errors.push('Behavior acceptance lock task must be CORE-TASK-033.');
   if (value.scope !== 'selected_core_behavior_hook_acceptance')
     errors.push(
       'Behavior acceptance lock scope must remain selected Core behavior-hook acceptance only.'
     );
-  const evidence = value.evidence ?? [];
+  if (
+    JSON.stringify(value.authority) !==
+    JSON.stringify(CORE_CONTRACT_BEHAVIOR_COVERAGE_BASELINE.authority)
+  )
+    errors.push(
+      'Behavior acceptance authority must match the behavior coverage baseline authority.'
+    );
+
+  const evidence = evidenceArray(value.evidence);
+  if (evidence === undefined) {
+    errors.push('Behavior acceptance evidence must be a typed evidence array.');
+  }
+  const acceptedImplementationBatches = stringArray(
+    value.acceptedImplementationBatches
+  );
+  if (acceptedImplementationBatches === undefined)
+    errors.push(
+      'Behavior acceptance implementation batches must be an array of strings.'
+    );
+  const nonGoals = stringArray(value.nonGoals);
+  if (nonGoals === undefined)
+    errors.push('Behavior acceptance nonGoals must be an array of strings.');
+
+  const safeEvidence = evidence ?? [];
   const baselineIds = baseline.targets.map((target) => target.id);
-  const evidenceIds = evidence.map((entry) => entry.behaviorId);
-  if (evidence.length !== 14)
+  const evidenceIds = safeEvidence.map((entry) => entry.behaviorId);
+  if (safeEvidence.length !== 14)
     errors.push(
       'Behavior acceptance evidence must contain exactly 14 entries.'
     );
@@ -308,7 +401,7 @@ export function validateCoreContractBehaviorAcceptanceLock(
       (entry) => entry.behaviorId
     )
   );
-  for (const entry of evidence) {
+  for (const entry of safeEvidence) {
     const gapBatch = gaps.get(entry.behaviorId);
     if (gapBatch !== undefined) {
       if (entry.acceptanceBasis !== 'implemented_batch')
@@ -356,15 +449,20 @@ export function validateCoreContractBehaviorAcceptanceLock(
         'policy-engine evidence must not claim a complete Policy Engine.'
       );
   }
+
   if (
-    JSON.stringify(value.acceptedImplementationBatches ?? []) !==
-    JSON.stringify(EXPECTED_BATCHES)
+    JSON.stringify(acceptedImplementationBatches ?? []) !==
+    JSON.stringify(CORE_BEHAVIOR_ACCEPTANCE_EXPECTED_IMPLEMENTATION_BATCHES)
   )
     errors.push(
-      'Behavior acceptance must accept exactly CORE-TASK-028 through CORE-TASK-031.'
+      'Behavior acceptance must accept exactly the implementation batches derived from the Behavior Gap Inventory.'
     );
-  for (const nonGoal of REQUIRED_NON_GOALS)
-    if (!value.nonGoals?.includes(nonGoal))
-      errors.push(`Behavior acceptance nonGoals must include ${nonGoal}.`);
+  if (
+    JSON.stringify(nonGoals ?? []) !==
+    JSON.stringify(CORE_BEHAVIOR_ACCEPTANCE_REQUIRED_NON_GOALS)
+  )
+    errors.push(
+      'Behavior acceptance nonGoals must exactly match the required non-goals in deterministic order.'
+    );
   return errors;
 }

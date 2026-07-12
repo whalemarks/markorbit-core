@@ -12,7 +12,7 @@ const fixture = JSON.parse(
     ),
     'utf8'
   )
-);
+) as Record<string, unknown>;
 
 describe('Core contract behavior acceptance lock fixture', () => {
   it('matches the canonical lock and validates', () => {
@@ -22,7 +22,18 @@ describe('Core contract behavior acceptance lock fixture', () => {
       true
     );
   });
-  it('rejects drift and runtime readiness claims', () => {
+
+  it('rejects canonical fixture drift', () => {
+    assert.equal(
+      validateCoreContractBehaviorAcceptanceLockFixture({
+        ...fixture,
+        version: '9.9.9'
+      }).ok,
+      false
+    );
+  });
+
+  it('rejects missing boundary declarations and runtime readiness claims', () => {
     assert.equal(
       validateCoreContractBehaviorAcceptanceLockFixture({
         ...fixture,

@@ -284,7 +284,7 @@ export function validateCoreContractBehaviorCoverageBaselineFixture(fixture: unk
 }
 
 export function validateCoreContractBehaviorAcceptanceLockFixture(fixture: unknown): CoreValidationResult {
-  const issues = validateCoreContractBehaviorAcceptanceLock(fixture as never).map((message) =>
+  const issues = validateCoreContractBehaviorAcceptanceLock(fixture).map((message) =>
     error('core.contract_behavior_acceptance_lock.invalid', message, 'contract_behavior_acceptance_lock')
   );
   return createCoreValidationResult(issues);
