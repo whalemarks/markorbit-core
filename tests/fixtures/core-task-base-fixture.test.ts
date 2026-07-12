@@ -65,7 +65,7 @@ describe('core-task-base fixture', () => {
   });
 
   it('each domainId exists in CORE_DOMAIN_REGISTRY', () => {
-    const domainIds = new Set(CORE_DOMAIN_REGISTRY.map((domain) => domain.id));
+    const domainIds = new Set<string>(CORE_DOMAIN_REGISTRY.map((domain) => domain.id));
 
     for (const task of fixture) {
       assert.ok(task.domainId && domainIds.has(task.domainId));
@@ -73,7 +73,7 @@ describe('core-task-base fixture', () => {
   });
 
   it('each status is a valid CoreTaskStatus', () => {
-    const statuses = new Set(Object.values(CORE_TASK_STATUSES));
+    const statuses = new Set<string>(Object.values(CORE_TASK_STATUSES));
 
     for (const task of fixture) {
       assert.ok(task.status && statuses.has(task.status));
@@ -81,7 +81,7 @@ describe('core-task-base fixture', () => {
   });
 
   it('each priority is a valid CoreTaskPriority', () => {
-    const priorities = new Set(Object.values(CORE_TASK_PRIORITIES));
+    const priorities = new Set<string>(Object.values(CORE_TASK_PRIORITIES));
 
     for (const task of fixture) {
       assert.ok(task.priority && priorities.has(task.priority));

@@ -29,9 +29,13 @@ if (testFiles.length === 0) {
   throw new Error('No test files found.');
 }
 
-const testProcess = spawn(process.execPath, ['--test', ...testFiles], {
-  stdio: 'inherit'
-});
+const testProcess = spawn(
+  process.execPath,
+  ['--import', 'tsx', '--test', ...testFiles],
+  {
+    stdio: 'inherit'
+  }
+);
 
 testProcess.on('exit', (code, signal) => {
   if (signal) {

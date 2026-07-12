@@ -37,7 +37,7 @@ describe('core-object-base fixture', () => {
   });
 
   it('uses domain ids that exist in CORE_DOMAIN_REGISTRY', () => {
-    const domainIds = new Set(CORE_DOMAIN_REGISTRY.map((domain) => domain.id));
+    const domainIds = new Set<string>(CORE_DOMAIN_REGISTRY.map((domain) => domain.id));
 
     for (const object of fixture) {
       assert.ok(object.domainId && domainIds.has(object.domainId));
@@ -45,7 +45,7 @@ describe('core-object-base fixture', () => {
   });
 
   it('uses valid CoreObjectStatus values', () => {
-    const statuses = new Set(Object.values(CORE_OBJECT_STATUSES));
+    const statuses = new Set<string>(Object.values(CORE_OBJECT_STATUSES));
 
     for (const object of fixture) {
       assert.ok(object.status && statuses.has(object.status));

@@ -4,7 +4,7 @@ import { describe, it } from 'node:test';
 import { CORE_API_CONTRACT_SKELETONS, CORE_DOMAIN_CONTRACT_TARGETS, CORE_DOMAIN_REGISTRY, EXCLUDED_CORE_API_CONCEPTS, validateCoreApiContractSkeletons } from '../../src/index.ts';
 
 const kebabCasePattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
-const domainIds = new Set(CORE_DOMAIN_REGISTRY.map((domain) => domain.id));
+const domainIds = new Set<string>(CORE_DOMAIN_REGISTRY.map((domain) => domain.id));
 
 describe('Core API Contract Skeletons', () => {
   it('has exactly 34 entries', () => {

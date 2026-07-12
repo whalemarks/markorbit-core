@@ -3,7 +3,7 @@ import { describe, it } from 'node:test';
 
 import { CORE_DOMAIN_REGISTRY, CORE_POLICY_CONTRACT_SKELETONS, EXCLUDED_CORE_POLICY_CONCEPTS, validateCorePolicyContractSkeletons } from '../../src/index.ts';
 
-const domainIds = new Set(CORE_DOMAIN_REGISTRY.map((domain) => domain.id));
+const domainIds = new Set<string>(CORE_DOMAIN_REGISTRY.map((domain) => domain.id));
 const kebabCasePattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 
 describe('Core Policy Contract Skeletons', () => {

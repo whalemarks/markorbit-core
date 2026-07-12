@@ -3,7 +3,7 @@ import { describe, it } from 'node:test';
 
 import { CORE_DOMAIN_REGISTRY, CORE_PERMISSION_CONTRACT_SKELETONS, EXCLUDED_CORE_PERMISSION_CONCEPTS, validateCorePermissionContractSkeletons } from '../../src/index.ts';
 
-const domainIds = new Set(CORE_DOMAIN_REGISTRY.map((domain) => domain.id));
+const domainIds = new Set<string>(CORE_DOMAIN_REGISTRY.map((domain) => domain.id));
 const kebabCasePattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 
 describe('Core Permission Contract Skeletons', () => {

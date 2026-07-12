@@ -39,6 +39,21 @@ describe('Core Contract Behavior Coverage Baseline', () => {
     assert.equal(workflow?.status, 'meets_minimum_depth');
   });
 
+  it('locks the generic Event source path to the canonical event document', () => {
+    const events = CORE_CONTRACT_BEHAVIOR_COVERAGE_TARGETS.find(
+      (entry) => entry.id === 'events'
+    );
+
+    assert.equal(
+      events?.sourcePath,
+      'books/book-02-core-specification/core-specs/objects/event.md'
+    );
+    assert.notEqual(
+      events?.sourcePath,
+      'books/book-02-core-specification/core-specs/objects/event-object.md'
+    );
+  });
+
   it('keeps Policy Engine document-only', () => {
     const policyEngine = CORE_CONTRACT_BEHAVIOR_COVERAGE_TARGETS.find(
       (entry) => entry.id === 'policy-engine'
@@ -51,7 +66,7 @@ describe('Core Contract Behavior Coverage Baseline', () => {
   it('rejects changed behavior depth claims', () => {
     const changed = structuredClone(
       CORE_CONTRACT_BEHAVIOR_COVERAGE_BASELINE
-    ) as { targets: { currentDepth: number }[] };
+    ) as unknown as { targets: { currentDepth: number }[] };
     changed.targets[0].currentDepth = 2;
     assert.ok(validateCoreContractBehaviorCoverageBaseline(changed).length > 0);
   });

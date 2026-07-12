@@ -3,7 +3,7 @@ import { describe, it } from 'node:test';
 
 import { CORE_DOMAIN_CONTRACT_TARGETS, CORE_DOMAIN_REGISTRY, CORE_OBJECT_CONTRACT_SKELETONS, validateCoreObjectContractSkeletons } from '../../src/index.ts';
 
-const requiredBaseFields = ['id', 'type', 'domainId', 'status', 'version', 'metadata'];
+const requiredBaseFields = ['id', 'type', 'domainId', 'status', 'version', 'metadata'] as const;
 const excludedConcepts = ['execution-context', 'execution-runtime', 'artifact', 'render-job', 'publish-package', 'distillery-output', 'workplace-item', 'lite-record', 'markreg-case', 'product-screen', 'workflow-runtime-instance', 'task-runtime-instance', 'ai-agent-session'];
 
 describe('CORE_OBJECT_CONTRACT_SKELETONS', () => {
@@ -12,7 +12,7 @@ describe('CORE_OBJECT_CONTRACT_SKELETONS', () => {
   it('all skeleton ids are unique', () => assert.equal(new Set(CORE_OBJECT_CONTRACT_SKELETONS.map((c) => c.id)).size, 26));
   it('all objectTypes are unique', () => assert.equal(new Set(CORE_OBJECT_CONTRACT_SKELETONS.map((c) => c.objectType)).size, 26));
   it('every domainId exists in CORE_DOMAIN_REGISTRY', () => {
-    const domainIds = new Set(CORE_DOMAIN_REGISTRY.map((domain) => domain.id));
+    const domainIds = new Set<string>(CORE_DOMAIN_REGISTRY.map((domain) => domain.id));
     assert.ok(CORE_OBJECT_CONTRACT_SKELETONS.every((contract) => domainIds.has(contract.domainId)));
   });
   it('no excluded object concepts are present', () => {

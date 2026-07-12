@@ -1,17 +1,14 @@
+import js from '@eslint/js';
+import tseslint from 'typescript-eslint';
+
 export default [
   {
-    ignores: [
-      'coverage/',
-      'dist/',
-      'node_modules/',
-      'pnpm-lock.yaml',
-      'tests/**/*.ts',
-      'src/**/*.ts',
-      'vitest.config.ts'
-    ]
+    ignores: ['coverage/', 'dist/', 'node_modules/', 'pnpm-lock.yaml']
   },
+  js.configs.recommended,
+  ...tseslint.configs.recommended,
   {
-    files: ['**/*.js'],
+    files: ['scripts/**/*.mjs', 'eslint.config.js'],
     languageOptions: {
       ecmaVersion: 'latest',
       sourceType: 'module',
@@ -19,10 +16,22 @@ export default [
         console: 'readonly',
         process: 'readonly'
       }
+    }
+  },
+  {
+    files: ['src/**/*.ts', 'tests/**/*.ts'],
+    languageOptions: {
+      parserOptions: {
+        projectService: true,
+        tsconfigRootDir: import.meta.dirname
+      }
     },
     rules: {
-      'no-unused-vars': 'error',
-      'no-undef': 'error'
+      '@typescript-eslint/no-explicit-any': 'off',
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        { argsIgnorePattern: '^_', varsIgnorePattern: '^_' }
+      ]
     }
   }
 ];

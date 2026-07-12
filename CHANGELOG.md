@@ -1,5 +1,13 @@
 # Changelog
 
+## CORE-TASK-032 — Validation and Traceability Lock
+
+- Declared repository-local TypeScript, ESLint, Prettier, tsx, and Node.js type dependencies for reproducible validation.
+- Added a Node.js 20 and 22 GitHub Actions validation matrix for typecheck, lint, format check, fixtures, tests, and contract/behavior reports.
+- Scoped formatting checks to task-governed tooling, workflow, script, and documentation files to avoid repository-wide formatting churn.
+- Corrected the behavior-coverage Event source path to `books/book-02-core-specification/core-specs/objects/event.md` and added a focused regression assertion rejecting the legacy path.
+- Added no Core business behavior change, Phase 4 acceptance, Book 02 MVP completion, or production-readiness claim.
+
 ## CORE-TASK-031 — Event Trace and Pagination Hooks
 
 - Added append-only Event trace handoff, duplicate protection, and visibility filtering.

@@ -3,7 +3,7 @@ import { describe, it } from 'node:test';
 
 import { CORE_DOMAIN_CONTRACT_SKELETONS, CORE_DOMAIN_REGISTRY, validateCoreDomainContractSkeletons } from '../../src/index.ts';
 
-const excluded = ['capability', 'business-responsibility', 'artifact', 'render', 'publish', 'distillery', 'execution-context', 'execution-runtime', 'workplace', 'lite', 'markreg', 'product', 'integration'];
+const excluded = new Set<string>(['capability', 'business-responsibility', 'artifact', 'render', 'publish', 'distillery', 'execution-context', 'execution-runtime', 'workplace', 'lite', 'markreg', 'product', 'integration']);
 
 describe('Core Domain Contract Skeletons', () => {
   it('has exactly 26 entries', () => assert.equal(CORE_DOMAIN_CONTRACT_SKELETONS.length, 26));
@@ -20,8 +20,10 @@ describe('Core Domain Contract Skeletons', () => {
     assert.deepEqual(CORE_DOMAIN_CONTRACT_SKELETONS.map((c) => c.domainId), CORE_DOMAIN_REGISTRY.map((d) => d.id));
   });
   it('no excluded concepts are present', () => {
-    const ids = CORE_DOMAIN_CONTRACT_SKELETONS.map((c) => c.domainId);
-    for (const id of excluded) assert.equal(ids.includes(id), false);
+    const ids = new Set<string>(
+      CORE_DOMAIN_CONTRACT_SKELETONS.map((c) => c.domainId)
+    );
+    for (const id of excluded) assert.equal(ids.has(id), false);
   });
   it('each skeleton has non-empty purpose, owns array, and nonGoals array', () => {
     for (const c of CORE_DOMAIN_CONTRACT_SKELETONS) {
