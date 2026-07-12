@@ -59,3 +59,5 @@ jobs:
 
       - name: Behavior gaps
         run: pnpm gaps:behavior
+      - name: Behavior acceptance
+        run: pnpm acceptance:behavior

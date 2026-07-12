@@ -24,6 +24,7 @@ import {
   validateCoreContractCoverageAcceptanceLockFixture,
   validateCoreContractBehaviorCoverageBaselineFixture,
   validateCoreContractBehaviorGapInventoryFixture,
+  validateCoreContractBehaviorAcceptanceLockFixture,
   validateCoreSafetyBoundaryFoundationsFixture,
   validateCoreIdempotencyEnforcementFixture
 } from '../../src/index.ts';
@@ -53,6 +54,7 @@ describe('core fixture validation', () => {
     assert.equal(validateCoreContractCoverageAcceptanceLockFixture(await readFixture('fixtures/contract-coverage/core-contract-coverage-acceptance-lock.fixture.json')).ok, true);
     assert.equal(validateCoreContractBehaviorCoverageBaselineFixture(await readFixture('fixtures/behavior-coverage/core-contract-behavior-coverage-baseline.fixture.json')).ok, true);
     assert.equal(validateCoreContractBehaviorGapInventoryFixture(await readFixture('fixtures/behavior-coverage/core-contract-behavior-gap-inventory.fixture.json')).ok, true);
+    assert.equal(validateCoreContractBehaviorAcceptanceLockFixture(await readFixture('fixtures/behavior-coverage/core-contract-behavior-acceptance-lock.fixture.json')).ok, true);
     assert.equal(validateCoreSafetyBoundaryFoundationsFixture(await readFixture('fixtures/behaviors/core-safety-boundary-foundations.fixture.json')).ok, true);
     assert.equal(validateCoreIdempotencyEnforcementFixture(await readFixture('fixtures/behaviors/core-idempotency-enforcement.fixture.json')).ok, true);
   });
@@ -61,6 +63,19 @@ describe('core fixture validation', () => {
     const fixture = structuredClone(await readFixture('fixtures/behaviors/core-safety-boundary-foundations.fixture.json')) as Record<string, unknown>;
     fixture.version = '9.9.9';
     assert.equal(validateCoreSafetyBoundaryFoundationsFixture(fixture).ok, false);
+  });
+
+
+  it('behavior acceptance lock validator rejects evidence drift', async () => {
+    const fixture = structuredClone(await readFixture('fixtures/behavior-coverage/core-contract-behavior-acceptance-lock.fixture.json')) as Record<string, unknown>;
+    const evidence = fixture.evidence as Record<string, unknown>[];
+    assert.equal(validateCoreContractBehaviorAcceptanceLockFixture({ ...fixture, evidence: evidence.slice(1) }).ok, false);
+    evidence[0].implementationTasks = ['CORE-TASK-999'];
+    assert.equal(validateCoreContractBehaviorAcceptanceLockFixture(fixture).ok, false);
+    evidence[0].implementationTasks = ['CORE-TASK-028'];
+    evidence[0].sourceFiles = [];
+    assert.equal(validateCoreContractBehaviorAcceptanceLockFixture(fixture).ok, false);
+    assert.equal(validateCoreContractBehaviorAcceptanceLockFixture({ ...fixture, nonGoals: [] }).ok, false);
   });
 
   it('behavior gap inventory validator rejects changed batch', async () => {

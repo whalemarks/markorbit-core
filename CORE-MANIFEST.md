@@ -6,7 +6,7 @@
 
 ## Current phase
 
-Phase 4 — Contract Behavior Coverage started.
+Phase 4 — Selected Core Behavior Hook Acceptance completed.
 
 ## Current status
 
@@ -55,10 +55,19 @@ Phase 4 — Contract Behavior Coverage started.
 - Current Domain-layer coverage is 26 Domain, 26 Object, 26 Service, 26 Domain-mapped API, 4 Event, and 6 Workflow.
 - Gap Inventory maps 22 existing Domain targets and locks 81 canonical skeleton additions across five batches.
 - CORE-TASK-020 through CORE-TASK-024 have completed all 81 canonical targets; 0 remain.
-- Required fixture manifest now contains 23 entries.
+- Required fixture manifest now contains 25 entries.
 - CORE-TASK-025 locks the final structural acceptance state: 187 indexed contracts, 12/12 families, 26/26 required-layer-complete Domains, and 81/81 controlled targets.
-- Runtime, behavior, and production readiness remain outside the accepted scope.
-- CORE-TASK-032 locks repository-local TypeScript, ESLint, Prettier, test, fixture-reporting, and CI validation commands while keeping Phase 4 unaccepted and Book 02 MVP incomplete.
+- Selected cross-cutting behavior hooks are accepted at minimum depth; Domain business behavior and broader runtime readiness are not accepted.
+- CORE-TASK-032 locks repository-local TypeScript, ESLint, Prettier, test, fixture-reporting, and CI validation commands. Book 02 MVP remains incomplete.
+- 14/14 selected behavior targets accepted.
+- 11/11 Must Build Now targets accepted.
+- 12 implemented-batch targets.
+- 2 preexisting-minimum targets.
+- 4/4 implementation batches accepted.
+- Domain contract behavior-tested: 0/26.
+- Book 02 MVP remains incomplete.
+- Execution System remains unimplemented.
+- Production readiness remains unaccepted.
 
 ## Current scope
 
@@ -120,7 +129,7 @@ Every change should keep the TypeScript project buildable, tests passing, lint c
 
 ## Next tasks
 
-- CORE-TASK-033 — next governed Core task after validation and traceability lock.
+- CORE-TASK-034 — Book 02 MVP Gap Baseline Lock.
 
 ## CORE-TASK-009 Status
 

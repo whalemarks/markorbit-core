@@ -1,7 +1,7 @@
 import { CORE_CONTRACT_INDEX, validateCoreContractIndex, validateCoreDomainContractSkeletons, validateCoreObjectContractSkeletons, validateCoreServiceContractSkeletons, validateCoreApiContractSkeletons, validateCoreEventCatalogSkeletons, validateCoreWorkflowCatalogSkeletons, validateCorePermissionContractSkeletons, validateCorePolicyContractSkeletons, validateCoreAiGovernanceContractSkeletons, validateCoreCommonContractSkeletons, validateCoreTestContractSkeletons, type CoreApiContract, type CoreDomainContract, type CoreObjectContract, type CoreServiceContract, type CoreEventCatalogEntry, type CoreWorkflowCatalogEntry, type CorePermissionContract, type CorePolicyContract, type CoreAiGovernanceContract, type CoreCommonContract, type CoreTestContract } from '../contracts/index.ts';
 import { validateCoreContractCoverageBaseline, validateCoreContractCoverageAcceptanceLock } from '../contract-coverage/index.ts';
 import { validateCoreContractGapInventory } from '../contract-coverage/index.ts';
-import { validateCoreContractBehaviorCoverageBaseline } from '../behavior-coverage/index.ts';
+import { validateCoreContractBehaviorCoverageBaseline, validateCoreContractBehaviorAcceptanceLock } from '../behavior-coverage/index.ts';
 import { validateCoreContractBehaviorGapInventory } from '../behavior-coverage/index.ts';
 import { CORE_IDEMPOTENCY_FIXTURE, CORE_SAFETY_BOUNDARY_FIXTURE, CoreAgentBoundaryRegistry, CoreIdempotencyRegistry, CoreReferenceRegistry, validateCoreAiContext, validateCoreVersion } from '../behaviors/index.ts';
 import { CORE_DOMAIN_REGISTRY } from '../domains/index.ts';
@@ -279,6 +279,13 @@ export function validateCoreContractCoverageAcceptanceLockFixture(fixture: unkno
 export function validateCoreContractBehaviorCoverageBaselineFixture(fixture: unknown): CoreValidationResult {
   const issues = validateCoreContractBehaviorCoverageBaseline(fixture).map((message) =>
     error('core.contract_behavior_coverage_baseline.invalid', message, 'contract_behavior_coverage_baseline')
+  );
+  return createCoreValidationResult(issues);
+}
+
+export function validateCoreContractBehaviorAcceptanceLockFixture(fixture: unknown): CoreValidationResult {
+  const issues = validateCoreContractBehaviorAcceptanceLock(fixture).map((message) =>
+    error('core.contract_behavior_acceptance_lock.invalid', message, 'contract_behavior_acceptance_lock')
   );
   return createCoreValidationResult(issues);
 }
