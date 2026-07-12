@@ -19,10 +19,10 @@ describe('Core Contract Behavior Coverage Baseline', () => {
 
   it('reports the current behavior depth without treating skeletons as behavior', () => {
     const summary = CORE_CONTRACT_BEHAVIOR_COVERAGE_BASELINE.summary;
-    assert.equal(summary.meetsMinimumDepthCount, 2);
+    assert.equal(summary.meetsMinimumDepthCount, 7);
     assert.equal(summary.partialTargetCount, 1);
-    assert.equal(summary.notImplementedTargetCount, 11);
-    assert.equal(summary.mustBuildNowMeetsMinimumDepthCount, 0);
+    assert.equal(summary.notImplementedTargetCount, 6);
+    assert.equal(summary.mustBuildNowMeetsMinimumDepthCount, 4);
     assert.equal(summary.behaviorAcceptanceReady, false);
   });
 
@@ -52,7 +52,7 @@ describe('Core Contract Behavior Coverage Baseline', () => {
     const changed = structuredClone(
       CORE_CONTRACT_BEHAVIOR_COVERAGE_BASELINE
     ) as { targets: { currentDepth: number }[] };
-    changed.targets[0].currentDepth = 3;
+    changed.targets[0].currentDepth = 2;
     assert.ok(validateCoreContractBehaviorCoverageBaseline(changed).length > 0);
   });
 });

@@ -43,14 +43,14 @@ export const CORE_CONTRACT_BEHAVIOR_COVERAGE_TARGETS = [
     mvpCategory: 'must_build_now',
     requiredMinimumDepth: 3,
     requiredMaximumDepth: 3,
-    currentDepth: 0,
+    currentDepth: 3,
     sourcePath: `${root}/contracts/common/references.md`,
-    currentEvidence: ['Validated Reference Contract skeleton only.'],
-    missingBehavior: [
-      'Reference schema validation.',
-      'Reference resolution.',
-      'Real fail-closed enforcement.'
-    ]
+    currentEvidence: [
+      'Typed public reference validation.',
+      'Deterministic in-memory reference resolution.',
+      'Fail-closed invalid, missing, mismatched, status, and deleted-reference behavior.'
+    ],
+    missingBehavior: []
   }),
   target({
     id: 'errors',
@@ -58,14 +58,14 @@ export const CORE_CONTRACT_BEHAVIOR_COVERAGE_TARGETS = [
     mvpCategory: 'must_build_now',
     requiredMinimumDepth: 3,
     requiredMaximumDepth: 3,
-    currentDepth: 0,
+    currentDepth: 3,
     sourcePath: `${root}/contracts/common/errors.md`,
-    currentEvidence: ['Validated Error Contract skeleton only.'],
-    missingBehavior: [
-      'Safe error construction.',
-      'Leakage prevention.',
-      'Real error enforcement.'
-    ]
+    currentEvidence: [
+      'Controlled safe error construction.',
+      'Unsafe SQL, stack, credential, prompt, and database detail suppression.',
+      'Deterministic safe fallback messages.'
+    ],
+    missingBehavior: []
   }),
   target({
     id: 'permission',
@@ -147,16 +147,14 @@ export const CORE_CONTRACT_BEHAVIOR_COVERAGE_TARGETS = [
     mvpCategory: 'must_build_now',
     requiredMinimumDepth: 1,
     requiredMaximumDepth: 1,
-    currentDepth: 0,
+    currentDepth: 1,
     sourcePath: `${root}/contracts/common/versioning.md`,
     currentEvidence: [
-      'Validated Versioning Contract skeleton only.',
-      'Generic positive version fields do not implement unsupported-version handling.'
-    ],
-    missingBehavior: [
-      'Version schema validation.',
+      'Contract-facing semantic version validation.',
+      'Supported-version allowlist enforcement.',
       'Unsupported-version fail-closed behavior.'
-    ]
+    ],
+    missingBehavior: []
   }),
   target({
     id: 'pagination',
@@ -179,13 +177,13 @@ export const CORE_CONTRACT_BEHAVIOR_COVERAGE_TARGETS = [
     mvpCategory: 'must_build_now',
     requiredMinimumDepth: 1,
     requiredMaximumDepth: 1,
-    currentDepth: 0,
+    currentDepth: 1,
     sourcePath: `${root}/contracts/common/ai-context.md`,
-    currentEvidence: ['Validated AI Context and AI Governance skeletons only.'],
-    missingBehavior: [
-      'AI context schema validation.',
-      'Boundary metadata validation.'
-    ]
+    currentEvidence: [
+      'AI assistance, Agent identity, capability, data scope, output mode, source trace, and review metadata validation.',
+      'AI-generated output disclosure enforcement.'
+    ],
+    missingBehavior: []
   }),
   target({
     id: 'human-review',
@@ -209,13 +207,15 @@ export const CORE_CONTRACT_BEHAVIOR_COVERAGE_TARGETS = [
     mvpCategory: 'stub_now',
     requiredMinimumDepth: 1,
     requiredMaximumDepth: 1,
-    currentDepth: 0,
+    currentDepth: 1,
     sourcePath: `${root}/implementation/mvp-cut-v0.1.md`,
-    currentEvidence: ['AI Governance skeleton collection only.'],
-    missingBehavior: [
-      'Capability registry validation.',
-      'Forbidden-action boundary tests.'
-    ]
+    currentEvidence: [
+      'Deterministic Agent registry validation.',
+      'Capability allowlist enforcement.',
+      'Forbidden, out-of-scope, suspended, and revoked Agent rejection.',
+      'Permission/Policy evaluation remains explicitly required downstream.'
+    ],
+    missingBehavior: []
   }),
   target({
     id: 'workflow-engine',

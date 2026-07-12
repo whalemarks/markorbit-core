@@ -28,6 +28,21 @@ const baselineById = new Map(
   CORE_CONTRACT_BEHAVIOR_COVERAGE_TARGETS.map((entry) => [entry.id, entry])
 );
 
+const depthAtInventoryLock = new Map<string, CoreBehaviorDepthLevel>([
+  ['references', 0],
+  ['errors', 0],
+  ['versioning', 0],
+  ['ai-context', 0],
+  ['agent-runtime', 0],
+  ['idempotency', 0],
+  ['permission', 0],
+  ['policy', 0],
+  ['audit-context', 0],
+  ['human-review', 0],
+  ['events', 1],
+  ['pagination', 0]
+]);
+
 function gap(
   behaviorId: string,
   implementationBatch: string,
@@ -38,11 +53,15 @@ function gap(
   if (baseline === undefined)
     throw new Error(`Unknown behavior coverage target: ${behaviorId}.`);
 
+  const currentDepth = depthAtInventoryLock.get(behaviorId);
+  if (currentDepth === undefined)
+    throw new Error(`Missing inventory-lock depth: ${behaviorId}.`);
+
   return {
     behaviorId,
-    currentDepth: baseline.currentDepth,
+    currentDepth,
     targetDepth: baseline.requiredMinimumDepth,
-    depthIncrement: baseline.requiredMinimumDepth - baseline.currentDepth,
+    depthIncrement: baseline.requiredMinimumDepth - currentDepth,
     sourcePath: baseline.sourcePath,
     requiredBehavior,
     dependencies,

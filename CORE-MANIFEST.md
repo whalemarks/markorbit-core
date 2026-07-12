@@ -55,7 +55,7 @@ Phase 4 — Contract Behavior Coverage started.
 - Current Domain-layer coverage is 26 Domain, 26 Object, 26 Service, 26 Domain-mapped API, 4 Event, and 6 Workflow.
 - Gap Inventory maps 22 existing Domain targets and locks 81 canonical skeleton additions across five batches.
 - CORE-TASK-020 through CORE-TASK-024 have completed all 81 canonical targets; 0 remain.
-- Required fixture manifest now contains 22 entries.
+- Required fixture manifest now contains 23 entries.
 - CORE-TASK-025 locks the final structural acceptance state: 187 indexed contracts, 12/12 families, 26/26 required-layer-complete Domains, and 81/81 controlled targets.
 - Runtime, behavior, and production readiness remain outside the accepted scope.
 
@@ -119,7 +119,7 @@ Every change should keep the TypeScript project buildable, tests passing, lint c
 
 ## Next tasks
 
-- CORE-TASK-028 — Safety and Boundary Foundations.
+- CORE-TASK-029 — Idempotency Enforcement.
 
 ## CORE-TASK-009 Status
 
@@ -303,3 +303,13 @@ Next recommended task: CORE-TASK-013 — Core Event Catalog Skeleton.
 - Added an exact inventory validator, required fixture, tests, architecture record, and `pnpm gaps:behavior`.
 - Added no behavior implementation or Execution System runtime.
 - Next recommended task: CORE-TASK-028 — Safety and Boundary Foundations.
+
+## CORE-TASK-028 — Safety and Boundary Foundations
+
+- Added real Core behavior for Reference resolution and Safe Error enforcement at Level 3.
+- Added Versioning, AI Context, and Agent boundary validation at Level 1.
+- Added deterministic behavior fixtures and executable negative tests.
+- Behavior coverage is now 7 minimum-satisfied, 1 partial, and 6 not implemented; 4/11 Must Build Now targets meet minimum depth.
+- Agent capability acceptance still requires downstream Permission and Policy evaluation.
+- No database, external integration, model execution, Event emission, or professional authority was added.
+- Next recommended task: CORE-TASK-029 — Idempotency Enforcement.

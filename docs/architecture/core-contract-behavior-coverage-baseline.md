@@ -20,13 +20,13 @@
 | Measure                         | Current result |
 | ------------------------------- | -------------: |
 | Book 2 behavior targets         |             14 |
-| Meets minimum depth             |              2 |
+| Meets minimum depth             |              7 |
 | Partial                         |              1 |
-| Not implemented                 |             11 |
-| Must Build Now at minimum depth |         0 / 11 |
+| Not implemented                 |              6 |
+| Must Build Now at minimum depth |         4 / 11 |
 | Behavior acceptance ready       |             No |
 
-Workflow Engine currently meets only the minimum Stub Now depth because generic Workflow shape and canonical skeleton validation exist. Policy Engine meets its Level 0 document-only requirement. Events have Level 1 evidence but remain below the required Level 2 trace-hook depth. The remaining targets have structural skeletons but no credited behavior implementation.
+CORE-TASK-028 brings References and Errors to Level 3 and Versioning, AI Context, and Agent Runtime to their Level 1 minimums. Workflow Engine and Policy Engine remain minimum-satisfied. Events remain partial at Level 1. Six Must Build Now targets remain below minimum depth.
 
 ## Boundary
 

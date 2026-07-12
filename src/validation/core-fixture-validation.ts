@@ -3,6 +3,7 @@ import { validateCoreContractCoverageBaseline, validateCoreContractCoverageAccep
 import { validateCoreContractGapInventory } from '../contract-coverage/index.ts';
 import { validateCoreContractBehaviorCoverageBaseline } from '../behavior-coverage/index.ts';
 import { validateCoreContractBehaviorGapInventory } from '../behavior-coverage/index.ts';
+import { CORE_SAFETY_BOUNDARY_FIXTURE, CoreAgentBoundaryRegistry, CoreReferenceRegistry, validateCoreAiContext, validateCoreVersion } from '../behaviors/index.ts';
 import { CORE_DOMAIN_REGISTRY } from '../domains/index.ts';
 import { CORE_OBJECT_STATUSES } from '../objects/index.ts';
 import type { CoreEvent } from '../events/index.ts';
@@ -286,6 +287,24 @@ export function validateCoreContractBehaviorGapInventoryFixture(fixture: unknown
   const issues = validateCoreContractBehaviorGapInventory(fixture).map((message) =>
     error('core.contract_behavior_gap_inventory.invalid', message, 'contract_behavior_gap_inventory')
   );
+  return createCoreValidationResult(issues);
+}
+
+export function validateCoreSafetyBoundaryFoundationsFixture(fixture: unknown): CoreValidationResult {
+  const issues: CoreValidationIssue[] = [];
+  if (JSON.stringify(fixture) !== JSON.stringify(CORE_SAFETY_BOUNDARY_FIXTURE)) {
+    issues.push(error('core.safety_boundary_foundations.fixture_mismatch', 'Safety boundary fixture must match the canonical deterministic fixture.', 'safety_boundary_foundations'));
+    return createCoreValidationResult(issues);
+  }
+  const value = fixture as typeof CORE_SAFETY_BOUNDARY_FIXTURE;
+  const references = new CoreReferenceRegistry(value.referenceRecords);
+  const agents = new CoreAgentBoundaryRegistry(value.agentRegistry);
+  if (!references.resolve({ referenceId: 'brand:alpha', expectedObjectType: 'Brand', expectedDomain: 'brand' }).ok)
+    issues.push(error('core.safety_boundary_foundations.reference_failed', 'Canonical reference behavior must pass.', 'safety_boundary_foundations.referenceRecords'));
+  if (!validateCoreAiContext(value.validAiContext, agents).ok)
+    issues.push(error('core.safety_boundary_foundations.ai_context_failed', 'Canonical AI context behavior must pass.', 'safety_boundary_foundations.validAiContext'));
+  if (!validateCoreVersion({ contractVersion: 'v0.1.0' }, value.supportedContractVersions).ok)
+    issues.push(error('core.safety_boundary_foundations.version_failed', 'Canonical version behavior must pass.', 'safety_boundary_foundations.supportedContractVersions'));
   return createCoreValidationResult(issues);
 }
 
