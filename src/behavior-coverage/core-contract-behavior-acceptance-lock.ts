@@ -396,7 +396,7 @@ export function validateCoreContractBehaviorAcceptanceLock(
       target.implementationBatch
     ])
   );
-  const exclusions = new Set(
+  const exclusions = new Set<string>(
     CORE_CONTRACT_BEHAVIOR_GAP_INVENTORY.excludedFromMinimumDepthWork.map(
       (entry) => entry.behaviorId
     )
