@@ -3,9 +3,7 @@ export type CoreBehaviorDepthLevel =
   (typeof CORE_BEHAVIOR_DEPTH_LEVELS)[number];
 
 export type CoreBehaviorCoverageStatus =
-  | 'meets_minimum_depth'
-  | 'partial'
-  | 'not_implemented';
+  'meets_minimum_depth' | 'partial' | 'not_implemented';
 
 export interface CoreBehaviorCoverageTarget {
   readonly id: string;
