@@ -25,11 +25,11 @@ describe('Core Event Catalog Skeletons', () => {
   it('all skeleton ids are unique', () => assert.equal(new Set(CORE_EVENT_CATALOG_SKELETONS.map((entry) => entry.id)).size, 12));
   it('all eventTypes are unique', () => assert.equal(new Set(CORE_EVENT_CATALOG_SKELETONS.map((entry) => entry.eventType)).size, 12));
   it('every domainId exists in CORE_DOMAIN_REGISTRY', () => {
-    const domainIds = new Set(CORE_DOMAIN_REGISTRY.map((domain) => domain.id));
+    const domainIds = new Set<string>(CORE_DOMAIN_REGISTRY.map((domain) => domain.id));
     for (const entry of CORE_EVENT_CATALOG_SKELETONS) assert.equal(domainIds.has(entry.domainId), true);
   });
   it('every action is valid CoreEventAction', () => {
-    const actions = new Set(Object.values(CORE_EVENT_ACTIONS));
+    const actions = new Set<string>(Object.values(CORE_EVENT_ACTIONS));
     for (const entry of CORE_EVENT_CATALOG_SKELETONS) assert.equal(actions.has(entry.action), true);
   });
   it('no excluded event concepts are present', () => {

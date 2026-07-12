@@ -7,18 +7,27 @@
   "packageManager": "pnpm@10.28.1",
   "scripts": {
     "test": "node scripts/run-tests.mjs",
-    "lint": "eslint .",
+    "lint": "eslint \"src/**/*.ts\" \"tests/**/*.ts\" \"scripts/**/*.mjs\" eslint.config.js",
     "typecheck": "tsc --noEmit",
-    "format": "prettier --write .",
-    "format:check": "prettier --check .",
-    "validate:fixtures": "node scripts/validate-core-fixtures.mjs",
-    "coverage:contracts": "node scripts/report-core-contract-coverage.mjs",
-    "gaps:contracts": "node scripts/report-core-contract-gaps.mjs",
-    "acceptance:contracts": "node scripts/report-core-contract-coverage-acceptance.mjs",
-    "coverage:behavior": "node scripts/report-core-contract-behavior-coverage.mjs",
-    "gaps:behavior": "node scripts/report-core-contract-behavior-gaps.mjs"
+    "format": "prettier --write package.json tsconfig.json eslint.config.js scripts/run-tests.mjs .github/**/*.yml README.md CORE-MANIFEST.md CORE-ROADMAP.md CHANGELOG.md src/behavior-coverage/core-contract-behavior-coverage-baseline.ts tests/unit/core-contract-behavior-coverage-baseline.test.ts fixtures/behavior-coverage/core-contract-behavior-coverage-baseline.fixture.json fixtures/behavior-coverage/core-contract-behavior-gap-inventory.fixture.json",
+    "format:check": "prettier --check package.json tsconfig.json eslint.config.js scripts/run-tests.mjs .github/**/*.yml README.md CORE-MANIFEST.md CORE-ROADMAP.md CHANGELOG.md src/behavior-coverage/core-contract-behavior-coverage-baseline.ts tests/unit/core-contract-behavior-coverage-baseline.test.ts fixtures/behavior-coverage/core-contract-behavior-coverage-baseline.fixture.json fixtures/behavior-coverage/core-contract-behavior-gap-inventory.fixture.json",
+    "validate:fixtures": "tsx scripts/validate-core-fixtures.mjs",
+    "coverage:contracts": "tsx scripts/report-core-contract-coverage.mjs",
+    "gaps:contracts": "tsx scripts/report-core-contract-gaps.mjs",
+    "acceptance:contracts": "tsx scripts/report-core-contract-coverage-acceptance.mjs",
+    "coverage:behavior": "tsx scripts/report-core-contract-behavior-coverage.mjs",
+    "gaps:behavior": "tsx scripts/report-core-contract-behavior-gaps.mjs"
   },
   "engines": {
     "node": ">=20.0.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.28.0",
+    "@types/node": "^22.15.29",
+    "eslint": "^9.28.0",
+    "prettier": "^3.5.3",
+    "tsx": "^4.19.4",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.33.0"
   }
 }

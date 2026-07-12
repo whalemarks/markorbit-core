@@ -58,6 +58,7 @@ Phase 4 — Contract Behavior Coverage started.
 - Required fixture manifest now contains 23 entries.
 - CORE-TASK-025 locks the final structural acceptance state: 187 indexed contracts, 12/12 families, 26/26 required-layer-complete Domains, and 81/81 controlled targets.
 - Runtime, behavior, and production readiness remain outside the accepted scope.
+- CORE-TASK-032 locks repository-local TypeScript, ESLint, Prettier, test, fixture-reporting, and CI validation commands while keeping Phase 4 unaccepted and Book 02 MVP incomplete.
 
 ## Current scope
 
@@ -119,7 +120,7 @@ Every change should keep the TypeScript project buildable, tests passing, lint c
 
 ## Next tasks
 
-- CORE-TASK-029 — Idempotency Enforcement.
+- CORE-TASK-033 — next governed Core task after validation and traceability lock.
 
 ## CORE-TASK-009 Status
 
@@ -313,3 +314,10 @@ Next recommended task: CORE-TASK-013 — Core Event Catalog Skeleton.
 - Agent capability acceptance still requires downstream Permission and Policy evaluation.
 - No database, external integration, model execution, Event emission, or professional authority was added.
 - Next recommended task: CORE-TASK-029 — Idempotency Enforcement.
+
+## CORE-TASK-032 — Validation and Traceability Lock
+
+- Repository-local validation toolchain declared for TypeScript, ESLint, Prettier, tsx, and Node.js types.
+- GitHub Actions validation matrix added for Node.js 20 and 22.
+- Behavior coverage Event source path corrected from the legacy event-object path to the canonical Event source document.
+- Repository-wide formatting is intentionally excluded; Phase 4 remains unaccepted and Book 02 MVP remains incomplete.

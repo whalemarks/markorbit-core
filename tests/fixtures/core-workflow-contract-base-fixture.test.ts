@@ -70,7 +70,7 @@ describe('core-workflow-contract-base fixture', () => {
   });
 
   it('each domainId exists in CORE_DOMAIN_REGISTRY', () => {
-    const domainIds = new Set(CORE_DOMAIN_REGISTRY.map((domain) => domain.id));
+    const domainIds = new Set<string>(CORE_DOMAIN_REGISTRY.map((domain) => domain.id));
 
     for (const contract of fixture) {
       assert.ok(contract.domainId && domainIds.has(contract.domainId));
@@ -78,7 +78,7 @@ describe('core-workflow-contract-base fixture', () => {
   });
 
   it('each status is a valid CoreWorkflowContractStatus', () => {
-    const statuses = new Set(Object.values(CORE_WORKFLOW_CONTRACT_STATUSES));
+    const statuses = new Set<string>(Object.values(CORE_WORKFLOW_CONTRACT_STATUSES));
 
     for (const contract of fixture) {
       assert.ok(contract.status && statuses.has(contract.status));

@@ -85,7 +85,7 @@ describe('Core Book 2 Contract Gap Inventory', () => {
       ...CORE_CANONICAL_LAYER_TARGETS
     ];
     const ids = newTargets.map((target) => target.targetContractId);
-    const currentIds = new Set(
+    const currentIds = new Set<string>(
       CORE_CONTRACT_INDEX.map((contract) => contract.id)
     );
     assert.equal(ids.length, 81);

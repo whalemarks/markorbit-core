@@ -120,7 +120,7 @@
       "requiredMinimumDepth": 2,
       "requiredMaximumDepth": 2,
       "currentDepth": 2,
-      "sourcePath": "books/book-02-core-specification/core-specs/objects/event-object.md",
+      "sourcePath": "books/book-02-core-specification/core-specs/objects/event.md",
       "currentEvidence": [
         "Generic Event shape and catalog validation.",
         "Append-only in-memory Event trace handoff.",

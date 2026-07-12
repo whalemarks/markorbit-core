@@ -67,7 +67,7 @@ describe('Core Contract Behavior Gap Inventory', () => {
   });
 
   it('rejects changed batch assignments', () => {
-    const changed = structuredClone(CORE_CONTRACT_BEHAVIOR_GAP_INVENTORY) as {
+    const changed = structuredClone(CORE_CONTRACT_BEHAVIOR_GAP_INVENTORY) as unknown as {
       targets: { implementationBatch: string }[];
     };
     changed.targets[0].implementationBatch = 'CORE-TASK-999';

@@ -132,7 +132,7 @@ export const CORE_CONTRACT_BEHAVIOR_COVERAGE_TARGETS = [
     requiredMinimumDepth: 2,
     requiredMaximumDepth: 2,
     currentDepth: 2,
-    sourcePath: `${root}/objects/event-object.md`,
+    sourcePath: `${root}/objects/event.md`,
     currentEvidence: [
       'Generic Event shape and catalog validation.',
       'Append-only in-memory Event trace handoff.',

@@ -49,6 +49,7 @@
 - [x] Contract Behavior Gap Inventory Lock — completed/current.
 - [ ] Controlled behavior implementation batches.
 - [ ] Contract Behavior Coverage Acceptance Lock.
+- [x] Validation and traceability tooling lock — completed/current without accepting Phase 4.
 
 ## Phase 2 Update — CORE-TASK-009
 
@@ -211,3 +212,10 @@
 - Behavior coverage: 7 minimum-satisfied, 1 partial, 6 not implemented.
 - Must Build Now at minimum depth: 4 / 11.
 - Next: CORE-TASK-029 — Idempotency Enforcement.
+
+## CORE-TASK-032 — Validation and Traceability Lock
+
+- Repository-local validation commands and Node.js 20/22 CI matrix locked.
+- Event behavior-coverage traceability now references `objects/event.md` instead of the legacy `objects/event-object.md`.
+- No repository-wide formatting baseline added.
+- Phase 4 remains formally unaccepted and Book 02 MVP remains incomplete.

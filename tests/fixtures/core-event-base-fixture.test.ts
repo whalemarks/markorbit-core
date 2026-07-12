@@ -57,7 +57,7 @@ describe('core-event-base fixture', () => {
   });
 
   it('each domainId exists in CORE_DOMAIN_REGISTRY', () => {
-    const domainIds = new Set(CORE_DOMAIN_REGISTRY.map((domain) => domain.id));
+    const domainIds = new Set<string>(CORE_DOMAIN_REGISTRY.map((domain) => domain.id));
 
     for (const event of fixture) {
       assert.ok(event.domainId && domainIds.has(event.domainId));
@@ -65,7 +65,7 @@ describe('core-event-base fixture', () => {
   });
 
   it('each action is a valid CoreEventAction', () => {
-    const actions = new Set(Object.values(CORE_EVENT_ACTIONS));
+    const actions = new Set<string>(Object.values(CORE_EVENT_ACTIONS));
 
     for (const event of fixture) {
       assert.ok(event.action && actions.has(event.action));
@@ -73,7 +73,7 @@ describe('core-event-base fixture', () => {
   });
 
   it('each source.actorType is a valid CoreEventSource actorType', () => {
-    const actorTypes = new Set(Object.values(CORE_EVENT_SOURCE_ACTOR_TYPES));
+    const actorTypes = new Set<string>(Object.values(CORE_EVENT_SOURCE_ACTOR_TYPES));
 
     for (const event of fixture) {
       assert.ok(event.source?.actorType && actorTypes.has(event.source.actorType));

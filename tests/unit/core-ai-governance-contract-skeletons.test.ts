@@ -21,7 +21,7 @@ const expectedIds = [
   'core-ai-governance-human-review-requirement-contract'
 ] as const;
 
-const executableKeys = new Set(FORBIDDEN_CORE_AI_GOVERNANCE_EXECUTABLE_FIELDS);
+const executableKeys = new Set<string>(FORBIDDEN_CORE_AI_GOVERNANCE_EXECUTABLE_FIELDS);
 
 describe('Core AI Governance Contract Skeletons', () => {
   it('has exactly the 8 inventory-locked ids', () => {

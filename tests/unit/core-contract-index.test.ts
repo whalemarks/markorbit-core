@@ -8,9 +8,12 @@ import {
   createCoreContractId
 } from '../../src/index.ts';
 
+const sourceOf = (contract: (typeof CORE_CONTRACT_INDEX)[number]) =>
+  'source' in contract ? contract.source : undefined;
+
 const expectedTypes = ['domain', 'object', 'service', 'api', 'event', 'workflow', 'task', 'validation', 'permission', 'policy', 'ai_governance', 'common', 'test'];
 const expectedStatuses = ['draft', 'active', 'deprecated', 'archived'];
-const forbiddenContractIds = [
+const forbiddenContractIds = new Set<string>([
   'event-bus-created',
   'event-stream-appended',
   'event-sourced-aggregate-updated',
@@ -95,7 +98,7 @@ const forbiddenContractIds = [
   'autonomous-agent-policy',
   'bypass-review-policy',
   'bypass-permission-policy'
-];
+]);
 
 describe('Core Contract Index', () => {
   it('createCoreContractId accepts valid kebab-case ids', () => {
@@ -129,55 +132,55 @@ describe('Core Contract Index', () => {
 
 
   it('includes the original 6 foundation entries', () => {
-    assert.equal(CORE_CONTRACT_INDEX.filter((contract) => !contract.source).length, 6);
+    assert.equal(CORE_CONTRACT_INDEX.filter((contract) => !sourceOf(contract)).length, 6);
   });
 
   it('includes exactly 26 domain contract entries', () => {
-    assert.equal(CORE_CONTRACT_INDEX.filter((contract) => contract.source === 'CORE_DOMAIN_CONTRACT_SKELETONS').length, 26);
+    assert.equal(CORE_CONTRACT_INDEX.filter((contract) => sourceOf(contract) === 'CORE_DOMAIN_CONTRACT_SKELETONS').length, 26);
   });
 
   it('includes exactly 26 object contract entries', () => {
-    assert.equal(CORE_CONTRACT_INDEX.filter((contract) => contract.source === 'CORE_OBJECT_CONTRACT_SKELETONS').length, 26);
+    assert.equal(CORE_CONTRACT_INDEX.filter((contract) => sourceOf(contract) === 'CORE_OBJECT_CONTRACT_SKELETONS').length, 26);
   });
 
   it('includes exactly 26 service contract entries', () => {
-    assert.equal(CORE_CONTRACT_INDEX.filter((contract) => contract.source === 'CORE_SERVICE_CONTRACT_SKELETONS').length, 26);
+    assert.equal(CORE_CONTRACT_INDEX.filter((contract) => sourceOf(contract) === 'CORE_SERVICE_CONTRACT_SKELETONS').length, 26);
   });
 
 
 
   it('includes exactly 34 API contract entries', () => {
-    assert.equal(CORE_CONTRACT_INDEX.filter((contract) => contract.source === 'CORE_API_CONTRACT_SKELETONS').length, 34);
+    assert.equal(CORE_CONTRACT_INDEX.filter((contract) => sourceOf(contract) === 'CORE_API_CONTRACT_SKELETONS').length, 34);
   });
 
 
 
   it('includes exactly 12 event catalog entries', () => {
-    assert.equal(CORE_CONTRACT_INDEX.filter((contract) => contract.source === 'CORE_EVENT_CATALOG_SKELETONS').length, 12);
+    assert.equal(CORE_CONTRACT_INDEX.filter((contract) => sourceOf(contract) === 'CORE_EVENT_CATALOG_SKELETONS').length, 12);
   });
 
   it('includes exactly 16 workflow catalog entries', () => {
-    assert.equal(CORE_CONTRACT_INDEX.filter((contract) => contract.source === 'CORE_WORKFLOW_CATALOG_SKELETONS').length, 16);
+    assert.equal(CORE_CONTRACT_INDEX.filter((contract) => sourceOf(contract) === 'CORE_WORKFLOW_CATALOG_SKELETONS').length, 16);
   });
 
   it('includes exactly 8 permission contract entries', () => {
-    assert.equal(CORE_CONTRACT_INDEX.filter((contract) => contract.source === 'CORE_PERMISSION_CONTRACT_SKELETONS').length, 8);
+    assert.equal(CORE_CONTRACT_INDEX.filter((contract) => sourceOf(contract) === 'CORE_PERMISSION_CONTRACT_SKELETONS').length, 8);
   });
 
   it('includes exactly 8 policy contract entries', () => {
-    assert.equal(CORE_CONTRACT_INDEX.filter((contract) => contract.source === 'CORE_POLICY_CONTRACT_SKELETONS').length, 8);
+    assert.equal(CORE_CONTRACT_INDEX.filter((contract) => sourceOf(contract) === 'CORE_POLICY_CONTRACT_SKELETONS').length, 8);
   });
 
   it('includes exactly 8 AI governance contract entries', () => {
-    assert.equal(CORE_CONTRACT_INDEX.filter((contract) => contract.source === 'CORE_AI_GOVERNANCE_CONTRACT_SKELETONS').length, 8);
+    assert.equal(CORE_CONTRACT_INDEX.filter((contract) => sourceOf(contract) === 'CORE_AI_GOVERNANCE_CONTRACT_SKELETONS').length, 8);
   });
 
   it('includes exactly 10 Common Contract entries', () => {
-    assert.equal(CORE_CONTRACT_INDEX.filter((contract) => contract.source === 'CORE_COMMON_CONTRACT_SKELETONS').length, 10);
+    assert.equal(CORE_CONTRACT_INDEX.filter((contract) => sourceOf(contract) === 'CORE_COMMON_CONTRACT_SKELETONS').length, 10);
   });
 
   it('includes exactly 7 Test Contract entries', () => {
-    assert.equal(CORE_CONTRACT_INDEX.filter((contract) => contract.source === 'CORE_TEST_CONTRACT_SKELETONS').length, 7);
+    assert.equal(CORE_CONTRACT_INDEX.filter((contract) => sourceOf(contract) === 'CORE_TEST_CONTRACT_SKELETONS').length, 7);
   });
 
   it('all ids are unique', () => {
@@ -191,9 +194,9 @@ describe('Core Contract Index', () => {
   });
 
   it('no concrete business contract ids are present', () => {
-    const ids = CORE_CONTRACT_INDEX.map((contract) => contract.id);
+    const ids = new Set<string>(CORE_CONTRACT_INDEX.map((contract) => contract.id));
     for (const forbiddenId of forbiddenContractIds) {
-      assert.equal(ids.includes(forbiddenId), false);
+      assert.equal(ids.has(forbiddenId), false);
     }
   });
 });

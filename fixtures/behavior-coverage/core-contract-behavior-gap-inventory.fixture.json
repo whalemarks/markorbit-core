@@ -153,7 +153,7 @@
       "currentDepth": 1,
       "targetDepth": 2,
       "depthIncrement": 1,
-      "sourcePath": "books/book-02-core-specification/core-specs/objects/event-object.md",
+      "sourcePath": "books/book-02-core-specification/core-specs/objects/event.md",
       "requiredBehavior": [
         "Provide Event trace handoff through Event Service.",
         "Maintain a persisted or fixture-backed MVP Event trace.",

@@ -23,19 +23,19 @@ describe('validateCoreEvent', () => {
   });
 
   it('returns errors for missing id', () => {
-    assert.ok(validateCoreEvent({ ...validEvent, id: '' } as CoreEvent).some((error) => error.includes('id')));
+    assert.ok(validateCoreEvent({ ...validEvent, id: '' } as unknown as CoreEvent).some((error) => error.includes('id')));
   });
 
   it('returns errors for missing type', () => {
-    assert.ok(validateCoreEvent({ ...validEvent, type: '' } as CoreEvent).some((error) => error.includes('type')));
+    assert.ok(validateCoreEvent({ ...validEvent, type: '' } as unknown as CoreEvent).some((error) => error.includes('type')));
   });
 
   it('returns errors for missing action', () => {
-    assert.ok(validateCoreEvent({ ...validEvent, action: '' } as CoreEvent).some((error) => error.includes('action')));
+    assert.ok(validateCoreEvent({ ...validEvent, action: '' } as unknown as CoreEvent).some((error) => error.includes('action')));
   });
 
   it('returns errors for missing domainId', () => {
-    assert.ok(validateCoreEvent({ ...validEvent, domainId: '' } as CoreEvent).some((error) => error.includes('domainId')));
+    assert.ok(validateCoreEvent({ ...validEvent, domainId: '' } as unknown as CoreEvent).some((error) => error.includes('domainId')));
   });
 
   it('returns errors for missing source', () => {
