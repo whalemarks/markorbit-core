@@ -46,7 +46,7 @@
 ## Phase 4 — Contract Behavior Coverage Started
 
 - [x] Contract Behavior Coverage Baseline — completed/current.
-- [ ] Contract Behavior Gap Inventory Lock — next.
+- [x] Contract Behavior Gap Inventory Lock — completed/current.
 - [ ] Controlled behavior implementation batches.
 - [ ] Contract Behavior Coverage Acceptance Lock.
 
@@ -191,3 +191,12 @@
 - Behavior acceptance ready: no.
 - Runtime behavior added by this task: none.
 - Next: CORE-TASK-027 — Contract Behavior Gap Inventory Lock.
+
+## CORE-TASK-027 — Contract Behavior Gap Inventory Lock
+
+- Minimum-depth behavior gaps: 12.
+- Total required depth increments: 22.
+- Controlled implementation batches: 4.
+- Minimum-satisfied exclusions: Workflow Engine and Policy Engine.
+- Behavior implemented by this task: none.
+- Next: CORE-TASK-028 — Safety and Boundary Foundations.

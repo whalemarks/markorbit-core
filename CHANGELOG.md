@@ -1,5 +1,13 @@
 # Changelog
 
+## CORE-TASK-027 — Contract Behavior Gap Inventory Lock
+
+- Locked 12 minimum-depth behavior gaps totaling 22 depth increments.
+- Sequenced the gaps into four controlled batches, CORE-TASK-028 through CORE-TASK-031.
+- Excluded Workflow Engine and Policy Engine from minimum-depth work because their current levels meet their Book 2 MVP minimums.
+- Added an exact validator, required fixture, tests, architecture record, and `pnpm gaps:behavior` report.
+- Added no behavior implementation, database, event bus, external integration, or Product runtime.
+
 ## CORE-TASK-026 — Phase 4 Contract Behavior Coverage Baseline
 
 - Started Phase 4 with contract behavior coverage as the first acceptance result.

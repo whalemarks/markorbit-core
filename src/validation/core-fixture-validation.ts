@@ -2,6 +2,7 @@ import { CORE_CONTRACT_INDEX, validateCoreContractIndex, validateCoreDomainContr
 import { validateCoreContractCoverageBaseline, validateCoreContractCoverageAcceptanceLock } from '../contract-coverage/index.ts';
 import { validateCoreContractGapInventory } from '../contract-coverage/index.ts';
 import { validateCoreContractBehaviorCoverageBaseline } from '../behavior-coverage/index.ts';
+import { validateCoreContractBehaviorGapInventory } from '../behavior-coverage/index.ts';
 import { CORE_DOMAIN_REGISTRY } from '../domains/index.ts';
 import { CORE_OBJECT_STATUSES } from '../objects/index.ts';
 import type { CoreEvent } from '../events/index.ts';
@@ -277,6 +278,13 @@ export function validateCoreContractCoverageAcceptanceLockFixture(fixture: unkno
 export function validateCoreContractBehaviorCoverageBaselineFixture(fixture: unknown): CoreValidationResult {
   const issues = validateCoreContractBehaviorCoverageBaseline(fixture).map((message) =>
     error('core.contract_behavior_coverage_baseline.invalid', message, 'contract_behavior_coverage_baseline')
+  );
+  return createCoreValidationResult(issues);
+}
+
+export function validateCoreContractBehaviorGapInventoryFixture(fixture: unknown): CoreValidationResult {
+  const issues = validateCoreContractBehaviorGapInventory(fixture).map((message) =>
+    error('core.contract_behavior_gap_inventory.invalid', message, 'contract_behavior_gap_inventory')
   );
   return createCoreValidationResult(issues);
 }

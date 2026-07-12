@@ -15,7 +15,8 @@
     "coverage:contracts": "node scripts/report-core-contract-coverage.mjs",
     "gaps:contracts": "node scripts/report-core-contract-gaps.mjs",
     "acceptance:contracts": "node scripts/report-core-contract-coverage-acceptance.mjs",
-    "coverage:behavior": "node scripts/report-core-contract-behavior-coverage.mjs"
+    "coverage:behavior": "node scripts/report-core-contract-behavior-coverage.mjs",
+    "gaps:behavior": "node scripts/report-core-contract-behavior-gaps.mjs"
   },
   "engines": {
     "node": ">=20.0.0"
