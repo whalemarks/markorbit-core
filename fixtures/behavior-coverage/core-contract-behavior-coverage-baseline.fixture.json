@@ -119,19 +119,15 @@
       "mvpCategory": "must_build_now",
       "requiredMinimumDepth": 2,
       "requiredMaximumDepth": 2,
-      "currentDepth": 1,
+      "currentDepth": 2,
       "sourcePath": "books/book-02-core-specification/core-specs/objects/event-object.md",
       "currentEvidence": [
-        "Generic Event shape validation.",
-        "Fixture-backed Event examples.",
-        "Event catalog structural validation."
+        "Generic Event shape and catalog validation.",
+        "Append-only in-memory Event trace handoff.",
+        "Event visibility policy filtering."
       ],
-      "missingBehavior": [
-        "Event trace handoff through Event Service.",
-        "Persisted or fully fixture-backed MVP event trace.",
-        "Visibility policy hook."
-      ],
-      "status": "partial"
+      "missingBehavior": [],
+      "status": "meets_minimum_depth"
     },
     {
       "id": "versioning",
@@ -155,15 +151,15 @@
       "mvpCategory": "must_build_now",
       "requiredMinimumDepth": 2,
       "requiredMaximumDepth": 2,
-      "currentDepth": 0,
+      "currentDepth": 2,
       "sourcePath": "books/book-02-core-specification/core-specs/contracts/common/pagination.md",
-      "currentEvidence": ["Validated Pagination Contract skeleton only."],
-      "missingBehavior": [
-        "Pagination schema validation.",
-        "Basic list/search support.",
-        "Policy-aware count behavior."
+      "currentEvidence": [
+        "Bounded cursor pagination with stable allowed-field sorting.",
+        "Permission/Policy visibility filtering and safe total-count omission.",
+        "Stricter Agent page limits and tamper-resistant query-bound cursors."
       ],
-      "status": "not_implemented"
+      "missingBehavior": [],
+      "status": "meets_minimum_depth"
     },
     {
       "id": "ai-context",
@@ -246,12 +242,12 @@
   ],
   "summary": {
     "totalTargetCount": 14,
-    "meetsMinimumDepthCount": 12,
-    "partialTargetCount": 1,
-    "notImplementedTargetCount": 1,
+    "meetsMinimumDepthCount": 14,
+    "partialTargetCount": 0,
+    "notImplementedTargetCount": 0,
     "mustBuildNowTargetCount": 11,
-    "mustBuildNowMeetsMinimumDepthCount": 9,
-    "behaviorAcceptanceReady": false
+    "mustBuildNowMeetsMinimumDepthCount": 11,
+    "behaviorAcceptanceReady": true
   },
   "assessmentBoundary": {
     "behaviorDepthAssessed": true,

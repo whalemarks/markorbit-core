@@ -7,3 +7,4 @@ export * from './core-safety-boundary-fixture.ts';
 export * from './core-idempotency-behavior.ts';
 export * from './core-idempotency-fixture.ts';
 export * from './core-governance-behavior.ts';
+export * from './core-event-pagination-behavior.ts';

@@ -20,5 +20,5 @@ console.log(
   `Behavior acceptance ready: ${baseline.summary.behaviorAcceptanceReady ? 'yes' : 'no'}`
 );
 console.log(
-  'Boundary: this task assesses behavior depth only and implements no new runtime behavior.'
+  'Boundary: minimum-depth Core behavior hooks are accepted; Execution System and production readiness are not.'
 );

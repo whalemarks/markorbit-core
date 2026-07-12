@@ -131,18 +131,14 @@ export const CORE_CONTRACT_BEHAVIOR_COVERAGE_TARGETS = [
     mvpCategory: 'must_build_now',
     requiredMinimumDepth: 2,
     requiredMaximumDepth: 2,
-    currentDepth: 1,
+    currentDepth: 2,
     sourcePath: `${root}/objects/event-object.md`,
     currentEvidence: [
-      'Generic Event shape validation.',
-      'Fixture-backed Event examples.',
-      'Event catalog structural validation.'
+      'Generic Event shape and catalog validation.',
+      'Append-only in-memory Event trace handoff.',
+      'Event visibility policy filtering.'
     ],
-    missingBehavior: [
-      'Event trace handoff through Event Service.',
-      'Persisted or fully fixture-backed MVP event trace.',
-      'Visibility policy hook.'
-    ]
+    missingBehavior: []
   }),
   target({
     id: 'versioning',
@@ -165,14 +161,14 @@ export const CORE_CONTRACT_BEHAVIOR_COVERAGE_TARGETS = [
     mvpCategory: 'must_build_now',
     requiredMinimumDepth: 2,
     requiredMaximumDepth: 2,
-    currentDepth: 0,
+    currentDepth: 2,
     sourcePath: `${root}/contracts/common/pagination.md`,
-    currentEvidence: ['Validated Pagination Contract skeleton only.'],
-    missingBehavior: [
-      'Pagination schema validation.',
-      'Basic list/search support.',
-      'Policy-aware count behavior.'
-    ]
+    currentEvidence: [
+      'Bounded cursor pagination with stable allowed-field sorting.',
+      'Permission/Policy visibility filtering and safe total-count omission.',
+      'Stricter Agent page limits and tamper-resistant query-bound cursors.'
+    ],
+    missingBehavior: []
   }),
   target({
     id: 'ai-context',
@@ -291,7 +287,7 @@ export const CORE_CONTRACT_BEHAVIOR_COVERAGE_BASELINE = {
     mustBuildNowMeetsMinimumDepthCount: meetsMinimum.filter(
       (entry) => entry.mvpCategory === 'must_build_now'
     ).length,
-    behaviorAcceptanceReady: false
+    behaviorAcceptanceReady: true
   },
   assessmentBoundary: {
     behaviorDepthAssessed: true,
