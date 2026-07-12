@@ -1,5 +1,13 @@
 # Changelog
 
+## CORE-TASK-029 — Idempotency Enforcement
+
+- Added opaque key validation and canonical SHA-256 request fingerprints.
+- Added deterministic replay, conflict and expiration protection, and single-execution side-effect behavior.
+- Re-evaluated Permission and Policy gates before first execution and replay.
+- Updated behavior coverage to 8 minimum-satisfied, 1 partial, and 5 not implemented targets; 5/11 Must Build Now targets now meet minimum depth.
+- Added a required deterministic fixture without claiming durable storage or distributed locking.
+
 ## CORE-TASK-028 — Safety and Boundary Foundations
 
 - Implemented deterministic Reference validation/resolution and safe fail-closed Reference errors at Level 3.

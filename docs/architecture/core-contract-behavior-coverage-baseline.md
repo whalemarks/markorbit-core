@@ -20,10 +20,10 @@
 | Measure                         | Current result |
 | ------------------------------- | -------------: |
 | Book 2 behavior targets         |             14 |
-| Meets minimum depth             |              7 |
+| Meets minimum depth             |              8 |
 | Partial                         |              1 |
-| Not implemented                 |              6 |
-| Must Build Now at minimum depth |         4 / 11 |
+| Not implemented                 |              5 |
+| Must Build Now at minimum depth |         5 / 11 |
 | Behavior acceptance ready       |             No |
 
 CORE-TASK-028 brings References and Errors to Level 3 and Versioning, AI Context, and Agent Runtime to their Level 1 minimums. Workflow Engine and Policy Engine remain minimum-satisfied. Events remain partial at Level 1. Six Must Build Now targets remain below minimum depth.

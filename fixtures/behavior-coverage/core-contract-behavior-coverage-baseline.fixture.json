@@ -87,16 +87,17 @@
       "mvpCategory": "must_build_now",
       "requiredMinimumDepth": 3,
       "requiredMaximumDepth": 3,
-      "currentDepth": 0,
+      "currentDepth": 3,
       "sourcePath": "books/book-02-core-specification/core-specs/contracts/common/idempotency.md",
-      "currentEvidence": ["Validated Idempotency Contract skeleton only."],
-      "missingBehavior": [
-        "Key validation.",
-        "Replay handling.",
-        "Conflict detection.",
-        "Duplicate-effect prevention."
+      "currentEvidence": [
+        "Opaque idempotency-key validation and stable canonical request fingerprints.",
+        "Deterministic same-request replay with original safe result reuse.",
+        "Fingerprint conflict and expired-record fail-closed behavior.",
+        "Permission and Policy re-evaluation before both first execution and replay.",
+        "Single-execution duplicate-effect prevention."
       ],
-      "status": "not_implemented"
+      "missingBehavior": [],
+      "status": "meets_minimum_depth"
     },
     {
       "id": "audit-context",
@@ -248,11 +249,11 @@
   ],
   "summary": {
     "totalTargetCount": 14,
-    "meetsMinimumDepthCount": 7,
+    "meetsMinimumDepthCount": 8,
     "partialTargetCount": 1,
-    "notImplementedTargetCount": 6,
+    "notImplementedTargetCount": 5,
     "mustBuildNowTargetCount": 11,
-    "mustBuildNowMeetsMinimumDepthCount": 4,
+    "mustBuildNowMeetsMinimumDepthCount": 5,
     "behaviorAcceptanceReady": false
   },
   "assessmentBoundary": {
