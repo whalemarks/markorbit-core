@@ -1,0 +1,266 @@
+{
+  "id": "core-contract-behavior-coverage-baseline-v0-1",
+  "version": "0.1.0",
+  "createdAt": "2026-07-11T00:00:00.000Z",
+  "task": "CORE-TASK-026",
+  "scope": "contract_behavior_depth_assessment_only",
+  "authority": {
+    "specificationRepository": "whalemarks/markorbit-publication",
+    "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+    "mvpCut": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
+    "traceability": "books/book-02-core-specification/core-specs/TRACEABILITY.md",
+    "validation": "books/book-02-core-specification/core-specs/validation/traceability-validation.md"
+  },
+  "depthModel": {
+    "0": "documented_or_skeleton_only",
+    "1": "schema_validation",
+    "2": "service_hook",
+    "3": "real_enforcement",
+    "4": "audited_production_enforcement"
+  },
+  "targets": [
+    {
+      "id": "references",
+      "name": "References",
+      "mvpCategory": "must_build_now",
+      "requiredMinimumDepth": 3,
+      "requiredMaximumDepth": 3,
+      "currentDepth": 0,
+      "sourcePath": "books/book-02-core-specification/core-specs/contracts/common/references.md",
+      "currentEvidence": ["Validated Reference Contract skeleton only."],
+      "missingBehavior": [
+        "Reference schema validation.",
+        "Reference resolution.",
+        "Real fail-closed enforcement."
+      ],
+      "status": "not_implemented"
+    },
+    {
+      "id": "errors",
+      "name": "Errors",
+      "mvpCategory": "must_build_now",
+      "requiredMinimumDepth": 3,
+      "requiredMaximumDepth": 3,
+      "currentDepth": 0,
+      "sourcePath": "books/book-02-core-specification/core-specs/contracts/common/errors.md",
+      "currentEvidence": ["Validated Error Contract skeleton only."],
+      "missingBehavior": [
+        "Safe error construction.",
+        "Leakage prevention.",
+        "Real error enforcement."
+      ],
+      "status": "not_implemented"
+    },
+    {
+      "id": "permission",
+      "name": "Permission",
+      "mvpCategory": "must_build_now",
+      "requiredMinimumDepth": 2,
+      "requiredMaximumDepth": 3,
+      "currentDepth": 0,
+      "sourcePath": "books/book-02-core-specification/core-specs/contracts/common/permission-context.md",
+      "currentEvidence": ["Permission and Permission Context skeletons only."],
+      "missingBehavior": [
+        "Service permission hook.",
+        "Fail-closed protected-action enforcement."
+      ],
+      "status": "not_implemented"
+    },
+    {
+      "id": "policy",
+      "name": "Policy",
+      "mvpCategory": "must_build_now",
+      "requiredMinimumDepth": 1,
+      "requiredMaximumDepth": 2,
+      "currentDepth": 0,
+      "sourcePath": "books/book-02-core-specification/core-specs/contracts/common/policy-context.md",
+      "currentEvidence": ["Policy and Policy Context skeletons only."],
+      "missingBehavior": [
+        "Policy context schema validation.",
+        "Service policy hook."
+      ],
+      "status": "not_implemented"
+    },
+    {
+      "id": "idempotency",
+      "name": "Idempotency",
+      "mvpCategory": "must_build_now",
+      "requiredMinimumDepth": 3,
+      "requiredMaximumDepth": 3,
+      "currentDepth": 0,
+      "sourcePath": "books/book-02-core-specification/core-specs/contracts/common/idempotency.md",
+      "currentEvidence": ["Validated Idempotency Contract skeleton only."],
+      "missingBehavior": [
+        "Key validation.",
+        "Replay handling.",
+        "Conflict detection.",
+        "Duplicate-effect prevention."
+      ],
+      "status": "not_implemented"
+    },
+    {
+      "id": "audit-context",
+      "name": "Audit Context",
+      "mvpCategory": "must_build_now",
+      "requiredMinimumDepth": 2,
+      "requiredMaximumDepth": 2,
+      "currentDepth": 0,
+      "sourcePath": "books/book-02-core-specification/core-specs/contracts/common/audit-context.md",
+      "currentEvidence": ["Validated Audit Context Contract skeleton only."],
+      "missingBehavior": [
+        "Audit context schema validation.",
+        "Service trace hook."
+      ],
+      "status": "not_implemented"
+    },
+    {
+      "id": "events",
+      "name": "Events",
+      "mvpCategory": "must_build_now",
+      "requiredMinimumDepth": 2,
+      "requiredMaximumDepth": 2,
+      "currentDepth": 1,
+      "sourcePath": "books/book-02-core-specification/core-specs/objects/event-object.md",
+      "currentEvidence": [
+        "Generic Event shape validation.",
+        "Fixture-backed Event examples.",
+        "Event catalog structural validation."
+      ],
+      "missingBehavior": [
+        "Event trace handoff through Event Service.",
+        "Persisted or fully fixture-backed MVP event trace.",
+        "Visibility policy hook."
+      ],
+      "status": "partial"
+    },
+    {
+      "id": "versioning",
+      "name": "Versioning",
+      "mvpCategory": "must_build_now",
+      "requiredMinimumDepth": 1,
+      "requiredMaximumDepth": 1,
+      "currentDepth": 0,
+      "sourcePath": "books/book-02-core-specification/core-specs/contracts/common/versioning.md",
+      "currentEvidence": [
+        "Validated Versioning Contract skeleton only.",
+        "Generic positive version fields do not implement unsupported-version handling."
+      ],
+      "missingBehavior": [
+        "Version schema validation.",
+        "Unsupported-version fail-closed behavior."
+      ],
+      "status": "not_implemented"
+    },
+    {
+      "id": "pagination",
+      "name": "Pagination",
+      "mvpCategory": "must_build_now",
+      "requiredMinimumDepth": 2,
+      "requiredMaximumDepth": 2,
+      "currentDepth": 0,
+      "sourcePath": "books/book-02-core-specification/core-specs/contracts/common/pagination.md",
+      "currentEvidence": ["Validated Pagination Contract skeleton only."],
+      "missingBehavior": [
+        "Pagination schema validation.",
+        "Basic list/search support.",
+        "Policy-aware count behavior."
+      ],
+      "status": "not_implemented"
+    },
+    {
+      "id": "ai-context",
+      "name": "AI Context",
+      "mvpCategory": "must_build_now",
+      "requiredMinimumDepth": 1,
+      "requiredMaximumDepth": 1,
+      "currentDepth": 0,
+      "sourcePath": "books/book-02-core-specification/core-specs/contracts/common/ai-context.md",
+      "currentEvidence": [
+        "Validated AI Context and AI Governance skeletons only."
+      ],
+      "missingBehavior": [
+        "AI context schema validation.",
+        "Boundary metadata validation."
+      ],
+      "status": "not_implemented"
+    },
+    {
+      "id": "human-review",
+      "name": "Human Review",
+      "mvpCategory": "must_build_now",
+      "requiredMinimumDepth": 2,
+      "requiredMaximumDepth": 2,
+      "currentDepth": 0,
+      "sourcePath": "books/book-02-core-specification/core-specs/contracts/common/human-review.md",
+      "currentEvidence": [
+        "Validated Human Review Contract skeleton and generic review outcome type only."
+      ],
+      "missingBehavior": [
+        "Review context schema validation.",
+        "Protected-action review gate."
+      ],
+      "status": "not_implemented"
+    },
+    {
+      "id": "agent-runtime",
+      "name": "Agent Runtime",
+      "mvpCategory": "stub_now",
+      "requiredMinimumDepth": 1,
+      "requiredMaximumDepth": 1,
+      "currentDepth": 0,
+      "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
+      "currentEvidence": ["AI Governance skeleton collection only."],
+      "missingBehavior": [
+        "Capability registry validation.",
+        "Forbidden-action boundary tests."
+      ],
+      "status": "not_implemented"
+    },
+    {
+      "id": "workflow-engine",
+      "name": "Workflow Engine",
+      "mvpCategory": "stub_now",
+      "requiredMinimumDepth": 1,
+      "requiredMaximumDepth": 2,
+      "currentDepth": 1,
+      "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
+      "currentEvidence": [
+        "Generic Workflow Contract shape validation.",
+        "Canonical workflow skeleton validation."
+      ],
+      "missingBehavior": [
+        "MVP workflow preview validation.",
+        "MVP workflow apply validation.",
+        "Review, permission, policy, idempotency, and Event trace boundary validation."
+      ],
+      "status": "meets_minimum_depth"
+    },
+    {
+      "id": "policy-engine",
+      "name": "Policy Engine",
+      "mvpCategory": "document_only",
+      "requiredMinimumDepth": 0,
+      "requiredMaximumDepth": 1,
+      "currentDepth": 0,
+      "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
+      "currentEvidence": ["Policy engine remains explicitly unimplemented."],
+      "missingBehavior": [],
+      "status": "meets_minimum_depth"
+    }
+  ],
+  "summary": {
+    "totalTargetCount": 14,
+    "meetsMinimumDepthCount": 2,
+    "partialTargetCount": 1,
+    "notImplementedTargetCount": 11,
+    "mustBuildNowTargetCount": 11,
+    "mustBuildNowMeetsMinimumDepthCount": 0,
+    "behaviorAcceptanceReady": false
+  },
+  "assessmentBoundary": {
+    "behaviorDepthAssessed": true,
+    "behaviorImplementedByThisTask": false,
+    "executionSystemImplemented": false,
+    "productionReadinessAssessed": false
+  }
+}

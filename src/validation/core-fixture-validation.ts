@@ -1,6 +1,7 @@
 import { CORE_CONTRACT_INDEX, validateCoreContractIndex, validateCoreDomainContractSkeletons, validateCoreObjectContractSkeletons, validateCoreServiceContractSkeletons, validateCoreApiContractSkeletons, validateCoreEventCatalogSkeletons, validateCoreWorkflowCatalogSkeletons, validateCorePermissionContractSkeletons, validateCorePolicyContractSkeletons, validateCoreAiGovernanceContractSkeletons, validateCoreCommonContractSkeletons, validateCoreTestContractSkeletons, type CoreApiContract, type CoreDomainContract, type CoreObjectContract, type CoreServiceContract, type CoreEventCatalogEntry, type CoreWorkflowCatalogEntry, type CorePermissionContract, type CorePolicyContract, type CoreAiGovernanceContract, type CoreCommonContract, type CoreTestContract } from '../contracts/index.ts';
 import { validateCoreContractCoverageBaseline, validateCoreContractCoverageAcceptanceLock } from '../contract-coverage/index.ts';
 import { validateCoreContractGapInventory } from '../contract-coverage/index.ts';
+import { validateCoreContractBehaviorCoverageBaseline } from '../behavior-coverage/index.ts';
 import { CORE_DOMAIN_REGISTRY } from '../domains/index.ts';
 import { CORE_OBJECT_STATUSES } from '../objects/index.ts';
 import type { CoreEvent } from '../events/index.ts';
@@ -269,6 +270,13 @@ export function validateCoreContractGapInventoryFixture(fixture: unknown): CoreV
 export function validateCoreContractCoverageAcceptanceLockFixture(fixture: unknown): CoreValidationResult {
   const issues = validateCoreContractCoverageAcceptanceLock(fixture).map((message) =>
     error('core.contract_coverage_acceptance_lock.invalid', message, 'contract_coverage_acceptance_lock')
+  );
+  return createCoreValidationResult(issues);
+}
+
+export function validateCoreContractBehaviorCoverageBaselineFixture(fixture: unknown): CoreValidationResult {
+  const issues = validateCoreContractBehaviorCoverageBaseline(fixture).map((message) =>
+    error('core.contract_behavior_coverage_baseline.invalid', message, 'contract_behavior_coverage_baseline')
   );
   return createCoreValidationResult(issues);
 }

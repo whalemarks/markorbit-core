@@ -21,7 +21,8 @@ import {
   validateCoreTestContractSkeletonsFixture,
   validateCoreContractCoverageBaselineFixture,
   validateCoreContractGapInventoryFixture,
-  validateCoreContractCoverageAcceptanceLockFixture
+  validateCoreContractCoverageAcceptanceLockFixture,
+  validateCoreContractBehaviorCoverageBaselineFixture
 } from '../src/validation/index.ts';
 
 const validators = {
@@ -44,7 +45,8 @@ const validators = {
   test_contract_skeletons: validateCoreTestContractSkeletonsFixture,
   contract_coverage_baseline: validateCoreContractCoverageBaselineFixture,
   contract_gap_inventory: validateCoreContractGapInventoryFixture,
-  contract_coverage_acceptance_lock: validateCoreContractCoverageAcceptanceLockFixture
+  contract_coverage_acceptance_lock: validateCoreContractCoverageAcceptanceLockFixture,
+  contract_behavior_coverage_baseline: validateCoreContractBehaviorCoverageBaselineFixture
 };
 
 let hasErrors = false;
