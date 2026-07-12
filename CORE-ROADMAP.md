@@ -219,3 +219,11 @@
 - Event behavior-coverage traceability now references `objects/event.md` instead of the legacy `objects/event-object.md`.
 - No repository-wide formatting baseline added.
 - Phase 4 remains formally unaccepted and Book 02 MVP remains incomplete.
+
+## Phase 4 Acceptance
+
+- [x] Contract Behavior Coverage Acceptance Lock.
+- [ ] Integration with Execution System.
+- [ ] Generated SDK.
+- [ ] Package publishing.
+- [ ] Production readiness.

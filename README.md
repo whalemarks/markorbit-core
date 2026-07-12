@@ -29,3 +29,7 @@ Implementation must follow Book 02. This repository is not allowed to redefine B
 ## Current phase
 
 Phase 4 Contract Behavior Coverage is in progress, but Phase 4 is not formally accepted and Book 02 MVP remains incomplete. CORE-TASK-032 locks repository-local validation tooling and traceability checks without changing Core business behavior.
+
+## Current Phase
+
+Phase 4 selected Core behavior-hook minimum-depth acceptance is complete. Book 02 MVP remains incomplete; Execution System and production readiness remain outside scope.

@@ -321,3 +321,12 @@ Next recommended task: CORE-TASK-013 — Core Event Catalog Skeleton.
 - GitHub Actions validation matrix added for Node.js 20 and 22.
 - Behavior coverage Event source path corrected from the legacy event-object path to the canonical Event source document.
 - Repository-wide formatting is intentionally excluded; Phase 4 remains unaccepted and Book 02 MVP remains incomplete.
+
+## CORE-TASK-033 Behavior Acceptance Lock
+
+- 14/14 selected behavior targets accepted.
+- 11/11 Must Build Now targets accepted.
+- 4/4 implementation batches accepted.
+- 12 implemented-batch targets.
+- 2 preexisting-minimum targets.
+- Domain contract behavior-tested: 0/26.

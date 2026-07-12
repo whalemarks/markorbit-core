@@ -21,6 +21,7 @@ export const CORE_FIXTURE_TYPES = [
   'contract_coverage_acceptance_lock',
   'contract_behavior_coverage_baseline',
   'contract_behavior_gap_inventory',
+  'contract_behavior_acceptance_lock',
   'safety_boundary_foundations',
   'idempotency_enforcement'
 ] as const;
@@ -166,6 +167,12 @@ export const CORE_FIXTURE_MANIFEST = [
     id: 'core-contract-behavior-gap-inventory',
     type: 'contract_behavior_gap_inventory',
     path: 'fixtures/behavior-coverage/core-contract-behavior-gap-inventory.fixture.json',
+    required: true
+  },
+  {
+    id: 'core-contract-behavior-acceptance-lock',
+    type: 'contract_behavior_acceptance_lock',
+    path: 'fixtures/behavior-coverage/core-contract-behavior-acceptance-lock.fixture.json',
     required: true
   },
   {

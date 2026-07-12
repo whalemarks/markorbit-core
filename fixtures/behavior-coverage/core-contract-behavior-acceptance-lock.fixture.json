@@ -1,0 +1,197 @@
+{
+  "id": "core-contract-behavior-acceptance-lock-v0-1",
+  "version": "0.1.0",
+  "task": "CORE-TASK-033",
+  "scope": "selected_core_behavior_hook_acceptance",
+  "authority": {
+    "specificationRepository": "whalemarks/markorbit-publication",
+    "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+    "mvpCut": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
+    "traceability": "books/book-02-core-specification/core-specs/TRACEABILITY.md",
+    "validation": "books/book-02-core-specification/core-specs/validation/traceability-validation.md"
+  },
+  "evidence": [
+    {
+      "behaviorId": "references",
+      "acceptanceBasis": "implemented_batch",
+      "implementationTasks": ["CORE-TASK-028"],
+      "sourceFiles": ["src/behaviors/core-reference-behavior.ts"],
+      "testFiles": ["tests/unit/core-safety-boundary-foundations.test.ts"],
+      "evidenceDescription": [
+        "Reference shape, resolution, type, domain, status, and deleted-reference checks."
+      ],
+      "fixtureFiles": [
+        "fixtures/behaviors/core-safety-boundary-foundations.fixture.json"
+      ]
+    },
+    {
+      "behaviorId": "errors",
+      "acceptanceBasis": "implemented_batch",
+      "implementationTasks": ["CORE-TASK-028"],
+      "sourceFiles": ["src/behaviors/core-safe-error.ts"],
+      "testFiles": ["tests/unit/core-safety-boundary-foundations.test.ts"],
+      "evidenceDescription": [
+        "Safe error category/code allowlists and unsafe detail suppression."
+      ],
+      "fixtureFiles": [
+        "fixtures/behaviors/core-safety-boundary-foundations.fixture.json"
+      ]
+    },
+    {
+      "behaviorId": "permission",
+      "acceptanceBasis": "implemented_batch",
+      "implementationTasks": ["CORE-TASK-030"],
+      "sourceFiles": ["src/behaviors/core-governance-behavior.ts"],
+      "testFiles": ["tests/unit/core-governance-context-review-hooks.test.ts"],
+      "evidenceDescription": [
+        "Permission context validation and protected-action decision enforcement."
+      ]
+    },
+    {
+      "behaviorId": "policy",
+      "acceptanceBasis": "implemented_batch",
+      "implementationTasks": ["CORE-TASK-030"],
+      "sourceFiles": ["src/behaviors/core-governance-behavior.ts"],
+      "testFiles": ["tests/unit/core-governance-context-review-hooks.test.ts"],
+      "evidenceDescription": [
+        "Policy context validation, restriction rejection, and review propagation."
+      ]
+    },
+    {
+      "behaviorId": "idempotency",
+      "acceptanceBasis": "implemented_batch",
+      "implementationTasks": ["CORE-TASK-029"],
+      "sourceFiles": ["src/behaviors/core-idempotency-behavior.ts"],
+      "testFiles": ["tests/unit/core-idempotency-enforcement.test.ts"],
+      "evidenceDescription": [
+        "Key validation, fingerprints, single side effect, replay, conflict, expiration, and permission/policy re-evaluation."
+      ],
+      "fixtureFiles": [
+        "fixtures/behaviors/core-idempotency-enforcement.fixture.json"
+      ]
+    },
+    {
+      "behaviorId": "audit-context",
+      "acceptanceBasis": "implemented_batch",
+      "implementationTasks": ["CORE-TASK-030"],
+      "sourceFiles": ["src/behaviors/core-governance-behavior.ts"],
+      "testFiles": ["tests/unit/core-governance-context-review-hooks.test.ts"],
+      "evidenceDescription": ["Audit context validation and governed handoff."]
+    },
+    {
+      "behaviorId": "events",
+      "acceptanceBasis": "implemented_batch",
+      "implementationTasks": ["CORE-TASK-031"],
+      "sourceFiles": ["src/behaviors/core-event-pagination-behavior.ts"],
+      "testFiles": ["tests/unit/core-event-pagination-hooks.test.ts"],
+      "evidenceDescription": [
+        "Append-only trace, duplicate protection, and visibility filtering."
+      ]
+    },
+    {
+      "behaviorId": "versioning",
+      "acceptanceBasis": "implemented_batch",
+      "implementationTasks": ["CORE-TASK-028"],
+      "sourceFiles": ["src/behaviors/core-version-behavior.ts"],
+      "testFiles": ["tests/unit/core-safety-boundary-foundations.test.ts"],
+      "evidenceDescription": [
+        "Semantic contract version validation and supported-version fail-closed behavior."
+      ],
+      "fixtureFiles": [
+        "fixtures/behaviors/core-safety-boundary-foundations.fixture.json"
+      ]
+    },
+    {
+      "behaviorId": "pagination",
+      "acceptanceBasis": "implemented_batch",
+      "implementationTasks": ["CORE-TASK-031"],
+      "sourceFiles": ["src/behaviors/core-event-pagination-behavior.ts"],
+      "testFiles": ["tests/unit/core-event-pagination-hooks.test.ts"],
+      "evidenceDescription": [
+        "Bounded cursor pagination, query-bound cursors, limit/sort validation, permission/policy filtering, and safe count omission."
+      ]
+    },
+    {
+      "behaviorId": "ai-context",
+      "acceptanceBasis": "implemented_batch",
+      "implementationTasks": ["CORE-TASK-028"],
+      "sourceFiles": ["src/behaviors/core-ai-context-behavior.ts"],
+      "testFiles": ["tests/unit/core-safety-boundary-foundations.test.ts"],
+      "evidenceDescription": [
+        "AI context, Agent identity/capability/data-scope/output/source/review validation."
+      ],
+      "fixtureFiles": [
+        "fixtures/behaviors/core-safety-boundary-foundations.fixture.json"
+      ]
+    },
+    {
+      "behaviorId": "human-review",
+      "acceptanceBasis": "implemented_batch",
+      "implementationTasks": ["CORE-TASK-030"],
+      "sourceFiles": ["src/behaviors/core-governance-behavior.ts"],
+      "testFiles": ["tests/unit/core-governance-context-review-hooks.test.ts"],
+      "evidenceDescription": [
+        "Human Review context and protected-action review gate."
+      ]
+    },
+    {
+      "behaviorId": "agent-runtime",
+      "acceptanceBasis": "implemented_batch",
+      "implementationTasks": ["CORE-TASK-028"],
+      "sourceFiles": ["src/behaviors/core-agent-boundary.ts"],
+      "testFiles": ["tests/unit/core-safety-boundary-foundations.test.ts"],
+      "evidenceDescription": [
+        "Agent registry, capability allowlist, status rejection, and downstream permission/policy requirement."
+      ],
+      "fixtureFiles": [
+        "fixtures/behaviors/core-safety-boundary-foundations.fixture.json"
+      ]
+    },
+    {
+      "behaviorId": "workflow-engine",
+      "acceptanceBasis": "preexisting_minimum",
+      "implementationTasks": [],
+      "sourceFiles": ["src/workflows/core-workflow-contract-validation.ts"],
+      "testFiles": ["tests/unit/core-workflow-contract-validation.test.ts"],
+      "evidenceDescription": [
+        "Only generic Workflow validation Level 1 is accepted; no complete Workflow Engine is accepted."
+      ],
+      "fixtureFiles": [
+        "fixtures/workflows/core-workflow-contract-base.fixture.json"
+      ]
+    },
+    {
+      "behaviorId": "policy-engine",
+      "acceptanceBasis": "preexisting_minimum",
+      "implementationTasks": [],
+      "sourceFiles": [
+        "src/contracts/policy/core-policy-contract-validation.ts"
+      ],
+      "testFiles": ["tests/unit/core-policy-contract-skeletons.test.ts"],
+      "evidenceDescription": [
+        "Only Document Only Level 0 policy-engine status is accepted; no complete Policy Engine is accepted."
+      ],
+      "fixtureFiles": [
+        "fixtures/contracts/core-policy-contract-skeletons.fixture.json"
+      ]
+    }
+  ],
+  "acceptedImplementationBatches": [
+    "CORE-TASK-028",
+    "CORE-TASK-029",
+    "CORE-TASK-030",
+    "CORE-TASK-031"
+  ],
+  "nonGoals": [
+    "production_ready",
+    "execution_system_complete",
+    "book_02_mvp_complete",
+    "domain_behavior_complete",
+    "workflow_engine_complete",
+    "policy_engine_complete",
+    "database_complete",
+    "external_integrations_complete",
+    "ai_autonomous_authority",
+    "professional_decision_authority"
+  ]
+}

@@ -378,3 +378,10 @@ All notable changes to MarkOrbit Core will be documented in this file.
 - No Book 03 runtime contracts added.
 - No product UI contracts added.
 - No AI agent authority added.
+
+## CORE-TASK-033 — Phase 4 Contract Behavior Hook Acceptance Lock
+
+- Added the Phase 4 selected Core behavior-hook minimum-depth acceptance lock.
+- Accepted 14/14 selected behavior targets, including 12 implemented-batch targets and 2 preexisting-minimum targets.
+- Added dynamic validation, fixture coverage, and evidence test execution through `pnpm acceptance:behavior`.
+- Boundary: does not accept Book 02 MVP completion, Domain business behavior, Execution System implementation, complete Workflow or Policy Engines, or production readiness.
