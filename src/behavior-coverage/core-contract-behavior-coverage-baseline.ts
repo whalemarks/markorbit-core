@@ -73,13 +73,13 @@ export const CORE_CONTRACT_BEHAVIOR_COVERAGE_TARGETS = [
     mvpCategory: 'must_build_now',
     requiredMinimumDepth: 2,
     requiredMaximumDepth: 3,
-    currentDepth: 0,
+    currentDepth: 2,
     sourcePath: `${root}/contracts/common/permission-context.md`,
-    currentEvidence: ['Permission and Permission Context skeletons only.'],
-    missingBehavior: [
-      'Service permission hook.',
-      'Fail-closed protected-action enforcement.'
-    ]
+    currentEvidence: [
+      'Permission context validation and decision-reference enforcement.',
+      'Fail-closed protected-action permission hook.'
+    ],
+    missingBehavior: []
   }),
   target({
     id: 'policy',
@@ -87,13 +87,12 @@ export const CORE_CONTRACT_BEHAVIOR_COVERAGE_TARGETS = [
     mvpCategory: 'must_build_now',
     requiredMinimumDepth: 1,
     requiredMaximumDepth: 2,
-    currentDepth: 0,
+    currentDepth: 1,
     sourcePath: `${root}/contracts/common/policy-context.md`,
-    currentEvidence: ['Policy and Policy Context skeletons only.'],
-    missingBehavior: [
-      'Policy context schema validation.',
-      'Service policy hook.'
-    ]
+    currentEvidence: [
+      'Policy context validation, restriction handling, and human-review requirement propagation.'
+    ],
+    missingBehavior: ['Service policy hook.']
   }),
   target({
     id: 'idempotency',
@@ -118,10 +117,13 @@ export const CORE_CONTRACT_BEHAVIOR_COVERAGE_TARGETS = [
     mvpCategory: 'must_build_now',
     requiredMinimumDepth: 2,
     requiredMaximumDepth: 2,
-    currentDepth: 0,
+    currentDepth: 2,
     sourcePath: `${root}/contracts/common/audit-context.md`,
-    currentEvidence: ['Validated Audit Context Contract skeleton only.'],
-    missingBehavior: ['Audit context schema validation.', 'Service trace hook.']
+    currentEvidence: [
+      'Required audit trace validation.',
+      'Immutable safe audit-context handoff from governed actions.'
+    ],
+    missingBehavior: []
   }),
   target({
     id: 'events',
@@ -192,15 +194,13 @@ export const CORE_CONTRACT_BEHAVIOR_COVERAGE_TARGETS = [
     mvpCategory: 'must_build_now',
     requiredMinimumDepth: 2,
     requiredMaximumDepth: 2,
-    currentDepth: 0,
+    currentDepth: 2,
     sourcePath: `${root}/contracts/common/human-review.md`,
     currentEvidence: [
-      'Validated Human Review Contract skeleton and generic review outcome type only.'
+      'Human Review context and completed-decision validation.',
+      'Policy-triggered protected-action review gate.'
     ],
-    missingBehavior: [
-      'Review context schema validation.',
-      'Protected-action review gate.'
-    ]
+    missingBehavior: []
   }),
   target({
     id: 'agent-runtime',
