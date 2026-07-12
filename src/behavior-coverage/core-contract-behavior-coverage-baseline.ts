@@ -101,15 +101,16 @@ export const CORE_CONTRACT_BEHAVIOR_COVERAGE_TARGETS = [
     mvpCategory: 'must_build_now',
     requiredMinimumDepth: 3,
     requiredMaximumDepth: 3,
-    currentDepth: 0,
+    currentDepth: 3,
     sourcePath: `${root}/contracts/common/idempotency.md`,
-    currentEvidence: ['Validated Idempotency Contract skeleton only.'],
-    missingBehavior: [
-      'Key validation.',
-      'Replay handling.',
-      'Conflict detection.',
-      'Duplicate-effect prevention.'
-    ]
+    currentEvidence: [
+      'Opaque idempotency-key validation and stable canonical request fingerprints.',
+      'Deterministic same-request replay with original safe result reuse.',
+      'Fingerprint conflict and expired-record fail-closed behavior.',
+      'Permission and Policy re-evaluation before both first execution and replay.',
+      'Single-execution duplicate-effect prevention.'
+    ],
+    missingBehavior: []
   }),
   target({
     id: 'audit-context',

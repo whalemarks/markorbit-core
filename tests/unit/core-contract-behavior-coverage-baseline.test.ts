@@ -19,10 +19,10 @@ describe('Core Contract Behavior Coverage Baseline', () => {
 
   it('reports the current behavior depth without treating skeletons as behavior', () => {
     const summary = CORE_CONTRACT_BEHAVIOR_COVERAGE_BASELINE.summary;
-    assert.equal(summary.meetsMinimumDepthCount, 7);
+    assert.equal(summary.meetsMinimumDepthCount, 8);
     assert.equal(summary.partialTargetCount, 1);
-    assert.equal(summary.notImplementedTargetCount, 6);
-    assert.equal(summary.mustBuildNowMeetsMinimumDepthCount, 4);
+    assert.equal(summary.notImplementedTargetCount, 5);
+    assert.equal(summary.mustBuildNowMeetsMinimumDepthCount, 5);
     assert.equal(summary.behaviorAcceptanceReady, false);
   });
 

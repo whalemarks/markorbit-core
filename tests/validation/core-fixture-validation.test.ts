@@ -24,7 +24,8 @@ import {
   validateCoreContractCoverageAcceptanceLockFixture,
   validateCoreContractBehaviorCoverageBaselineFixture,
   validateCoreContractBehaviorGapInventoryFixture,
-  validateCoreSafetyBoundaryFoundationsFixture
+  validateCoreSafetyBoundaryFoundationsFixture,
+  validateCoreIdempotencyEnforcementFixture
 } from '../../src/index.ts';
 
 const readFixture = async (path: string): Promise<unknown> => JSON.parse(await readFile(new URL(`../../${path}`, import.meta.url), 'utf8'));
@@ -53,6 +54,7 @@ describe('core fixture validation', () => {
     assert.equal(validateCoreContractBehaviorCoverageBaselineFixture(await readFixture('fixtures/behavior-coverage/core-contract-behavior-coverage-baseline.fixture.json')).ok, true);
     assert.equal(validateCoreContractBehaviorGapInventoryFixture(await readFixture('fixtures/behavior-coverage/core-contract-behavior-gap-inventory.fixture.json')).ok, true);
     assert.equal(validateCoreSafetyBoundaryFoundationsFixture(await readFixture('fixtures/behaviors/core-safety-boundary-foundations.fixture.json')).ok, true);
+    assert.equal(validateCoreIdempotencyEnforcementFixture(await readFixture('fixtures/behaviors/core-idempotency-enforcement.fixture.json')).ok, true);
   });
 
   it('safety boundary validator rejects changed deterministic fixtures', async () => {

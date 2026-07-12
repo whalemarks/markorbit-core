@@ -3,7 +3,7 @@ import { validateCoreContractCoverageBaseline, validateCoreContractCoverageAccep
 import { validateCoreContractGapInventory } from '../contract-coverage/index.ts';
 import { validateCoreContractBehaviorCoverageBaseline } from '../behavior-coverage/index.ts';
 import { validateCoreContractBehaviorGapInventory } from '../behavior-coverage/index.ts';
-import { CORE_SAFETY_BOUNDARY_FIXTURE, CoreAgentBoundaryRegistry, CoreReferenceRegistry, validateCoreAiContext, validateCoreVersion } from '../behaviors/index.ts';
+import { CORE_IDEMPOTENCY_FIXTURE, CORE_SAFETY_BOUNDARY_FIXTURE, CoreAgentBoundaryRegistry, CoreIdempotencyRegistry, CoreReferenceRegistry, validateCoreAiContext, validateCoreVersion } from '../behaviors/index.ts';
 import { CORE_DOMAIN_REGISTRY } from '../domains/index.ts';
 import { CORE_OBJECT_STATUSES } from '../objects/index.ts';
 import type { CoreEvent } from '../events/index.ts';
@@ -305,6 +305,21 @@ export function validateCoreSafetyBoundaryFoundationsFixture(fixture: unknown): 
     issues.push(error('core.safety_boundary_foundations.ai_context_failed', 'Canonical AI context behavior must pass.', 'safety_boundary_foundations.validAiContext'));
   if (!validateCoreVersion({ contractVersion: 'v0.1.0' }, value.supportedContractVersions).ok)
     issues.push(error('core.safety_boundary_foundations.version_failed', 'Canonical version behavior must pass.', 'safety_boundary_foundations.supportedContractVersions'));
+  return createCoreValidationResult(issues);
+}
+
+export function validateCoreIdempotencyEnforcementFixture(fixture: unknown): CoreValidationResult {
+  const issues: CoreValidationIssue[] = [];
+  if (JSON.stringify(fixture) !== JSON.stringify(CORE_IDEMPOTENCY_FIXTURE)) {
+    issues.push(error('core.idempotency_enforcement.fixture_mismatch', 'Idempotency fixture must match the canonical deterministic fixture.', 'idempotency_enforcement'));
+    return createCoreValidationResult(issues);
+  }
+  const registry = new CoreIdempotencyRegistry(() => 1_000);
+  let effects = 0;
+  const value = fixture as typeof CORE_IDEMPOTENCY_FIXTURE;
+  if (!registry.execute(value, () => ++effects).ok || !registry.execute(value, () => ++effects).ok || effects !== 1) {
+    issues.push(error('core.idempotency_enforcement.replay_failed', 'Canonical replay must prevent duplicate effects.', 'idempotency_enforcement'));
+  }
   return createCoreValidationResult(issues);
 }
 
