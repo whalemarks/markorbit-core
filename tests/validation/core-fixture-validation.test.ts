@@ -23,7 +23,8 @@ import {
   validateCoreContractGapInventoryFixture,
   validateCoreContractCoverageAcceptanceLockFixture,
   validateCoreContractBehaviorCoverageBaselineFixture,
-  validateCoreContractBehaviorGapInventoryFixture
+  validateCoreContractBehaviorGapInventoryFixture,
+  validateCoreSafetyBoundaryFoundationsFixture
 } from '../../src/index.ts';
 
 const readFixture = async (path: string): Promise<unknown> => JSON.parse(await readFile(new URL(`../../${path}`, import.meta.url), 'utf8'));
@@ -51,6 +52,13 @@ describe('core fixture validation', () => {
     assert.equal(validateCoreContractCoverageAcceptanceLockFixture(await readFixture('fixtures/contract-coverage/core-contract-coverage-acceptance-lock.fixture.json')).ok, true);
     assert.equal(validateCoreContractBehaviorCoverageBaselineFixture(await readFixture('fixtures/behavior-coverage/core-contract-behavior-coverage-baseline.fixture.json')).ok, true);
     assert.equal(validateCoreContractBehaviorGapInventoryFixture(await readFixture('fixtures/behavior-coverage/core-contract-behavior-gap-inventory.fixture.json')).ok, true);
+    assert.equal(validateCoreSafetyBoundaryFoundationsFixture(await readFixture('fixtures/behaviors/core-safety-boundary-foundations.fixture.json')).ok, true);
+  });
+
+  it('safety boundary validator rejects changed deterministic fixtures', async () => {
+    const fixture = structuredClone(await readFixture('fixtures/behaviors/core-safety-boundary-foundations.fixture.json')) as Record<string, unknown>;
+    fixture.version = '9.9.9';
+    assert.equal(validateCoreSafetyBoundaryFoundationsFixture(fixture).ok, false);
   });
 
   it('behavior gap inventory validator rejects changed batch', async () => {
@@ -63,7 +71,7 @@ describe('core fixture validation', () => {
   it('behavior baseline validator rejects inflated depth', async () => {
     const fixture = structuredClone(await readFixture('fixtures/behavior-coverage/core-contract-behavior-coverage-baseline.fixture.json')) as Record<string, unknown>;
     const targets = fixture.targets as Record<string, unknown>[];
-    targets[0].currentDepth = 3;
+    targets[0].currentDepth = 2;
     assert.equal(validateCoreContractBehaviorCoverageBaselineFixture(fixture).ok, false);
   });
 

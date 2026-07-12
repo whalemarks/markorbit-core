@@ -1,5 +1,14 @@
 # Changelog
 
+## CORE-TASK-028 — Safety and Boundary Foundations
+
+- Implemented deterministic Reference validation/resolution and safe fail-closed Reference errors at Level 3.
+- Implemented controlled Safe Error construction and unsafe detail suppression at Level 3.
+- Implemented supported semantic Version validation, AI Context validation, and Agent registry/capability boundaries at Level 1.
+- Added deterministic executable fixtures and negative tests for invalid references, unsafe errors, unsupported versions, undisclosed AI output, suspended Agents, and forbidden/out-of-scope capabilities.
+- Updated behavior coverage to 7 minimum-satisfied, 1 partial, and 6 not implemented targets; 4/11 Must Build Now targets now meet minimum depth.
+- Added no database, external integration, model execution, Permission/Policy decision, Event emission, or professional authority.
+
 ## CORE-TASK-027 — Contract Behavior Gap Inventory Lock
 
 - Locked 12 minimum-depth behavior gaps totaling 22 depth increments.

@@ -200,3 +200,14 @@
 - Minimum-satisfied exclusions: Workflow Engine and Policy Engine.
 - Behavior implemented by this task: none.
 - Next: CORE-TASK-028 — Safety and Boundary Foundations.
+
+## CORE-TASK-028 — Safety and Boundary Foundations
+
+- References: Level 3 completed/current.
+- Errors: Level 3 completed/current.
+- Versioning: Level 1 completed/current.
+- AI Context: Level 1 completed/current.
+- Agent Runtime boundary: Level 1 completed/current.
+- Behavior coverage: 7 minimum-satisfied, 1 partial, 6 not implemented.
+- Must Build Now at minimum depth: 4 / 11.
+- Next: CORE-TASK-029 — Idempotency Enforcement.
