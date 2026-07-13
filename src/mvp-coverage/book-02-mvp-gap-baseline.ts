@@ -16,6 +16,8 @@ import {
   CORE_WORKFLOW_CATALOG_SKELETONS
 } from '../contracts/index.ts';
 import { CORE_DOMAIN_REGISTRY } from '../domains/index.ts';
+import { CORE_MVP_OBJECT_FIXTURE_PUBLIC_REFERENCE_RECORDS } from '../objects/core-mvp-object-base-record.ts';
+import { CORE_MVP_OBJECT_CANONICAL_PROFILES } from '../objects/core-mvp-object-profiles.ts';
 import {
   BOOK_02_AUTHORITY,
   BOOK_02_EXPECTED_COUNTS,
@@ -246,6 +248,16 @@ export const BOOK_02_MVP_TEST_FAMILY_EVIDENCE = {
 
 const existing = (paths: readonly string[]) =>
   paths.filter((path) => existsSync(path));
+const readJsonArray = (path: string): readonly Record<string, unknown>[] => {
+  try {
+    const parsed = JSON.parse(readFileSync(path, 'utf8')) as unknown;
+    return Array.isArray(parsed)
+      ? (parsed as readonly Record<string, unknown>[])
+      : [];
+  } catch {
+    return [];
+  }
+};
 const behaviorById: ReadonlyMap<
   string,
   (typeof CORE_CONTRACT_BEHAVIOR_ACCEPTANCE_LOCK.evidence)[number]
@@ -531,9 +543,14 @@ function evidenceFor(identity: Book02MvpRequirementIdentity): CurrentEvidence {
   }
   if (identity.layer === 'object') {
     const domainId = identity.id.replace('must-object-', '');
-    const found = CORE_OBJECT_CONTRACT_SKELETONS.find(
+    const profile = CORE_MVP_OBJECT_CANONICAL_PROFILES.find(
       (entry) => entry.domainId === domainId
     );
+    const found = profile
+      ? CORE_OBJECT_CONTRACT_SKELETONS.find(
+          (entry) => entry.id === profile.objectContractId
+        )
+      : undefined;
     const objectFoundationFiles = [
       'src/objects/core-mvp-object-profiles.ts',
       'src/objects/core-mvp-object-base-record.ts',
@@ -545,12 +562,36 @@ function evidenceFor(identity: Book02MvpRequirementIdentity): CurrentEvidence {
     ];
     const objectFoundationFixture =
       'fixtures/objects/core-mvp-object-public-reference-foundation.fixture.json';
-    const hasExecutableObjectFoundation = [
-      ...objectFoundationFiles,
-      ...objectFoundationTests,
-      objectFoundationFixture,
-      'src/behaviors/core-reference-behavior.ts'
-    ].every((path) => existsSync(path));
+    const fixtureRecords = readJsonArray(objectFoundationFixture);
+    const fixtureRecord = fixtureRecords.find(
+      (entry) => entry.domainId === domainId
+    );
+    const publicReferenceRecord =
+      typeof fixtureRecord?.publicReferenceId === 'string'
+        ? CORE_MVP_OBJECT_FIXTURE_PUBLIC_REFERENCE_RECORDS.find(
+            (entry) => entry.referenceId === fixtureRecord.publicReferenceId
+          )
+        : undefined;
+    const hasExactObjectEvidence = Boolean(
+      profile &&
+      found &&
+      fixtureRecord &&
+      publicReferenceRecord &&
+      found.domainId === profile.domainId &&
+      found.objectType === profile.objectType &&
+      found.sourcePath === profile.sourcePath &&
+      fixtureRecord.objectType === profile.objectType &&
+      fixtureRecord.objectContractId === profile.objectContractId &&
+      fixtureRecord.domainId === profile.domainId &&
+      publicReferenceRecord.objectType === profile.objectType &&
+      publicReferenceRecord.referenceDomain === profile.domainId &&
+      [
+        ...objectFoundationFiles,
+        ...objectFoundationTests,
+        objectFoundationFixture,
+        'src/behaviors/core-reference-behavior.ts'
+      ].every((path) => existsSync(path))
+    );
     return found
       ? {
           contractIds: [String(found.id)],
@@ -561,7 +602,7 @@ function evidenceFor(identity: Book02MvpRequirementIdentity): CurrentEvidence {
           ],
           testFiles: objectFoundationTests,
           fixtureFiles: [objectFoundationFixture],
-          currentDepth: hasExecutableObjectFoundation ? 'level_2' : undefined
+          currentDepth: hasExactObjectEvidence ? 'level_2' : undefined
         }
       : emptyEvidence();
   }

@@ -12,7 +12,10 @@
     "traceability": "books/book-02-core-specification/core-specs/TRACEABILITY.md",
     "mvpCut": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md"
   },
-  "requiredContractTypeAdditions": ["common", "test"],
+  "requiredContractTypeAdditions": [
+    "common",
+    "test"
+  ],
   "domainTargets": [
     {
       "domainId": "identity",
@@ -60,7 +63,9 @@
       "targetContractId": "core-object-organization-record-contract",
       "targetName": "Core Organization Object Contract Skeleton",
       "disposition": "map_existing_skeleton",
-      "existingContractIds": ["core-object-organization-record-contract"],
+      "existingContractIds": [
+        "core-object-organization-record-contract"
+      ],
       "implementationBatch": null,
       "targetDepth": "validated_skeleton"
     },
@@ -96,7 +101,9 @@
       "targetContractId": "core-object-user-record-contract",
       "targetName": "Core User Object Contract Skeleton",
       "disposition": "map_existing_skeleton",
-      "existingContractIds": ["core-object-user-record-contract"],
+      "existingContractIds": [
+        "core-object-user-record-contract"
+      ],
       "implementationBatch": null,
       "targetDepth": "validated_skeleton"
     },
@@ -170,7 +177,9 @@
       "targetContractId": "core-object-permission-policy-record-contract",
       "targetName": "Core Policy Object Contract Skeleton",
       "disposition": "map_existing_skeleton",
-      "existingContractIds": ["core-object-permission-policy-record-contract"],
+      "existingContractIds": [
+        "core-object-permission-policy-record-contract"
+      ],
       "implementationBatch": null,
       "targetDepth": "validated_skeleton"
     },
@@ -208,7 +217,9 @@
       "targetContractId": "core-object-knowledge-source-record-contract",
       "targetName": "Core Knowledge Object Contract Skeleton",
       "disposition": "map_existing_skeleton",
-      "existingContractIds": ["core-object-knowledge-source-record-contract"],
+      "existingContractIds": [
+        "core-object-knowledge-source-record-contract"
+      ],
       "implementationBatch": null,
       "targetDepth": "validated_skeleton"
     },
@@ -246,7 +257,9 @@
       "targetContractId": "core-object-brand-record-contract",
       "targetName": "Core Brand Object Contract Skeleton",
       "disposition": "map_existing_skeleton",
-      "existingContractIds": ["core-object-brand-record-contract"],
+      "existingContractIds": [
+        "core-object-brand-record-contract"
+      ],
       "implementationBatch": null,
       "targetDepth": "validated_skeleton"
     },
@@ -282,7 +295,9 @@
       "targetContractId": "core-object-trademark-record-contract",
       "targetName": "Core Trademark Object Contract Skeleton",
       "disposition": "map_existing_skeleton",
-      "existingContractIds": ["core-object-trademark-record-contract"],
+      "existingContractIds": [
+        "core-object-trademark-record-contract"
+      ],
       "implementationBatch": null,
       "targetDepth": "validated_skeleton"
     },
@@ -320,7 +335,9 @@
       "targetContractId": "core-object-jurisdiction-record-contract",
       "targetName": "Core Jurisdiction Object Contract Skeleton",
       "disposition": "map_existing_skeleton",
-      "existingContractIds": ["core-object-jurisdiction-record-contract"],
+      "existingContractIds": [
+        "core-object-jurisdiction-record-contract"
+      ],
       "implementationBatch": null,
       "targetDepth": "validated_skeleton"
     },
@@ -358,7 +375,9 @@
       "targetContractId": "core-object-classification-record-contract",
       "targetName": "Core Classification Object Contract Skeleton",
       "disposition": "map_existing_skeleton",
-      "existingContractIds": ["core-object-classification-record-contract"],
+      "existingContractIds": [
+        "core-object-classification-record-contract"
+      ],
       "implementationBatch": null,
       "targetDepth": "validated_skeleton"
     },
@@ -396,7 +415,9 @@
       "targetContractId": "core-object-document-record-contract",
       "targetName": "Core Document Object Contract Skeleton",
       "disposition": "map_existing_skeleton",
-      "existingContractIds": ["core-object-document-record-contract"],
+      "existingContractIds": [
+        "core-object-document-record-contract"
+      ],
       "implementationBatch": null,
       "targetDepth": "validated_skeleton"
     },
@@ -434,7 +455,9 @@
       "targetContractId": "core-object-evidence-record-contract",
       "targetName": "Core Evidence Object Contract Skeleton",
       "disposition": "map_existing_skeleton",
-      "existingContractIds": ["core-object-evidence-record-contract"],
+      "existingContractIds": [
+        "core-object-evidence-record-contract"
+      ],
       "implementationBatch": null,
       "targetDepth": "validated_skeleton"
     },
@@ -508,7 +531,9 @@
       "targetContractId": "core-object-matter-record-contract",
       "targetName": "Core Matter Object Contract Skeleton",
       "disposition": "map_existing_skeleton",
-      "existingContractIds": ["core-object-matter-record-contract"],
+      "existingContractIds": [
+        "core-object-matter-record-contract"
+      ],
       "implementationBatch": null,
       "targetDepth": "validated_skeleton"
     },
@@ -940,7 +965,9 @@
       "targetContractId": "core-object-communication-record-contract",
       "targetName": "Core Communication Object Contract Skeleton",
       "disposition": "map_existing_skeleton",
-      "existingContractIds": ["core-object-communication-record-contract"],
+      "existingContractIds": [
+        "core-object-communication-record-contract"
+      ],
       "implementationBatch": null,
       "targetDepth": "validated_skeleton"
     },
@@ -1237,35 +1264,49 @@
       "id": "CORE-TASK-020",
       "name": "Common and Test Contract Foundations",
       "targetCount": 17,
-      "layers": ["common", "test"],
+      "layers": [
+        "common",
+        "test"
+      ],
       "boundary": "Add canonical metadata-only Common and Test Contract skeleton families and their contract types."
     },
     {
       "id": "CORE-TASK-021",
       "name": "Must-Build Object and Service Gaps",
       "targetCount": 16,
-      "layers": ["object", "service"],
+      "layers": [
+        "object",
+        "service"
+      ],
       "boundary": "Add only missing validated skeletons for Must Build Now Domains; preserve existing mapped skeletons."
     },
     {
       "id": "CORE-TASK-022",
       "name": "Must-Build Canonical Domain APIs",
       "targetCount": 18,
-      "layers": ["api"],
+      "layers": [
+        "api"
+      ],
       "boundary": "Add 18 canonical Domain API skeletons without routes, handlers, service execution, or DTO implementation."
     },
     {
       "id": "CORE-TASK-023",
       "name": "Stub Domain Contract Gaps",
       "targetCount": 22,
-      "layers": ["object", "service", "api"],
+      "layers": [
+        "object",
+        "service",
+        "api"
+      ],
       "boundary": "Add safe validated skeletons for the 8 Stub Now Domains without pretending to implement runtime behavior."
     },
     {
       "id": "CORE-TASK-024",
       "name": "Canonical Workflow Contracts",
       "targetCount": 8,
-      "layers": ["workflow"],
+      "layers": [
+        "workflow"
+      ],
       "boundary": "Add the 8 canonical Book 2 Workflow Contract skeletons without a workflow engine or execution runtime."
     }
   ],

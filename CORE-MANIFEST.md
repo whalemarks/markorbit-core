@@ -340,3 +340,11 @@ Book 02 MVP Gap Baseline is locked only after this task passes validation. Book 
 Must Build Object public-reference and base validation is implemented. Object business schemas and Domain behavior remain incomplete. Service-owned behavior remains incomplete. API validators remain incomplete. Book 02 MVP remains incomplete. Production readiness remains unaccepted.
 
 Next governed task: CORE-TASK-036 — first Service-owned behavior batch selected from the locked MVP gap baseline.
+
+## CORE-TASK-035R Object public-reference semantic repair
+
+The Object public-reference foundation now uses the corrected real Object contract/profile mapping, including the special Policy mapping to `permission-policy-record` / `core-object-permission-policy-record-contract`. Public reference identity validation is separated from related-reference resolution; deterministic fixture references are test evidence and not a default runtime registry. Metadata validation is plain-JSON only, Audit and Visibility metadata fail closed, construction deep-clones before freezing, and Book 02 Object evidence is derived per Object.
+
+Object business schemas remain incomplete. Domain behavior remains incomplete. Service-owned behavior remains incomplete. API validators remain incomplete. Book 02 MVP remains incomplete. Production readiness remains unaccepted.
+
+Next governed task: CORE-TASK-036 — first Service-owned behavior batch selected from the locked MVP gap baseline.

@@ -1,85 +1,235 @@
 import assert from 'node:assert/strict';
 import { describe, it } from 'node:test';
-import { CoreReferenceRegistry, CORE_MVP_OBJECT_PROFILES, CORE_MVP_OBJECT_PROFILE_ORDER, CORE_MVP_OBJECT_REFERENCE_RECORDS, createCoreMvpObjectBaseRecord, validateCoreMvpObjectBaseRecord, validateCoreMvpObjectProfiles } from '../../src/index.ts';
+import {
+  CORE_MUST_BUILD_OBJECT_CONTRACT_SKELETONS,
+  CORE_OBJECT_CONTRACT_SKELETONS,
+  CORE_STUB_OBJECT_CONTRACT_SKELETONS,
+  CoreReferenceRegistry,
+  CORE_MVP_OBJECT_BASE_RECORD_FIELDS,
+  CORE_MVP_OBJECT_CANONICAL_PROFILES,
+  CORE_MVP_OBJECT_FIXTURE_RELATED_REFERENCE_RECORDS,
+  CORE_MVP_OBJECT_PROFILE_ORDER,
+  createCoreMvpObjectBaseRecord,
+  coreMvpObjectBaseRecordFieldNames,
+  validateCoreMvpObjectBaseRecord,
+  validateCoreMvpObjectProfiles,
+  type CoreMvpObjectValidationContext
+} from '../../src/index.ts';
 
-const validRecord = {
-  publicReferenceId: 'customer:ref:00006',
+const relatedReferenceRegistry = new CoreReferenceRegistry(
+  CORE_MVP_OBJECT_FIXTURE_RELATED_REFERENCE_RECORDS
+);
+
+const validRecord: Record<string, unknown> = {
+  publicReferenceId: 'customer:ref:any-valid-0001',
   objectType: 'customer-record',
   domainId: 'customer',
   objectContractId: 'core-object-customer-record-contract',
   status: 'active',
   version: { version: 1, createdAt: '2026-01-01T00:00:00.000Z' },
   metadata: { source: 'core-task-035', nested: { safe: true } },
-  auditMetadata: { createdAt: '2026-01-01T00:00:00.000Z', createdByReferenceId: 'user:ref:actor-0001', correlationId: 'corr-core-task-035' },
-  visibility: { permissionScopeReferenceId: 'permission:ref:scope-0001', policyScopeReferenceId: 'policy:ref:scope-0001', organizationScopeReferenceId: 'organization:ref:scope-0001' }
-} as const;
+  auditMetadata: {
+    createdAt: '2026-01-01T00:00:00.000Z',
+    createdByReferenceId: 'user:ref:actor-0001',
+    correlationId: 'corr-core-task-035'
+  },
+  visibility: {
+    permissionScopeReferenceId: 'permission:ref:scope-0001',
+    policyScopeReferenceId: 'policy:ref:scope-0001',
+    organizationScopeReferenceId: 'organization:ref:scope-0001',
+    actorScopeReferenceId: 'user:ref:actor-0001'
+  }
+};
 
-const codes = (input: unknown) => validateCoreMvpObjectBaseRecord(input).issues.map((i) => i.code);
+const context = (
+  overrides: Partial<CoreMvpObjectValidationContext['publicReferenceRecord']> = {}
+): CoreMvpObjectValidationContext => ({
+  publicReferenceRecord: {
+    referenceId: 'customer:ref:any-valid-0001',
+    objectType: 'customer-record',
+    referenceDomain: 'customer',
+    status: 'Active',
+    ...overrides
+  },
+  relatedReferenceRegistry
+});
+
+const codes = (input: unknown, ctx: CoreMvpObjectValidationContext | undefined = context()) =>
+  validateCoreMvpObjectBaseRecord(input, ctx).issues.map((i) => i.code);
+const auditMetadata = () => validRecord.auditMetadata as Record<string, unknown>;
+const visibilityMetadata = () => validRecord.visibility as Record<string, unknown>;
 
 describe('Core MVP Object public-reference foundation', () => {
   it('locks exactly 18 Object profiles in canonical Book 02 order', () => {
-    assert.equal(CORE_MVP_OBJECT_PROFILES.length, 18);
-    assert.deepEqual(CORE_MVP_OBJECT_PROFILES.map((p) => p.domainId), [...CORE_MVP_OBJECT_PROFILE_ORDER]);
+    assert.equal(CORE_MVP_OBJECT_CANONICAL_PROFILES.length, 18);
+    assert.deepEqual(CORE_MVP_OBJECT_CANONICAL_PROFILES.map((p) => p.domainId), [
+      ...CORE_MVP_OBJECT_PROFILE_ORDER
+    ]);
     assert.equal(validateCoreMvpObjectProfiles().ok, true);
   });
 
-  it('rejects profile duplicate, missing, extra, contract mismatch, and domain/type drift', () => {
-    assert.equal(validateCoreMvpObjectProfiles([CORE_MVP_OBJECT_PROFILES[0], CORE_MVP_OBJECT_PROFILES[0], ...CORE_MVP_OBJECT_PROFILES.slice(2)]).issues.some((i) => i.code === 'core.object.profile_duplicate'), true);
-    assert.equal(validateCoreMvpObjectProfiles(CORE_MVP_OBJECT_PROFILES.slice(1)).issues[0]?.code, 'core.object.profile_missing');
-    assert.equal(validateCoreMvpObjectProfiles([...CORE_MVP_OBJECT_PROFILES, CORE_MVP_OBJECT_PROFILES[0]]).issues.some((i) => i.code === 'core.object.profile_extra'), true);
-    assert.equal(validateCoreMvpObjectProfiles([{ ...CORE_MVP_OBJECT_PROFILES[0], objectContractId: 'wrong' }]).issues.some((i) => i.code === 'core.object.contract_mismatch'), true);
-    assert.equal(validateCoreMvpObjectProfiles([{ ...CORE_MVP_OBJECT_PROFILES[0], domainId: 'unknown' }]).issues.some((i) => i.code === 'core.object.domain_mismatch'), true);
+  it('maps Policy to the real permission-policy Object contract', () => {
+    const policy = CORE_MVP_OBJECT_CANONICAL_PROFILES.find(
+      (profile) => profile.domainId === 'policy'
+    );
+    assert.equal(policy?.objectType, 'permission-policy-record');
+    assert.equal(policy?.objectContractId, 'core-object-permission-policy-record-contract');
   });
 
-  it('accepts and immutably constructs a valid supplied public Object reference record without side effects', () => {
-    const before = JSON.stringify(validRecord);
-    const result = createCoreMvpObjectBaseRecord(validRecord);
-    assert.equal(result.ok, true);
-    assert.equal(JSON.stringify(validRecord), before);
-    if (result.ok) {
-      assert.equal(Object.isFrozen(result.value), true);
-      assert.equal(result.value.publicReferenceId, validRecord.publicReferenceId);
-      assert.equal('databaseId' in result.value, false);
+  it('matches all 18 profiles to real canonical Object contracts and source paths', () => {
+    for (const profile of CORE_MVP_OBJECT_CANONICAL_PROFILES) {
+      const contract = CORE_MUST_BUILD_OBJECT_CONTRACT_SKELETONS.find(
+        (entry) => entry.id === profile.objectContractId
+      );
+      assert.equal(contract?.domainId, profile.domainId);
+      assert.equal(contract?.objectType, profile.objectType);
+      assert.equal(contract?.sourcePath, profile.sourcePath);
+      assert.equal(contract?.implementationDepth, 'validated_skeleton');
+      assert.equal(contract?.metadata?.specificationCommit, '3349ecb8955021a8714d023348f8b24f941eb98f');
     }
   });
 
-  it('rejects public reference failures with stable codes', () => {
+  it('keeps exactly 8 Stub Object identities as stubs', () => {
+    assert.deepEqual(CORE_STUB_OBJECT_CONTRACT_SKELETONS.map((entry) => entry.domainId), [
+      'knowledge',
+      'opportunity',
+      'notification',
+      'partner',
+      'agent',
+      'service-provider',
+      'service-network',
+      'routing'
+    ]);
+    assert.equal(
+      CORE_STUB_OBJECT_CONTRACT_SKELETONS.every(
+        (entry) => entry.metadata?.mvpRequirement === 'stub_now'
+      ),
+      true
+    );
+  });
+
+  it('rejects profile duplicate, missing, extra, applicability drift, source drift, and contract drift', () => {
+    assert.ok(
+      validateCoreMvpObjectProfiles([
+        CORE_MVP_OBJECT_CANONICAL_PROFILES[0],
+        CORE_MVP_OBJECT_CANONICAL_PROFILES[0],
+        ...CORE_MVP_OBJECT_CANONICAL_PROFILES.slice(2)
+      ]).issues.some((i) => i.code === 'core.object.profile_duplicate')
+    );
+    assert.equal(
+      validateCoreMvpObjectProfiles(CORE_MVP_OBJECT_CANONICAL_PROFILES.slice(1)).issues[0]?.code,
+      'core.object.profile_missing'
+    );
+    assert.ok(
+      validateCoreMvpObjectProfiles([
+        ...CORE_MVP_OBJECT_CANONICAL_PROFILES,
+        CORE_MVP_OBJECT_CANONICAL_PROFILES[0]
+      ]).issues.some((i) => i.code === 'core.object.profile_extra')
+    );
+    assert.ok(
+      validateCoreMvpObjectProfiles([
+        { ...CORE_MVP_OBJECT_CANONICAL_PROFILES[0], visibility: 'required' },
+        ...CORE_MVP_OBJECT_CANONICAL_PROFILES.slice(1)
+      ]).issues.some((i) => i.code === 'core.object.profile_drift')
+    );
+    assert.ok(
+      validateCoreMvpObjectProfiles([
+        { ...CORE_MVP_OBJECT_CANONICAL_PROFILES[0], sourcePath: 'changed.md' },
+        ...CORE_MVP_OBJECT_CANONICAL_PROFILES.slice(1)
+      ]).issues.some((i) => i.code === 'core.object.profile_source_mismatch')
+    );
+    assert.ok(
+      validateCoreMvpObjectProfiles([
+        { ...CORE_MVP_OBJECT_CANONICAL_PROFILES[0], objectContractId: 'missing-contract' },
+        ...CORE_MVP_OBJECT_CANONICAL_PROFILES.slice(1)
+      ]).issues.some((i) => i.code === 'core.object.contract_missing')
+    );
+  });
+
+  it('compares Object base contract fields with the implemented base-record fields', () => {
+    assert.deepEqual(coreMvpObjectBaseRecordFieldNames(), CORE_MVP_OBJECT_BASE_RECORD_FIELDS);
+    assert.equal(
+      CORE_OBJECT_CONTRACT_SKELETONS.every(
+        (entry) =>
+          JSON.stringify([...(entry.requiredBaseFields ?? []), ...(entry.optionalBaseFields ?? [])]) ===
+          JSON.stringify(CORE_MVP_OBJECT_BASE_RECORD_FIELDS)
+      ),
+      true
+    );
+  });
+
+  it('accepts arbitrary valid supplied public IDs with a matching supplied Reference record', () => {
+    assert.equal(validateCoreMvpObjectBaseRecord(validRecord, context()).ok, true);
+    assert.ok(
+      validateCoreMvpObjectBaseRecord(validRecord).issues.some(
+        (issue) => issue.code === 'core.object.reference_evidence_missing'
+      )
+    );
+    assert.ok(codes(validRecord, context({ objectType: 'brand-record' })).includes('core.object.public_reference_type_mismatch'));
+    assert.ok(codes(validRecord, context({ referenceDomain: 'brand' })).includes('core.object.public_reference_domain_mismatch'));
+    assert.ok(codes(validRecord, context({ status: 'DeletedReferenceOnly' })).includes('core.object.public_reference_invalid'));
+  });
+
+  it('rejects public reference shape failures with stable codes', () => {
     assert.ok(codes({ ...validRecord, publicReferenceId: undefined }).includes('core.object.public_reference_missing'));
     assert.ok(codes({ ...validRecord, publicReferenceId: 'bad path/value' }).includes('core.object.public_reference_invalid'));
     assert.ok(codes({ ...validRecord, publicReferenceId: '12345' }).includes('core.object.raw_database_id_forbidden'));
-    const typeRegistry = new CoreReferenceRegistry([{ ...CORE_MVP_OBJECT_REFERENCE_RECORDS[5], objectType: 'brand-record' }, ...CORE_MVP_OBJECT_REFERENCE_RECORDS.slice(6)]);
-    assert.ok(validateCoreMvpObjectBaseRecord(validRecord, typeRegistry).issues.some((i) => i.code === 'core.object.public_reference_type_mismatch'));
-    assert.ok(codes({ ...validRecord, publicReferenceId: 'brand:ref:00007' }).includes('core.object.public_reference_domain_mismatch'));
-    const deletedRegistry = new CoreReferenceRegistry([{ ...CORE_MVP_OBJECT_REFERENCE_RECORDS[5], status: 'DeletedReferenceOnly' }, ...CORE_MVP_OBJECT_REFERENCE_RECORDS.slice(6)]);
-    assert.ok(validateCoreMvpObjectBaseRecord(validRecord, deletedRegistry).issues.some((i) => i.code === 'core.object.public_reference_invalid'));
+    assert.ok(codes({ ...validRecord, publicReferenceId: 'customer:ref:different' }).includes('core.object.public_reference_mismatch'));
   });
 
-  it('rejects unsafe or unbounded core metadata', () => {
-    assert.ok(codes({ ...validRecord, metadata: undefined }).includes('core.object.metadata_invalid'));
-    assert.ok(codes({ ...validRecord, metadata: { fn: () => undefined } }).includes('core.object.metadata_invalid'));
-    assert.ok(codes({ ...validRecord, metadata: { bad: undefined } }).includes('core.object.metadata_invalid'));
-    assert.ok(codes({ ...validRecord, metadata: { a: { b: { c: { d: { e: { f: true } } } } } } }).includes('core.object.metadata_unbounded'));
-    assert.ok(codes({ ...validRecord, metadata: Object.fromEntries(Array.from({ length: 60 }, (_, i) => [`k${i}`, i])) }).includes('core.object.metadata_unbounded'));
+  it('rejects non-JSON metadata safely', () => {
+    class NonPlainMetadata {
+      readonly value = true;
+    }
+    const circular: Record<string, unknown> = {};
+    circular.self = circular;
+    assert.ok(codes({ ...validRecord, metadata: [] }).includes('core.object.metadata_not_object'));
+    assert.ok(codes({ ...validRecord, metadata: { value: Number.NaN } }).includes('core.object.metadata_non_finite_number'));
+    assert.ok(codes({ ...validRecord, metadata: { value: Number.POSITIVE_INFINITY } }).includes('core.object.metadata_non_finite_number'));
+    assert.ok(codes({ ...validRecord, metadata: { value: new Date('2026-01-01T00:00:00.000Z') } }).includes('core.object.metadata_non_plain_object'));
+    assert.ok(codes({ ...validRecord, metadata: { value: new Map<string, string>() } }).includes('core.object.metadata_non_plain_object'));
+    assert.ok(codes({ ...validRecord, metadata: { value: new Set<string>() } }).includes('core.object.metadata_non_plain_object'));
+    assert.ok(codes({ ...validRecord, metadata: { value: new NonPlainMetadata() } }).includes('core.object.metadata_non_plain_object'));
+    assert.ok(codes({ ...validRecord, metadata: circular }).includes('core.object.metadata_cycle'));
+    assert.ok(codes({ ...validRecord, metadata: { a: { b: { c: { d: { e: { f: true } } } } } } }).includes('core.object.metadata_depth_exceeded'));
+    assert.ok(codes({ ...validRecord, metadata: Object.fromEntries(Array.from({ length: 60 }, (_, i) => [`k${i}`, i])) }).includes('core.object.metadata_entry_limit'));
   });
 
-  it('rejects invalid audit metadata and partial update pairs', () => {
-    assert.ok(codes({ ...validRecord, auditMetadata: undefined }).includes('core.object.audit_missing'));
-    assert.ok(codes({ ...validRecord, auditMetadata: { ...validRecord.auditMetadata, createdAt: 'bad' } }).includes('core.object.audit_invalid'));
-    assert.ok(codes({ ...validRecord, auditMetadata: { ...validRecord.auditMetadata, updatedAt: '2025-01-01T00:00:00.000Z', updatedByReferenceId: 'user:ref:actor-0001' } }).includes('core.object.audit_invalid'));
-    assert.ok(codes({ ...validRecord, auditMetadata: { ...validRecord.auditMetadata, updatedAt: '2026-01-02T00:00:00.000Z' } }).includes('core.object.audit_invalid'));
-    assert.ok(codes({ ...validRecord, auditMetadata: { ...validRecord.auditMetadata, updatedByReferenceId: 'user:ref:actor-0001' } }).includes('core.object.audit_invalid'));
-    assert.ok(codes({ ...validRecord, auditMetadata: { ...validRecord.auditMetadata, createdByReferenceId: 'bad actor' } }).includes('core.object.audit_invalid'));
+  it('rejects invalid audit metadata', () => {
+    assert.ok(codes({ ...validRecord, auditMetadata: { ...auditMetadata(), createdByReferenceId: undefined } }).includes('core.object.audit_created_by_missing'));
+    assert.ok(codes({ ...validRecord, auditMetadata: { ...auditMetadata(), createdAt: '2026-99-99T00:00:00.000Z' } }).includes('core.object.audit_created_at_invalid'));
+    assert.ok(codes({ ...validRecord, auditMetadata: { ...auditMetadata(), updatedAt: 123, updatedByReferenceId: 'user:ref:actor-0001' } }).includes('core.object.audit_updated_at_invalid'));
+    assert.ok(codes({ ...validRecord, auditMetadata: { ...auditMetadata(), updatedAt: 'bad', updatedByReferenceId: 'user:ref:actor-0001' } }).includes('core.object.audit_updated_at_invalid'));
+    assert.ok(codes({ ...validRecord, auditMetadata: { ...auditMetadata(), updatedAt: '2025-01-01T00:00:00.000Z', updatedByReferenceId: 'user:ref:actor-0001' } }).includes('core.object.audit_time_order_invalid'));
+    assert.ok(codes({ ...validRecord, auditMetadata: { ...auditMetadata(), updatedAt: '2026-01-02T00:00:00.000Z' } }).includes('core.object.audit_update_pair_invalid'));
   });
 
-  it('rejects visibility, status, version, unknown type/domain, and unknown fields', () => {
-    assert.ok(codes({ ...validRecord, visibility: undefined }).includes('core.object.visibility_missing'));
-    assert.ok(codes({ ...validRecord, visibility: { ...validRecord.visibility, permissionScopeReferenceId: 'bad' } }).includes('core.object.visibility_invalid'));
-    assert.ok(codes({ ...validRecord, visibility: { ...validRecord.visibility, policyScopeReferenceId: 'bad' } }).includes('core.object.visibility_invalid'));
-    assert.ok(codes({ ...validRecord, status: undefined }).includes('core.object.status_invalid'));
-    assert.ok(codes({ ...validRecord, status: 'pending' }).includes('core.object.status_invalid'));
-    assert.ok(codes({ ...validRecord, version: { version: 2, createdAt: '2026-01-01T00:00:00.000Z' } }).includes('core.object.version_unsupported'));
-    assert.ok(codes({ ...validRecord, objectType: 'unknown-record' }).includes('core.object.profile_missing'));
-    assert.ok(codes({ ...validRecord, domainId: 'unknown' }).includes('core.object.domain_mismatch'));
-    assert.ok(codes({ ...validRecord, databaseId: 'db-1' }).includes('core.object.unknown_field'));
+  it('rejects invalid visibility/status/version applicability cases', () => {
+    assert.ok(codes({ ...validRecord, visibility: { ...visibilityMetadata(), organizationScopeReferenceId: 'bad' } }).includes('core.object.organization_scope_invalid'));
+    assert.ok(codes({ ...validRecord, visibility: { ...visibilityMetadata(), actorScopeReferenceId: 'bad' } }).includes('core.object.actor_scope_invalid'));
+    const optionalProfile = CORE_MVP_OBJECT_CANONICAL_PROFILES[0];
+    const notApplicableProfile = { ...optionalProfile, status: 'not_applicable' as const, version: 'not_applicable' as const, visibility: 'not_applicable' as const };
+    assert.ok(validateCoreMvpObjectProfiles([notApplicableProfile, ...CORE_MVP_OBJECT_CANONICAL_PROFILES.slice(1)]).issues.some((i) => i.code === 'core.object.profile_drift'));
+  });
+
+  it('does not freeze or mutate input and deeply freezes an independent result', () => {
+    const input = structuredClone(validRecord);
+    const before = JSON.stringify(input);
+    const result = createCoreMvpObjectBaseRecord(input, context());
+    assert.equal(result.ok, true);
+    assert.equal(JSON.stringify(input), before);
+    assert.equal(Object.isFrozen(input), false);
+    assert.equal(Object.isFrozen(input.metadata), false);
+    assert.equal(Object.isFrozen((input.metadata as Record<string, unknown>).nested), false);
+    assert.equal(Object.isFrozen(input.auditMetadata), false);
+    assert.equal(Object.isFrozen(input.visibility), false);
+    assert.equal(Object.isFrozen(input.version), false);
+    if (result.ok) {
+      assert.equal(Object.isFrozen(result.value), true);
+      assert.equal(Object.isFrozen(result.value.metadata), true);
+      assert.equal(Object.isFrozen(result.value.auditMetadata), true);
+      assert.equal(Object.isFrozen(result.value.visibility), true);
+      assert.notEqual(result.value.metadata, input.metadata);
+    }
   });
 });

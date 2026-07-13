@@ -1,7 +1,12 @@
 import type { CoreDomainId } from '../domains/index.ts';
 
-export const CORE_MVP_OBJECT_FIELD_REQUIREMENTS = ['required', 'optional', 'not_applicable'] as const;
-export type CoreObjectFieldRequirement = (typeof CORE_MVP_OBJECT_FIELD_REQUIREMENTS)[number];
+export const CORE_MVP_OBJECT_FIELD_REQUIREMENTS = [
+  'required',
+  'optional',
+  'not_applicable'
+] as const;
+export type CoreObjectFieldRequirement =
+  (typeof CORE_MVP_OBJECT_FIELD_REQUIREMENTS)[number];
 
 export interface CoreMvpObjectProfile {
   readonly domainId: CoreDomainId;
@@ -37,7 +42,7 @@ export const CORE_MVP_OBJECT_PROFILE_ORDER = [
   "communication"
 ] as const;
 
-export const CORE_MVP_OBJECT_PROFILES = [
+export const CORE_MVP_OBJECT_CANONICAL_PROFILES = [
   {
     "domainId": "identity",
     "objectType": "identity-record",
@@ -88,8 +93,8 @@ export const CORE_MVP_OBJECT_PROFILES = [
   },
   {
     "domainId": "policy",
-    "objectType": "policy-record",
-    "objectContractId": "core-object-policy-record-contract",
+    "objectType": "permission-policy-record",
+    "objectContractId": "core-object-permission-policy-record-contract",
     "sourcePath": "books/book-02-core-specification/core-specs/objects/policy.md",
     "publicReferenceId": "required",
     "metadata": "required",
@@ -255,3 +260,5 @@ export const CORE_MVP_OBJECT_PROFILES = [
     "visibility": "required"
   }
 ] as const satisfies readonly CoreMvpObjectProfile[];
+
+export const CORE_MVP_OBJECT_PROFILES = CORE_MVP_OBJECT_CANONICAL_PROFILES;

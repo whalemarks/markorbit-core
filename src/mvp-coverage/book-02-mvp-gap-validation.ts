@@ -1,7 +1,12 @@
-import { existsSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { isAbsolute } from 'node:path';
 import { CORE_CONTRACT_BEHAVIOR_ACCEPTANCE_LOCK } from '../behavior-coverage/index.ts';
-import { CORE_CONTRACT_INDEX } from '../contracts/index.ts';
+import {
+  CORE_CONTRACT_INDEX,
+  CORE_OBJECT_CONTRACT_SKELETONS
+} from '../contracts/index.ts';
+import { CORE_MVP_OBJECT_FIXTURE_PUBLIC_REFERENCE_RECORDS } from '../objects/core-mvp-object-base-record.ts';
+import { CORE_MVP_OBJECT_CANONICAL_PROFILES } from '../objects/core-mvp-object-profiles.ts';
 import {
   BOOK_02_AUTHORITY,
   BOOK_02_EXPECTED_COUNTS,
@@ -62,6 +67,21 @@ const structuredCheckPrefixes = [
 ] as const;
 const hasKnownStructuredCheckPrefix = (check: string) =>
   structuredCheckPrefixes.some((prefix) => check.startsWith(prefix));
+const objectFixtureRecords = (): readonly Record<string, unknown>[] => {
+  try {
+    const parsed = JSON.parse(
+      readFileSync(
+        'fixtures/objects/core-mvp-object-public-reference-foundation.fixture.json',
+        'utf8'
+      )
+    ) as unknown;
+    return Array.isArray(parsed)
+      ? (parsed as readonly Record<string, unknown>[])
+      : [];
+  } catch {
+    return [];
+  }
+};
 const dispositions = new Set<Book02MvpDisposition>([
   'meets_required_depth',
   'partial_evidence',
@@ -508,6 +528,135 @@ export function validateBook02MvpRequirements(
             'book02.guard.violation_without_reasons',
             'Guard violation must include violation reasons.',
             `requirements[${index}].violationReasons`
+          )
+        );
+    }
+
+    if (r.layer === 'object') {
+      const domainId = r.id.replace('must-object-', '');
+      const profile = CORE_MVP_OBJECT_CANONICAL_PROFILES.find(
+        (entry) => entry.domainId === domainId
+      );
+      const contract = profile
+        ? CORE_OBJECT_CONTRACT_SKELETONS.find(
+            (entry) => entry.id === profile.objectContractId
+          )
+        : undefined;
+      const fixtureMatches = objectFixtureRecords().filter(
+        (entry) => entry.domainId === domainId
+      );
+      const fixtureRecord = fixtureMatches[0];
+      const publicReferenceRecord =
+        typeof fixtureRecord?.publicReferenceId === 'string'
+          ? CORE_MVP_OBJECT_FIXTURE_PUBLIC_REFERENCE_RECORDS.find(
+              (entry) => entry.referenceId === fixtureRecord.publicReferenceId
+            )
+          : undefined;
+      if (!profile || !contract)
+        issues.push(
+          issue(
+            'book02.object.profile_contract_mismatch',
+            'Object requirement must map to an exact canonical profile and real Object contract.',
+            `requirements[${index}]`
+          )
+        );
+      if (profile && contract) {
+        if (
+          profile.domainId !== contract.domainId ||
+          profile.objectType !== contract.objectType ||
+          profile.objectContractId !== contract.id
+        )
+          issues.push(
+            issue(
+              'book02.object.profile_contract_mismatch',
+              'Object profile must match the real Object contract.',
+              `requirements[${index}]`
+            )
+          );
+        if (profile.sourcePath !== contract.sourcePath)
+          issues.push(
+            issue(
+              'book02.object.profile_source_mismatch',
+              'Object profile source path must match the real Object contract.',
+              `requirements[${index}]`
+            )
+          );
+      }
+      if (fixtureMatches.length === 0)
+        issues.push(
+          issue(
+            'book02.object.fixture_missing',
+            'Object requirement must have an exact fixture record.',
+            `requirements[${index}]`
+          )
+        );
+      if (fixtureMatches.length > 1)
+        issues.push(
+          issue(
+            'book02.object.fixture_duplicate',
+            'Object requirement must not have duplicate fixture records.',
+            `requirements[${index}]`
+          )
+        );
+      if (
+        profile &&
+        fixtureRecord &&
+        (fixtureRecord.objectType !== profile.objectType ||
+          fixtureRecord.objectContractId !== profile.objectContractId ||
+          fixtureRecord.domainId !== profile.domainId)
+      )
+        issues.push(
+          issue(
+            'book02.object.fixture_profile_mismatch',
+            'Object fixture record must match the exact profile.',
+            `requirements[${index}]`
+          )
+        );
+      if (
+        !profile ||
+        !fixtureRecord ||
+        !publicReferenceRecord ||
+        publicReferenceRecord.objectType !== profile.objectType ||
+        publicReferenceRecord.referenceDomain !== profile.domainId
+      )
+        issues.push(
+          issue(
+            'book02.object.reference_evidence_missing',
+            'Object fixture must have matching public Reference evidence.',
+            `requirements[${index}]`
+          )
+        );
+      const hasDepthEvidence = Boolean(
+        profile &&
+        contract &&
+        fixtureRecord &&
+        publicReferenceRecord &&
+        r.contractIds.includes(String(contract.id)) &&
+        r.implementationFiles.includes(
+          'src/objects/core-mvp-object-profiles.ts'
+        ) &&
+        r.implementationFiles.includes(
+          'src/objects/core-mvp-object-base-record.ts'
+        ) &&
+        r.implementationFiles.includes(
+          'src/objects/core-mvp-object-validation.ts'
+        ) &&
+        r.testFiles.includes(
+          'tests/unit/core-mvp-object-public-reference-foundation.test.ts'
+        ) &&
+        r.testFiles.includes(
+          'tests/fixtures/core-mvp-object-public-reference-foundation-fixture.test.ts'
+        ) &&
+        r.fixtureFiles.includes(
+          'fixtures/objects/core-mvp-object-public-reference-foundation.fixture.json'
+        )
+      );
+      if (r.currentDisposition === 'meets_required_depth' && !hasDepthEvidence)
+        issues.push(
+          issue(
+            'book02.object.depth_inconsistent',
+            'Object meets_required_depth requires exact profile, contract, fixture, reference, implementation, and test evidence.',
+            `requirements[${index}]`
           )
         );
     }

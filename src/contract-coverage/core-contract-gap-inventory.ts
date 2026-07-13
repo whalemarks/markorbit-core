@@ -65,8 +65,27 @@ function idsByDomain(
   return result;
 }
 
+const legacyObjectContractIds = new Set([
+  'core-object-user-record-contract',
+  'core-object-organization-record-contract',
+  'core-object-permission-policy-record-contract',
+  'core-object-knowledge-source-record-contract',
+  'core-object-brand-record-contract',
+  'core-object-trademark-record-contract',
+  'core-object-jurisdiction-record-contract',
+  'core-object-classification-record-contract',
+  'core-object-document-record-contract',
+  'core-object-evidence-record-contract',
+  'core-object-matter-record-contract',
+  'core-object-communication-record-contract'
+]);
+
 const existingIdsByLayer = {
-  object: idsByDomain(CORE_OBJECT_CONTRACT_SKELETONS.slice(0, 12)),
+  object: idsByDomain(
+    CORE_OBJECT_CONTRACT_SKELETONS.filter((entry) =>
+      legacyObjectContractIds.has(entry.id)
+    )
+  ),
   service: idsByDomain(CORE_SERVICE_CONTRACT_SKELETONS.slice(0, 10)),
   api: new Map<CoreDomainId, readonly string[]>()
 } as const satisfies Readonly<
