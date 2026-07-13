@@ -11,7 +11,7 @@ import {
 import {
   CORE_MVP_OBJECT_FIXTURE_RELATED_REFERENCE_RECORDS,
   type CoreMvpObjectBaseRecord
-} from '../objects/index.ts';
+} from '../objects/core-mvp-object-base-record.ts';
 import {
   CORE_CUSTOMER_COLLECTION_TARGET,
   CoreCustomerService,
