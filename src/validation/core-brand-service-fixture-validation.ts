@@ -1,4 +1,4 @@
-import { validateCoreBrandServiceEvidenceFixture } from '../service-coverage/index.ts';
+import { validateCoreBrandServiceEvidenceFixture } from '../service-coverage/core-brand-service-evidence-fixture.ts';
 import { createCoreValidationResult } from './core-validation-result.ts';
 
 export function validateCoreBrandServiceCoreLifecycleFixture(fixture: unknown) {
