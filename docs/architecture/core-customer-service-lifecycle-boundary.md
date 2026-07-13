@@ -41,3 +41,11 @@ Idempotency scope is isolated by the Customer Service contract, operation, and a
 Mutating operations commit state and Event trace handoff consistently: failed store operations do not emit Events, failed Event handoffs roll back committed state, and replay duplicates neither state nor Event traces.
 
 The executable Customer Service fixture is registered as the 28th required Core fixture and is used by fixture validation and Book 02 MVP evidence derivation. Customer Service now derives `meets_required_depth`, while the remaining 17 Must Build Services remain incomplete and the global Service acceptance criterion remains unresolved.
+
+## CORE-TASK-036S closure notes
+
+Customer public references are pre-provisioned by the accepted Reference boundary. `createCustomer` requires the supplied reference record to exist in the injected registry and to match its reference ID, Object type, Domain, and status exactly; Customer Service does not generate or register public references.
+
+The guarded status-change boundary consults its scoped idempotency record before executing the underlying lifecycle transition. A successful status change therefore replays with the original immutable result and does not emit a second Event, while changing the target status or reason under the same key returns `IdempotencyConflict`.
+
+Service behavior evidence is executable rather than file-presence-only. The evidence validator parses the Customer fixture, runs create and create replay, runs status change and status replay, checks state and Event counts, checks same-key conflict behavior, and supports an injected fixture for deterministic corruption tests. A fixture with correct metadata but broken runtime expectations cannot preserve Customer Service `level_2_3` evidence.
