@@ -8,7 +8,6 @@ import {
 import {
   CORE_API_CONTRACT_SKELETONS,
   CORE_COMMON_CONTRACT_SKELETONS,
-  CORE_CONTRACT_INDEX,
   CORE_DOMAIN_CONTRACT_SKELETONS,
   CORE_EVENT_CATALOG_SKELETONS,
   CORE_OBJECT_CONTRACT_SKELETONS,
@@ -247,9 +246,6 @@ export const BOOK_02_MVP_TEST_FAMILY_EVIDENCE = {
 
 const existing = (paths: readonly string[]) =>
   paths.filter((path) => existsSync(path));
-const contractIndexIds = new Set<string>(
-  CORE_CONTRACT_INDEX.map((entry) => String(entry.id))
-);
 const behaviorById: ReadonlyMap<
   string,
   (typeof CORE_CONTRACT_BEHAVIOR_ACCEPTANCE_LOCK.evidence)[number]
@@ -538,14 +534,34 @@ function evidenceFor(identity: Book02MvpRequirementIdentity): CurrentEvidence {
     const found = CORE_OBJECT_CONTRACT_SKELETONS.find(
       (entry) => entry.domainId === domainId
     );
+    const objectFoundationFiles = [
+      'src/objects/core-mvp-object-profiles.ts',
+      'src/objects/core-mvp-object-base-record.ts',
+      'src/objects/core-mvp-object-validation.ts'
+    ];
+    const objectFoundationTests = [
+      'tests/unit/core-mvp-object-public-reference-foundation.test.ts',
+      'tests/fixtures/core-mvp-object-public-reference-foundation-fixture.test.ts'
+    ];
+    const objectFoundationFixture =
+      'fixtures/objects/core-mvp-object-public-reference-foundation.fixture.json';
+    const hasExecutableObjectFoundation = [
+      ...objectFoundationFiles,
+      ...objectFoundationTests,
+      objectFoundationFixture,
+      'src/behaviors/core-reference-behavior.ts'
+    ].every((path) => existsSync(path));
     return found
       ? {
           contractIds: [String(found.id)],
           implementationFiles: [
-            'src/contracts/object/core-object-contract-skeletons.ts'
+            'src/contracts/object/core-object-contract-skeletons.ts',
+            ...objectFoundationFiles,
+            'src/behaviors/core-reference-behavior.ts'
           ],
-          testFiles: [],
-          fixtureFiles: []
+          testFiles: objectFoundationTests,
+          fixtureFiles: [objectFoundationFixture],
+          currentDepth: hasExecutableObjectFoundation ? 'level_2' : undefined
         }
       : emptyEvidence();
   }
@@ -757,6 +773,15 @@ function disposition(
         ? 'validated_skeleton_only'
         : 'missing';
   }
+  if (identity.layer === 'object') {
+    return ev.currentDepth === 'level_2' &&
+      ev.testFiles.length > 0 &&
+      ev.fixtureFiles.length > 0
+      ? 'meets_required_depth'
+      : ev.contractIds.length > 0
+        ? 'validated_skeleton_only'
+        : 'missing';
+  }
   if (identity.layer === 'event') {
     return ev.contractIds.length > 0 ? 'semantic_overlap_only' : 'missing';
   }
@@ -853,7 +878,7 @@ export function deriveBook02MvpRequirementState(
     currentDepth:
       ev.currentDepth ??
       (currentDisposition === 'not_required' ? 'level_0' : 'level_0'),
-    contractIds: ev.contractIds.filter((id) => contractIndexIds.has(id)),
+    contractIds: ev.contractIds,
     implementationFiles: ev.implementationFiles,
     testFiles: ev.testFiles,
     fixtureFiles: ev.fixtureFiles,

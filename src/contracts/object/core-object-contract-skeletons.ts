@@ -9,7 +9,7 @@ const canonicalCreatedAt = '2026-07-11T00:00:00.000Z';
 const specificationPath = 'books/book-02-core-specification/';
 const objectSourceRoot = `${specificationPath}core-specs/objects/`;
 const base = 'CoreObjectDefinition';
-const requiredBaseFields = ['id', 'type', 'domainId', 'status', 'version', 'metadata'] as const;
+const requiredBaseFields = ['id', 'type', 'publicReferenceId', 'objectType', 'domainId', 'status', 'version', 'metadata', 'auditMetadata'] as const;
 const nonGoals = [
   'Full object schema fields or business-specific data fields.',
   'Service, API, workflow, runtime, database, or product UI behavior.',
@@ -118,7 +118,7 @@ export const CORE_OBJECT_CONTRACT_SKELETONS = [
     'Core Identity Object Contract Skeleton',
     'identity.md',
     'Defines the Core-recognized actor-reference object boundary without implementing identity resolution, authentication, permission, role, membership, or account lifecycle behavior.',
-    ['Identity actor-reference object contract boundary.'],
+    ['Identity actor-reference object contract boundary.', 'Public Object reference boundary, Domain mapping, core metadata, audit metadata, and status/version/visibility applicability.'],
     ['Authentication, account lifecycle, permission grants, role assignment, or organization membership.']
   ),
   canonicalObjectSkeleton(
@@ -127,7 +127,7 @@ export const CORE_OBJECT_CONTRACT_SKELETONS = [
     'Core Permission Object Contract Skeleton',
     'permission.md',
     'Defines the controlled-action authorization-rule object boundary without evaluating permissions, enforcing access, or granting authority.',
-    ['Permission rule, controlled action, actor, and scope object boundary.'],
+    ['Permission rule, controlled action, actor, and scope object boundary.', 'Public Object reference boundary, Domain mapping, core metadata, audit metadata, and status/version/visibility applicability.'],
     ['Permission evaluation, authorization middleware, role administration, policy enforcement, or protected-action execution.']
   ),
   canonicalObjectSkeleton(
@@ -136,7 +136,7 @@ export const CORE_OBJECT_CONTRACT_SKELETONS = [
     'Core Customer Object Contract Skeleton',
     'customer.md',
     'Defines the demand-side commercial-party object boundary without implementing intake, billing, order processing, relationship management, or product behavior.',
-    ['Customer commercial-party and relationship-reference object boundary.'],
+    ['Customer commercial-party and relationship-reference object boundary.', 'Public Object reference boundary, Domain mapping, core metadata, audit metadata, and status/version/visibility applicability.'],
     ['Customer intake execution, billing accounts, CRM automation, order creation, or organization identity.']
   ),
   canonicalObjectSkeleton(
@@ -145,7 +145,7 @@ export const CORE_OBJECT_CONTRACT_SKELETONS = [
     'Core Order Object Contract Skeleton',
     'order.md',
     'Defines the commercial service-request object boundary without implementing payment, invoicing, pricing, professional execution, checkout, or matter lifecycle behavior.',
-    ['Order commercial service-request and related-reference object boundary.'],
+    ['Order commercial service-request and related-reference object boundary.', 'Public Object reference boundary, Domain mapping, core metadata, audit metadata, and status/version/visibility applicability.'],
     ['Payment, invoice, pricing engine, checkout, matter execution, task work, or workflow execution.']
   ),
   canonicalObjectSkeleton(
@@ -154,7 +154,7 @@ export const CORE_OBJECT_CONTRACT_SKELETONS = [
     'Core Workflow Contract Object Contract Skeleton',
     'workflow-contract.md',
     'Defines the governed workflow-structure object boundary without implementing transitions, guards, task creation, event emission, automation, or a workflow engine.',
-    ['Workflow Contract definition, state, transition, guard, responsibility, and reference boundary.'],
+    ['Workflow Contract definition, state, transition, guard, responsibility, and reference boundary.', 'Public Object reference boundary, Domain mapping, core metadata, audit metadata, and status/version/visibility applicability.'],
     ['Workflow runtime, transition execution, running instances, direct mutation, task creation, or event emission.']
   ),
   canonicalObjectSkeleton(
@@ -163,7 +163,7 @@ export const CORE_OBJECT_CONTRACT_SKELETONS = [
     'Core Task Object Contract Skeleton',
     'task.md',
     'Defines the actionable work-unit object boundary without implementing assignment, scheduling, completion, review, notification, or professional decisions.',
-    ['Task work-unit, assignee, status, priority, due-reference, and trace boundary.'],
+    ['Task work-unit, assignee, status, priority, due-reference, and trace boundary.', 'Public Object reference boundary, Domain mapping, core metadata, audit metadata, and status/version/visibility applicability.'],
     ['Task execution, assignment automation, scheduling engine, completion decisions, review approval, or notification delivery.']
   ),
   canonicalObjectSkeleton(
@@ -172,7 +172,7 @@ export const CORE_OBJECT_CONTRACT_SKELETONS = [
     'Core Event Object Contract Skeleton',
     'event.md',
     'Defines the meaningful-occurrence record boundary without implementing event emission, dispatch, consumption, persistence, sourcing, or workflow logic.',
-    ['Event occurrence, source, subject, actor, correlation, causation, and trace boundary.'],
+    ['Event occurrence, source, subject, actor, correlation, causation, and trace boundary.', 'Public Object reference boundary, Domain mapping, core metadata, audit metadata, and status/version/visibility applicability.'],
     ['Event bus, event sourcing, dispatch, subscription, persistence, workflow execution, or implementation logging.']
   ),
   ...stubObjectTargets.map(([domainId, domainName]) =>

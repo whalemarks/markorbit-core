@@ -394,3 +394,9 @@ All notable changes to MarkOrbit Core will be documented in this file.
 - Domain business behavior remains unaccepted.
 - Execution System remains incomplete.
 - Production readiness remains unaccepted.
+
+## CORE-TASK-035 Object public-reference foundation
+
+Must Build Object public-reference and base validation is implemented. Object business schemas and Domain behavior remain incomplete. Service-owned behavior remains incomplete. API validators remain incomplete. Book 02 MVP remains incomplete. Production readiness remains unaccepted.
+
+Next governed task: CORE-TASK-036 — first Service-owned behavior batch selected from the locked MVP gap baseline.

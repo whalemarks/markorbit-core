@@ -15,10 +15,13 @@
     "requiredBaseFields": [
       "id",
       "type",
+      "publicReferenceId",
+      "objectType",
       "domainId",
       "status",
       "version",
-      "metadata"
+      "metadata",
+      "auditMetadata"
     ],
     "nonGoals": [
       "Full object schema fields or business-specific data fields.",
@@ -43,10 +46,13 @@
     "requiredBaseFields": [
       "id",
       "type",
+      "publicReferenceId",
+      "objectType",
       "domainId",
       "status",
       "version",
-      "metadata"
+      "metadata",
+      "auditMetadata"
     ],
     "nonGoals": [
       "Full object schema fields or business-specific data fields.",
@@ -71,10 +77,13 @@
     "requiredBaseFields": [
       "id",
       "type",
+      "publicReferenceId",
+      "objectType",
       "domainId",
       "status",
       "version",
-      "metadata"
+      "metadata",
+      "auditMetadata"
     ],
     "nonGoals": [
       "Full object schema fields or business-specific data fields.",
@@ -99,10 +108,13 @@
     "requiredBaseFields": [
       "id",
       "type",
+      "publicReferenceId",
+      "objectType",
       "domainId",
       "status",
       "version",
-      "metadata"
+      "metadata",
+      "auditMetadata"
     ],
     "nonGoals": [
       "Full object schema fields or business-specific data fields.",
@@ -127,10 +139,13 @@
     "requiredBaseFields": [
       "id",
       "type",
+      "publicReferenceId",
+      "objectType",
       "domainId",
       "status",
       "version",
-      "metadata"
+      "metadata",
+      "auditMetadata"
     ],
     "nonGoals": [
       "Full object schema fields or business-specific data fields.",
@@ -155,10 +170,13 @@
     "requiredBaseFields": [
       "id",
       "type",
+      "publicReferenceId",
+      "objectType",
       "domainId",
       "status",
       "version",
-      "metadata"
+      "metadata",
+      "auditMetadata"
     ],
     "nonGoals": [
       "Full object schema fields or business-specific data fields.",
@@ -183,10 +201,13 @@
     "requiredBaseFields": [
       "id",
       "type",
+      "publicReferenceId",
+      "objectType",
       "domainId",
       "status",
       "version",
-      "metadata"
+      "metadata",
+      "auditMetadata"
     ],
     "nonGoals": [
       "Full object schema fields or business-specific data fields.",
@@ -211,10 +232,13 @@
     "requiredBaseFields": [
       "id",
       "type",
+      "publicReferenceId",
+      "objectType",
       "domainId",
       "status",
       "version",
-      "metadata"
+      "metadata",
+      "auditMetadata"
     ],
     "nonGoals": [
       "Full object schema fields or business-specific data fields.",
@@ -239,10 +263,13 @@
     "requiredBaseFields": [
       "id",
       "type",
+      "publicReferenceId",
+      "objectType",
       "domainId",
       "status",
       "version",
-      "metadata"
+      "metadata",
+      "auditMetadata"
     ],
     "nonGoals": [
       "Full object schema fields or business-specific data fields.",
@@ -267,10 +294,13 @@
     "requiredBaseFields": [
       "id",
       "type",
+      "publicReferenceId",
+      "objectType",
       "domainId",
       "status",
       "version",
-      "metadata"
+      "metadata",
+      "auditMetadata"
     ],
     "nonGoals": [
       "Full object schema fields or business-specific data fields.",
@@ -295,10 +325,13 @@
     "requiredBaseFields": [
       "id",
       "type",
+      "publicReferenceId",
+      "objectType",
       "domainId",
       "status",
       "version",
-      "metadata"
+      "metadata",
+      "auditMetadata"
     ],
     "nonGoals": [
       "Full object schema fields or business-specific data fields.",
@@ -323,10 +356,13 @@
     "requiredBaseFields": [
       "id",
       "type",
+      "publicReferenceId",
+      "objectType",
       "domainId",
       "status",
       "version",
-      "metadata"
+      "metadata",
+      "auditMetadata"
     ],
     "nonGoals": [
       "Full object schema fields or business-specific data fields.",
@@ -345,14 +381,20 @@
     "book": "Book 02 — MarkOrbit Core Specification",
     "purpose": "Defines the Core-recognized actor-reference object boundary without implementing identity resolution, authentication, permission, role, membership, or account lifecycle behavior.",
     "base": "CoreObjectDefinition",
-    "owns": ["Identity actor-reference object contract boundary."],
+    "owns": [
+      "Identity actor-reference object contract boundary.",
+      "Public Object reference boundary, Domain mapping, core metadata, audit metadata, and status/version/visibility applicability."
+    ],
     "requiredBaseFields": [
       "id",
       "type",
+      "publicReferenceId",
+      "objectType",
       "domainId",
       "status",
       "version",
-      "metadata"
+      "metadata",
+      "auditMetadata"
     ],
     "nonGoals": [
       "Full object schema fields or business-specific data fields.",
@@ -381,15 +423,19 @@
     "purpose": "Defines the controlled-action authorization-rule object boundary without evaluating permissions, enforcing access, or granting authority.",
     "base": "CoreObjectDefinition",
     "owns": [
-      "Permission rule, controlled action, actor, and scope object boundary."
+      "Permission rule, controlled action, actor, and scope object boundary.",
+      "Public Object reference boundary, Domain mapping, core metadata, audit metadata, and status/version/visibility applicability."
     ],
     "requiredBaseFields": [
       "id",
       "type",
+      "publicReferenceId",
+      "objectType",
       "domainId",
       "status",
       "version",
-      "metadata"
+      "metadata",
+      "auditMetadata"
     ],
     "nonGoals": [
       "Full object schema fields or business-specific data fields.",
@@ -418,15 +464,19 @@
     "purpose": "Defines the demand-side commercial-party object boundary without implementing intake, billing, order processing, relationship management, or product behavior.",
     "base": "CoreObjectDefinition",
     "owns": [
-      "Customer commercial-party and relationship-reference object boundary."
+      "Customer commercial-party and relationship-reference object boundary.",
+      "Public Object reference boundary, Domain mapping, core metadata, audit metadata, and status/version/visibility applicability."
     ],
     "requiredBaseFields": [
       "id",
       "type",
+      "publicReferenceId",
+      "objectType",
       "domainId",
       "status",
       "version",
-      "metadata"
+      "metadata",
+      "auditMetadata"
     ],
     "nonGoals": [
       "Full object schema fields or business-specific data fields.",
@@ -455,15 +505,19 @@
     "purpose": "Defines the commercial service-request object boundary without implementing payment, invoicing, pricing, professional execution, checkout, or matter lifecycle behavior.",
     "base": "CoreObjectDefinition",
     "owns": [
-      "Order commercial service-request and related-reference object boundary."
+      "Order commercial service-request and related-reference object boundary.",
+      "Public Object reference boundary, Domain mapping, core metadata, audit metadata, and status/version/visibility applicability."
     ],
     "requiredBaseFields": [
       "id",
       "type",
+      "publicReferenceId",
+      "objectType",
       "domainId",
       "status",
       "version",
-      "metadata"
+      "metadata",
+      "auditMetadata"
     ],
     "nonGoals": [
       "Full object schema fields or business-specific data fields.",
@@ -492,15 +546,19 @@
     "purpose": "Defines the governed workflow-structure object boundary without implementing transitions, guards, task creation, event emission, automation, or a workflow engine.",
     "base": "CoreObjectDefinition",
     "owns": [
-      "Workflow Contract definition, state, transition, guard, responsibility, and reference boundary."
+      "Workflow Contract definition, state, transition, guard, responsibility, and reference boundary.",
+      "Public Object reference boundary, Domain mapping, core metadata, audit metadata, and status/version/visibility applicability."
     ],
     "requiredBaseFields": [
       "id",
       "type",
+      "publicReferenceId",
+      "objectType",
       "domainId",
       "status",
       "version",
-      "metadata"
+      "metadata",
+      "auditMetadata"
     ],
     "nonGoals": [
       "Full object schema fields or business-specific data fields.",
@@ -529,15 +587,19 @@
     "purpose": "Defines the actionable work-unit object boundary without implementing assignment, scheduling, completion, review, notification, or professional decisions.",
     "base": "CoreObjectDefinition",
     "owns": [
-      "Task work-unit, assignee, status, priority, due-reference, and trace boundary."
+      "Task work-unit, assignee, status, priority, due-reference, and trace boundary.",
+      "Public Object reference boundary, Domain mapping, core metadata, audit metadata, and status/version/visibility applicability."
     ],
     "requiredBaseFields": [
       "id",
       "type",
+      "publicReferenceId",
+      "objectType",
       "domainId",
       "status",
       "version",
-      "metadata"
+      "metadata",
+      "auditMetadata"
     ],
     "nonGoals": [
       "Full object schema fields or business-specific data fields.",
@@ -566,15 +628,19 @@
     "purpose": "Defines the meaningful-occurrence record boundary without implementing event emission, dispatch, consumption, persistence, sourcing, or workflow logic.",
     "base": "CoreObjectDefinition",
     "owns": [
-      "Event occurrence, source, subject, actor, correlation, causation, and trace boundary."
+      "Event occurrence, source, subject, actor, correlation, causation, and trace boundary.",
+      "Public Object reference boundary, Domain mapping, core metadata, audit metadata, and status/version/visibility applicability."
     ],
     "requiredBaseFields": [
       "id",
       "type",
+      "publicReferenceId",
+      "objectType",
       "domainId",
       "status",
       "version",
-      "metadata"
+      "metadata",
+      "auditMetadata"
     ],
     "nonGoals": [
       "Full object schema fields or business-specific data fields.",
@@ -602,14 +668,19 @@
     "book": "Book 02 — MarkOrbit Core Specification",
     "purpose": "Reserves the canonical Opportunity object boundary without claiming schema, persistence, lifecycle, validation, or runtime capability.",
     "base": "CoreObjectDefinition",
-    "owns": ["Opportunity structural object-reference boundary."],
+    "owns": [
+      "Opportunity structural object-reference boundary."
+    ],
     "requiredBaseFields": [
       "id",
       "type",
+      "publicReferenceId",
+      "objectType",
       "domainId",
       "status",
       "version",
-      "metadata"
+      "metadata",
+      "auditMetadata"
     ],
     "nonGoals": [
       "Full object schema fields or business-specific data fields.",
@@ -638,14 +709,19 @@
     "book": "Book 02 — MarkOrbit Core Specification",
     "purpose": "Reserves the canonical Notification object boundary without claiming schema, persistence, lifecycle, validation, or runtime capability.",
     "base": "CoreObjectDefinition",
-    "owns": ["Notification structural object-reference boundary."],
+    "owns": [
+      "Notification structural object-reference boundary."
+    ],
     "requiredBaseFields": [
       "id",
       "type",
+      "publicReferenceId",
+      "objectType",
       "domainId",
       "status",
       "version",
-      "metadata"
+      "metadata",
+      "auditMetadata"
     ],
     "nonGoals": [
       "Full object schema fields or business-specific data fields.",
@@ -674,14 +750,19 @@
     "book": "Book 02 — MarkOrbit Core Specification",
     "purpose": "Reserves the canonical Partner object boundary without claiming schema, persistence, lifecycle, validation, or runtime capability.",
     "base": "CoreObjectDefinition",
-    "owns": ["Partner structural object-reference boundary."],
+    "owns": [
+      "Partner structural object-reference boundary."
+    ],
     "requiredBaseFields": [
       "id",
       "type",
+      "publicReferenceId",
+      "objectType",
       "domainId",
       "status",
       "version",
-      "metadata"
+      "metadata",
+      "auditMetadata"
     ],
     "nonGoals": [
       "Full object schema fields or business-specific data fields.",
@@ -710,14 +791,19 @@
     "book": "Book 02 — MarkOrbit Core Specification",
     "purpose": "Reserves the canonical Agent object boundary without claiming schema, persistence, lifecycle, validation, or runtime capability.",
     "base": "CoreObjectDefinition",
-    "owns": ["Agent structural object-reference boundary."],
+    "owns": [
+      "Agent structural object-reference boundary."
+    ],
     "requiredBaseFields": [
       "id",
       "type",
+      "publicReferenceId",
+      "objectType",
       "domainId",
       "status",
       "version",
-      "metadata"
+      "metadata",
+      "auditMetadata"
     ],
     "nonGoals": [
       "Full object schema fields or business-specific data fields.",
@@ -746,14 +832,19 @@
     "book": "Book 02 — MarkOrbit Core Specification",
     "purpose": "Reserves the canonical Service Provider object boundary without claiming schema, persistence, lifecycle, validation, or runtime capability.",
     "base": "CoreObjectDefinition",
-    "owns": ["Service Provider structural object-reference boundary."],
+    "owns": [
+      "Service Provider structural object-reference boundary."
+    ],
     "requiredBaseFields": [
       "id",
       "type",
+      "publicReferenceId",
+      "objectType",
       "domainId",
       "status",
       "version",
-      "metadata"
+      "metadata",
+      "auditMetadata"
     ],
     "nonGoals": [
       "Full object schema fields or business-specific data fields.",
@@ -782,14 +873,19 @@
     "book": "Book 02 — MarkOrbit Core Specification",
     "purpose": "Reserves the canonical Service Network object boundary without claiming schema, persistence, lifecycle, validation, or runtime capability.",
     "base": "CoreObjectDefinition",
-    "owns": ["Service Network structural object-reference boundary."],
+    "owns": [
+      "Service Network structural object-reference boundary."
+    ],
     "requiredBaseFields": [
       "id",
       "type",
+      "publicReferenceId",
+      "objectType",
       "domainId",
       "status",
       "version",
-      "metadata"
+      "metadata",
+      "auditMetadata"
     ],
     "nonGoals": [
       "Full object schema fields or business-specific data fields.",
@@ -818,14 +914,19 @@
     "book": "Book 02 — MarkOrbit Core Specification",
     "purpose": "Reserves the canonical Routing object boundary without claiming schema, persistence, lifecycle, validation, or runtime capability.",
     "base": "CoreObjectDefinition",
-    "owns": ["Routing structural object-reference boundary."],
+    "owns": [
+      "Routing structural object-reference boundary."
+    ],
     "requiredBaseFields": [
       "id",
       "type",
+      "publicReferenceId",
+      "objectType",
       "domainId",
       "status",
       "version",
-      "metadata"
+      "metadata",
+      "auditMetadata"
     ],
     "nonGoals": [
       "Full object schema fields or business-specific data fields.",

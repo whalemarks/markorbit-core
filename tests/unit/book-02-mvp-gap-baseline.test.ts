@@ -464,7 +464,7 @@ describe('Book 02 MVP gap baseline validation', () => {
         (criterion) =>
           criterion.id === 'must-build-objects-have-public-reference-ids'
       )?.satisfied,
-      false
+      true
     );
 
     assert.deepEqual(Object.keys(ACCEPTANCE_CRITERION_EVALUATORS), [
@@ -499,6 +499,7 @@ describe('Book 02 MVP gap baseline validation', () => {
       .map((criterion) => criterion.id);
     assert.deepEqual(satisfiedIds, [
       'must-build-domains-implemented-or-scaffolded-with-tests',
+      'must-build-objects-have-public-reference-ids',
       'permission-and-policy-fail-closed',
       'ai-forbidden-actions-are-blocked',
       'human-review-gates-protected-actions',

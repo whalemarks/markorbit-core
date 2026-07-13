@@ -902,9 +902,13 @@ function validateAcceptance(
           )
         );
     }
+
     if (
       criterion.id === 'must-build-objects-have-public-reference-ids' &&
-      criterion.satisfied
+      criterion.satisfied &&
+      !criterion.evidenceFiles.some((file) =>
+        file.includes('core-mvp-object-public-reference-foundation')
+      )
     )
       issues.push(
         issue(

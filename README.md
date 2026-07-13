@@ -35,3 +35,9 @@ Phase 4 selected Core behavior-hook minimum-depth acceptance is complete. Book 0
 Book 02 MVP Gap Baseline is locked only after this task passes validation. Book 02 MVP remains incomplete. Selected behavior-hook minimum-depth acceptance remains valid. Domain business behavior remains unaccepted. Execution System remains incomplete. Production readiness remains unaccepted.
 
 Run `pnpm gaps:mvp` to print and validate the canonical derived Book 02 MVP gap baseline.
+
+## CORE-TASK-035 Object public-reference foundation
+
+Must Build Object public-reference and base validation is implemented. Object business schemas and Domain behavior remain incomplete. Service-owned behavior remains incomplete. API validators remain incomplete. Book 02 MVP remains incomplete. Production readiness remains unaccepted.
+
+Next governed task: CORE-TASK-036 — first Service-owned behavior batch selected from the locked MVP gap baseline.
