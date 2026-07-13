@@ -30,6 +30,19 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Generate Book 02 baseline diagnostics
+        run: >-
+          pnpm tsx -e "import { writeFileSync } from 'node:fs';
+          import { BOOK_02_MVP_GAP_BASELINE } from './src/mvp-coverage/index.ts';
+          writeFileSync('generated-book-02-mvp-gap-baseline.fixture.json',
+          JSON.stringify(BOOK_02_MVP_GAP_BASELINE, null, 2) + '\n');"
+
+      - name: Upload Book 02 baseline diagnostics
+        uses: actions/upload-artifact@v4
+        with:
+          name: generated-book-02-baseline-${{ matrix.node-version }}
+          path: generated-book-02-mvp-gap-baseline.fixture.json
+
       - name: Typecheck
         shell: bash
         run: |
