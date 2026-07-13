@@ -1,9 +1,14 @@
 import { existsSync, readFileSync } from 'node:fs';
 import { CORE_SERVICE_CONTRACT_SKELETONS } from '../contracts/index.ts';
 import {
+  CORE_BRAND_IMPLEMENTED_OPERATIONS,
+  CORE_BRAND_MINIMUM_CAPABILITIES
+} from '../services/brand/index.ts';
+import {
   CORE_CUSTOMER_IMPLEMENTED_OPERATIONS,
   CORE_CUSTOMER_MINIMUM_CAPABILITIES
 } from '../services/customer/index.ts';
+import { validateCoreBrandServiceEvidenceFixture } from './core-brand-service-evidence-fixture.ts';
 import { validateCoreCustomerServiceEvidenceFixture } from './core-customer-service-evidence-fixture.ts';
 import {
   CORE_SERVICE_BEHAVIOR_EVIDENCE,
@@ -19,18 +24,69 @@ export interface CoreServiceBehaviorValidationIssue {
 export interface CoreServiceBehaviorValidationOptions {
   readonly evidence?: readonly CoreServiceBehaviorEvidence[];
   readonly customerFixture?: unknown;
+  readonly brandFixture?: unknown;
 }
 
-const expectedUnresolved = [
-  'updateCustomer',
-  'linkCustomerContact',
-  'unlinkCustomerContact',
-  'linkCustomerBrand',
-  'unlinkCustomerBrand',
-  'linkCustomerOpportunity',
-  'linkCustomerOrder',
-  'linkCustomerMatter'
-] as const;
+interface ExpectedServiceEvidence {
+  readonly requirementId: string;
+  readonly serviceType: string;
+  readonly domainId: 'customer' | 'brand';
+  readonly contractId: string;
+  readonly sourcePath: string;
+  readonly operations: readonly string[];
+  readonly capabilities: readonly string[];
+  readonly unresolved: readonly string[];
+  readonly fixtureOverride: 'customerFixture' | 'brandFixture';
+  readonly fixtureValidator: (
+    fixture: unknown
+  ) => readonly { readonly code: string }[];
+}
+
+const expectedEvidence = [
+  {
+    requirementId: 'must-service-customer-service',
+    serviceType: 'customer-service',
+    domainId: 'customer',
+    contractId: 'core-service-customer-service-contract',
+    sourcePath:
+      'books/book-02-core-specification/core-specs/services/customer-service.md',
+    operations: CORE_CUSTOMER_IMPLEMENTED_OPERATIONS,
+    capabilities: CORE_CUSTOMER_MINIMUM_CAPABILITIES,
+    unresolved: [
+      'updateCustomer',
+      'linkCustomerContact',
+      'unlinkCustomerContact',
+      'linkCustomerBrand',
+      'unlinkCustomerBrand',
+      'linkCustomerOpportunity',
+      'linkCustomerOrder',
+      'linkCustomerMatter'
+    ],
+    fixtureOverride: 'customerFixture',
+    fixtureValidator: validateCoreCustomerServiceEvidenceFixture
+  },
+  {
+    requirementId: 'must-service-brand-service',
+    serviceType: 'brand-service',
+    domainId: 'brand',
+    contractId: 'core-service-brand-service-contract',
+    sourcePath:
+      'books/book-02-core-specification/core-specs/services/brand-service.md',
+    operations: CORE_BRAND_IMPLEMENTED_OPERATIONS,
+    capabilities: CORE_BRAND_MINIMUM_CAPABILITIES,
+    unresolved: [
+      'updateBrand',
+      'linkBrandCustomer',
+      'unlinkBrandCustomer',
+      'linkBrandTrademark',
+      'unlinkBrandTrademark',
+      'linkBrandAsset',
+      'unlinkBrandAsset'
+    ],
+    fixtureOverride: 'brandFixture',
+    fixtureValidator: validateCoreBrandServiceEvidenceFixture
+  }
+] as const satisfies readonly ExpectedServiceEvidence[];
 
 function issue(
   code: string,
@@ -50,7 +106,7 @@ function sameValues(
   );
 }
 
-function readCustomerFixture(path: string):
+function readFixture(path: string):
   | { readonly ok: true; readonly value: unknown }
   | { readonly ok: false } {
   try {
@@ -68,174 +124,177 @@ export function validateCoreServiceBehaviorEvidence(
 ): readonly CoreServiceBehaviorValidationIssue[] {
   const evidence = options.evidence ?? CORE_SERVICE_BEHAVIOR_EVIDENCE;
   const issues: CoreServiceBehaviorValidationIssue[] = [];
-  if (evidence.length === 0) {
-    return [
+  const actualRequirementIds = evidence.map((entry) => entry.requirementId);
+  const expectedRequirementIds = expectedEvidence.map(
+    (entry) => entry.requirementId
+  );
+  if (!sameValues(actualRequirementIds, expectedRequirementIds)) {
+    issues.push(
       issue(
-        'core.service.evidence_missing',
-        'Customer Service behavior evidence is missing.'
+        evidence.length < expectedEvidence.length
+          ? 'core.service.evidence_missing'
+          : 'core.service.evidence_extra',
+        'Service behavior evidence must contain exactly Customer and Brand entries in canonical order.',
+        'evidence'
       )
-    ];
+    );
   }
-  if (evidence.length !== 1) {
+  if (new Set(actualRequirementIds).size !== actualRequirementIds.length) {
     issues.push(
       issue(
         'core.service.evidence_extra',
-        'Exactly one CORE-TASK-036 Service behavior evidence entry is allowed.',
+        'Service behavior evidence requirement IDs must be unique.',
         'evidence'
       )
     );
   }
 
-  const entry = evidence[0];
-  if (!entry) return issues;
-  const contract = CORE_SERVICE_CONTRACT_SKELETONS.find(
-    (candidate) => candidate.id === entry.contractId
-  );
-  if (
-    entry.requirementId !== 'must-service-customer-service' ||
-    entry.contractId !== 'core-service-customer-service-contract' ||
-    !contract
-  ) {
-    issues.push(
-      issue(
-        'core.service.contract_mismatch',
-        'Customer Service evidence must use the real Customer Service requirement and contract.',
-        'contractId'
-      )
+  expectedEvidence.forEach((expected, index) => {
+    const entry = evidence[index];
+    if (!entry) return;
+    const contract = CORE_SERVICE_CONTRACT_SKELETONS.find(
+      (candidate) => candidate.id === entry.contractId
     );
-  }
-  if (entry.domainId !== 'customer' || contract?.domainId !== 'customer') {
-    issues.push(
-      issue(
-        'core.service.domain_mismatch',
-        'Customer Service evidence Domain must be customer.',
-        'domainId'
-      )
-    );
-  }
-  if (
-    entry.serviceType !== 'customer-service' ||
-    contract?.serviceType !== 'customer-service'
-  ) {
-    issues.push(
-      issue(
-        'core.service.cross_service_evidence',
-        'Customer Service evidence must not be reused by another Service.',
-        'serviceType'
-      )
-    );
-  }
-  if (
-    entry.sourcePath !==
-    'books/book-02-core-specification/core-specs/services/customer-service.md'
-  ) {
-    issues.push(
-      issue(
-        'core.service.contract_mismatch',
-        'Customer Service evidence source path is incorrect.',
-        'sourcePath'
-      )
-    );
-  }
-  if (entry.currentDepth !== 'level_2_3') {
-    issues.push(
-      issue(
-        'core.service.depth_mismatch',
-        'Customer Service evidence depth must be level_2_3.',
-        'currentDepth'
-      )
-    );
-  }
-  if (!sameValues(entry.operations, CORE_CUSTOMER_IMPLEMENTED_OPERATIONS)) {
-    issues.push(
-      issue(
-        'core.service.operation_missing',
-        'Customer Service operations must exactly match the locked five operations.',
-        'operations'
-      )
-    );
-  }
-  if (
-    !sameValues(
-      entry.provenMinimumCapabilities,
-      CORE_CUSTOMER_MINIMUM_CAPABILITIES
-    )
-  ) {
-    issues.push(
-      issue(
-        'core.service.capability_missing',
-        'Customer Service capabilities must exactly match Section 5.3 minimum capabilities.',
-        'provenMinimumCapabilities'
-      )
-    );
-  }
-  if (!sameValues(entry.unresolvedServiceOperations, expectedUnresolved)) {
-    issues.push(
-      issue(
-        'core.service.operation_extra',
-        'Customer unresolved operations must exactly match the locked unresolved set.',
-        'unresolvedServiceOperations'
-      )
-    );
-  }
-
-  for (const [field, paths] of [
-    ['implementationFiles', entry.implementationFiles],
-    ['testFiles', entry.testFiles],
-    ['fixtureFiles', entry.fixtureFiles]
-  ] as const) {
-    if (paths.length === 0 || paths.some((path) => !existsSync(path))) {
+    if (
+      entry.requirementId !== expected.requirementId ||
+      entry.contractId !== expected.contractId ||
+      !contract
+    ) {
       issues.push(
         issue(
-          'core.service.evidence_missing',
-          `Evidence ${field} must exist.`,
-          field
+          'core.service.contract_mismatch',
+          `${expected.serviceType} evidence must use its real requirement and contract.`,
+          `evidence[${index}].contractId`
         )
       );
     }
-  }
+    if (
+      entry.domainId !== expected.domainId ||
+      contract?.domainId !== expected.domainId
+    ) {
+      issues.push(
+        issue(
+          'core.service.domain_mismatch',
+          `${expected.serviceType} evidence Domain is incorrect.`,
+          `evidence[${index}].domainId`
+        )
+      );
+    }
+    if (
+      entry.serviceType !== expected.serviceType ||
+      contract?.serviceType !== expected.serviceType
+    ) {
+      issues.push(
+        issue(
+          'core.service.cross_service_evidence',
+          `${expected.serviceType} evidence must not be reused by another Service.`,
+          `evidence[${index}].serviceType`
+        )
+      );
+    }
+    if (entry.sourcePath !== expected.sourcePath) {
+      issues.push(
+        issue(
+          'core.service.contract_mismatch',
+          `${expected.serviceType} evidence source path is incorrect.`,
+          `evidence[${index}].sourcePath`
+        )
+      );
+    }
+    if (entry.currentDepth !== 'level_2_3') {
+      issues.push(
+        issue(
+          'core.service.depth_mismatch',
+          `${expected.serviceType} evidence depth must be level_2_3.`,
+          `evidence[${index}].currentDepth`
+        )
+      );
+    }
+    if (!sameValues(entry.operations, expected.operations)) {
+      issues.push(
+        issue(
+          'core.service.operation_missing',
+          `${expected.serviceType} operations must exactly match the locked operations.`,
+          `evidence[${index}].operations`
+        )
+      );
+    }
+    if (
+      !sameValues(entry.provenMinimumCapabilities, expected.capabilities)
+    ) {
+      issues.push(
+        issue(
+          'core.service.capability_missing',
+          `${expected.serviceType} capabilities must exactly match Section 5.3 minimum capabilities.`,
+          `evidence[${index}].provenMinimumCapabilities`
+        )
+      );
+    }
+    if (!sameValues(entry.unresolvedServiceOperations, expected.unresolved)) {
+      issues.push(
+        issue(
+          'core.service.operation_extra',
+          `${expected.serviceType} unresolved operations must match the locked set.`,
+          `evidence[${index}].unresolvedServiceOperations`
+        )
+      );
+    }
 
-  const fixturePath = entry.fixtureFiles[0];
-  if (!fixturePath) {
-    issues.push(
-      issue(
-        'core.service.fixture_invalid',
-        'Customer Service fixture is missing.',
-        'fixtureFiles'
-      )
-    );
-    return issues;
-  }
+    for (const [field, paths] of [
+      ['implementationFiles', entry.implementationFiles],
+      ['testFiles', entry.testFiles],
+      ['fixtureFiles', entry.fixtureFiles]
+    ] as const) {
+      if (paths.length === 0 || paths.some((path) => !existsSync(path))) {
+        issues.push(
+          issue(
+            'core.service.evidence_missing',
+            `${expected.serviceType} evidence ${field} must exist.`,
+            `evidence[${index}].${field}`
+          )
+        );
+      }
+    }
 
-  const fixtureResult =
-    options.customerFixture === undefined
-      ? readCustomerFixture(fixturePath)
-      : { ok: true as const, value: options.customerFixture };
-  if (!fixtureResult.ok) {
-    issues.push(
-      issue(
-        'core.service.fixture_invalid',
-        'Customer Service fixture cannot be parsed safely.',
-        'fixtureFiles[0]'
-      )
-    );
-    return issues;
-  }
-
-  const fixtureIssues = validateCoreCustomerServiceEvidenceFixture(
-    fixtureResult.value
-  );
-  if (fixtureIssues.length > 0) {
-    issues.push(
-      issue(
-        'core.service.fixture_invalid',
-        `Customer Service executable fixture failed: ${fixtureIssues
-          .map((entry) => entry.code)
-          .join(', ')}`,
-        'fixtureFiles[0]'
-      )
-    );
-  }
+    const fixturePath = entry.fixtureFiles[0];
+    if (!fixturePath) {
+      issues.push(
+        issue(
+          'core.service.fixture_invalid',
+          `${expected.serviceType} fixture is missing.`,
+          `evidence[${index}].fixtureFiles`
+        )
+      );
+      return;
+    }
+    const override = options[expected.fixtureOverride];
+    const fixtureResult =
+      override === undefined
+        ? readFixture(fixturePath)
+        : { ok: true as const, value: override };
+    if (!fixtureResult.ok) {
+      issues.push(
+        issue(
+          'core.service.fixture_invalid',
+          `${expected.serviceType} fixture cannot be parsed safely.`,
+          `evidence[${index}].fixtureFiles[0]`
+        )
+      );
+      return;
+    }
+    const fixtureIssues = expected.fixtureValidator(fixtureResult.value);
+    if (fixtureIssues.length > 0) {
+      issues.push(
+        issue(
+          'core.service.fixture_invalid',
+          `${expected.serviceType} executable fixture failed: ${fixtureIssues
+            .map((entry) => entry.code)
+            .join(', ')}`,
+          `evidence[${index}].fixtureFiles[0]`
+        )
+      );
+    }
+  });
 
   return issues;
 }
