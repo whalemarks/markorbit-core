@@ -21,7 +21,6 @@ import {
   type CoreErrorCategory,
   type CoreErrorCode
 } from '../../behaviors/core-safe-error.ts';
-import { CORE_SERVICE_CONTRACT_SKELETONS } from '../../contracts/service/core-service-contract-skeletons.ts';
 import {
   CORE_DOMAIN_REGISTRY,
   type CoreDomainId
@@ -173,11 +172,17 @@ export interface CoreBrandEventTracePort {
   ): CoreBehaviorResult<CoreEventTraceRecord>;
 }
 
+export interface CoreBrandRequestingServiceDirectoryEntry {
+  readonly domainId: CoreDomainId;
+  readonly serviceType: string;
+}
+
 export interface CoreBrandServiceDependencies {
   readonly store: CoreBrandServiceStore;
   readonly idempotencyRegistry: CoreIdempotencyRegistry;
   readonly eventTracePort: CoreBrandEventTracePort;
   readonly relatedReferenceRegistry: CoreReferenceRegistry;
+  readonly requestingServiceDirectory: readonly CoreBrandRequestingServiceDirectoryEntry[];
   readonly now: () => string;
   readonly eventIdFactory: (
     operation: 'createBrand' | 'changeBrandStatus',
@@ -494,15 +499,18 @@ function validateBrandRecord(
 
 function validateRequestingService(
   requestingDomain: string,
-  requestingService: string
+  requestingService: string,
+  directory: readonly CoreBrandRequestingServiceDirectoryEntry[]
 ): CoreBehaviorResult<null> {
   if (!CORE_DOMAIN_REGISTRY.some((domain) => domain.id === requestingDomain)) {
     return safe('InvalidBrandReference', 'Requesting Domain is invalid.');
   }
-  const service = CORE_SERVICE_CONTRACT_SKELETONS.find(
-    (contract) => contract.serviceType === requestingService
+  const service = directory.find(
+    (entry) =>
+      entry.serviceType === requestingService &&
+      entry.domainId === requestingDomain
   );
-  if (!service || service.domainId !== requestingDomain) {
+  if (!service) {
     return safe('InvalidBrandReference', 'Requesting Service is invalid.');
   }
   return { ok: true, value: null };
@@ -918,7 +926,8 @@ export class CoreBrandService {
     if (!governed.ok) return governed;
     const requester = validateRequestingService(
       String(input.requestingDomain),
-      input.requestingService
+      input.requestingService,
+      this.deps.requestingServiceDirectory
     );
     if (!requester.ok) return requester;
     const reference = validateBrandReferenceRecord(

@@ -4,6 +4,7 @@ import {
   CoreReferenceRegistry,
   type CoreReferenceRecord
 } from '../behaviors/index.ts';
+import { CORE_SERVICE_CONTRACT_SKELETONS } from '../contracts/service/core-service-contract-skeletons.ts';
 import { createCoreEventId, type CoreEventId } from '../events/index.ts';
 import {
   CORE_MVP_OBJECT_FIXTURE_RELATED_REFERENCE_RECORDS,
@@ -153,6 +154,9 @@ export function validateCoreBrandServiceEvidenceFixture(
     store,
     idempotencyRegistry: new CoreIdempotencyRegistry(() => 1),
     eventTracePort: traces,
+    requestingServiceDirectory: CORE_SERVICE_CONTRACT_SKELETONS.map(
+      ({ domainId, serviceType }) => ({ domainId, serviceType })
+    ),
     relatedReferenceRegistry: new CoreReferenceRegistry([
       ...CORE_MVP_OBJECT_FIXTURE_RELATED_REFERENCE_RECORDS,
       brandReferenceRecord,

@@ -7,6 +7,7 @@ import {
   CoreReferenceRegistry,
   type CoreReferenceRecord
 } from '../../src/behaviors/index.ts';
+import { CORE_SERVICE_CONTRACT_SKELETONS } from '../../src/contracts/service/core-service-contract-skeletons.ts';
 import { createCoreEventId, type CoreEventId } from '../../src/events/index.ts';
 import {
   CORE_MVP_OBJECT_FIXTURE_RELATED_REFERENCE_RECORDS,
@@ -106,6 +107,9 @@ function setup(includeCustomer = true) {
     store,
     idempotencyRegistry: new CoreIdempotencyRegistry(() => 1),
     eventTracePort: traces,
+    requestingServiceDirectory: CORE_SERVICE_CONTRACT_SKELETONS.map(
+      ({ domainId, serviceType }) => ({ domainId, serviceType })
+    ),
     relatedReferenceRegistry: new CoreReferenceRegistry(references),
     now: () => clocks.shift() ?? String(fixture.updatedNow),
     eventIdFactory: (operation, referenceId, idempotencyKey) =>
