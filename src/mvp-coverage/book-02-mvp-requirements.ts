@@ -1,9 +1,5 @@
 export type Book02MvpCategory =
-  | 'must_build_now'
-  | 'stub_now'
-  | 'document_only'
-  | 'defer'
-  | 'never_in_mvp';
+  'must_build_now' | 'stub_now' | 'document_only' | 'defer' | 'never_in_mvp';
 export type Book02MvpLayer =
   | 'domain'
   | 'object'
@@ -58,15 +54,39 @@ export interface Book02MvpRequirement extends Book02MvpRequirementIdentity {
   readonly inspectionPaths?: readonly string[];
   readonly forbiddenIndicators?: readonly string[];
   readonly forbiddenPathPatterns?: readonly string[];
-  readonly structuredChecks?: readonly string[];
+  readonly structuredChecks?: readonly Book02StructuredGuardCheck[];
   readonly excludedPaths?: readonly string[];
   readonly inspectionStatus?: Book02GuardInspectionStatus;
   readonly inspectedFiles?: readonly string[];
   readonly violationReasons?: readonly string[];
   readonly gapReasons: readonly string[];
 }
+export const MVP_ACCEPTANCE_CRITERION_IDS = [
+  'must-build-domains-implemented-or-scaffolded-with-tests',
+  'must-build-objects-have-public-reference-ids',
+  'must-build-services-own-behavior',
+  'must-build-api-validators-exist',
+  'customer-intake-workflow-supports-preview-apply',
+  'trademark-application-workflow-supports-preview-apply',
+  'communication-review-workflow-supports-preview-apply',
+  'permission-and-policy-fail-closed',
+  'ai-forbidden-actions-are-blocked',
+  'human-review-gates-protected-actions',
+  'idempotency-replay-and-conflict-are-tested',
+  'event-trace-exists-and-is-not-command',
+  'api-layer-does-not-emit-events-directly',
+  'workflow-layer-does-not-emit-events-directly',
+  'agent-layer-does-not-emit-events-directly',
+  'errors-are-safe',
+  'unsupported-versions-fail-closed',
+  'deferred-items-do-not-block-mvp',
+  'never-in-mvp-items-are-not-implemented'
+] as const;
+export type Book02MvpAcceptanceCriterionId =
+  (typeof MVP_ACCEPTANCE_CRITERION_IDS)[number];
+
 export interface Book02MvpAcceptanceCriterionIdentity {
-  readonly id: string;
+  readonly id: Book02MvpAcceptanceCriterionId;
   readonly name: string;
   readonly sourcePath: string;
   readonly sourceSection: string;
@@ -295,12 +315,18 @@ export type Book02GuardRequirementId =
   | `document-only-${(typeof DOCUMENT_ONLY_ITEMS)[number]}`
   | `defer-${(typeof DEFER_ITEMS)[number]}`
   | `never-${(typeof NEVER_IN_MVP_ITEMS)[number]}`;
+export type Book02StructuredGuardCheck =
+  | `package-dependency:${string}`
+  | `package-script:${string}`
+  | `path-exists:${string}`
+  | `fixture-type:${string}`
+  | `runtime-export:${string}`;
 export interface Book02GuardInspectionRule {
   readonly inspectionPaths: readonly string[];
   readonly excludedPaths: readonly string[];
   readonly forbiddenIndicators: readonly string[];
   readonly forbiddenPathPatterns?: readonly string[];
-  readonly structuredChecks?: readonly string[];
+  readonly structuredChecks?: readonly Book02StructuredGuardCheck[];
 }
 const guardPaths = ['src', 'fixtures', 'package.json'] as const;
 const guardExclusions = [
@@ -316,7 +342,7 @@ const guardExclusions = [
 const guardRule = (
   forbiddenIndicators: readonly string[],
   forbiddenPathPatterns: readonly string[] = [],
-  structuredChecks: readonly string[] = []
+  structuredChecks: readonly Book02StructuredGuardCheck[] = []
 ): Book02GuardInspectionRule => ({
   inspectionPaths: guardPaths,
   excludedPaths: guardExclusions,
@@ -656,10 +682,7 @@ export const TEST_REQUIRED_CAPABILITIES = [
   'execution under pnpm test or a dedicated evidence runner'
 ] as const;
 
-export const MVP_ACCEPTANCE_CRITERION_DEPENDENCIES: Record<
-  string,
-  readonly string[]
-> = {
+export const MVP_ACCEPTANCE_CRITERION_DEPENDENCIES = {
   'must-build-domains-implemented-or-scaffolded-with-tests': [
     ...MUST_BUILD_DOMAINS.map((domain) => `must-domain-${domain}`)
   ],
@@ -725,36 +748,16 @@ export const MVP_ACCEPTANCE_CRITERION_DEPENDENCIES: Record<
   'never-in-mvp-items-are-not-implemented': NEVER_IN_MVP_ITEMS.map(
     (item) => `never-${item}`
   )
-};
+} as const satisfies Record<Book02MvpAcceptanceCriterionId, readonly string[]>;
 
-export const MVP_ACCEPTANCE_CRITERIA_IDENTITIES: readonly Book02MvpAcceptanceCriterionIdentity[] =
-  [
-    'must-build-domains-implemented-or-scaffolded-with-tests',
-    'must-build-objects-have-public-reference-ids',
-    'must-build-services-own-behavior',
-    'must-build-api-validators-exist',
-    'customer-intake-workflow-supports-preview-apply',
-    'trademark-application-workflow-supports-preview-apply',
-    'communication-review-workflow-supports-preview-apply',
-    'permission-and-policy-fail-closed',
-    'ai-forbidden-actions-are-blocked',
-    'human-review-gates-protected-actions',
-    'idempotency-replay-and-conflict-are-tested',
-    'event-trace-exists-and-is-not-command',
-    'api-layer-does-not-emit-events-directly',
-    'workflow-layer-does-not-emit-events-directly',
-    'agent-layer-does-not-emit-events-directly',
-    'errors-are-safe',
-    'unsupported-versions-fail-closed',
-    'deferred-items-do-not-block-mvp',
-    'never-in-mvp-items-are-not-implemented'
-  ].map((id) => ({
+export const MVP_ACCEPTANCE_CRITERIA_IDENTITIES =
+  MVP_ACCEPTANCE_CRITERION_IDS.map((id) => ({
     id,
     name: cap(id),
     sourcePath: mvpCut,
     sourceSection: 'Section 14',
-    dependencies: MVP_ACCEPTANCE_CRITERION_DEPENDENCIES[id] ?? []
-  }));
+    dependencies: MVP_ACCEPTANCE_CRITERION_DEPENDENCIES[id]
+  })) satisfies readonly Book02MvpAcceptanceCriterionIdentity[];
 export const MVP_ACCEPTANCE_CRITERIA = MVP_ACCEPTANCE_CRITERIA_IDENTITIES;
 
 export const BOOK_02_MVP_REQUIREMENT_IDENTITIES: readonly Book02MvpRequirementIdentity[] =

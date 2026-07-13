@@ -46,6 +46,15 @@ const rel = (p: string) =>
   !isWindowsAbsolute(p) &&
   !p.startsWith('/') &&
   !p.includes('..');
+const structuredCheckPrefixes = [
+  'package-dependency:',
+  'package-script:',
+  'path-exists:',
+  'fixture-type:',
+  'runtime-export:'
+] as const;
+const hasKnownStructuredCheckPrefix = (check: string) =>
+  structuredCheckPrefixes.some((prefix) => check.startsWith(prefix));
 const dispositions = new Set<Book02MvpDisposition>([
   'meets_required_depth',
   'partial_evidence',
@@ -145,8 +154,9 @@ function validateAcceptanceEvaluatorCoverage(
           id
         )
       );
+  const expectedSet = new Set<string>(expected);
   for (const id of actual)
-    if (!expected.includes(id))
+    if (!expectedSet.has(id))
       issues.push(
         issue(
           'book02.acceptance.evaluator_extra',
@@ -390,6 +400,16 @@ export function validateBook02MvpRequirements(
             `requirements[${index}]`
           )
         );
+      for (const check of r.structuredChecks ?? []) {
+        if (!hasKnownStructuredCheckPrefix(check))
+          issues.push(
+            issue(
+              'book02.guard.structured_check_unknown',
+              `Unsupported structured guard check ${check}.`,
+              `requirements[${index}].structuredChecks`
+            )
+          );
+      }
       if (
         r.inspectionStatus !== 'complete' &&
         r.inspectionStatus !== 'incomplete'

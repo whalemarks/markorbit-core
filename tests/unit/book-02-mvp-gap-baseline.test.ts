@@ -6,6 +6,7 @@ import { describe, it } from 'node:test';
 import {
   ACCEPTANCE_CRITERION_EVALUATORS,
   BOOK_02_MVP_GAP_BASELINE,
+  MVP_ACCEPTANCE_CRITERION_IDS,
   inspectBook02MvpGuard,
   deriveBook02MvpAcceptanceCriteria,
   deriveBook02MvpGapSummary,
@@ -215,6 +216,30 @@ describe('Book 02 MVP gap baseline validation', () => {
         }).violationPresent,
         true
       );
+
+      const exportFile = join(src, 'runtime.ts');
+      writeFileSync(exportFile, 'export function createFullPolicyEngine() {}');
+      assert.deepEqual(
+        inspectBook02MvpGuard({
+          inspectionPaths: [src],
+          forbiddenIndicators: [],
+          forbiddenPathPatterns: [],
+          structuredChecks: ['runtime-export:createFullPolicyEngine'],
+          excludedPaths: ['ignored/']
+        }).violationPresent,
+        true
+      );
+      assert.deepEqual(
+        inspectBook02MvpGuard({
+          inspectionPaths: [src],
+          forbiddenIndicators: [],
+          forbiddenPathPatterns: [],
+          structuredChecks: ['runtime-export:notPresentExport'],
+          excludedPaths: ['ignored/']
+        }).violationPresent,
+        false
+      );
+
       assert.deepEqual(
         inspectBook02MvpGuard({
           inspectionPaths: [src],
@@ -325,6 +350,9 @@ describe('Book 02 MVP gap baseline validation', () => {
       false
     );
 
+    assert.deepEqual(Object.keys(ACCEPTANCE_CRITERION_EVALUATORS), [
+      ...MVP_ACCEPTANCE_CRITERION_IDS
+    ]);
     assert.equal(
       Object.keys(ACCEPTANCE_CRITERION_EVALUATORS).length,
       BOOK_02_MVP_GAP_BASELINE.acceptanceCriteria.length
@@ -394,6 +422,20 @@ describe('Book 02 MVP gap baseline validation', () => {
     assert.ok(
       codes(validateBook02MvpGapBaseline(incompleteGuard)).includes(
         'book02.acceptance.guard_inspection_incomplete'
+      )
+    );
+
+    const unknownStructuredCheck = cloneRecord();
+    const unknownGuard = requirementsOf(unknownStructuredCheck).find(
+      (r) => r.id === 'document-only-full-policy-engine'
+    );
+    if (!unknownGuard) throw new Error('Expected Document Only guard.');
+    unknownGuard.structuredChecks = [
+      'unsupported-prefix:createFullPolicyEngine'
+    ];
+    assert.ok(
+      codes(validateBook02MvpGapBaseline(unknownStructuredCheck)).includes(
+        'book02.guard.structured_check_unknown'
       )
     );
 

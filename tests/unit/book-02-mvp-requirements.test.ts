@@ -17,6 +17,8 @@ import {
   MUST_BUILD_TESTS,
   MUST_BUILD_WORKFLOWS,
   MVP_ACCEPTANCE_CRITERIA,
+  MVP_ACCEPTANCE_CRITERION_DEPENDENCIES,
+  MVP_ACCEPTANCE_CRITERION_IDS,
   NEVER_IN_MVP_ITEMS,
   STUB_AGENTS,
   STUB_DOMAINS,
@@ -236,6 +238,26 @@ describe('Book 02 MVP canonical requirements', () => {
       );
       assert.equal(requirement.sourceSection.startsWith('Section 4.'), false);
     }
+  });
+
+  it('preserves exact acceptance criterion literal registries', () => {
+    assert.equal(MVP_ACCEPTANCE_CRITERION_IDS.length, 19);
+    assert.equal(
+      new Set(MVP_ACCEPTANCE_CRITERION_IDS).size,
+      MVP_ACCEPTANCE_CRITERION_IDS.length
+    );
+    assert.deepEqual(Object.keys(MVP_ACCEPTANCE_CRITERION_DEPENDENCIES), [
+      ...MVP_ACCEPTANCE_CRITERION_IDS
+    ]);
+    assert.deepEqual(
+      MVP_ACCEPTANCE_CRITERIA.map((criterion) => criterion.id),
+      [...MVP_ACCEPTANCE_CRITERION_IDS]
+    );
+    const arbitraryCriterionId: string = 'arbitrary-criterion-id';
+    assert.equal(
+      new Set<string>(MVP_ACCEPTANCE_CRITERION_IDS).has(arbitraryCriterionId),
+      false
+    );
   });
 
   it('covers every exact guard requirement with non-empty inspection rules', () => {

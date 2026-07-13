@@ -26,6 +26,8 @@ import {
   MVP_ACCEPTANCE_CRITERION_DEPENDENCIES,
   type Book02GuardInspectionStatus,
   type Book02MvpAcceptanceCriterion,
+  type Book02MvpAcceptanceCriterionId,
+  type Book02StructuredGuardCheck,
   type Book02MvpDepth,
   type Book02MvpDisposition,
   type Book02MvpRequirement,
@@ -83,7 +85,7 @@ interface CurrentEvidence {
   readonly inspectionPaths?: readonly string[];
   readonly forbiddenIndicators?: readonly string[];
   readonly forbiddenPathPatterns?: readonly string[];
-  readonly structuredChecks?: readonly string[];
+  readonly structuredChecks?: readonly Book02StructuredGuardCheck[];
   readonly excludedPaths?: readonly string[];
   readonly inspectionStatus?: Book02GuardInspectionStatus;
   readonly inspectedFiles?: readonly string[];
@@ -106,8 +108,7 @@ const behaviorById: ReadonlyMap<
 );
 const fixtureFilesOf = (
   behavior:
-    | (typeof CORE_CONTRACT_BEHAVIOR_ACCEPTANCE_LOCK.evidence)[number]
-    | undefined
+    (typeof CORE_CONTRACT_BEHAVIOR_ACCEPTANCE_LOCK.evidence)[number] | undefined
 ): readonly string[] =>
   behavior && 'fixtureFiles' in behavior ? behavior.fixtureFiles : [];
 const behaviorTargetById = new Map(
@@ -154,7 +155,7 @@ export interface Book02MvpGuardInspectionInput {
   readonly inspectionPaths: readonly string[];
   readonly forbiddenIndicators: readonly string[];
   readonly forbiddenPathPatterns?: readonly string[];
-  readonly structuredChecks?: readonly string[];
+  readonly structuredChecks?: readonly Book02StructuredGuardCheck[];
   readonly excludedPaths: readonly string[];
 }
 export interface Book02MvpGuardInspectionResult {
@@ -212,7 +213,10 @@ function ruleIsComplete(input: Book02MvpGuardInspectionInput): boolean {
       (input.structuredChecks?.length ?? 0) > 0)
   );
 }
-function structuredCheckViolation(check: string): string | undefined {
+function structuredCheckViolation(
+  check: Book02StructuredGuardCheck,
+  inspectedFiles: readonly string[]
+): string | undefined {
   const packageJson = existsSync('package.json')
     ? (JSON.parse(readFileSync('package.json', 'utf8')) as Record<
         string,
@@ -271,8 +275,25 @@ function structuredCheckViolation(check: string): string | undefined {
         continue;
       }
     }
+    return undefined;
   }
-  return undefined;
+  if (check.startsWith('runtime-export:')) {
+    const exportName = check.slice('runtime-export:'.length);
+    const exportDeclaration = new RegExp(
+      `\\bexport\\s+(?:const|function|class|type|interface)\\s+${exportName}\\b`
+    );
+    const exportReference = new RegExp(
+      `\\bexport\\s*\\{[^}]*\\b${exportName}\\b[^}]*\\}`
+    );
+    for (const file of inspectedFiles) {
+      if (!file.endsWith('.ts')) continue;
+      const text = readFileSync(file, 'utf8');
+      if (exportDeclaration.test(text) || exportReference.test(text))
+        return `${file} exports forbidden runtime symbol ${exportName}.`;
+    }
+    return undefined;
+  }
+  return `Unsupported structured guard check ${check}.`;
 }
 export function inspectBook02MvpGuard(
   input: Book02MvpGuardInspectionInput
@@ -306,7 +327,7 @@ export function inspectBook02MvpGuard(
     }
   }
   for (const check of input.structuredChecks ?? []) {
-    const violation = structuredCheckViolation(check);
+    const violation = structuredCheckViolation(check, inspectedFiles);
     if (violation) violationReasons.push(violation);
   }
   return {
@@ -713,7 +734,7 @@ export interface Book02MvpAcceptanceEvaluation {
   readonly evidenceFiles: readonly string[];
   readonly unresolvedReasons: readonly string[];
 }
-type AcceptanceCriterionId = keyof typeof MVP_ACCEPTANCE_CRITERION_DEPENDENCIES;
+type AcceptanceCriterionId = Book02MvpAcceptanceCriterionId;
 type AcceptanceCriterionEvaluator = (
   requirements: readonly Book02MvpRequirement[]
 ) => Book02MvpAcceptanceEvaluation;
@@ -722,7 +743,7 @@ function mappedRequirements(
   requirements: readonly Book02MvpRequirement[]
 ): readonly Book02MvpRequirement[] {
   const ids = MVP_ACCEPTANCE_CRITERION_DEPENDENCIES[id];
-  return requirements.filter((r) => ids.includes(r.id));
+  return requirements.filter((r) => ids.some((id) => id === r.id));
 }
 function mappedEvaluation(
   id: AcceptanceCriterionId,
@@ -992,13 +1013,15 @@ export const ACCEPTANCE_CRITERION_EVALUATORS = {
     guardEvaluation('deferred-items-do-not-block-mvp', requirements),
   'never-in-mvp-items-are-not-implemented': (requirements) =>
     guardEvaluation('never-in-mvp-items-are-not-implemented', requirements)
-} satisfies Record<AcceptanceCriterionId, AcceptanceCriterionEvaluator>;
+} satisfies Record<
+  Book02MvpAcceptanceCriterionId,
+  AcceptanceCriterionEvaluator
+>;
 export function deriveBook02MvpAcceptanceCriteria(
   requirements: readonly Book02MvpRequirement[]
 ): readonly Book02MvpAcceptanceCriterion[] {
   return MVP_ACCEPTANCE_CRITERIA_IDENTITIES.map((criterion) => {
-    const evaluator =
-      ACCEPTANCE_CRITERION_EVALUATORS[criterion.id as AcceptanceCriterionId];
+    const evaluator = ACCEPTANCE_CRITERION_EVALUATORS[criterion.id];
     const evaluation = evaluator(requirements);
     return {
       ...criterion,
