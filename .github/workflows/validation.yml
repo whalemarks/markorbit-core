@@ -4,26 +4,25 @@ on:
   pull_request:
   push:
     branches:
-      - codex/core-task-037-brand-service-core-lifecycle
-
-permissions:
-  contents: write
+      - main
+      - codex/core-task-032-validation-traceability-lock
 
 jobs:
-  apply-leaf-import-repair:
-    if: github.actor != 'github-actions[bot]'
+  validation:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: [20, 22]
+
     steps:
-      - name: Checkout task branch
+      - name: Checkout
         uses: actions/checkout@v4
-        with:
-          ref: codex/core-task-037-brand-service-core-lifecycle
-          fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: ${{ matrix.node-version }}
 
       - name: Enable Corepack
         run: corepack enable
@@ -31,16 +30,37 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Apply leaf import repair
-        run: pnpm exec tsx scripts/core-task-037-use-leaf-test-import.mjs
+      - name: Typecheck
+        run: pnpm typecheck
 
-      - name: Format governed files
-        run: pnpm format
+      - name: Lint
+        run: pnpm lint
 
-      - name: Commit leaf import repair
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A
-          git commit -m "CORE-TASK-037 — Use leaf Brand evidence imports"
-          git push origin HEAD:codex/core-task-037-brand-service-core-lifecycle
+      - name: Check formatting
+        run: pnpm format:check
+
+      - name: Validate fixtures
+        run: pnpm validate:fixtures
+
+      - name: Test
+        run: pnpm test
+
+      - name: Contract coverage
+        run: pnpm coverage:contracts
+
+      - name: Contract gaps
+        run: pnpm gaps:contracts
+
+      - name: Contract acceptance
+        run: pnpm acceptance:contracts
+
+      - name: Behavior coverage
+        run: pnpm coverage:behavior
+
+      - name: Behavior gaps
+        run: pnpm gaps:behavior
+      - name: Behavior acceptance
+        run: pnpm acceptance:behavior
+
+      - name: Book 02 MVP gaps
+        run: pnpm gaps:mvp
