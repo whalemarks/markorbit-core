@@ -170,4 +170,120 @@ export class CoreIdempotencyRegistry {
       }
     };
   }
+  executeBehavior<TRequest, TResult>(
+    input: CoreIdempotencyRequest<TRequest>,
+    effect: () => CoreBehaviorResult<TResult>
+  ): CoreBehaviorResult<CoreIdempotencyOutcome<TResult>> {
+    const correlationId = input.correlationId ?? null;
+    if (!input.permissionAllowed)
+      return {
+        ok: false,
+        error: createCoreSafeError({
+          code: 'PermissionDenied',
+          category: 'Permission',
+          message: 'Permission is required for this operation.',
+          correlationId
+        })
+      };
+    if (!input.policyAllowed)
+      return {
+        ok: false,
+        error: createCoreSafeError({
+          code: 'PolicyRestricted',
+          category: 'Policy',
+          message: 'Policy does not allow this operation.',
+          correlationId
+        })
+      };
+    if (!input.idempotencyKey)
+      return {
+        ok: false,
+        error: createCoreSafeError({
+          code: 'IdempotencyKeyRequired',
+          category: 'Idempotency',
+          message: 'An idempotency key is required.',
+          correlationId
+        })
+      };
+    if (
+      !opaqueKey.test(input.idempotencyKey) ||
+      restrictedKeyContent.test(input.idempotencyKey)
+    )
+      return {
+        ok: false,
+        error: createCoreSafeError({
+          code: 'IdempotencyKeyInvalid',
+          category: 'Idempotency',
+          message: 'The idempotency key is invalid.',
+          correlationId
+        })
+      };
+    let fingerprint: string;
+    try {
+      fingerprint = createCoreRequestFingerprint(input.request);
+    } catch {
+      return {
+        ok: false,
+        error: createCoreSafeError({
+          code: 'ValidationFailed',
+          category: 'Validation',
+          message: 'The request cannot be fingerprinted safely.',
+          correlationId
+        })
+      };
+    }
+    const recordKey = `${input.idempotencyScope}\u0000${input.operationName}\u0000${input.idempotencyKey}`;
+    const existing = this.#records.get(recordKey) as
+      | StoredOutcome<TResult>
+      | undefined;
+    if (existing) {
+      if (this.#now() >= existing.expiresAt)
+        return {
+          ok: false,
+          error: createCoreSafeError({
+            code: 'IdempotencyExpired',
+            category: 'Idempotency',
+            message: 'The idempotency record has expired.',
+            correlationId
+          })
+        };
+      if (existing.fingerprint !== fingerprint)
+        return {
+          ok: false,
+          error: createCoreSafeError({
+            code: 'IdempotencyConflict',
+            category: 'Idempotency',
+            message:
+              'The idempotency key was already used for a different request.',
+            correlationId
+          })
+        };
+      return {
+        ok: true,
+        value: {
+          status: 'ExistingReplayed',
+          replayed: true,
+          requestFingerprint: fingerprint,
+          result: existing.result
+        }
+      };
+    }
+    const result = effect();
+    if (!result.ok) return result;
+    this.#records.set(recordKey, {
+      fingerprint,
+      result: result.value,
+      expiresAt: this.#now() + Math.max(1, input.ttlMilliseconds ?? 86_400_000)
+    });
+    return {
+      ok: true,
+      value: {
+        status: 'New',
+        replayed: false,
+        requestFingerprint: fingerprint,
+        result: result.value
+      }
+    };
+  }
+
 }

@@ -58,6 +58,18 @@ export const CORE_ERROR_CODES = [
   'RateLimited',
   'Timeout',
   'InternalError',
+  'CustomerAlreadyExists',
+  'CustomerNotFound',
+  'InvalidCustomerType',
+  'InvalidCustomerStatus',
+  'InvalidCustomerTransition',
+  'InvalidCustomerReference',
+  'CustomerNameRequired',
+  'CustomerSourceReferenceRequired',
+  'CustomerReasonReferenceRequired',
+  'CustomerObjectMismatch',
+  'AuditContextMissing',
+  'EventTraceFailed',
   'UnknownError'
 ] as const;
 

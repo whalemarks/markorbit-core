@@ -25,7 +25,8 @@ export const CORE_FIXTURE_TYPES = [
   'safety_boundary_foundations',
   'idempotency_enforcement',
   'book_02_mvp_gap_baseline',
-  'core_mvp_object_public_reference_foundation'
+  'core_mvp_object_public_reference_foundation',
+  'core_customer_service_core_lifecycle'
 ] as const;
 
 export type CoreFixtureType = (typeof CORE_FIXTURE_TYPES)[number];
@@ -193,6 +194,12 @@ export const CORE_FIXTURE_MANIFEST = [
     id: 'core-mvp-object-public-reference-foundation',
     type: 'core_mvp_object_public_reference_foundation',
     path: 'fixtures/objects/core-mvp-object-public-reference-foundation.fixture.json',
+    required: true
+  },
+  {
+    id: 'core-customer-service-core-lifecycle',
+    type: 'core_customer_service_core_lifecycle',
+    path: 'fixtures/services/core-customer-service-core-lifecycle.fixture.json',
     required: true
   },
   {

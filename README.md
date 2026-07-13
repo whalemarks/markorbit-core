@@ -49,3 +49,5 @@ The Object public-reference foundation now uses the corrected real Object contra
 Object business schemas remain incomplete. Domain behavior remains incomplete. Service-owned behavior remains incomplete. API validators remain incomplete. Book 02 MVP remains incomplete. Production readiness remains unaccepted.
 
 Next governed task: CORE-TASK-036 — first Service-owned behavior batch selected from the locked MVP gap baseline.
+
+CORE-TASK-036 note: Customer Service core lifecycle behavior is implemented at the governed MVP boundary. The remaining 17 Must Build Services do not yet own executable behavior. Customer relationship-linking and metadata-update operations remain incomplete. Customer API validators remain incomplete. Customer Intake Workflow preview/apply remains incomplete. Book 02 MVP remains incomplete. Production readiness remains unaccepted. Next governed task: CORE-TASK-037 — select the next Service-owned behavior batch from the updated Book 02 MVP gap baseline.

@@ -4,14 +4,15 @@ import { validateCoreContractGapInventory } from '../contract-coverage/index.ts'
 import { validateCoreContractBehaviorCoverageBaseline, validateCoreContractBehaviorAcceptanceLock } from '../behavior-coverage/index.ts';
 import { validateCoreContractBehaviorGapInventory } from '../behavior-coverage/index.ts';
 import { validateBook02MvpFixture } from '../mvp-coverage/index.ts';
-import { CORE_IDEMPOTENCY_FIXTURE, CORE_SAFETY_BOUNDARY_FIXTURE, CoreAgentBoundaryRegistry, CoreIdempotencyRegistry, CoreReferenceRegistry, validateCoreAiContext, validateCoreVersion } from '../behaviors/index.ts';
+import { CORE_IDEMPOTENCY_FIXTURE, CORE_SAFETY_BOUNDARY_FIXTURE, CoreAgentBoundaryRegistry, CoreEventTraceRegistry, CoreIdempotencyRegistry, CoreReferenceRegistry, createCoreSafeError, type CoreReferenceRecord, validateCoreAiContext, validateCoreVersion } from '../behaviors/index.ts';
 import { CORE_DOMAIN_REGISTRY } from '../domains/index.ts';
 import { CORE_OBJECT_STATUSES } from '../objects/index.ts';
 import { CORE_MVP_OBJECT_PROFILE_ORDER } from '../objects/core-mvp-object-profiles.ts';
-import { CORE_MVP_OBJECT_FIXTURE_PUBLIC_REFERENCE_RECORDS, coreMvpObjectFixtureValidationContextFor } from '../objects/core-mvp-object-base-record.ts';
+import { CORE_MVP_OBJECT_FIXTURE_PUBLIC_REFERENCE_RECORDS, CORE_MVP_OBJECT_FIXTURE_RELATED_REFERENCE_RECORDS, coreMvpObjectFixtureValidationContextFor, type CoreMvpObjectBaseRecord } from '../objects/core-mvp-object-base-record.ts';
 import { validateCoreMvpObjectBaseRecord } from '../objects/core-mvp-object-validation.ts';
-import type { CoreEvent } from '../events/index.ts';
-import { validateCoreEvent } from '../events/index.ts';
+import type { CoreEvent, CoreEventId } from '../events/index.ts';
+import { createCoreEventId, validateCoreEvent } from '../events/index.ts';
+import { CoreCustomerService, CoreInMemoryCustomerServiceStore, type CoreCustomerGovernanceContext } from '../services/index.ts';
 import type { CoreTask } from '../tasks/index.ts';
 import { validateCoreTask } from '../tasks/index.ts';
 import type { CoreWorkflowContract } from '../workflows/index.ts';
@@ -330,6 +331,309 @@ export function validateCoreIdempotencyEnforcementFixture(fixture: unknown): Cor
   const value = fixture as typeof CORE_IDEMPOTENCY_FIXTURE;
   if (!registry.execute(value, () => ++effects).ok || !registry.execute(value, () => ++effects).ok || effects !== 1) {
     issues.push(error('core.idempotency_enforcement.replay_failed', 'Canonical replay must prevent duplicate effects.', 'idempotency_enforcement'));
+  }
+  return createCoreValidationResult(issues);
+}
+
+
+function customerGovernance(
+  operation: string,
+  permission: string,
+  policyScope: string,
+  target: string,
+  organizationScopeReferenceId: string
+): CoreCustomerGovernanceContext {
+  return {
+    correlationId: 'corr:core-task-036',
+    auditContextReferenceId: 'audit:ctx:core-task-036',
+    authorizedOrganizationReferenceId: organizationScopeReferenceId,
+    permission: {
+      actorReferenceId: 'user:ref:actor-0001',
+      intendedOperation: operation,
+      requiredPermissionKeys: [permission],
+      permissionDecisionReferenceId: 'permission:decision:allow-0001',
+      permissionDecision: 'Allowed',
+      correlationId: 'corr:core-task-036'
+    },
+    policy: {
+      intendedOperation: operation,
+      requiredPolicyScopes: [policyScope],
+      policyDecisionReferenceId: 'policy:decision:allow-0001',
+      policyDecision: 'Allowed',
+      restrictedFieldsOmitted: true,
+      correlationId: 'corr:core-task-036'
+    },
+    review: {
+      humanReviewRequired: false,
+      humanReviewReferenceId: null,
+      reviewStatus: null,
+      reviewScope: null,
+      reviewDecision: null,
+      reviewerUserReferenceId: null,
+      targetObjectType: 'customer-record',
+      targetObjectReferenceId: target
+    },
+    audit: {
+      operationName: operation,
+      operationCategory: 'Service',
+      actorReferenceId: 'user:ref:actor-0001',
+      targetObjectType: 'customer-record',
+      targetObjectReferenceId: target,
+      permissionDecisionReferenceId: 'permission:decision:allow-0001',
+      policyDecisionReferenceId: 'policy:decision:allow-0001',
+      humanReviewReferenceId: null,
+      correlationId: 'corr:core-task-036'
+    }
+  };
+}
+
+export function validateCoreCustomerServiceCoreLifecycleFixture(
+  fixture: unknown
+): CoreValidationResult {
+  const issues: CoreValidationIssue[] = [];
+  if (!isRecord(fixture)) {
+    return createCoreValidationResult([
+      error(
+        'core.customer_service.fixture_invalid',
+        'Customer Service lifecycle fixture must be an object.',
+        'core_customer_service_core_lifecycle'
+      )
+    ]);
+  }
+  if (fixture.fixtureType !== 'core_customer_service_core_lifecycle') {
+    issues.push(
+      error(
+        'core.customer_service.fixture_type',
+        'Customer Service fixture type is invalid.',
+        'fixtureType'
+      )
+    );
+  }
+  const reference = fixture.publicReferenceRecord;
+  const createRequest = fixture.createRequest;
+  const statusRequest = fixture.statusTransitionRequest;
+  const invalidStatusRequest = fixture.invalidStatusTransitionRequest;
+  const expected = fixture.expected;
+  if (
+    !isRecord(reference) ||
+    !isRecord(createRequest) ||
+    !isRecord(statusRequest) ||
+    !isRecord(invalidStatusRequest) ||
+    !isRecord(expected) ||
+    typeof fixture.customerReferenceId !== 'string' ||
+    typeof fixture.organizationScopeReferenceId !== 'string' ||
+    typeof fixture.fixedNow !== 'string' ||
+    typeof fixture.updatedNow !== 'string'
+  ) {
+    issues.push(
+      error(
+        'core.customer_service.fixture_shape',
+        'Customer Service fixture is missing executable scenario fields.',
+        'core_customer_service_core_lifecycle'
+      )
+    );
+    return createCoreValidationResult(issues);
+  }
+  const referenceRecord: CoreReferenceRecord = {
+    referenceId: String(reference.referenceId),
+    objectType: String(reference.objectType),
+    referenceDomain: String(reference.referenceDomain),
+    status: String(reference.status) as CoreReferenceRecord['status']
+  };
+  const clockValues = [fixture.fixedNow, fixture.updatedNow, fixture.updatedNow];
+  const traces = new CoreEventTraceRegistry();
+  const store = new CoreInMemoryCustomerServiceStore();
+  const registry = new CoreReferenceRegistry([
+    ...CORE_MVP_OBJECT_FIXTURE_RELATED_REFERENCE_RECORDS,
+    referenceRecord
+  ]);
+  const service = new CoreCustomerService({
+    store,
+    idempotencyRegistry: new CoreIdempotencyRegistry(() => 1),
+    eventTracePort: traces,
+    relatedReferenceRegistry: registry,
+    now: () => clockValues.shift() ?? String(fixture.updatedNow),
+    eventIdFactory: (operation, customerReferenceId, idempotencyKey) =>
+      createCoreEventId(
+        `event-${operation}-${customerReferenceId.replaceAll(':', '-')}-${idempotencyKey}`
+      ) as CoreEventId,
+    cursorSecret: 'customer-service-fixture-secret'
+  });
+  const create = service.createCustomer({
+    objectRecord: fixture.objectRecord as CoreMvpObjectBaseRecord,
+    publicReferenceRecord: referenceRecord,
+    customerType: createRequest.customerType,
+    customerStatus: createRequest.customerStatus,
+    nameReference: String(createRequest.nameReference),
+    sourceReference: String(createRequest.sourceReference),
+    idempotencyKey: String(createRequest.idempotencyKey),
+    governance: customerGovernance(
+      'customer.create',
+      'customer:create',
+      'customer.write',
+      fixture.customerReferenceId,
+      fixture.organizationScopeReferenceId
+    )
+  });
+  if (!create.ok || store.list().length !== expected.recordCountAfterCreate || traces.visibleTo(['Internal']).length !== expected.eventTraceCountAfterCreate) {
+    issues.push(error('core.customer_service.create_failed', 'Fixture create scenario failed.', 'createRequest'));
+  }
+  const replay = service.createCustomer({
+    objectRecord: fixture.objectRecord as CoreMvpObjectBaseRecord,
+    publicReferenceRecord: referenceRecord,
+    customerType: createRequest.customerType,
+    customerStatus: createRequest.customerStatus,
+    nameReference: String(createRequest.nameReference),
+    sourceReference: String(createRequest.sourceReference),
+    idempotencyKey: String(createRequest.idempotencyKey),
+    governance: customerGovernance(
+      'customer.create',
+      'customer:create',
+      'customer.write',
+      fixture.customerReferenceId,
+      fixture.organizationScopeReferenceId
+    )
+  });
+  if (!replay.ok || store.list().length !== expected.recordCountAfterCreate || traces.visibleTo(['Internal']).length !== expected.eventTraceCountAfterReplay) {
+    issues.push(error('core.customer_service.replay_failed', 'Fixture replay scenario failed.', 'createRequest'));
+  }
+  const conflict = service.createCustomer({
+    objectRecord: fixture.objectRecord as CoreMvpObjectBaseRecord,
+    publicReferenceRecord: referenceRecord,
+    customerType: 'Individual',
+    customerStatus: createRequest.customerStatus,
+    nameReference: String(createRequest.nameReference),
+    sourceReference: String(createRequest.sourceReference),
+    idempotencyKey: String(createRequest.idempotencyKey),
+    governance: customerGovernance(
+      'customer.create',
+      'customer:create',
+      'customer.write',
+      fixture.customerReferenceId,
+      fixture.organizationScopeReferenceId
+    )
+  });
+  if (conflict.ok || conflict.error.code !== expected.sameKeyConflictCode) {
+    issues.push(error('core.customer_service.idempotency_conflict_failed', 'Fixture conflict scenario failed.', 'conflictingCreateRequest'));
+  }
+  const duplicate = service.createCustomer({
+    objectRecord: fixture.objectRecord as CoreMvpObjectBaseRecord,
+    publicReferenceRecord: referenceRecord,
+    customerType: createRequest.customerType,
+    customerStatus: createRequest.customerStatus,
+    nameReference: String(createRequest.nameReference),
+    sourceReference: String(createRequest.sourceReference),
+    idempotencyKey: 'idem:create:duplicate-customer-036',
+    governance: customerGovernance(
+      'customer.create',
+      'customer:create',
+      'customer.write',
+      fixture.customerReferenceId,
+      fixture.organizationScopeReferenceId
+    )
+  });
+  if (duplicate.ok || duplicate.error.code !== expected.duplicateCustomerCode) {
+    issues.push(error('core.customer_service.duplicate_failed', 'Fixture duplicate scenario failed.', 'duplicateCreateRequest'));
+  }
+  const get = service.getCustomer({
+    customerReferenceId: fixture.customerReferenceId,
+    governance: customerGovernance(
+      'customer.read',
+      'customer:read',
+      'customer.read',
+      fixture.customerReferenceId,
+      fixture.organizationScopeReferenceId
+    )
+  });
+  const list = service.listCustomers({
+    filters: { customerType: createRequest.customerType },
+    pagination: { limit: 10, sortField: 'publicReferenceId' },
+    governance: customerGovernance(
+      'customer.list',
+      'customer:list',
+      'customer.list',
+      'customer:collection',
+      fixture.organizationScopeReferenceId
+    )
+  });
+  const validation = service.validateCustomerReference({
+    customerReferenceId: fixture.customerReferenceId,
+    requestingDomain: 'order',
+    requestingService: 'order-service',
+    governance: customerGovernance(
+      'customer.validate_reference',
+      'customer:validate_reference',
+      'customer.reference',
+      fixture.customerReferenceId,
+      fixture.organizationScopeReferenceId
+    )
+  });
+  if (!get.ok || !list.ok || list.value.items.length !== 1 || !validation.ok || validation.value.reasonCode !== 'Valid') {
+    issues.push(error('core.customer_service.read_failed', 'Fixture read/list/reference scenarios failed.', 'expected'));
+  }
+  const beforeInvalidCount = traces.visibleTo(['Internal']).length;
+  const changed = service.changeCustomerStatus({
+    customerReferenceId: fixture.customerReferenceId,
+    targetStatus: String(statusRequest.targetStatus) as 'Suspended',
+    reasonReference: String(statusRequest.reasonReference),
+    idempotencyKey: String(statusRequest.idempotencyKey),
+    governance: customerGovernance(
+      'customer.change_status',
+      'customer:change_status',
+      'customer.lifecycle',
+      fixture.customerReferenceId,
+      fixture.organizationScopeReferenceId
+    )
+  });
+  if (!changed.ok || changed.value.customerStatus !== statusRequest.targetStatus || traces.visibleTo(['Internal']).length !== expected.eventTraceCountAfterStatusChange) {
+    issues.push(error('core.customer_service.status_failed', 'Fixture status transition scenario failed.', 'statusTransitionRequest'));
+  }
+  const invalid = service.changeCustomerStatus({
+    customerReferenceId: fixture.customerReferenceId,
+    targetStatus: String(invalidStatusRequest.targetStatus) as 'Draft',
+    idempotencyKey: String(invalidStatusRequest.idempotencyKey),
+    governance: customerGovernance(
+      'customer.change_status',
+      'customer:change_status',
+      'customer.lifecycle',
+      fixture.customerReferenceId,
+      fixture.organizationScopeReferenceId
+    )
+  });
+  if (invalid.ok || invalid.error.code !== expected.invalidTransitionCode || traces.visibleTo(['Internal']).length !== beforeInvalidCount + 1) {
+    issues.push(error('core.customer_service.invalid_transition_failed', 'Fixture invalid transition scenario failed.', 'invalidStatusTransitionRequest'));
+  }
+  const failingTraces = { append: () => ({ ok: false as const, error: createCoreSafeError({ code: 'EventTraceFailed', category: 'Event', message: 'Synthetic event failure.' }) }) };
+  const failingService = new CoreCustomerService({
+    store: new CoreInMemoryCustomerServiceStore(),
+    idempotencyRegistry: new CoreIdempotencyRegistry(() => 2),
+    eventTracePort: failingTraces,
+    relatedReferenceRegistry: registry,
+    now: () => String(fixture.fixedNow),
+    eventIdFactory: (operation, customerReferenceId, idempotencyKey) =>
+      createCoreEventId(
+        `event-failed-${operation}-${customerReferenceId.replaceAll(':', '-')}-${idempotencyKey}`
+      ) as CoreEventId,
+    cursorSecret: 'customer-service-fixture-secret'
+  });
+  const eventFailure = failingService.createCustomer({
+    objectRecord: fixture.objectRecord as CoreMvpObjectBaseRecord,
+    publicReferenceRecord: referenceRecord,
+    customerType: createRequest.customerType,
+    customerStatus: createRequest.customerStatus,
+    nameReference: String(createRequest.nameReference),
+    sourceReference: String(createRequest.sourceReference),
+    idempotencyKey: 'idem:create:event-failure-036',
+    governance: customerGovernance(
+      'customer.create',
+      'customer:create',
+      'customer.write',
+      fixture.customerReferenceId,
+      fixture.organizationScopeReferenceId
+    )
+  });
+  if (eventFailure.ok || eventFailure.error.code !== expected.eventFailureCode) {
+    issues.push(error('core.customer_service.event_failure_failed', 'Fixture event failure scenario failed.', 'expected'));
   }
   return createCoreValidationResult(issues);
 }
