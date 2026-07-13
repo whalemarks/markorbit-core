@@ -1,9 +1,7 @@
 name: Validation
 
 on:
-  push:
-    branches:
-      - codex/core-task-038-trademark-service-core-lifecycle
+  pull_request:
 
 permissions:
   contents: write
