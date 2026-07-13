@@ -31,7 +31,20 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Typecheck
-        run: pnpm typecheck
+        shell: bash
+        run: |
+          set +e
+          pnpm typecheck > typecheck.log 2>&1
+          status=$?
+          cat typecheck.log
+          exit $status
+
+      - name: Upload typecheck diagnostics
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: typecheck-${{ matrix.node-version }}
+          path: typecheck.log
 
       - name: Lint
         run: pnpm lint
