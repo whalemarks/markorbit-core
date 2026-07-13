@@ -3,6 +3,7 @@ import { describe, it } from 'node:test';
 import {
   AGENT_REQUIRED_CAPABILITIES,
   API_REQUIRED_CAPABILITIES,
+  BOOK_02_GUARD_INSPECTION_RULES,
   BOOK_02_EXPECTED_COUNTS,
   BOOK_02_MVP_REQUIREMENT_IDENTITIES,
   COMMON_CONTRACTS,
@@ -234,6 +235,40 @@ describe('Book 02 MVP canonical requirements', () => {
         stubSectionByLayer.get(requirement.layer)
       );
       assert.equal(requirement.sourceSection.startsWith('Section 4.'), false);
+    }
+  });
+
+  it('covers every exact guard requirement with non-empty inspection rules', () => {
+    const ruleIds = Object.keys(BOOK_02_GUARD_INSPECTION_RULES).sort();
+    const expectedDocumentRules = DOCUMENT_ONLY_ITEMS.map(
+      (item) => `document-only-${item}`
+    );
+    const expectedDeferRules = DEFER_ITEMS.map((item) => `defer-${item}`);
+    const expectedNeverRules = NEVER_IN_MVP_ITEMS.map(
+      (item) => `never-${item}`
+    );
+    const expected = [
+      ...expectedDocumentRules,
+      ...expectedDeferRules,
+      ...expectedNeverRules
+    ].sort();
+    assert.deepEqual(ruleIds, expected);
+    assert.equal(expectedDocumentRules.length, 14);
+    assert.equal(expectedDeferRules.length, 17);
+    assert.equal(expectedNeverRules.length, 18);
+    assert.equal(ruleIds.length, 49);
+    for (const id of ruleIds) {
+      const rule =
+        BOOK_02_GUARD_INSPECTION_RULES[
+          id as keyof typeof BOOK_02_GUARD_INSPECTION_RULES
+        ];
+      assert.ok(rule.inspectionPaths.length > 0);
+      assert.ok(rule.excludedPaths.length > 0);
+      assert.ok(
+        rule.forbiddenIndicators.length > 0 ||
+          (rule.forbiddenPathPatterns?.length ?? 0) > 0 ||
+          (rule.structuredChecks?.length ?? 0) > 0
+      );
     }
   });
 

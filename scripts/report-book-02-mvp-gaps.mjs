@@ -30,15 +30,33 @@ console.log(
 console.log('\nDocument Only:');
 console.log(`- total: ${baseline.summary.documentOnly.total}`);
 console.log(
+  `- inspection complete: ${baseline.summary.documentOnly.inspectionComplete}`
+);
+console.log(
+  `- inspection incomplete: ${baseline.summary.documentOnly.inspectionIncomplete}`
+);
+console.log(
   `- unexpected implementation count: ${baseline.summary.documentOnly.unexpectedImplementationCount}`
 );
 console.log('\nDefer:');
 console.log(`- total: ${baseline.summary.defer.total}`);
 console.log(
+  `- inspection complete: ${baseline.summary.defer.inspectionComplete}`
+);
+console.log(
+  `- inspection incomplete: ${baseline.summary.defer.inspectionIncomplete}`
+);
+console.log(
   `- unexpected blocking implementation count: ${baseline.summary.defer.unexpectedBlockingImplementationCount}`
 );
 console.log('\nNever in MVP:');
 console.log(`- total: ${baseline.summary.neverInMvp.total}`);
+console.log(
+  `- inspection complete: ${baseline.summary.neverInMvp.inspectionComplete}`
+);
+console.log(
+  `- inspection incomplete: ${baseline.summary.neverInMvp.inspectionIncomplete}`
+);
 console.log(`- violation count: ${baseline.summary.neverInMvp.violationCount}`);
 console.log('\nMVP acceptance:');
 console.log(

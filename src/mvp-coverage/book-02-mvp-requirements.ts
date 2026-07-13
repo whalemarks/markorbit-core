@@ -34,6 +34,7 @@ export type Book02MvpDepth =
   | 'level_1_2'
   | 'level_3'
   | 'forbidden';
+export type Book02GuardInspectionStatus = 'complete' | 'incomplete';
 
 export interface Book02MvpRequirementIdentity {
   readonly id: string;
@@ -56,7 +57,11 @@ export interface Book02MvpRequirement extends Book02MvpRequirementIdentity {
   readonly fixtureFiles: readonly string[];
   readonly inspectionPaths?: readonly string[];
   readonly forbiddenIndicators?: readonly string[];
+  readonly forbiddenPathPatterns?: readonly string[];
+  readonly structuredChecks?: readonly string[];
   readonly excludedPaths?: readonly string[];
+  readonly inspectionStatus?: Book02GuardInspectionStatus;
+  readonly inspectedFiles?: readonly string[];
   readonly violationReasons?: readonly string[];
   readonly gapReasons: readonly string[];
 }
@@ -70,6 +75,7 @@ export interface Book02MvpAcceptanceCriterionIdentity {
 export interface Book02MvpAcceptanceCriterion extends Book02MvpAcceptanceCriterionIdentity {
   readonly satisfied: boolean;
   readonly evidenceRequirementIds: readonly string[];
+  readonly evidenceFiles: readonly string[];
   readonly unresolvedReasons: readonly string[];
 }
 
@@ -284,6 +290,315 @@ export const NEVER_IN_MVP_ITEMS = [
   'silent-unsupported-version-acceptance',
   'silent-historical-version-rewriting'
 ] as const;
+
+export type Book02GuardRequirementId =
+  | `document-only-${(typeof DOCUMENT_ONLY_ITEMS)[number]}`
+  | `defer-${(typeof DEFER_ITEMS)[number]}`
+  | `never-${(typeof NEVER_IN_MVP_ITEMS)[number]}`;
+export interface Book02GuardInspectionRule {
+  readonly inspectionPaths: readonly string[];
+  readonly excludedPaths: readonly string[];
+  readonly forbiddenIndicators: readonly string[];
+  readonly forbiddenPathPatterns?: readonly string[];
+  readonly structuredChecks?: readonly string[];
+}
+const guardPaths = ['src', 'fixtures', 'package.json'] as const;
+const guardExclusions = [
+  'src/mvp-coverage/',
+  'fixtures/mvp-coverage/',
+  'tests/',
+  'docs/',
+  'CHANGELOG.md',
+  'CORE-MANIFEST.md',
+  'CORE-ROADMAP.md',
+  'README.md'
+] as const;
+const guardRule = (
+  forbiddenIndicators: readonly string[],
+  forbiddenPathPatterns: readonly string[] = [],
+  structuredChecks: readonly string[] = []
+): Book02GuardInspectionRule => ({
+  inspectionPaths: guardPaths,
+  excludedPaths: guardExclusions,
+  forbiddenIndicators,
+  forbiddenPathPatterns,
+  structuredChecks
+});
+export const BOOK_02_GUARD_INSPECTION_RULES = {
+  'document-only-full-policy-engine': guardRule(
+    ['createFullPolicyEngine', 'FullPolicyEngine'],
+    ['src/policy-engine/'],
+    ['runtime-export:createFullPolicyEngine']
+  ),
+  'document-only-full-agent-runtime-orchestration': guardRule(
+    ['createFullAgentRuntimeOrchestration', 'FullAgentRuntimeOrchestrator'],
+    ['src/agent-runtime/'],
+    ['runtime-export:createFullAgentRuntimeOrchestration']
+  ),
+  'document-only-full-workflow-engine': guardRule(
+    ['createFullWorkflowEngine', 'FullWorkflowEngine'],
+    ['src/workflow-engine/'],
+    ['runtime-export:createFullWorkflowEngine']
+  ),
+  'document-only-external-official-filing-integrations': guardRule(
+    ['executeOfficialFiling', 'submitOfficialTrademarkApplication'],
+    ['src/integrations/official-filing/'],
+    ['package-dependency:official-filing-sdk']
+  ),
+  'document-only-foreign-associate-live-network-integrations': guardRule(
+    ['connectForeignAssociateLiveNetwork', 'ForeignAssociateLiveNetworkClient'],
+    ['src/integrations/foreign-associate/'],
+    ['package-dependency:foreign-associate-network-sdk']
+  ),
+  'document-only-payment-execution': guardRule(
+    ['executePayment', 'PaymentExecution'],
+    ['src/payments/'],
+    ['package-dependency:stripe']
+  ),
+  'document-only-provider-marketplace-settlement': guardRule(
+    ['settleProviderMarketplacePayment', 'ProviderMarketplaceSettlement'],
+    ['src/provider-marketplace/settlement/'],
+    ['package-dependency:marketplace-settlement-sdk']
+  ),
+  'document-only-advanced-analytics': guardRule(
+    ['runAdvancedAnalytics', 'AdvancedAnalyticsEngine'],
+    ['src/analytics/advanced/'],
+    ['package-script:analytics:advanced']
+  ),
+  'document-only-advanced-service-network-optimization': guardRule(
+    ['optimizeAdvancedServiceNetwork', 'AdvancedServiceNetworkOptimizer'],
+    ['src/service-network/optimization/'],
+    ['runtime-export:optimizeAdvancedServiceNetwork']
+  ),
+  'document-only-multi-product-app-marketplace': guardRule(
+    ['createMultiProductAppMarketplace', 'MultiProductAppMarketplace'],
+    ['src/app-marketplace/'],
+    ['package-script:marketplace:apps']
+  ),
+  'document-only-public-developer-api-portal': guardRule(
+    ['createPublicDeveloperApiPortal', 'PublicDeveloperApiPortal'],
+    ['src/developer-portal/'],
+    ['package-script:developer-portal']
+  ),
+  'document-only-ai-autonomous-workflow-execution': guardRule(
+    ['executeAutonomousAiWorkflow', 'AutonomousAiWorkflowExecutor'],
+    ['src/ai/autonomous-workflow/'],
+    ['runtime-export:executeAutonomousAiWorkflow']
+  ),
+  'document-only-official-deadline-certification-automation': guardRule(
+    ['certifyLegalDeadline', 'OfficialDeadlineCertificationAutomation'],
+    ['src/deadlines/certification/'],
+    ['runtime-export:certifyLegalDeadline']
+  ),
+  'document-only-professional-registrability-decision-automation': guardRule(
+    [
+      'certifyTrademarkRegistrability',
+      'ProfessionalRegistrabilityDecisionAutomation'
+    ],
+    ['src/registrability/automation/'],
+    ['runtime-export:certifyTrademarkRegistrability']
+  ),
+  'defer-renewal-production-workflow': guardRule(
+    ['executeRenewalProductionWorkflow', 'RenewalProductionWorkflowRunner'],
+    ['src/workflows/renewal/production/'],
+    ['runtime-export:executeRenewalProductionWorkflow']
+  ),
+  'defer-assignment-production-workflow': guardRule(
+    [
+      'executeAssignmentProductionWorkflow',
+      'AssignmentProductionWorkflowRunner'
+    ],
+    ['src/workflows/assignment/production/'],
+    ['runtime-export:executeAssignmentProductionWorkflow']
+  ),
+  'defer-office-action-response-production-workflow': guardRule(
+    [
+      'executeOfficeActionResponseProductionWorkflow',
+      'OfficeActionResponseProductionWorkflowRunner'
+    ],
+    ['src/workflows/office-action-response/production/'],
+    ['runtime-export:executeOfficeActionResponseProductionWorkflow']
+  ),
+  'defer-evidence-review-production-workflow': guardRule(
+    [
+      'executeEvidenceReviewProductionWorkflow',
+      'EvidenceReviewProductionWorkflowRunner'
+    ],
+    ['src/workflows/evidence-review/production/'],
+    ['runtime-export:executeEvidenceReviewProductionWorkflow']
+  ),
+  'defer-provider-routing-production-workflow': guardRule(
+    [
+      'executeProviderRoutingProductionWorkflow',
+      'ProviderRoutingProductionWorkflowRunner'
+    ],
+    ['src/workflows/provider-routing/production/'],
+    ['runtime-export:executeProviderRoutingProductionWorkflow']
+  ),
+  'defer-foreign-agent-onboarding-automation': guardRule(
+    ['automateForeignAgentOnboarding', 'ForeignAgentOnboardingAutomation'],
+    ['src/foreign-agent/onboarding/'],
+    ['runtime-export:automateForeignAgentOnboarding']
+  ),
+  'defer-partner-facing-mini-program': guardRule(
+    ['launchPartnerMiniProgram', 'PartnerFacingMiniProgram'],
+    ['src/partner-mini-program/'],
+    ['package-script:partner-mini-program']
+  ),
+  'defer-client-self-service-filing-portal': guardRule(
+    ['launchClientSelfServiceFilingPortal', 'ClientSelfServiceFilingPortal'],
+    ['src/client-filing-portal/'],
+    ['package-script:client-filing-portal']
+  ),
+  'defer-global-jurisdiction-rule-automation': guardRule(
+    ['automateGlobalJurisdictionRules', 'GlobalJurisdictionRuleAutomation'],
+    ['src/jurisdiction-rules/automation/'],
+    ['runtime-export:automateGlobalJurisdictionRules']
+  ),
+  'defer-official-fee-calculation-engine': guardRule(
+    ['calculateOfficialFees', 'OfficialFeeCalculationEngine'],
+    ['src/fees/official/'],
+    ['runtime-export:calculateOfficialFees']
+  ),
+  'defer-trademark-watch-monitoring': guardRule(
+    ['startTrademarkWatchMonitoring', 'TrademarkWatchMonitoringService'],
+    ['src/trademark-watch/'],
+    ['runtime-export:startTrademarkWatchMonitoring']
+  ),
+  'defer-bulk-opportunity-generation': guardRule(
+    ['generateBulkOpportunities', 'BulkOpportunityGeneration'],
+    ['src/opportunities/bulk/'],
+    ['runtime-export:generateBulkOpportunities']
+  ),
+  'defer-service-provider-scoring': guardRule(
+    ['scoreServiceProvider', 'ServiceProviderScoringEngine'],
+    ['src/service-provider/scoring/'],
+    ['runtime-export:scoreServiceProvider']
+  ),
+  'defer-communication-delivery-integrations': guardRule(
+    ['sendExternalCommunication', 'CommunicationDeliveryIntegration'],
+    ['src/integrations/communication-delivery/'],
+    ['package-dependency:sendgrid']
+  ),
+  'defer-document-e-signature-integration': guardRule(
+    ['executeDocumentESignature', 'DocumentESignatureIntegration'],
+    ['src/integrations/e-signature/'],
+    ['package-dependency:docusign']
+  ),
+  'defer-external-storage-integrations': guardRule(
+    ['writeExternalStorageObject', 'ExternalStorageIntegration'],
+    ['src/integrations/external-storage/'],
+    ['package-dependency:@aws-sdk/client-s3']
+  ),
+  'defer-billing-and-invoice-automation': guardRule(
+    ['automateBillingAndInvoicing', 'BillingInvoiceAutomation'],
+    ['src/billing/automation/'],
+    ['runtime-export:automateBillingAndInvoicing']
+  ),
+  'never-ai-submitting-official-filings': guardRule(
+    ['aiSubmitOfficialFiling', 'submitOfficialFilingWithAi'],
+    ['src/ai/official-filing/'],
+    ['runtime-export:aiSubmitOfficialFiling']
+  ),
+  'never-ai-certifying-legal-deadlines': guardRule(
+    ['aiCertifyLegalDeadline', 'certifyLegalDeadlineWithAi'],
+    ['src/ai/deadline-certification/'],
+    ['runtime-export:aiCertifyLegalDeadline']
+  ),
+  'never-ai-certifying-trademark-registrability': guardRule(
+    [
+      'aiCertifyTrademarkRegistrability',
+      'certifyTrademarkRegistrabilityWithAi'
+    ],
+    ['src/ai/registrability-certification/'],
+    ['runtime-export:aiCertifyTrademarkRegistrability']
+  ),
+  'never-ai-deciding-evidence-sufficiency-as-professional-truth': guardRule(
+    [
+      'aiDecideEvidenceSufficiencyAsTruth',
+      'EvidenceSufficiencyProfessionalTruth'
+    ],
+    ['src/ai/evidence-sufficiency/'],
+    ['runtime-export:aiDecideEvidenceSufficiencyAsTruth']
+  ),
+  'never-ai-selecting-service-provider-as-final-decision': guardRule(
+    ['selectFinalServiceProvider', 'aiSelectFinalServiceProvider'],
+    ['src/ai/provider-selection/'],
+    ['runtime-export:selectFinalServiceProvider']
+  ),
+  'never-ai-sending-external-communication-without-human-review': guardRule(
+    [
+      'sendExternalCommunicationWithoutReview',
+      'aiSendExternalCommunicationWithoutHumanReview'
+    ],
+    ['src/ai/external-communication/'],
+    ['runtime-export:sendExternalCommunicationWithoutReview']
+  ),
+  'never-api-layer-mutating-domain-state-directly': guardRule(
+    ['apiDirectDomainMutation', 'mutateDomainStateFromApi'],
+    ['src/api/domain-mutation/'],
+    ['runtime-export:apiDirectDomainMutation']
+  ),
+  'never-workflow-layer-creating-active-tasks-outside-task-service': guardRule(
+    ['workflowDirectTaskActivation', 'createActiveTaskOutsideTaskService'],
+    ['src/workflows/task-activation/'],
+    ['runtime-export:workflowDirectTaskActivation']
+  ),
+  'never-workflow-layer-emitting-domain-events-directly': guardRule(
+    ['workflowDirectEventEmission', 'emitDomainEventFromWorkflow'],
+    ['src/workflows/event-emission/'],
+    ['runtime-export:workflowDirectEventEmission']
+  ),
+  'never-agent-layer-emitting-events-directly': guardRule(
+    ['agentDirectEventEmission', 'emitDomainEventFromAgent'],
+    ['src/agents/event-emission/'],
+    ['runtime-export:agentDirectEventEmission']
+  ),
+  'never-event-references-triggering-commands': guardRule(
+    ['eventReferenceCommandExecution', 'executeCommandFromEventReference'],
+    ['src/events/command-execution/'],
+    ['runtime-export:eventReferenceCommandExecution']
+  ),
+  'never-permission-bypass-for-convenience': guardRule(
+    ['bypassPermissionEvaluation', 'permissionBypassForConvenience'],
+    ['src/permissions/bypass/'],
+    ['runtime-export:bypassPermissionEvaluation']
+  ),
+  'never-policy-bypass-for-convenience': guardRule(
+    ['bypassPolicyEvaluation', 'policyBypassForConvenience'],
+    ['src/policies/bypass/'],
+    ['runtime-export:bypassPolicyEvaluation']
+  ),
+  'never-production-data-fixtures': guardRule(
+    ['productionFixture', 'production_data_fixture'],
+    ['fixtures/production/'],
+    ['fixture-type:production']
+  ),
+  'never-raw-database-ids-in-public-responses': guardRule(
+    ['exposeRawDatabaseId', 'rawDatabaseId'],
+    ['src/api/response/raw-database-id/'],
+    ['runtime-export:exposeRawDatabaseId']
+  ),
+  'never-unsafe-stack-traces-in-api-responses': guardRule(
+    ['unsafeStackTraceResponse', 'exposeUnsafeStackTrace'],
+    ['src/api/errors/unsafe-stack-trace/'],
+    ['runtime-export:unsafeStackTraceResponse']
+  ),
+  'never-silent-unsupported-version-acceptance': guardRule(
+    ['acceptUnsupportedVersionSilently', 'silentUnsupportedVersionAcceptance'],
+    ['src/versioning/unsupported-silent-acceptance/'],
+    ['runtime-export:acceptUnsupportedVersionSilently']
+  ),
+  'never-silent-historical-version-rewriting': guardRule(
+    ['rewriteHistoricalVersionSilently', 'silentHistoricalVersionRewrite'],
+    ['src/versioning/historical-rewrite/'],
+    ['runtime-export:rewriteHistoricalVersionSilently']
+  )
+} as const satisfies Record<
+  Book02GuardRequirementId,
+  Book02GuardInspectionRule
+>;
+
 export const API_REQUIRED_CAPABILITIES = [
   'request validation',
   'response validation',
@@ -346,12 +661,10 @@ export const MVP_ACCEPTANCE_CRITERION_DEPENDENCIES: Record<
   readonly string[]
 > = {
   'must-build-domains-implemented-or-scaffolded-with-tests': [
-    ...MUST_BUILD_DOMAINS.map((domain) => `must-domain-${domain}`),
-    'must-test-common-contract-tests'
+    ...MUST_BUILD_DOMAINS.map((domain) => `must-domain-${domain}`)
   ],
   'must-build-objects-have-public-reference-ids': [
-    ...MUST_BUILD_DOMAINS.map((domain) => `must-object-${domain}`),
-    'must-common-references'
+    ...MUST_BUILD_DOMAINS.map((domain) => `must-object-${domain}`)
   ],
   'must-build-services-own-behavior': MUST_BUILD_DOMAINS.map(
     (domain) => `must-service-${domain}-service`
@@ -389,9 +702,9 @@ export const MVP_ACCEPTANCE_CRITERION_DEPENDENCIES: Record<
     'must-test-idempotency-event-tests'
   ],
   'event-trace-exists-and-is-not-command': [
-    'must-event-customer-created',
     'must-common-idempotency',
-    'must-test-idempotency-event-tests'
+    'must-test-idempotency-event-tests',
+    'never-event-references-triggering-commands'
   ],
   'api-layer-does-not-emit-events-directly': ['must-test-api-contract-tests'],
   'workflow-layer-does-not-emit-events-directly': [

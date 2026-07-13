@@ -20,9 +20,11 @@ import { CORE_DOMAIN_REGISTRY } from '../domains/index.ts';
 import {
   BOOK_02_AUTHORITY,
   BOOK_02_EXPECTED_COUNTS,
+  BOOK_02_GUARD_INSPECTION_RULES,
   BOOK_02_MVP_REQUIREMENT_IDENTITIES,
   MVP_ACCEPTANCE_CRITERIA_IDENTITIES,
   MVP_ACCEPTANCE_CRITERION_DEPENDENCIES,
+  type Book02GuardInspectionStatus,
   type Book02MvpAcceptanceCriterion,
   type Book02MvpDepth,
   type Book02MvpDisposition,
@@ -45,14 +47,20 @@ export interface Book02MvpGapSummary {
   };
   readonly documentOnly: {
     readonly total: number;
+    readonly inspectionComplete: number;
+    readonly inspectionIncomplete: number;
     readonly unexpectedImplementationCount: number;
   };
   readonly defer: {
     readonly total: number;
+    readonly inspectionComplete: number;
+    readonly inspectionIncomplete: number;
     readonly unexpectedBlockingImplementationCount: number;
   };
   readonly neverInMvp: {
     readonly total: number;
+    readonly inspectionComplete: number;
+    readonly inspectionIncomplete: number;
     readonly violationCount: number;
   };
   readonly acceptance: Book02MvpAcceptanceSummary;
@@ -74,7 +82,11 @@ interface CurrentEvidence {
   readonly currentDepth?: Book02MvpDepth;
   readonly inspectionPaths?: readonly string[];
   readonly forbiddenIndicators?: readonly string[];
+  readonly forbiddenPathPatterns?: readonly string[];
+  readonly structuredChecks?: readonly string[];
   readonly excludedPaths?: readonly string[];
+  readonly inspectionStatus?: Book02GuardInspectionStatus;
+  readonly inspectedFiles?: readonly string[];
   readonly violationReasons?: readonly string[];
 }
 
@@ -136,50 +148,18 @@ const relatedEventTypes: Record<string, readonly string[]> = {
   'permission-evaluated': ['core-review-completed'],
   'policy-evaluated': ['core-review-completed']
 };
-const guardIndicators: Record<string, readonly string[]> = {
-  'document-only-full-policy-engine': [
-    'createFullPolicyEngine',
-    'FullPolicyEngine'
-  ],
-  'document-only-full-workflow-engine': [
-    'createFullWorkflowEngine',
-    'FullWorkflowEngine'
-  ],
-  'document-only-payment-execution': ['executePayment', 'PaymentExecution'],
-  'never-api-layer-mutating-domain-state-directly': ['apiDirectDomainMutation'],
-  'never-workflow-layer-emitting-domain-events-directly': [
-    'workflowDirectEventEmission'
-  ],
-  'never-agent-layer-emitting-events-directly': ['agentDirectEventEmission'],
-  'never-production-data-fixtures': [
-    'productionFixture',
-    'production_data_fixture'
-  ],
-  'never-raw-database-ids-in-public-responses': ['rawDatabaseId'],
-  'never-unsafe-stack-traces-in-api-responses': ['stackTrace'],
-  'never-silent-unsupported-version-acceptance': [
-    'acceptUnsupportedVersionSilently'
-  ]
-};
-const inspectionPaths = ['src', 'fixtures', 'package.json'] as const;
-const excludedGuardPaths = [
-  'src/mvp-coverage/',
-  'fixtures/mvp-coverage/',
-  'tests/',
-  'docs/',
-  'CHANGELOG.md',
-  'CORE-MANIFEST.md',
-  'CORE-ROADMAP.md',
-  'README.md'
-] as const;
 const textInspectionExtensions = ['.ts', '.json', '.mjs', '.js'] as const;
 
 export interface Book02MvpGuardInspectionInput {
   readonly inspectionPaths: readonly string[];
   readonly forbiddenIndicators: readonly string[];
+  readonly forbiddenPathPatterns?: readonly string[];
+  readonly structuredChecks?: readonly string[];
   readonly excludedPaths: readonly string[];
 }
 export interface Book02MvpGuardInspectionResult {
+  readonly inspectionStatus: Book02GuardInspectionStatus;
+  readonly inspectedFiles: readonly string[];
   readonly violationPresent: boolean;
   readonly violationReasons: readonly string[];
 }
@@ -223,14 +203,100 @@ function collectInspectableFiles(
   for (const path of [...paths].sort()) visit(path);
   return files.sort();
 }
+function ruleIsComplete(input: Book02MvpGuardInspectionInput): boolean {
+  return (
+    input.inspectionPaths.length > 0 &&
+    input.excludedPaths.length > 0 &&
+    (input.forbiddenIndicators.length > 0 ||
+      (input.forbiddenPathPatterns?.length ?? 0) > 0 ||
+      (input.structuredChecks?.length ?? 0) > 0)
+  );
+}
+function structuredCheckViolation(check: string): string | undefined {
+  const packageJson = existsSync('package.json')
+    ? (JSON.parse(readFileSync('package.json', 'utf8')) as Record<
+        string,
+        unknown
+      >)
+    : {};
+  const dependencies = {
+    ...(typeof packageJson.dependencies === 'object' && packageJson.dependencies
+      ? packageJson.dependencies
+      : {}),
+    ...(typeof packageJson.devDependencies === 'object' &&
+    packageJson.devDependencies
+      ? packageJson.devDependencies
+      : {})
+  } as Record<string, unknown>;
+  const scripts =
+    typeof packageJson.scripts === 'object' && packageJson.scripts
+      ? (packageJson.scripts as Record<string, unknown>)
+      : {};
+  if (check.startsWith('package-dependency:')) {
+    const dependency = check.slice('package-dependency:'.length);
+    return dependency in dependencies
+      ? `package.json declares forbidden dependency ${dependency}.`
+      : undefined;
+  }
+  if (check.startsWith('package-script:')) {
+    const script = check.slice('package-script:'.length);
+    return script in scripts
+      ? `package.json declares forbidden script ${script}.`
+      : undefined;
+  }
+  if (check.startsWith('path-exists:')) {
+    const path = check.slice('path-exists:'.length);
+    return existsSync(path)
+      ? `${path} exists for forbidden guard check.`
+      : undefined;
+  }
+  if (check.startsWith('fixture-type:')) {
+    const fixtureType = check.slice('fixture-type:'.length);
+    const files = collectInspectableFiles(
+      ['fixtures'],
+      ['fixtures/mvp-coverage/', 'tests/', 'docs/']
+    );
+    for (const file of files) {
+      try {
+        const parsed = JSON.parse(readFileSync(file, 'utf8')) as Record<
+          string,
+          unknown
+        >;
+        if (
+          parsed.fixtureType === fixtureType ||
+          parsed.fixture_type === fixtureType
+        )
+          return `${file} declares forbidden fixture type ${fixtureType}.`;
+      } catch {
+        continue;
+      }
+    }
+  }
+  return undefined;
+}
 export function inspectBook02MvpGuard(
   input: Book02MvpGuardInspectionInput
 ): Book02MvpGuardInspectionResult {
-  const violationReasons: string[] = [];
-  for (const file of collectInspectableFiles(
+  const inspectedFiles = collectInspectableFiles(
     input.inspectionPaths,
     input.excludedPaths
-  )) {
+  );
+  if (!ruleIsComplete(input))
+    return {
+      inspectionStatus: 'incomplete',
+      inspectedFiles,
+      violationPresent: false,
+      violationReasons: []
+    };
+  const violationReasons: string[] = [];
+  for (const file of inspectedFiles) {
+    const normalized = normalizePath(file);
+    for (const pattern of input.forbiddenPathPatterns ?? []) {
+      if (normalized.includes(normalizePath(pattern)))
+        violationReasons.push(
+          `${file} matches forbidden path pattern ${pattern}.`
+        );
+    }
     const text = readFileSync(file, 'utf8');
     for (const indicator of input.forbiddenIndicators) {
       if (text.includes(indicator))
@@ -239,7 +305,16 @@ export function inspectBook02MvpGuard(
         );
     }
   }
-  return { violationPresent: violationReasons.length > 0, violationReasons };
+  for (const check of input.structuredChecks ?? []) {
+    const violation = structuredCheckViolation(check);
+    if (violation) violationReasons.push(violation);
+  }
+  return {
+    inspectionStatus: 'complete',
+    inspectedFiles,
+    violationPresent: violationReasons.length > 0,
+    violationReasons
+  };
 }
 function depthFromNumber(depth: CoreBehaviorDepthLevel): Book02MvpDepth {
   return depth === 0
@@ -431,9 +506,26 @@ function evidenceFor(identity: Book02MvpRequirementIdentity): CurrentEvidence {
   if (identity.layer === 'guard') {
     return {
       ...emptyEvidence(),
-      inspectionPaths,
-      forbiddenIndicators: guardIndicators[identity.id] ?? [],
-      excludedPaths: excludedGuardPaths
+      inspectionPaths:
+        BOOK_02_GUARD_INSPECTION_RULES[
+          identity.id as keyof typeof BOOK_02_GUARD_INSPECTION_RULES
+        ]?.inspectionPaths ?? [],
+      forbiddenIndicators:
+        BOOK_02_GUARD_INSPECTION_RULES[
+          identity.id as keyof typeof BOOK_02_GUARD_INSPECTION_RULES
+        ]?.forbiddenIndicators ?? [],
+      forbiddenPathPatterns:
+        BOOK_02_GUARD_INSPECTION_RULES[
+          identity.id as keyof typeof BOOK_02_GUARD_INSPECTION_RULES
+        ]?.forbiddenPathPatterns ?? [],
+      structuredChecks:
+        BOOK_02_GUARD_INSPECTION_RULES[
+          identity.id as keyof typeof BOOK_02_GUARD_INSPECTION_RULES
+        ]?.structuredChecks ?? [],
+      excludedPaths:
+        BOOK_02_GUARD_INSPECTION_RULES[
+          identity.id as keyof typeof BOOK_02_GUARD_INSPECTION_RULES
+        ]?.excludedPaths ?? []
     };
   }
   return emptyEvidence();
@@ -451,13 +543,15 @@ function disposition(
   ev: CurrentEvidence
 ): Book02MvpDisposition {
   if (identity.layer === 'guard') {
-    return inspectBook02MvpGuard({
+    const inspection = inspectBook02MvpGuard({
       inspectionPaths: ev.inspectionPaths ?? [],
       forbiddenIndicators: ev.forbiddenIndicators ?? [],
+      forbiddenPathPatterns: ev.forbiddenPathPatterns ?? [],
+      structuredChecks: ev.structuredChecks ?? [],
       excludedPaths: ev.excludedPaths ?? []
-    }).violationPresent
-      ? 'violation_present'
-      : 'not_required';
+    });
+    if (inspection.inspectionStatus === 'incomplete') return 'documented_only';
+    return inspection.violationPresent ? 'violation_present' : 'not_required';
   }
   if (identity.category === 'stub_now')
     return ev.contractIds.length > 0 || ev.implementationFiles.length > 0
@@ -538,9 +632,16 @@ export function deriveBook02MvpRequirementState(
       ? inspectBook02MvpGuard({
           inspectionPaths: ev.inspectionPaths ?? [],
           forbiddenIndicators: ev.forbiddenIndicators ?? [],
+          forbiddenPathPatterns: ev.forbiddenPathPatterns ?? [],
+          structuredChecks: ev.structuredChecks ?? [],
           excludedPaths: ev.excludedPaths ?? []
         })
-      : { violationPresent: false, violationReasons: [] };
+      : {
+          inspectionStatus: 'complete' as const,
+          inspectedFiles: [],
+          violationPresent: false,
+          violationReasons: []
+        };
   const violationReasons =
     currentDisposition === 'violation_present'
       ? guardInspection.violationReasons
@@ -557,7 +658,13 @@ export function deriveBook02MvpRequirementState(
     fixtureFiles: ev.fixtureFiles,
     inspectionPaths: ev.inspectionPaths,
     forbiddenIndicators: ev.forbiddenIndicators,
+    forbiddenPathPatterns: ev.forbiddenPathPatterns,
+    structuredChecks: ev.structuredChecks,
     excludedPaths: ev.excludedPaths,
+    inspectionStatus:
+      identity.layer === 'guard' ? guardInspection.inspectionStatus : undefined,
+    inspectedFiles:
+      identity.layer === 'guard' ? guardInspection.inspectedFiles : undefined,
     violationReasons,
     gapReasons: gapReasons(identity, currentDisposition)
   };
@@ -566,61 +673,341 @@ const byCategory = (
   requirements: readonly Book02MvpRequirement[],
   category: string
 ) => requirements.filter((r) => r.category === category);
-function allMeet(requirements: readonly Book02MvpRequirement[]): boolean {
-  return (
-    requirements.length > 0 &&
-    requirements.every((r) => r.currentDisposition === 'meets_required_depth')
-  );
-}
 function noViolations(requirements: readonly Book02MvpRequirement[]): boolean {
   return requirements.every(
     (r) => r.currentDisposition !== 'violation_present'
   );
 }
+function filesFor(
+  requirements: readonly Book02MvpRequirement[]
+): readonly string[] {
+  return [
+    ...new Set(
+      requirements.flatMap((r) => [
+        ...r.implementationFiles,
+        ...r.testFiles,
+        ...r.fixtureFiles
+      ])
+    )
+  ].sort();
+}
+function requirementsMeet(
+  requirements: readonly Book02MvpRequirement[]
+): boolean {
+  return (
+    requirements.length > 0 &&
+    requirements.every((r) => r.currentDisposition === 'meets_required_depth')
+  );
+}
+function guardsComplete(
+  requirements: readonly Book02MvpRequirement[]
+): boolean {
+  return (
+    requirements.length > 0 &&
+    requirements.every((r) => r.inspectionStatus === 'complete')
+  );
+}
+export interface Book02MvpAcceptanceEvaluation {
+  readonly satisfied: boolean;
+  readonly evidenceRequirementIds: readonly string[];
+  readonly evidenceFiles: readonly string[];
+  readonly unresolvedReasons: readonly string[];
+}
+type AcceptanceCriterionId = keyof typeof MVP_ACCEPTANCE_CRITERION_DEPENDENCIES;
+type AcceptanceCriterionEvaluator = (
+  requirements: readonly Book02MvpRequirement[]
+) => Book02MvpAcceptanceEvaluation;
+function mappedRequirements(
+  id: AcceptanceCriterionId,
+  requirements: readonly Book02MvpRequirement[]
+): readonly Book02MvpRequirement[] {
+  const ids = MVP_ACCEPTANCE_CRITERION_DEPENDENCIES[id];
+  return requirements.filter((r) => ids.includes(r.id));
+}
+function mappedEvaluation(
+  id: AcceptanceCriterionId,
+  requirements: readonly Book02MvpRequirement[],
+  satisfied: boolean,
+  unresolvedReasons: readonly string[]
+): Book02MvpAcceptanceEvaluation {
+  const mapped = mappedRequirements(id, requirements);
+  return {
+    satisfied,
+    evidenceRequirementIds: MVP_ACCEPTANCE_CRITERION_DEPENDENCIES[id],
+    evidenceFiles: filesFor(mapped),
+    unresolvedReasons: satisfied ? [] : unresolvedReasons
+  };
+}
+function incompleteGuardReasons(
+  requirements: readonly Book02MvpRequirement[]
+): readonly string[] {
+  return requirements
+    .filter((r) => r.inspectionStatus !== 'complete')
+    .map((r) => `${r.id} has incomplete guard inspection.`);
+}
+function guardEvaluation(
+  id: AcceptanceCriterionId,
+  requirements: readonly Book02MvpRequirement[]
+): Book02MvpAcceptanceEvaluation {
+  const mapped = mappedRequirements(id, requirements);
+  const incomplete = incompleteGuardReasons(mapped);
+  const violationReasons = mapped
+    .filter((r) => r.currentDisposition === 'violation_present')
+    .map((r) => `${r.id} has forbidden implementation evidence.`);
+  return mappedEvaluation(
+    id,
+    requirements,
+    incomplete.length === 0 && violationReasons.length === 0,
+    [...incomplete, ...violationReasons]
+  );
+}
+function behaviorEvidenceFiles(behaviorId: string): readonly string[] {
+  const behavior = behaviorById.get(behaviorId);
+  return existing([
+    ...(behavior?.sourceFiles ?? []),
+    ...(behavior?.testFiles ?? []),
+    ...fixtureFilesOf(behavior)
+  ]);
+}
+export const ACCEPTANCE_CRITERION_EVALUATORS = {
+  'must-build-domains-implemented-or-scaffolded-with-tests': (requirements) => {
+    const mapped = mappedRequirements(
+      'must-build-domains-implemented-or-scaffolded-with-tests',
+      requirements
+    );
+    const domainTestExists = existsSync(
+      'tests/unit/core-domain-contract-skeletons.test.ts'
+    );
+    return mappedEvaluation(
+      'must-build-domains-implemented-or-scaffolded-with-tests',
+      requirements,
+      requirementsMeet(mapped) && domainTestExists,
+      [
+        'All 18 Domain requirements must meet required depth and executable Domain contract tests must exist.'
+      ]
+    );
+  },
+  'must-build-objects-have-public-reference-ids': (requirements) => {
+    const mapped = mappedRequirements(
+      'must-build-objects-have-public-reference-ids',
+      requirements
+    );
+    const explicitReferenceEvidence = mapped.every(
+      (r) =>
+        r.requiredCapabilities.includes('public reference id') &&
+        r.currentDisposition === 'meets_required_depth'
+    );
+    return mappedEvaluation(
+      'must-build-objects-have-public-reference-ids',
+      requirements,
+      explicitReferenceEvidence,
+      [
+        'All 18 Object requirements require explicit public-reference evidence, not generic skeleton evidence.'
+      ]
+    );
+  },
+  'must-build-services-own-behavior': (requirements) =>
+    mappedEvaluation(
+      'must-build-services-own-behavior',
+      requirements,
+      requirementsMeet(
+        mappedRequirements('must-build-services-own-behavior', requirements)
+      ),
+      ['All 18 Service requirements must meet real owning behavior depth.']
+    ),
+  'must-build-api-validators-exist': (requirements) =>
+    mappedEvaluation(
+      'must-build-api-validators-exist',
+      requirements,
+      requirementsMeet(
+        mappedRequirements('must-build-api-validators-exist', requirements)
+      ),
+      [
+        'All 18 API requirements must prove validators, delegation, and no direct mutation/emission tests.'
+      ]
+    ),
+  'customer-intake-workflow-supports-preview-apply': (requirements) =>
+    mappedEvaluation(
+      'customer-intake-workflow-supports-preview-apply',
+      requirements,
+      requirementsMeet(
+        mappedRequirements(
+          'customer-intake-workflow-supports-preview-apply',
+          requirements
+        )
+      ),
+      ['Customer Intake Workflow must prove preview/apply validation.']
+    ),
+  'trademark-application-workflow-supports-preview-apply': (requirements) =>
+    mappedEvaluation(
+      'trademark-application-workflow-supports-preview-apply',
+      requirements,
+      requirementsMeet(
+        mappedRequirements(
+          'trademark-application-workflow-supports-preview-apply',
+          requirements
+        )
+      ),
+      ['Trademark Application Workflow must prove preview/apply validation.']
+    ),
+  'communication-review-workflow-supports-preview-apply': (requirements) =>
+    mappedEvaluation(
+      'communication-review-workflow-supports-preview-apply',
+      requirements,
+      requirementsMeet(
+        mappedRequirements(
+          'communication-review-workflow-supports-preview-apply',
+          requirements
+        )
+      ),
+      ['Communication Review Workflow must prove preview/apply validation.']
+    ),
+  'permission-and-policy-fail-closed': (requirements) =>
+    mappedEvaluation(
+      'permission-and-policy-fail-closed',
+      requirements,
+      requirementsMeet(
+        mappedRequirements('permission-and-policy-fail-closed', requirements)
+      ),
+      [
+        'Permission and Policy fail-closed behavior plus executable tests must meet depth.'
+      ]
+    ),
+  'ai-forbidden-actions-are-blocked': (requirements) =>
+    mappedEvaluation(
+      'ai-forbidden-actions-are-blocked',
+      requirements,
+      requirementsMeet(
+        mappedRequirements('ai-forbidden-actions-are-blocked', requirements)
+      ),
+      [
+        'AI forbidden-action boundary evidence and executable Agent tests must meet depth.'
+      ]
+    ),
+  'human-review-gates-protected-actions': (requirements) =>
+    mappedEvaluation(
+      'human-review-gates-protected-actions',
+      requirements,
+      requirementsMeet(
+        mappedRequirements('human-review-gates-protected-actions', requirements)
+      ),
+      [
+        'Human Review protected-action gates require mapped behavior and executable review tests.'
+      ]
+    ),
+  'idempotency-replay-and-conflict-are-tested': (requirements) =>
+    mappedEvaluation(
+      'idempotency-replay-and-conflict-are-tested',
+      requirements,
+      requirementsMeet(
+        mappedRequirements(
+          'idempotency-replay-and-conflict-are-tested',
+          requirements
+        )
+      ),
+      [
+        'Idempotency replay/conflict behavior and executable tests must meet depth.'
+      ]
+    ),
+  'event-trace-exists-and-is-not-command': (requirements) => {
+    const mapped = mappedRequirements(
+      'event-trace-exists-and-is-not-command',
+      requirements
+    );
+    const eventTraceFiles = behaviorEvidenceFiles('events');
+    const satisfied =
+      eventTraceFiles.length > 0 &&
+      requirementsMeet(mapped.filter((r) => r.layer !== 'guard')) &&
+      guardsComplete(mapped.filter((r) => r.layer === 'guard')) &&
+      noViolations(mapped);
+    return {
+      ...mappedEvaluation(
+        'event-trace-exists-and-is-not-command',
+        requirements,
+        satisfied,
+        [
+          'Accepted generic Event trace behavior, executable tests, and event-reference-not-command guard evidence are required.'
+        ]
+      ),
+      evidenceFiles: [
+        ...new Set([...filesFor(mapped), ...eventTraceFiles])
+      ].sort()
+    };
+  },
+  'api-layer-does-not-emit-events-directly': (requirements) =>
+    mappedEvaluation(
+      'api-layer-does-not-emit-events-directly',
+      requirements,
+      requirementsMeet(
+        mappedRequirements(
+          'api-layer-does-not-emit-events-directly',
+          requirements
+        )
+      ),
+      ['Executable API negative tests must prove no direct Event emission.']
+    ),
+  'workflow-layer-does-not-emit-events-directly': (requirements) =>
+    mappedEvaluation(
+      'workflow-layer-does-not-emit-events-directly',
+      requirements,
+      requirementsMeet(
+        mappedRequirements(
+          'workflow-layer-does-not-emit-events-directly',
+          requirements
+        )
+      ),
+      [
+        'Executable Workflow negative tests must prove no direct Event emission.'
+      ]
+    ),
+  'agent-layer-does-not-emit-events-directly': (requirements) =>
+    mappedEvaluation(
+      'agent-layer-does-not-emit-events-directly',
+      requirements,
+      requirementsMeet(
+        mappedRequirements(
+          'agent-layer-does-not-emit-events-directly',
+          requirements
+        )
+      ),
+      ['Executable Agent negative tests must prove no direct Event emission.']
+    ),
+  'errors-are-safe': (requirements) =>
+    mappedEvaluation(
+      'errors-are-safe',
+      requirements,
+      requirementsMeet(mappedRequirements('errors-are-safe', requirements)),
+      ['Safe error behavior and negative error tests must meet depth.']
+    ),
+  'unsupported-versions-fail-closed': (requirements) =>
+    mappedEvaluation(
+      'unsupported-versions-fail-closed',
+      requirements,
+      requirementsMeet(
+        mappedRequirements('unsupported-versions-fail-closed', requirements)
+      ),
+      ['Unsupported version handling and negative tests must fail closed.']
+    ),
+  'deferred-items-do-not-block-mvp': (requirements) =>
+    guardEvaluation('deferred-items-do-not-block-mvp', requirements),
+  'never-in-mvp-items-are-not-implemented': (requirements) =>
+    guardEvaluation('never-in-mvp-items-are-not-implemented', requirements)
+} satisfies Record<AcceptanceCriterionId, AcceptanceCriterionEvaluator>;
 export function deriveBook02MvpAcceptanceCriteria(
   requirements: readonly Book02MvpRequirement[]
 ): readonly Book02MvpAcceptanceCriterion[] {
   return MVP_ACCEPTANCE_CRITERIA_IDENTITIES.map((criterion) => {
-    const evidenceRequirementIds = evidenceIdsForCriterion(criterion.id);
-    const evidenceRequirements = requirements.filter((r) =>
-      evidenceRequirementIds.includes(r.id)
-    );
-    const satisfied = criterionSatisfied(
-      criterion.id,
-      requirements,
-      evidenceRequirements
-    );
+    const evaluator =
+      ACCEPTANCE_CRITERION_EVALUATORS[criterion.id as AcceptanceCriterionId];
+    const evaluation = evaluator(requirements);
     return {
       ...criterion,
-      satisfied,
-      evidenceRequirementIds,
-      unresolvedReasons: satisfied
-        ? []
-        : [
-            `${criterion.name} is not yet proven by mapped requirement evidence.`
-          ]
+      satisfied: evaluation.satisfied,
+      evidenceRequirementIds: evaluation.evidenceRequirementIds,
+      evidenceFiles: evaluation.evidenceFiles,
+      unresolvedReasons: evaluation.unresolvedReasons
     };
   });
-}
-const acceptanceEvidenceMap: Record<string, readonly string[]> =
-  MVP_ACCEPTANCE_CRITERION_DEPENDENCIES;
-function evidenceIdsForCriterion(id: string): readonly string[] {
-  return acceptanceEvidenceMap[id] ?? [];
-}
-function criterionSatisfied(
-  id: string,
-  requirements: readonly Book02MvpRequirement[],
-  evidenceRequirements: readonly Book02MvpRequirement[]
-): boolean {
-  const noNeverViolations = noViolations(
-    requirements.filter((r) => r.category === 'never_in_mvp')
-  );
-  if (
-    id === 'deferred-items-do-not-block-mvp' ||
-    id === 'never-in-mvp-items-are-not-implemented'
-  )
-    return noViolations(evidenceRequirements);
-  return allMeet(evidenceRequirements) && noNeverViolations;
 }
 export function deriveBook02MvpGapSummary(
   requirements: readonly Book02MvpRequirement[],
@@ -664,6 +1051,11 @@ export function deriveBook02MvpGapSummary(
     },
     documentOnly: {
       total: docs.length,
+      inspectionComplete: docs.filter((r) => r.inspectionStatus === 'complete')
+        .length,
+      inspectionIncomplete: docs.filter(
+        (r) => r.inspectionStatus !== 'complete'
+      ).length,
       unexpectedImplementationCount: docs.filter(
         (r) =>
           r.currentDisposition === 'violation_present' ||
@@ -672,12 +1064,23 @@ export function deriveBook02MvpGapSummary(
     },
     defer: {
       total: defers.length,
+      inspectionComplete: defers.filter(
+        (r) => r.inspectionStatus === 'complete'
+      ).length,
+      inspectionIncomplete: defers.filter(
+        (r) => r.inspectionStatus !== 'complete'
+      ).length,
       unexpectedBlockingImplementationCount: defers.filter(
         (r) => r.currentDisposition === 'violation_present'
       ).length
     },
     neverInMvp: {
       total: never.length,
+      inspectionComplete: never.filter((r) => r.inspectionStatus === 'complete')
+        .length,
+      inspectionIncomplete: never.filter(
+        (r) => r.inspectionStatus !== 'complete'
+      ).length,
       violationCount: never.filter(
         (r) => r.currentDisposition === 'violation_present'
       ).length

@@ -4,6 +4,7 @@ import { join } from 'node:path';
 import { tmpdir } from 'node:os';
 import { describe, it } from 'node:test';
 import {
+  ACCEPTANCE_CRITERION_EVALUATORS,
   BOOK_02_MVP_GAP_BASELINE,
   inspectBook02MvpGuard,
   deriveBook02MvpAcceptanceCriteria,
@@ -199,10 +200,32 @@ describe('Book 02 MVP gap baseline validation', () => {
         inspectBook02MvpGuard({
           inspectionPaths: [src],
           forbiddenIndicators: ['createFullWorkflowEngine'],
-          excludedPaths: []
+          excludedPaths: ['ignored/']
         }).violationPresent,
         true
       );
+
+      assert.deepEqual(
+        inspectBook02MvpGuard({
+          inspectionPaths: [src],
+          forbiddenIndicators: [],
+          forbiddenPathPatterns: [],
+          structuredChecks: [`path-exists:${srcFile}`],
+          excludedPaths: ['ignored/']
+        }).violationPresent,
+        true
+      );
+      assert.deepEqual(
+        inspectBook02MvpGuard({
+          inspectionPaths: [src],
+          forbiddenIndicators: [],
+          forbiddenPathPatterns: [],
+          structuredChecks: [],
+          excludedPaths: ['ignored/']
+        }).inspectionStatus,
+        'incomplete'
+      );
+
       assert.deepEqual(
         inspectBook02MvpGuard({
           inspectionPaths: [src, tests, docs],
@@ -301,6 +324,31 @@ describe('Book 02 MVP gap baseline validation', () => {
       )?.satisfied,
       false
     );
+
+    assert.equal(
+      Object.keys(ACCEPTANCE_CRITERION_EVALUATORS).length,
+      BOOK_02_MVP_GAP_BASELINE.acceptanceCriteria.length
+    );
+    assert.equal(
+      BOOK_02_MVP_GAP_BASELINE.acceptanceCriteria
+        .find(
+          (criterion) =>
+            criterion.id ===
+            'must-build-domains-implemented-or-scaffolded-with-tests'
+        )
+        ?.evidenceRequirementIds.includes('must-test-common-contract-tests'),
+      false
+    );
+    assert.equal(
+      BOOK_02_MVP_GAP_BASELINE.acceptanceCriteria
+        .find(
+          (criterion) =>
+            criterion.id === 'event-trace-exists-and-is-not-command'
+        )
+        ?.evidenceFiles.some((file) => file.includes('core-event')),
+      true
+    );
+
     assert.deepEqual(criteria, BOOK_02_MVP_GAP_BASELINE.acceptanceCriteria);
     assert.deepEqual(
       deriveBook02MvpGapSummary(
@@ -320,6 +368,35 @@ describe('Book 02 MVP gap baseline validation', () => {
         'book02.acceptance.static_or_inconsistent_completion'
       )
     );
+
+    const incompleteGuard = cloneRecord();
+    const guardRequirement = requirementsOf(incompleteGuard).find(
+      (r) => r.id === 'never-production-data-fixtures'
+    );
+    if (!guardRequirement) throw new Error('Expected Never guard requirement.');
+    guardRequirement.inspectionStatus = 'incomplete';
+    guardRequirement.currentDisposition = 'not_required';
+    const guardCriteria = incompleteGuard.acceptanceCriteria as Record<
+      string,
+      unknown
+    >[];
+    const neverCriterion = guardCriteria.find(
+      (criterion) => criterion.id === 'never-in-mvp-items-are-not-implemented'
+    );
+    if (!neverCriterion)
+      throw new Error('Expected Never acceptance criterion.');
+    neverCriterion.satisfied = true;
+    assert.ok(
+      codes(validateBook02MvpGapBaseline(incompleteGuard)).includes(
+        'book02.guard.disposition_inconsistent'
+      )
+    );
+    assert.ok(
+      codes(validateBook02MvpGapBaseline(incompleteGuard)).includes(
+        'book02.acceptance.guard_inspection_incomplete'
+      )
+    );
+
     const criterionDrift = cloneRecord();
     const criteriaRecords = criterionDrift.acceptanceCriteria as Record<
       string,

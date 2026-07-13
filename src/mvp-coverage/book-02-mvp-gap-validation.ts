@@ -4,13 +4,18 @@ import { CORE_CONTRACT_INDEX } from '../contracts/index.ts';
 import {
   BOOK_02_AUTHORITY,
   BOOK_02_EXPECTED_COUNTS,
+  BOOK_02_GUARD_INSPECTION_RULES,
   BOOK_02_MVP_REQUIREMENT_IDENTITIES,
+  DEFER_ITEMS,
+  DOCUMENT_ONLY_ITEMS,
   MVP_ACCEPTANCE_CRITERIA_IDENTITIES,
+  NEVER_IN_MVP_ITEMS,
   type Book02MvpAcceptanceCriterion,
   type Book02MvpDisposition,
   type Book02MvpRequirement
 } from './book-02-mvp-requirements.ts';
 import {
+  ACCEPTANCE_CRITERION_EVALUATORS,
   BOOK_02_MVP_GAP_BASELINE,
   deriveBook02MvpAcceptanceCriteria,
   deriveBook02MvpGapSummary,
@@ -76,6 +81,80 @@ function sameStrings(
     actual.every((entry, index) => entry === expected[index])
   );
 }
+function validateGuardRuleCoverage(issues: Book02MvpValidationIssue[]): void {
+  const expected = [
+    ...DOCUMENT_ONLY_ITEMS.map((item) => `document-only-${item}`),
+    ...DEFER_ITEMS.map((item) => `defer-${item}`),
+    ...NEVER_IN_MVP_ITEMS.map((item) => `never-${item}`)
+  ];
+  const actual = Object.keys(BOOK_02_GUARD_INSPECTION_RULES);
+  for (const id of expected) {
+    const rule =
+      BOOK_02_GUARD_INSPECTION_RULES[
+        id as keyof typeof BOOK_02_GUARD_INSPECTION_RULES
+      ];
+    if (!rule) {
+      issues.push(
+        issue(
+          'book02.guard.rule_missing',
+          `Missing guard inspection rule ${id}.`,
+          id
+        )
+      );
+      continue;
+    }
+    const nonEmpty =
+      rule.inspectionPaths.length > 0 &&
+      rule.excludedPaths.length > 0 &&
+      (rule.forbiddenIndicators.length > 0 ||
+        (rule.forbiddenPathPatterns?.length ?? 0) > 0 ||
+        (rule.structuredChecks?.length ?? 0) > 0);
+    if (!nonEmpty)
+      issues.push(
+        issue(
+          'book02.guard.rule_empty',
+          `Guard inspection rule ${id} is empty.`,
+          id
+        )
+      );
+  }
+  for (const id of actual) {
+    if (!expected.includes(id))
+      issues.push(
+        issue(
+          'book02.guard.rule_extra',
+          `Unexpected guard inspection rule ${id}.`,
+          id
+        )
+      );
+  }
+}
+function validateAcceptanceEvaluatorCoverage(
+  issues: Book02MvpValidationIssue[]
+): void {
+  const expected = MVP_ACCEPTANCE_CRITERIA_IDENTITIES.map(
+    (criterion) => criterion.id
+  );
+  const actual = Object.keys(ACCEPTANCE_CRITERION_EVALUATORS);
+  for (const id of expected)
+    if (!actual.includes(id))
+      issues.push(
+        issue(
+          'book02.acceptance.evaluator_missing',
+          `Missing evaluator ${id}.`,
+          id
+        )
+      );
+  for (const id of actual)
+    if (!expected.includes(id))
+      issues.push(
+        issue(
+          'book02.acceptance.evaluator_extra',
+          `Unexpected evaluator ${id}.`,
+          id
+        )
+      );
+}
 function validateRequirementShape(
   value: unknown,
   index: number,
@@ -128,6 +207,36 @@ function validateRequirementShape(
         )
       );
   }
+  for (const key of [
+    'inspectionPaths',
+    'forbiddenIndicators',
+    'forbiddenPathPatterns',
+    'structuredChecks',
+    'excludedPaths',
+    'inspectedFiles',
+    'violationReasons'
+  ]) {
+    if (value[key] !== undefined && !isStringArray(value[key]))
+      issues.push(
+        issue(
+          'book02.requirements.invalid_shape',
+          `${key} must be a string array when present.`,
+          `requirements[${index}].${key}`
+        )
+      );
+  }
+  if (
+    value.inspectionStatus !== undefined &&
+    value.inspectionStatus !== 'complete' &&
+    value.inspectionStatus !== 'incomplete'
+  )
+    issues.push(
+      issue(
+        'book02.requirements.invalid_shape',
+        'inspectionStatus must be complete or incomplete when present.',
+        `requirements[${index}].inspectionStatus`
+      )
+    );
   return true;
 }
 export function validateBook02MvpRequirements(
@@ -258,13 +367,60 @@ export function validateBook02MvpRequirements(
         );
       if (
         !isStringArray(r.excludedPaths) ||
-        !r.excludedPaths.includes('src/mvp-coverage/')
+        !r.excludedPaths.includes('src/mvp-coverage/') ||
+        !r.excludedPaths.includes('tests/') ||
+        !r.excludedPaths.includes('docs/')
       )
         issues.push(
           issue(
             'book02.guard.excluded_paths',
             'Guard requirements must exclude self, tests, docs, and governance docs.',
             `requirements[${index}].excludedPaths`
+          )
+        );
+      const hasCheck =
+        (r.forbiddenIndicators?.length ?? 0) > 0 ||
+        (r.forbiddenPathPatterns?.length ?? 0) > 0 ||
+        (r.structuredChecks?.length ?? 0) > 0;
+      if (!hasCheck)
+        issues.push(
+          issue(
+            'book02.guard.rule_empty',
+            'Guard requirement must expose at least one indicator, path pattern, or structured check.',
+            `requirements[${index}]`
+          )
+        );
+      if (
+        r.inspectionStatus !== 'complete' &&
+        r.inspectionStatus !== 'incomplete'
+      )
+        issues.push(
+          issue(
+            'book02.guard.missing_inspection_status',
+            'Guard requirement must expose inspectionStatus.',
+            `requirements[${index}].inspectionStatus`
+          )
+        );
+      if (
+        r.inspectionStatus === 'incomplete' &&
+        r.currentDisposition === 'not_required'
+      )
+        issues.push(
+          issue(
+            'book02.guard.disposition_inconsistent',
+            'Incomplete guard inspection cannot be reported as not_required.',
+            `requirements[${index}].currentDisposition`
+          )
+        );
+      if (
+        r.currentDisposition === 'violation_present' &&
+        (!r.violationReasons || r.violationReasons.length === 0)
+      )
+        issues.push(
+          issue(
+            'book02.guard.violation_without_reasons',
+            'Guard violation must include violation reasons.',
+            `requirements[${index}].violationReasons`
           )
         );
     }
@@ -454,6 +610,8 @@ export function validateBook02MvpGapBaseline(
       )
     ];
   const issues = [...validateBook02MvpRequirements(baseline.requirements)];
+  validateGuardRuleCoverage(issues);
+  validateAcceptanceEvaluatorCoverage(issues);
   if (JSON.stringify(baseline.authority) !== JSON.stringify(BOOK_02_AUTHORITY))
     issues.push(
       issue(
@@ -557,6 +715,7 @@ function validateAcceptanceCriterionShape(
   for (const key of [
     'dependencies',
     'evidenceRequirementIds',
+    'evidenceFiles',
     'unresolvedReasons'
   ]) {
     if (!isStringArray(value[key]))
@@ -628,6 +787,25 @@ function validateAcceptance(
         )
       );
   });
+  for (const criterion of baseline.acceptanceCriteria) {
+    if (
+      (criterion.id === 'deferred-items-do-not-block-mvp' ||
+        criterion.id === 'never-in-mvp-items-are-not-implemented') &&
+      criterion.satisfied
+    ) {
+      const mapped = baseline.requirements.filter((r) =>
+        criterion.evidenceRequirementIds.includes(r.id)
+      );
+      if (mapped.some((r) => r.inspectionStatus !== 'complete'))
+        issues.push(
+          issue(
+            'book02.acceptance.guard_inspection_incomplete',
+            'Guard acceptance criteria cannot be satisfied with incomplete inspection.',
+            `acceptanceCriteria.${criterion.id}`
+          )
+        );
+    }
+  }
   const derivedComplete =
     baseline.summary.acceptance.unresolvedCriteria.length === 0 &&
     baseline.requirements
