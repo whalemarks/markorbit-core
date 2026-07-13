@@ -14,3 +14,5 @@ export * from './contracts/index.ts';
 export * from './contract-coverage/index.ts';
 export * from './behavior-coverage/index.ts';
 export * from './behaviors/index.ts';
+
+export * from './mvp-coverage/index.ts';

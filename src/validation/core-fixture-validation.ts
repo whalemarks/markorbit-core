@@ -3,6 +3,7 @@ import { validateCoreContractCoverageBaseline, validateCoreContractCoverageAccep
 import { validateCoreContractGapInventory } from '../contract-coverage/index.ts';
 import { validateCoreContractBehaviorCoverageBaseline, validateCoreContractBehaviorAcceptanceLock } from '../behavior-coverage/index.ts';
 import { validateCoreContractBehaviorGapInventory } from '../behavior-coverage/index.ts';
+import { validateBook02MvpFixture } from '../mvp-coverage/index.ts';
 import { CORE_IDEMPOTENCY_FIXTURE, CORE_SAFETY_BOUNDARY_FIXTURE, CoreAgentBoundaryRegistry, CoreIdempotencyRegistry, CoreReferenceRegistry, validateCoreAiContext, validateCoreVersion } from '../behaviors/index.ts';
 import { CORE_DOMAIN_REGISTRY } from '../domains/index.ts';
 import { CORE_OBJECT_STATUSES } from '../objects/index.ts';
@@ -354,4 +355,12 @@ export function validateCoreContractIndexFixture(fixture: unknown): CoreValidati
 
   validateCoreContractIndex(array as never).forEach((message) => issues.push(error('core.contract_index.invalid_contract', message, 'contract_index')));
   return createCoreValidationResult(issues);
+}
+
+export function validateBook02MvpGapBaselineFixture(fixture: unknown): CoreValidationResult {
+  return createCoreValidationResult(
+    validateBook02MvpFixture(fixture).map((bookIssue) =>
+      error(bookIssue.code, bookIssue.message, bookIssue.path)
+    )
+  );
 }

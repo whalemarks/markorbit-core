@@ -385,3 +385,12 @@ All notable changes to MarkOrbit Core will be documented in this file.
 - Accepted 14/14 selected behavior targets, including 12 implemented-batch targets and 2 preexisting-minimum targets.
 - Added dynamic validation, fixture coverage, and evidence test execution through `pnpm acceptance:behavior`.
 - Boundary: does not accept Book 02 MVP completion, Domain business behavior, Execution System implementation, complete Workflow or Policy Engines, or production readiness.
+
+## CORE-TASK-034 — Lock Book 02 MVP gap baseline
+
+- Book 02 MVP Gap Baseline is locked only after this task passes validation.
+- Book 02 MVP remains incomplete.
+- Selected behavior-hook minimum-depth acceptance remains valid.
+- Domain business behavior remains unaccepted.
+- Execution System remains incomplete.
+- Production readiness remains unaccepted.

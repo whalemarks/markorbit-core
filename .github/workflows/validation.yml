@@ -61,3 +61,6 @@ jobs:
         run: pnpm gaps:behavior
       - name: Behavior acceptance
         run: pnpm acceptance:behavior
+
+      - name: Book 02 MVP gaps
+        run: pnpm gaps:mvp

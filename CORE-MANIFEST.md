@@ -330,3 +330,7 @@ Next recommended task: CORE-TASK-013 — Core Event Catalog Skeleton.
 - GitHub Actions validation matrix added for Node.js 20 and 22.
 - Behavior coverage Event source path corrected from the legacy event-object path to the canonical Event source document.
 - Repository-wide formatting is intentionally excluded; Phase 4 remains unaccepted and Book 02 MVP remains incomplete.
+
+## Book 02 MVP Gap Baseline
+
+Book 02 MVP Gap Baseline is locked only after this task passes validation. Book 02 MVP remains incomplete. Selected behavior-hook minimum-depth acceptance remains valid. Domain business behavior remains unaccepted. Execution System remains incomplete. Production readiness remains unaccepted.
