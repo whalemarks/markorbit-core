@@ -17,6 +17,10 @@ import {
 } from '../contracts/index.ts';
 import { CORE_DOMAIN_REGISTRY } from '../domains/index.ts';
 import {
+  CORE_SERVICE_BEHAVIOR_EVIDENCE,
+  validateCoreServiceBehaviorEvidence
+} from '../service-coverage/index.ts';
+import {
   CORE_MVP_OBJECT_FIXTURE_PUBLIC_REFERENCE_RECORDS,
   coreMvpObjectFixtureValidationContextFor
 } from '../objects/core-mvp-object-base-record.ts';
@@ -637,16 +641,29 @@ function evidenceFor(identity: Book02MvpRequirementIdentity): CurrentEvidence {
     const found = CORE_SERVICE_CONTRACT_SKELETONS.find(
       (entry) => entry.domainId === serviceId
     );
-    return found
-      ? {
-          contractIds: [String(found.id)],
-          implementationFiles: [
-            'src/contracts/service/core-service-contract-skeletons.ts'
-          ],
-          testFiles: [],
-          fixtureFiles: []
-        }
-      : emptyEvidence();
+    if (!found) return emptyEvidence();
+    if (identity.id === 'must-service-customer-service') {
+      const evidence = CORE_SERVICE_BEHAVIOR_EVIDENCE[0];
+      const validEvidence = validateCoreServiceBehaviorEvidence().length === 0;
+      return {
+        contractIds: [String(found.id)],
+        implementationFiles: [
+          'src/contracts/service/core-service-contract-skeletons.ts',
+          ...(evidence?.implementationFiles ?? [])
+        ],
+        testFiles: evidence?.testFiles ?? [],
+        fixtureFiles: evidence?.fixtureFiles ?? [],
+        currentDepth: validEvidence ? 'level_2_3' : undefined
+      };
+    }
+    return {
+      contractIds: [String(found.id)],
+      implementationFiles: [
+        'src/contracts/service/core-service-contract-skeletons.ts'
+      ],
+      testFiles: [],
+      fixtureFiles: []
+    };
   }
   if (identity.layer === 'common_contract') {
     const commonType = identity.id.replace('must-common-', '');
@@ -842,6 +859,21 @@ function disposition(
       ev.testFiles.length > 0 &&
       ev.fixtureFiles.length > 0
       ? 'meets_required_depth'
+      : ev.contractIds.length > 0
+        ? 'validated_skeleton_only'
+        : 'missing';
+  }
+  if (identity.layer === 'service') {
+    if (
+      identity.id === 'must-service-customer-service' &&
+      ev.currentDepth === 'level_2_3' &&
+      ev.implementationFiles.length > 1 &&
+      ev.testFiles.length > 0 &&
+      ev.fixtureFiles.length > 0
+    )
+      return 'meets_required_depth';
+    return ev.testFiles.length > 0
+      ? 'partial_evidence'
       : ev.contractIds.length > 0
         ? 'validated_skeleton_only'
         : 'missing';

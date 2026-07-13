@@ -4,14 +4,68 @@
     "repository": "whalemarks/markorbit-publication",
     "commit": "3349ecb8955021a8714d023348f8b24f941eb98f"
   },
-  "requirementId": "must-service-customer-service",
-  "contractId": "core-service-customer-service-contract",
-  "operations": ["createCustomer", "getCustomer", "listCustomers", "validateCustomerReference", "changeCustomerStatus"],
+  "fixedNow": "2026-07-13T00:00:00.000Z",
+  "updatedNow": "2026-07-13T00:05:00.000Z",
+  "customerReferenceId": "customer:ref:core-task-036",
+  "organizationScopeReferenceId": "organization:ref:scope-0001",
+  "publicReferenceRecord": {
+    "referenceId": "customer:ref:core-task-036",
+    "objectType": "customer-record",
+    "referenceDomain": "customer",
+    "status": "Active"
+  },
+  "objectRecord": {
+    "publicReferenceId": "customer:ref:core-task-036",
+    "objectType": "customer-record",
+    "domainId": "customer",
+    "objectContractId": "core-object-customer-record-contract",
+    "status": "active",
+    "version": {
+      "version": 1,
+      "createdAt": "2026-07-13T00:00:00.000Z"
+    },
+    "metadata": {},
+    "auditMetadata": {
+      "createdAt": "2026-07-13T00:00:00.000Z",
+      "createdByReferenceId": "user:ref:actor-0001",
+      "correlationId": "corr:core-task-036"
+    },
+    "visibility": {
+      "permissionScopeReferenceId": "permission:ref:scope-0001",
+      "policyScopeReferenceId": "policy:ref:scope-0001",
+      "organizationScopeReferenceId": "organization:ref:scope-0001"
+    }
+  },
+  "createRequest": {
+    "customerType": "Company",
+    "customerStatus": "Active",
+    "nameReference": "name:synthetic:customer-036",
+    "sourceReference": "source:synthetic:customer-036",
+    "idempotencyKey": "idem:create:core-task-036"
+  },
+  "conflictingCreateRequest": {
+    "customerType": "Individual"
+  },
+  "duplicateCreateRequest": {
+    "idempotencyKey": "idem:create:duplicate-customer-036"
+  },
+  "statusTransitionRequest": {
+    "targetStatus": "Suspended",
+    "reasonReference": "reason:synthetic:suspension",
+    "idempotencyKey": "idem:status:core-task-036"
+  },
+  "invalidStatusTransitionRequest": {
+    "targetStatus": "Draft",
+    "idempotencyKey": "idem:status:invalid-core-task-036"
+  },
   "expected": {
     "recordCountAfterCreate": 1,
     "eventTraceCountAfterCreate": 1,
     "eventTraceCountAfterReplay": 1,
     "eventTraceCountAfterStatusChange": 2,
-    "conflictCode": "CustomerAlreadyExists"
+    "sameKeyConflictCode": "IdempotencyConflict",
+    "duplicateCustomerCode": "CustomerAlreadyExists",
+    "invalidTransitionCode": "InvalidCustomerTransition",
+    "eventFailureCode": "EventTraceFailed"
   }
 }

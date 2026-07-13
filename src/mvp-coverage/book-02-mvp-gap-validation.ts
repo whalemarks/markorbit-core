@@ -12,6 +12,10 @@ import {
 import { CORE_MVP_OBJECT_CANONICAL_PROFILES } from '../objects/core-mvp-object-profiles.ts';
 import { validateCoreMvpObjectBaseRecord } from '../objects/core-mvp-object-validation.ts';
 import {
+  CORE_SERVICE_BEHAVIOR_EVIDENCE,
+  validateCoreServiceBehaviorEvidence
+} from '../service-coverage/index.ts';
+import {
   BOOK_02_AUTHORITY,
   BOOK_02_EXPECTED_COUNTS,
   BOOK_02_GUARD_INSPECTION_RULES,
@@ -727,6 +731,78 @@ export function validateBook02MvpRequirements(
           )
         );
     }
+    if (r.layer === 'service') {
+      const isCustomer = r.id === 'must-service-customer-service';
+      const serviceIssues = validateCoreServiceBehaviorEvidence();
+      const customerEvidence = CORE_SERVICE_BEHAVIOR_EVIDENCE[0];
+      if (isCustomer) {
+        if (serviceIssues.length > 0)
+          issues.push(
+            issue(
+              'book02.service.fixture_validation_failed',
+              'Customer Service behavior evidence and fixture must validate.',
+              `requirements[${index}]`
+            )
+          );
+        if (!r.contractIds.includes('core-service-customer-service-contract'))
+          issues.push(
+            issue(
+              'book02.service.contract_mismatch',
+              'Customer Service must reference the exact Service contract.',
+              `requirements[${index}].contractIds`
+            )
+          );
+        for (const operation of customerEvidence?.operations ?? [])
+          if (
+            !r.implementationFiles.some((file) =>
+              file.includes('core-customer-service')
+            )
+          )
+            issues.push(
+              issue(
+                'book02.service.operation_missing',
+                `Customer Service operation evidence is missing for ${operation}.`,
+                `requirements[${index}].implementationFiles`
+              )
+            );
+        for (const capability of customerEvidence?.provenMinimumCapabilities ??
+          [])
+          if (typeof capability !== 'string' || capability.length === 0)
+            issues.push(
+              issue(
+                'book02.service.capability_missing',
+                'Customer Service minimum capability evidence is incomplete.',
+                `requirements[${index}]`
+              )
+            );
+        if (
+          r.currentDisposition === 'meets_required_depth' &&
+          (r.currentDepth !== 'level_2_3' ||
+            !r.testFiles.includes(
+              'tests/unit/core-customer-service-core-lifecycle.test.ts'
+            ) ||
+            !r.fixtureFiles.includes(
+              'fixtures/services/core-customer-service-core-lifecycle.fixture.json'
+            ))
+        )
+          issues.push(
+            issue(
+              'book02.service.depth_inconsistent',
+              'Customer Service meets_required_depth requires exact behavior evidence, tests and fixture.',
+              `requirements[${index}]`
+            )
+          );
+      } else if (r.currentDisposition === 'meets_required_depth') {
+        issues.push(
+          issue(
+            'book02.service.cross_service_evidence',
+            'Non-Customer Services cannot be promoted by Customer Service evidence.',
+            `requirements[${index}]`
+          )
+        );
+      }
+    }
+
     if (r.sourcePath.includes('event-object.md'))
       issues.push(
         issue(

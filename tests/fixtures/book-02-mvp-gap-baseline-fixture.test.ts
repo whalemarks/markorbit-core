@@ -28,7 +28,7 @@ describe('Book 02 MVP gap baseline fixture', () => {
       'book02.acceptance.name_changed'
     );
   });
-  it('locks required fixture count at 27', () => {
-    assert.equal(BOOK_02_EXPECTED_COUNTS.fixtureCount, 27);
+  it('locks required fixture count at 28', () => {
+    assert.equal(BOOK_02_EXPECTED_COUNTS.fixtureCount, 28);
   });
 });
