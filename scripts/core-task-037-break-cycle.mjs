@@ -43,25 +43,32 @@ update('src/services/brand/core-brand-service.ts', (text) => {
   );
 });
 
-for (const path of [
-  'src/service-coverage/core-brand-service-evidence-fixture.ts',
-  'tests/unit/core-brand-service-core-lifecycle.test.ts'
-]) {
-  update(path, (text) => {
-    text = replaceRequired(
-      text,
-      "import { createCoreEventId, type CoreEventId } from '../events/index.ts';",
-      "import { CORE_SERVICE_CONTRACT_SKELETONS } from '../contracts/service/core-service-contract-skeletons.ts';\nimport { createCoreEventId, type CoreEventId } from '../events/index.ts';",
-      `${path} contract import`
-    ).replace(
-      "import { createCoreEventId, type CoreEventId } from '../../src/events/index.ts';",
-      "import { CORE_SERVICE_CONTRACT_SKELETONS } from '../../src/contracts/service/core-service-contract-skeletons.ts';\nimport { createCoreEventId, type CoreEventId } from '../../src/events/index.ts';"
-    );
-    return replaceRequired(
-      text,
-      '    relatedReferenceRegistry: new CoreReferenceRegistry(',
-      `    requestingServiceDirectory: CORE_SERVICE_CONTRACT_SKELETONS.map(\n      ({ domainId, serviceType }) => ({ domainId, serviceType })\n    ),\n    relatedReferenceRegistry: new CoreReferenceRegistry(`,
-      `${path} directory injection`
-    );
-  });
-}
+update('src/service-coverage/core-brand-service-evidence-fixture.ts', (text) => {
+  text = replaceRequired(
+    text,
+    "import { createCoreEventId, type CoreEventId } from '../events/index.ts';",
+    "import { CORE_SERVICE_CONTRACT_SKELETONS } from '../contracts/service/core-service-contract-skeletons.ts';\nimport { createCoreEventId, type CoreEventId } from '../events/index.ts';",
+    'fixture contract import'
+  );
+  return replaceRequired(
+    text,
+    '    relatedReferenceRegistry: new CoreReferenceRegistry(',
+    `    requestingServiceDirectory: CORE_SERVICE_CONTRACT_SKELETONS.map(\n      ({ domainId, serviceType }) => ({ domainId, serviceType })\n    ),\n    relatedReferenceRegistry: new CoreReferenceRegistry(`,
+    'fixture directory injection'
+  );
+});
+
+update('tests/unit/core-brand-service-core-lifecycle.test.ts', (text) => {
+  text = replaceRequired(
+    text,
+    "import { createCoreEventId, type CoreEventId } from '../../src/events/index.ts';",
+    "import { CORE_SERVICE_CONTRACT_SKELETONS } from '../../src/contracts/service/core-service-contract-skeletons.ts';\nimport { createCoreEventId, type CoreEventId } from '../../src/events/index.ts';",
+    'test contract import'
+  );
+  return replaceRequired(
+    text,
+    '    relatedReferenceRegistry: new CoreReferenceRegistry(references),',
+    `    requestingServiceDirectory: CORE_SERVICE_CONTRACT_SKELETONS.map(\n      ({ domainId, serviceType }) => ({ domainId, serviceType })\n    ),\n    relatedReferenceRegistry: new CoreReferenceRegistry(references),`,
+    'test directory injection'
+  );
+});
