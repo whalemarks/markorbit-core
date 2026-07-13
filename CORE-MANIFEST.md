@@ -333,4 +333,4 @@ Next recommended task: CORE-TASK-013 — Core Event Catalog Skeleton.
 
 ## Book 02 MVP Gap Baseline
 
-Book 02 MVP Gap Baseline is locked. Book 02 MVP remains incomplete. Selected behavior-hook minimum-depth acceptance remains valid. Domain business behavior remains unaccepted. Execution System remains incomplete. Production readiness remains unaccepted.
+Book 02 MVP Gap Baseline is locked only after this task passes validation. Book 02 MVP remains incomplete. Selected behavior-hook minimum-depth acceptance remains valid. Domain business behavior remains unaccepted. Execution System remains incomplete. Production readiness remains unaccepted.

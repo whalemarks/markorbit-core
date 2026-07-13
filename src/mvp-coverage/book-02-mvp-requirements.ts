@@ -26,6 +26,14 @@ export type Book02MvpDisposition =
   | 'missing'
   | 'not_required'
   | 'violation_present';
+export type Book02MvpDepth =
+  | 'level_0'
+  | 'level_1'
+  | 'level_2'
+  | 'level_2_3'
+  | 'level_1_2'
+  | 'level_3'
+  | 'forbidden';
 
 export interface Book02MvpRequirementIdentity {
   readonly id: string;
@@ -33,19 +41,35 @@ export interface Book02MvpRequirementIdentity {
   readonly category: Book02MvpCategory;
   readonly layer: Book02MvpLayer;
   readonly sourcePath: string;
+  readonly sourceSection: string;
   readonly requiredImplementationKind: string;
   readonly requiredCapabilities: readonly string[];
-  readonly requiredDepth?: string;
+  readonly requiredDepth?: Book02MvpDepth;
   readonly dependencies: readonly string[];
 }
 export interface Book02MvpRequirement extends Book02MvpRequirementIdentity {
   readonly currentDisposition: Book02MvpDisposition;
-  readonly currentDepth?: string;
+  readonly currentDepth?: Book02MvpDepth;
   readonly contractIds: readonly string[];
   readonly implementationFiles: readonly string[];
   readonly testFiles: readonly string[];
   readonly fixtureFiles: readonly string[];
+  readonly inspectionPaths?: readonly string[];
+  readonly forbiddenIndicators?: readonly string[];
+  readonly violationReasons?: readonly string[];
   readonly gapReasons: readonly string[];
+}
+export interface Book02MvpAcceptanceCriterionIdentity {
+  readonly id: string;
+  readonly name: string;
+  readonly sourcePath: string;
+  readonly sourceSection: string;
+  readonly dependencies: readonly string[];
+}
+export interface Book02MvpAcceptanceCriterion extends Book02MvpAcceptanceCriterionIdentity {
+  readonly satisfied: boolean;
+  readonly evidenceRequirementIds: readonly string[];
+  readonly unresolvedReasons: readonly string[];
 }
 
 export const BOOK_02_AUTHORITY = {
@@ -67,6 +91,37 @@ export const BOOK_02_EXPECTED_COUNTS = {
   acceptanceCriteria: 19,
   fixtureCount: 26
 } as const;
+const book = 'books/book-02-core-specification/core-specs';
+const mvpCut = `${book}/implementation/mvp-cut-v0.1.md`;
+const cap = (s: string) =>
+  s
+    .split('-')
+    .map((p) => `${p[0]?.toUpperCase() ?? ''}${p.slice(1)}`)
+    .join(' ');
+const req = (
+  id: string,
+  name: string,
+  category: Book02MvpCategory,
+  layer: Book02MvpLayer,
+  sourcePath: string,
+  sourceSection: string,
+  requiredImplementationKind: string,
+  requiredCapabilities: readonly string[],
+  requiredDepth?: Book02MvpDepth,
+  dependencies: readonly string[] = []
+): Book02MvpRequirementIdentity => ({
+  id,
+  name,
+  category,
+  layer,
+  sourcePath,
+  sourceSection,
+  requiredImplementationKind,
+  requiredCapabilities,
+  requiredDepth,
+  dependencies
+});
+
 export const MUST_BUILD_DOMAINS = [
   'identity',
   'organization',
@@ -99,6 +154,18 @@ export const COMMON_CONTRACTS = [
   'ai-context',
   'human-review'
 ] as const;
+export const COMMON_CONTRACT_DEPTHS = {
+  references: 'level_3',
+  errors: 'level_3',
+  'permission-context': 'level_2_3',
+  'policy-context': 'level_1_2',
+  idempotency: 'level_3',
+  'audit-context': 'level_2',
+  versioning: 'level_1',
+  pagination: 'level_2',
+  'ai-context': 'level_1',
+  'human-review': 'level_2'
+} as const satisfies Record<(typeof COMMON_CONTRACTS)[number], Book02MvpDepth>;
 export const MUST_BUILD_WORKFLOWS = [
   'customer-intake-workflow',
   'trademark-application-workflow',
@@ -161,68 +228,148 @@ export const STUB_AGENTS = [
   'routing-agent',
   'advanced-agent-registry-runtime'
 ] as const;
-export const DOCUMENT_ONLY_ITEMS = Array.from(
-  { length: 14 },
-  (_, i) => `document-only-${String(i + 1).padStart(2, '0')}`
-) as readonly string[];
-export const DEFER_ITEMS = Array.from(
-  { length: 17 },
-  (_, i) => `defer-${String(i + 1).padStart(2, '0')}`
-) as readonly string[];
-export const NEVER_IN_MVP_ITEMS = [
-  'full-workflow-engine',
+export const DOCUMENT_ONLY_ITEMS = [
   'full-policy-engine',
-  'ai-official-submission',
-  'ai-deadline-certification',
-  'ai-final-provider-selection',
-  'api-direct-domain-mutation',
-  'workflow-direct-active-task-creation',
-  'workflow-direct-event-emission',
-  'agent-direct-event-emission',
-  'production-fixtures',
-  'raw-database-ids-in-public-responses',
-  'unsafe-stack-traces',
-  'silent-unsupported-version-acceptance',
-  'event-bus',
-  'database-persistence',
-  'external-communication-send',
-  'official-filing-integration',
-  'payment-execution'
+  'full-agent-runtime-orchestration',
+  'full-workflow-engine',
+  'external-official-filing-integrations',
+  'foreign-associate-live-network-integrations',
+  'payment-execution',
+  'provider-marketplace-settlement',
+  'advanced-analytics',
+  'advanced-service-network-optimization',
+  'multi-product-app-marketplace',
+  'public-developer-api-portal',
+  'ai-autonomous-workflow-execution',
+  'official-deadline-certification-automation',
+  'professional-registrability-decision-automation'
 ] as const;
-export const MVP_ACCEPTANCE_CRITERIA = Array.from(
-  { length: 19 },
-  (_, i) => `book-02-mvp-acceptance-${String(i + 1).padStart(2, '0')}`
-) as readonly string[];
-const book = 'books/book-02-core-specification/core-specs';
-const objectPath = (d: string) =>
-  `${book}/objects/${d === 'workflow-contract' ? 'workflow-contract' : d}.md`;
-const cap = (s: string) =>
-  s
-    .split('-')
-    .map((p) => p[0]?.toUpperCase() + p.slice(1))
-    .join(' ');
-function req(
-  id: string,
-  name: string,
-  category: Book02MvpCategory,
-  layer: Book02MvpLayer,
-  sourcePath: string,
-  kind: string,
-  requiredCapabilities: readonly string[],
-  requiredDepth?: string
-): Book02MvpRequirementIdentity {
-  return {
+export const DEFER_ITEMS = [
+  'renewal-production-workflow',
+  'assignment-production-workflow',
+  'office-action-response-production-workflow',
+  'evidence-review-production-workflow',
+  'provider-routing-production-workflow',
+  'foreign-agent-onboarding-automation',
+  'partner-facing-mini-program',
+  'client-self-service-filing-portal',
+  'global-jurisdiction-rule-automation',
+  'official-fee-calculation-engine',
+  'trademark-watch-monitoring',
+  'bulk-opportunity-generation',
+  'service-provider-scoring',
+  'communication-delivery-integrations',
+  'document-e-signature-integration',
+  'external-storage-integrations',
+  'billing-and-invoice-automation'
+] as const;
+export const NEVER_IN_MVP_ITEMS = [
+  'ai-submitting-official-filings',
+  'ai-certifying-legal-deadlines',
+  'ai-certifying-trademark-registrability',
+  'ai-deciding-evidence-sufficiency-as-professional-truth',
+  'ai-selecting-service-provider-as-final-decision',
+  'ai-sending-external-communication-without-human-review',
+  'api-layer-mutating-domain-state-directly',
+  'workflow-layer-creating-active-tasks-outside-task-service',
+  'workflow-layer-emitting-domain-events-directly',
+  'agent-layer-emitting-events-directly',
+  'event-references-triggering-commands',
+  'permission-bypass-for-convenience',
+  'policy-bypass-for-convenience',
+  'production-data-fixtures',
+  'raw-database-ids-in-public-responses',
+  'unsafe-stack-traces-in-api-responses',
+  'silent-unsupported-version-acceptance',
+  'silent-historical-version-rewriting'
+] as const;
+export const API_REQUIRED_CAPABILITIES = [
+  'request validation',
+  'response validation',
+  'reference validation',
+  'permission context validation',
+  'policy context validation',
+  'idempotency validation where duplicate-sensitive',
+  'safe error behavior',
+  'version validation',
+  'owning Service delegation',
+  'no direct Domain mutation',
+  'no direct Event emission'
+] as const;
+export const WORKFLOW_REQUIRED_CAPABILITIES = [
+  'preview request validation',
+  'apply request validation',
+  'step validation',
+  'Task plan generation or validation',
+  'Human Review checkpoint validation',
+  'AI assistance boundary validation',
+  'Permission validation',
+  'Policy validation',
+  'Idempotency validation',
+  'Event trace reference validation',
+  'safe error behavior'
+] as const;
+export const EVENT_REQUIRED_CAPABILITIES = [
+  'event_reference_id',
+  'event_type',
+  'source_service',
+  'subject_reference_id',
+  'correlation_id',
+  'causation_event_reference_id where applicable',
+  'created_at',
+  'visibility policy hook',
+  'safe payload',
+  'schema_version'
+] as const;
+export const AGENT_REQUIRED_CAPABILITIES = [
+  'agent identity',
+  'capability metadata',
+  'allowed capability validation',
+  'forbidden action validation',
+  'AI Context output metadata',
+  'Human Review preservation',
+  'no protected-state mutation',
+  'no Event emission',
+  'executable boundary tests'
+] as const;
+export const TEST_REQUIRED_CAPABILITIES = [
+  'contract specification',
+  'mapped executable test files',
+  'positive coverage',
+  'negative coverage',
+  'execution under pnpm test or a dedicated evidence runner'
+] as const;
+
+export const MVP_ACCEPTANCE_CRITERIA_IDENTITIES: readonly Book02MvpAcceptanceCriterionIdentity[] =
+  [
+    'must-build-domains-implemented-or-scaffolded-with-tests',
+    'must-build-objects-have-public-reference-ids',
+    'must-build-services-own-behavior',
+    'must-build-api-validators-exist',
+    'customer-intake-workflow-supports-preview-apply',
+    'trademark-application-workflow-supports-preview-apply',
+    'communication-review-workflow-supports-preview-apply',
+    'permission-and-policy-fail-closed',
+    'ai-forbidden-actions-are-blocked',
+    'human-review-gates-protected-actions',
+    'idempotency-replay-and-conflict-are-tested',
+    'event-trace-exists-and-is-not-command',
+    'api-layer-does-not-emit-events-directly',
+    'workflow-layer-does-not-emit-events-directly',
+    'agent-layer-does-not-emit-events-directly',
+    'errors-are-safe',
+    'unsupported-versions-fail-closed',
+    'deferred-items-do-not-block-mvp',
+    'never-in-mvp-items-are-not-implemented'
+  ].map((id) => ({
     id,
-    name,
-    category,
-    layer,
-    sourcePath,
-    requiredImplementationKind: kind,
-    requiredCapabilities,
-    requiredDepth,
+    name: cap(id),
+    sourcePath: mvpCut,
+    sourceSection: 'Section 14',
     dependencies: []
-  };
-}
+  }));
+export const MVP_ACCEPTANCE_CRITERIA = MVP_ACCEPTANCE_CRITERIA_IDENTITIES;
+
 export const BOOK_02_MVP_REQUIREMENT_IDENTITIES: readonly Book02MvpRequirementIdentity[] =
   [
     ...MUST_BUILD_DOMAINS.map((d) =>
@@ -232,6 +379,7 @@ export const BOOK_02_MVP_REQUIREMENT_IDENTITIES: readonly Book02MvpRequirementId
         'must_build_now',
         'domain',
         `${book}/domains/${d}.md`,
+        'Section 3.1',
         'structural_contract',
         ['domain boundary']
       )
@@ -242,9 +390,10 @@ export const BOOK_02_MVP_REQUIREMENT_IDENTITIES: readonly Book02MvpRequirementId
         `${cap(d)} Object`,
         'must_build_now',
         'object',
-        objectPath(d),
+        `${book}/objects/${d}.md`,
+        'Section 3.2',
         'structural_contract',
-        ['object contract']
+        ['object contract', 'public reference id']
       )
     ),
     ...MUST_BUILD_DOMAINS.map((d) =>
@@ -254,8 +403,9 @@ export const BOOK_02_MVP_REQUIREMENT_IDENTITIES: readonly Book02MvpRequirementId
         'must_build_now',
         'service',
         `${book}/services/${d}-service.md`,
+        'Section 3.3',
         'real_boundary_behavior',
-        ['service boundary behavior']
+        ['real boundary behavior', 'owning service authority']
       )
     ),
     ...COMMON_CONTRACTS.map((c) =>
@@ -264,12 +414,11 @@ export const BOOK_02_MVP_REQUIREMENT_IDENTITIES: readonly Book02MvpRequirementId
         cap(c),
         'must_build_now',
         'common_contract',
-        `${book}/common/${c}.md`,
-        'minimum_depth_behavior',
-        ['contract hook'],
-        c.includes('permission') || c.includes('policy')
-          ? 'minimum_depth'
-          : 'structural_or_minimum_depth'
+        `${book}/contracts/common/${c}.md`,
+        'Section 3.4',
+        'book_02_depth_matrix_behavior',
+        ['contract hook', 'executable behavior evidence'],
+        COMMON_CONTRACT_DEPTHS[c]
       )
     ),
     ...MUST_BUILD_DOMAINS.map((d) =>
@@ -278,9 +427,10 @@ export const BOOK_02_MVP_REQUIREMENT_IDENTITIES: readonly Book02MvpRequirementId
         `${cap(d)} API Contract`,
         'must_build_now',
         'api',
-        `${book}/api/${d}-api-contract.md`,
+        `${book}/contracts/api/${d}-api-contract.md`,
+        'Section 3.5',
         'validator_and_service_delegation',
-        ['request/response validation', 'service delegation']
+        API_REQUIRED_CAPABILITIES
       )
     ),
     ...MUST_BUILD_WORKFLOWS.map((w) =>
@@ -290,12 +440,9 @@ export const BOOK_02_MVP_REQUIREMENT_IDENTITIES: readonly Book02MvpRequirementId
         'must_build_now',
         'workflow',
         `${book}/workflows/${w}.md`,
+        'Section 3.6',
         'preview_apply_validator',
-        [
-          'preview request validation',
-          'apply request validation',
-          'safe error behavior'
-        ]
+        WORKFLOW_REQUIRED_CAPABILITIES
       )
     ),
     ...MUST_BUILD_EVENTS.map((e) =>
@@ -305,8 +452,9 @@ export const BOOK_02_MVP_REQUIREMENT_IDENTITIES: readonly Book02MvpRequirementId
         'must_build_now',
         'event',
         `${book}/events/${e}.md`,
+        'Section 3.7',
         'event_record_or_deterministic_fixture',
-        ['event reference id', 'safe payload', 'schema version']
+        EVENT_REQUIRED_CAPABILITIES
       )
     ),
     ...MUST_BUILD_AGENTS.map((a) =>
@@ -316,8 +464,9 @@ export const BOOK_02_MVP_REQUIREMENT_IDENTITIES: readonly Book02MvpRequirementId
         'must_build_now',
         'agent',
         `${book}/agents/${a}.md`,
+        'Section 3.8',
         'boundary_safe_scaffold',
-        ['allowed capability validation', 'forbidden action validation']
+        AGENT_REQUIRED_CAPABILITIES
       )
     ),
     ...MUST_BUILD_TESTS.map((t) =>
@@ -326,9 +475,10 @@ export const BOOK_02_MVP_REQUIREMENT_IDENTITIES: readonly Book02MvpRequirementId
         cap(t),
         'must_build_now',
         'test',
-        `${book}/tests/${t}.md`,
+        `${book}/contracts/tests/${t}.md`,
+        'Section 3.9',
         'executable_test_family',
-        ['mapped executable tests']
+        TEST_REQUIRED_CAPABILITIES
       )
     ),
     ...STUB_DOMAINS.map((d) =>
@@ -338,6 +488,7 @@ export const BOOK_02_MVP_REQUIREMENT_IDENTITIES: readonly Book02MvpRequirementId
         'stub_now',
         'domain',
         `${book}/domains/${d}.md`,
+        'Section 4.1',
         'bounded_stub',
         ['no production execution']
       )
@@ -349,6 +500,7 @@ export const BOOK_02_MVP_REQUIREMENT_IDENTITIES: readonly Book02MvpRequirementId
         'stub_now',
         'service',
         `${book}/services/${d}-service.md`,
+        'Section 4.2',
         'bounded_stub',
         ['no production execution']
       )
@@ -356,10 +508,11 @@ export const BOOK_02_MVP_REQUIREMENT_IDENTITIES: readonly Book02MvpRequirementId
     ...STUB_DOMAINS.map((d) =>
       req(
         `stub-api-${d}-api-contract`,
-        `${cap(d)} API`,
+        `${cap(d)} API Contract`,
         'stub_now',
         'api',
-        `${book}/api/${d}-api-contract.md`,
+        `${book}/contracts/api/${d}-api-contract.md`,
+        'Section 4.3',
         'bounded_stub',
         ['validation only']
       )
@@ -371,8 +524,15 @@ export const BOOK_02_MVP_REQUIREMENT_IDENTITIES: readonly Book02MvpRequirementId
         'stub_now',
         'workflow',
         `${book}/workflows/${w}.md`,
+        'Section 4.4',
         'preview_or_validation_only',
-        ['no official filing', 'no external send', 'no provider selection']
+        [
+          'preview-only or validation-only',
+          'no production execution',
+          'no official filing',
+          'no external communication send',
+          'no final provider selection'
+        ]
       )
     ),
     ...STUB_AGENTS.map((a) =>
@@ -382,6 +542,7 @@ export const BOOK_02_MVP_REQUIREMENT_IDENTITIES: readonly Book02MvpRequirementId
         'stub_now',
         'agent',
         `${book}/agents/${a}.md`,
+        'Section 4.5',
         'bounded_stub',
         ['no production runtime']
       )
@@ -392,7 +553,8 @@ export const BOOK_02_MVP_REQUIREMENT_IDENTITIES: readonly Book02MvpRequirementId
         cap(g),
         'document_only',
         'guard',
-        `${book}/implementation/mvp-cut-v0.1.md#section-7`,
+        mvpCut,
+        'Section 7',
         'document_only',
         ['no runtime implementation']
       )
@@ -403,7 +565,8 @@ export const BOOK_02_MVP_REQUIREMENT_IDENTITIES: readonly Book02MvpRequirementId
         cap(g),
         'defer',
         'guard',
-        `${book}/implementation/mvp-cut-v0.1.md#section-8`,
+        mvpCut,
+        'Section 8',
         'defer',
         ['outside MVP implementation']
       )
@@ -414,9 +577,11 @@ export const BOOK_02_MVP_REQUIREMENT_IDENTITIES: readonly Book02MvpRequirementId
         cap(g),
         'never_in_mvp',
         'guard',
-        `${book}/implementation/mvp-cut-v0.1.md#section-9`,
+        mvpCut,
+        'Section 9',
         'never_in_mvp',
-        ['must not be implemented']
+        ['must not be implemented'],
+        'forbidden'
       )
     )
-  ] as const;
+  ];

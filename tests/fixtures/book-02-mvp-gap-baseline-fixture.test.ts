@@ -21,10 +21,11 @@ describe('Book 02 MVP gap baseline fixture', () => {
   });
   it('detects fixture drift', async () => {
     const fixture = (await readFixture()) as Record<string, unknown>;
-    fixture.fixtureType = 'changed';
+    const criteria = fixture.acceptanceCriteria as Record<string, unknown>[];
+    criteria[0] = { ...criteria[0], name: 'Changed' };
     assert.equal(
       validateBook02MvpFixture(fixture)[0]?.code,
-      'book02.fixture.drift'
+      'book02.acceptance.name_changed'
     );
   });
   it('locks required fixture count at 26', () => {

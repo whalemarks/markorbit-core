@@ -1,6 +1,6 @@
 # Book 02 MVP Gap Baseline Lock
 
-Book 02 MVP Gap Baseline is locked.
+Book 02 MVP Gap Baseline is locked only after this task passes validation.
 Book 02 MVP remains incomplete.
 Selected behavior-hook minimum-depth acceptance remains valid.
 Domain business behavior remains unaccepted.
