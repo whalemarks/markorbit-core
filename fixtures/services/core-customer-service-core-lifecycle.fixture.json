@@ -54,6 +54,11 @@
     "reasonReference": "reason:synthetic:suspension",
     "idempotencyKey": "idem:status:core-task-036"
   },
+  "statusConflictRequest": {
+    "targetStatus": "Active",
+    "reasonReference": "reason:synthetic:reactivation",
+    "idempotencyKey": "idem:status:core-task-036"
+  },
   "invalidStatusTransitionRequest": {
     "targetStatus": "Draft",
     "idempotencyKey": "idem:status:invalid-core-task-036"
@@ -63,9 +68,11 @@
     "eventTraceCountAfterCreate": 1,
     "eventTraceCountAfterReplay": 1,
     "eventTraceCountAfterStatusChange": 2,
+    "eventTraceCountAfterStatusReplay": 2,
     "sameKeyConflictCode": "IdempotencyConflict",
     "duplicateCustomerCode": "CustomerAlreadyExists",
     "invalidTransitionCode": "InvalidCustomerTransition",
+    "statusConflictCode": "IdempotencyConflict",
     "eventFailureCode": "EventTraceFailed"
   }
 }
