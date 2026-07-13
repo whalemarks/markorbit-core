@@ -30,13 +30,6 @@ export interface CoreCustomerServiceDependencies
 type CreateCustomerInput = Parameters<
   BaseCoreCustomerService['createCustomer']
 >[0];
-type GetCustomerInput = Parameters<BaseCoreCustomerService['getCustomer']>[0];
-type ListCustomersInput = Parameters<
-  BaseCoreCustomerService['listCustomers']
->[0];
-type ValidateCustomerReferenceInput = Parameters<
-  BaseCoreCustomerService['validateCustomerReference']
->[0];
 type ChangeCustomerStatusInput = Parameters<
   BaseCoreCustomerService['changeCustomerStatus']
 >[0];
@@ -190,12 +183,13 @@ function validateGovernance(
       })
     };
   }
-  return enforceCoreGovernedAction({
+  const governed = enforceCoreGovernedAction({
     permission: context.permission,
     policy: context.policy,
     review: context.review,
     audit: context.audit
   });
+  return governed.ok ? { ok: true, value: null } : governed;
 }
 
 function organizationScopeOf(record: {
@@ -315,43 +309,15 @@ export class CoreCustomerService extends BaseCoreCustomerService {
         try {
           return super.createCustomer(input);
         } catch {
-          return internal(input.governance.correlationId);
+          return internal<CoreCustomerServiceRecord>(
+            input.governance.correlationId
+          );
         }
       }
     );
     return idempotent.ok
       ? { ok: true, value: idempotent.value.result }
       : idempotent;
-  }
-
-  getCustomer(
-    input: GetCustomerInput
-  ): ReturnType<BaseCoreCustomerService['getCustomer']> {
-    try {
-      return super.getCustomer(input);
-    } catch {
-      return internal(input.governance.correlationId);
-    }
-  }
-
-  listCustomers(
-    input: ListCustomersInput
-  ): ReturnType<BaseCoreCustomerService['listCustomers']> {
-    try {
-      return super.listCustomers(input);
-    } catch {
-      return internal(input.governance.correlationId);
-    }
-  }
-
-  validateCustomerReference(
-    input: ValidateCustomerReferenceInput
-  ): ReturnType<BaseCoreCustomerService['validateCustomerReference']> {
-    try {
-      return super.validateCustomerReference(input);
-    } catch {
-      return internal(input.governance.correlationId);
-    }
   }
 
   changeCustomerStatus(
@@ -420,7 +386,9 @@ export class CoreCustomerService extends BaseCoreCustomerService {
         try {
           return super.changeCustomerStatus(input);
         } catch {
-          return internal(input.governance.correlationId);
+          return internal<CoreCustomerServiceRecord>(
+            input.governance.correlationId
+          );
         }
       }
     );
