@@ -80,8 +80,8 @@ update('src/mvp-coverage/book-02-mvp-gap-baseline.ts', (text) => {
   );
   return replaceRegexRequired(
     text,
-    /  if \(identity\.layer === 'service'\) \{[\s\S]*?  \}\n  if \(identity\.layer === 'test'\)/,
-    `  if (identity.layer === 'service') {\n    if (\n      ev.currentDepth === 'level_2_3' &&\n      ev.implementationFiles.length > 1 &&\n      ev.testFiles.length > 0 &&\n      ev.fixtureFiles.length > 0\n    )\n      return 'meets_required_depth';\n    return ev.testFiles.length > 0\n      ? 'partial_evidence'\n      : ev.contractIds.length > 0\n        ? 'validated_skeleton_only'\n        : 'missing';\n  }\n  if (identity.layer === 'test')`,
+    /(function disposition\([\s\S]*?  if \(identity\.layer === 'object'\) \{[\s\S]*?  \}\n)  if \(identity\.layer === 'service'\) \{[\s\S]*?  \}\n  if \(identity\.layer === 'test'\)/,
+    `$1  if (identity.layer === 'service') {\n    if (\n      ev.currentDepth === 'level_2_3' &&\n      ev.implementationFiles.length > 1 &&\n      ev.testFiles.length > 0 &&\n      ev.fixtureFiles.length > 0\n    )\n      return 'meets_required_depth';\n    return ev.testFiles.length > 0\n      ? 'partial_evidence'\n      : ev.contractIds.length > 0\n        ? 'validated_skeleton_only'\n        : 'missing';\n  }\n  if (identity.layer === 'test')`,
     'service disposition'
   );
 });
@@ -96,8 +96,18 @@ update('src/mvp-coverage/book-02-mvp-gap-validation.ts', (text) =>
 );
 
 update('tests/unit/core-fixture-manifest.test.ts', (text) => {
-  text = replaceRequired(text, "it('has exactly 28 entries'", "it('has exactly 29 entries'", 'fixture count test title');
-  text = replaceRequired(text, 'CORE_FIXTURE_MANIFEST.length, 28', 'CORE_FIXTURE_MANIFEST.length, 29', 'fixture count test');
+  text = replaceRequired(
+    text,
+    "it('has exactly 28 entries'",
+    "it('has exactly 29 entries'",
+    'fixture count test title'
+  );
+  text = replaceRequired(
+    text,
+    'CORE_FIXTURE_MANIFEST.length, 28',
+    'CORE_FIXTURE_MANIFEST.length, 29',
+    'fixture count test'
+  );
   text = replaceRequired(
     text,
     "    assert.equal(CORE_FIXTURE_TYPES.includes('core_customer_service_core_lifecycle'), true);",
