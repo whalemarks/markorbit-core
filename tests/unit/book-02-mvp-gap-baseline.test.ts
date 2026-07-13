@@ -1,5 +1,11 @@
 import assert from 'node:assert/strict';
-import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs';
+import {
+  mkdirSync,
+  mkdtempSync,
+  readFileSync,
+  rmSync,
+  writeFileSync
+} from 'node:fs';
 import { join } from 'node:path';
 import { tmpdir } from 'node:os';
 import { describe, it } from 'node:test';
@@ -27,6 +33,31 @@ const requirementsOf = (
   baseline: Record<string, unknown>
 ): Record<string, unknown>[] =>
   baseline.requirements as Record<string, unknown>[];
+
+const objectFixtureRecords = (): Record<string, unknown>[] =>
+  JSON.parse(
+    readFileSync(
+      'fixtures/objects/core-mvp-object-public-reference-foundation.fixture.json',
+      'utf8'
+    )
+  ) as Record<string, unknown>[];
+const corruptedObjectFixtureBaseline = (
+  mutate: (record: Record<string, unknown>) => Record<string, unknown>
+): Record<string, unknown> => {
+  const baseline = cloneRecord();
+  const fixtures = objectFixtureRecords();
+  const customerIndex = fixtures.findIndex(
+    (record) => record.domainId === 'customer'
+  );
+  if (customerIndex === -1) throw new Error('Expected customer fixture.');
+  fixtures[customerIndex] = mutate(fixtures[customerIndex]);
+  return { ...baseline, __objectFixtureRecords: fixtures };
+};
+const validateWithObjectFixtures = (baseline: Record<string, unknown>) =>
+  validateBook02MvpGapBaseline(baseline, {
+    objectFixtureRecords: baseline.__objectFixtureRecords as
+      Record<string, unknown>[] | undefined
+  });
 
 describe('Book 02 MVP gap baseline validation', () => {
   it('validates the canonical baseline and derives incomplete MVP state', () => {
@@ -157,6 +188,74 @@ describe('Book 02 MVP gap baseline validation', () => {
       codes(validateBook02MvpGapBaseline(fake)).includes(
         'book02.evidence.fake_contract_id'
       )
+    );
+  });
+
+  it('requires actual Object fixture validation before Object depth is accepted', () => {
+    for (const mutate of [
+      (record: Record<string, unknown>) => ({
+        ...record,
+        metadata: { databaseId: 'db-1' }
+      }),
+      (record: Record<string, unknown>) => ({
+        ...record,
+        auditMetadata: { createdAt: '2026-99-99T00:00:00.000Z' }
+      }),
+      (record: Record<string, unknown>) => ({
+        ...record,
+        visibility: { permissionScopeReferenceId: 'missing' }
+      }),
+      (record: Record<string, unknown>) => ({
+        ...record,
+        version: {
+          version: 1,
+          createdAt: '2026-01-01T00:00:00.000Z',
+          databaseId: 'db-1'
+        }
+      })
+    ] as const) {
+      const baseline = corruptedObjectFixtureBaseline(mutate);
+      const validationCodes = codes(validateWithObjectFixtures(baseline));
+      assert.ok(
+        validationCodes.includes('book02.object.fixture_validation_failed')
+      );
+      assert.ok(validationCodes.includes('book02.object.depth_inconsistent'));
+    }
+  });
+
+  it('reports missing Object fixture context and inconsistent fixture counts', () => {
+    const fixtures = objectFixtureRecords();
+    const customerIndex = fixtures.findIndex(
+      (record) => record.domainId === 'customer'
+    );
+    if (customerIndex === -1) throw new Error('Expected customer fixture.');
+    const missingContext = cloneRecord();
+    fixtures[customerIndex] = {
+      ...fixtures[customerIndex],
+      publicReferenceId: 'customer:ref:not-in-fixture-records'
+    };
+    const missingContextCodes = codes(
+      validateBook02MvpGapBaseline(missingContext, {
+        objectFixtureRecords: fixtures
+      })
+    );
+    assert.ok(
+      missingContextCodes.includes('book02.object.fixture_context_missing')
+    );
+    assert.ok(
+      missingContextCodes.includes('book02.object.reference_evidence_missing')
+    );
+
+    const duplicateFixtures = objectFixtureRecords();
+    duplicateFixtures.push({ ...duplicateFixtures[customerIndex] });
+    const duplicateCodes = codes(
+      validateBook02MvpGapBaseline(cloneRecord(), {
+        objectFixtureRecords: duplicateFixtures
+      })
+    );
+    assert.ok(duplicateCodes.includes('book02.object.fixture_duplicate'));
+    assert.ok(
+      duplicateCodes.includes('book02.object.fixture_count_inconsistent')
     );
   });
 
@@ -464,7 +563,7 @@ describe('Book 02 MVP gap baseline validation', () => {
         (criterion) =>
           criterion.id === 'must-build-objects-have-public-reference-ids'
       )?.satisfied,
-      false
+      true
     );
 
     assert.deepEqual(Object.keys(ACCEPTANCE_CRITERION_EVALUATORS), [
@@ -499,6 +598,7 @@ describe('Book 02 MVP gap baseline validation', () => {
       .map((criterion) => criterion.id);
     assert.deepEqual(satisfiedIds, [
       'must-build-domains-implemented-or-scaffolded-with-tests',
+      'must-build-objects-have-public-reference-ids',
       'permission-and-policy-fail-closed',
       'ai-forbidden-actions-are-blocked',
       'human-review-gates-protected-actions',

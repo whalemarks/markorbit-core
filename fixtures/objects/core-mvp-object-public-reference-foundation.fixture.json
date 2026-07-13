@@ -1,0 +1,446 @@
+[
+  {
+    "publicReferenceId": "identity:ref:00001",
+    "objectType": "identity-record",
+    "domainId": "identity",
+    "objectContractId": "core-object-identity-record-contract",
+    "status": "active",
+    "version": {
+      "version": 1,
+      "createdAt": "2026-01-01T00:00:00.000Z"
+    },
+    "metadata": {
+      "source": "core-task-035",
+      "sequence": 1,
+      "book": "Book 02"
+    },
+    "auditMetadata": {
+      "createdAt": "2026-01-01T00:00:00.000Z",
+      "createdByReferenceId": "user:ref:actor-0001",
+      "correlationId": "corr-core-task-035"
+    }
+  },
+  {
+    "publicReferenceId": "organization:ref:00002",
+    "objectType": "organization-record",
+    "domainId": "organization",
+    "objectContractId": "core-object-organization-record-contract",
+    "status": "active",
+    "version": {
+      "version": 1,
+      "createdAt": "2026-01-01T00:00:00.000Z"
+    },
+    "metadata": {
+      "source": "core-task-035",
+      "sequence": 2,
+      "book": "Book 02"
+    },
+    "auditMetadata": {
+      "createdAt": "2026-01-01T00:00:00.000Z",
+      "createdByReferenceId": "user:ref:actor-0001",
+      "correlationId": "corr-core-task-035"
+    }
+  },
+  {
+    "publicReferenceId": "user:ref:00003",
+    "objectType": "user-record",
+    "domainId": "user",
+    "objectContractId": "core-object-user-record-contract",
+    "status": "active",
+    "version": {
+      "version": 1,
+      "createdAt": "2026-01-01T00:00:00.000Z"
+    },
+    "metadata": {
+      "source": "core-task-035",
+      "sequence": 3,
+      "book": "Book 02"
+    },
+    "auditMetadata": {
+      "createdAt": "2026-01-01T00:00:00.000Z",
+      "createdByReferenceId": "user:ref:actor-0001",
+      "correlationId": "corr-core-task-035"
+    }
+  },
+  {
+    "publicReferenceId": "permission:ref:00004",
+    "objectType": "permission-record",
+    "domainId": "permission",
+    "objectContractId": "core-object-permission-record-contract",
+    "status": "active",
+    "version": {
+      "version": 1,
+      "createdAt": "2026-01-01T00:00:00.000Z"
+    },
+    "metadata": {
+      "source": "core-task-035",
+      "sequence": 4,
+      "book": "Book 02"
+    },
+    "auditMetadata": {
+      "createdAt": "2026-01-01T00:00:00.000Z",
+      "createdByReferenceId": "user:ref:actor-0001",
+      "correlationId": "corr-core-task-035"
+    },
+    "visibility": {
+      "permissionScopeReferenceId": "permission:ref:scope-0001",
+      "policyScopeReferenceId": "policy:ref:scope-0001",
+      "organizationScopeReferenceId": "organization:ref:scope-0001",
+      "actorScopeReferenceId": "user:ref:actor-0001"
+    }
+  },
+  {
+    "publicReferenceId": "policy:ref:00005",
+    "objectType": "permission-policy-record",
+    "domainId": "policy",
+    "objectContractId": "core-object-permission-policy-record-contract",
+    "status": "active",
+    "version": {
+      "version": 1,
+      "createdAt": "2026-01-01T00:00:00.000Z"
+    },
+    "metadata": {
+      "source": "core-task-035",
+      "sequence": 5,
+      "book": "Book 02"
+    },
+    "auditMetadata": {
+      "createdAt": "2026-01-01T00:00:00.000Z",
+      "createdByReferenceId": "user:ref:actor-0001",
+      "correlationId": "corr-core-task-035"
+    },
+    "visibility": {
+      "permissionScopeReferenceId": "permission:ref:scope-0001",
+      "policyScopeReferenceId": "policy:ref:scope-0001",
+      "organizationScopeReferenceId": "organization:ref:scope-0001",
+      "actorScopeReferenceId": "user:ref:actor-0001"
+    }
+  },
+  {
+    "publicReferenceId": "customer:ref:00006",
+    "objectType": "customer-record",
+    "domainId": "customer",
+    "objectContractId": "core-object-customer-record-contract",
+    "status": "active",
+    "version": {
+      "version": 1,
+      "createdAt": "2026-01-01T00:00:00.000Z"
+    },
+    "metadata": {
+      "source": "core-task-035",
+      "sequence": 6,
+      "book": "Book 02"
+    },
+    "auditMetadata": {
+      "createdAt": "2026-01-01T00:00:00.000Z",
+      "createdByReferenceId": "user:ref:actor-0001",
+      "correlationId": "corr-core-task-035"
+    },
+    "visibility": {
+      "permissionScopeReferenceId": "permission:ref:scope-0001",
+      "policyScopeReferenceId": "policy:ref:scope-0001",
+      "organizationScopeReferenceId": "organization:ref:scope-0001",
+      "actorScopeReferenceId": "user:ref:actor-0001"
+    }
+  },
+  {
+    "publicReferenceId": "brand:ref:00007",
+    "objectType": "brand-record",
+    "domainId": "brand",
+    "objectContractId": "core-object-brand-record-contract",
+    "status": "active",
+    "version": {
+      "version": 1,
+      "createdAt": "2026-01-01T00:00:00.000Z"
+    },
+    "metadata": {
+      "source": "core-task-035",
+      "sequence": 7,
+      "book": "Book 02"
+    },
+    "auditMetadata": {
+      "createdAt": "2026-01-01T00:00:00.000Z",
+      "createdByReferenceId": "user:ref:actor-0001",
+      "correlationId": "corr-core-task-035"
+    }
+  },
+  {
+    "publicReferenceId": "trademark:ref:00008",
+    "objectType": "trademark-record",
+    "domainId": "trademark",
+    "objectContractId": "core-object-trademark-record-contract",
+    "status": "active",
+    "version": {
+      "version": 1,
+      "createdAt": "2026-01-01T00:00:00.000Z"
+    },
+    "metadata": {
+      "source": "core-task-035",
+      "sequence": 8,
+      "book": "Book 02"
+    },
+    "auditMetadata": {
+      "createdAt": "2026-01-01T00:00:00.000Z",
+      "createdByReferenceId": "user:ref:actor-0001",
+      "correlationId": "corr-core-task-035"
+    }
+  },
+  {
+    "publicReferenceId": "jurisdiction:ref:00009",
+    "objectType": "jurisdiction-record",
+    "domainId": "jurisdiction",
+    "objectContractId": "core-object-jurisdiction-record-contract",
+    "status": "active",
+    "version": {
+      "version": 1,
+      "createdAt": "2026-01-01T00:00:00.000Z"
+    },
+    "metadata": {
+      "source": "core-task-035",
+      "sequence": 9,
+      "book": "Book 02"
+    },
+    "auditMetadata": {
+      "createdAt": "2026-01-01T00:00:00.000Z",
+      "createdByReferenceId": "user:ref:actor-0001",
+      "correlationId": "corr-core-task-035"
+    }
+  },
+  {
+    "publicReferenceId": "classification:ref:00010",
+    "objectType": "classification-record",
+    "domainId": "classification",
+    "objectContractId": "core-object-classification-record-contract",
+    "status": "active",
+    "version": {
+      "version": 1,
+      "createdAt": "2026-01-01T00:00:00.000Z"
+    },
+    "metadata": {
+      "source": "core-task-035",
+      "sequence": 10,
+      "book": "Book 02"
+    },
+    "auditMetadata": {
+      "createdAt": "2026-01-01T00:00:00.000Z",
+      "createdByReferenceId": "user:ref:actor-0001",
+      "correlationId": "corr-core-task-035"
+    }
+  },
+  {
+    "publicReferenceId": "document:ref:00011",
+    "objectType": "document-record",
+    "domainId": "document",
+    "objectContractId": "core-object-document-record-contract",
+    "status": "active",
+    "version": {
+      "version": 1,
+      "createdAt": "2026-01-01T00:00:00.000Z"
+    },
+    "metadata": {
+      "source": "core-task-035",
+      "sequence": 11,
+      "book": "Book 02"
+    },
+    "auditMetadata": {
+      "createdAt": "2026-01-01T00:00:00.000Z",
+      "createdByReferenceId": "user:ref:actor-0001",
+      "correlationId": "corr-core-task-035"
+    },
+    "visibility": {
+      "permissionScopeReferenceId": "permission:ref:scope-0001",
+      "policyScopeReferenceId": "policy:ref:scope-0001",
+      "organizationScopeReferenceId": "organization:ref:scope-0001",
+      "actorScopeReferenceId": "user:ref:actor-0001"
+    }
+  },
+  {
+    "publicReferenceId": "evidence:ref:00012",
+    "objectType": "evidence-record",
+    "domainId": "evidence",
+    "objectContractId": "core-object-evidence-record-contract",
+    "status": "active",
+    "version": {
+      "version": 1,
+      "createdAt": "2026-01-01T00:00:00.000Z"
+    },
+    "metadata": {
+      "source": "core-task-035",
+      "sequence": 12,
+      "book": "Book 02"
+    },
+    "auditMetadata": {
+      "createdAt": "2026-01-01T00:00:00.000Z",
+      "createdByReferenceId": "user:ref:actor-0001",
+      "correlationId": "corr-core-task-035"
+    },
+    "visibility": {
+      "permissionScopeReferenceId": "permission:ref:scope-0001",
+      "policyScopeReferenceId": "policy:ref:scope-0001",
+      "organizationScopeReferenceId": "organization:ref:scope-0001",
+      "actorScopeReferenceId": "user:ref:actor-0001"
+    }
+  },
+  {
+    "publicReferenceId": "matter:ref:00013",
+    "objectType": "matter-record",
+    "domainId": "matter",
+    "objectContractId": "core-object-matter-record-contract",
+    "status": "active",
+    "version": {
+      "version": 1,
+      "createdAt": "2026-01-01T00:00:00.000Z"
+    },
+    "metadata": {
+      "source": "core-task-035",
+      "sequence": 13,
+      "book": "Book 02"
+    },
+    "auditMetadata": {
+      "createdAt": "2026-01-01T00:00:00.000Z",
+      "createdByReferenceId": "user:ref:actor-0001",
+      "correlationId": "corr-core-task-035"
+    },
+    "visibility": {
+      "permissionScopeReferenceId": "permission:ref:scope-0001",
+      "policyScopeReferenceId": "policy:ref:scope-0001",
+      "organizationScopeReferenceId": "organization:ref:scope-0001",
+      "actorScopeReferenceId": "user:ref:actor-0001"
+    }
+  },
+  {
+    "publicReferenceId": "order:ref:00014",
+    "objectType": "order-record",
+    "domainId": "order",
+    "objectContractId": "core-object-order-record-contract",
+    "status": "active",
+    "version": {
+      "version": 1,
+      "createdAt": "2026-01-01T00:00:00.000Z"
+    },
+    "metadata": {
+      "source": "core-task-035",
+      "sequence": 14,
+      "book": "Book 02"
+    },
+    "auditMetadata": {
+      "createdAt": "2026-01-01T00:00:00.000Z",
+      "createdByReferenceId": "user:ref:actor-0001",
+      "correlationId": "corr-core-task-035"
+    },
+    "visibility": {
+      "permissionScopeReferenceId": "permission:ref:scope-0001",
+      "policyScopeReferenceId": "policy:ref:scope-0001",
+      "organizationScopeReferenceId": "organization:ref:scope-0001",
+      "actorScopeReferenceId": "user:ref:actor-0001"
+    }
+  },
+  {
+    "publicReferenceId": "workflow-contract:ref:00015",
+    "objectType": "workflow-contract-record",
+    "domainId": "workflow-contract",
+    "objectContractId": "core-object-workflow-contract-record-contract",
+    "status": "active",
+    "version": {
+      "version": 1,
+      "createdAt": "2026-01-01T00:00:00.000Z"
+    },
+    "metadata": {
+      "source": "core-task-035",
+      "sequence": 15,
+      "book": "Book 02"
+    },
+    "auditMetadata": {
+      "createdAt": "2026-01-01T00:00:00.000Z",
+      "createdByReferenceId": "user:ref:actor-0001",
+      "correlationId": "corr-core-task-035"
+    },
+    "visibility": {
+      "permissionScopeReferenceId": "permission:ref:scope-0001",
+      "policyScopeReferenceId": "policy:ref:scope-0001",
+      "organizationScopeReferenceId": "organization:ref:scope-0001",
+      "actorScopeReferenceId": "user:ref:actor-0001"
+    }
+  },
+  {
+    "publicReferenceId": "task:ref:00016",
+    "objectType": "task-record",
+    "domainId": "task",
+    "objectContractId": "core-object-task-record-contract",
+    "status": "active",
+    "version": {
+      "version": 1,
+      "createdAt": "2026-01-01T00:00:00.000Z"
+    },
+    "metadata": {
+      "source": "core-task-035",
+      "sequence": 16,
+      "book": "Book 02"
+    },
+    "auditMetadata": {
+      "createdAt": "2026-01-01T00:00:00.000Z",
+      "createdByReferenceId": "user:ref:actor-0001",
+      "correlationId": "corr-core-task-035"
+    },
+    "visibility": {
+      "permissionScopeReferenceId": "permission:ref:scope-0001",
+      "policyScopeReferenceId": "policy:ref:scope-0001",
+      "organizationScopeReferenceId": "organization:ref:scope-0001",
+      "actorScopeReferenceId": "user:ref:actor-0001"
+    }
+  },
+  {
+    "publicReferenceId": "event:ref:00017",
+    "objectType": "event-record",
+    "domainId": "event",
+    "objectContractId": "core-object-event-record-contract",
+    "status": "active",
+    "version": {
+      "version": 1,
+      "createdAt": "2026-01-01T00:00:00.000Z"
+    },
+    "metadata": {
+      "source": "core-task-035",
+      "sequence": 17,
+      "book": "Book 02"
+    },
+    "auditMetadata": {
+      "createdAt": "2026-01-01T00:00:00.000Z",
+      "createdByReferenceId": "user:ref:actor-0001",
+      "correlationId": "corr-core-task-035"
+    },
+    "visibility": {
+      "permissionScopeReferenceId": "permission:ref:scope-0001",
+      "policyScopeReferenceId": "policy:ref:scope-0001",
+      "organizationScopeReferenceId": "organization:ref:scope-0001",
+      "actorScopeReferenceId": "user:ref:actor-0001"
+    }
+  },
+  {
+    "publicReferenceId": "communication:ref:00018",
+    "objectType": "communication-record",
+    "domainId": "communication",
+    "objectContractId": "core-object-communication-record-contract",
+    "status": "active",
+    "version": {
+      "version": 1,
+      "createdAt": "2026-01-01T00:00:00.000Z"
+    },
+    "metadata": {
+      "source": "core-task-035",
+      "sequence": 18,
+      "book": "Book 02"
+    },
+    "auditMetadata": {
+      "createdAt": "2026-01-01T00:00:00.000Z",
+      "createdByReferenceId": "user:ref:actor-0001",
+      "correlationId": "corr-core-task-035"
+    },
+    "visibility": {
+      "permissionScopeReferenceId": "permission:ref:scope-0001",
+      "policyScopeReferenceId": "policy:ref:scope-0001",
+      "organizationScopeReferenceId": "organization:ref:scope-0001",
+      "actorScopeReferenceId": "user:ref:actor-0001"
+    }
+  }
+]

@@ -435,18 +435,25 @@
       "requiredImplementationKind": "structural_contract",
       "requiredCapabilities": ["object contract", "public reference id"],
       "dependencies": [],
-      "currentDisposition": "validated_skeleton_only",
-      "currentDepth": "level_0",
+      "currentDisposition": "meets_required_depth",
+      "currentDepth": "level_2",
       "contractIds": ["core-object-identity-record-contract"],
       "implementationFiles": [
-        "src/contracts/object/core-object-contract-skeletons.ts"
+        "src/contracts/object/core-object-contract-skeletons.ts",
+        "src/objects/core-mvp-object-profiles.ts",
+        "src/objects/core-mvp-object-base-record.ts",
+        "src/objects/core-mvp-object-validation.ts",
+        "src/behaviors/core-reference-behavior.ts"
       ],
-      "testFiles": [],
-      "fixtureFiles": [],
+      "testFiles": [
+        "tests/unit/core-mvp-object-public-reference-foundation.test.ts",
+        "tests/fixtures/core-mvp-object-public-reference-foundation-fixture.test.ts"
+      ],
+      "fixtureFiles": [
+        "fixtures/objects/core-mvp-object-public-reference-foundation.fixture.json"
+      ],
       "violationReasons": [],
-      "gapReasons": [
-        "object has structural contract evidence only; required MVP behavior depth is not proven."
-      ]
+      "gapReasons": []
     },
     {
       "id": "must-object-organization",
@@ -458,18 +465,25 @@
       "requiredImplementationKind": "structural_contract",
       "requiredCapabilities": ["object contract", "public reference id"],
       "dependencies": [],
-      "currentDisposition": "validated_skeleton_only",
-      "currentDepth": "level_0",
+      "currentDisposition": "meets_required_depth",
+      "currentDepth": "level_2",
       "contractIds": ["core-object-organization-record-contract"],
       "implementationFiles": [
-        "src/contracts/object/core-object-contract-skeletons.ts"
+        "src/contracts/object/core-object-contract-skeletons.ts",
+        "src/objects/core-mvp-object-profiles.ts",
+        "src/objects/core-mvp-object-base-record.ts",
+        "src/objects/core-mvp-object-validation.ts",
+        "src/behaviors/core-reference-behavior.ts"
       ],
-      "testFiles": [],
-      "fixtureFiles": [],
+      "testFiles": [
+        "tests/unit/core-mvp-object-public-reference-foundation.test.ts",
+        "tests/fixtures/core-mvp-object-public-reference-foundation-fixture.test.ts"
+      ],
+      "fixtureFiles": [
+        "fixtures/objects/core-mvp-object-public-reference-foundation.fixture.json"
+      ],
       "violationReasons": [],
-      "gapReasons": [
-        "object has structural contract evidence only; required MVP behavior depth is not proven."
-      ]
+      "gapReasons": []
     },
     {
       "id": "must-object-user",
@@ -481,18 +495,25 @@
       "requiredImplementationKind": "structural_contract",
       "requiredCapabilities": ["object contract", "public reference id"],
       "dependencies": [],
-      "currentDisposition": "validated_skeleton_only",
-      "currentDepth": "level_0",
+      "currentDisposition": "meets_required_depth",
+      "currentDepth": "level_2",
       "contractIds": ["core-object-user-record-contract"],
       "implementationFiles": [
-        "src/contracts/object/core-object-contract-skeletons.ts"
+        "src/contracts/object/core-object-contract-skeletons.ts",
+        "src/objects/core-mvp-object-profiles.ts",
+        "src/objects/core-mvp-object-base-record.ts",
+        "src/objects/core-mvp-object-validation.ts",
+        "src/behaviors/core-reference-behavior.ts"
       ],
-      "testFiles": [],
-      "fixtureFiles": [],
+      "testFiles": [
+        "tests/unit/core-mvp-object-public-reference-foundation.test.ts",
+        "tests/fixtures/core-mvp-object-public-reference-foundation-fixture.test.ts"
+      ],
+      "fixtureFiles": [
+        "fixtures/objects/core-mvp-object-public-reference-foundation.fixture.json"
+      ],
       "violationReasons": [],
-      "gapReasons": [
-        "object has structural contract evidence only; required MVP behavior depth is not proven."
-      ]
+      "gapReasons": []
     },
     {
       "id": "must-object-permission",
@@ -504,18 +525,25 @@
       "requiredImplementationKind": "structural_contract",
       "requiredCapabilities": ["object contract", "public reference id"],
       "dependencies": [],
-      "currentDisposition": "validated_skeleton_only",
-      "currentDepth": "level_0",
+      "currentDisposition": "meets_required_depth",
+      "currentDepth": "level_2",
       "contractIds": ["core-object-permission-record-contract"],
       "implementationFiles": [
-        "src/contracts/object/core-object-contract-skeletons.ts"
+        "src/contracts/object/core-object-contract-skeletons.ts",
+        "src/objects/core-mvp-object-profiles.ts",
+        "src/objects/core-mvp-object-base-record.ts",
+        "src/objects/core-mvp-object-validation.ts",
+        "src/behaviors/core-reference-behavior.ts"
       ],
-      "testFiles": [],
-      "fixtureFiles": [],
+      "testFiles": [
+        "tests/unit/core-mvp-object-public-reference-foundation.test.ts",
+        "tests/fixtures/core-mvp-object-public-reference-foundation-fixture.test.ts"
+      ],
+      "fixtureFiles": [
+        "fixtures/objects/core-mvp-object-public-reference-foundation.fixture.json"
+      ],
       "violationReasons": [],
-      "gapReasons": [
-        "object has structural contract evidence only; required MVP behavior depth is not proven."
-      ]
+      "gapReasons": []
     },
     {
       "id": "must-object-policy",
@@ -527,18 +555,25 @@
       "requiredImplementationKind": "structural_contract",
       "requiredCapabilities": ["object contract", "public reference id"],
       "dependencies": [],
-      "currentDisposition": "validated_skeleton_only",
-      "currentDepth": "level_0",
+      "currentDisposition": "meets_required_depth",
+      "currentDepth": "level_2",
       "contractIds": ["core-object-permission-policy-record-contract"],
       "implementationFiles": [
-        "src/contracts/object/core-object-contract-skeletons.ts"
+        "src/contracts/object/core-object-contract-skeletons.ts",
+        "src/objects/core-mvp-object-profiles.ts",
+        "src/objects/core-mvp-object-base-record.ts",
+        "src/objects/core-mvp-object-validation.ts",
+        "src/behaviors/core-reference-behavior.ts"
       ],
-      "testFiles": [],
-      "fixtureFiles": [],
+      "testFiles": [
+        "tests/unit/core-mvp-object-public-reference-foundation.test.ts",
+        "tests/fixtures/core-mvp-object-public-reference-foundation-fixture.test.ts"
+      ],
+      "fixtureFiles": [
+        "fixtures/objects/core-mvp-object-public-reference-foundation.fixture.json"
+      ],
       "violationReasons": [],
-      "gapReasons": [
-        "object has structural contract evidence only; required MVP behavior depth is not proven."
-      ]
+      "gapReasons": []
     },
     {
       "id": "must-object-customer",
@@ -550,18 +585,25 @@
       "requiredImplementationKind": "structural_contract",
       "requiredCapabilities": ["object contract", "public reference id"],
       "dependencies": [],
-      "currentDisposition": "validated_skeleton_only",
-      "currentDepth": "level_0",
+      "currentDisposition": "meets_required_depth",
+      "currentDepth": "level_2",
       "contractIds": ["core-object-customer-record-contract"],
       "implementationFiles": [
-        "src/contracts/object/core-object-contract-skeletons.ts"
+        "src/contracts/object/core-object-contract-skeletons.ts",
+        "src/objects/core-mvp-object-profiles.ts",
+        "src/objects/core-mvp-object-base-record.ts",
+        "src/objects/core-mvp-object-validation.ts",
+        "src/behaviors/core-reference-behavior.ts"
       ],
-      "testFiles": [],
-      "fixtureFiles": [],
+      "testFiles": [
+        "tests/unit/core-mvp-object-public-reference-foundation.test.ts",
+        "tests/fixtures/core-mvp-object-public-reference-foundation-fixture.test.ts"
+      ],
+      "fixtureFiles": [
+        "fixtures/objects/core-mvp-object-public-reference-foundation.fixture.json"
+      ],
       "violationReasons": [],
-      "gapReasons": [
-        "object has structural contract evidence only; required MVP behavior depth is not proven."
-      ]
+      "gapReasons": []
     },
     {
       "id": "must-object-brand",
@@ -573,18 +615,25 @@
       "requiredImplementationKind": "structural_contract",
       "requiredCapabilities": ["object contract", "public reference id"],
       "dependencies": [],
-      "currentDisposition": "validated_skeleton_only",
-      "currentDepth": "level_0",
+      "currentDisposition": "meets_required_depth",
+      "currentDepth": "level_2",
       "contractIds": ["core-object-brand-record-contract"],
       "implementationFiles": [
-        "src/contracts/object/core-object-contract-skeletons.ts"
+        "src/contracts/object/core-object-contract-skeletons.ts",
+        "src/objects/core-mvp-object-profiles.ts",
+        "src/objects/core-mvp-object-base-record.ts",
+        "src/objects/core-mvp-object-validation.ts",
+        "src/behaviors/core-reference-behavior.ts"
       ],
-      "testFiles": [],
-      "fixtureFiles": [],
+      "testFiles": [
+        "tests/unit/core-mvp-object-public-reference-foundation.test.ts",
+        "tests/fixtures/core-mvp-object-public-reference-foundation-fixture.test.ts"
+      ],
+      "fixtureFiles": [
+        "fixtures/objects/core-mvp-object-public-reference-foundation.fixture.json"
+      ],
       "violationReasons": [],
-      "gapReasons": [
-        "object has structural contract evidence only; required MVP behavior depth is not proven."
-      ]
+      "gapReasons": []
     },
     {
       "id": "must-object-trademark",
@@ -596,18 +645,25 @@
       "requiredImplementationKind": "structural_contract",
       "requiredCapabilities": ["object contract", "public reference id"],
       "dependencies": [],
-      "currentDisposition": "validated_skeleton_only",
-      "currentDepth": "level_0",
+      "currentDisposition": "meets_required_depth",
+      "currentDepth": "level_2",
       "contractIds": ["core-object-trademark-record-contract"],
       "implementationFiles": [
-        "src/contracts/object/core-object-contract-skeletons.ts"
+        "src/contracts/object/core-object-contract-skeletons.ts",
+        "src/objects/core-mvp-object-profiles.ts",
+        "src/objects/core-mvp-object-base-record.ts",
+        "src/objects/core-mvp-object-validation.ts",
+        "src/behaviors/core-reference-behavior.ts"
       ],
-      "testFiles": [],
-      "fixtureFiles": [],
+      "testFiles": [
+        "tests/unit/core-mvp-object-public-reference-foundation.test.ts",
+        "tests/fixtures/core-mvp-object-public-reference-foundation-fixture.test.ts"
+      ],
+      "fixtureFiles": [
+        "fixtures/objects/core-mvp-object-public-reference-foundation.fixture.json"
+      ],
       "violationReasons": [],
-      "gapReasons": [
-        "object has structural contract evidence only; required MVP behavior depth is not proven."
-      ]
+      "gapReasons": []
     },
     {
       "id": "must-object-jurisdiction",
@@ -619,18 +675,25 @@
       "requiredImplementationKind": "structural_contract",
       "requiredCapabilities": ["object contract", "public reference id"],
       "dependencies": [],
-      "currentDisposition": "validated_skeleton_only",
-      "currentDepth": "level_0",
+      "currentDisposition": "meets_required_depth",
+      "currentDepth": "level_2",
       "contractIds": ["core-object-jurisdiction-record-contract"],
       "implementationFiles": [
-        "src/contracts/object/core-object-contract-skeletons.ts"
+        "src/contracts/object/core-object-contract-skeletons.ts",
+        "src/objects/core-mvp-object-profiles.ts",
+        "src/objects/core-mvp-object-base-record.ts",
+        "src/objects/core-mvp-object-validation.ts",
+        "src/behaviors/core-reference-behavior.ts"
       ],
-      "testFiles": [],
-      "fixtureFiles": [],
+      "testFiles": [
+        "tests/unit/core-mvp-object-public-reference-foundation.test.ts",
+        "tests/fixtures/core-mvp-object-public-reference-foundation-fixture.test.ts"
+      ],
+      "fixtureFiles": [
+        "fixtures/objects/core-mvp-object-public-reference-foundation.fixture.json"
+      ],
       "violationReasons": [],
-      "gapReasons": [
-        "object has structural contract evidence only; required MVP behavior depth is not proven."
-      ]
+      "gapReasons": []
     },
     {
       "id": "must-object-classification",
@@ -642,18 +705,25 @@
       "requiredImplementationKind": "structural_contract",
       "requiredCapabilities": ["object contract", "public reference id"],
       "dependencies": [],
-      "currentDisposition": "validated_skeleton_only",
-      "currentDepth": "level_0",
+      "currentDisposition": "meets_required_depth",
+      "currentDepth": "level_2",
       "contractIds": ["core-object-classification-record-contract"],
       "implementationFiles": [
-        "src/contracts/object/core-object-contract-skeletons.ts"
+        "src/contracts/object/core-object-contract-skeletons.ts",
+        "src/objects/core-mvp-object-profiles.ts",
+        "src/objects/core-mvp-object-base-record.ts",
+        "src/objects/core-mvp-object-validation.ts",
+        "src/behaviors/core-reference-behavior.ts"
       ],
-      "testFiles": [],
-      "fixtureFiles": [],
+      "testFiles": [
+        "tests/unit/core-mvp-object-public-reference-foundation.test.ts",
+        "tests/fixtures/core-mvp-object-public-reference-foundation-fixture.test.ts"
+      ],
+      "fixtureFiles": [
+        "fixtures/objects/core-mvp-object-public-reference-foundation.fixture.json"
+      ],
       "violationReasons": [],
-      "gapReasons": [
-        "object has structural contract evidence only; required MVP behavior depth is not proven."
-      ]
+      "gapReasons": []
     },
     {
       "id": "must-object-document",
@@ -665,18 +735,25 @@
       "requiredImplementationKind": "structural_contract",
       "requiredCapabilities": ["object contract", "public reference id"],
       "dependencies": [],
-      "currentDisposition": "validated_skeleton_only",
-      "currentDepth": "level_0",
+      "currentDisposition": "meets_required_depth",
+      "currentDepth": "level_2",
       "contractIds": ["core-object-document-record-contract"],
       "implementationFiles": [
-        "src/contracts/object/core-object-contract-skeletons.ts"
+        "src/contracts/object/core-object-contract-skeletons.ts",
+        "src/objects/core-mvp-object-profiles.ts",
+        "src/objects/core-mvp-object-base-record.ts",
+        "src/objects/core-mvp-object-validation.ts",
+        "src/behaviors/core-reference-behavior.ts"
       ],
-      "testFiles": [],
-      "fixtureFiles": [],
+      "testFiles": [
+        "tests/unit/core-mvp-object-public-reference-foundation.test.ts",
+        "tests/fixtures/core-mvp-object-public-reference-foundation-fixture.test.ts"
+      ],
+      "fixtureFiles": [
+        "fixtures/objects/core-mvp-object-public-reference-foundation.fixture.json"
+      ],
       "violationReasons": [],
-      "gapReasons": [
-        "object has structural contract evidence only; required MVP behavior depth is not proven."
-      ]
+      "gapReasons": []
     },
     {
       "id": "must-object-evidence",
@@ -688,18 +765,25 @@
       "requiredImplementationKind": "structural_contract",
       "requiredCapabilities": ["object contract", "public reference id"],
       "dependencies": [],
-      "currentDisposition": "validated_skeleton_only",
-      "currentDepth": "level_0",
+      "currentDisposition": "meets_required_depth",
+      "currentDepth": "level_2",
       "contractIds": ["core-object-evidence-record-contract"],
       "implementationFiles": [
-        "src/contracts/object/core-object-contract-skeletons.ts"
+        "src/contracts/object/core-object-contract-skeletons.ts",
+        "src/objects/core-mvp-object-profiles.ts",
+        "src/objects/core-mvp-object-base-record.ts",
+        "src/objects/core-mvp-object-validation.ts",
+        "src/behaviors/core-reference-behavior.ts"
       ],
-      "testFiles": [],
-      "fixtureFiles": [],
+      "testFiles": [
+        "tests/unit/core-mvp-object-public-reference-foundation.test.ts",
+        "tests/fixtures/core-mvp-object-public-reference-foundation-fixture.test.ts"
+      ],
+      "fixtureFiles": [
+        "fixtures/objects/core-mvp-object-public-reference-foundation.fixture.json"
+      ],
       "violationReasons": [],
-      "gapReasons": [
-        "object has structural contract evidence only; required MVP behavior depth is not proven."
-      ]
+      "gapReasons": []
     },
     {
       "id": "must-object-matter",
@@ -711,18 +795,25 @@
       "requiredImplementationKind": "structural_contract",
       "requiredCapabilities": ["object contract", "public reference id"],
       "dependencies": [],
-      "currentDisposition": "validated_skeleton_only",
-      "currentDepth": "level_0",
+      "currentDisposition": "meets_required_depth",
+      "currentDepth": "level_2",
       "contractIds": ["core-object-matter-record-contract"],
       "implementationFiles": [
-        "src/contracts/object/core-object-contract-skeletons.ts"
+        "src/contracts/object/core-object-contract-skeletons.ts",
+        "src/objects/core-mvp-object-profiles.ts",
+        "src/objects/core-mvp-object-base-record.ts",
+        "src/objects/core-mvp-object-validation.ts",
+        "src/behaviors/core-reference-behavior.ts"
       ],
-      "testFiles": [],
-      "fixtureFiles": [],
+      "testFiles": [
+        "tests/unit/core-mvp-object-public-reference-foundation.test.ts",
+        "tests/fixtures/core-mvp-object-public-reference-foundation-fixture.test.ts"
+      ],
+      "fixtureFiles": [
+        "fixtures/objects/core-mvp-object-public-reference-foundation.fixture.json"
+      ],
       "violationReasons": [],
-      "gapReasons": [
-        "object has structural contract evidence only; required MVP behavior depth is not proven."
-      ]
+      "gapReasons": []
     },
     {
       "id": "must-object-order",
@@ -734,18 +825,25 @@
       "requiredImplementationKind": "structural_contract",
       "requiredCapabilities": ["object contract", "public reference id"],
       "dependencies": [],
-      "currentDisposition": "validated_skeleton_only",
-      "currentDepth": "level_0",
+      "currentDisposition": "meets_required_depth",
+      "currentDepth": "level_2",
       "contractIds": ["core-object-order-record-contract"],
       "implementationFiles": [
-        "src/contracts/object/core-object-contract-skeletons.ts"
+        "src/contracts/object/core-object-contract-skeletons.ts",
+        "src/objects/core-mvp-object-profiles.ts",
+        "src/objects/core-mvp-object-base-record.ts",
+        "src/objects/core-mvp-object-validation.ts",
+        "src/behaviors/core-reference-behavior.ts"
       ],
-      "testFiles": [],
-      "fixtureFiles": [],
+      "testFiles": [
+        "tests/unit/core-mvp-object-public-reference-foundation.test.ts",
+        "tests/fixtures/core-mvp-object-public-reference-foundation-fixture.test.ts"
+      ],
+      "fixtureFiles": [
+        "fixtures/objects/core-mvp-object-public-reference-foundation.fixture.json"
+      ],
       "violationReasons": [],
-      "gapReasons": [
-        "object has structural contract evidence only; required MVP behavior depth is not proven."
-      ]
+      "gapReasons": []
     },
     {
       "id": "must-object-workflow-contract",
@@ -757,18 +855,25 @@
       "requiredImplementationKind": "structural_contract",
       "requiredCapabilities": ["object contract", "public reference id"],
       "dependencies": [],
-      "currentDisposition": "validated_skeleton_only",
-      "currentDepth": "level_0",
+      "currentDisposition": "meets_required_depth",
+      "currentDepth": "level_2",
       "contractIds": ["core-object-workflow-contract-record-contract"],
       "implementationFiles": [
-        "src/contracts/object/core-object-contract-skeletons.ts"
+        "src/contracts/object/core-object-contract-skeletons.ts",
+        "src/objects/core-mvp-object-profiles.ts",
+        "src/objects/core-mvp-object-base-record.ts",
+        "src/objects/core-mvp-object-validation.ts",
+        "src/behaviors/core-reference-behavior.ts"
       ],
-      "testFiles": [],
-      "fixtureFiles": [],
+      "testFiles": [
+        "tests/unit/core-mvp-object-public-reference-foundation.test.ts",
+        "tests/fixtures/core-mvp-object-public-reference-foundation-fixture.test.ts"
+      ],
+      "fixtureFiles": [
+        "fixtures/objects/core-mvp-object-public-reference-foundation.fixture.json"
+      ],
       "violationReasons": [],
-      "gapReasons": [
-        "object has structural contract evidence only; required MVP behavior depth is not proven."
-      ]
+      "gapReasons": []
     },
     {
       "id": "must-object-task",
@@ -780,18 +885,25 @@
       "requiredImplementationKind": "structural_contract",
       "requiredCapabilities": ["object contract", "public reference id"],
       "dependencies": [],
-      "currentDisposition": "validated_skeleton_only",
-      "currentDepth": "level_0",
+      "currentDisposition": "meets_required_depth",
+      "currentDepth": "level_2",
       "contractIds": ["core-object-task-record-contract"],
       "implementationFiles": [
-        "src/contracts/object/core-object-contract-skeletons.ts"
+        "src/contracts/object/core-object-contract-skeletons.ts",
+        "src/objects/core-mvp-object-profiles.ts",
+        "src/objects/core-mvp-object-base-record.ts",
+        "src/objects/core-mvp-object-validation.ts",
+        "src/behaviors/core-reference-behavior.ts"
       ],
-      "testFiles": [],
-      "fixtureFiles": [],
+      "testFiles": [
+        "tests/unit/core-mvp-object-public-reference-foundation.test.ts",
+        "tests/fixtures/core-mvp-object-public-reference-foundation-fixture.test.ts"
+      ],
+      "fixtureFiles": [
+        "fixtures/objects/core-mvp-object-public-reference-foundation.fixture.json"
+      ],
       "violationReasons": [],
-      "gapReasons": [
-        "object has structural contract evidence only; required MVP behavior depth is not proven."
-      ]
+      "gapReasons": []
     },
     {
       "id": "must-object-event",
@@ -803,18 +915,25 @@
       "requiredImplementationKind": "structural_contract",
       "requiredCapabilities": ["object contract", "public reference id"],
       "dependencies": [],
-      "currentDisposition": "validated_skeleton_only",
-      "currentDepth": "level_0",
+      "currentDisposition": "meets_required_depth",
+      "currentDepth": "level_2",
       "contractIds": ["core-object-event-record-contract"],
       "implementationFiles": [
-        "src/contracts/object/core-object-contract-skeletons.ts"
+        "src/contracts/object/core-object-contract-skeletons.ts",
+        "src/objects/core-mvp-object-profiles.ts",
+        "src/objects/core-mvp-object-base-record.ts",
+        "src/objects/core-mvp-object-validation.ts",
+        "src/behaviors/core-reference-behavior.ts"
       ],
-      "testFiles": [],
-      "fixtureFiles": [],
+      "testFiles": [
+        "tests/unit/core-mvp-object-public-reference-foundation.test.ts",
+        "tests/fixtures/core-mvp-object-public-reference-foundation-fixture.test.ts"
+      ],
+      "fixtureFiles": [
+        "fixtures/objects/core-mvp-object-public-reference-foundation.fixture.json"
+      ],
       "violationReasons": [],
-      "gapReasons": [
-        "object has structural contract evidence only; required MVP behavior depth is not proven."
-      ]
+      "gapReasons": []
     },
     {
       "id": "must-object-communication",
@@ -826,18 +945,25 @@
       "requiredImplementationKind": "structural_contract",
       "requiredCapabilities": ["object contract", "public reference id"],
       "dependencies": [],
-      "currentDisposition": "validated_skeleton_only",
-      "currentDepth": "level_0",
+      "currentDisposition": "meets_required_depth",
+      "currentDepth": "level_2",
       "contractIds": ["core-object-communication-record-contract"],
       "implementationFiles": [
-        "src/contracts/object/core-object-contract-skeletons.ts"
+        "src/contracts/object/core-object-contract-skeletons.ts",
+        "src/objects/core-mvp-object-profiles.ts",
+        "src/objects/core-mvp-object-base-record.ts",
+        "src/objects/core-mvp-object-validation.ts",
+        "src/behaviors/core-reference-behavior.ts"
       ],
-      "testFiles": [],
-      "fixtureFiles": [],
+      "testFiles": [
+        "tests/unit/core-mvp-object-public-reference-foundation.test.ts",
+        "tests/fixtures/core-mvp-object-public-reference-foundation-fixture.test.ts"
+      ],
+      "fixtureFiles": [
+        "fixtures/objects/core-mvp-object-public-reference-foundation.fixture.json"
+      ],
       "violationReasons": [],
-      "gapReasons": [
-        "object has structural contract evidence only; required MVP behavior depth is not proven."
-      ]
+      "gapReasons": []
     },
     {
       "id": "must-service-identity-service",
@@ -4052,6 +4178,7 @@
         "fixtures/contracts/core-workflow-catalog-skeletons.fixture.json",
         "fixtures/domains/core-domain-registry.fixture.json",
         "fixtures/events/core-event-base.fixture.json",
+        "fixtures/objects/core-mvp-object-public-reference-foundation.fixture.json",
         "fixtures/objects/core-object-base.fixture.json",
         "fixtures/tasks/core-task-base.fixture.json",
         "fixtures/workflows/core-workflow-contract-base.fixture.json",
@@ -4145,6 +4272,9 @@
         "src/events/core-event.ts",
         "src/events/index.ts",
         "src/index.ts",
+        "src/objects/core-mvp-object-base-record.ts",
+        "src/objects/core-mvp-object-profiles.ts",
+        "src/objects/core-mvp-object-validation.ts",
         "src/objects/core-object-definition.ts",
         "src/objects/core-object-id.ts",
         "src/objects/core-object-metadata.ts",
@@ -4238,6 +4368,7 @@
         "fixtures/contracts/core-workflow-catalog-skeletons.fixture.json",
         "fixtures/domains/core-domain-registry.fixture.json",
         "fixtures/events/core-event-base.fixture.json",
+        "fixtures/objects/core-mvp-object-public-reference-foundation.fixture.json",
         "fixtures/objects/core-object-base.fixture.json",
         "fixtures/tasks/core-task-base.fixture.json",
         "fixtures/workflows/core-workflow-contract-base.fixture.json",
@@ -4331,6 +4462,9 @@
         "src/events/core-event.ts",
         "src/events/index.ts",
         "src/index.ts",
+        "src/objects/core-mvp-object-base-record.ts",
+        "src/objects/core-mvp-object-profiles.ts",
+        "src/objects/core-mvp-object-validation.ts",
         "src/objects/core-object-definition.ts",
         "src/objects/core-object-id.ts",
         "src/objects/core-object-metadata.ts",
@@ -4419,6 +4553,7 @@
         "fixtures/contracts/core-workflow-catalog-skeletons.fixture.json",
         "fixtures/domains/core-domain-registry.fixture.json",
         "fixtures/events/core-event-base.fixture.json",
+        "fixtures/objects/core-mvp-object-public-reference-foundation.fixture.json",
         "fixtures/objects/core-object-base.fixture.json",
         "fixtures/tasks/core-task-base.fixture.json",
         "fixtures/workflows/core-workflow-contract-base.fixture.json",
@@ -4512,6 +4647,9 @@
         "src/events/core-event.ts",
         "src/events/index.ts",
         "src/index.ts",
+        "src/objects/core-mvp-object-base-record.ts",
+        "src/objects/core-mvp-object-profiles.ts",
+        "src/objects/core-mvp-object-validation.ts",
         "src/objects/core-object-definition.ts",
         "src/objects/core-object-id.ts",
         "src/objects/core-object-metadata.ts",
@@ -4603,6 +4741,7 @@
         "fixtures/contracts/core-workflow-catalog-skeletons.fixture.json",
         "fixtures/domains/core-domain-registry.fixture.json",
         "fixtures/events/core-event-base.fixture.json",
+        "fixtures/objects/core-mvp-object-public-reference-foundation.fixture.json",
         "fixtures/objects/core-object-base.fixture.json",
         "fixtures/tasks/core-task-base.fixture.json",
         "fixtures/workflows/core-workflow-contract-base.fixture.json",
@@ -4696,6 +4835,9 @@
         "src/events/core-event.ts",
         "src/events/index.ts",
         "src/index.ts",
+        "src/objects/core-mvp-object-base-record.ts",
+        "src/objects/core-mvp-object-profiles.ts",
+        "src/objects/core-mvp-object-validation.ts",
         "src/objects/core-object-definition.ts",
         "src/objects/core-object-id.ts",
         "src/objects/core-object-metadata.ts",
@@ -4787,6 +4929,7 @@
         "fixtures/contracts/core-workflow-catalog-skeletons.fixture.json",
         "fixtures/domains/core-domain-registry.fixture.json",
         "fixtures/events/core-event-base.fixture.json",
+        "fixtures/objects/core-mvp-object-public-reference-foundation.fixture.json",
         "fixtures/objects/core-object-base.fixture.json",
         "fixtures/tasks/core-task-base.fixture.json",
         "fixtures/workflows/core-workflow-contract-base.fixture.json",
@@ -4880,6 +5023,9 @@
         "src/events/core-event.ts",
         "src/events/index.ts",
         "src/index.ts",
+        "src/objects/core-mvp-object-base-record.ts",
+        "src/objects/core-mvp-object-profiles.ts",
+        "src/objects/core-mvp-object-validation.ts",
         "src/objects/core-object-definition.ts",
         "src/objects/core-object-id.ts",
         "src/objects/core-object-metadata.ts",
@@ -4968,6 +5114,7 @@
         "fixtures/contracts/core-workflow-catalog-skeletons.fixture.json",
         "fixtures/domains/core-domain-registry.fixture.json",
         "fixtures/events/core-event-base.fixture.json",
+        "fixtures/objects/core-mvp-object-public-reference-foundation.fixture.json",
         "fixtures/objects/core-object-base.fixture.json",
         "fixtures/tasks/core-task-base.fixture.json",
         "fixtures/workflows/core-workflow-contract-base.fixture.json",
@@ -5061,6 +5208,9 @@
         "src/events/core-event.ts",
         "src/events/index.ts",
         "src/index.ts",
+        "src/objects/core-mvp-object-base-record.ts",
+        "src/objects/core-mvp-object-profiles.ts",
+        "src/objects/core-mvp-object-validation.ts",
         "src/objects/core-object-definition.ts",
         "src/objects/core-object-id.ts",
         "src/objects/core-object-metadata.ts",
@@ -5152,6 +5302,7 @@
         "fixtures/contracts/core-workflow-catalog-skeletons.fixture.json",
         "fixtures/domains/core-domain-registry.fixture.json",
         "fixtures/events/core-event-base.fixture.json",
+        "fixtures/objects/core-mvp-object-public-reference-foundation.fixture.json",
         "fixtures/objects/core-object-base.fixture.json",
         "fixtures/tasks/core-task-base.fixture.json",
         "fixtures/workflows/core-workflow-contract-base.fixture.json",
@@ -5245,6 +5396,9 @@
         "src/events/core-event.ts",
         "src/events/index.ts",
         "src/index.ts",
+        "src/objects/core-mvp-object-base-record.ts",
+        "src/objects/core-mvp-object-profiles.ts",
+        "src/objects/core-mvp-object-validation.ts",
         "src/objects/core-object-definition.ts",
         "src/objects/core-object-id.ts",
         "src/objects/core-object-metadata.ts",
@@ -5336,6 +5490,7 @@
         "fixtures/contracts/core-workflow-catalog-skeletons.fixture.json",
         "fixtures/domains/core-domain-registry.fixture.json",
         "fixtures/events/core-event-base.fixture.json",
+        "fixtures/objects/core-mvp-object-public-reference-foundation.fixture.json",
         "fixtures/objects/core-object-base.fixture.json",
         "fixtures/tasks/core-task-base.fixture.json",
         "fixtures/workflows/core-workflow-contract-base.fixture.json",
@@ -5429,6 +5584,9 @@
         "src/events/core-event.ts",
         "src/events/index.ts",
         "src/index.ts",
+        "src/objects/core-mvp-object-base-record.ts",
+        "src/objects/core-mvp-object-profiles.ts",
+        "src/objects/core-mvp-object-validation.ts",
         "src/objects/core-object-definition.ts",
         "src/objects/core-object-id.ts",
         "src/objects/core-object-metadata.ts",
@@ -5520,6 +5678,7 @@
         "fixtures/contracts/core-workflow-catalog-skeletons.fixture.json",
         "fixtures/domains/core-domain-registry.fixture.json",
         "fixtures/events/core-event-base.fixture.json",
+        "fixtures/objects/core-mvp-object-public-reference-foundation.fixture.json",
         "fixtures/objects/core-object-base.fixture.json",
         "fixtures/tasks/core-task-base.fixture.json",
         "fixtures/workflows/core-workflow-contract-base.fixture.json",
@@ -5613,6 +5772,9 @@
         "src/events/core-event.ts",
         "src/events/index.ts",
         "src/index.ts",
+        "src/objects/core-mvp-object-base-record.ts",
+        "src/objects/core-mvp-object-profiles.ts",
+        "src/objects/core-mvp-object-validation.ts",
         "src/objects/core-object-definition.ts",
         "src/objects/core-object-id.ts",
         "src/objects/core-object-metadata.ts",
@@ -5704,6 +5866,7 @@
         "fixtures/contracts/core-workflow-catalog-skeletons.fixture.json",
         "fixtures/domains/core-domain-registry.fixture.json",
         "fixtures/events/core-event-base.fixture.json",
+        "fixtures/objects/core-mvp-object-public-reference-foundation.fixture.json",
         "fixtures/objects/core-object-base.fixture.json",
         "fixtures/tasks/core-task-base.fixture.json",
         "fixtures/workflows/core-workflow-contract-base.fixture.json",
@@ -5797,6 +5960,9 @@
         "src/events/core-event.ts",
         "src/events/index.ts",
         "src/index.ts",
+        "src/objects/core-mvp-object-base-record.ts",
+        "src/objects/core-mvp-object-profiles.ts",
+        "src/objects/core-mvp-object-validation.ts",
         "src/objects/core-object-definition.ts",
         "src/objects/core-object-id.ts",
         "src/objects/core-object-metadata.ts",
@@ -5888,6 +6054,7 @@
         "fixtures/contracts/core-workflow-catalog-skeletons.fixture.json",
         "fixtures/domains/core-domain-registry.fixture.json",
         "fixtures/events/core-event-base.fixture.json",
+        "fixtures/objects/core-mvp-object-public-reference-foundation.fixture.json",
         "fixtures/objects/core-object-base.fixture.json",
         "fixtures/tasks/core-task-base.fixture.json",
         "fixtures/workflows/core-workflow-contract-base.fixture.json",
@@ -5981,6 +6148,9 @@
         "src/events/core-event.ts",
         "src/events/index.ts",
         "src/index.ts",
+        "src/objects/core-mvp-object-base-record.ts",
+        "src/objects/core-mvp-object-profiles.ts",
+        "src/objects/core-mvp-object-validation.ts",
         "src/objects/core-object-definition.ts",
         "src/objects/core-object-id.ts",
         "src/objects/core-object-metadata.ts",
@@ -6072,6 +6242,7 @@
         "fixtures/contracts/core-workflow-catalog-skeletons.fixture.json",
         "fixtures/domains/core-domain-registry.fixture.json",
         "fixtures/events/core-event-base.fixture.json",
+        "fixtures/objects/core-mvp-object-public-reference-foundation.fixture.json",
         "fixtures/objects/core-object-base.fixture.json",
         "fixtures/tasks/core-task-base.fixture.json",
         "fixtures/workflows/core-workflow-contract-base.fixture.json",
@@ -6165,6 +6336,9 @@
         "src/events/core-event.ts",
         "src/events/index.ts",
         "src/index.ts",
+        "src/objects/core-mvp-object-base-record.ts",
+        "src/objects/core-mvp-object-profiles.ts",
+        "src/objects/core-mvp-object-validation.ts",
         "src/objects/core-object-definition.ts",
         "src/objects/core-object-id.ts",
         "src/objects/core-object-metadata.ts",
@@ -6256,6 +6430,7 @@
         "fixtures/contracts/core-workflow-catalog-skeletons.fixture.json",
         "fixtures/domains/core-domain-registry.fixture.json",
         "fixtures/events/core-event-base.fixture.json",
+        "fixtures/objects/core-mvp-object-public-reference-foundation.fixture.json",
         "fixtures/objects/core-object-base.fixture.json",
         "fixtures/tasks/core-task-base.fixture.json",
         "fixtures/workflows/core-workflow-contract-base.fixture.json",
@@ -6349,6 +6524,9 @@
         "src/events/core-event.ts",
         "src/events/index.ts",
         "src/index.ts",
+        "src/objects/core-mvp-object-base-record.ts",
+        "src/objects/core-mvp-object-profiles.ts",
+        "src/objects/core-mvp-object-validation.ts",
         "src/objects/core-object-definition.ts",
         "src/objects/core-object-id.ts",
         "src/objects/core-object-metadata.ts",
@@ -6440,6 +6618,7 @@
         "fixtures/contracts/core-workflow-catalog-skeletons.fixture.json",
         "fixtures/domains/core-domain-registry.fixture.json",
         "fixtures/events/core-event-base.fixture.json",
+        "fixtures/objects/core-mvp-object-public-reference-foundation.fixture.json",
         "fixtures/objects/core-object-base.fixture.json",
         "fixtures/tasks/core-task-base.fixture.json",
         "fixtures/workflows/core-workflow-contract-base.fixture.json",
@@ -6533,6 +6712,9 @@
         "src/events/core-event.ts",
         "src/events/index.ts",
         "src/index.ts",
+        "src/objects/core-mvp-object-base-record.ts",
+        "src/objects/core-mvp-object-profiles.ts",
+        "src/objects/core-mvp-object-validation.ts",
         "src/objects/core-object-definition.ts",
         "src/objects/core-object-id.ts",
         "src/objects/core-object-metadata.ts",
@@ -6624,6 +6806,7 @@
         "fixtures/contracts/core-workflow-catalog-skeletons.fixture.json",
         "fixtures/domains/core-domain-registry.fixture.json",
         "fixtures/events/core-event-base.fixture.json",
+        "fixtures/objects/core-mvp-object-public-reference-foundation.fixture.json",
         "fixtures/objects/core-object-base.fixture.json",
         "fixtures/tasks/core-task-base.fixture.json",
         "fixtures/workflows/core-workflow-contract-base.fixture.json",
@@ -6717,6 +6900,9 @@
         "src/events/core-event.ts",
         "src/events/index.ts",
         "src/index.ts",
+        "src/objects/core-mvp-object-base-record.ts",
+        "src/objects/core-mvp-object-profiles.ts",
+        "src/objects/core-mvp-object-validation.ts",
         "src/objects/core-object-definition.ts",
         "src/objects/core-object-id.ts",
         "src/objects/core-object-metadata.ts",
@@ -6810,6 +6996,7 @@
         "fixtures/contracts/core-workflow-catalog-skeletons.fixture.json",
         "fixtures/domains/core-domain-registry.fixture.json",
         "fixtures/events/core-event-base.fixture.json",
+        "fixtures/objects/core-mvp-object-public-reference-foundation.fixture.json",
         "fixtures/objects/core-object-base.fixture.json",
         "fixtures/tasks/core-task-base.fixture.json",
         "fixtures/workflows/core-workflow-contract-base.fixture.json",
@@ -6903,6 +7090,9 @@
         "src/events/core-event.ts",
         "src/events/index.ts",
         "src/index.ts",
+        "src/objects/core-mvp-object-base-record.ts",
+        "src/objects/core-mvp-object-profiles.ts",
+        "src/objects/core-mvp-object-validation.ts",
         "src/objects/core-object-definition.ts",
         "src/objects/core-object-id.ts",
         "src/objects/core-object-metadata.ts",
@@ -6998,6 +7188,7 @@
         "fixtures/contracts/core-workflow-catalog-skeletons.fixture.json",
         "fixtures/domains/core-domain-registry.fixture.json",
         "fixtures/events/core-event-base.fixture.json",
+        "fixtures/objects/core-mvp-object-public-reference-foundation.fixture.json",
         "fixtures/objects/core-object-base.fixture.json",
         "fixtures/tasks/core-task-base.fixture.json",
         "fixtures/workflows/core-workflow-contract-base.fixture.json",
@@ -7091,6 +7282,9 @@
         "src/events/core-event.ts",
         "src/events/index.ts",
         "src/index.ts",
+        "src/objects/core-mvp-object-base-record.ts",
+        "src/objects/core-mvp-object-profiles.ts",
+        "src/objects/core-mvp-object-validation.ts",
         "src/objects/core-object-definition.ts",
         "src/objects/core-object-id.ts",
         "src/objects/core-object-metadata.ts",
@@ -7184,6 +7378,7 @@
         "fixtures/contracts/core-workflow-catalog-skeletons.fixture.json",
         "fixtures/domains/core-domain-registry.fixture.json",
         "fixtures/events/core-event-base.fixture.json",
+        "fixtures/objects/core-mvp-object-public-reference-foundation.fixture.json",
         "fixtures/objects/core-object-base.fixture.json",
         "fixtures/tasks/core-task-base.fixture.json",
         "fixtures/workflows/core-workflow-contract-base.fixture.json",
@@ -7277,6 +7472,9 @@
         "src/events/core-event.ts",
         "src/events/index.ts",
         "src/index.ts",
+        "src/objects/core-mvp-object-base-record.ts",
+        "src/objects/core-mvp-object-profiles.ts",
+        "src/objects/core-mvp-object-validation.ts",
         "src/objects/core-object-definition.ts",
         "src/objects/core-object-id.ts",
         "src/objects/core-object-metadata.ts",
@@ -7370,6 +7568,7 @@
         "fixtures/contracts/core-workflow-catalog-skeletons.fixture.json",
         "fixtures/domains/core-domain-registry.fixture.json",
         "fixtures/events/core-event-base.fixture.json",
+        "fixtures/objects/core-mvp-object-public-reference-foundation.fixture.json",
         "fixtures/objects/core-object-base.fixture.json",
         "fixtures/tasks/core-task-base.fixture.json",
         "fixtures/workflows/core-workflow-contract-base.fixture.json",
@@ -7463,6 +7662,9 @@
         "src/events/core-event.ts",
         "src/events/index.ts",
         "src/index.ts",
+        "src/objects/core-mvp-object-base-record.ts",
+        "src/objects/core-mvp-object-profiles.ts",
+        "src/objects/core-mvp-object-validation.ts",
         "src/objects/core-object-definition.ts",
         "src/objects/core-object-id.ts",
         "src/objects/core-object-metadata.ts",
@@ -7554,6 +7756,7 @@
         "fixtures/contracts/core-workflow-catalog-skeletons.fixture.json",
         "fixtures/domains/core-domain-registry.fixture.json",
         "fixtures/events/core-event-base.fixture.json",
+        "fixtures/objects/core-mvp-object-public-reference-foundation.fixture.json",
         "fixtures/objects/core-object-base.fixture.json",
         "fixtures/tasks/core-task-base.fixture.json",
         "fixtures/workflows/core-workflow-contract-base.fixture.json",
@@ -7647,6 +7850,9 @@
         "src/events/core-event.ts",
         "src/events/index.ts",
         "src/index.ts",
+        "src/objects/core-mvp-object-base-record.ts",
+        "src/objects/core-mvp-object-profiles.ts",
+        "src/objects/core-mvp-object-validation.ts",
         "src/objects/core-object-definition.ts",
         "src/objects/core-object-id.ts",
         "src/objects/core-object-metadata.ts",
@@ -7738,6 +7944,7 @@
         "fixtures/contracts/core-workflow-catalog-skeletons.fixture.json",
         "fixtures/domains/core-domain-registry.fixture.json",
         "fixtures/events/core-event-base.fixture.json",
+        "fixtures/objects/core-mvp-object-public-reference-foundation.fixture.json",
         "fixtures/objects/core-object-base.fixture.json",
         "fixtures/tasks/core-task-base.fixture.json",
         "fixtures/workflows/core-workflow-contract-base.fixture.json",
@@ -7831,6 +8038,9 @@
         "src/events/core-event.ts",
         "src/events/index.ts",
         "src/index.ts",
+        "src/objects/core-mvp-object-base-record.ts",
+        "src/objects/core-mvp-object-profiles.ts",
+        "src/objects/core-mvp-object-validation.ts",
         "src/objects/core-object-definition.ts",
         "src/objects/core-object-id.ts",
         "src/objects/core-object-metadata.ts",
@@ -7922,6 +8132,7 @@
         "fixtures/contracts/core-workflow-catalog-skeletons.fixture.json",
         "fixtures/domains/core-domain-registry.fixture.json",
         "fixtures/events/core-event-base.fixture.json",
+        "fixtures/objects/core-mvp-object-public-reference-foundation.fixture.json",
         "fixtures/objects/core-object-base.fixture.json",
         "fixtures/tasks/core-task-base.fixture.json",
         "fixtures/workflows/core-workflow-contract-base.fixture.json",
@@ -8015,6 +8226,9 @@
         "src/events/core-event.ts",
         "src/events/index.ts",
         "src/index.ts",
+        "src/objects/core-mvp-object-base-record.ts",
+        "src/objects/core-mvp-object-profiles.ts",
+        "src/objects/core-mvp-object-validation.ts",
         "src/objects/core-object-definition.ts",
         "src/objects/core-object-id.ts",
         "src/objects/core-object-metadata.ts",
@@ -8106,6 +8320,7 @@
         "fixtures/contracts/core-workflow-catalog-skeletons.fixture.json",
         "fixtures/domains/core-domain-registry.fixture.json",
         "fixtures/events/core-event-base.fixture.json",
+        "fixtures/objects/core-mvp-object-public-reference-foundation.fixture.json",
         "fixtures/objects/core-object-base.fixture.json",
         "fixtures/tasks/core-task-base.fixture.json",
         "fixtures/workflows/core-workflow-contract-base.fixture.json",
@@ -8199,6 +8414,9 @@
         "src/events/core-event.ts",
         "src/events/index.ts",
         "src/index.ts",
+        "src/objects/core-mvp-object-base-record.ts",
+        "src/objects/core-mvp-object-profiles.ts",
+        "src/objects/core-mvp-object-validation.ts",
         "src/objects/core-object-definition.ts",
         "src/objects/core-object-id.ts",
         "src/objects/core-object-metadata.ts",
@@ -8290,6 +8508,7 @@
         "fixtures/contracts/core-workflow-catalog-skeletons.fixture.json",
         "fixtures/domains/core-domain-registry.fixture.json",
         "fixtures/events/core-event-base.fixture.json",
+        "fixtures/objects/core-mvp-object-public-reference-foundation.fixture.json",
         "fixtures/objects/core-object-base.fixture.json",
         "fixtures/tasks/core-task-base.fixture.json",
         "fixtures/workflows/core-workflow-contract-base.fixture.json",
@@ -8383,6 +8602,9 @@
         "src/events/core-event.ts",
         "src/events/index.ts",
         "src/index.ts",
+        "src/objects/core-mvp-object-base-record.ts",
+        "src/objects/core-mvp-object-profiles.ts",
+        "src/objects/core-mvp-object-validation.ts",
         "src/objects/core-object-definition.ts",
         "src/objects/core-object-id.ts",
         "src/objects/core-object-metadata.ts",
@@ -8474,6 +8696,7 @@
         "fixtures/contracts/core-workflow-catalog-skeletons.fixture.json",
         "fixtures/domains/core-domain-registry.fixture.json",
         "fixtures/events/core-event-base.fixture.json",
+        "fixtures/objects/core-mvp-object-public-reference-foundation.fixture.json",
         "fixtures/objects/core-object-base.fixture.json",
         "fixtures/tasks/core-task-base.fixture.json",
         "fixtures/workflows/core-workflow-contract-base.fixture.json",
@@ -8567,6 +8790,9 @@
         "src/events/core-event.ts",
         "src/events/index.ts",
         "src/index.ts",
+        "src/objects/core-mvp-object-base-record.ts",
+        "src/objects/core-mvp-object-profiles.ts",
+        "src/objects/core-mvp-object-validation.ts",
         "src/objects/core-object-definition.ts",
         "src/objects/core-object-id.ts",
         "src/objects/core-object-metadata.ts",
@@ -8658,6 +8884,7 @@
         "fixtures/contracts/core-workflow-catalog-skeletons.fixture.json",
         "fixtures/domains/core-domain-registry.fixture.json",
         "fixtures/events/core-event-base.fixture.json",
+        "fixtures/objects/core-mvp-object-public-reference-foundation.fixture.json",
         "fixtures/objects/core-object-base.fixture.json",
         "fixtures/tasks/core-task-base.fixture.json",
         "fixtures/workflows/core-workflow-contract-base.fixture.json",
@@ -8751,6 +8978,9 @@
         "src/events/core-event.ts",
         "src/events/index.ts",
         "src/index.ts",
+        "src/objects/core-mvp-object-base-record.ts",
+        "src/objects/core-mvp-object-profiles.ts",
+        "src/objects/core-mvp-object-validation.ts",
         "src/objects/core-object-definition.ts",
         "src/objects/core-object-id.ts",
         "src/objects/core-object-metadata.ts",
@@ -8842,6 +9072,7 @@
         "fixtures/contracts/core-workflow-catalog-skeletons.fixture.json",
         "fixtures/domains/core-domain-registry.fixture.json",
         "fixtures/events/core-event-base.fixture.json",
+        "fixtures/objects/core-mvp-object-public-reference-foundation.fixture.json",
         "fixtures/objects/core-object-base.fixture.json",
         "fixtures/tasks/core-task-base.fixture.json",
         "fixtures/workflows/core-workflow-contract-base.fixture.json",
@@ -8935,6 +9166,9 @@
         "src/events/core-event.ts",
         "src/events/index.ts",
         "src/index.ts",
+        "src/objects/core-mvp-object-base-record.ts",
+        "src/objects/core-mvp-object-profiles.ts",
+        "src/objects/core-mvp-object-validation.ts",
         "src/objects/core-object-definition.ts",
         "src/objects/core-object-id.ts",
         "src/objects/core-object-metadata.ts",
@@ -9026,6 +9260,7 @@
         "fixtures/contracts/core-workflow-catalog-skeletons.fixture.json",
         "fixtures/domains/core-domain-registry.fixture.json",
         "fixtures/events/core-event-base.fixture.json",
+        "fixtures/objects/core-mvp-object-public-reference-foundation.fixture.json",
         "fixtures/objects/core-object-base.fixture.json",
         "fixtures/tasks/core-task-base.fixture.json",
         "fixtures/workflows/core-workflow-contract-base.fixture.json",
@@ -9119,6 +9354,9 @@
         "src/events/core-event.ts",
         "src/events/index.ts",
         "src/index.ts",
+        "src/objects/core-mvp-object-base-record.ts",
+        "src/objects/core-mvp-object-profiles.ts",
+        "src/objects/core-mvp-object-validation.ts",
         "src/objects/core-object-definition.ts",
         "src/objects/core-object-id.ts",
         "src/objects/core-object-metadata.ts",
@@ -9210,6 +9448,7 @@
         "fixtures/contracts/core-workflow-catalog-skeletons.fixture.json",
         "fixtures/domains/core-domain-registry.fixture.json",
         "fixtures/events/core-event-base.fixture.json",
+        "fixtures/objects/core-mvp-object-public-reference-foundation.fixture.json",
         "fixtures/objects/core-object-base.fixture.json",
         "fixtures/tasks/core-task-base.fixture.json",
         "fixtures/workflows/core-workflow-contract-base.fixture.json",
@@ -9303,6 +9542,9 @@
         "src/events/core-event.ts",
         "src/events/index.ts",
         "src/index.ts",
+        "src/objects/core-mvp-object-base-record.ts",
+        "src/objects/core-mvp-object-profiles.ts",
+        "src/objects/core-mvp-object-validation.ts",
         "src/objects/core-object-definition.ts",
         "src/objects/core-object-id.ts",
         "src/objects/core-object-metadata.ts",
@@ -9394,6 +9636,7 @@
         "fixtures/contracts/core-workflow-catalog-skeletons.fixture.json",
         "fixtures/domains/core-domain-registry.fixture.json",
         "fixtures/events/core-event-base.fixture.json",
+        "fixtures/objects/core-mvp-object-public-reference-foundation.fixture.json",
         "fixtures/objects/core-object-base.fixture.json",
         "fixtures/tasks/core-task-base.fixture.json",
         "fixtures/workflows/core-workflow-contract-base.fixture.json",
@@ -9487,6 +9730,9 @@
         "src/events/core-event.ts",
         "src/events/index.ts",
         "src/index.ts",
+        "src/objects/core-mvp-object-base-record.ts",
+        "src/objects/core-mvp-object-profiles.ts",
+        "src/objects/core-mvp-object-validation.ts",
         "src/objects/core-object-definition.ts",
         "src/objects/core-object-id.ts",
         "src/objects/core-object-metadata.ts",
@@ -9578,6 +9824,7 @@
         "fixtures/contracts/core-workflow-catalog-skeletons.fixture.json",
         "fixtures/domains/core-domain-registry.fixture.json",
         "fixtures/events/core-event-base.fixture.json",
+        "fixtures/objects/core-mvp-object-public-reference-foundation.fixture.json",
         "fixtures/objects/core-object-base.fixture.json",
         "fixtures/tasks/core-task-base.fixture.json",
         "fixtures/workflows/core-workflow-contract-base.fixture.json",
@@ -9671,6 +9918,9 @@
         "src/events/core-event.ts",
         "src/events/index.ts",
         "src/index.ts",
+        "src/objects/core-mvp-object-base-record.ts",
+        "src/objects/core-mvp-object-profiles.ts",
+        "src/objects/core-mvp-object-validation.ts",
         "src/objects/core-object-definition.ts",
         "src/objects/core-object-id.ts",
         "src/objects/core-object-metadata.ts",
@@ -9763,6 +10013,7 @@
         "fixtures/contracts/core-workflow-catalog-skeletons.fixture.json",
         "fixtures/domains/core-domain-registry.fixture.json",
         "fixtures/events/core-event-base.fixture.json",
+        "fixtures/objects/core-mvp-object-public-reference-foundation.fixture.json",
         "fixtures/objects/core-object-base.fixture.json",
         "fixtures/tasks/core-task-base.fixture.json",
         "fixtures/workflows/core-workflow-contract-base.fixture.json",
@@ -9856,6 +10107,9 @@
         "src/events/core-event.ts",
         "src/events/index.ts",
         "src/index.ts",
+        "src/objects/core-mvp-object-base-record.ts",
+        "src/objects/core-mvp-object-profiles.ts",
+        "src/objects/core-mvp-object-validation.ts",
         "src/objects/core-object-definition.ts",
         "src/objects/core-object-id.ts",
         "src/objects/core-object-metadata.ts",
@@ -9948,6 +10202,7 @@
         "fixtures/contracts/core-workflow-catalog-skeletons.fixture.json",
         "fixtures/domains/core-domain-registry.fixture.json",
         "fixtures/events/core-event-base.fixture.json",
+        "fixtures/objects/core-mvp-object-public-reference-foundation.fixture.json",
         "fixtures/objects/core-object-base.fixture.json",
         "fixtures/tasks/core-task-base.fixture.json",
         "fixtures/workflows/core-workflow-contract-base.fixture.json",
@@ -10041,6 +10296,9 @@
         "src/events/core-event.ts",
         "src/events/index.ts",
         "src/index.ts",
+        "src/objects/core-mvp-object-base-record.ts",
+        "src/objects/core-mvp-object-profiles.ts",
+        "src/objects/core-mvp-object-validation.ts",
         "src/objects/core-object-definition.ts",
         "src/objects/core-object-id.ts",
         "src/objects/core-object-metadata.ts",
@@ -10133,6 +10391,7 @@
         "fixtures/contracts/core-workflow-catalog-skeletons.fixture.json",
         "fixtures/domains/core-domain-registry.fixture.json",
         "fixtures/events/core-event-base.fixture.json",
+        "fixtures/objects/core-mvp-object-public-reference-foundation.fixture.json",
         "fixtures/objects/core-object-base.fixture.json",
         "fixtures/tasks/core-task-base.fixture.json",
         "fixtures/workflows/core-workflow-contract-base.fixture.json",
@@ -10226,6 +10485,9 @@
         "src/events/core-event.ts",
         "src/events/index.ts",
         "src/index.ts",
+        "src/objects/core-mvp-object-base-record.ts",
+        "src/objects/core-mvp-object-profiles.ts",
+        "src/objects/core-mvp-object-validation.ts",
         "src/objects/core-object-definition.ts",
         "src/objects/core-object-id.ts",
         "src/objects/core-object-metadata.ts",
@@ -10318,6 +10580,7 @@
         "fixtures/contracts/core-workflow-catalog-skeletons.fixture.json",
         "fixtures/domains/core-domain-registry.fixture.json",
         "fixtures/events/core-event-base.fixture.json",
+        "fixtures/objects/core-mvp-object-public-reference-foundation.fixture.json",
         "fixtures/objects/core-object-base.fixture.json",
         "fixtures/tasks/core-task-base.fixture.json",
         "fixtures/workflows/core-workflow-contract-base.fixture.json",
@@ -10411,6 +10674,9 @@
         "src/events/core-event.ts",
         "src/events/index.ts",
         "src/index.ts",
+        "src/objects/core-mvp-object-base-record.ts",
+        "src/objects/core-mvp-object-profiles.ts",
+        "src/objects/core-mvp-object-validation.ts",
         "src/objects/core-object-definition.ts",
         "src/objects/core-object-id.ts",
         "src/objects/core-object-metadata.ts",
@@ -10503,6 +10769,7 @@
         "fixtures/contracts/core-workflow-catalog-skeletons.fixture.json",
         "fixtures/domains/core-domain-registry.fixture.json",
         "fixtures/events/core-event-base.fixture.json",
+        "fixtures/objects/core-mvp-object-public-reference-foundation.fixture.json",
         "fixtures/objects/core-object-base.fixture.json",
         "fixtures/tasks/core-task-base.fixture.json",
         "fixtures/workflows/core-workflow-contract-base.fixture.json",
@@ -10596,6 +10863,9 @@
         "src/events/core-event.ts",
         "src/events/index.ts",
         "src/index.ts",
+        "src/objects/core-mvp-object-base-record.ts",
+        "src/objects/core-mvp-object-profiles.ts",
+        "src/objects/core-mvp-object-validation.ts",
         "src/objects/core-object-definition.ts",
         "src/objects/core-object-id.ts",
         "src/objects/core-object-metadata.ts",
@@ -10690,6 +10960,7 @@
         "fixtures/contracts/core-workflow-catalog-skeletons.fixture.json",
         "fixtures/domains/core-domain-registry.fixture.json",
         "fixtures/events/core-event-base.fixture.json",
+        "fixtures/objects/core-mvp-object-public-reference-foundation.fixture.json",
         "fixtures/objects/core-object-base.fixture.json",
         "fixtures/tasks/core-task-base.fixture.json",
         "fixtures/workflows/core-workflow-contract-base.fixture.json",
@@ -10783,6 +11054,9 @@
         "src/events/core-event.ts",
         "src/events/index.ts",
         "src/index.ts",
+        "src/objects/core-mvp-object-base-record.ts",
+        "src/objects/core-mvp-object-profiles.ts",
+        "src/objects/core-mvp-object-validation.ts",
         "src/objects/core-object-definition.ts",
         "src/objects/core-object-id.ts",
         "src/objects/core-object-metadata.ts",
@@ -10875,6 +11149,7 @@
         "fixtures/contracts/core-workflow-catalog-skeletons.fixture.json",
         "fixtures/domains/core-domain-registry.fixture.json",
         "fixtures/events/core-event-base.fixture.json",
+        "fixtures/objects/core-mvp-object-public-reference-foundation.fixture.json",
         "fixtures/objects/core-object-base.fixture.json",
         "fixtures/tasks/core-task-base.fixture.json",
         "fixtures/workflows/core-workflow-contract-base.fixture.json",
@@ -10968,6 +11243,9 @@
         "src/events/core-event.ts",
         "src/events/index.ts",
         "src/index.ts",
+        "src/objects/core-mvp-object-base-record.ts",
+        "src/objects/core-mvp-object-profiles.ts",
+        "src/objects/core-mvp-object-validation.ts",
         "src/objects/core-object-definition.ts",
         "src/objects/core-object-id.ts",
         "src/objects/core-object-metadata.ts",
@@ -11060,6 +11338,7 @@
         "fixtures/contracts/core-workflow-catalog-skeletons.fixture.json",
         "fixtures/domains/core-domain-registry.fixture.json",
         "fixtures/events/core-event-base.fixture.json",
+        "fixtures/objects/core-mvp-object-public-reference-foundation.fixture.json",
         "fixtures/objects/core-object-base.fixture.json",
         "fixtures/tasks/core-task-base.fixture.json",
         "fixtures/workflows/core-workflow-contract-base.fixture.json",
@@ -11153,6 +11432,9 @@
         "src/events/core-event.ts",
         "src/events/index.ts",
         "src/index.ts",
+        "src/objects/core-mvp-object-base-record.ts",
+        "src/objects/core-mvp-object-profiles.ts",
+        "src/objects/core-mvp-object-validation.ts",
         "src/objects/core-object-definition.ts",
         "src/objects/core-object-id.ts",
         "src/objects/core-object-metadata.ts",
@@ -11245,6 +11527,7 @@
         "fixtures/contracts/core-workflow-catalog-skeletons.fixture.json",
         "fixtures/domains/core-domain-registry.fixture.json",
         "fixtures/events/core-event-base.fixture.json",
+        "fixtures/objects/core-mvp-object-public-reference-foundation.fixture.json",
         "fixtures/objects/core-object-base.fixture.json",
         "fixtures/tasks/core-task-base.fixture.json",
         "fixtures/workflows/core-workflow-contract-base.fixture.json",
@@ -11338,6 +11621,9 @@
         "src/events/core-event.ts",
         "src/events/index.ts",
         "src/index.ts",
+        "src/objects/core-mvp-object-base-record.ts",
+        "src/objects/core-mvp-object-profiles.ts",
+        "src/objects/core-mvp-object-validation.ts",
         "src/objects/core-object-definition.ts",
         "src/objects/core-object-id.ts",
         "src/objects/core-object-metadata.ts",
@@ -11430,6 +11716,7 @@
         "fixtures/contracts/core-workflow-catalog-skeletons.fixture.json",
         "fixtures/domains/core-domain-registry.fixture.json",
         "fixtures/events/core-event-base.fixture.json",
+        "fixtures/objects/core-mvp-object-public-reference-foundation.fixture.json",
         "fixtures/objects/core-object-base.fixture.json",
         "fixtures/tasks/core-task-base.fixture.json",
         "fixtures/workflows/core-workflow-contract-base.fixture.json",
@@ -11523,6 +11810,9 @@
         "src/events/core-event.ts",
         "src/events/index.ts",
         "src/index.ts",
+        "src/objects/core-mvp-object-base-record.ts",
+        "src/objects/core-mvp-object-profiles.ts",
+        "src/objects/core-mvp-object-validation.ts",
         "src/objects/core-object-definition.ts",
         "src/objects/core-object-id.ts",
         "src/objects/core-object-metadata.ts",
@@ -11615,6 +11905,7 @@
         "fixtures/contracts/core-workflow-catalog-skeletons.fixture.json",
         "fixtures/domains/core-domain-registry.fixture.json",
         "fixtures/events/core-event-base.fixture.json",
+        "fixtures/objects/core-mvp-object-public-reference-foundation.fixture.json",
         "fixtures/objects/core-object-base.fixture.json",
         "fixtures/tasks/core-task-base.fixture.json",
         "fixtures/workflows/core-workflow-contract-base.fixture.json",
@@ -11708,6 +11999,9 @@
         "src/events/core-event.ts",
         "src/events/index.ts",
         "src/index.ts",
+        "src/objects/core-mvp-object-base-record.ts",
+        "src/objects/core-mvp-object-profiles.ts",
+        "src/objects/core-mvp-object-validation.ts",
         "src/objects/core-object-definition.ts",
         "src/objects/core-object-id.ts",
         "src/objects/core-object-metadata.ts",
@@ -11800,6 +12094,7 @@
         "fixtures/contracts/core-workflow-catalog-skeletons.fixture.json",
         "fixtures/domains/core-domain-registry.fixture.json",
         "fixtures/events/core-event-base.fixture.json",
+        "fixtures/objects/core-mvp-object-public-reference-foundation.fixture.json",
         "fixtures/objects/core-object-base.fixture.json",
         "fixtures/tasks/core-task-base.fixture.json",
         "fixtures/workflows/core-workflow-contract-base.fixture.json",
@@ -11893,6 +12188,9 @@
         "src/events/core-event.ts",
         "src/events/index.ts",
         "src/index.ts",
+        "src/objects/core-mvp-object-base-record.ts",
+        "src/objects/core-mvp-object-profiles.ts",
+        "src/objects/core-mvp-object-validation.ts",
         "src/objects/core-object-definition.ts",
         "src/objects/core-object-id.ts",
         "src/objects/core-object-metadata.ts",
@@ -11985,6 +12283,7 @@
         "fixtures/contracts/core-workflow-catalog-skeletons.fixture.json",
         "fixtures/domains/core-domain-registry.fixture.json",
         "fixtures/events/core-event-base.fixture.json",
+        "fixtures/objects/core-mvp-object-public-reference-foundation.fixture.json",
         "fixtures/objects/core-object-base.fixture.json",
         "fixtures/tasks/core-task-base.fixture.json",
         "fixtures/workflows/core-workflow-contract-base.fixture.json",
@@ -12078,6 +12377,9 @@
         "src/events/core-event.ts",
         "src/events/index.ts",
         "src/index.ts",
+        "src/objects/core-mvp-object-base-record.ts",
+        "src/objects/core-mvp-object-profiles.ts",
+        "src/objects/core-mvp-object-validation.ts",
         "src/objects/core-object-definition.ts",
         "src/objects/core-object-id.ts",
         "src/objects/core-object-metadata.ts",
@@ -12167,6 +12469,7 @@
         "fixtures/contracts/core-workflow-catalog-skeletons.fixture.json",
         "fixtures/domains/core-domain-registry.fixture.json",
         "fixtures/events/core-event-base.fixture.json",
+        "fixtures/objects/core-mvp-object-public-reference-foundation.fixture.json",
         "fixtures/objects/core-object-base.fixture.json",
         "fixtures/tasks/core-task-base.fixture.json",
         "fixtures/workflows/core-workflow-contract-base.fixture.json",
@@ -12260,6 +12563,9 @@
         "src/events/core-event.ts",
         "src/events/index.ts",
         "src/index.ts",
+        "src/objects/core-mvp-object-base-record.ts",
+        "src/objects/core-mvp-object-profiles.ts",
+        "src/objects/core-mvp-object-validation.ts",
         "src/objects/core-object-definition.ts",
         "src/objects/core-object-id.ts",
         "src/objects/core-object-metadata.ts",
@@ -12349,6 +12655,7 @@
         "fixtures/contracts/core-workflow-catalog-skeletons.fixture.json",
         "fixtures/domains/core-domain-registry.fixture.json",
         "fixtures/events/core-event-base.fixture.json",
+        "fixtures/objects/core-mvp-object-public-reference-foundation.fixture.json",
         "fixtures/objects/core-object-base.fixture.json",
         "fixtures/tasks/core-task-base.fixture.json",
         "fixtures/workflows/core-workflow-contract-base.fixture.json",
@@ -12442,6 +12749,9 @@
         "src/events/core-event.ts",
         "src/events/index.ts",
         "src/index.ts",
+        "src/objects/core-mvp-object-base-record.ts",
+        "src/objects/core-mvp-object-profiles.ts",
+        "src/objects/core-mvp-object-validation.ts",
         "src/objects/core-object-definition.ts",
         "src/objects/core-object-id.ts",
         "src/objects/core-object-metadata.ts",
@@ -12534,6 +12844,7 @@
         "fixtures/contracts/core-workflow-catalog-skeletons.fixture.json",
         "fixtures/domains/core-domain-registry.fixture.json",
         "fixtures/events/core-event-base.fixture.json",
+        "fixtures/objects/core-mvp-object-public-reference-foundation.fixture.json",
         "fixtures/objects/core-object-base.fixture.json",
         "fixtures/tasks/core-task-base.fixture.json",
         "fixtures/workflows/core-workflow-contract-base.fixture.json",
@@ -12627,6 +12938,9 @@
         "src/events/core-event.ts",
         "src/events/index.ts",
         "src/index.ts",
+        "src/objects/core-mvp-object-base-record.ts",
+        "src/objects/core-mvp-object-profiles.ts",
+        "src/objects/core-mvp-object-validation.ts",
         "src/objects/core-object-definition.ts",
         "src/objects/core-object-id.ts",
         "src/objects/core-object-metadata.ts",
@@ -12721,6 +13035,7 @@
         "fixtures/contracts/core-workflow-catalog-skeletons.fixture.json",
         "fixtures/domains/core-domain-registry.fixture.json",
         "fixtures/events/core-event-base.fixture.json",
+        "fixtures/objects/core-mvp-object-public-reference-foundation.fixture.json",
         "fixtures/objects/core-object-base.fixture.json",
         "fixtures/tasks/core-task-base.fixture.json",
         "fixtures/workflows/core-workflow-contract-base.fixture.json",
@@ -12814,6 +13129,9 @@
         "src/events/core-event.ts",
         "src/events/index.ts",
         "src/index.ts",
+        "src/objects/core-mvp-object-base-record.ts",
+        "src/objects/core-mvp-object-profiles.ts",
+        "src/objects/core-mvp-object-validation.ts",
         "src/objects/core-object-definition.ts",
         "src/objects/core-object-id.ts",
         "src/objects/core-object-metadata.ts",
@@ -12906,6 +13224,7 @@
         "fixtures/contracts/core-workflow-catalog-skeletons.fixture.json",
         "fixtures/domains/core-domain-registry.fixture.json",
         "fixtures/events/core-event-base.fixture.json",
+        "fixtures/objects/core-mvp-object-public-reference-foundation.fixture.json",
         "fixtures/objects/core-object-base.fixture.json",
         "fixtures/tasks/core-task-base.fixture.json",
         "fixtures/workflows/core-workflow-contract-base.fixture.json",
@@ -12999,6 +13318,9 @@
         "src/events/core-event.ts",
         "src/events/index.ts",
         "src/index.ts",
+        "src/objects/core-mvp-object-base-record.ts",
+        "src/objects/core-mvp-object-profiles.ts",
+        "src/objects/core-mvp-object-validation.ts",
         "src/objects/core-object-definition.ts",
         "src/objects/core-object-id.ts",
         "src/objects/core-object-metadata.ts",
@@ -13113,7 +13435,7 @@
         "must-object-event",
         "must-object-communication"
       ],
-      "satisfied": false,
+      "satisfied": true,
       "evidenceRequirementIds": [
         "must-object-identity",
         "must-object-organization",
@@ -13136,11 +13458,16 @@
       ],
       "behaviorIds": [],
       "evidenceFiles": [
-        "src/contracts/object/core-object-contract-skeletons.ts"
+        "fixtures/objects/core-mvp-object-public-reference-foundation.fixture.json",
+        "src/behaviors/core-reference-behavior.ts",
+        "src/contracts/object/core-object-contract-skeletons.ts",
+        "src/objects/core-mvp-object-base-record.ts",
+        "src/objects/core-mvp-object-profiles.ts",
+        "src/objects/core-mvp-object-validation.ts",
+        "tests/fixtures/core-mvp-object-public-reference-foundation-fixture.test.ts",
+        "tests/unit/core-mvp-object-public-reference-foundation.test.ts"
       ],
-      "unresolvedReasons": [
-        "All 18 Object requirements require explicit public-reference evidence, not generic skeleton evidence."
-      ]
+      "unresolvedReasons": []
     },
     {
       "id": "must-build-services-own-behavior",
@@ -13663,9 +13990,9 @@
   "summary": {
     "mustBuildNow": {
       "total": 115,
-      "meets_required_depth": 14,
+      "meets_required_depth": 32,
       "partial_evidence": 3,
-      "validated_skeleton_only": 75,
+      "validated_skeleton_only": 57,
       "boundary_scaffold_only": 5,
       "semantic_overlap_only": 18,
       "fixture_only": 0,
@@ -13695,10 +14022,9 @@
       "violationCount": 0
     },
     "acceptance": {
-      "acceptanceCriteriaSatisfied": 10,
+      "acceptanceCriteriaSatisfied": 11,
       "acceptanceCriteriaTotal": 19,
       "unresolvedCriteria": [
-        "must-build-objects-have-public-reference-ids",
         "must-build-services-own-behavior",
         "must-build-api-validators-exist",
         "customer-intake-workflow-supports-preview-apply",

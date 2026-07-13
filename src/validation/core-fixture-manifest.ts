@@ -24,7 +24,8 @@ export const CORE_FIXTURE_TYPES = [
   'contract_behavior_acceptance_lock',
   'safety_boundary_foundations',
   'idempotency_enforcement',
-  'book_02_mvp_gap_baseline'
+  'book_02_mvp_gap_baseline',
+  'core_mvp_object_public_reference_foundation'
 ] as const;
 
 export type CoreFixtureType = (typeof CORE_FIXTURE_TYPES)[number];
@@ -186,6 +187,12 @@ export const CORE_FIXTURE_MANIFEST = [
     id: 'core-idempotency-enforcement',
     type: 'idempotency_enforcement',
     path: 'fixtures/behaviors/core-idempotency-enforcement.fixture.json',
+    required: true
+  },
+  {
+    id: 'core-mvp-object-public-reference-foundation',
+    type: 'core_mvp_object_public_reference_foundation',
+    path: 'fixtures/objects/core-mvp-object-public-reference-foundation.fixture.json',
     required: true
   },
   {

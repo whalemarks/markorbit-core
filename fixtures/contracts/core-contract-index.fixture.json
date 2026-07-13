@@ -442,186 +442,6 @@
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
   {
-    "id": "core-object-user-record-contract",
-    "type": "object",
-    "name": "User Record Object Contract Skeleton",
-    "description": "Skeleton contract boundary for User Record Core objects.",
-    "status": "active",
-    "scope": {
-      "domainId": "user",
-      "objectType": "user-record"
-    },
-    "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
-    "source": "CORE_OBJECT_CONTRACT_SKELETONS",
-    "createdAt": "2026-07-09T00:00:00.000Z"
-  },
-  {
-    "id": "core-object-organization-record-contract",
-    "type": "object",
-    "name": "Organization Record Object Contract Skeleton",
-    "description": "Skeleton contract boundary for Organization Record Core objects.",
-    "status": "active",
-    "scope": {
-      "domainId": "organization",
-      "objectType": "organization-record"
-    },
-    "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
-    "source": "CORE_OBJECT_CONTRACT_SKELETONS",
-    "createdAt": "2026-07-09T00:00:00.000Z"
-  },
-  {
-    "id": "core-object-permission-policy-record-contract",
-    "type": "object",
-    "name": "Permission Policy Record Object Contract Skeleton",
-    "description": "Skeleton contract boundary for Permission Policy Record Core objects.",
-    "status": "active",
-    "scope": {
-      "domainId": "policy",
-      "objectType": "permission-policy-record"
-    },
-    "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
-    "source": "CORE_OBJECT_CONTRACT_SKELETONS",
-    "createdAt": "2026-07-09T00:00:00.000Z"
-  },
-  {
-    "id": "core-object-knowledge-source-record-contract",
-    "type": "object",
-    "name": "Knowledge Source Record Object Contract Skeleton",
-    "description": "Skeleton contract boundary for Knowledge Source Record Core objects.",
-    "status": "active",
-    "scope": {
-      "domainId": "knowledge",
-      "objectType": "knowledge-source-record"
-    },
-    "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
-    "source": "CORE_OBJECT_CONTRACT_SKELETONS",
-    "createdAt": "2026-07-09T00:00:00.000Z"
-  },
-  {
-    "id": "core-object-brand-record-contract",
-    "type": "object",
-    "name": "Brand Record Object Contract Skeleton",
-    "description": "Skeleton contract boundary for Brand Record Core objects.",
-    "status": "active",
-    "scope": {
-      "domainId": "brand",
-      "objectType": "brand-record"
-    },
-    "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
-    "source": "CORE_OBJECT_CONTRACT_SKELETONS",
-    "createdAt": "2026-07-09T00:00:00.000Z"
-  },
-  {
-    "id": "core-object-trademark-record-contract",
-    "type": "object",
-    "name": "Trademark Record Object Contract Skeleton",
-    "description": "Skeleton contract boundary for Trademark Record Core objects.",
-    "status": "active",
-    "scope": {
-      "domainId": "trademark",
-      "objectType": "trademark-record"
-    },
-    "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
-    "source": "CORE_OBJECT_CONTRACT_SKELETONS",
-    "createdAt": "2026-07-09T00:00:00.000Z"
-  },
-  {
-    "id": "core-object-jurisdiction-record-contract",
-    "type": "object",
-    "name": "Jurisdiction Record Object Contract Skeleton",
-    "description": "Skeleton contract boundary for Jurisdiction Record Core objects.",
-    "status": "active",
-    "scope": {
-      "domainId": "jurisdiction",
-      "objectType": "jurisdiction-record"
-    },
-    "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
-    "source": "CORE_OBJECT_CONTRACT_SKELETONS",
-    "createdAt": "2026-07-09T00:00:00.000Z"
-  },
-  {
-    "id": "core-object-classification-record-contract",
-    "type": "object",
-    "name": "Classification Record Object Contract Skeleton",
-    "description": "Skeleton contract boundary for Classification Record Core objects.",
-    "status": "active",
-    "scope": {
-      "domainId": "classification",
-      "objectType": "classification-record"
-    },
-    "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
-    "source": "CORE_OBJECT_CONTRACT_SKELETONS",
-    "createdAt": "2026-07-09T00:00:00.000Z"
-  },
-  {
-    "id": "core-object-document-record-contract",
-    "type": "object",
-    "name": "Document Record Object Contract Skeleton",
-    "description": "Skeleton contract boundary for Document Record Core objects.",
-    "status": "active",
-    "scope": {
-      "domainId": "document",
-      "objectType": "document-record"
-    },
-    "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
-    "source": "CORE_OBJECT_CONTRACT_SKELETONS",
-    "createdAt": "2026-07-09T00:00:00.000Z"
-  },
-  {
-    "id": "core-object-evidence-record-contract",
-    "type": "object",
-    "name": "Evidence Record Object Contract Skeleton",
-    "description": "Skeleton contract boundary for Evidence Record Core objects.",
-    "status": "active",
-    "scope": {
-      "domainId": "evidence",
-      "objectType": "evidence-record"
-    },
-    "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
-    "source": "CORE_OBJECT_CONTRACT_SKELETONS",
-    "createdAt": "2026-07-09T00:00:00.000Z"
-  },
-  {
-    "id": "core-object-matter-record-contract",
-    "type": "object",
-    "name": "Matter Record Object Contract Skeleton",
-    "description": "Skeleton contract boundary for Matter Record Core objects.",
-    "status": "active",
-    "scope": {
-      "domainId": "matter",
-      "objectType": "matter-record"
-    },
-    "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
-    "source": "CORE_OBJECT_CONTRACT_SKELETONS",
-    "createdAt": "2026-07-09T00:00:00.000Z"
-  },
-  {
-    "id": "core-object-communication-record-contract",
-    "type": "object",
-    "name": "Communication Record Object Contract Skeleton",
-    "description": "Skeleton contract boundary for Communication Record Core objects.",
-    "status": "active",
-    "scope": {
-      "domainId": "communication",
-      "objectType": "communication-record"
-    },
-    "version": 1,
-    "book": "Book 02 — MarkOrbit Core Specification",
-    "source": "CORE_OBJECT_CONTRACT_SKELETONS",
-    "createdAt": "2026-07-09T00:00:00.000Z"
-  },
-  {
     "id": "core-object-identity-record-contract",
     "type": "object",
     "name": "Core Identity Object Contract Skeleton",
@@ -630,6 +450,36 @@
     "scope": {
       "domainId": "identity",
       "objectType": "identity-record"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "source": "CORE_OBJECT_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-11T00:00:00.000Z"
+  },
+  {
+    "id": "core-object-organization-record-contract",
+    "type": "object",
+    "name": "Organization Record Object Contract Skeleton",
+    "description": "Canonical metadata skeleton for the organization Core Object boundary.",
+    "status": "active",
+    "scope": {
+      "domainId": "organization",
+      "objectType": "organization-record"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "source": "CORE_OBJECT_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-11T00:00:00.000Z"
+  },
+  {
+    "id": "core-object-user-record-contract",
+    "type": "object",
+    "name": "User Record Object Contract Skeleton",
+    "description": "Canonical metadata skeleton for the user Core Object boundary.",
+    "status": "active",
+    "scope": {
+      "domainId": "user",
+      "objectType": "user-record"
     },
     "version": 1,
     "book": "Book 02 — MarkOrbit Core Specification",
@@ -652,6 +502,21 @@
     "createdAt": "2026-07-11T00:00:00.000Z"
   },
   {
+    "id": "core-object-permission-policy-record-contract",
+    "type": "object",
+    "name": "Permission Policy Record Object Contract Skeleton",
+    "description": "Canonical metadata skeleton for the policy Core Object boundary.",
+    "status": "active",
+    "scope": {
+      "domainId": "policy",
+      "objectType": "permission-policy-record"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "source": "CORE_OBJECT_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-11T00:00:00.000Z"
+  },
+  {
     "id": "core-object-customer-record-contract",
     "type": "object",
     "name": "Core Customer Object Contract Skeleton",
@@ -660,6 +525,111 @@
     "scope": {
       "domainId": "customer",
       "objectType": "customer-record"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "source": "CORE_OBJECT_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-11T00:00:00.000Z"
+  },
+  {
+    "id": "core-object-brand-record-contract",
+    "type": "object",
+    "name": "Brand Record Object Contract Skeleton",
+    "description": "Canonical metadata skeleton for the brand Core Object boundary.",
+    "status": "active",
+    "scope": {
+      "domainId": "brand",
+      "objectType": "brand-record"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "source": "CORE_OBJECT_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-11T00:00:00.000Z"
+  },
+  {
+    "id": "core-object-trademark-record-contract",
+    "type": "object",
+    "name": "Trademark Record Object Contract Skeleton",
+    "description": "Canonical metadata skeleton for the trademark Core Object boundary.",
+    "status": "active",
+    "scope": {
+      "domainId": "trademark",
+      "objectType": "trademark-record"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "source": "CORE_OBJECT_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-11T00:00:00.000Z"
+  },
+  {
+    "id": "core-object-jurisdiction-record-contract",
+    "type": "object",
+    "name": "Jurisdiction Record Object Contract Skeleton",
+    "description": "Canonical metadata skeleton for the jurisdiction Core Object boundary.",
+    "status": "active",
+    "scope": {
+      "domainId": "jurisdiction",
+      "objectType": "jurisdiction-record"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "source": "CORE_OBJECT_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-11T00:00:00.000Z"
+  },
+  {
+    "id": "core-object-classification-record-contract",
+    "type": "object",
+    "name": "Classification Record Object Contract Skeleton",
+    "description": "Canonical metadata skeleton for the classification Core Object boundary.",
+    "status": "active",
+    "scope": {
+      "domainId": "classification",
+      "objectType": "classification-record"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "source": "CORE_OBJECT_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-11T00:00:00.000Z"
+  },
+  {
+    "id": "core-object-document-record-contract",
+    "type": "object",
+    "name": "Document Record Object Contract Skeleton",
+    "description": "Canonical metadata skeleton for the document Core Object boundary.",
+    "status": "active",
+    "scope": {
+      "domainId": "document",
+      "objectType": "document-record"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "source": "CORE_OBJECT_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-11T00:00:00.000Z"
+  },
+  {
+    "id": "core-object-evidence-record-contract",
+    "type": "object",
+    "name": "Evidence Record Object Contract Skeleton",
+    "description": "Canonical metadata skeleton for the evidence Core Object boundary.",
+    "status": "active",
+    "scope": {
+      "domainId": "evidence",
+      "objectType": "evidence-record"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "source": "CORE_OBJECT_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-11T00:00:00.000Z"
+  },
+  {
+    "id": "core-object-matter-record-contract",
+    "type": "object",
+    "name": "Matter Record Object Contract Skeleton",
+    "description": "Canonical metadata skeleton for the matter Core Object boundary.",
+    "status": "active",
+    "scope": {
+      "domainId": "matter",
+      "objectType": "matter-record"
     },
     "version": 1,
     "book": "Book 02 — MarkOrbit Core Specification",
@@ -727,10 +697,40 @@
     "createdAt": "2026-07-11T00:00:00.000Z"
   },
   {
+    "id": "core-object-communication-record-contract",
+    "type": "object",
+    "name": "Communication Record Object Contract Skeleton",
+    "description": "Canonical metadata skeleton for the communication Core Object boundary.",
+    "status": "active",
+    "scope": {
+      "domainId": "communication",
+      "objectType": "communication-record"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "source": "CORE_OBJECT_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-11T00:00:00.000Z"
+  },
+  {
+    "id": "core-object-knowledge-source-record-contract",
+    "type": "object",
+    "name": "Knowledge Source Record Object Contract Skeleton",
+    "description": "Canonical metadata skeleton for the knowledge Core Object boundary.",
+    "status": "active",
+    "scope": {
+      "domainId": "knowledge",
+      "objectType": "knowledge-source-record"
+    },
+    "version": 1,
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "source": "CORE_OBJECT_CONTRACT_SKELETONS",
+    "createdAt": "2026-07-11T00:00:00.000Z"
+  },
+  {
     "id": "core-object-opportunity-record-contract",
     "type": "object",
     "name": "Core Opportunity Object Contract Skeleton",
-    "description": "Safe metadata-only stub for the Opportunity Core Object boundary.",
+    "description": "Canonical metadata skeleton for the opportunity Core Object boundary.",
     "status": "active",
     "scope": {
       "domainId": "opportunity",
@@ -745,7 +745,7 @@
     "id": "core-object-notification-record-contract",
     "type": "object",
     "name": "Core Notification Object Contract Skeleton",
-    "description": "Safe metadata-only stub for the Notification Core Object boundary.",
+    "description": "Canonical metadata skeleton for the notification Core Object boundary.",
     "status": "active",
     "scope": {
       "domainId": "notification",
@@ -760,7 +760,7 @@
     "id": "core-object-partner-record-contract",
     "type": "object",
     "name": "Core Partner Object Contract Skeleton",
-    "description": "Safe metadata-only stub for the Partner Core Object boundary.",
+    "description": "Canonical metadata skeleton for the partner Core Object boundary.",
     "status": "active",
     "scope": {
       "domainId": "partner",
@@ -775,7 +775,7 @@
     "id": "core-object-agent-record-contract",
     "type": "object",
     "name": "Core Agent Object Contract Skeleton",
-    "description": "Safe metadata-only stub for the Agent Core Object boundary.",
+    "description": "Canonical metadata skeleton for the agent Core Object boundary.",
     "status": "active",
     "scope": {
       "domainId": "agent",
@@ -790,7 +790,7 @@
     "id": "core-object-service-provider-record-contract",
     "type": "object",
     "name": "Core Service Provider Object Contract Skeleton",
-    "description": "Safe metadata-only stub for the Service Provider Core Object boundary.",
+    "description": "Canonical metadata skeleton for the service-provider Core Object boundary.",
     "status": "active",
     "scope": {
       "domainId": "service-provider",
@@ -805,7 +805,7 @@
     "id": "core-object-service-network-record-contract",
     "type": "object",
     "name": "Core Service Network Object Contract Skeleton",
-    "description": "Safe metadata-only stub for the Service Network Core Object boundary.",
+    "description": "Canonical metadata skeleton for the service-network Core Object boundary.",
     "status": "active",
     "scope": {
       "domainId": "service-network",
@@ -820,7 +820,7 @@
     "id": "core-object-routing-record-contract",
     "type": "object",
     "name": "Core Routing Object Contract Skeleton",
-    "description": "Safe metadata-only stub for the Routing Core Object boundary.",
+    "description": "Canonical metadata skeleton for the routing Core Object boundary.",
     "status": "active",
     "scope": {
       "domainId": "routing",

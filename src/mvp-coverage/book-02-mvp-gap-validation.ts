@@ -1,7 +1,16 @@
-import { existsSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { isAbsolute } from 'node:path';
 import { CORE_CONTRACT_BEHAVIOR_ACCEPTANCE_LOCK } from '../behavior-coverage/index.ts';
-import { CORE_CONTRACT_INDEX } from '../contracts/index.ts';
+import {
+  CORE_CONTRACT_INDEX,
+  CORE_OBJECT_CONTRACT_SKELETONS
+} from '../contracts/index.ts';
+import {
+  CORE_MVP_OBJECT_FIXTURE_PUBLIC_REFERENCE_RECORDS,
+  coreMvpObjectFixtureValidationContextFor
+} from '../objects/core-mvp-object-base-record.ts';
+import { CORE_MVP_OBJECT_CANONICAL_PROFILES } from '../objects/core-mvp-object-profiles.ts';
+import { validateCoreMvpObjectBaseRecord } from '../objects/core-mvp-object-validation.ts';
 import {
   BOOK_02_AUTHORITY,
   BOOK_02_EXPECTED_COUNTS,
@@ -62,6 +71,29 @@ const structuredCheckPrefixes = [
 ] as const;
 const hasKnownStructuredCheckPrefix = (check: string) =>
   structuredCheckPrefixes.some((prefix) => check.startsWith(prefix));
+export interface Book02MvpGapValidationOptions {
+  readonly objectFixtureRecords?: readonly Record<string, unknown>[];
+}
+
+const objectFixtureRecords = (
+  options?: Book02MvpGapValidationOptions
+): readonly Record<string, unknown>[] => {
+  if (options?.objectFixtureRecords) return options.objectFixtureRecords;
+
+  try {
+    const parsed = JSON.parse(
+      readFileSync(
+        'fixtures/objects/core-mvp-object-public-reference-foundation.fixture.json',
+        'utf8'
+      )
+    ) as unknown;
+    return Array.isArray(parsed)
+      ? (parsed as readonly Record<string, unknown>[])
+      : [];
+  } catch {
+    return [];
+  }
+};
 const dispositions = new Set<Book02MvpDisposition>([
   'meets_required_depth',
   'partial_evidence',
@@ -317,7 +349,8 @@ function validateRequirementShape(
   return true;
 }
 export function validateBook02MvpRequirements(
-  requirements: readonly unknown[]
+  requirements: readonly unknown[],
+  options?: Book02MvpGapValidationOptions
 ): readonly Book02MvpValidationIssue[] {
   const issues: Book02MvpValidationIssue[] = [];
   const expected = BOOK_02_MVP_REQUIREMENT_IDENTITIES;
@@ -511,6 +544,189 @@ export function validateBook02MvpRequirements(
           )
         );
     }
+
+    if (r.layer === 'object') {
+      const domainId = r.id.replace('must-object-', '');
+      const profileMatches = CORE_MVP_OBJECT_CANONICAL_PROFILES.filter(
+        (entry) => entry.domainId === domainId
+      );
+      const profile = profileMatches[0];
+      const contractMatches = profile
+        ? CORE_OBJECT_CONTRACT_SKELETONS.filter(
+            (entry) => entry.id === profile.objectContractId
+          )
+        : [];
+      const contract = contractMatches[0];
+      const fixtureMatches = objectFixtureRecords(options).filter(
+        (entry) => entry.domainId === domainId
+      );
+      const fixtureRecord = fixtureMatches[0];
+      const publicReferenceMatches =
+        typeof fixtureRecord?.publicReferenceId === 'string'
+          ? CORE_MVP_OBJECT_FIXTURE_PUBLIC_REFERENCE_RECORDS.filter(
+              (entry) => entry.referenceId === fixtureRecord.publicReferenceId
+            )
+          : [];
+      const publicReferenceRecord = publicReferenceMatches[0];
+      const fixtureContext =
+        typeof fixtureRecord?.publicReferenceId === 'string'
+          ? coreMvpObjectFixtureValidationContextFor(
+              fixtureRecord.publicReferenceId
+            )
+          : undefined;
+      const fixtureValidation = fixtureContext
+        ? validateCoreMvpObjectBaseRecord(fixtureRecord, fixtureContext)
+        : undefined;
+      if (
+        profileMatches.length !== 1 ||
+        contractMatches.length !== 1 ||
+        !profile ||
+        !contract
+      )
+        issues.push(
+          issue(
+            'book02.object.profile_contract_mismatch',
+            'Object requirement must map to an exact canonical profile and real Object contract.',
+            `requirements[${index}]`
+          )
+        );
+      if (profile && contract) {
+        if (
+          profile.domainId !== contract.domainId ||
+          profile.objectType !== contract.objectType ||
+          profile.objectContractId !== contract.id
+        )
+          issues.push(
+            issue(
+              'book02.object.profile_contract_mismatch',
+              'Object profile must match the real Object contract.',
+              `requirements[${index}]`
+            )
+          );
+        if (profile.sourcePath !== contract.sourcePath)
+          issues.push(
+            issue(
+              'book02.object.profile_source_mismatch',
+              'Object profile source path must match the real Object contract.',
+              `requirements[${index}]`
+            )
+          );
+      }
+      if (fixtureMatches.length === 0)
+        issues.push(
+          issue(
+            'book02.object.fixture_missing',
+            'Object requirement must have an exact fixture record.',
+            `requirements[${index}]`
+          )
+        );
+      if (fixtureMatches.length > 1)
+        issues.push(
+          issue(
+            'book02.object.fixture_duplicate',
+            'Object requirement must not have duplicate fixture records.',
+            `requirements[${index}]`
+          )
+        );
+      if (
+        profileMatches.length !== 1 ||
+        contractMatches.length !== 1 ||
+        fixtureMatches.length !== 1 ||
+        publicReferenceMatches.length !== 1
+      )
+        issues.push(
+          issue(
+            'book02.object.fixture_count_inconsistent',
+            'Object evidence must contain exactly one fixture record and at most one matching public Reference record.',
+            `requirements[${index}]`
+          )
+        );
+      if (
+        profile &&
+        fixtureRecord &&
+        (fixtureRecord.objectType !== profile.objectType ||
+          fixtureRecord.objectContractId !== profile.objectContractId ||
+          fixtureRecord.domainId !== profile.domainId)
+      )
+        issues.push(
+          issue(
+            'book02.object.fixture_profile_mismatch',
+            'Object fixture record must match the exact profile.',
+            `requirements[${index}]`
+          )
+        );
+      if (
+        !profile ||
+        !fixtureRecord ||
+        !publicReferenceRecord ||
+        publicReferenceMatches.length !== 1 ||
+        publicReferenceRecord.objectType !== profile.objectType ||
+        publicReferenceRecord.referenceDomain !== profile.domainId
+      )
+        issues.push(
+          issue(
+            'book02.object.reference_evidence_missing',
+            'Object fixture must have matching public Reference evidence.',
+            `requirements[${index}]`
+          )
+        );
+      if (fixtureRecord && !fixtureContext)
+        issues.push(
+          issue(
+            'book02.object.fixture_context_missing',
+            'Object fixture validation context is missing.',
+            `requirements[${index}].fixtureContext`
+          )
+        );
+      if (fixtureContext && fixtureValidation?.ok !== true) {
+        const childCodes =
+          fixtureValidation?.issues.map((child) => child.code).join(', ') ??
+          'unknown';
+        issues.push(
+          issue(
+            'book02.object.fixture_validation_failed',
+            `Object fixture validation failed with child codes: ${childCodes}`,
+            `requirements[${index}].fixtureValidation`
+          )
+        );
+      }
+      const hasDepthEvidence = Boolean(
+        profile &&
+        contract &&
+        fixtureRecord &&
+        publicReferenceMatches.length === 1 &&
+        publicReferenceRecord &&
+        fixtureContext &&
+        fixtureValidation?.ok === true &&
+        r.contractIds.includes(String(contract.id)) &&
+        r.implementationFiles.includes(
+          'src/objects/core-mvp-object-profiles.ts'
+        ) &&
+        r.implementationFiles.includes(
+          'src/objects/core-mvp-object-base-record.ts'
+        ) &&
+        r.implementationFiles.includes(
+          'src/objects/core-mvp-object-validation.ts'
+        ) &&
+        r.testFiles.includes(
+          'tests/unit/core-mvp-object-public-reference-foundation.test.ts'
+        ) &&
+        r.testFiles.includes(
+          'tests/fixtures/core-mvp-object-public-reference-foundation-fixture.test.ts'
+        ) &&
+        r.fixtureFiles.includes(
+          'fixtures/objects/core-mvp-object-public-reference-foundation.fixture.json'
+        )
+      );
+      if (r.currentDisposition === 'meets_required_depth' && !hasDepthEvidence)
+        issues.push(
+          issue(
+            'book02.object.depth_inconsistent',
+            'Object meets_required_depth requires exact profile, contract, fixture, reference, implementation, and test evidence.',
+            `requirements[${index}]`
+          )
+        );
+    }
     if (r.sourcePath.includes('event-object.md'))
       issues.push(
         issue(
@@ -686,7 +902,8 @@ function validateDispositionConsistency(
     );
 }
 export function validateBook02MvpGapBaseline(
-  value: unknown
+  value: unknown,
+  options?: Book02MvpGapValidationOptions
 ): readonly Book02MvpValidationIssue[] {
   const baseline = parseBaseline(value);
   if (!baseline)
@@ -697,7 +914,9 @@ export function validateBook02MvpGapBaseline(
         'baseline'
       )
     ];
-  const issues = [...validateBook02MvpRequirements(baseline.requirements)];
+  const issues = [
+    ...validateBook02MvpRequirements(baseline.requirements, options)
+  ];
   validateGuardRuleCoverage(issues);
   validateAcceptanceEvaluatorCoverage(issues);
   validateTestFamilyEvidenceCoverage(issues);
@@ -902,9 +1121,13 @@ function validateAcceptance(
           )
         );
     }
+
     if (
       criterion.id === 'must-build-objects-have-public-reference-ids' &&
-      criterion.satisfied
+      criterion.satisfied &&
+      !criterion.evidenceFiles.some((file) =>
+        file.includes('core-mvp-object-public-reference-foundation')
+      )
     )
       issues.push(
         issue(

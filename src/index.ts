@@ -2,6 +2,9 @@ export const MARKORBIT_CORE_VERSION = '0.0.0';
 
 export * from './domains/index.ts';
 export * from './objects/index.ts';
+export * from './objects/core-mvp-object-profiles.ts';
+export * from './objects/core-mvp-object-base-record.ts';
+export * from './objects/core-mvp-object-validation.ts';
 export * from './events/index.ts';
 export * from './tasks/index.ts';
 

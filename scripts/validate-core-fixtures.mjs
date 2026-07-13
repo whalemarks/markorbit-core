@@ -27,7 +27,8 @@ import {
   validateCoreContractBehaviorAcceptanceLockFixture,
   validateCoreSafetyBoundaryFoundationsFixture,
   validateCoreIdempotencyEnforcementFixture,
-  validateBook02MvpGapBaselineFixture
+  validateBook02MvpGapBaselineFixture,
+  validateCoreMvpObjectPublicReferenceFoundationFixture
 } from '../src/validation/index.ts';
 
 const validators = {
@@ -56,7 +57,9 @@ const validators = {
   contract_behavior_acceptance_lock: validateCoreContractBehaviorAcceptanceLockFixture,
   safety_boundary_foundations: validateCoreSafetyBoundaryFoundationsFixture,
   idempotency_enforcement: validateCoreIdempotencyEnforcementFixture,
-  book_02_mvp_gap_baseline: validateBook02MvpGapBaselineFixture
+  book_02_mvp_gap_baseline: validateBook02MvpGapBaselineFixture,
+  core_mvp_object_public_reference_foundation: validateCoreMvpObjectPublicReferenceFoundationFixture,
+  validateCoreMvpObjectPublicReferenceFoundationFixture
 };
 
 let hasErrors = false;

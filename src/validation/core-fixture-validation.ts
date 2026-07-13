@@ -7,6 +7,9 @@ import { validateBook02MvpFixture } from '../mvp-coverage/index.ts';
 import { CORE_IDEMPOTENCY_FIXTURE, CORE_SAFETY_BOUNDARY_FIXTURE, CoreAgentBoundaryRegistry, CoreIdempotencyRegistry, CoreReferenceRegistry, validateCoreAiContext, validateCoreVersion } from '../behaviors/index.ts';
 import { CORE_DOMAIN_REGISTRY } from '../domains/index.ts';
 import { CORE_OBJECT_STATUSES } from '../objects/index.ts';
+import { CORE_MVP_OBJECT_PROFILE_ORDER } from '../objects/core-mvp-object-profiles.ts';
+import { CORE_MVP_OBJECT_FIXTURE_PUBLIC_REFERENCE_RECORDS, coreMvpObjectFixtureValidationContextFor } from '../objects/core-mvp-object-base-record.ts';
+import { validateCoreMvpObjectBaseRecord } from '../objects/core-mvp-object-validation.ts';
 import type { CoreEvent } from '../events/index.ts';
 import { validateCoreEvent } from '../events/index.ts';
 import type { CoreTask } from '../tasks/index.ts';
@@ -354,6 +357,25 @@ export function validateCoreContractIndexFixture(fixture: unknown): CoreValidati
   });
 
   validateCoreContractIndex(array as never).forEach((message) => issues.push(error('core.contract_index.invalid_contract', message, 'contract_index')));
+  return createCoreValidationResult(issues);
+}
+
+
+export function validateCoreMvpObjectPublicReferenceFoundationFixture(fixture: unknown): CoreValidationResult {
+  const nonArray = nonArrayResult(fixture, 'core_mvp_object_public_reference_foundation');
+  if (nonArray) return nonArray;
+  const array = fixture as readonly unknown[];
+  const issues: CoreValidationIssue[] = [];
+  if (array.length !== CORE_MVP_OBJECT_PROFILE_ORDER.length) issues.push(error('core.object.fixture_invalid_count', 'Object public-reference fixture must contain exactly 18 entries.', 'core_mvp_object_public_reference_foundation'));
+  array.forEach((entry, index) => {
+    const expectedDomain = CORE_MVP_OBJECT_PROFILE_ORDER[index];
+    if (!isRecord(entry)) { issues.push(error('core.object.fixture_invalid_entry', 'Object fixture entry must be an object.', `core_mvp_object_public_reference_foundation[${index}]`)); return; }
+    if (entry.domainId !== expectedDomain) issues.push(error('core.object.fixture_order_changed', 'Object fixture canonical order changed.', `core_mvp_object_public_reference_foundation[${index}].domainId`));
+    const publicRef = typeof entry.publicReferenceId === 'string' ? entry.publicReferenceId : '';
+    if (CORE_MVP_OBJECT_FIXTURE_PUBLIC_REFERENCE_RECORDS.filter((record) => record.referenceId === publicRef).length !== 1) issues.push(error('core.object.reference_evidence_missing', 'Object fixture must have exactly one matching public Reference record.', `core_mvp_object_public_reference_foundation[${index}].publicReferenceId`));
+    const context = coreMvpObjectFixtureValidationContextFor(publicRef);
+    for (const validationIssue of validateCoreMvpObjectBaseRecord(entry, context).issues) issues.push(error(validationIssue.code, validationIssue.message, `core_mvp_object_public_reference_foundation[${index}]${validationIssue.path ? `.${validationIssue.path}` : ''}`));
+  });
   return createCoreValidationResult(issues);
 }
 

@@ -8,7 +8,6 @@ import {
 import {
   CORE_API_CONTRACT_SKELETONS,
   CORE_COMMON_CONTRACT_SKELETONS,
-  CORE_CONTRACT_INDEX,
   CORE_DOMAIN_CONTRACT_SKELETONS,
   CORE_EVENT_CATALOG_SKELETONS,
   CORE_OBJECT_CONTRACT_SKELETONS,
@@ -17,6 +16,12 @@ import {
   CORE_WORKFLOW_CATALOG_SKELETONS
 } from '../contracts/index.ts';
 import { CORE_DOMAIN_REGISTRY } from '../domains/index.ts';
+import {
+  CORE_MVP_OBJECT_FIXTURE_PUBLIC_REFERENCE_RECORDS,
+  coreMvpObjectFixtureValidationContextFor
+} from '../objects/core-mvp-object-base-record.ts';
+import { CORE_MVP_OBJECT_CANONICAL_PROFILES } from '../objects/core-mvp-object-profiles.ts';
+import { validateCoreMvpObjectBaseRecord } from '../objects/core-mvp-object-validation.ts';
 import {
   BOOK_02_AUTHORITY,
   BOOK_02_EXPECTED_COUNTS,
@@ -247,9 +252,16 @@ export const BOOK_02_MVP_TEST_FAMILY_EVIDENCE = {
 
 const existing = (paths: readonly string[]) =>
   paths.filter((path) => existsSync(path));
-const contractIndexIds = new Set<string>(
-  CORE_CONTRACT_INDEX.map((entry) => String(entry.id))
-);
+const readJsonArray = (path: string): readonly Record<string, unknown>[] => {
+  try {
+    const parsed = JSON.parse(readFileSync(path, 'utf8')) as unknown;
+    return Array.isArray(parsed)
+      ? (parsed as readonly Record<string, unknown>[])
+      : [];
+  } catch {
+    return [];
+  }
+};
 const behaviorById: ReadonlyMap<
   string,
   (typeof CORE_CONTRACT_BEHAVIOR_ACCEPTANCE_LOCK.evidence)[number]
@@ -535,17 +547,85 @@ function evidenceFor(identity: Book02MvpRequirementIdentity): CurrentEvidence {
   }
   if (identity.layer === 'object') {
     const domainId = identity.id.replace('must-object-', '');
-    const found = CORE_OBJECT_CONTRACT_SKELETONS.find(
+    const profileMatches = CORE_MVP_OBJECT_CANONICAL_PROFILES.filter(
       (entry) => entry.domainId === domainId
+    );
+    const profile = profileMatches[0];
+    const contractMatches = profile
+      ? CORE_OBJECT_CONTRACT_SKELETONS.filter(
+          (entry) => entry.id === profile.objectContractId
+        )
+      : [];
+    const found = contractMatches[0];
+    const objectFoundationFiles = [
+      'src/objects/core-mvp-object-profiles.ts',
+      'src/objects/core-mvp-object-base-record.ts',
+      'src/objects/core-mvp-object-validation.ts'
+    ];
+    const objectFoundationTests = [
+      'tests/unit/core-mvp-object-public-reference-foundation.test.ts',
+      'tests/fixtures/core-mvp-object-public-reference-foundation-fixture.test.ts'
+    ];
+    const objectFoundationFixture =
+      'fixtures/objects/core-mvp-object-public-reference-foundation.fixture.json';
+    const fixtureRecords = readJsonArray(objectFoundationFixture);
+    const fixtureMatches = fixtureRecords.filter(
+      (entry) => entry.domainId === domainId
+    );
+    const fixtureRecord = fixtureMatches[0];
+    const publicReferenceMatches =
+      typeof fixtureRecord?.publicReferenceId === 'string'
+        ? CORE_MVP_OBJECT_FIXTURE_PUBLIC_REFERENCE_RECORDS.filter(
+            (entry) => entry.referenceId === fixtureRecord.publicReferenceId
+          )
+        : [];
+    const publicReferenceRecord = publicReferenceMatches[0];
+    const fixtureContext =
+      typeof fixtureRecord?.publicReferenceId === 'string'
+        ? coreMvpObjectFixtureValidationContextFor(
+            fixtureRecord.publicReferenceId
+          )
+        : undefined;
+    const fixtureValidation = fixtureContext
+      ? validateCoreMvpObjectBaseRecord(fixtureRecord, fixtureContext)
+      : undefined;
+    const hasExactObjectEvidence = Boolean(
+      profileMatches.length === 1 &&
+      contractMatches.length === 1 &&
+      fixtureMatches.length === 1 &&
+      publicReferenceMatches.length === 1 &&
+      profile &&
+      found &&
+      fixtureRecord &&
+      publicReferenceRecord &&
+      fixtureContext &&
+      fixtureValidation?.ok === true &&
+      found.domainId === profile.domainId &&
+      found.objectType === profile.objectType &&
+      found.sourcePath === profile.sourcePath &&
+      fixtureRecord.objectType === profile.objectType &&
+      fixtureRecord.objectContractId === profile.objectContractId &&
+      fixtureRecord.domainId === profile.domainId &&
+      publicReferenceRecord.objectType === profile.objectType &&
+      publicReferenceRecord.referenceDomain === profile.domainId &&
+      [
+        ...objectFoundationFiles,
+        ...objectFoundationTests,
+        objectFoundationFixture,
+        'src/behaviors/core-reference-behavior.ts'
+      ].every((path) => existsSync(path))
     );
     return found
       ? {
           contractIds: [String(found.id)],
           implementationFiles: [
-            'src/contracts/object/core-object-contract-skeletons.ts'
+            'src/contracts/object/core-object-contract-skeletons.ts',
+            ...objectFoundationFiles,
+            'src/behaviors/core-reference-behavior.ts'
           ],
-          testFiles: [],
-          fixtureFiles: []
+          testFiles: objectFoundationTests,
+          fixtureFiles: [objectFoundationFixture],
+          currentDepth: hasExactObjectEvidence ? 'level_2' : undefined
         }
       : emptyEvidence();
   }
@@ -757,6 +837,15 @@ function disposition(
         ? 'validated_skeleton_only'
         : 'missing';
   }
+  if (identity.layer === 'object') {
+    return ev.currentDepth === 'level_2' &&
+      ev.testFiles.length > 0 &&
+      ev.fixtureFiles.length > 0
+      ? 'meets_required_depth'
+      : ev.contractIds.length > 0
+        ? 'validated_skeleton_only'
+        : 'missing';
+  }
   if (identity.layer === 'event') {
     return ev.contractIds.length > 0 ? 'semantic_overlap_only' : 'missing';
   }
@@ -853,7 +942,7 @@ export function deriveBook02MvpRequirementState(
     currentDepth:
       ev.currentDepth ??
       (currentDisposition === 'not_required' ? 'level_0' : 'level_0'),
-    contractIds: ev.contractIds.filter((id) => contractIndexIds.has(id)),
+    contractIds: ev.contractIds,
     implementationFiles: ev.implementationFiles,
     testFiles: ev.testFiles,
     fixtureFiles: ev.fixtureFiles,
