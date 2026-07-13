@@ -61,7 +61,20 @@ const canonicalServiceSkeleton = (
     specificationRepository: 'whalemarks/markorbit-publication',
     specificationCommit: '3349ecb8955021a8714d023348f8b24f941eb98f',
     specificationPath,
-    implementationTask: 'CORE-TASK-021'
+    implementationTask: 'CORE-TASK-021',
+    ...(serviceType === 'customer-service'
+      ? {
+          behaviorImplementationTask: 'CORE-TASK-036',
+          behaviorDepth: 'level_2_3',
+          implementedOperations: [
+            'createCustomer',
+            'getCustomer',
+            'listCustomers',
+            'validateCustomerReference',
+            'changeCustomerStatus'
+          ]
+        }
+      : {})
   }
 });
 

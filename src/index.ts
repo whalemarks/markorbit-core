@@ -19,3 +19,6 @@ export * from './behavior-coverage/index.ts';
 export * from './behaviors/index.ts';
 
 export * from './mvp-coverage/index.ts';
+
+export * from './services/index.ts';
+export * from './service-coverage/index.ts';

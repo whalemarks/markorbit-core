@@ -1,0 +1,17 @@
+{
+  "fixtureType": "core_customer_service_core_lifecycle",
+  "authority": {
+    "repository": "whalemarks/markorbit-publication",
+    "commit": "3349ecb8955021a8714d023348f8b24f941eb98f"
+  },
+  "requirementId": "must-service-customer-service",
+  "contractId": "core-service-customer-service-contract",
+  "operations": ["createCustomer", "getCustomer", "listCustomers", "validateCustomerReference", "changeCustomerStatus"],
+  "expected": {
+    "recordCountAfterCreate": 1,
+    "eventTraceCountAfterCreate": 1,
+    "eventTraceCountAfterReplay": 1,
+    "eventTraceCountAfterStatusChange": 2,
+    "conflictCode": "CustomerAlreadyExists"
+  }
+}

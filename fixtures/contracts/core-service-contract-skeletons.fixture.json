@@ -8,9 +8,15 @@
     "status": "active",
     "book": "Book 02 — MarkOrbit Core Specification",
     "purpose": "Establishes a service contract placeholder for identity ownership boundaries without resolving identities in executable form.",
-    "owns": ["Identity resolution service contract boundary."],
-    "consumes": ["identity domain references"],
-    "produces": ["identity boundary references"],
+    "owns": [
+      "Identity resolution service contract boundary."
+    ],
+    "consumes": [
+      "identity domain references"
+    ],
+    "produces": [
+      "identity boundary references"
+    ],
     "allowedOperations": [
       "reference lookup category",
       "boundary evaluation category",
@@ -32,12 +38,16 @@
     "status": "active",
     "book": "Book 02 — MarkOrbit Core Specification",
     "purpose": "Establishes a service contract placeholder for permission ownership boundaries without implementing permission decisions.",
-    "owns": ["Permission evaluation service contract boundary."],
+    "owns": [
+      "Permission evaluation service contract boundary."
+    ],
     "consumes": [
       "permission domain references",
       "identity boundary references"
     ],
-    "produces": ["permission evaluation references"],
+    "produces": [
+      "permission evaluation references"
+    ],
     "allowedOperations": [
       "reference lookup category",
       "boundary evaluation category",
@@ -59,9 +69,15 @@
     "status": "active",
     "book": "Book 02 — MarkOrbit Core Specification",
     "purpose": "Establishes a service contract placeholder for policy ownership boundaries without implementing policy execution.",
-    "owns": ["Policy evaluation service contract boundary."],
-    "consumes": ["policy domain references"],
-    "produces": ["policy evaluation references"],
+    "owns": [
+      "Policy evaluation service contract boundary."
+    ],
+    "consumes": [
+      "policy domain references"
+    ],
+    "produces": [
+      "policy evaluation references"
+    ],
     "allowedOperations": [
       "reference lookup category",
       "boundary evaluation category",
@@ -83,9 +99,15 @@
     "status": "active",
     "book": "Book 02 — MarkOrbit Core Specification",
     "purpose": "Establishes a service contract placeholder for knowledge reference boundaries without implementing retrieval behavior.",
-    "owns": ["Knowledge reference service contract boundary."],
-    "consumes": ["knowledge domain references"],
-    "produces": ["knowledge reference outputs"],
+    "owns": [
+      "Knowledge reference service contract boundary."
+    ],
+    "consumes": [
+      "knowledge domain references"
+    ],
+    "produces": [
+      "knowledge reference outputs"
+    ],
     "allowedOperations": [
       "reference lookup category",
       "boundary evaluation category",
@@ -107,9 +129,15 @@
     "status": "active",
     "book": "Book 02 — MarkOrbit Core Specification",
     "purpose": "Establishes a service contract placeholder for trademark references without trademark-specific service behavior.",
-    "owns": ["Trademark reference service contract boundary."],
-    "consumes": ["trademark domain references"],
-    "produces": ["trademark reference outputs"],
+    "owns": [
+      "Trademark reference service contract boundary."
+    ],
+    "consumes": [
+      "trademark domain references"
+    ],
+    "produces": [
+      "trademark reference outputs"
+    ],
     "allowedOperations": [
       "reference lookup category",
       "boundary evaluation category",
@@ -131,9 +159,15 @@
     "status": "active",
     "book": "Book 02 — MarkOrbit Core Specification",
     "purpose": "Establishes a service contract placeholder for jurisdiction references without implementing legal lookup behavior.",
-    "owns": ["Jurisdiction reference service contract boundary."],
-    "consumes": ["jurisdiction domain references"],
-    "produces": ["jurisdiction reference outputs"],
+    "owns": [
+      "Jurisdiction reference service contract boundary."
+    ],
+    "consumes": [
+      "jurisdiction domain references"
+    ],
+    "produces": [
+      "jurisdiction reference outputs"
+    ],
     "allowedOperations": [
       "reference lookup category",
       "boundary evaluation category",
@@ -155,9 +189,15 @@
     "status": "active",
     "book": "Book 02 — MarkOrbit Core Specification",
     "purpose": "Establishes a service contract placeholder for classification references without implementing classification behavior.",
-    "owns": ["Classification reference service contract boundary."],
-    "consumes": ["classification domain references"],
-    "produces": ["classification reference outputs"],
+    "owns": [
+      "Classification reference service contract boundary."
+    ],
+    "consumes": [
+      "classification domain references"
+    ],
+    "produces": [
+      "classification reference outputs"
+    ],
     "allowedOperations": [
       "reference lookup category",
       "boundary evaluation category",
@@ -179,9 +219,15 @@
     "status": "active",
     "book": "Book 02 — MarkOrbit Core Specification",
     "purpose": "Establishes a service contract placeholder for document references without document storage or rendering behavior.",
-    "owns": ["Document reference service contract boundary."],
-    "consumes": ["document domain references"],
-    "produces": ["document reference outputs"],
+    "owns": [
+      "Document reference service contract boundary."
+    ],
+    "consumes": [
+      "document domain references"
+    ],
+    "produces": [
+      "document reference outputs"
+    ],
     "allowedOperations": [
       "reference lookup category",
       "boundary evaluation category",
@@ -203,9 +249,15 @@
     "status": "active",
     "book": "Book 02 — MarkOrbit Core Specification",
     "purpose": "Establishes a service contract placeholder for evidence references without evidence processing behavior.",
-    "owns": ["Evidence reference service contract boundary."],
-    "consumes": ["evidence domain references"],
-    "produces": ["evidence reference outputs"],
+    "owns": [
+      "Evidence reference service contract boundary."
+    ],
+    "consumes": [
+      "evidence domain references"
+    ],
+    "produces": [
+      "evidence reference outputs"
+    ],
     "allowedOperations": [
       "reference lookup category",
       "boundary evaluation category",
@@ -227,9 +279,15 @@
     "status": "active",
     "book": "Book 02 — MarkOrbit Core Specification",
     "purpose": "Establishes a service contract placeholder for communication references without communication runtime behavior.",
-    "owns": ["Communication reference service contract boundary."],
-    "consumes": ["communication domain references"],
-    "produces": ["communication reference outputs"],
+    "owns": [
+      "Communication reference service contract boundary."
+    ],
+    "consumes": [
+      "communication domain references"
+    ],
+    "produces": [
+      "communication reference outputs"
+    ],
     "allowedOperations": [
       "reference lookup category",
       "boundary evaluation category",
@@ -254,8 +312,13 @@
     "owns": [
       "Organization service ownership, validation, linkage, and reference boundary."
     ],
-    "consumes": ["organization references", "identity and user references"],
-    "produces": ["organization boundary references"],
+    "consumes": [
+      "organization references",
+      "identity and user references"
+    ],
+    "produces": [
+      "organization boundary references"
+    ],
     "allowedOperations": [
       "reference lookup category",
       "boundary evaluation category",
@@ -289,8 +352,12 @@
     "owns": [
       "User service ownership, validation, identity-linkage, organization-linkage, and reference boundary."
     ],
-    "consumes": ["user, identity, and organization references"],
-    "produces": ["user boundary references"],
+    "consumes": [
+      "user, identity, and organization references"
+    ],
+    "produces": [
+      "user boundary references"
+    ],
     "allowedOperations": [
       "reference lookup category",
       "boundary evaluation category",
@@ -324,8 +391,12 @@
     "owns": [
       "Brand service ownership, validation, relationship, and reference boundary."
     ],
-    "consumes": ["brand, customer, and trademark references"],
-    "produces": ["brand boundary references"],
+    "consumes": [
+      "brand, customer, and trademark references"
+    ],
+    "produces": [
+      "brand boundary references"
+    ],
     "allowedOperations": [
       "reference lookup category",
       "boundary evaluation category",
@@ -359,8 +430,12 @@
     "owns": [
       "Customer service ownership, validation, linkage, and reference boundary."
     ],
-    "consumes": ["customer, organization, brand, and opportunity references"],
-    "produces": ["customer boundary references"],
+    "consumes": [
+      "customer, organization, brand, and opportunity references"
+    ],
+    "produces": [
+      "customer boundary references"
+    ],
     "allowedOperations": [
       "reference lookup category",
       "boundary evaluation category",
@@ -379,7 +454,16 @@
       "specificationRepository": "whalemarks/markorbit-publication",
       "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
       "specificationPath": "books/book-02-core-specification/",
-      "implementationTask": "CORE-TASK-021"
+      "implementationTask": "CORE-TASK-021",
+      "behaviorImplementationTask": "CORE-TASK-036",
+      "behaviorDepth": "level_2_3",
+      "implementedOperations": [
+        "createCustomer",
+        "getCustomer",
+        "listCustomers",
+        "validateCustomerReference",
+        "changeCustomerStatus"
+      ]
     }
   },
   {
@@ -397,7 +481,9 @@
     "consumes": [
       "matter, order, workflow, task, document, and evidence references"
     ],
-    "produces": ["matter boundary references"],
+    "produces": [
+      "matter boundary references"
+    ],
     "allowedOperations": [
       "reference lookup category",
       "boundary evaluation category",
@@ -434,7 +520,9 @@
     "consumes": [
       "order, customer, opportunity, brand, trademark, and matter references"
     ],
-    "produces": ["order boundary references"],
+    "produces": [
+      "order boundary references"
+    ],
     "allowedOperations": [
       "reference lookup category",
       "boundary evaluation category",
@@ -471,7 +559,9 @@
     "consumes": [
       "workflow contract, matter, task, event, permission, and policy references"
     ],
-    "produces": ["workflow contract boundary references"],
+    "produces": [
+      "workflow contract boundary references"
+    ],
     "allowedOperations": [
       "reference lookup category",
       "boundary evaluation category",
@@ -508,7 +598,9 @@
     "consumes": [
       "task, matter, workflow, user, permission, policy, and event references"
     ],
-    "produces": ["task boundary references"],
+    "produces": [
+      "task boundary references"
+    ],
     "allowedOperations": [
       "reference lookup category",
       "boundary evaluation category",
@@ -545,7 +637,9 @@
     "consumes": [
       "event, source-domain, source-object, actor, correlation, and causation references"
     ],
-    "produces": ["event boundary references"],
+    "produces": [
+      "event boundary references"
+    ],
     "allowedOperations": [
       "reference lookup category",
       "boundary evaluation category",
@@ -579,8 +673,12 @@
     "owns": [
       "Opportunity structural service ownership and reference boundary."
     ],
-    "consumes": ["Opportunity Domain and Object contract references."],
-    "produces": ["Opportunity structural service-boundary references."],
+    "consumes": [
+      "Opportunity Domain and Object contract references."
+    ],
+    "produces": [
+      "Opportunity structural service-boundary references."
+    ],
     "allowedOperations": [
       "reference lookup category",
       "boundary evaluation category",
@@ -615,8 +713,12 @@
     "owns": [
       "Notification structural service ownership and reference boundary."
     ],
-    "consumes": ["Notification Domain and Object contract references."],
-    "produces": ["Notification structural service-boundary references."],
+    "consumes": [
+      "Notification Domain and Object contract references."
+    ],
+    "produces": [
+      "Notification structural service-boundary references."
+    ],
     "allowedOperations": [
       "reference lookup category",
       "boundary evaluation category",
@@ -648,9 +750,15 @@
     "status": "active",
     "book": "Book 02 — MarkOrbit Core Specification",
     "purpose": "Reserves the canonical Partner service ownership boundary without claiming methods, coordination, mutation, execution, or runtime availability.",
-    "owns": ["Partner structural service ownership and reference boundary."],
-    "consumes": ["Partner Domain and Object contract references."],
-    "produces": ["Partner structural service-boundary references."],
+    "owns": [
+      "Partner structural service ownership and reference boundary."
+    ],
+    "consumes": [
+      "Partner Domain and Object contract references."
+    ],
+    "produces": [
+      "Partner structural service-boundary references."
+    ],
     "allowedOperations": [
       "reference lookup category",
       "boundary evaluation category",
@@ -682,9 +790,15 @@
     "status": "active",
     "book": "Book 02 — MarkOrbit Core Specification",
     "purpose": "Reserves the canonical Agent service ownership boundary without claiming methods, coordination, mutation, execution, or runtime availability.",
-    "owns": ["Agent structural service ownership and reference boundary."],
-    "consumes": ["Agent Domain and Object contract references."],
-    "produces": ["Agent structural service-boundary references."],
+    "owns": [
+      "Agent structural service ownership and reference boundary."
+    ],
+    "consumes": [
+      "Agent Domain and Object contract references."
+    ],
+    "produces": [
+      "Agent structural service-boundary references."
+    ],
     "allowedOperations": [
       "reference lookup category",
       "boundary evaluation category",
@@ -719,8 +833,12 @@
     "owns": [
       "Service Provider structural service ownership and reference boundary."
     ],
-    "consumes": ["Service Provider Domain and Object contract references."],
-    "produces": ["Service Provider structural service-boundary references."],
+    "consumes": [
+      "Service Provider Domain and Object contract references."
+    ],
+    "produces": [
+      "Service Provider structural service-boundary references."
+    ],
     "allowedOperations": [
       "reference lookup category",
       "boundary evaluation category",
@@ -755,8 +873,12 @@
     "owns": [
       "Service Network structural service ownership and reference boundary."
     ],
-    "consumes": ["Service Network Domain and Object contract references."],
-    "produces": ["Service Network structural service-boundary references."],
+    "consumes": [
+      "Service Network Domain and Object contract references."
+    ],
+    "produces": [
+      "Service Network structural service-boundary references."
+    ],
     "allowedOperations": [
       "reference lookup category",
       "boundary evaluation category",
@@ -788,9 +910,15 @@
     "status": "active",
     "book": "Book 02 — MarkOrbit Core Specification",
     "purpose": "Reserves the canonical Routing service ownership boundary without claiming methods, coordination, mutation, execution, or runtime availability.",
-    "owns": ["Routing structural service ownership and reference boundary."],
-    "consumes": ["Routing Domain and Object contract references."],
-    "produces": ["Routing structural service-boundary references."],
+    "owns": [
+      "Routing structural service ownership and reference boundary."
+    ],
+    "consumes": [
+      "Routing Domain and Object contract references."
+    ],
+    "produces": [
+      "Routing structural service-boundary references."
+    ],
     "allowedOperations": [
       "reference lookup category",
       "boundary evaluation category",
