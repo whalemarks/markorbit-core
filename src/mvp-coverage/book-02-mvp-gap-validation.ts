@@ -5,8 +5,12 @@ import {
   CORE_CONTRACT_INDEX,
   CORE_OBJECT_CONTRACT_SKELETONS
 } from '../contracts/index.ts';
-import { CORE_MVP_OBJECT_FIXTURE_PUBLIC_REFERENCE_RECORDS } from '../objects/core-mvp-object-base-record.ts';
+import {
+  CORE_MVP_OBJECT_FIXTURE_PUBLIC_REFERENCE_RECORDS,
+  coreMvpObjectFixtureValidationContextFor
+} from '../objects/core-mvp-object-base-record.ts';
 import { CORE_MVP_OBJECT_CANONICAL_PROFILES } from '../objects/core-mvp-object-profiles.ts';
+import { validateCoreMvpObjectBaseRecord } from '../objects/core-mvp-object-validation.ts';
 import {
   BOOK_02_AUTHORITY,
   BOOK_02_EXPECTED_COUNTS,
@@ -67,7 +71,15 @@ const structuredCheckPrefixes = [
 ] as const;
 const hasKnownStructuredCheckPrefix = (check: string) =>
   structuredCheckPrefixes.some((prefix) => check.startsWith(prefix));
-const objectFixtureRecords = (): readonly Record<string, unknown>[] => {
+export interface Book02MvpGapValidationOptions {
+  readonly objectFixtureRecords?: readonly Record<string, unknown>[];
+}
+
+const objectFixtureRecords = (
+  options?: Book02MvpGapValidationOptions
+): readonly Record<string, unknown>[] => {
+  if (options?.objectFixtureRecords) return options.objectFixtureRecords;
+
   try {
     const parsed = JSON.parse(
       readFileSync(
@@ -337,7 +349,8 @@ function validateRequirementShape(
   return true;
 }
 export function validateBook02MvpRequirements(
-  requirements: readonly unknown[]
+  requirements: readonly unknown[],
+  options?: Book02MvpGapValidationOptions
 ): readonly Book02MvpValidationIssue[] {
   const issues: Book02MvpValidationIssue[] = [];
   const expected = BOOK_02_MVP_REQUIREMENT_IDENTITIES;
@@ -534,25 +547,42 @@ export function validateBook02MvpRequirements(
 
     if (r.layer === 'object') {
       const domainId = r.id.replace('must-object-', '');
-      const profile = CORE_MVP_OBJECT_CANONICAL_PROFILES.find(
+      const profileMatches = CORE_MVP_OBJECT_CANONICAL_PROFILES.filter(
         (entry) => entry.domainId === domainId
       );
-      const contract = profile
-        ? CORE_OBJECT_CONTRACT_SKELETONS.find(
+      const profile = profileMatches[0];
+      const contractMatches = profile
+        ? CORE_OBJECT_CONTRACT_SKELETONS.filter(
             (entry) => entry.id === profile.objectContractId
           )
-        : undefined;
-      const fixtureMatches = objectFixtureRecords().filter(
+        : [];
+      const contract = contractMatches[0];
+      const fixtureMatches = objectFixtureRecords(options).filter(
         (entry) => entry.domainId === domainId
       );
       const fixtureRecord = fixtureMatches[0];
-      const publicReferenceRecord =
+      const publicReferenceMatches =
         typeof fixtureRecord?.publicReferenceId === 'string'
-          ? CORE_MVP_OBJECT_FIXTURE_PUBLIC_REFERENCE_RECORDS.find(
+          ? CORE_MVP_OBJECT_FIXTURE_PUBLIC_REFERENCE_RECORDS.filter(
               (entry) => entry.referenceId === fixtureRecord.publicReferenceId
             )
+          : [];
+      const publicReferenceRecord = publicReferenceMatches[0];
+      const fixtureContext =
+        typeof fixtureRecord?.publicReferenceId === 'string'
+          ? coreMvpObjectFixtureValidationContextFor(
+              fixtureRecord.publicReferenceId
+            )
           : undefined;
-      if (!profile || !contract)
+      const fixtureValidation = fixtureContext
+        ? validateCoreMvpObjectBaseRecord(fixtureRecord, fixtureContext)
+        : undefined;
+      if (
+        profileMatches.length !== 1 ||
+        contractMatches.length !== 1 ||
+        !profile ||
+        !contract
+      )
         issues.push(
           issue(
             'book02.object.profile_contract_mismatch',
@@ -599,6 +629,19 @@ export function validateBook02MvpRequirements(
           )
         );
       if (
+        profileMatches.length !== 1 ||
+        contractMatches.length !== 1 ||
+        fixtureMatches.length !== 1 ||
+        publicReferenceMatches.length !== 1
+      )
+        issues.push(
+          issue(
+            'book02.object.fixture_count_inconsistent',
+            'Object evidence must contain exactly one fixture record and at most one matching public Reference record.',
+            `requirements[${index}]`
+          )
+        );
+      if (
         profile &&
         fixtureRecord &&
         (fixtureRecord.objectType !== profile.objectType ||
@@ -616,6 +659,7 @@ export function validateBook02MvpRequirements(
         !profile ||
         !fixtureRecord ||
         !publicReferenceRecord ||
+        publicReferenceMatches.length !== 1 ||
         publicReferenceRecord.objectType !== profile.objectType ||
         publicReferenceRecord.referenceDomain !== profile.domainId
       )
@@ -626,11 +670,34 @@ export function validateBook02MvpRequirements(
             `requirements[${index}]`
           )
         );
+      if (fixtureRecord && !fixtureContext)
+        issues.push(
+          issue(
+            'book02.object.fixture_context_missing',
+            'Object fixture validation context is missing.',
+            `requirements[${index}].fixtureContext`
+          )
+        );
+      if (fixtureContext && fixtureValidation?.ok !== true) {
+        const childCodes =
+          fixtureValidation?.issues.map((child) => child.code).join(', ') ??
+          'unknown';
+        issues.push(
+          issue(
+            'book02.object.fixture_validation_failed',
+            `Object fixture validation failed with child codes: ${childCodes}`,
+            `requirements[${index}].fixtureValidation`
+          )
+        );
+      }
       const hasDepthEvidence = Boolean(
         profile &&
         contract &&
         fixtureRecord &&
+        publicReferenceMatches.length === 1 &&
         publicReferenceRecord &&
+        fixtureContext &&
+        fixtureValidation?.ok === true &&
         r.contractIds.includes(String(contract.id)) &&
         r.implementationFiles.includes(
           'src/objects/core-mvp-object-profiles.ts'
@@ -835,7 +902,8 @@ function validateDispositionConsistency(
     );
 }
 export function validateBook02MvpGapBaseline(
-  value: unknown
+  value: unknown,
+  options?: Book02MvpGapValidationOptions
 ): readonly Book02MvpValidationIssue[] {
   const baseline = parseBaseline(value);
   if (!baseline)
@@ -846,7 +914,9 @@ export function validateBook02MvpGapBaseline(
         'baseline'
       )
     ];
-  const issues = [...validateBook02MvpRequirements(baseline.requirements)];
+  const issues = [
+    ...validateBook02MvpRequirements(baseline.requirements, options)
+  ];
   validateGuardRuleCoverage(issues);
   validateAcceptanceEvaluatorCoverage(issues);
   validateTestFamilyEvidenceCoverage(issues);

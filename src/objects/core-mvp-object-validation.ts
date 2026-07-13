@@ -1,5 +1,5 @@
 import { type CoreReferenceRecord } from '../behaviors/core-reference-behavior.ts';
-import { CORE_MUST_BUILD_OBJECT_CONTRACT_SKELETONS } from '../contracts/object/index.ts';
+import { CORE_MUST_BUILD_OBJECT_CONTRACT_SKELETONS } from '../contracts/object/core-object-contract-skeletons.ts';
 import { CORE_DOMAIN_REGISTRY } from '../domains/index.ts';
 import {
   createCoreValidationResult,
@@ -21,32 +21,39 @@ import {
   type CoreMvpObjectValidationContext
 } from './core-mvp-object-base-record.ts';
 
-const allowedKeys = new Set<string>(CORE_MVP_OBJECT_BASE_RECORD_FIELDS);
-const auditKeys = new Set([
-  'createdAt',
-  'createdByReferenceId',
-  'updatedAt',
-  'updatedByReferenceId',
-  'correlationId'
-]);
-const visibilityKeys = new Set([
-  'permissionScopeReferenceId',
-  'policyScopeReferenceId',
-  'organizationScopeReferenceId',
-  'actorScopeReferenceId'
-]);
-const referencePattern = /^[a-z0-9][a-z0-9:_-]{2,127}$/;
-const domains = new Set<string>(CORE_DOMAIN_REGISTRY.map((d) => d.id));
-const statusValues = new Set<string>(Object.values(CORE_OBJECT_STATUSES));
-const maxMetadataDepth = 5;
-const maxMetadataEntries = 50;
+function issue(code: string, message: string, path?: string): CoreValidationIssue {
+  return {
+    code,
+    severity: 'error',
+    message,
+    path
+  };
+}
 
-const issue = (code: string, message: string, path?: string): CoreValidationIssue => ({
-  code,
-  severity: 'error',
-  message,
-  path
-});
+function isAllowedBaseRecordKey(key: string): boolean {
+  return (CORE_MVP_OBJECT_BASE_RECORD_FIELDS as readonly string[]).includes(key);
+}
+function isAuditKey(key: string): boolean {
+  return ['createdAt', 'createdByReferenceId', 'updatedAt', 'updatedByReferenceId', 'correlationId'].includes(key);
+}
+function isVisibilityKey(key: string): boolean {
+  return ['permissionScopeReferenceId', 'policyScopeReferenceId', 'organizationScopeReferenceId', 'actorScopeReferenceId'].includes(key);
+}
+function isVersionKey(key: string): boolean {
+  return ['version', 'createdAt', 'updatedAt'].includes(key);
+}
+function isReservedMetadataInternalKey(key: string): boolean {
+  return ['databaseid', 'internaldatabaseid', 'rowid', 'primarykey', 'internalid', 'storageid'].includes(key.toLowerCase());
+}
+function referencePatternMatches(value: string): boolean {
+  return /^[a-z0-9][a-z0-9:_-]{2,127}$/.test(value);
+}
+function domainKnown(value: string): boolean {
+  return CORE_DOMAIN_REGISTRY.some((domain) => domain.id === value);
+}
+function statusKnown(value: string): boolean {
+  return Object.values(CORE_OBJECT_STATUSES).includes(value as (typeof CORE_OBJECT_STATUSES)[keyof typeof CORE_OBJECT_STATUSES]);
+}
 
 function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === 'object' && value !== null && !Array.isArray(value);
@@ -76,7 +83,7 @@ export function validateCoreReferenceRecordForUse(
 ): CoreValidationIssue | undefined {
   if (expectedReferenceId !== undefined && record.referenceId !== expectedReferenceId)
     return issue('core.object.public_reference_mismatch', 'Reference record ID must match the Object publicReferenceId.', 'publicReferenceRecord.referenceId');
-  if (!referencePattern.test(record.referenceId))
+  if (!referencePatternMatches(record.referenceId))
     return issue('core.object.public_reference_invalid', 'Reference record ID is invalid.', 'publicReferenceRecord.referenceId');
   if (record.objectType !== expectedObjectType)
     return issue('core.object.public_reference_type_mismatch', 'Reference record object type does not match.', 'publicReferenceRecord.objectType');
@@ -116,7 +123,7 @@ export function validateCoreMvpObjectProfiles(
     if (contractIdsSeen.has(profile.objectContractId)) issues.push(issue('core.object.profile_duplicate_contract_id', 'Duplicate Object profile contract ID.', `${path}.objectContractId`));
     contractIdsSeen.add(profile.objectContractId);
     if (profile.domainId !== CORE_MVP_OBJECT_PROFILE_ORDER[index]) issues.push(issue('core.object.profile_order', 'Object profile order changed.', `${path}.domainId`));
-    if (!domains.has(profile.domainId)) issues.push(issue('core.object.domain_mismatch', 'Object profile domain is not recognized.', `${path}.domainId`));
+    if (!domainKnown(profile.domainId)) issues.push(issue('core.object.domain_mismatch', 'Object profile domain is not recognized.', `${path}.domainId`));
     if (!canonical) return;
     for (const key of ['domainId', 'objectType', 'objectContractId', 'sourcePath', 'publicReferenceId', 'metadata', 'auditMetadata', 'status', 'version', 'visibility'] as const) {
       if (profile[key] !== canonical[key]) issues.push(issue('core.object.profile_drift', `Object profile ${key} changed.`, `${path}.${key}`));
@@ -147,7 +154,7 @@ function validateMetadataValue(
   state: { entries: number },
   depth: number
 ): void {
-  if (depth > maxMetadataDepth) {
+  if (depth > 5) {
     issues.push(issue('core.object.metadata_depth_exceeded', 'Metadata exceeds maximum depth.', path));
     return;
   }
@@ -168,7 +175,7 @@ function validateMetadataValue(
   seen.add(value);
   if (Array.isArray(value)) {
     state.entries += value.length;
-    if (state.entries > maxMetadataEntries) {
+    if (state.entries > 50) {
       issues.push(issue('core.object.metadata_entry_limit', 'Metadata exceeds maximum entry count.', path));
       return;
     }
@@ -180,8 +187,18 @@ function validateMetadataValue(
     return;
   }
   const entries = Object.entries(value);
+  for (const [key] of entries) {
+    if (isReservedMetadataInternalKey(key))
+      issues.push(
+        issue(
+          'core.object.metadata_reserved_internal_key',
+          'Metadata contains a reserved internal identifier key.',
+          `${path}.${key}`
+        )
+      );
+  }
   state.entries += entries.length;
-  if (state.entries > maxMetadataEntries) {
+  if (state.entries > 50) {
     issues.push(issue('core.object.metadata_entry_limit', 'Metadata exceeds maximum entry count.', path));
     return;
   }
@@ -222,7 +239,7 @@ function validateAudit(record: Record<string, unknown>, context: CoreMvpObjectVa
     issues.push(issue('core.object.audit_missing', 'Audit metadata is required.', 'auditMetadata'));
     return;
   }
-  for (const key of Object.keys(audit)) if (!auditKeys.has(key)) issues.push(issue('core.object.audit_unknown_field', 'Unknown Audit metadata field.', `auditMetadata.${key}`));
+  for (const key of Object.keys(audit)) if (!isAuditKey(key)) issues.push(issue('core.object.audit_unknown_field', 'Unknown Audit metadata field.', `auditMetadata.${key}`));
   if (!validUtcTimestamp(audit.createdAt)) issues.push(issue('core.object.audit_created_at_invalid', 'createdAt must be a valid UTC timestamp.', 'auditMetadata.createdAt'));
   if (typeof audit.createdByReferenceId !== 'string' || audit.createdByReferenceId.length === 0) issues.push(issue('core.object.audit_created_by_missing', 'createdByReferenceId is required.', 'auditMetadata.createdByReferenceId'));
   else if (!context || !resolveRelatedReference(context, audit.createdByReferenceId, 'user-record', 'user')) issues.push(issue('core.object.audit_created_by_invalid', 'createdByReferenceId must resolve as a User reference.', 'auditMetadata.createdByReferenceId'));
@@ -238,7 +255,7 @@ function validateAudit(record: Record<string, unknown>, context: CoreMvpObjectVa
 function validateStatus(record: Record<string, unknown>, profile: CoreMvpObjectProfile, issues: CoreValidationIssue[]): void {
   if (profile.status === 'required' && record.status === undefined) issues.push(issue('core.object.status_required', 'Status is required.', 'status'));
   if (profile.status === 'not_applicable' && record.status !== undefined) issues.push(issue('core.object.status_not_applicable', 'Status is not applicable.', 'status'));
-  if (record.status !== undefined && (typeof record.status !== 'string' || !statusValues.has(record.status))) issues.push(issue('core.object.status_invalid', 'Status is invalid.', 'status'));
+  if (record.status !== undefined && (typeof record.status !== 'string' || !statusKnown(record.status))) issues.push(issue('core.object.status_invalid', 'Status is invalid.', 'status'));
 }
 
 function validateVersion(record: Record<string, unknown>, profile: CoreMvpObjectProfile, issues: CoreValidationIssue[]): void {
@@ -249,6 +266,15 @@ function validateVersion(record: Record<string, unknown>, profile: CoreMvpObject
     issues.push(issue('core.object.version_unsupported', 'Version is unsupported.', 'version'));
     return;
   }
+  for (const key of Object.keys(record.version))
+    if (!isVersionKey(key))
+      issues.push(
+        issue(
+          'core.object.version_unknown_field',
+          'Version contains an unknown field.',
+          `version.${key}`
+        )
+      );
   try {
     createCoreObjectVersion({
       version: record.version.version as number,
@@ -277,11 +303,24 @@ function validateVisibility(record: Record<string, unknown>, profile: CoreMvpObj
     issues.push(issue('core.object.visibility_invalid', 'Visibility metadata is invalid.', 'visibility'));
     return;
   }
-  for (const key of Object.keys(record.visibility)) if (!visibilityKeys.has(key)) issues.push(issue('core.object.visibility_invalid', 'Unknown Visibility metadata field.', `visibility.${key}`));
+  for (const key of Object.keys(record.visibility)) if (!isVisibilityKey(key)) issues.push(issue('core.object.visibility_invalid', 'Unknown Visibility metadata field.', `visibility.${key}`));
   if (!context || !resolveRelatedReference(context, record.visibility.permissionScopeReferenceId, 'permission-record', 'permission')) issues.push(issue('core.object.permission_scope_invalid', 'Permission scope is invalid.', 'visibility.permissionScopeReferenceId'));
   if (!context || !resolveRelatedReference(context, record.visibility.policyScopeReferenceId, 'permission-policy-record', 'policy')) issues.push(issue('core.object.policy_scope_invalid', 'Policy scope is invalid.', 'visibility.policyScopeReferenceId'));
   if (record.visibility.organizationScopeReferenceId !== undefined && (!context || !resolveRelatedReference(context, record.visibility.organizationScopeReferenceId, 'organization-record', 'organization'))) issues.push(issue('core.object.organization_scope_invalid', 'Organization scope is invalid.', 'visibility.organizationScopeReferenceId'));
   if (record.visibility.actorScopeReferenceId !== undefined && (!context || !resolveRelatedReference(context, record.visibility.actorScopeReferenceId, 'user-record', 'user'))) issues.push(issue('core.object.actor_scope_invalid', 'Actor scope is invalid.', 'visibility.actorScopeReferenceId'));
+}
+
+
+export function validateCoreMvpObjectFieldApplicability(
+  record: Record<string, unknown>,
+  profile: CoreMvpObjectProfile,
+  context?: CoreMvpObjectValidationContext
+): CoreValidationResult {
+  const issues: CoreValidationIssue[] = [];
+  validateStatus(record, profile, issues);
+  validateVersion(record, profile, issues);
+  validateVisibility(record, profile, context, issues);
+  return createCoreValidationResult(issues);
 }
 
 function cloneJson<T>(input: T): T {
@@ -303,11 +342,11 @@ export function validateCoreMvpObjectBaseRecord(
   const issues: CoreValidationIssue[] = [];
   if (!isPlainObject(input)) return createCoreValidationResult([issue('core.object.record_invalid', 'Object base record must be a plain object.')]);
   const record = input;
-  for (const key of Object.keys(record)) if (!allowedKeys.has(key)) issues.push(issue('core.object.unknown_field', 'Unknown Object base field.', key));
+  for (const key of Object.keys(record)) if (!isAllowedBaseRecordKey(key)) issues.push(issue('core.object.unknown_field', 'Unknown Object base field.', key));
   if (typeof record.publicReferenceId !== 'string' || record.publicReferenceId.length === 0) issues.push(issue('core.object.public_reference_missing', 'publicReferenceId is required.', 'publicReferenceId'));
   else if (/^\d+$/.test(record.publicReferenceId)) issues.push(issue('core.object.raw_database_id_forbidden', 'Raw numeric database IDs are forbidden.', 'publicReferenceId'));
-  else if (!referencePattern.test(record.publicReferenceId)) issues.push(issue('core.object.public_reference_invalid', 'publicReferenceId is invalid.', 'publicReferenceId'));
-  if (typeof record.domainId !== 'string' || !domains.has(record.domainId)) issues.push(issue('core.object.domain_mismatch', 'Domain ID is not recognized.', 'domainId'));
+  else if (!referencePatternMatches(record.publicReferenceId)) issues.push(issue('core.object.public_reference_invalid', 'publicReferenceId is invalid.', 'publicReferenceId'));
+  if (typeof record.domainId !== 'string' || !domainKnown(record.domainId)) issues.push(issue('core.object.domain_mismatch', 'Domain ID is not recognized.', 'domainId'));
   const profile = profileFor(record);
   if (!profile) {
     issues.push(issue('core.object.profile_missing', 'Object profile is not registered.'));

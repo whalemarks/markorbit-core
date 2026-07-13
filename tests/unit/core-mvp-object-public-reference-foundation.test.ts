@@ -12,6 +12,7 @@ import {
   createCoreMvpObjectBaseRecord,
   coreMvpObjectBaseRecordFieldNames,
   validateCoreMvpObjectBaseRecord,
+  validateCoreMvpObjectFieldApplicability,
   validateCoreMvpObjectProfiles,
   type CoreMvpObjectValidationContext
 } from '../../src/index.ts';
@@ -210,6 +211,32 @@ describe('Core MVP Object public-reference foundation', () => {
     const optionalProfile = CORE_MVP_OBJECT_CANONICAL_PROFILES[0];
     const notApplicableProfile = { ...optionalProfile, status: 'not_applicable' as const, version: 'not_applicable' as const, visibility: 'not_applicable' as const };
     assert.ok(validateCoreMvpObjectProfiles([notApplicableProfile, ...CORE_MVP_OBJECT_CANONICAL_PROFILES.slice(1)]).issues.some((i) => i.code === 'core.object.profile_drift'));
+  });
+
+
+  it('rejects unknown Version fields and reserved internal metadata keys', () => {
+    assert.ok(codes({ ...validRecord, version: { version: 1, createdAt: '2026-01-01T00:00:00.000Z', extra: true } }).includes('core.object.version_unknown_field'));
+    assert.ok(codes({ ...validRecord, version: { version: 1, createdAt: '2026-01-01T00:00:00.000Z', databaseId: 'db-1' } }).includes('core.object.version_unknown_field'));
+    assert.ok(codes({ ...validRecord, metadata: { databaseId: 'db-1' } }).includes('core.object.metadata_reserved_internal_key'));
+    assert.ok(codes({ ...validRecord, metadata: { internalDatabaseId: 'db-1' } }).includes('core.object.metadata_reserved_internal_key'));
+    assert.ok(codes({ ...validRecord, metadata: { nested: { rowId: 'row-1' } } }).includes('core.object.metadata_reserved_internal_key'));
+    assert.ok(codes({ ...validRecord, metadata: { nested: { primaryKey: 'pk-1' } } }).includes('core.object.metadata_reserved_internal_key'));
+    assert.equal(codes({ ...validRecord, metadata: { externalId: 'ext-1', referenceId: 'ref-1', correlationId: 'corr-1', sourceId: 'source-1' } }).includes('core.object.metadata_reserved_internal_key'), false);
+  });
+
+  it('exercises required, optional, and not_applicable field applicability directly', () => {
+    const baseProfile = CORE_MVP_OBJECT_CANONICAL_PROFILES.find((profile) => profile.domainId === 'customer');
+    if (!baseProfile) throw new Error('Expected customer profile.');
+    const optionalProfile = { ...baseProfile, status: 'optional' as const, version: 'optional' as const, visibility: 'optional' as const };
+    const requiredProfile = { ...baseProfile, status: 'required' as const, version: 'required' as const, visibility: 'required' as const };
+    const notApplicableProfile = { ...baseProfile, status: 'not_applicable' as const, version: 'not_applicable' as const, visibility: 'not_applicable' as const };
+    assert.equal(validateCoreMvpObjectFieldApplicability({ metadata: {} }, optionalProfile, context()).ok, true);
+    assert.ok(validateCoreMvpObjectFieldApplicability({ metadata: {} }, requiredProfile, context()).issues.some((issue) => issue.code === 'core.object.status_required'));
+    assert.ok(validateCoreMvpObjectFieldApplicability({ metadata: {} }, requiredProfile, context()).issues.some((issue) => issue.code === 'core.object.version_required'));
+    assert.ok(validateCoreMvpObjectFieldApplicability({ metadata: {} }, requiredProfile, context()).issues.some((issue) => issue.code === 'core.object.visibility_required'));
+    assert.ok(validateCoreMvpObjectFieldApplicability(validRecord, notApplicableProfile, context()).issues.some((issue) => issue.code === 'core.object.status_not_applicable'));
+    assert.ok(validateCoreMvpObjectFieldApplicability(validRecord, notApplicableProfile, context()).issues.some((issue) => issue.code === 'core.object.version_not_applicable'));
+    assert.ok(validateCoreMvpObjectFieldApplicability(validRecord, notApplicableProfile, context()).issues.some((issue) => issue.code === 'core.object.visibility_not_applicable'));
   });
 
   it('does not freeze or mutate input and deeply freezes an independent result', () => {
