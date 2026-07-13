@@ -20,7 +20,7 @@ import {
   CoreInMemoryBrandServiceStore,
   type CoreBrandGovernanceContext
 } from '../../src/services/brand/index.ts';
-import { validateCoreBrandServiceEvidenceFixture } from '../../src/service-coverage/index.ts';
+import { validateCoreBrandServiceEvidenceFixture } from '../../src/service-coverage/core-brand-service-evidence-fixture.ts';
 
 const fixture = JSON.parse(
   readFileSync(
