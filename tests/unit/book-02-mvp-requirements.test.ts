@@ -197,6 +197,46 @@ describe('Book 02 MVP canonical requirements', () => {
       ]
     );
   });
+
+  it('uses Book 02 Sections 5.x and 6.x for Must Build and Stub inventories', () => {
+    const sectionByLayer = new Map([
+      ['domain', 'Section 5.1'],
+      ['object', 'Section 5.2'],
+      ['service', 'Section 5.3'],
+      ['common_contract', 'Section 5.4'],
+      ['api', 'Section 5.5'],
+      ['workflow', 'Section 5.6'],
+      ['event', 'Section 5.7'],
+      ['agent', 'Section 5.8'],
+      ['test', 'Section 5.9']
+    ]);
+    for (const requirement of BOOK_02_MVP_REQUIREMENT_IDENTITIES.filter(
+      (r) => r.category === 'must_build_now'
+    )) {
+      assert.equal(
+        requirement.sourceSection,
+        sectionByLayer.get(requirement.layer)
+      );
+      assert.equal(requirement.sourceSection.startsWith('Section 3.'), false);
+    }
+    const stubSectionByLayer = new Map([
+      ['domain', 'Section 6.1'],
+      ['service', 'Section 6.2'],
+      ['api', 'Section 6.3'],
+      ['workflow', 'Section 6.4'],
+      ['agent', 'Section 6.5']
+    ]);
+    for (const requirement of BOOK_02_MVP_REQUIREMENT_IDENTITIES.filter(
+      (r) => r.category === 'stub_now'
+    )) {
+      assert.equal(
+        requirement.sourceSection,
+        stubSectionByLayer.get(requirement.layer)
+      );
+      assert.equal(requirement.sourceSection.startsWith('Section 4.'), false);
+    }
+  });
+
   it('uses canonical source roots and exact capabilities', () => {
     assert.equal(
       BOOK_02_MVP_REQUIREMENT_IDENTITIES.find(

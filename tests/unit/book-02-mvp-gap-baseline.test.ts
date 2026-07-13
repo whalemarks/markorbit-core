@@ -1,7 +1,11 @@
 import assert from 'node:assert/strict';
+import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs';
+import { join } from 'node:path';
+import { tmpdir } from 'node:os';
 import { describe, it } from 'node:test';
 import {
   BOOK_02_MVP_GAP_BASELINE,
+  inspectBook02MvpGuard,
   deriveBook02MvpAcceptanceCriteria,
   deriveBook02MvpGapSummary,
   validateBook02MvpGapBaseline
@@ -119,7 +123,13 @@ describe('Book 02 MVP gap baseline validation', () => {
     }
   });
   it('rejects invalid evidence paths, fake contract IDs, and missing files', () => {
-    for (const file of ['/tmp/x', '../x', 'missing/file.ts']) {
+    for (const file of [
+      '/tmp/x',
+      '../x',
+      'C:/repo/file.ts',
+      '\\\\server\\share\\file.ts',
+      'missing/file.ts'
+    ]) {
       const baseline = cloneRecord();
       requirementsOf(baseline)[0] = {
         ...requirementsOf(baseline)[0],
@@ -136,7 +146,7 @@ describe('Book 02 MVP gap baseline validation', () => {
     const fake = cloneRecord();
     requirementsOf(fake)[0] = {
       ...requirementsOf(fake)[0],
-      contractIds: ['fake-contract']
+      contractIds: ['core-api-fake-api-contract']
     };
     assert.ok(
       codes(validateBook02MvpGapBaseline(fake)).includes(
@@ -144,6 +154,68 @@ describe('Book 02 MVP gap baseline validation', () => {
       )
     );
   });
+
+  it('uses actual Common Contract current depths from behavior coverage', () => {
+    const expectedDepths = new Map([
+      ['must-common-references', 'level_3'],
+      ['must-common-errors', 'level_3'],
+      ['must-common-permission-context', 'level_2'],
+      ['must-common-policy-context', 'level_1'],
+      ['must-common-idempotency', 'level_3'],
+      ['must-common-audit-context', 'level_2'],
+      ['must-common-versioning', 'level_1'],
+      ['must-common-pagination', 'level_2'],
+      ['must-common-ai-context', 'level_1'],
+      ['must-common-human-review', 'level_2']
+    ]);
+    for (const [id, expectedDepth] of expectedDepths) {
+      const requirement = BOOK_02_MVP_GAP_BASELINE.requirements.find(
+        (r) => r.id === id
+      );
+      assert.equal(requirement?.currentDepth, expectedDepth);
+      assert.equal(requirement?.currentDisposition, 'meets_required_depth');
+      assert.notEqual(
+        requirement?.currentDepth,
+        requirement?.requiredDepth === 'level_2_3' ? 'level_2_3' : 'level_1_2'
+      );
+    }
+  });
+  it('inspects guards deterministically while excluding self, tests, and docs', () => {
+    const temp = mkdtempSync(join(tmpdir(), 'book02-guard-'));
+    try {
+      const src = join(temp, 'src');
+      const tests = join(temp, 'tests');
+      const docs = join(temp, 'docs');
+      mkdirSync(src);
+      mkdirSync(tests);
+      mkdirSync(docs);
+      const srcFile = join(src, 'implementation.ts');
+      const testFile = join(tests, 'guard.test.ts');
+      const docFile = join(docs, 'guard.md');
+      writeFileSync(srcFile, 'createFullWorkflowEngine');
+      writeFileSync(testFile, 'createFullWorkflowEngine');
+      writeFileSync(docFile, 'createFullWorkflowEngine');
+      assert.deepEqual(
+        inspectBook02MvpGuard({
+          inspectionPaths: [src],
+          forbiddenIndicators: ['createFullWorkflowEngine'],
+          excludedPaths: []
+        }).violationPresent,
+        true
+      );
+      assert.deepEqual(
+        inspectBook02MvpGuard({
+          inspectionPaths: [src, tests, docs],
+          forbiddenIndicators: ['createFullWorkflowEngine'],
+          excludedPaths: [src, tests, docs]
+        }).violationPresent,
+        false
+      );
+    } finally {
+      rmSync(temp, { recursive: true, force: true });
+    }
+  });
+
   it('preserves depth distinctions and scope guards', () => {
     for (const [predicate, code] of [
       [
@@ -208,6 +280,27 @@ describe('Book 02 MVP gap baseline validation', () => {
     const criteria = deriveBook02MvpAcceptanceCriteria(
       BOOK_02_MVP_GAP_BASELINE.requirements
     );
+    assert.equal(
+      BOOK_02_MVP_GAP_BASELINE.acceptanceCriteria.every(
+        (criterion) => criterion.evidenceRequirementIds.length > 0
+      ),
+      true
+    );
+    assert.equal(
+      BOOK_02_MVP_GAP_BASELINE.acceptanceCriteria.find(
+        (criterion) =>
+          criterion.id ===
+          'must-build-domains-implemented-or-scaffolded-with-tests'
+      )?.satisfied,
+      false
+    );
+    assert.equal(
+      BOOK_02_MVP_GAP_BASELINE.acceptanceCriteria.find(
+        (criterion) =>
+          criterion.id === 'must-build-objects-have-public-reference-ids'
+      )?.satisfied,
+      false
+    );
     assert.deepEqual(criteria, BOOK_02_MVP_GAP_BASELINE.acceptanceCriteria);
     assert.deepEqual(
       deriveBook02MvpGapSummary(
@@ -232,7 +325,7 @@ describe('Book 02 MVP gap baseline validation', () => {
       string,
       unknown
     >[];
-    criteriaRecords[0] = { ...criteriaRecords[0], satisfied: false };
+    criteriaRecords[0] = { ...criteriaRecords[0], name: 'Changed' };
     assert.ok(
       codes(validateBook02MvpGapBaseline(criterionDrift)).includes(
         'book02.acceptance.inconsistent_criterion'

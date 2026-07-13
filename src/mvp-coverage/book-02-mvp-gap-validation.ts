@@ -1,4 +1,6 @@
 import { existsSync } from 'node:fs';
+import { isAbsolute } from 'node:path';
+import { CORE_CONTRACT_INDEX } from '../contracts/index.ts';
 import {
   BOOK_02_AUTHORITY,
   BOOK_02_EXPECTED_COUNTS,
@@ -29,7 +31,16 @@ const isRecord = (value: unknown): value is Record<string, unknown> =>
   typeof value === 'object' && value !== null && !Array.isArray(value);
 const isStringArray = (value: unknown): value is readonly string[] =>
   Array.isArray(value) && value.every((entry) => typeof entry === 'string');
-const rel = (p: string) => !p.startsWith('/') && !p.includes('..');
+const actualContractIds = new Set(
+  CORE_CONTRACT_INDEX.map((entry) => String(entry.id))
+);
+const isWindowsAbsolute = (p: string) =>
+  /^[A-Za-z]:[\\/]/.test(p) || p.startsWith('\\\\');
+const rel = (p: string) =>
+  !isAbsolute(p) &&
+  !isWindowsAbsolute(p) &&
+  !p.startsWith('/') &&
+  !p.includes('..');
 const dispositions = new Set<Book02MvpDisposition>([
   'meets_required_depth',
   'partial_evidence',
@@ -236,6 +247,27 @@ export function validateBook02MvpRequirements(
           `requirements[${index}].dependencies`
         )
       );
+    if (r.layer === 'guard') {
+      if (!isStringArray(r.inspectionPaths) || r.inspectionPaths.length === 0)
+        issues.push(
+          issue(
+            'book02.guard.inspection_paths',
+            'Guard requirements must declare inspection paths.',
+            `requirements[${index}].inspectionPaths`
+          )
+        );
+      if (
+        !isStringArray(r.excludedPaths) ||
+        !r.excludedPaths.includes('src/mvp-coverage/')
+      )
+        issues.push(
+          issue(
+            'book02.guard.excluded_paths',
+            'Guard requirements must exclude self, tests, docs, and governance docs.',
+            `requirements[${index}].excludedPaths`
+          )
+        );
+    }
     if (r.sourcePath.includes('event-object.md'))
       issues.push(
         issue(
@@ -253,7 +285,7 @@ export function validateBook02MvpRequirements(
         )
       );
     for (const contractId of r.contractIds)
-      if (!contractId.startsWith('core-'))
+      if (!actualContractIds.has(contractId))
         issues.push(
           issue(
             'book02.evidence.fake_contract_id',
@@ -489,6 +521,55 @@ export function validateBook02MvpGapBaseline(
     );
   return issues;
 }
+function validateAcceptanceCriterionShape(
+  value: unknown,
+  index: number,
+  issues: Book02MvpValidationIssue[]
+): value is Book02MvpAcceptanceCriterion {
+  if (!isRecord(value)) {
+    issues.push(
+      issue(
+        'book02.acceptance.invalid_shape',
+        'Acceptance criterion must be an object.',
+        `acceptanceCriteria[${index}]`
+      )
+    );
+    return false;
+  }
+  for (const key of ['id', 'name', 'sourcePath', 'sourceSection']) {
+    if (typeof value[key] !== 'string')
+      issues.push(
+        issue(
+          'book02.acceptance.invalid_shape',
+          `${key} must be a string.`,
+          `acceptanceCriteria[${index}].${key}`
+        )
+      );
+  }
+  if (typeof value.satisfied !== 'boolean')
+    issues.push(
+      issue(
+        'book02.acceptance.invalid_shape',
+        'satisfied must be boolean.',
+        `acceptanceCriteria[${index}].satisfied`
+      )
+    );
+  for (const key of [
+    'dependencies',
+    'evidenceRequirementIds',
+    'unresolvedReasons'
+  ]) {
+    if (!isStringArray(value[key]))
+      issues.push(
+        issue(
+          'book02.acceptance.invalid_shape',
+          `${key} must be a string array.`,
+          `acceptanceCriteria[${index}].${key}`
+        )
+      );
+  }
+  return true;
+}
 function validateAcceptance(
   baseline: Book02MvpGapBaseline,
   issues: Book02MvpValidationIssue[]
@@ -505,48 +586,48 @@ function validateAcceptance(
       )
     );
   const derived = deriveBook02MvpAcceptanceCriteria(baseline.requirements);
-  baseline.acceptanceCriteria.forEach(
-    (criterion: Book02MvpAcceptanceCriterion, index: number) => {
-      const expected = MVP_ACCEPTANCE_CRITERIA_IDENTITIES[index];
-      const expectedDerived = derived[index];
-      if (!expected || !expectedDerived) return;
-      if (criterion.id !== expected.id)
-        issues.push(
-          issue(
-            'book02.acceptance.order',
-            `Expected acceptance criterion ${expected.id}.`,
-            `acceptanceCriteria[${index}].id`
-          )
-        );
-      if (criterion.name !== expected.name)
-        issues.push(
-          issue(
-            'book02.acceptance.name_changed',
-            `Acceptance criterion name changed.`,
-            `acceptanceCriteria[${index}].name`
-          )
-        );
-      if (
-        criterion.sourcePath !== expected.sourcePath ||
-        criterion.sourceSection !== expected.sourceSection
-      )
-        issues.push(
-          issue(
-            'book02.acceptance.source_changed',
-            `Acceptance criterion source changed.`,
-            `acceptanceCriteria[${index}]`
-          )
-        );
-      if (JSON.stringify(criterion) !== JSON.stringify(expectedDerived))
-        issues.push(
-          issue(
-            'book02.acceptance.inconsistent_criterion',
-            `Acceptance criterion must be derived from evidence.`,
-            `acceptanceCriteria[${index}]`
-          )
-        );
-    }
-  );
+  baseline.acceptanceCriteria.forEach((candidate: unknown, index: number) => {
+    if (!validateAcceptanceCriterionShape(candidate, index, issues)) return;
+    const criterion = candidate;
+    const expected = MVP_ACCEPTANCE_CRITERIA_IDENTITIES[index];
+    const expectedDerived = derived[index];
+    if (!expected || !expectedDerived) return;
+    if (criterion.id !== expected.id)
+      issues.push(
+        issue(
+          'book02.acceptance.order',
+          `Expected acceptance criterion ${expected.id}.`,
+          `acceptanceCriteria[${index}].id`
+        )
+      );
+    if (criterion.name !== expected.name)
+      issues.push(
+        issue(
+          'book02.acceptance.name_changed',
+          `Acceptance criterion name changed.`,
+          `acceptanceCriteria[${index}].name`
+        )
+      );
+    if (
+      criterion.sourcePath !== expected.sourcePath ||
+      criterion.sourceSection !== expected.sourceSection
+    )
+      issues.push(
+        issue(
+          'book02.acceptance.source_changed',
+          `Acceptance criterion source changed.`,
+          `acceptanceCriteria[${index}]`
+        )
+      );
+    if (JSON.stringify(criterion) !== JSON.stringify(expectedDerived))
+      issues.push(
+        issue(
+          'book02.acceptance.inconsistent_criterion',
+          `Acceptance criterion must be derived from evidence.`,
+          `acceptanceCriteria[${index}]`
+        )
+      );
+  });
   const derivedComplete =
     baseline.summary.acceptance.unresolvedCriteria.length === 0 &&
     baseline.requirements

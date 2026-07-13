@@ -17,7 +17,7 @@
       "category": "must_build_now",
       "layer": "domain",
       "sourcePath": "books/book-02-core-specification/core-specs/domains/identity.md",
-      "sourceSection": "Section 3.1",
+      "sourceSection": "Section 5.1",
       "requiredImplementationKind": "structural_contract",
       "requiredCapabilities": ["domain boundary"],
       "dependencies": [],
@@ -40,7 +40,7 @@
       "category": "must_build_now",
       "layer": "domain",
       "sourcePath": "books/book-02-core-specification/core-specs/domains/organization.md",
-      "sourceSection": "Section 3.1",
+      "sourceSection": "Section 5.1",
       "requiredImplementationKind": "structural_contract",
       "requiredCapabilities": ["domain boundary"],
       "dependencies": [],
@@ -63,7 +63,7 @@
       "category": "must_build_now",
       "layer": "domain",
       "sourcePath": "books/book-02-core-specification/core-specs/domains/user.md",
-      "sourceSection": "Section 3.1",
+      "sourceSection": "Section 5.1",
       "requiredImplementationKind": "structural_contract",
       "requiredCapabilities": ["domain boundary"],
       "dependencies": [],
@@ -86,7 +86,7 @@
       "category": "must_build_now",
       "layer": "domain",
       "sourcePath": "books/book-02-core-specification/core-specs/domains/permission.md",
-      "sourceSection": "Section 3.1",
+      "sourceSection": "Section 5.1",
       "requiredImplementationKind": "structural_contract",
       "requiredCapabilities": ["domain boundary"],
       "dependencies": [],
@@ -109,7 +109,7 @@
       "category": "must_build_now",
       "layer": "domain",
       "sourcePath": "books/book-02-core-specification/core-specs/domains/policy.md",
-      "sourceSection": "Section 3.1",
+      "sourceSection": "Section 5.1",
       "requiredImplementationKind": "structural_contract",
       "requiredCapabilities": ["domain boundary"],
       "dependencies": [],
@@ -132,7 +132,7 @@
       "category": "must_build_now",
       "layer": "domain",
       "sourcePath": "books/book-02-core-specification/core-specs/domains/customer.md",
-      "sourceSection": "Section 3.1",
+      "sourceSection": "Section 5.1",
       "requiredImplementationKind": "structural_contract",
       "requiredCapabilities": ["domain boundary"],
       "dependencies": [],
@@ -155,7 +155,7 @@
       "category": "must_build_now",
       "layer": "domain",
       "sourcePath": "books/book-02-core-specification/core-specs/domains/brand.md",
-      "sourceSection": "Section 3.1",
+      "sourceSection": "Section 5.1",
       "requiredImplementationKind": "structural_contract",
       "requiredCapabilities": ["domain boundary"],
       "dependencies": [],
@@ -178,7 +178,7 @@
       "category": "must_build_now",
       "layer": "domain",
       "sourcePath": "books/book-02-core-specification/core-specs/domains/trademark.md",
-      "sourceSection": "Section 3.1",
+      "sourceSection": "Section 5.1",
       "requiredImplementationKind": "structural_contract",
       "requiredCapabilities": ["domain boundary"],
       "dependencies": [],
@@ -201,7 +201,7 @@
       "category": "must_build_now",
       "layer": "domain",
       "sourcePath": "books/book-02-core-specification/core-specs/domains/jurisdiction.md",
-      "sourceSection": "Section 3.1",
+      "sourceSection": "Section 5.1",
       "requiredImplementationKind": "structural_contract",
       "requiredCapabilities": ["domain boundary"],
       "dependencies": [],
@@ -224,7 +224,7 @@
       "category": "must_build_now",
       "layer": "domain",
       "sourcePath": "books/book-02-core-specification/core-specs/domains/classification.md",
-      "sourceSection": "Section 3.1",
+      "sourceSection": "Section 5.1",
       "requiredImplementationKind": "structural_contract",
       "requiredCapabilities": ["domain boundary"],
       "dependencies": [],
@@ -247,7 +247,7 @@
       "category": "must_build_now",
       "layer": "domain",
       "sourcePath": "books/book-02-core-specification/core-specs/domains/document.md",
-      "sourceSection": "Section 3.1",
+      "sourceSection": "Section 5.1",
       "requiredImplementationKind": "structural_contract",
       "requiredCapabilities": ["domain boundary"],
       "dependencies": [],
@@ -270,7 +270,7 @@
       "category": "must_build_now",
       "layer": "domain",
       "sourcePath": "books/book-02-core-specification/core-specs/domains/evidence.md",
-      "sourceSection": "Section 3.1",
+      "sourceSection": "Section 5.1",
       "requiredImplementationKind": "structural_contract",
       "requiredCapabilities": ["domain boundary"],
       "dependencies": [],
@@ -293,7 +293,7 @@
       "category": "must_build_now",
       "layer": "domain",
       "sourcePath": "books/book-02-core-specification/core-specs/domains/matter.md",
-      "sourceSection": "Section 3.1",
+      "sourceSection": "Section 5.1",
       "requiredImplementationKind": "structural_contract",
       "requiredCapabilities": ["domain boundary"],
       "dependencies": [],
@@ -316,7 +316,7 @@
       "category": "must_build_now",
       "layer": "domain",
       "sourcePath": "books/book-02-core-specification/core-specs/domains/order.md",
-      "sourceSection": "Section 3.1",
+      "sourceSection": "Section 5.1",
       "requiredImplementationKind": "structural_contract",
       "requiredCapabilities": ["domain boundary"],
       "dependencies": [],
@@ -339,7 +339,7 @@
       "category": "must_build_now",
       "layer": "domain",
       "sourcePath": "books/book-02-core-specification/core-specs/domains/workflow-contract.md",
-      "sourceSection": "Section 3.1",
+      "sourceSection": "Section 5.1",
       "requiredImplementationKind": "structural_contract",
       "requiredCapabilities": ["domain boundary"],
       "dependencies": [],
@@ -362,7 +362,7 @@
       "category": "must_build_now",
       "layer": "domain",
       "sourcePath": "books/book-02-core-specification/core-specs/domains/task.md",
-      "sourceSection": "Section 3.1",
+      "sourceSection": "Section 5.1",
       "requiredImplementationKind": "structural_contract",
       "requiredCapabilities": ["domain boundary"],
       "dependencies": [],
@@ -385,7 +385,7 @@
       "category": "must_build_now",
       "layer": "domain",
       "sourcePath": "books/book-02-core-specification/core-specs/domains/event.md",
-      "sourceSection": "Section 3.1",
+      "sourceSection": "Section 5.1",
       "requiredImplementationKind": "structural_contract",
       "requiredCapabilities": ["domain boundary"],
       "dependencies": [],
@@ -408,7 +408,7 @@
       "category": "must_build_now",
       "layer": "domain",
       "sourcePath": "books/book-02-core-specification/core-specs/domains/communication.md",
-      "sourceSection": "Section 3.1",
+      "sourceSection": "Section 5.1",
       "requiredImplementationKind": "structural_contract",
       "requiredCapabilities": ["domain boundary"],
       "dependencies": [],
@@ -431,7 +431,7 @@
       "category": "must_build_now",
       "layer": "object",
       "sourcePath": "books/book-02-core-specification/core-specs/objects/identity.md",
-      "sourceSection": "Section 3.2",
+      "sourceSection": "Section 5.2",
       "requiredImplementationKind": "structural_contract",
       "requiredCapabilities": ["object contract", "public reference id"],
       "dependencies": [],
@@ -454,7 +454,7 @@
       "category": "must_build_now",
       "layer": "object",
       "sourcePath": "books/book-02-core-specification/core-specs/objects/organization.md",
-      "sourceSection": "Section 3.2",
+      "sourceSection": "Section 5.2",
       "requiredImplementationKind": "structural_contract",
       "requiredCapabilities": ["object contract", "public reference id"],
       "dependencies": [],
@@ -477,7 +477,7 @@
       "category": "must_build_now",
       "layer": "object",
       "sourcePath": "books/book-02-core-specification/core-specs/objects/user.md",
-      "sourceSection": "Section 3.2",
+      "sourceSection": "Section 5.2",
       "requiredImplementationKind": "structural_contract",
       "requiredCapabilities": ["object contract", "public reference id"],
       "dependencies": [],
@@ -500,7 +500,7 @@
       "category": "must_build_now",
       "layer": "object",
       "sourcePath": "books/book-02-core-specification/core-specs/objects/permission.md",
-      "sourceSection": "Section 3.2",
+      "sourceSection": "Section 5.2",
       "requiredImplementationKind": "structural_contract",
       "requiredCapabilities": ["object contract", "public reference id"],
       "dependencies": [],
@@ -523,7 +523,7 @@
       "category": "must_build_now",
       "layer": "object",
       "sourcePath": "books/book-02-core-specification/core-specs/objects/policy.md",
-      "sourceSection": "Section 3.2",
+      "sourceSection": "Section 5.2",
       "requiredImplementationKind": "structural_contract",
       "requiredCapabilities": ["object contract", "public reference id"],
       "dependencies": [],
@@ -546,7 +546,7 @@
       "category": "must_build_now",
       "layer": "object",
       "sourcePath": "books/book-02-core-specification/core-specs/objects/customer.md",
-      "sourceSection": "Section 3.2",
+      "sourceSection": "Section 5.2",
       "requiredImplementationKind": "structural_contract",
       "requiredCapabilities": ["object contract", "public reference id"],
       "dependencies": [],
@@ -569,7 +569,7 @@
       "category": "must_build_now",
       "layer": "object",
       "sourcePath": "books/book-02-core-specification/core-specs/objects/brand.md",
-      "sourceSection": "Section 3.2",
+      "sourceSection": "Section 5.2",
       "requiredImplementationKind": "structural_contract",
       "requiredCapabilities": ["object contract", "public reference id"],
       "dependencies": [],
@@ -592,7 +592,7 @@
       "category": "must_build_now",
       "layer": "object",
       "sourcePath": "books/book-02-core-specification/core-specs/objects/trademark.md",
-      "sourceSection": "Section 3.2",
+      "sourceSection": "Section 5.2",
       "requiredImplementationKind": "structural_contract",
       "requiredCapabilities": ["object contract", "public reference id"],
       "dependencies": [],
@@ -615,7 +615,7 @@
       "category": "must_build_now",
       "layer": "object",
       "sourcePath": "books/book-02-core-specification/core-specs/objects/jurisdiction.md",
-      "sourceSection": "Section 3.2",
+      "sourceSection": "Section 5.2",
       "requiredImplementationKind": "structural_contract",
       "requiredCapabilities": ["object contract", "public reference id"],
       "dependencies": [],
@@ -638,7 +638,7 @@
       "category": "must_build_now",
       "layer": "object",
       "sourcePath": "books/book-02-core-specification/core-specs/objects/classification.md",
-      "sourceSection": "Section 3.2",
+      "sourceSection": "Section 5.2",
       "requiredImplementationKind": "structural_contract",
       "requiredCapabilities": ["object contract", "public reference id"],
       "dependencies": [],
@@ -661,7 +661,7 @@
       "category": "must_build_now",
       "layer": "object",
       "sourcePath": "books/book-02-core-specification/core-specs/objects/document.md",
-      "sourceSection": "Section 3.2",
+      "sourceSection": "Section 5.2",
       "requiredImplementationKind": "structural_contract",
       "requiredCapabilities": ["object contract", "public reference id"],
       "dependencies": [],
@@ -684,7 +684,7 @@
       "category": "must_build_now",
       "layer": "object",
       "sourcePath": "books/book-02-core-specification/core-specs/objects/evidence.md",
-      "sourceSection": "Section 3.2",
+      "sourceSection": "Section 5.2",
       "requiredImplementationKind": "structural_contract",
       "requiredCapabilities": ["object contract", "public reference id"],
       "dependencies": [],
@@ -707,7 +707,7 @@
       "category": "must_build_now",
       "layer": "object",
       "sourcePath": "books/book-02-core-specification/core-specs/objects/matter.md",
-      "sourceSection": "Section 3.2",
+      "sourceSection": "Section 5.2",
       "requiredImplementationKind": "structural_contract",
       "requiredCapabilities": ["object contract", "public reference id"],
       "dependencies": [],
@@ -730,7 +730,7 @@
       "category": "must_build_now",
       "layer": "object",
       "sourcePath": "books/book-02-core-specification/core-specs/objects/order.md",
-      "sourceSection": "Section 3.2",
+      "sourceSection": "Section 5.2",
       "requiredImplementationKind": "structural_contract",
       "requiredCapabilities": ["object contract", "public reference id"],
       "dependencies": [],
@@ -753,7 +753,7 @@
       "category": "must_build_now",
       "layer": "object",
       "sourcePath": "books/book-02-core-specification/core-specs/objects/workflow-contract.md",
-      "sourceSection": "Section 3.2",
+      "sourceSection": "Section 5.2",
       "requiredImplementationKind": "structural_contract",
       "requiredCapabilities": ["object contract", "public reference id"],
       "dependencies": [],
@@ -776,7 +776,7 @@
       "category": "must_build_now",
       "layer": "object",
       "sourcePath": "books/book-02-core-specification/core-specs/objects/task.md",
-      "sourceSection": "Section 3.2",
+      "sourceSection": "Section 5.2",
       "requiredImplementationKind": "structural_contract",
       "requiredCapabilities": ["object contract", "public reference id"],
       "dependencies": [],
@@ -799,7 +799,7 @@
       "category": "must_build_now",
       "layer": "object",
       "sourcePath": "books/book-02-core-specification/core-specs/objects/event.md",
-      "sourceSection": "Section 3.2",
+      "sourceSection": "Section 5.2",
       "requiredImplementationKind": "structural_contract",
       "requiredCapabilities": ["object contract", "public reference id"],
       "dependencies": [],
@@ -822,7 +822,7 @@
       "category": "must_build_now",
       "layer": "object",
       "sourcePath": "books/book-02-core-specification/core-specs/objects/communication.md",
-      "sourceSection": "Section 3.2",
+      "sourceSection": "Section 5.2",
       "requiredImplementationKind": "structural_contract",
       "requiredCapabilities": ["object contract", "public reference id"],
       "dependencies": [],
@@ -845,7 +845,7 @@
       "category": "must_build_now",
       "layer": "service",
       "sourcePath": "books/book-02-core-specification/core-specs/services/identity-service.md",
-      "sourceSection": "Section 3.3",
+      "sourceSection": "Section 5.3",
       "requiredImplementationKind": "real_boundary_behavior",
       "requiredCapabilities": [
         "real boundary behavior",
@@ -871,7 +871,7 @@
       "category": "must_build_now",
       "layer": "service",
       "sourcePath": "books/book-02-core-specification/core-specs/services/organization-service.md",
-      "sourceSection": "Section 3.3",
+      "sourceSection": "Section 5.3",
       "requiredImplementationKind": "real_boundary_behavior",
       "requiredCapabilities": [
         "real boundary behavior",
@@ -897,7 +897,7 @@
       "category": "must_build_now",
       "layer": "service",
       "sourcePath": "books/book-02-core-specification/core-specs/services/user-service.md",
-      "sourceSection": "Section 3.3",
+      "sourceSection": "Section 5.3",
       "requiredImplementationKind": "real_boundary_behavior",
       "requiredCapabilities": [
         "real boundary behavior",
@@ -923,7 +923,7 @@
       "category": "must_build_now",
       "layer": "service",
       "sourcePath": "books/book-02-core-specification/core-specs/services/permission-service.md",
-      "sourceSection": "Section 3.3",
+      "sourceSection": "Section 5.3",
       "requiredImplementationKind": "real_boundary_behavior",
       "requiredCapabilities": [
         "real boundary behavior",
@@ -949,7 +949,7 @@
       "category": "must_build_now",
       "layer": "service",
       "sourcePath": "books/book-02-core-specification/core-specs/services/policy-service.md",
-      "sourceSection": "Section 3.3",
+      "sourceSection": "Section 5.3",
       "requiredImplementationKind": "real_boundary_behavior",
       "requiredCapabilities": [
         "real boundary behavior",
@@ -975,7 +975,7 @@
       "category": "must_build_now",
       "layer": "service",
       "sourcePath": "books/book-02-core-specification/core-specs/services/customer-service.md",
-      "sourceSection": "Section 3.3",
+      "sourceSection": "Section 5.3",
       "requiredImplementationKind": "real_boundary_behavior",
       "requiredCapabilities": [
         "real boundary behavior",
@@ -1001,7 +1001,7 @@
       "category": "must_build_now",
       "layer": "service",
       "sourcePath": "books/book-02-core-specification/core-specs/services/brand-service.md",
-      "sourceSection": "Section 3.3",
+      "sourceSection": "Section 5.3",
       "requiredImplementationKind": "real_boundary_behavior",
       "requiredCapabilities": [
         "real boundary behavior",
@@ -1027,7 +1027,7 @@
       "category": "must_build_now",
       "layer": "service",
       "sourcePath": "books/book-02-core-specification/core-specs/services/trademark-service.md",
-      "sourceSection": "Section 3.3",
+      "sourceSection": "Section 5.3",
       "requiredImplementationKind": "real_boundary_behavior",
       "requiredCapabilities": [
         "real boundary behavior",
@@ -1053,7 +1053,7 @@
       "category": "must_build_now",
       "layer": "service",
       "sourcePath": "books/book-02-core-specification/core-specs/services/jurisdiction-service.md",
-      "sourceSection": "Section 3.3",
+      "sourceSection": "Section 5.3",
       "requiredImplementationKind": "real_boundary_behavior",
       "requiredCapabilities": [
         "real boundary behavior",
@@ -1079,7 +1079,7 @@
       "category": "must_build_now",
       "layer": "service",
       "sourcePath": "books/book-02-core-specification/core-specs/services/classification-service.md",
-      "sourceSection": "Section 3.3",
+      "sourceSection": "Section 5.3",
       "requiredImplementationKind": "real_boundary_behavior",
       "requiredCapabilities": [
         "real boundary behavior",
@@ -1105,7 +1105,7 @@
       "category": "must_build_now",
       "layer": "service",
       "sourcePath": "books/book-02-core-specification/core-specs/services/document-service.md",
-      "sourceSection": "Section 3.3",
+      "sourceSection": "Section 5.3",
       "requiredImplementationKind": "real_boundary_behavior",
       "requiredCapabilities": [
         "real boundary behavior",
@@ -1131,7 +1131,7 @@
       "category": "must_build_now",
       "layer": "service",
       "sourcePath": "books/book-02-core-specification/core-specs/services/evidence-service.md",
-      "sourceSection": "Section 3.3",
+      "sourceSection": "Section 5.3",
       "requiredImplementationKind": "real_boundary_behavior",
       "requiredCapabilities": [
         "real boundary behavior",
@@ -1157,7 +1157,7 @@
       "category": "must_build_now",
       "layer": "service",
       "sourcePath": "books/book-02-core-specification/core-specs/services/matter-service.md",
-      "sourceSection": "Section 3.3",
+      "sourceSection": "Section 5.3",
       "requiredImplementationKind": "real_boundary_behavior",
       "requiredCapabilities": [
         "real boundary behavior",
@@ -1183,7 +1183,7 @@
       "category": "must_build_now",
       "layer": "service",
       "sourcePath": "books/book-02-core-specification/core-specs/services/order-service.md",
-      "sourceSection": "Section 3.3",
+      "sourceSection": "Section 5.3",
       "requiredImplementationKind": "real_boundary_behavior",
       "requiredCapabilities": [
         "real boundary behavior",
@@ -1209,7 +1209,7 @@
       "category": "must_build_now",
       "layer": "service",
       "sourcePath": "books/book-02-core-specification/core-specs/services/workflow-contract-service.md",
-      "sourceSection": "Section 3.3",
+      "sourceSection": "Section 5.3",
       "requiredImplementationKind": "real_boundary_behavior",
       "requiredCapabilities": [
         "real boundary behavior",
@@ -1235,7 +1235,7 @@
       "category": "must_build_now",
       "layer": "service",
       "sourcePath": "books/book-02-core-specification/core-specs/services/task-service.md",
-      "sourceSection": "Section 3.3",
+      "sourceSection": "Section 5.3",
       "requiredImplementationKind": "real_boundary_behavior",
       "requiredCapabilities": [
         "real boundary behavior",
@@ -1261,7 +1261,7 @@
       "category": "must_build_now",
       "layer": "service",
       "sourcePath": "books/book-02-core-specification/core-specs/services/event-service.md",
-      "sourceSection": "Section 3.3",
+      "sourceSection": "Section 5.3",
       "requiredImplementationKind": "real_boundary_behavior",
       "requiredCapabilities": [
         "real boundary behavior",
@@ -1287,7 +1287,7 @@
       "category": "must_build_now",
       "layer": "service",
       "sourcePath": "books/book-02-core-specification/core-specs/services/communication-service.md",
-      "sourceSection": "Section 3.3",
+      "sourceSection": "Section 5.3",
       "requiredImplementationKind": "real_boundary_behavior",
       "requiredCapabilities": [
         "real boundary behavior",
@@ -1313,12 +1313,12 @@
       "category": "must_build_now",
       "layer": "common_contract",
       "sourcePath": "books/book-02-core-specification/core-specs/contracts/common/references.md",
-      "sourceSection": "Section 3.4",
+      "sourceSection": "Section 5.4",
       "requiredImplementationKind": "book_02_depth_matrix_behavior",
       "requiredCapabilities": ["contract hook", "executable behavior evidence"],
       "requiredDepth": "level_3",
       "dependencies": [],
-      "currentDisposition": "partial_evidence",
+      "currentDisposition": "meets_required_depth",
       "currentDepth": "level_3",
       "contractIds": ["core-common-references-contract"],
       "implementationFiles": ["src/behaviors/core-reference-behavior.ts"],
@@ -1327,9 +1327,7 @@
         "fixtures/behaviors/core-safety-boundary-foundations.fixture.json"
       ],
       "violationReasons": [],
-      "gapReasons": [
-        "Selected behavior hooks are accepted at minimum depth, but execution-spine completion is unresolved."
-      ]
+      "gapReasons": []
     },
     {
       "id": "must-common-errors",
@@ -1337,12 +1335,12 @@
       "category": "must_build_now",
       "layer": "common_contract",
       "sourcePath": "books/book-02-core-specification/core-specs/contracts/common/errors.md",
-      "sourceSection": "Section 3.4",
+      "sourceSection": "Section 5.4",
       "requiredImplementationKind": "book_02_depth_matrix_behavior",
       "requiredCapabilities": ["contract hook", "executable behavior evidence"],
       "requiredDepth": "level_3",
       "dependencies": [],
-      "currentDisposition": "partial_evidence",
+      "currentDisposition": "meets_required_depth",
       "currentDepth": "level_3",
       "contractIds": ["core-common-errors-contract"],
       "implementationFiles": ["src/behaviors/core-safe-error.ts"],
@@ -1351,9 +1349,7 @@
         "fixtures/behaviors/core-safety-boundary-foundations.fixture.json"
       ],
       "violationReasons": [],
-      "gapReasons": [
-        "Selected behavior hooks are accepted at minimum depth, but execution-spine completion is unresolved."
-      ]
+      "gapReasons": []
     },
     {
       "id": "must-common-permission-context",
@@ -1361,21 +1357,19 @@
       "category": "must_build_now",
       "layer": "common_contract",
       "sourcePath": "books/book-02-core-specification/core-specs/contracts/common/permission-context.md",
-      "sourceSection": "Section 3.4",
+      "sourceSection": "Section 5.4",
       "requiredImplementationKind": "book_02_depth_matrix_behavior",
       "requiredCapabilities": ["contract hook", "executable behavior evidence"],
       "requiredDepth": "level_2_3",
       "dependencies": [],
-      "currentDisposition": "partial_evidence",
-      "currentDepth": "level_2_3",
+      "currentDisposition": "meets_required_depth",
+      "currentDepth": "level_2",
       "contractIds": ["core-common-permission-context-contract"],
       "implementationFiles": ["src/behaviors/core-governance-behavior.ts"],
       "testFiles": ["tests/unit/core-governance-context-review-hooks.test.ts"],
       "fixtureFiles": [],
       "violationReasons": [],
-      "gapReasons": [
-        "Selected behavior hooks are accepted at minimum depth, but execution-spine completion is unresolved."
-      ]
+      "gapReasons": []
     },
     {
       "id": "must-common-policy-context",
@@ -1383,21 +1377,19 @@
       "category": "must_build_now",
       "layer": "common_contract",
       "sourcePath": "books/book-02-core-specification/core-specs/contracts/common/policy-context.md",
-      "sourceSection": "Section 3.4",
+      "sourceSection": "Section 5.4",
       "requiredImplementationKind": "book_02_depth_matrix_behavior",
       "requiredCapabilities": ["contract hook", "executable behavior evidence"],
       "requiredDepth": "level_1_2",
       "dependencies": [],
-      "currentDisposition": "partial_evidence",
-      "currentDepth": "level_1_2",
+      "currentDisposition": "meets_required_depth",
+      "currentDepth": "level_1",
       "contractIds": ["core-common-policy-context-contract"],
       "implementationFiles": ["src/behaviors/core-governance-behavior.ts"],
       "testFiles": ["tests/unit/core-governance-context-review-hooks.test.ts"],
       "fixtureFiles": [],
       "violationReasons": [],
-      "gapReasons": [
-        "Selected behavior hooks are accepted at minimum depth, but execution-spine completion is unresolved."
-      ]
+      "gapReasons": []
     },
     {
       "id": "must-common-idempotency",
@@ -1405,12 +1397,12 @@
       "category": "must_build_now",
       "layer": "common_contract",
       "sourcePath": "books/book-02-core-specification/core-specs/contracts/common/idempotency.md",
-      "sourceSection": "Section 3.4",
+      "sourceSection": "Section 5.4",
       "requiredImplementationKind": "book_02_depth_matrix_behavior",
       "requiredCapabilities": ["contract hook", "executable behavior evidence"],
       "requiredDepth": "level_3",
       "dependencies": [],
-      "currentDisposition": "partial_evidence",
+      "currentDisposition": "meets_required_depth",
       "currentDepth": "level_3",
       "contractIds": ["core-common-idempotency-contract"],
       "implementationFiles": ["src/behaviors/core-idempotency-behavior.ts"],
@@ -1419,9 +1411,7 @@
         "fixtures/behaviors/core-idempotency-enforcement.fixture.json"
       ],
       "violationReasons": [],
-      "gapReasons": [
-        "Selected behavior hooks are accepted at minimum depth, but execution-spine completion is unresolved."
-      ]
+      "gapReasons": []
     },
     {
       "id": "must-common-audit-context",
@@ -1429,21 +1419,19 @@
       "category": "must_build_now",
       "layer": "common_contract",
       "sourcePath": "books/book-02-core-specification/core-specs/contracts/common/audit-context.md",
-      "sourceSection": "Section 3.4",
+      "sourceSection": "Section 5.4",
       "requiredImplementationKind": "book_02_depth_matrix_behavior",
       "requiredCapabilities": ["contract hook", "executable behavior evidence"],
       "requiredDepth": "level_2",
       "dependencies": [],
-      "currentDisposition": "partial_evidence",
+      "currentDisposition": "meets_required_depth",
       "currentDepth": "level_2",
       "contractIds": ["core-common-audit-context-contract"],
       "implementationFiles": ["src/behaviors/core-governance-behavior.ts"],
       "testFiles": ["tests/unit/core-governance-context-review-hooks.test.ts"],
       "fixtureFiles": [],
       "violationReasons": [],
-      "gapReasons": [
-        "Selected behavior hooks are accepted at minimum depth, but execution-spine completion is unresolved."
-      ]
+      "gapReasons": []
     },
     {
       "id": "must-common-versioning",
@@ -1451,12 +1439,12 @@
       "category": "must_build_now",
       "layer": "common_contract",
       "sourcePath": "books/book-02-core-specification/core-specs/contracts/common/versioning.md",
-      "sourceSection": "Section 3.4",
+      "sourceSection": "Section 5.4",
       "requiredImplementationKind": "book_02_depth_matrix_behavior",
       "requiredCapabilities": ["contract hook", "executable behavior evidence"],
       "requiredDepth": "level_1",
       "dependencies": [],
-      "currentDisposition": "partial_evidence",
+      "currentDisposition": "meets_required_depth",
       "currentDepth": "level_1",
       "contractIds": ["core-common-versioning-contract"],
       "implementationFiles": ["src/behaviors/core-version-behavior.ts"],
@@ -1465,9 +1453,7 @@
         "fixtures/behaviors/core-safety-boundary-foundations.fixture.json"
       ],
       "violationReasons": [],
-      "gapReasons": [
-        "Selected behavior hooks are accepted at minimum depth, but execution-spine completion is unresolved."
-      ]
+      "gapReasons": []
     },
     {
       "id": "must-common-pagination",
@@ -1475,12 +1461,12 @@
       "category": "must_build_now",
       "layer": "common_contract",
       "sourcePath": "books/book-02-core-specification/core-specs/contracts/common/pagination.md",
-      "sourceSection": "Section 3.4",
+      "sourceSection": "Section 5.4",
       "requiredImplementationKind": "book_02_depth_matrix_behavior",
       "requiredCapabilities": ["contract hook", "executable behavior evidence"],
       "requiredDepth": "level_2",
       "dependencies": [],
-      "currentDisposition": "partial_evidence",
+      "currentDisposition": "meets_required_depth",
       "currentDepth": "level_2",
       "contractIds": ["core-common-pagination-contract"],
       "implementationFiles": [
@@ -1489,9 +1475,7 @@
       "testFiles": ["tests/unit/core-event-pagination-hooks.test.ts"],
       "fixtureFiles": [],
       "violationReasons": [],
-      "gapReasons": [
-        "Selected behavior hooks are accepted at minimum depth, but execution-spine completion is unresolved."
-      ]
+      "gapReasons": []
     },
     {
       "id": "must-common-ai-context",
@@ -1499,12 +1483,12 @@
       "category": "must_build_now",
       "layer": "common_contract",
       "sourcePath": "books/book-02-core-specification/core-specs/contracts/common/ai-context.md",
-      "sourceSection": "Section 3.4",
+      "sourceSection": "Section 5.4",
       "requiredImplementationKind": "book_02_depth_matrix_behavior",
       "requiredCapabilities": ["contract hook", "executable behavior evidence"],
       "requiredDepth": "level_1",
       "dependencies": [],
-      "currentDisposition": "partial_evidence",
+      "currentDisposition": "meets_required_depth",
       "currentDepth": "level_1",
       "contractIds": ["core-common-ai-context-contract"],
       "implementationFiles": ["src/behaviors/core-ai-context-behavior.ts"],
@@ -1513,9 +1497,7 @@
         "fixtures/behaviors/core-safety-boundary-foundations.fixture.json"
       ],
       "violationReasons": [],
-      "gapReasons": [
-        "Selected behavior hooks are accepted at minimum depth, but execution-spine completion is unresolved."
-      ]
+      "gapReasons": []
     },
     {
       "id": "must-common-human-review",
@@ -1523,21 +1505,19 @@
       "category": "must_build_now",
       "layer": "common_contract",
       "sourcePath": "books/book-02-core-specification/core-specs/contracts/common/human-review.md",
-      "sourceSection": "Section 3.4",
+      "sourceSection": "Section 5.4",
       "requiredImplementationKind": "book_02_depth_matrix_behavior",
       "requiredCapabilities": ["contract hook", "executable behavior evidence"],
       "requiredDepth": "level_2",
       "dependencies": [],
-      "currentDisposition": "partial_evidence",
+      "currentDisposition": "meets_required_depth",
       "currentDepth": "level_2",
       "contractIds": ["core-common-human-review-contract"],
       "implementationFiles": ["src/behaviors/core-governance-behavior.ts"],
       "testFiles": ["tests/unit/core-governance-context-review-hooks.test.ts"],
       "fixtureFiles": [],
       "violationReasons": [],
-      "gapReasons": [
-        "Selected behavior hooks are accepted at minimum depth, but execution-spine completion is unresolved."
-      ]
+      "gapReasons": []
     },
     {
       "id": "must-api-identity-api-contract",
@@ -1545,7 +1525,7 @@
       "category": "must_build_now",
       "layer": "api",
       "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/identity-api-contract.md",
-      "sourceSection": "Section 3.5",
+      "sourceSection": "Section 5.5",
       "requiredImplementationKind": "validator_and_service_delegation",
       "requiredCapabilities": [
         "request validation",
@@ -1580,7 +1560,7 @@
       "category": "must_build_now",
       "layer": "api",
       "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/organization-api-contract.md",
-      "sourceSection": "Section 3.5",
+      "sourceSection": "Section 5.5",
       "requiredImplementationKind": "validator_and_service_delegation",
       "requiredCapabilities": [
         "request validation",
@@ -1615,7 +1595,7 @@
       "category": "must_build_now",
       "layer": "api",
       "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/user-api-contract.md",
-      "sourceSection": "Section 3.5",
+      "sourceSection": "Section 5.5",
       "requiredImplementationKind": "validator_and_service_delegation",
       "requiredCapabilities": [
         "request validation",
@@ -1650,7 +1630,7 @@
       "category": "must_build_now",
       "layer": "api",
       "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/permission-api-contract.md",
-      "sourceSection": "Section 3.5",
+      "sourceSection": "Section 5.5",
       "requiredImplementationKind": "validator_and_service_delegation",
       "requiredCapabilities": [
         "request validation",
@@ -1685,7 +1665,7 @@
       "category": "must_build_now",
       "layer": "api",
       "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/policy-api-contract.md",
-      "sourceSection": "Section 3.5",
+      "sourceSection": "Section 5.5",
       "requiredImplementationKind": "validator_and_service_delegation",
       "requiredCapabilities": [
         "request validation",
@@ -1720,7 +1700,7 @@
       "category": "must_build_now",
       "layer": "api",
       "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/customer-api-contract.md",
-      "sourceSection": "Section 3.5",
+      "sourceSection": "Section 5.5",
       "requiredImplementationKind": "validator_and_service_delegation",
       "requiredCapabilities": [
         "request validation",
@@ -1755,7 +1735,7 @@
       "category": "must_build_now",
       "layer": "api",
       "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/brand-api-contract.md",
-      "sourceSection": "Section 3.5",
+      "sourceSection": "Section 5.5",
       "requiredImplementationKind": "validator_and_service_delegation",
       "requiredCapabilities": [
         "request validation",
@@ -1790,7 +1770,7 @@
       "category": "must_build_now",
       "layer": "api",
       "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/trademark-api-contract.md",
-      "sourceSection": "Section 3.5",
+      "sourceSection": "Section 5.5",
       "requiredImplementationKind": "validator_and_service_delegation",
       "requiredCapabilities": [
         "request validation",
@@ -1825,7 +1805,7 @@
       "category": "must_build_now",
       "layer": "api",
       "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/jurisdiction-api-contract.md",
-      "sourceSection": "Section 3.5",
+      "sourceSection": "Section 5.5",
       "requiredImplementationKind": "validator_and_service_delegation",
       "requiredCapabilities": [
         "request validation",
@@ -1860,7 +1840,7 @@
       "category": "must_build_now",
       "layer": "api",
       "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/classification-api-contract.md",
-      "sourceSection": "Section 3.5",
+      "sourceSection": "Section 5.5",
       "requiredImplementationKind": "validator_and_service_delegation",
       "requiredCapabilities": [
         "request validation",
@@ -1895,7 +1875,7 @@
       "category": "must_build_now",
       "layer": "api",
       "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/document-api-contract.md",
-      "sourceSection": "Section 3.5",
+      "sourceSection": "Section 5.5",
       "requiredImplementationKind": "validator_and_service_delegation",
       "requiredCapabilities": [
         "request validation",
@@ -1930,7 +1910,7 @@
       "category": "must_build_now",
       "layer": "api",
       "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/evidence-api-contract.md",
-      "sourceSection": "Section 3.5",
+      "sourceSection": "Section 5.5",
       "requiredImplementationKind": "validator_and_service_delegation",
       "requiredCapabilities": [
         "request validation",
@@ -1965,7 +1945,7 @@
       "category": "must_build_now",
       "layer": "api",
       "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/matter-api-contract.md",
-      "sourceSection": "Section 3.5",
+      "sourceSection": "Section 5.5",
       "requiredImplementationKind": "validator_and_service_delegation",
       "requiredCapabilities": [
         "request validation",
@@ -2000,7 +1980,7 @@
       "category": "must_build_now",
       "layer": "api",
       "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/order-api-contract.md",
-      "sourceSection": "Section 3.5",
+      "sourceSection": "Section 5.5",
       "requiredImplementationKind": "validator_and_service_delegation",
       "requiredCapabilities": [
         "request validation",
@@ -2035,7 +2015,7 @@
       "category": "must_build_now",
       "layer": "api",
       "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/workflow-contract-api-contract.md",
-      "sourceSection": "Section 3.5",
+      "sourceSection": "Section 5.5",
       "requiredImplementationKind": "validator_and_service_delegation",
       "requiredCapabilities": [
         "request validation",
@@ -2070,7 +2050,7 @@
       "category": "must_build_now",
       "layer": "api",
       "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/task-api-contract.md",
-      "sourceSection": "Section 3.5",
+      "sourceSection": "Section 5.5",
       "requiredImplementationKind": "validator_and_service_delegation",
       "requiredCapabilities": [
         "request validation",
@@ -2105,7 +2085,7 @@
       "category": "must_build_now",
       "layer": "api",
       "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/event-api-contract.md",
-      "sourceSection": "Section 3.5",
+      "sourceSection": "Section 5.5",
       "requiredImplementationKind": "validator_and_service_delegation",
       "requiredCapabilities": [
         "request validation",
@@ -2140,7 +2120,7 @@
       "category": "must_build_now",
       "layer": "api",
       "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/communication-api-contract.md",
-      "sourceSection": "Section 3.5",
+      "sourceSection": "Section 5.5",
       "requiredImplementationKind": "validator_and_service_delegation",
       "requiredCapabilities": [
         "request validation",
@@ -2175,7 +2155,7 @@
       "category": "must_build_now",
       "layer": "workflow",
       "sourcePath": "books/book-02-core-specification/core-specs/workflows/customer-intake-workflow.md",
-      "sourceSection": "Section 3.6",
+      "sourceSection": "Section 5.6",
       "requiredImplementationKind": "preview_apply_validator",
       "requiredCapabilities": [
         "preview request validation",
@@ -2210,7 +2190,7 @@
       "category": "must_build_now",
       "layer": "workflow",
       "sourcePath": "books/book-02-core-specification/core-specs/workflows/trademark-application-workflow.md",
-      "sourceSection": "Section 3.6",
+      "sourceSection": "Section 5.6",
       "requiredImplementationKind": "preview_apply_validator",
       "requiredCapabilities": [
         "preview request validation",
@@ -2245,7 +2225,7 @@
       "category": "must_build_now",
       "layer": "workflow",
       "sourcePath": "books/book-02-core-specification/core-specs/workflows/communication-review-workflow.md",
-      "sourceSection": "Section 3.6",
+      "sourceSection": "Section 5.6",
       "requiredImplementationKind": "preview_apply_validator",
       "requiredCapabilities": [
         "preview request validation",
@@ -2280,7 +2260,7 @@
       "category": "must_build_now",
       "layer": "event",
       "sourcePath": "books/book-02-core-specification/core-specs/events/customer-created.md",
-      "sourceSection": "Section 3.7",
+      "sourceSection": "Section 5.7",
       "requiredImplementationKind": "event_record_or_deterministic_fixture",
       "requiredCapabilities": [
         "event_reference_id",
@@ -2314,7 +2294,7 @@
       "category": "must_build_now",
       "layer": "event",
       "sourcePath": "books/book-02-core-specification/core-specs/events/brand-created.md",
-      "sourceSection": "Section 3.7",
+      "sourceSection": "Section 5.7",
       "requiredImplementationKind": "event_record_or_deterministic_fixture",
       "requiredCapabilities": [
         "event_reference_id",
@@ -2348,7 +2328,7 @@
       "category": "must_build_now",
       "layer": "event",
       "sourcePath": "books/book-02-core-specification/core-specs/events/trademark-created.md",
-      "sourceSection": "Section 3.7",
+      "sourceSection": "Section 5.7",
       "requiredImplementationKind": "event_record_or_deterministic_fixture",
       "requiredCapabilities": [
         "event_reference_id",
@@ -2382,7 +2362,7 @@
       "category": "must_build_now",
       "layer": "event",
       "sourcePath": "books/book-02-core-specification/core-specs/events/matter-created.md",
-      "sourceSection": "Section 3.7",
+      "sourceSection": "Section 5.7",
       "requiredImplementationKind": "event_record_or_deterministic_fixture",
       "requiredCapabilities": [
         "event_reference_id",
@@ -2416,7 +2396,7 @@
       "category": "must_build_now",
       "layer": "event",
       "sourcePath": "books/book-02-core-specification/core-specs/events/order-created.md",
-      "sourceSection": "Section 3.7",
+      "sourceSection": "Section 5.7",
       "requiredImplementationKind": "event_record_or_deterministic_fixture",
       "requiredCapabilities": [
         "event_reference_id",
@@ -2450,7 +2430,7 @@
       "category": "must_build_now",
       "layer": "event",
       "sourcePath": "books/book-02-core-specification/core-specs/events/document-created.md",
-      "sourceSection": "Section 3.7",
+      "sourceSection": "Section 5.7",
       "requiredImplementationKind": "event_record_or_deterministic_fixture",
       "requiredCapabilities": [
         "event_reference_id",
@@ -2484,7 +2464,7 @@
       "category": "must_build_now",
       "layer": "event",
       "sourcePath": "books/book-02-core-specification/core-specs/events/document-attached.md",
-      "sourceSection": "Section 3.7",
+      "sourceSection": "Section 5.7",
       "requiredImplementationKind": "event_record_or_deterministic_fixture",
       "requiredCapabilities": [
         "event_reference_id",
@@ -2518,7 +2498,7 @@
       "category": "must_build_now",
       "layer": "event",
       "sourcePath": "books/book-02-core-specification/core-specs/events/evidence-created.md",
-      "sourceSection": "Section 3.7",
+      "sourceSection": "Section 5.7",
       "requiredImplementationKind": "event_record_or_deterministic_fixture",
       "requiredCapabilities": [
         "event_reference_id",
@@ -2552,7 +2532,7 @@
       "category": "must_build_now",
       "layer": "event",
       "sourcePath": "books/book-02-core-specification/core-specs/events/task-created.md",
-      "sourceSection": "Section 3.7",
+      "sourceSection": "Section 5.7",
       "requiredImplementationKind": "event_record_or_deterministic_fixture",
       "requiredCapabilities": [
         "event_reference_id",
@@ -2586,7 +2566,7 @@
       "category": "must_build_now",
       "layer": "event",
       "sourcePath": "books/book-02-core-specification/core-specs/events/task-updated.md",
-      "sourceSection": "Section 3.7",
+      "sourceSection": "Section 5.7",
       "requiredImplementationKind": "event_record_or_deterministic_fixture",
       "requiredCapabilities": [
         "event_reference_id",
@@ -2620,7 +2600,7 @@
       "category": "must_build_now",
       "layer": "event",
       "sourcePath": "books/book-02-core-specification/core-specs/events/task-completed.md",
-      "sourceSection": "Section 3.7",
+      "sourceSection": "Section 5.7",
       "requiredImplementationKind": "event_record_or_deterministic_fixture",
       "requiredCapabilities": [
         "event_reference_id",
@@ -2654,7 +2634,7 @@
       "category": "must_build_now",
       "layer": "event",
       "sourcePath": "books/book-02-core-specification/core-specs/events/communication-created.md",
-      "sourceSection": "Section 3.7",
+      "sourceSection": "Section 5.7",
       "requiredImplementationKind": "event_record_or_deterministic_fixture",
       "requiredCapabilities": [
         "event_reference_id",
@@ -2688,7 +2668,7 @@
       "category": "must_build_now",
       "layer": "event",
       "sourcePath": "books/book-02-core-specification/core-specs/events/communication-reviewed.md",
-      "sourceSection": "Section 3.7",
+      "sourceSection": "Section 5.7",
       "requiredImplementationKind": "event_record_or_deterministic_fixture",
       "requiredCapabilities": [
         "event_reference_id",
@@ -2722,7 +2702,7 @@
       "category": "must_build_now",
       "layer": "event",
       "sourcePath": "books/book-02-core-specification/core-specs/events/communication-sent.md",
-      "sourceSection": "Section 3.7",
+      "sourceSection": "Section 5.7",
       "requiredImplementationKind": "event_record_or_deterministic_fixture",
       "requiredCapabilities": [
         "event_reference_id",
@@ -2756,7 +2736,7 @@
       "category": "must_build_now",
       "layer": "event",
       "sourcePath": "books/book-02-core-specification/core-specs/events/workflow-contract-previewed.md",
-      "sourceSection": "Section 3.7",
+      "sourceSection": "Section 5.7",
       "requiredImplementationKind": "event_record_or_deterministic_fixture",
       "requiredCapabilities": [
         "event_reference_id",
@@ -2790,7 +2770,7 @@
       "category": "must_build_now",
       "layer": "event",
       "sourcePath": "books/book-02-core-specification/core-specs/events/workflow-contract-applied.md",
-      "sourceSection": "Section 3.7",
+      "sourceSection": "Section 5.7",
       "requiredImplementationKind": "event_record_or_deterministic_fixture",
       "requiredCapabilities": [
         "event_reference_id",
@@ -2824,7 +2804,7 @@
       "category": "must_build_now",
       "layer": "event",
       "sourcePath": "books/book-02-core-specification/core-specs/events/permission-evaluated.md",
-      "sourceSection": "Section 3.7",
+      "sourceSection": "Section 5.7",
       "requiredImplementationKind": "event_record_or_deterministic_fixture",
       "requiredCapabilities": [
         "event_reference_id",
@@ -2858,7 +2838,7 @@
       "category": "must_build_now",
       "layer": "event",
       "sourcePath": "books/book-02-core-specification/core-specs/events/policy-evaluated.md",
-      "sourceSection": "Section 3.7",
+      "sourceSection": "Section 5.7",
       "requiredImplementationKind": "event_record_or_deterministic_fixture",
       "requiredCapabilities": [
         "event_reference_id",
@@ -2892,7 +2872,7 @@
       "category": "must_build_now",
       "layer": "agent",
       "sourcePath": "books/book-02-core-specification/core-specs/agents/knowledge-agent.md",
-      "sourceSection": "Section 3.8",
+      "sourceSection": "Section 5.8",
       "requiredImplementationKind": "boundary_safe_scaffold",
       "requiredCapabilities": [
         "agent identity",
@@ -2925,7 +2905,7 @@
       "category": "must_build_now",
       "layer": "agent",
       "sourcePath": "books/book-02-core-specification/core-specs/agents/task-agent.md",
-      "sourceSection": "Section 3.8",
+      "sourceSection": "Section 5.8",
       "requiredImplementationKind": "boundary_safe_scaffold",
       "requiredCapabilities": [
         "agent identity",
@@ -2958,7 +2938,7 @@
       "category": "must_build_now",
       "layer": "agent",
       "sourcePath": "books/book-02-core-specification/core-specs/agents/communication-agent.md",
-      "sourceSection": "Section 3.8",
+      "sourceSection": "Section 5.8",
       "requiredImplementationKind": "boundary_safe_scaffold",
       "requiredCapabilities": [
         "agent identity",
@@ -2991,7 +2971,7 @@
       "category": "must_build_now",
       "layer": "agent",
       "sourcePath": "books/book-02-core-specification/core-specs/agents/workflow-agent.md",
-      "sourceSection": "Section 3.8",
+      "sourceSection": "Section 5.8",
       "requiredImplementationKind": "boundary_safe_scaffold",
       "requiredCapabilities": [
         "agent identity",
@@ -3024,7 +3004,7 @@
       "category": "must_build_now",
       "layer": "agent",
       "sourcePath": "books/book-02-core-specification/core-specs/agents/audit-agent.md",
-      "sourceSection": "Section 3.8",
+      "sourceSection": "Section 5.8",
       "requiredImplementationKind": "boundary_safe_scaffold",
       "requiredCapabilities": [
         "agent identity",
@@ -3057,7 +3037,7 @@
       "category": "must_build_now",
       "layer": "test",
       "sourcePath": "books/book-02-core-specification/core-specs/contracts/tests/common-contract-tests.md",
-      "sourceSection": "Section 3.9",
+      "sourceSection": "Section 5.9",
       "requiredImplementationKind": "executable_test_family",
       "requiredCapabilities": [
         "contract specification",
@@ -3086,7 +3066,7 @@
       "category": "must_build_now",
       "layer": "test",
       "sourcePath": "books/book-02-core-specification/core-specs/contracts/tests/api-contract-tests.md",
-      "sourceSection": "Section 3.9",
+      "sourceSection": "Section 5.9",
       "requiredImplementationKind": "executable_test_family",
       "requiredCapabilities": [
         "contract specification",
@@ -3115,7 +3095,7 @@
       "category": "must_build_now",
       "layer": "test",
       "sourcePath": "books/book-02-core-specification/core-specs/contracts/tests/workflow-contract-tests.md",
-      "sourceSection": "Section 3.9",
+      "sourceSection": "Section 5.9",
       "requiredImplementationKind": "executable_test_family",
       "requiredCapabilities": [
         "contract specification",
@@ -3144,7 +3124,7 @@
       "category": "must_build_now",
       "layer": "test",
       "sourcePath": "books/book-02-core-specification/core-specs/contracts/tests/agent-boundary-tests.md",
-      "sourceSection": "Section 3.9",
+      "sourceSection": "Section 5.9",
       "requiredImplementationKind": "executable_test_family",
       "requiredCapabilities": [
         "contract specification",
@@ -3173,7 +3153,7 @@
       "category": "must_build_now",
       "layer": "test",
       "sourcePath": "books/book-02-core-specification/core-specs/contracts/tests/permission-policy-tests.md",
-      "sourceSection": "Section 3.9",
+      "sourceSection": "Section 5.9",
       "requiredImplementationKind": "executable_test_family",
       "requiredCapabilities": [
         "contract specification",
@@ -3202,7 +3182,7 @@
       "category": "must_build_now",
       "layer": "test",
       "sourcePath": "books/book-02-core-specification/core-specs/contracts/tests/idempotency-event-tests.md",
-      "sourceSection": "Section 3.9",
+      "sourceSection": "Section 5.9",
       "requiredImplementationKind": "executable_test_family",
       "requiredCapabilities": [
         "contract specification",
@@ -3231,7 +3211,7 @@
       "category": "must_build_now",
       "layer": "test",
       "sourcePath": "books/book-02-core-specification/core-specs/contracts/tests/error-versioning-tests.md",
-      "sourceSection": "Section 3.9",
+      "sourceSection": "Section 5.9",
       "requiredImplementationKind": "executable_test_family",
       "requiredCapabilities": [
         "contract specification",
@@ -3260,7 +3240,7 @@
       "category": "stub_now",
       "layer": "domain",
       "sourcePath": "books/book-02-core-specification/core-specs/domains/knowledge.md",
-      "sourceSection": "Section 4.1",
+      "sourceSection": "Section 6.1",
       "requiredImplementationKind": "bounded_stub",
       "requiredCapabilities": ["no production execution"],
       "dependencies": [],
@@ -3283,7 +3263,7 @@
       "category": "stub_now",
       "layer": "domain",
       "sourcePath": "books/book-02-core-specification/core-specs/domains/notification.md",
-      "sourceSection": "Section 4.1",
+      "sourceSection": "Section 6.1",
       "requiredImplementationKind": "bounded_stub",
       "requiredCapabilities": ["no production execution"],
       "dependencies": [],
@@ -3306,7 +3286,7 @@
       "category": "stub_now",
       "layer": "domain",
       "sourcePath": "books/book-02-core-specification/core-specs/domains/opportunity.md",
-      "sourceSection": "Section 4.1",
+      "sourceSection": "Section 6.1",
       "requiredImplementationKind": "bounded_stub",
       "requiredCapabilities": ["no production execution"],
       "dependencies": [],
@@ -3329,7 +3309,7 @@
       "category": "stub_now",
       "layer": "domain",
       "sourcePath": "books/book-02-core-specification/core-specs/domains/partner.md",
-      "sourceSection": "Section 4.1",
+      "sourceSection": "Section 6.1",
       "requiredImplementationKind": "bounded_stub",
       "requiredCapabilities": ["no production execution"],
       "dependencies": [],
@@ -3352,7 +3332,7 @@
       "category": "stub_now",
       "layer": "domain",
       "sourcePath": "books/book-02-core-specification/core-specs/domains/agent.md",
-      "sourceSection": "Section 4.1",
+      "sourceSection": "Section 6.1",
       "requiredImplementationKind": "bounded_stub",
       "requiredCapabilities": ["no production execution"],
       "dependencies": [],
@@ -3375,7 +3355,7 @@
       "category": "stub_now",
       "layer": "domain",
       "sourcePath": "books/book-02-core-specification/core-specs/domains/service-provider.md",
-      "sourceSection": "Section 4.1",
+      "sourceSection": "Section 6.1",
       "requiredImplementationKind": "bounded_stub",
       "requiredCapabilities": ["no production execution"],
       "dependencies": [],
@@ -3398,7 +3378,7 @@
       "category": "stub_now",
       "layer": "domain",
       "sourcePath": "books/book-02-core-specification/core-specs/domains/service-network.md",
-      "sourceSection": "Section 4.1",
+      "sourceSection": "Section 6.1",
       "requiredImplementationKind": "bounded_stub",
       "requiredCapabilities": ["no production execution"],
       "dependencies": [],
@@ -3421,7 +3401,7 @@
       "category": "stub_now",
       "layer": "domain",
       "sourcePath": "books/book-02-core-specification/core-specs/domains/routing.md",
-      "sourceSection": "Section 4.1",
+      "sourceSection": "Section 6.1",
       "requiredImplementationKind": "bounded_stub",
       "requiredCapabilities": ["no production execution"],
       "dependencies": [],
@@ -3444,7 +3424,7 @@
       "category": "stub_now",
       "layer": "service",
       "sourcePath": "books/book-02-core-specification/core-specs/services/knowledge-service.md",
-      "sourceSection": "Section 4.2",
+      "sourceSection": "Section 6.2",
       "requiredImplementationKind": "bounded_stub",
       "requiredCapabilities": ["no production execution"],
       "dependencies": [],
@@ -3467,7 +3447,7 @@
       "category": "stub_now",
       "layer": "service",
       "sourcePath": "books/book-02-core-specification/core-specs/services/notification-service.md",
-      "sourceSection": "Section 4.2",
+      "sourceSection": "Section 6.2",
       "requiredImplementationKind": "bounded_stub",
       "requiredCapabilities": ["no production execution"],
       "dependencies": [],
@@ -3490,7 +3470,7 @@
       "category": "stub_now",
       "layer": "service",
       "sourcePath": "books/book-02-core-specification/core-specs/services/opportunity-service.md",
-      "sourceSection": "Section 4.2",
+      "sourceSection": "Section 6.2",
       "requiredImplementationKind": "bounded_stub",
       "requiredCapabilities": ["no production execution"],
       "dependencies": [],
@@ -3513,7 +3493,7 @@
       "category": "stub_now",
       "layer": "service",
       "sourcePath": "books/book-02-core-specification/core-specs/services/partner-service.md",
-      "sourceSection": "Section 4.2",
+      "sourceSection": "Section 6.2",
       "requiredImplementationKind": "bounded_stub",
       "requiredCapabilities": ["no production execution"],
       "dependencies": [],
@@ -3536,7 +3516,7 @@
       "category": "stub_now",
       "layer": "service",
       "sourcePath": "books/book-02-core-specification/core-specs/services/agent-service.md",
-      "sourceSection": "Section 4.2",
+      "sourceSection": "Section 6.2",
       "requiredImplementationKind": "bounded_stub",
       "requiredCapabilities": ["no production execution"],
       "dependencies": [],
@@ -3559,7 +3539,7 @@
       "category": "stub_now",
       "layer": "service",
       "sourcePath": "books/book-02-core-specification/core-specs/services/service-provider-service.md",
-      "sourceSection": "Section 4.2",
+      "sourceSection": "Section 6.2",
       "requiredImplementationKind": "bounded_stub",
       "requiredCapabilities": ["no production execution"],
       "dependencies": [],
@@ -3582,7 +3562,7 @@
       "category": "stub_now",
       "layer": "service",
       "sourcePath": "books/book-02-core-specification/core-specs/services/service-network-service.md",
-      "sourceSection": "Section 4.2",
+      "sourceSection": "Section 6.2",
       "requiredImplementationKind": "bounded_stub",
       "requiredCapabilities": ["no production execution"],
       "dependencies": [],
@@ -3605,7 +3585,7 @@
       "category": "stub_now",
       "layer": "service",
       "sourcePath": "books/book-02-core-specification/core-specs/services/routing-service.md",
-      "sourceSection": "Section 4.2",
+      "sourceSection": "Section 6.2",
       "requiredImplementationKind": "bounded_stub",
       "requiredCapabilities": ["no production execution"],
       "dependencies": [],
@@ -3628,7 +3608,7 @@
       "category": "stub_now",
       "layer": "api",
       "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/knowledge-api-contract.md",
-      "sourceSection": "Section 4.3",
+      "sourceSection": "Section 6.3",
       "requiredImplementationKind": "bounded_stub",
       "requiredCapabilities": ["validation only"],
       "dependencies": [],
@@ -3651,7 +3631,7 @@
       "category": "stub_now",
       "layer": "api",
       "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/notification-api-contract.md",
-      "sourceSection": "Section 4.3",
+      "sourceSection": "Section 6.3",
       "requiredImplementationKind": "bounded_stub",
       "requiredCapabilities": ["validation only"],
       "dependencies": [],
@@ -3674,7 +3654,7 @@
       "category": "stub_now",
       "layer": "api",
       "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/opportunity-api-contract.md",
-      "sourceSection": "Section 4.3",
+      "sourceSection": "Section 6.3",
       "requiredImplementationKind": "bounded_stub",
       "requiredCapabilities": ["validation only"],
       "dependencies": [],
@@ -3697,7 +3677,7 @@
       "category": "stub_now",
       "layer": "api",
       "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/partner-api-contract.md",
-      "sourceSection": "Section 4.3",
+      "sourceSection": "Section 6.3",
       "requiredImplementationKind": "bounded_stub",
       "requiredCapabilities": ["validation only"],
       "dependencies": [],
@@ -3720,7 +3700,7 @@
       "category": "stub_now",
       "layer": "api",
       "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/agent-api-contract.md",
-      "sourceSection": "Section 4.3",
+      "sourceSection": "Section 6.3",
       "requiredImplementationKind": "bounded_stub",
       "requiredCapabilities": ["validation only"],
       "dependencies": [],
@@ -3743,7 +3723,7 @@
       "category": "stub_now",
       "layer": "api",
       "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/service-provider-api-contract.md",
-      "sourceSection": "Section 4.3",
+      "sourceSection": "Section 6.3",
       "requiredImplementationKind": "bounded_stub",
       "requiredCapabilities": ["validation only"],
       "dependencies": [],
@@ -3766,7 +3746,7 @@
       "category": "stub_now",
       "layer": "api",
       "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/service-network-api-contract.md",
-      "sourceSection": "Section 4.3",
+      "sourceSection": "Section 6.3",
       "requiredImplementationKind": "bounded_stub",
       "requiredCapabilities": ["validation only"],
       "dependencies": [],
@@ -3789,7 +3769,7 @@
       "category": "stub_now",
       "layer": "api",
       "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/routing-api-contract.md",
-      "sourceSection": "Section 4.3",
+      "sourceSection": "Section 6.3",
       "requiredImplementationKind": "bounded_stub",
       "requiredCapabilities": ["validation only"],
       "dependencies": [],
@@ -3812,7 +3792,7 @@
       "category": "stub_now",
       "layer": "workflow",
       "sourcePath": "books/book-02-core-specification/core-specs/workflows/office-action-response-workflow.md",
-      "sourceSection": "Section 4.4",
+      "sourceSection": "Section 6.4",
       "requiredImplementationKind": "preview_or_validation_only",
       "requiredCapabilities": [
         "preview-only or validation-only",
@@ -3841,7 +3821,7 @@
       "category": "stub_now",
       "layer": "workflow",
       "sourcePath": "books/book-02-core-specification/core-specs/workflows/provider-routing-workflow.md",
-      "sourceSection": "Section 4.4",
+      "sourceSection": "Section 6.4",
       "requiredImplementationKind": "preview_or_validation_only",
       "requiredCapabilities": [
         "preview-only or validation-only",
@@ -3870,7 +3850,7 @@
       "category": "stub_now",
       "layer": "workflow",
       "sourcePath": "books/book-02-core-specification/core-specs/workflows/renewal-workflow.md",
-      "sourceSection": "Section 4.4",
+      "sourceSection": "Section 6.4",
       "requiredImplementationKind": "preview_or_validation_only",
       "requiredCapabilities": [
         "preview-only or validation-only",
@@ -3899,7 +3879,7 @@
       "category": "stub_now",
       "layer": "workflow",
       "sourcePath": "books/book-02-core-specification/core-specs/workflows/assignment-workflow.md",
-      "sourceSection": "Section 4.4",
+      "sourceSection": "Section 6.4",
       "requiredImplementationKind": "preview_or_validation_only",
       "requiredCapabilities": [
         "preview-only or validation-only",
@@ -3928,7 +3908,7 @@
       "category": "stub_now",
       "layer": "workflow",
       "sourcePath": "books/book-02-core-specification/core-specs/workflows/evidence-review-workflow.md",
-      "sourceSection": "Section 4.4",
+      "sourceSection": "Section 6.4",
       "requiredImplementationKind": "preview_or_validation_only",
       "requiredCapabilities": [
         "preview-only or validation-only",
@@ -3957,7 +3937,7 @@
       "category": "stub_now",
       "layer": "agent",
       "sourcePath": "books/book-02-core-specification/core-specs/agents/routing-agent.md",
-      "sourceSection": "Section 4.5",
+      "sourceSection": "Section 6.5",
       "requiredImplementationKind": "bounded_stub",
       "requiredCapabilities": ["no production runtime"],
       "dependencies": [],
@@ -3980,7 +3960,7 @@
       "category": "stub_now",
       "layer": "agent",
       "sourcePath": "books/book-02-core-specification/core-specs/agents/advanced-agent-registry-runtime.md",
-      "sourceSection": "Section 4.5",
+      "sourceSection": "Section 6.5",
       "requiredImplementationKind": "bounded_stub",
       "requiredCapabilities": ["no production runtime"],
       "dependencies": [],
@@ -4015,6 +3995,16 @@
       "fixtureFiles": [],
       "inspectionPaths": ["src", "fixtures", "package.json"],
       "forbiddenIndicators": ["createFullPolicyEngine", "FullPolicyEngine"],
+      "excludedPaths": [
+        "src/mvp-coverage/",
+        "fixtures/mvp-coverage/",
+        "tests/",
+        "docs/",
+        "CHANGELOG.md",
+        "CORE-MANIFEST.md",
+        "CORE-ROADMAP.md",
+        "README.md"
+      ],
       "violationReasons": [],
       "gapReasons": []
     },
@@ -4036,6 +4026,16 @@
       "fixtureFiles": [],
       "inspectionPaths": ["src", "fixtures", "package.json"],
       "forbiddenIndicators": [],
+      "excludedPaths": [
+        "src/mvp-coverage/",
+        "fixtures/mvp-coverage/",
+        "tests/",
+        "docs/",
+        "CHANGELOG.md",
+        "CORE-MANIFEST.md",
+        "CORE-ROADMAP.md",
+        "README.md"
+      ],
       "violationReasons": [],
       "gapReasons": []
     },
@@ -4057,6 +4057,16 @@
       "fixtureFiles": [],
       "inspectionPaths": ["src", "fixtures", "package.json"],
       "forbiddenIndicators": ["createFullWorkflowEngine", "FullWorkflowEngine"],
+      "excludedPaths": [
+        "src/mvp-coverage/",
+        "fixtures/mvp-coverage/",
+        "tests/",
+        "docs/",
+        "CHANGELOG.md",
+        "CORE-MANIFEST.md",
+        "CORE-ROADMAP.md",
+        "README.md"
+      ],
       "violationReasons": [],
       "gapReasons": []
     },
@@ -4078,6 +4088,16 @@
       "fixtureFiles": [],
       "inspectionPaths": ["src", "fixtures", "package.json"],
       "forbiddenIndicators": [],
+      "excludedPaths": [
+        "src/mvp-coverage/",
+        "fixtures/mvp-coverage/",
+        "tests/",
+        "docs/",
+        "CHANGELOG.md",
+        "CORE-MANIFEST.md",
+        "CORE-ROADMAP.md",
+        "README.md"
+      ],
       "violationReasons": [],
       "gapReasons": []
     },
@@ -4099,6 +4119,16 @@
       "fixtureFiles": [],
       "inspectionPaths": ["src", "fixtures", "package.json"],
       "forbiddenIndicators": [],
+      "excludedPaths": [
+        "src/mvp-coverage/",
+        "fixtures/mvp-coverage/",
+        "tests/",
+        "docs/",
+        "CHANGELOG.md",
+        "CORE-MANIFEST.md",
+        "CORE-ROADMAP.md",
+        "README.md"
+      ],
       "violationReasons": [],
       "gapReasons": []
     },
@@ -4120,6 +4150,16 @@
       "fixtureFiles": [],
       "inspectionPaths": ["src", "fixtures", "package.json"],
       "forbiddenIndicators": ["executePayment", "PaymentExecution"],
+      "excludedPaths": [
+        "src/mvp-coverage/",
+        "fixtures/mvp-coverage/",
+        "tests/",
+        "docs/",
+        "CHANGELOG.md",
+        "CORE-MANIFEST.md",
+        "CORE-ROADMAP.md",
+        "README.md"
+      ],
       "violationReasons": [],
       "gapReasons": []
     },
@@ -4141,6 +4181,16 @@
       "fixtureFiles": [],
       "inspectionPaths": ["src", "fixtures", "package.json"],
       "forbiddenIndicators": [],
+      "excludedPaths": [
+        "src/mvp-coverage/",
+        "fixtures/mvp-coverage/",
+        "tests/",
+        "docs/",
+        "CHANGELOG.md",
+        "CORE-MANIFEST.md",
+        "CORE-ROADMAP.md",
+        "README.md"
+      ],
       "violationReasons": [],
       "gapReasons": []
     },
@@ -4162,6 +4212,16 @@
       "fixtureFiles": [],
       "inspectionPaths": ["src", "fixtures", "package.json"],
       "forbiddenIndicators": [],
+      "excludedPaths": [
+        "src/mvp-coverage/",
+        "fixtures/mvp-coverage/",
+        "tests/",
+        "docs/",
+        "CHANGELOG.md",
+        "CORE-MANIFEST.md",
+        "CORE-ROADMAP.md",
+        "README.md"
+      ],
       "violationReasons": [],
       "gapReasons": []
     },
@@ -4183,6 +4243,16 @@
       "fixtureFiles": [],
       "inspectionPaths": ["src", "fixtures", "package.json"],
       "forbiddenIndicators": [],
+      "excludedPaths": [
+        "src/mvp-coverage/",
+        "fixtures/mvp-coverage/",
+        "tests/",
+        "docs/",
+        "CHANGELOG.md",
+        "CORE-MANIFEST.md",
+        "CORE-ROADMAP.md",
+        "README.md"
+      ],
       "violationReasons": [],
       "gapReasons": []
     },
@@ -4204,6 +4274,16 @@
       "fixtureFiles": [],
       "inspectionPaths": ["src", "fixtures", "package.json"],
       "forbiddenIndicators": [],
+      "excludedPaths": [
+        "src/mvp-coverage/",
+        "fixtures/mvp-coverage/",
+        "tests/",
+        "docs/",
+        "CHANGELOG.md",
+        "CORE-MANIFEST.md",
+        "CORE-ROADMAP.md",
+        "README.md"
+      ],
       "violationReasons": [],
       "gapReasons": []
     },
@@ -4225,6 +4305,16 @@
       "fixtureFiles": [],
       "inspectionPaths": ["src", "fixtures", "package.json"],
       "forbiddenIndicators": [],
+      "excludedPaths": [
+        "src/mvp-coverage/",
+        "fixtures/mvp-coverage/",
+        "tests/",
+        "docs/",
+        "CHANGELOG.md",
+        "CORE-MANIFEST.md",
+        "CORE-ROADMAP.md",
+        "README.md"
+      ],
       "violationReasons": [],
       "gapReasons": []
     },
@@ -4246,6 +4336,16 @@
       "fixtureFiles": [],
       "inspectionPaths": ["src", "fixtures", "package.json"],
       "forbiddenIndicators": [],
+      "excludedPaths": [
+        "src/mvp-coverage/",
+        "fixtures/mvp-coverage/",
+        "tests/",
+        "docs/",
+        "CHANGELOG.md",
+        "CORE-MANIFEST.md",
+        "CORE-ROADMAP.md",
+        "README.md"
+      ],
       "violationReasons": [],
       "gapReasons": []
     },
@@ -4267,6 +4367,16 @@
       "fixtureFiles": [],
       "inspectionPaths": ["src", "fixtures", "package.json"],
       "forbiddenIndicators": [],
+      "excludedPaths": [
+        "src/mvp-coverage/",
+        "fixtures/mvp-coverage/",
+        "tests/",
+        "docs/",
+        "CHANGELOG.md",
+        "CORE-MANIFEST.md",
+        "CORE-ROADMAP.md",
+        "README.md"
+      ],
       "violationReasons": [],
       "gapReasons": []
     },
@@ -4288,6 +4398,16 @@
       "fixtureFiles": [],
       "inspectionPaths": ["src", "fixtures", "package.json"],
       "forbiddenIndicators": [],
+      "excludedPaths": [
+        "src/mvp-coverage/",
+        "fixtures/mvp-coverage/",
+        "tests/",
+        "docs/",
+        "CHANGELOG.md",
+        "CORE-MANIFEST.md",
+        "CORE-ROADMAP.md",
+        "README.md"
+      ],
       "violationReasons": [],
       "gapReasons": []
     },
@@ -4309,6 +4429,16 @@
       "fixtureFiles": [],
       "inspectionPaths": ["src", "fixtures", "package.json"],
       "forbiddenIndicators": [],
+      "excludedPaths": [
+        "src/mvp-coverage/",
+        "fixtures/mvp-coverage/",
+        "tests/",
+        "docs/",
+        "CHANGELOG.md",
+        "CORE-MANIFEST.md",
+        "CORE-ROADMAP.md",
+        "README.md"
+      ],
       "violationReasons": [],
       "gapReasons": []
     },
@@ -4330,6 +4460,16 @@
       "fixtureFiles": [],
       "inspectionPaths": ["src", "fixtures", "package.json"],
       "forbiddenIndicators": [],
+      "excludedPaths": [
+        "src/mvp-coverage/",
+        "fixtures/mvp-coverage/",
+        "tests/",
+        "docs/",
+        "CHANGELOG.md",
+        "CORE-MANIFEST.md",
+        "CORE-ROADMAP.md",
+        "README.md"
+      ],
       "violationReasons": [],
       "gapReasons": []
     },
@@ -4351,6 +4491,16 @@
       "fixtureFiles": [],
       "inspectionPaths": ["src", "fixtures", "package.json"],
       "forbiddenIndicators": [],
+      "excludedPaths": [
+        "src/mvp-coverage/",
+        "fixtures/mvp-coverage/",
+        "tests/",
+        "docs/",
+        "CHANGELOG.md",
+        "CORE-MANIFEST.md",
+        "CORE-ROADMAP.md",
+        "README.md"
+      ],
       "violationReasons": [],
       "gapReasons": []
     },
@@ -4372,6 +4522,16 @@
       "fixtureFiles": [],
       "inspectionPaths": ["src", "fixtures", "package.json"],
       "forbiddenIndicators": [],
+      "excludedPaths": [
+        "src/mvp-coverage/",
+        "fixtures/mvp-coverage/",
+        "tests/",
+        "docs/",
+        "CHANGELOG.md",
+        "CORE-MANIFEST.md",
+        "CORE-ROADMAP.md",
+        "README.md"
+      ],
       "violationReasons": [],
       "gapReasons": []
     },
@@ -4393,6 +4553,16 @@
       "fixtureFiles": [],
       "inspectionPaths": ["src", "fixtures", "package.json"],
       "forbiddenIndicators": [],
+      "excludedPaths": [
+        "src/mvp-coverage/",
+        "fixtures/mvp-coverage/",
+        "tests/",
+        "docs/",
+        "CHANGELOG.md",
+        "CORE-MANIFEST.md",
+        "CORE-ROADMAP.md",
+        "README.md"
+      ],
       "violationReasons": [],
       "gapReasons": []
     },
@@ -4414,6 +4584,16 @@
       "fixtureFiles": [],
       "inspectionPaths": ["src", "fixtures", "package.json"],
       "forbiddenIndicators": [],
+      "excludedPaths": [
+        "src/mvp-coverage/",
+        "fixtures/mvp-coverage/",
+        "tests/",
+        "docs/",
+        "CHANGELOG.md",
+        "CORE-MANIFEST.md",
+        "CORE-ROADMAP.md",
+        "README.md"
+      ],
       "violationReasons": [],
       "gapReasons": []
     },
@@ -4435,6 +4615,16 @@
       "fixtureFiles": [],
       "inspectionPaths": ["src", "fixtures", "package.json"],
       "forbiddenIndicators": [],
+      "excludedPaths": [
+        "src/mvp-coverage/",
+        "fixtures/mvp-coverage/",
+        "tests/",
+        "docs/",
+        "CHANGELOG.md",
+        "CORE-MANIFEST.md",
+        "CORE-ROADMAP.md",
+        "README.md"
+      ],
       "violationReasons": [],
       "gapReasons": []
     },
@@ -4456,6 +4646,16 @@
       "fixtureFiles": [],
       "inspectionPaths": ["src", "fixtures", "package.json"],
       "forbiddenIndicators": [],
+      "excludedPaths": [
+        "src/mvp-coverage/",
+        "fixtures/mvp-coverage/",
+        "tests/",
+        "docs/",
+        "CHANGELOG.md",
+        "CORE-MANIFEST.md",
+        "CORE-ROADMAP.md",
+        "README.md"
+      ],
       "violationReasons": [],
       "gapReasons": []
     },
@@ -4477,6 +4677,16 @@
       "fixtureFiles": [],
       "inspectionPaths": ["src", "fixtures", "package.json"],
       "forbiddenIndicators": [],
+      "excludedPaths": [
+        "src/mvp-coverage/",
+        "fixtures/mvp-coverage/",
+        "tests/",
+        "docs/",
+        "CHANGELOG.md",
+        "CORE-MANIFEST.md",
+        "CORE-ROADMAP.md",
+        "README.md"
+      ],
       "violationReasons": [],
       "gapReasons": []
     },
@@ -4498,6 +4708,16 @@
       "fixtureFiles": [],
       "inspectionPaths": ["src", "fixtures", "package.json"],
       "forbiddenIndicators": [],
+      "excludedPaths": [
+        "src/mvp-coverage/",
+        "fixtures/mvp-coverage/",
+        "tests/",
+        "docs/",
+        "CHANGELOG.md",
+        "CORE-MANIFEST.md",
+        "CORE-ROADMAP.md",
+        "README.md"
+      ],
       "violationReasons": [],
       "gapReasons": []
     },
@@ -4519,6 +4739,16 @@
       "fixtureFiles": [],
       "inspectionPaths": ["src", "fixtures", "package.json"],
       "forbiddenIndicators": [],
+      "excludedPaths": [
+        "src/mvp-coverage/",
+        "fixtures/mvp-coverage/",
+        "tests/",
+        "docs/",
+        "CHANGELOG.md",
+        "CORE-MANIFEST.md",
+        "CORE-ROADMAP.md",
+        "README.md"
+      ],
       "violationReasons": [],
       "gapReasons": []
     },
@@ -4540,6 +4770,16 @@
       "fixtureFiles": [],
       "inspectionPaths": ["src", "fixtures", "package.json"],
       "forbiddenIndicators": [],
+      "excludedPaths": [
+        "src/mvp-coverage/",
+        "fixtures/mvp-coverage/",
+        "tests/",
+        "docs/",
+        "CHANGELOG.md",
+        "CORE-MANIFEST.md",
+        "CORE-ROADMAP.md",
+        "README.md"
+      ],
       "violationReasons": [],
       "gapReasons": []
     },
@@ -4561,6 +4801,16 @@
       "fixtureFiles": [],
       "inspectionPaths": ["src", "fixtures", "package.json"],
       "forbiddenIndicators": [],
+      "excludedPaths": [
+        "src/mvp-coverage/",
+        "fixtures/mvp-coverage/",
+        "tests/",
+        "docs/",
+        "CHANGELOG.md",
+        "CORE-MANIFEST.md",
+        "CORE-ROADMAP.md",
+        "README.md"
+      ],
       "violationReasons": [],
       "gapReasons": []
     },
@@ -4582,6 +4832,16 @@
       "fixtureFiles": [],
       "inspectionPaths": ["src", "fixtures", "package.json"],
       "forbiddenIndicators": [],
+      "excludedPaths": [
+        "src/mvp-coverage/",
+        "fixtures/mvp-coverage/",
+        "tests/",
+        "docs/",
+        "CHANGELOG.md",
+        "CORE-MANIFEST.md",
+        "CORE-ROADMAP.md",
+        "README.md"
+      ],
       "violationReasons": [],
       "gapReasons": []
     },
@@ -4603,6 +4863,16 @@
       "fixtureFiles": [],
       "inspectionPaths": ["src", "fixtures", "package.json"],
       "forbiddenIndicators": [],
+      "excludedPaths": [
+        "src/mvp-coverage/",
+        "fixtures/mvp-coverage/",
+        "tests/",
+        "docs/",
+        "CHANGELOG.md",
+        "CORE-MANIFEST.md",
+        "CORE-ROADMAP.md",
+        "README.md"
+      ],
       "violationReasons": [],
       "gapReasons": []
     },
@@ -4624,6 +4894,16 @@
       "fixtureFiles": [],
       "inspectionPaths": ["src", "fixtures", "package.json"],
       "forbiddenIndicators": [],
+      "excludedPaths": [
+        "src/mvp-coverage/",
+        "fixtures/mvp-coverage/",
+        "tests/",
+        "docs/",
+        "CHANGELOG.md",
+        "CORE-MANIFEST.md",
+        "CORE-ROADMAP.md",
+        "README.md"
+      ],
       "violationReasons": [],
       "gapReasons": []
     },
@@ -4645,6 +4925,16 @@
       "fixtureFiles": [],
       "inspectionPaths": ["src", "fixtures", "package.json"],
       "forbiddenIndicators": [],
+      "excludedPaths": [
+        "src/mvp-coverage/",
+        "fixtures/mvp-coverage/",
+        "tests/",
+        "docs/",
+        "CHANGELOG.md",
+        "CORE-MANIFEST.md",
+        "CORE-ROADMAP.md",
+        "README.md"
+      ],
       "violationReasons": [],
       "gapReasons": []
     },
@@ -4667,6 +4957,16 @@
       "fixtureFiles": [],
       "inspectionPaths": ["src", "fixtures", "package.json"],
       "forbiddenIndicators": [],
+      "excludedPaths": [
+        "src/mvp-coverage/",
+        "fixtures/mvp-coverage/",
+        "tests/",
+        "docs/",
+        "CHANGELOG.md",
+        "CORE-MANIFEST.md",
+        "CORE-ROADMAP.md",
+        "README.md"
+      ],
       "violationReasons": [],
       "gapReasons": []
     },
@@ -4689,6 +4989,16 @@
       "fixtureFiles": [],
       "inspectionPaths": ["src", "fixtures", "package.json"],
       "forbiddenIndicators": [],
+      "excludedPaths": [
+        "src/mvp-coverage/",
+        "fixtures/mvp-coverage/",
+        "tests/",
+        "docs/",
+        "CHANGELOG.md",
+        "CORE-MANIFEST.md",
+        "CORE-ROADMAP.md",
+        "README.md"
+      ],
       "violationReasons": [],
       "gapReasons": []
     },
@@ -4711,6 +5021,16 @@
       "fixtureFiles": [],
       "inspectionPaths": ["src", "fixtures", "package.json"],
       "forbiddenIndicators": [],
+      "excludedPaths": [
+        "src/mvp-coverage/",
+        "fixtures/mvp-coverage/",
+        "tests/",
+        "docs/",
+        "CHANGELOG.md",
+        "CORE-MANIFEST.md",
+        "CORE-ROADMAP.md",
+        "README.md"
+      ],
       "violationReasons": [],
       "gapReasons": []
     },
@@ -4733,6 +5053,16 @@
       "fixtureFiles": [],
       "inspectionPaths": ["src", "fixtures", "package.json"],
       "forbiddenIndicators": [],
+      "excludedPaths": [
+        "src/mvp-coverage/",
+        "fixtures/mvp-coverage/",
+        "tests/",
+        "docs/",
+        "CHANGELOG.md",
+        "CORE-MANIFEST.md",
+        "CORE-ROADMAP.md",
+        "README.md"
+      ],
       "violationReasons": [],
       "gapReasons": []
     },
@@ -4755,6 +5085,16 @@
       "fixtureFiles": [],
       "inspectionPaths": ["src", "fixtures", "package.json"],
       "forbiddenIndicators": [],
+      "excludedPaths": [
+        "src/mvp-coverage/",
+        "fixtures/mvp-coverage/",
+        "tests/",
+        "docs/",
+        "CHANGELOG.md",
+        "CORE-MANIFEST.md",
+        "CORE-ROADMAP.md",
+        "README.md"
+      ],
       "violationReasons": [],
       "gapReasons": []
     },
@@ -4777,6 +5117,16 @@
       "fixtureFiles": [],
       "inspectionPaths": ["src", "fixtures", "package.json"],
       "forbiddenIndicators": [],
+      "excludedPaths": [
+        "src/mvp-coverage/",
+        "fixtures/mvp-coverage/",
+        "tests/",
+        "docs/",
+        "CHANGELOG.md",
+        "CORE-MANIFEST.md",
+        "CORE-ROADMAP.md",
+        "README.md"
+      ],
       "violationReasons": [],
       "gapReasons": []
     },
@@ -4799,6 +5149,16 @@
       "fixtureFiles": [],
       "inspectionPaths": ["src", "fixtures", "package.json"],
       "forbiddenIndicators": ["apiDirectDomainMutation"],
+      "excludedPaths": [
+        "src/mvp-coverage/",
+        "fixtures/mvp-coverage/",
+        "tests/",
+        "docs/",
+        "CHANGELOG.md",
+        "CORE-MANIFEST.md",
+        "CORE-ROADMAP.md",
+        "README.md"
+      ],
       "violationReasons": [],
       "gapReasons": []
     },
@@ -4821,6 +5181,16 @@
       "fixtureFiles": [],
       "inspectionPaths": ["src", "fixtures", "package.json"],
       "forbiddenIndicators": [],
+      "excludedPaths": [
+        "src/mvp-coverage/",
+        "fixtures/mvp-coverage/",
+        "tests/",
+        "docs/",
+        "CHANGELOG.md",
+        "CORE-MANIFEST.md",
+        "CORE-ROADMAP.md",
+        "README.md"
+      ],
       "violationReasons": [],
       "gapReasons": []
     },
@@ -4843,6 +5213,16 @@
       "fixtureFiles": [],
       "inspectionPaths": ["src", "fixtures", "package.json"],
       "forbiddenIndicators": ["workflowDirectEventEmission"],
+      "excludedPaths": [
+        "src/mvp-coverage/",
+        "fixtures/mvp-coverage/",
+        "tests/",
+        "docs/",
+        "CHANGELOG.md",
+        "CORE-MANIFEST.md",
+        "CORE-ROADMAP.md",
+        "README.md"
+      ],
       "violationReasons": [],
       "gapReasons": []
     },
@@ -4865,6 +5245,16 @@
       "fixtureFiles": [],
       "inspectionPaths": ["src", "fixtures", "package.json"],
       "forbiddenIndicators": ["agentDirectEventEmission"],
+      "excludedPaths": [
+        "src/mvp-coverage/",
+        "fixtures/mvp-coverage/",
+        "tests/",
+        "docs/",
+        "CHANGELOG.md",
+        "CORE-MANIFEST.md",
+        "CORE-ROADMAP.md",
+        "README.md"
+      ],
       "violationReasons": [],
       "gapReasons": []
     },
@@ -4887,6 +5277,16 @@
       "fixtureFiles": [],
       "inspectionPaths": ["src", "fixtures", "package.json"],
       "forbiddenIndicators": [],
+      "excludedPaths": [
+        "src/mvp-coverage/",
+        "fixtures/mvp-coverage/",
+        "tests/",
+        "docs/",
+        "CHANGELOG.md",
+        "CORE-MANIFEST.md",
+        "CORE-ROADMAP.md",
+        "README.md"
+      ],
       "violationReasons": [],
       "gapReasons": []
     },
@@ -4909,6 +5309,16 @@
       "fixtureFiles": [],
       "inspectionPaths": ["src", "fixtures", "package.json"],
       "forbiddenIndicators": [],
+      "excludedPaths": [
+        "src/mvp-coverage/",
+        "fixtures/mvp-coverage/",
+        "tests/",
+        "docs/",
+        "CHANGELOG.md",
+        "CORE-MANIFEST.md",
+        "CORE-ROADMAP.md",
+        "README.md"
+      ],
       "violationReasons": [],
       "gapReasons": []
     },
@@ -4931,6 +5341,16 @@
       "fixtureFiles": [],
       "inspectionPaths": ["src", "fixtures", "package.json"],
       "forbiddenIndicators": [],
+      "excludedPaths": [
+        "src/mvp-coverage/",
+        "fixtures/mvp-coverage/",
+        "tests/",
+        "docs/",
+        "CHANGELOG.md",
+        "CORE-MANIFEST.md",
+        "CORE-ROADMAP.md",
+        "README.md"
+      ],
       "violationReasons": [],
       "gapReasons": []
     },
@@ -4953,6 +5373,16 @@
       "fixtureFiles": [],
       "inspectionPaths": ["src", "fixtures", "package.json"],
       "forbiddenIndicators": ["productionFixture", "production_data_fixture"],
+      "excludedPaths": [
+        "src/mvp-coverage/",
+        "fixtures/mvp-coverage/",
+        "tests/",
+        "docs/",
+        "CHANGELOG.md",
+        "CORE-MANIFEST.md",
+        "CORE-ROADMAP.md",
+        "README.md"
+      ],
       "violationReasons": [],
       "gapReasons": []
     },
@@ -4975,6 +5405,16 @@
       "fixtureFiles": [],
       "inspectionPaths": ["src", "fixtures", "package.json"],
       "forbiddenIndicators": ["rawDatabaseId"],
+      "excludedPaths": [
+        "src/mvp-coverage/",
+        "fixtures/mvp-coverage/",
+        "tests/",
+        "docs/",
+        "CHANGELOG.md",
+        "CORE-MANIFEST.md",
+        "CORE-ROADMAP.md",
+        "README.md"
+      ],
       "violationReasons": [],
       "gapReasons": []
     },
@@ -4997,6 +5437,16 @@
       "fixtureFiles": [],
       "inspectionPaths": ["src", "fixtures", "package.json"],
       "forbiddenIndicators": ["stackTrace"],
+      "excludedPaths": [
+        "src/mvp-coverage/",
+        "fixtures/mvp-coverage/",
+        "tests/",
+        "docs/",
+        "CHANGELOG.md",
+        "CORE-MANIFEST.md",
+        "CORE-ROADMAP.md",
+        "README.md"
+      ],
       "violationReasons": [],
       "gapReasons": []
     },
@@ -5019,6 +5469,16 @@
       "fixtureFiles": [],
       "inspectionPaths": ["src", "fixtures", "package.json"],
       "forbiddenIndicators": ["acceptUnsupportedVersionSilently"],
+      "excludedPaths": [
+        "src/mvp-coverage/",
+        "fixtures/mvp-coverage/",
+        "tests/",
+        "docs/",
+        "CHANGELOG.md",
+        "CORE-MANIFEST.md",
+        "CORE-ROADMAP.md",
+        "README.md"
+      ],
       "violationReasons": [],
       "gapReasons": []
     },
@@ -5041,6 +5501,16 @@
       "fixtureFiles": [],
       "inspectionPaths": ["src", "fixtures", "package.json"],
       "forbiddenIndicators": [],
+      "excludedPaths": [
+        "src/mvp-coverage/",
+        "fixtures/mvp-coverage/",
+        "tests/",
+        "docs/",
+        "CHANGELOG.md",
+        "CORE-MANIFEST.md",
+        "CORE-ROADMAP.md",
+        "README.md"
+      ],
       "violationReasons": [],
       "gapReasons": []
     }
@@ -5051,8 +5521,28 @@
       "name": "Must Build Domains Implemented Or Scaffolded With Tests",
       "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
       "sourceSection": "Section 14",
-      "dependencies": [],
-      "satisfied": true,
+      "dependencies": [
+        "must-domain-identity",
+        "must-domain-organization",
+        "must-domain-user",
+        "must-domain-permission",
+        "must-domain-policy",
+        "must-domain-customer",
+        "must-domain-brand",
+        "must-domain-trademark",
+        "must-domain-jurisdiction",
+        "must-domain-classification",
+        "must-domain-document",
+        "must-domain-evidence",
+        "must-domain-matter",
+        "must-domain-order",
+        "must-domain-workflow-contract",
+        "must-domain-task",
+        "must-domain-event",
+        "must-domain-communication",
+        "must-test-common-contract-tests"
+      ],
+      "satisfied": false,
       "evidenceRequirementIds": [
         "must-domain-identity",
         "must-domain-organization",
@@ -5071,17 +5561,40 @@
         "must-domain-workflow-contract",
         "must-domain-task",
         "must-domain-event",
-        "must-domain-communication"
+        "must-domain-communication",
+        "must-test-common-contract-tests"
       ],
-      "unresolvedReasons": []
+      "unresolvedReasons": [
+        "Must Build Domains Implemented Or Scaffolded With Tests is not yet proven by mapped requirement evidence."
+      ]
     },
     {
       "id": "must-build-objects-have-public-reference-ids",
       "name": "Must Build Objects Have Public Reference Ids",
       "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
       "sourceSection": "Section 14",
-      "dependencies": [],
-      "satisfied": true,
+      "dependencies": [
+        "must-object-identity",
+        "must-object-organization",
+        "must-object-user",
+        "must-object-permission",
+        "must-object-policy",
+        "must-object-customer",
+        "must-object-brand",
+        "must-object-trademark",
+        "must-object-jurisdiction",
+        "must-object-classification",
+        "must-object-document",
+        "must-object-evidence",
+        "must-object-matter",
+        "must-object-order",
+        "must-object-workflow-contract",
+        "must-object-task",
+        "must-object-event",
+        "must-object-communication",
+        "must-common-references"
+      ],
+      "satisfied": false,
       "evidenceRequirementIds": [
         "must-object-identity",
         "must-object-organization",
@@ -5100,16 +5613,38 @@
         "must-object-workflow-contract",
         "must-object-task",
         "must-object-event",
-        "must-object-communication"
+        "must-object-communication",
+        "must-common-references"
       ],
-      "unresolvedReasons": []
+      "unresolvedReasons": [
+        "Must Build Objects Have Public Reference Ids is not yet proven by mapped requirement evidence."
+      ]
     },
     {
       "id": "must-build-services-own-behavior",
       "name": "Must Build Services Own Behavior",
       "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
       "sourceSection": "Section 14",
-      "dependencies": [],
+      "dependencies": [
+        "must-service-identity-service",
+        "must-service-organization-service",
+        "must-service-user-service",
+        "must-service-permission-service",
+        "must-service-policy-service",
+        "must-service-customer-service",
+        "must-service-brand-service",
+        "must-service-trademark-service",
+        "must-service-jurisdiction-service",
+        "must-service-classification-service",
+        "must-service-document-service",
+        "must-service-evidence-service",
+        "must-service-matter-service",
+        "must-service-order-service",
+        "must-service-workflow-contract-service",
+        "must-service-task-service",
+        "must-service-event-service",
+        "must-service-communication-service"
+      ],
       "satisfied": false,
       "evidenceRequirementIds": [
         "must-service-identity-service",
@@ -5140,7 +5675,26 @@
       "name": "Must Build Api Validators Exist",
       "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
       "sourceSection": "Section 14",
-      "dependencies": [],
+      "dependencies": [
+        "must-api-identity-api-contract",
+        "must-api-organization-api-contract",
+        "must-api-user-api-contract",
+        "must-api-permission-api-contract",
+        "must-api-policy-api-contract",
+        "must-api-customer-api-contract",
+        "must-api-brand-api-contract",
+        "must-api-trademark-api-contract",
+        "must-api-jurisdiction-api-contract",
+        "must-api-classification-api-contract",
+        "must-api-document-api-contract",
+        "must-api-evidence-api-contract",
+        "must-api-matter-api-contract",
+        "must-api-order-api-contract",
+        "must-api-workflow-contract-api-contract",
+        "must-api-task-api-contract",
+        "must-api-event-api-contract",
+        "must-api-communication-api-contract"
+      ],
       "satisfied": false,
       "evidenceRequirementIds": [
         "must-api-identity-api-contract",
@@ -5171,7 +5725,7 @@
       "name": "Customer Intake Workflow Supports Preview Apply",
       "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
       "sourceSection": "Section 14",
-      "dependencies": [],
+      "dependencies": ["must-workflow-customer-intake-workflow"],
       "satisfied": false,
       "evidenceRequirementIds": ["must-workflow-customer-intake-workflow"],
       "unresolvedReasons": [
@@ -5183,7 +5737,7 @@
       "name": "Trademark Application Workflow Supports Preview Apply",
       "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
       "sourceSection": "Section 14",
-      "dependencies": [],
+      "dependencies": ["must-workflow-trademark-application-workflow"],
       "satisfied": false,
       "evidenceRequirementIds": [
         "must-workflow-trademark-application-workflow"
@@ -5197,7 +5751,7 @@
       "name": "Communication Review Workflow Supports Preview Apply",
       "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
       "sourceSection": "Section 14",
-      "dependencies": [],
+      "dependencies": ["must-workflow-communication-review-workflow"],
       "satisfied": false,
       "evidenceRequirementIds": ["must-workflow-communication-review-workflow"],
       "unresolvedReasons": [
@@ -5209,19 +5763,16 @@
       "name": "Permission And Policy Fail Closed",
       "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
       "sourceSection": "Section 14",
-      "dependencies": [],
-      "satisfied": false,
-      "evidenceRequirementIds": [
-        "must-common-references",
-        "must-common-errors",
+      "dependencies": [
         "must-common-permission-context",
         "must-common-policy-context",
-        "must-common-idempotency",
-        "must-common-audit-context",
-        "must-common-versioning",
-        "must-common-pagination",
-        "must-common-ai-context",
-        "must-common-human-review"
+        "must-test-permission-policy-tests"
+      ],
+      "satisfied": false,
+      "evidenceRequirementIds": [
+        "must-common-permission-context",
+        "must-common-policy-context",
+        "must-test-permission-policy-tests"
       ],
       "unresolvedReasons": [
         "Permission And Policy Fail Closed is not yet proven by mapped requirement evidence."
@@ -5232,14 +5783,16 @@
       "name": "Ai Forbidden Actions Are Blocked",
       "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
       "sourceSection": "Section 14",
-      "dependencies": [],
+      "dependencies": [
+        "must-common-ai-context",
+        "must-agent-knowledge-agent",
+        "must-test-agent-boundary-tests"
+      ],
       "satisfied": false,
       "evidenceRequirementIds": [
+        "must-common-ai-context",
         "must-agent-knowledge-agent",
-        "must-agent-task-agent",
-        "must-agent-communication-agent",
-        "must-agent-workflow-agent",
-        "must-agent-audit-agent"
+        "must-test-agent-boundary-tests"
       ],
       "unresolvedReasons": [
         "Ai Forbidden Actions Are Blocked is not yet proven by mapped requirement evidence."
@@ -5250,19 +5803,18 @@
       "name": "Human Review Gates Protected Actions",
       "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
       "sourceSection": "Section 14",
-      "dependencies": [],
-      "satisfied": false,
-      "evidenceRequirementIds": [
-        "must-common-references",
-        "must-common-errors",
+      "dependencies": [
+        "must-common-human-review",
         "must-common-permission-context",
         "must-common-policy-context",
-        "must-common-idempotency",
-        "must-common-audit-context",
-        "must-common-versioning",
-        "must-common-pagination",
-        "must-common-ai-context",
-        "must-common-human-review"
+        "must-test-permission-policy-tests"
+      ],
+      "satisfied": false,
+      "evidenceRequirementIds": [
+        "must-common-human-review",
+        "must-common-permission-context",
+        "must-common-policy-context",
+        "must-test-permission-policy-tests"
       ],
       "unresolvedReasons": [
         "Human Review Gates Protected Actions is not yet proven by mapped requirement evidence."
@@ -5273,19 +5825,14 @@
       "name": "Idempotency Replay And Conflict Are Tested",
       "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
       "sourceSection": "Section 14",
-      "dependencies": [],
+      "dependencies": [
+        "must-common-idempotency",
+        "must-test-idempotency-event-tests"
+      ],
       "satisfied": false,
       "evidenceRequirementIds": [
-        "must-common-references",
-        "must-common-errors",
-        "must-common-permission-context",
-        "must-common-policy-context",
         "must-common-idempotency",
-        "must-common-audit-context",
-        "must-common-versioning",
-        "must-common-pagination",
-        "must-common-ai-context",
-        "must-common-human-review"
+        "must-test-idempotency-event-tests"
       ],
       "unresolvedReasons": [
         "Idempotency Replay And Conflict Are Tested is not yet proven by mapped requirement evidence."
@@ -5296,27 +5843,16 @@
       "name": "Event Trace Exists And Is Not Command",
       "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
       "sourceSection": "Section 14",
-      "dependencies": [],
+      "dependencies": [
+        "must-event-customer-created",
+        "must-common-idempotency",
+        "must-test-idempotency-event-tests"
+      ],
       "satisfied": false,
       "evidenceRequirementIds": [
         "must-event-customer-created",
-        "must-event-brand-created",
-        "must-event-trademark-created",
-        "must-event-matter-created",
-        "must-event-order-created",
-        "must-event-document-created",
-        "must-event-document-attached",
-        "must-event-evidence-created",
-        "must-event-task-created",
-        "must-event-task-updated",
-        "must-event-task-completed",
-        "must-event-communication-created",
-        "must-event-communication-reviewed",
-        "must-event-communication-sent",
-        "must-event-workflow-contract-previewed",
-        "must-event-workflow-contract-applied",
-        "must-event-permission-evaluated",
-        "must-event-policy-evaluated"
+        "must-common-idempotency",
+        "must-test-idempotency-event-tests"
       ],
       "unresolvedReasons": [
         "Event Trace Exists And Is Not Command is not yet proven by mapped requirement evidence."
@@ -5327,28 +5863,9 @@
       "name": "Api Layer Does Not Emit Events Directly",
       "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
       "sourceSection": "Section 14",
-      "dependencies": [],
+      "dependencies": ["must-test-api-contract-tests"],
       "satisfied": false,
-      "evidenceRequirementIds": [
-        "must-api-identity-api-contract",
-        "must-api-organization-api-contract",
-        "must-api-user-api-contract",
-        "must-api-permission-api-contract",
-        "must-api-policy-api-contract",
-        "must-api-customer-api-contract",
-        "must-api-brand-api-contract",
-        "must-api-trademark-api-contract",
-        "must-api-jurisdiction-api-contract",
-        "must-api-classification-api-contract",
-        "must-api-document-api-contract",
-        "must-api-evidence-api-contract",
-        "must-api-matter-api-contract",
-        "must-api-order-api-contract",
-        "must-api-workflow-contract-api-contract",
-        "must-api-task-api-contract",
-        "must-api-event-api-contract",
-        "must-api-communication-api-contract"
-      ],
+      "evidenceRequirementIds": ["must-test-api-contract-tests"],
       "unresolvedReasons": [
         "Api Layer Does Not Emit Events Directly is not yet proven by mapped requirement evidence."
       ]
@@ -5358,13 +5875,9 @@
       "name": "Workflow Layer Does Not Emit Events Directly",
       "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
       "sourceSection": "Section 14",
-      "dependencies": [],
+      "dependencies": ["must-test-workflow-contract-tests"],
       "satisfied": false,
-      "evidenceRequirementIds": [
-        "must-workflow-customer-intake-workflow",
-        "must-workflow-trademark-application-workflow",
-        "must-workflow-communication-review-workflow"
-      ],
+      "evidenceRequirementIds": ["must-test-workflow-contract-tests"],
       "unresolvedReasons": [
         "Workflow Layer Does Not Emit Events Directly is not yet proven by mapped requirement evidence."
       ]
@@ -5374,15 +5887,9 @@
       "name": "Agent Layer Does Not Emit Events Directly",
       "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
       "sourceSection": "Section 14",
-      "dependencies": [],
+      "dependencies": ["must-test-agent-boundary-tests"],
       "satisfied": false,
-      "evidenceRequirementIds": [
-        "must-agent-knowledge-agent",
-        "must-agent-task-agent",
-        "must-agent-communication-agent",
-        "must-agent-workflow-agent",
-        "must-agent-audit-agent"
-      ],
+      "evidenceRequirementIds": ["must-test-agent-boundary-tests"],
       "unresolvedReasons": [
         "Agent Layer Does Not Emit Events Directly is not yet proven by mapped requirement evidence."
       ]
@@ -5392,19 +5899,14 @@
       "name": "Errors Are Safe",
       "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
       "sourceSection": "Section 14",
-      "dependencies": [],
+      "dependencies": [
+        "must-common-errors",
+        "must-test-error-versioning-tests"
+      ],
       "satisfied": false,
       "evidenceRequirementIds": [
-        "must-common-references",
         "must-common-errors",
-        "must-common-permission-context",
-        "must-common-policy-context",
-        "must-common-idempotency",
-        "must-common-audit-context",
-        "must-common-versioning",
-        "must-common-pagination",
-        "must-common-ai-context",
-        "must-common-human-review"
+        "must-test-error-versioning-tests"
       ],
       "unresolvedReasons": [
         "Errors Are Safe is not yet proven by mapped requirement evidence."
@@ -5415,19 +5917,14 @@
       "name": "Unsupported Versions Fail Closed",
       "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
       "sourceSection": "Section 14",
-      "dependencies": [],
+      "dependencies": [
+        "must-common-versioning",
+        "must-test-error-versioning-tests"
+      ],
       "satisfied": false,
       "evidenceRequirementIds": [
-        "must-common-references",
-        "must-common-errors",
-        "must-common-permission-context",
-        "must-common-policy-context",
-        "must-common-idempotency",
-        "must-common-audit-context",
         "must-common-versioning",
-        "must-common-pagination",
-        "must-common-ai-context",
-        "must-common-human-review"
+        "must-test-error-versioning-tests"
       ],
       "unresolvedReasons": [
         "Unsupported Versions Fail Closed is not yet proven by mapped requirement evidence."
@@ -5438,7 +5935,39 @@
       "name": "Deferred Items Do Not Block Mvp",
       "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
       "sourceSection": "Section 14",
-      "dependencies": [],
+      "dependencies": [
+        "defer-renewal-production-workflow",
+        "defer-assignment-production-workflow",
+        "defer-office-action-response-production-workflow",
+        "defer-evidence-review-production-workflow",
+        "defer-provider-routing-production-workflow",
+        "defer-foreign-agent-onboarding-automation",
+        "defer-partner-facing-mini-program",
+        "defer-client-self-service-filing-portal",
+        "defer-global-jurisdiction-rule-automation",
+        "defer-official-fee-calculation-engine",
+        "defer-trademark-watch-monitoring",
+        "defer-bulk-opportunity-generation",
+        "defer-service-provider-scoring",
+        "defer-communication-delivery-integrations",
+        "defer-document-e-signature-integration",
+        "defer-external-storage-integrations",
+        "defer-billing-and-invoice-automation",
+        "document-only-full-policy-engine",
+        "document-only-full-agent-runtime-orchestration",
+        "document-only-full-workflow-engine",
+        "document-only-external-official-filing-integrations",
+        "document-only-foreign-associate-live-network-integrations",
+        "document-only-payment-execution",
+        "document-only-provider-marketplace-settlement",
+        "document-only-advanced-analytics",
+        "document-only-advanced-service-network-optimization",
+        "document-only-multi-product-app-marketplace",
+        "document-only-public-developer-api-portal",
+        "document-only-ai-autonomous-workflow-execution",
+        "document-only-official-deadline-certification-automation",
+        "document-only-professional-registrability-decision-automation"
+      ],
       "satisfied": true,
       "evidenceRequirementIds": [
         "defer-renewal-production-workflow",
@@ -5480,7 +6009,26 @@
       "name": "Never In Mvp Items Are Not Implemented",
       "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
       "sourceSection": "Section 14",
-      "dependencies": [],
+      "dependencies": [
+        "never-ai-submitting-official-filings",
+        "never-ai-certifying-legal-deadlines",
+        "never-ai-certifying-trademark-registrability",
+        "never-ai-deciding-evidence-sufficiency-as-professional-truth",
+        "never-ai-selecting-service-provider-as-final-decision",
+        "never-ai-sending-external-communication-without-human-review",
+        "never-api-layer-mutating-domain-state-directly",
+        "never-workflow-layer-creating-active-tasks-outside-task-service",
+        "never-workflow-layer-emitting-domain-events-directly",
+        "never-agent-layer-emitting-events-directly",
+        "never-event-references-triggering-commands",
+        "never-permission-bypass-for-convenience",
+        "never-policy-bypass-for-convenience",
+        "never-production-data-fixtures",
+        "never-raw-database-ids-in-public-responses",
+        "never-unsafe-stack-traces-in-api-responses",
+        "never-silent-unsupported-version-acceptance",
+        "never-silent-historical-version-rewriting"
+      ],
       "satisfied": true,
       "evidenceRequirementIds": [
         "never-ai-submitting-official-filings",
@@ -5508,8 +6056,8 @@
   "summary": {
     "mustBuildNow": {
       "total": 115,
-      "meets_required_depth": 0,
-      "partial_evidence": 10,
+      "meets_required_depth": 10,
+      "partial_evidence": 0,
       "validated_skeleton_only": 82,
       "boundary_scaffold_only": 5,
       "semantic_overlap_only": 18,
@@ -5534,9 +6082,11 @@
       "violationCount": 0
     },
     "acceptance": {
-      "acceptanceCriteriaSatisfied": 4,
+      "acceptanceCriteriaSatisfied": 2,
       "acceptanceCriteriaTotal": 19,
       "unresolvedCriteria": [
+        "must-build-domains-implemented-or-scaffolded-with-tests",
+        "must-build-objects-have-public-reference-ids",
         "must-build-services-own-behavior",
         "must-build-api-validators-exist",
         "customer-intake-workflow-supports-preview-apply",

@@ -1,5 +1,10 @@
-import { existsSync, readFileSync } from 'node:fs';
-import { CORE_CONTRACT_BEHAVIOR_ACCEPTANCE_LOCK } from '../behavior-coverage/index.ts';
+import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
+import { join } from 'node:path';
+import {
+  CORE_CONTRACT_BEHAVIOR_ACCEPTANCE_LOCK,
+  CORE_CONTRACT_BEHAVIOR_COVERAGE_BASELINE,
+  type CoreBehaviorDepthLevel
+} from '../behavior-coverage/index.ts';
 import {
   CORE_API_CONTRACT_SKELETONS,
   CORE_COMMON_CONTRACT_SKELETONS,
@@ -17,6 +22,7 @@ import {
   BOOK_02_EXPECTED_COUNTS,
   BOOK_02_MVP_REQUIREMENT_IDENTITIES,
   MVP_ACCEPTANCE_CRITERIA_IDENTITIES,
+  MVP_ACCEPTANCE_CRITERION_DEPENDENCIES,
   type Book02MvpAcceptanceCriterion,
   type Book02MvpDepth,
   type Book02MvpDisposition,
@@ -68,6 +74,8 @@ interface CurrentEvidence {
   readonly currentDepth?: Book02MvpDepth;
   readonly inspectionPaths?: readonly string[];
   readonly forbiddenIndicators?: readonly string[];
+  readonly excludedPaths?: readonly string[];
+  readonly violationReasons?: readonly string[];
 }
 
 const existing = (paths: readonly string[]) =>
@@ -90,6 +98,12 @@ const fixtureFilesOf = (
     | undefined
 ): readonly string[] =>
   behavior && 'fixtureFiles' in behavior ? behavior.fixtureFiles : [];
+const behaviorTargetById = new Map(
+  CORE_CONTRACT_BEHAVIOR_COVERAGE_BASELINE.targets.map((target) => [
+    target.id,
+    target
+  ])
+);
 const commonBehaviorIds: Record<string, string> = {
   references: 'references',
   errors: 'errors',
@@ -148,12 +162,109 @@ const guardIndicators: Record<string, readonly string[]> = {
   ]
 };
 const inspectionPaths = ['src', 'fixtures', 'package.json'] as const;
-function fileContainsIndicator(indicator: string): boolean {
-  for (const path of ['package.json']) {
-    if (existsSync(path) && readFileSync(path, 'utf8').includes(indicator))
-      return true;
+const excludedGuardPaths = [
+  'src/mvp-coverage/',
+  'fixtures/mvp-coverage/',
+  'tests/',
+  'docs/',
+  'CHANGELOG.md',
+  'CORE-MANIFEST.md',
+  'CORE-ROADMAP.md',
+  'README.md'
+] as const;
+const textInspectionExtensions = ['.ts', '.json', '.mjs', '.js'] as const;
+
+export interface Book02MvpGuardInspectionInput {
+  readonly inspectionPaths: readonly string[];
+  readonly forbiddenIndicators: readonly string[];
+  readonly excludedPaths: readonly string[];
+}
+export interface Book02MvpGuardInspectionResult {
+  readonly violationPresent: boolean;
+  readonly violationReasons: readonly string[];
+}
+
+function normalizePath(path: string): string {
+  return path.replaceAll('\\', '/');
+}
+function isExcluded(path: string, excludedPaths: readonly string[]): boolean {
+  const normalized = normalizePath(path);
+  return excludedPaths.some((excluded) => {
+    const normalizedExcluded = normalizePath(excluded);
+    return (
+      normalized === normalizedExcluded ||
+      normalized.startsWith(normalizedExcluded)
+    );
+  });
+}
+function collectInspectableFiles(
+  paths: readonly string[],
+  excludedPaths: readonly string[]
+): readonly string[] {
+  const files: string[] = [];
+  const visit = (path: string) => {
+    const normalized = normalizePath(path);
+    if (isExcluded(normalized, excludedPaths) || !existsSync(normalized))
+      return;
+    const stat = statSync(normalized);
+    if (stat.isDirectory()) {
+      for (const child of readdirSync(normalized).sort())
+        visit(join(normalized, child));
+      return;
+    }
+    if (
+      normalized === 'package.json' ||
+      textInspectionExtensions.some((extension) =>
+        normalized.endsWith(extension)
+      )
+    )
+      files.push(normalized);
+  };
+  for (const path of [...paths].sort()) visit(path);
+  return files.sort();
+}
+export function inspectBook02MvpGuard(
+  input: Book02MvpGuardInspectionInput
+): Book02MvpGuardInspectionResult {
+  const violationReasons: string[] = [];
+  for (const file of collectInspectableFiles(
+    input.inspectionPaths,
+    input.excludedPaths
+  )) {
+    const text = readFileSync(file, 'utf8');
+    for (const indicator of input.forbiddenIndicators) {
+      if (text.includes(indicator))
+        violationReasons.push(
+          `${file} contains forbidden indicator ${indicator}.`
+        );
+    }
   }
-  return false;
+  return { violationPresent: violationReasons.length > 0, violationReasons };
+}
+function depthFromNumber(depth: CoreBehaviorDepthLevel): Book02MvpDepth {
+  return depth === 0
+    ? 'level_0'
+    : depth === 1
+      ? 'level_1'
+      : depth === 2
+        ? 'level_2'
+        : 'level_3';
+}
+function commonMeetsRequired(
+  requiredDepth: Book02MvpDepth | undefined,
+  currentDepth: Book02MvpDepth
+): boolean {
+  if (!requiredDepth) return false;
+  const order: Record<Book02MvpDepth, number> = {
+    level_0: 0,
+    level_1: 1,
+    level_1_2: 1,
+    level_2: 2,
+    level_2_3: 2,
+    level_3: 3,
+    forbidden: Number.POSITIVE_INFINITY
+  };
+  return order[currentDepth] >= order[requiredDepth];
 }
 function evidenceFor(identity: Book02MvpRequirementIdentity): CurrentEvidence {
   if (identity.layer === 'domain') {
@@ -221,7 +332,10 @@ function evidenceFor(identity: Book02MvpRequirementIdentity): CurrentEvidence {
       implementationFiles: existing(behavior?.sourceFiles ?? []),
       testFiles: existing(behavior?.testFiles ?? []),
       fixtureFiles: existing(fixtureFilesOf(behavior)),
-      currentDepth: behavior ? identity.requiredDepth : 'level_0'
+      currentDepth: depthFromNumber(
+        behaviorTargetById.get(commonBehaviorIds[commonType] ?? commonType)
+          ?.currentDepth ?? 0
+      )
     };
   }
   if (identity.layer === 'api') {
@@ -318,7 +432,8 @@ function evidenceFor(identity: Book02MvpRequirementIdentity): CurrentEvidence {
     return {
       ...emptyEvidence(),
       inspectionPaths,
-      forbiddenIndicators: guardIndicators[identity.id] ?? []
+      forbiddenIndicators: guardIndicators[identity.id] ?? [],
+      excludedPaths: excludedGuardPaths
     };
   }
   return emptyEvidence();
@@ -336,7 +451,11 @@ function disposition(
   ev: CurrentEvidence
 ): Book02MvpDisposition {
   if (identity.layer === 'guard') {
-    return (ev.forbiddenIndicators ?? []).some(fileContainsIndicator)
+    return inspectBook02MvpGuard({
+      inspectionPaths: ev.inspectionPaths ?? [],
+      forbiddenIndicators: ev.forbiddenIndicators ?? [],
+      excludedPaths: ev.excludedPaths ?? []
+    }).violationPresent
       ? 'violation_present'
       : 'not_required';
   }
@@ -344,12 +463,25 @@ function disposition(
     return ev.contractIds.length > 0 || ev.implementationFiles.length > 0
       ? 'boundary_scaffold_only'
       : 'missing';
-  if (identity.layer === 'common_contract')
-    return ev.implementationFiles.length > 0 && ev.testFiles.length > 0
+  if (identity.layer === 'common_contract') {
+    const accepted = behaviorById.has(
+      commonBehaviorIds[identity.id.replace('must-common-', '')] ??
+        identity.id.replace('must-common-', '')
+    );
+    const filesExist =
+      ev.implementationFiles.length > 0 && ev.testFiles.length > 0;
+    if (
+      accepted &&
+      filesExist &&
+      commonMeetsRequired(identity.requiredDepth, ev.currentDepth ?? 'level_0')
+    )
+      return 'meets_required_depth';
+    return filesExist
       ? 'partial_evidence'
       : ev.contractIds.length > 0
         ? 'validated_skeleton_only'
         : 'missing';
+  }
   if (identity.layer === 'event') {
     return ev.contractIds.length > 0 ? 'semantic_overlap_only' : 'missing';
   }
@@ -401,9 +533,17 @@ export function deriveBook02MvpRequirementState(
 ): Book02MvpRequirement {
   const ev = evidenceFor(identity);
   const currentDisposition = disposition(identity, ev);
+  const guardInspection =
+    identity.layer === 'guard'
+      ? inspectBook02MvpGuard({
+          inspectionPaths: ev.inspectionPaths ?? [],
+          forbiddenIndicators: ev.forbiddenIndicators ?? [],
+          excludedPaths: ev.excludedPaths ?? []
+        })
+      : { violationPresent: false, violationReasons: [] };
   const violationReasons =
     currentDisposition === 'violation_present'
-      ? ['Detected forbidden indicator in controlled runtime areas.']
+      ? guardInspection.violationReasons
       : [];
   return {
     ...identity,
@@ -411,14 +551,13 @@ export function deriveBook02MvpRequirementState(
     currentDepth:
       ev.currentDepth ??
       (currentDisposition === 'not_required' ? 'level_0' : 'level_0'),
-    contractIds: ev.contractIds.filter(
-      (id) => contractIndexIds.has(id) || id.startsWith('core-')
-    ),
+    contractIds: ev.contractIds.filter((id) => contractIndexIds.has(id)),
     implementationFiles: ev.implementationFiles,
     testFiles: ev.testFiles,
     fixtureFiles: ev.fixtureFiles,
     inspectionPaths: ev.inspectionPaths,
     forbiddenIndicators: ev.forbiddenIndicators,
+    excludedPaths: ev.excludedPaths,
     violationReasons,
     gapReasons: gapReasons(identity, currentDisposition)
   };
@@ -427,13 +566,6 @@ const byCategory = (
   requirements: readonly Book02MvpRequirement[],
   category: string
 ) => requirements.filter((r) => r.category === category);
-const byLayer = (
-  requirements: readonly Book02MvpRequirement[],
-  layer: string
-) =>
-  requirements.filter(
-    (r) => r.layer === layer && r.category === 'must_build_now'
-  );
 function allMeet(requirements: readonly Book02MvpRequirement[]): boolean {
   return (
     requirements.length > 0 &&
@@ -449,10 +581,7 @@ export function deriveBook02MvpAcceptanceCriteria(
   requirements: readonly Book02MvpRequirement[]
 ): readonly Book02MvpAcceptanceCriterion[] {
   return MVP_ACCEPTANCE_CRITERIA_IDENTITIES.map((criterion) => {
-    const evidenceRequirementIds = evidenceIdsForCriterion(
-      criterion.id,
-      requirements
-    );
+    const evidenceRequirementIds = evidenceIdsForCriterion(criterion.id);
     const evidenceRequirements = requirements.filter((r) =>
       evidenceRequirementIds.includes(r.id)
     );
@@ -473,70 +602,25 @@ export function deriveBook02MvpAcceptanceCriteria(
     };
   });
 }
-function evidenceIdsForCriterion(
-  id: string,
-  requirements: readonly Book02MvpRequirement[]
-): readonly string[] {
-  if (id.includes('domains'))
-    return byLayer(requirements, 'domain').map((r) => r.id);
-  if (id.includes('objects'))
-    return byLayer(requirements, 'object').map((r) => r.id);
-  if (id.includes('services'))
-    return byLayer(requirements, 'service').map((r) => r.id);
-  if (
-    id.includes('api-validators') ||
-    id === 'api-layer-does-not-emit-events-directly'
-  )
-    return byLayer(requirements, 'api').map((r) => r.id);
-  if (id.startsWith('customer-intake'))
-    return ['must-workflow-customer-intake-workflow'];
-  if (id.startsWith('trademark-application'))
-    return ['must-workflow-trademark-application-workflow'];
-  if (id.startsWith('communication-review'))
-    return ['must-workflow-communication-review-workflow'];
-  if (id.includes('workflow-layer'))
-    return byLayer(requirements, 'workflow').map((r) => r.id);
-  if (id.includes('agent-layer') || id.includes('ai-forbidden'))
-    return byLayer(requirements, 'agent').map((r) => r.id);
-  if (id.includes('event-trace'))
-    return byLayer(requirements, 'event').map((r) => r.id);
-  if (id.includes('deferred'))
-    return [
-      ...byCategory(requirements, 'defer'),
-      ...byCategory(requirements, 'document_only')
-    ].map((r) => r.id);
-  if (id.includes('never'))
-    return byCategory(requirements, 'never_in_mvp').map((r) => r.id);
-  return requirements
-    .filter((r) => r.layer === 'common_contract')
-    .map((r) => r.id);
+const acceptanceEvidenceMap: Record<string, readonly string[]> =
+  MVP_ACCEPTANCE_CRITERION_DEPENDENCIES;
+function evidenceIdsForCriterion(id: string): readonly string[] {
+  return acceptanceEvidenceMap[id] ?? [];
 }
 function criterionSatisfied(
   id: string,
   requirements: readonly Book02MvpRequirement[],
   evidenceRequirements: readonly Book02MvpRequirement[]
 ): boolean {
+  const noNeverViolations = noViolations(
+    requirements.filter((r) => r.category === 'never_in_mvp')
+  );
   if (
     id === 'deferred-items-do-not-block-mvp' ||
     id === 'never-in-mvp-items-are-not-implemented'
   )
     return noViolations(evidenceRequirements);
-  if (id === 'must-build-domains-implemented-or-scaffolded-with-tests')
-    return evidenceRequirements.every(
-      (r) =>
-        r.currentDisposition === 'validated_skeleton_only' ||
-        r.currentDisposition === 'meets_required_depth'
-    );
-  if (id === 'must-build-objects-have-public-reference-ids')
-    return evidenceRequirements.every(
-      (r) =>
-        r.currentDisposition === 'validated_skeleton_only' ||
-        r.currentDisposition === 'meets_required_depth'
-    );
-  return (
-    allMeet(evidenceRequirements) &&
-    noViolations(requirements.filter((r) => r.category === 'never_in_mvp'))
-  );
+  return allMeet(evidenceRequirements) && noNeverViolations;
 }
 export function deriveBook02MvpGapSummary(
   requirements: readonly Book02MvpRequirement[],

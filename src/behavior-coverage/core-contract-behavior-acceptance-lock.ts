@@ -7,7 +7,8 @@ import {
 import { CORE_CONTRACT_BEHAVIOR_GAP_INVENTORY } from './core-contract-behavior-gap-inventory.ts';
 
 export type CoreBehaviorAcceptanceBasis =
-  'implemented_batch' | 'preexisting_minimum';
+  | 'implemented_batch'
+  | 'preexisting_minimum';
 
 export type CoreBehaviorAcceptanceEvidence = {
   readonly behaviorId: string;

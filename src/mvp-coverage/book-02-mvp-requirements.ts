@@ -56,6 +56,7 @@ export interface Book02MvpRequirement extends Book02MvpRequirementIdentity {
   readonly fixtureFiles: readonly string[];
   readonly inspectionPaths?: readonly string[];
   readonly forbiddenIndicators?: readonly string[];
+  readonly excludedPaths?: readonly string[];
   readonly violationReasons?: readonly string[];
   readonly gapReasons: readonly string[];
 }
@@ -340,6 +341,79 @@ export const TEST_REQUIRED_CAPABILITIES = [
   'execution under pnpm test or a dedicated evidence runner'
 ] as const;
 
+export const MVP_ACCEPTANCE_CRITERION_DEPENDENCIES: Record<
+  string,
+  readonly string[]
+> = {
+  'must-build-domains-implemented-or-scaffolded-with-tests': [
+    ...MUST_BUILD_DOMAINS.map((domain) => `must-domain-${domain}`),
+    'must-test-common-contract-tests'
+  ],
+  'must-build-objects-have-public-reference-ids': [
+    ...MUST_BUILD_DOMAINS.map((domain) => `must-object-${domain}`),
+    'must-common-references'
+  ],
+  'must-build-services-own-behavior': MUST_BUILD_DOMAINS.map(
+    (domain) => `must-service-${domain}-service`
+  ),
+  'must-build-api-validators-exist': MUST_BUILD_DOMAINS.map(
+    (domain) => `must-api-${domain}-api-contract`
+  ),
+  'customer-intake-workflow-supports-preview-apply': [
+    'must-workflow-customer-intake-workflow'
+  ],
+  'trademark-application-workflow-supports-preview-apply': [
+    'must-workflow-trademark-application-workflow'
+  ],
+  'communication-review-workflow-supports-preview-apply': [
+    'must-workflow-communication-review-workflow'
+  ],
+  'permission-and-policy-fail-closed': [
+    'must-common-permission-context',
+    'must-common-policy-context',
+    'must-test-permission-policy-tests'
+  ],
+  'ai-forbidden-actions-are-blocked': [
+    'must-common-ai-context',
+    'must-agent-knowledge-agent',
+    'must-test-agent-boundary-tests'
+  ],
+  'human-review-gates-protected-actions': [
+    'must-common-human-review',
+    'must-common-permission-context',
+    'must-common-policy-context',
+    'must-test-permission-policy-tests'
+  ],
+  'idempotency-replay-and-conflict-are-tested': [
+    'must-common-idempotency',
+    'must-test-idempotency-event-tests'
+  ],
+  'event-trace-exists-and-is-not-command': [
+    'must-event-customer-created',
+    'must-common-idempotency',
+    'must-test-idempotency-event-tests'
+  ],
+  'api-layer-does-not-emit-events-directly': ['must-test-api-contract-tests'],
+  'workflow-layer-does-not-emit-events-directly': [
+    'must-test-workflow-contract-tests'
+  ],
+  'agent-layer-does-not-emit-events-directly': [
+    'must-test-agent-boundary-tests'
+  ],
+  'errors-are-safe': ['must-common-errors', 'must-test-error-versioning-tests'],
+  'unsupported-versions-fail-closed': [
+    'must-common-versioning',
+    'must-test-error-versioning-tests'
+  ],
+  'deferred-items-do-not-block-mvp': [
+    ...DEFER_ITEMS.map((item) => `defer-${item}`),
+    ...DOCUMENT_ONLY_ITEMS.map((item) => `document-only-${item}`)
+  ],
+  'never-in-mvp-items-are-not-implemented': NEVER_IN_MVP_ITEMS.map(
+    (item) => `never-${item}`
+  )
+};
+
 export const MVP_ACCEPTANCE_CRITERIA_IDENTITIES: readonly Book02MvpAcceptanceCriterionIdentity[] =
   [
     'must-build-domains-implemented-or-scaffolded-with-tests',
@@ -366,7 +440,7 @@ export const MVP_ACCEPTANCE_CRITERIA_IDENTITIES: readonly Book02MvpAcceptanceCri
     name: cap(id),
     sourcePath: mvpCut,
     sourceSection: 'Section 14',
-    dependencies: []
+    dependencies: MVP_ACCEPTANCE_CRITERION_DEPENDENCIES[id] ?? []
   }));
 export const MVP_ACCEPTANCE_CRITERIA = MVP_ACCEPTANCE_CRITERIA_IDENTITIES;
 
@@ -379,7 +453,7 @@ export const BOOK_02_MVP_REQUIREMENT_IDENTITIES: readonly Book02MvpRequirementId
         'must_build_now',
         'domain',
         `${book}/domains/${d}.md`,
-        'Section 3.1',
+        'Section 5.1',
         'structural_contract',
         ['domain boundary']
       )
@@ -391,7 +465,7 @@ export const BOOK_02_MVP_REQUIREMENT_IDENTITIES: readonly Book02MvpRequirementId
         'must_build_now',
         'object',
         `${book}/objects/${d}.md`,
-        'Section 3.2',
+        'Section 5.2',
         'structural_contract',
         ['object contract', 'public reference id']
       )
@@ -403,7 +477,7 @@ export const BOOK_02_MVP_REQUIREMENT_IDENTITIES: readonly Book02MvpRequirementId
         'must_build_now',
         'service',
         `${book}/services/${d}-service.md`,
-        'Section 3.3',
+        'Section 5.3',
         'real_boundary_behavior',
         ['real boundary behavior', 'owning service authority']
       )
@@ -415,7 +489,7 @@ export const BOOK_02_MVP_REQUIREMENT_IDENTITIES: readonly Book02MvpRequirementId
         'must_build_now',
         'common_contract',
         `${book}/contracts/common/${c}.md`,
-        'Section 3.4',
+        'Section 5.4',
         'book_02_depth_matrix_behavior',
         ['contract hook', 'executable behavior evidence'],
         COMMON_CONTRACT_DEPTHS[c]
@@ -428,7 +502,7 @@ export const BOOK_02_MVP_REQUIREMENT_IDENTITIES: readonly Book02MvpRequirementId
         'must_build_now',
         'api',
         `${book}/contracts/api/${d}-api-contract.md`,
-        'Section 3.5',
+        'Section 5.5',
         'validator_and_service_delegation',
         API_REQUIRED_CAPABILITIES
       )
@@ -440,7 +514,7 @@ export const BOOK_02_MVP_REQUIREMENT_IDENTITIES: readonly Book02MvpRequirementId
         'must_build_now',
         'workflow',
         `${book}/workflows/${w}.md`,
-        'Section 3.6',
+        'Section 5.6',
         'preview_apply_validator',
         WORKFLOW_REQUIRED_CAPABILITIES
       )
@@ -452,7 +526,7 @@ export const BOOK_02_MVP_REQUIREMENT_IDENTITIES: readonly Book02MvpRequirementId
         'must_build_now',
         'event',
         `${book}/events/${e}.md`,
-        'Section 3.7',
+        'Section 5.7',
         'event_record_or_deterministic_fixture',
         EVENT_REQUIRED_CAPABILITIES
       )
@@ -464,7 +538,7 @@ export const BOOK_02_MVP_REQUIREMENT_IDENTITIES: readonly Book02MvpRequirementId
         'must_build_now',
         'agent',
         `${book}/agents/${a}.md`,
-        'Section 3.8',
+        'Section 5.8',
         'boundary_safe_scaffold',
         AGENT_REQUIRED_CAPABILITIES
       )
@@ -476,7 +550,7 @@ export const BOOK_02_MVP_REQUIREMENT_IDENTITIES: readonly Book02MvpRequirementId
         'must_build_now',
         'test',
         `${book}/contracts/tests/${t}.md`,
-        'Section 3.9',
+        'Section 5.9',
         'executable_test_family',
         TEST_REQUIRED_CAPABILITIES
       )
@@ -488,7 +562,7 @@ export const BOOK_02_MVP_REQUIREMENT_IDENTITIES: readonly Book02MvpRequirementId
         'stub_now',
         'domain',
         `${book}/domains/${d}.md`,
-        'Section 4.1',
+        'Section 6.1',
         'bounded_stub',
         ['no production execution']
       )
@@ -500,7 +574,7 @@ export const BOOK_02_MVP_REQUIREMENT_IDENTITIES: readonly Book02MvpRequirementId
         'stub_now',
         'service',
         `${book}/services/${d}-service.md`,
-        'Section 4.2',
+        'Section 6.2',
         'bounded_stub',
         ['no production execution']
       )
@@ -512,7 +586,7 @@ export const BOOK_02_MVP_REQUIREMENT_IDENTITIES: readonly Book02MvpRequirementId
         'stub_now',
         'api',
         `${book}/contracts/api/${d}-api-contract.md`,
-        'Section 4.3',
+        'Section 6.3',
         'bounded_stub',
         ['validation only']
       )
@@ -524,7 +598,7 @@ export const BOOK_02_MVP_REQUIREMENT_IDENTITIES: readonly Book02MvpRequirementId
         'stub_now',
         'workflow',
         `${book}/workflows/${w}.md`,
-        'Section 4.4',
+        'Section 6.4',
         'preview_or_validation_only',
         [
           'preview-only or validation-only',
@@ -542,7 +616,7 @@ export const BOOK_02_MVP_REQUIREMENT_IDENTITIES: readonly Book02MvpRequirementId
         'stub_now',
         'agent',
         `${book}/agents/${a}.md`,
-        'Section 4.5',
+        'Section 6.5',
         'bounded_stub',
         ['no production runtime']
       )
