@@ -219,3 +219,9 @@
 - Event behavior-coverage traceability now references `objects/event.md` instead of the legacy `objects/event-object.md`.
 - No repository-wide formatting baseline added.
 - Phase 4 acceptance is completed by CORE-TASK-033 for selected behavior hooks only; Book 02 MVP remains incomplete.
+
+## Next governed task
+
+CORE-TASK-035 — first implementation batch selected from the locked Book 02 MVP gap baseline.
+
+Book 02 MVP Gap Baseline is locked. Book 02 MVP remains incomplete. Selected behavior-hook minimum-depth acceptance remains valid. Domain business behavior remains unaccepted. Execution System remains incomplete. Production readiness remains unaccepted.

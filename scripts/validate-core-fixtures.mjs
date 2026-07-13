@@ -26,7 +26,8 @@ import {
   validateCoreContractBehaviorGapInventoryFixture,
   validateCoreContractBehaviorAcceptanceLockFixture,
   validateCoreSafetyBoundaryFoundationsFixture,
-  validateCoreIdempotencyEnforcementFixture
+  validateCoreIdempotencyEnforcementFixture,
+  validateBook02MvpGapBaselineFixture
 } from '../src/validation/index.ts';
 
 const validators = {
@@ -44,17 +45,23 @@ const validators = {
   workflow_catalog_skeletons: validateCoreWorkflowCatalogSkeletonsFixture,
   permission_contract_skeletons: validateCorePermissionContractSkeletonsFixture,
   policy_contract_skeletons: validateCorePolicyContractSkeletonsFixture,
-  ai_governance_contract_skeletons: validateCoreAiGovernanceContractSkeletonsFixture,
+  ai_governance_contract_skeletons:
+    validateCoreAiGovernanceContractSkeletonsFixture,
   common_contract_skeletons: validateCoreCommonContractSkeletonsFixture,
   test_contract_skeletons: validateCoreTestContractSkeletonsFixture,
   contract_coverage_baseline: validateCoreContractCoverageBaselineFixture,
   contract_gap_inventory: validateCoreContractGapInventoryFixture,
-  contract_coverage_acceptance_lock: validateCoreContractCoverageAcceptanceLockFixture,
-  contract_behavior_coverage_baseline: validateCoreContractBehaviorCoverageBaselineFixture,
-  contract_behavior_gap_inventory: validateCoreContractBehaviorGapInventoryFixture,
-  contract_behavior_acceptance_lock: validateCoreContractBehaviorAcceptanceLockFixture,
+  contract_coverage_acceptance_lock:
+    validateCoreContractCoverageAcceptanceLockFixture,
+  contract_behavior_coverage_baseline:
+    validateCoreContractBehaviorCoverageBaselineFixture,
+  contract_behavior_gap_inventory:
+    validateCoreContractBehaviorGapInventoryFixture,
+  contract_behavior_acceptance_lock:
+    validateCoreContractBehaviorAcceptanceLockFixture,
   safety_boundary_foundations: validateCoreSafetyBoundaryFoundationsFixture,
-  idempotency_enforcement: validateCoreIdempotencyEnforcementFixture
+  idempotency_enforcement: validateCoreIdempotencyEnforcementFixture,
+  book_02_mvp_gap_baseline: validateBook02MvpGapBaselineFixture
 };
 
 let hasErrors = false;
@@ -73,7 +80,9 @@ for (const entry of CORE_FIXTURE_MANIFEST) {
   console.log(`${result.ok ? 'PASS' : 'FAIL'} ${entry.id} (${entry.path})`);
 
   for (const issue of result.issues) {
-    console.log(`  [${issue.severity}] ${issue.code}: ${issue.message}${issue.path ? ` (${issue.path})` : ''}`);
+    console.log(
+      `  [${issue.severity}] ${issue.code}: ${issue.message}${issue.path ? ` (${issue.path})` : ''}`
+    );
   }
 }
 

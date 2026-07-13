@@ -23,7 +23,8 @@ export const CORE_FIXTURE_TYPES = [
   'contract_behavior_gap_inventory',
   'contract_behavior_acceptance_lock',
   'safety_boundary_foundations',
-  'idempotency_enforcement'
+  'idempotency_enforcement',
+  'book_02_mvp_gap_baseline'
 ] as const;
 
 export type CoreFixtureType = (typeof CORE_FIXTURE_TYPES)[number];
@@ -185,6 +186,12 @@ export const CORE_FIXTURE_MANIFEST = [
     id: 'core-idempotency-enforcement',
     type: 'idempotency_enforcement',
     path: 'fixtures/behaviors/core-idempotency-enforcement.fixture.json',
+    required: true
+  },
+  {
+    id: 'book-02-mvp-gap-baseline',
+    type: 'book_02_mvp_gap_baseline',
+    path: 'fixtures/mvp-coverage/book-02-mvp-gap-baseline.fixture.json',
     required: true
   }
 ] as const satisfies readonly CoreFixtureManifestEntry[];

@@ -4,24 +4,36 @@ import { describe, it } from 'node:test';
 import { CORE_FIXTURE_MANIFEST, CORE_FIXTURE_TYPES } from '../../src/index.ts';
 
 describe('CORE_FIXTURE_MANIFEST', () => {
-  it('has exactly 25 entries', () => {
-    assert.equal(CORE_FIXTURE_MANIFEST.length, 25);
+  it('has exactly 26 entries', () => {
+    assert.equal(CORE_FIXTURE_MANIFEST.length, 26);
   });
 
   it('includes permission_contract_skeletons type', () => {
-    assert.equal(CORE_FIXTURE_TYPES.includes('permission_contract_skeletons'), true);
+    assert.equal(
+      CORE_FIXTURE_TYPES.includes('permission_contract_skeletons'),
+      true
+    );
   });
 
   it('includes policy_contract_skeletons type', () => {
-    assert.equal(CORE_FIXTURE_TYPES.includes('policy_contract_skeletons'), true);
+    assert.equal(
+      CORE_FIXTURE_TYPES.includes('policy_contract_skeletons'),
+      true
+    );
   });
 
   it('includes ai_governance_contract_skeletons type', () => {
-    assert.equal(CORE_FIXTURE_TYPES.includes('ai_governance_contract_skeletons'), true);
+    assert.equal(
+      CORE_FIXTURE_TYPES.includes('ai_governance_contract_skeletons'),
+      true
+    );
   });
 
   it('includes contract_coverage_baseline type', () => {
-    assert.equal(CORE_FIXTURE_TYPES.includes('contract_coverage_baseline'), true);
+    assert.equal(
+      CORE_FIXTURE_TYPES.includes('contract_coverage_baseline'),
+      true
+    );
   });
 
   it('includes contract_gap_inventory type', () => {
@@ -29,40 +41,68 @@ describe('CORE_FIXTURE_MANIFEST', () => {
   });
 
   it('includes contract_coverage_acceptance_lock type', () => {
-    assert.equal(CORE_FIXTURE_TYPES.includes('contract_coverage_acceptance_lock'), true);
+    assert.equal(
+      CORE_FIXTURE_TYPES.includes('contract_coverage_acceptance_lock'),
+      true
+    );
   });
 
   it('includes contract_behavior_coverage_baseline type', () => {
-    assert.equal(CORE_FIXTURE_TYPES.includes('contract_behavior_coverage_baseline'), true);
+    assert.equal(
+      CORE_FIXTURE_TYPES.includes('contract_behavior_coverage_baseline'),
+      true
+    );
   });
 
   it('includes contract_behavior_gap_inventory type', () => {
-    assert.equal(CORE_FIXTURE_TYPES.includes('contract_behavior_gap_inventory'), true);
+    assert.equal(
+      CORE_FIXTURE_TYPES.includes('contract_behavior_gap_inventory'),
+      true
+    );
   });
 
   it('includes contract_behavior_acceptance_lock type', () => {
-    assert.equal(CORE_FIXTURE_TYPES.includes('contract_behavior_acceptance_lock'), true);
+    assert.equal(
+      CORE_FIXTURE_TYPES.includes('contract_behavior_acceptance_lock'),
+      true
+    );
   });
 
   it('includes safety_boundary_foundations type', () => {
-    assert.equal(CORE_FIXTURE_TYPES.includes('safety_boundary_foundations'), true);
+    assert.equal(
+      CORE_FIXTURE_TYPES.includes('safety_boundary_foundations'),
+      true
+    );
   });
 
   it('includes idempotency_enforcement type', () => {
     assert.equal(CORE_FIXTURE_TYPES.includes('idempotency_enforcement'), true);
   });
 
+  it('includes book_02_mvp_gap_baseline type', () => {
+    assert.equal(CORE_FIXTURE_TYPES.includes('book_02_mvp_gap_baseline'), true);
+  });
+
   it('includes Common and Test Contract skeleton types', () => {
-    assert.equal(CORE_FIXTURE_TYPES.includes('common_contract_skeletons'), true);
+    assert.equal(
+      CORE_FIXTURE_TYPES.includes('common_contract_skeletons'),
+      true
+    );
     assert.equal(CORE_FIXTURE_TYPES.includes('test_contract_skeletons'), true);
   });
 
   it('ids are unique', () => {
-    assert.equal(new Set(CORE_FIXTURE_MANIFEST.map((entry) => entry.id)).size, CORE_FIXTURE_MANIFEST.length);
+    assert.equal(
+      new Set(CORE_FIXTURE_MANIFEST.map((entry) => entry.id)).size,
+      CORE_FIXTURE_MANIFEST.length
+    );
   });
 
   it('paths are unique', () => {
-    assert.equal(new Set(CORE_FIXTURE_MANIFEST.map((entry) => entry.path)).size, CORE_FIXTURE_MANIFEST.length);
+    assert.equal(
+      new Set(CORE_FIXTURE_MANIFEST.map((entry) => entry.path)).size,
+      CORE_FIXTURE_MANIFEST.length
+    );
   });
 
   it('all entries are required', () => {
@@ -70,6 +110,33 @@ describe('CORE_FIXTURE_MANIFEST', () => {
   });
 
   it('CoreFixtureType contains exactly the required fixture types', () => {
-    assert.deepEqual(CORE_FIXTURE_TYPES, ['domain_registry', 'object_base', 'event_base', 'task_base', 'workflow_contract_base', 'contract_index', 'domain_contract_skeletons', 'object_contract_skeletons', 'service_contract_skeletons', 'api_contract_skeletons', 'event_catalog_skeletons', 'workflow_catalog_skeletons', 'permission_contract_skeletons', 'policy_contract_skeletons', 'ai_governance_contract_skeletons', 'common_contract_skeletons', 'test_contract_skeletons', 'contract_coverage_baseline', 'contract_gap_inventory', 'contract_coverage_acceptance_lock', 'contract_behavior_coverage_baseline', 'contract_behavior_gap_inventory', 'contract_behavior_acceptance_lock', 'safety_boundary_foundations', 'idempotency_enforcement']);
+    assert.deepEqual(CORE_FIXTURE_TYPES, [
+      'domain_registry',
+      'object_base',
+      'event_base',
+      'task_base',
+      'workflow_contract_base',
+      'contract_index',
+      'domain_contract_skeletons',
+      'object_contract_skeletons',
+      'service_contract_skeletons',
+      'api_contract_skeletons',
+      'event_catalog_skeletons',
+      'workflow_catalog_skeletons',
+      'permission_contract_skeletons',
+      'policy_contract_skeletons',
+      'ai_governance_contract_skeletons',
+      'common_contract_skeletons',
+      'test_contract_skeletons',
+      'contract_coverage_baseline',
+      'contract_gap_inventory',
+      'contract_coverage_acceptance_lock',
+      'contract_behavior_coverage_baseline',
+      'contract_behavior_gap_inventory',
+      'contract_behavior_acceptance_lock',
+      'safety_boundary_foundations',
+      'idempotency_enforcement',
+      'book_02_mvp_gap_baseline'
+    ]);
   });
 });

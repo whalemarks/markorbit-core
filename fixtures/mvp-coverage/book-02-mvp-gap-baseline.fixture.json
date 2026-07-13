@@ -1,0 +1,4235 @@
+{
+  "fixtureType": "book_02_mvp_gap_baseline",
+  "authority": {
+    "repository": "whalemarks/markorbit-publication",
+    "commit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+    "files": [
+      "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
+      "books/book-02-core-specification/core-specs/implementation/implementation-depth-matrix.md",
+      "books/book-02-core-specification/core-specs/TRACEABILITY.md",
+      "books/book-02-core-specification/core-specs/validation/traceability-validation.md"
+    ]
+  },
+  "requirements": [
+    {
+      "id": "must-domain-identity",
+      "name": "Identity",
+      "category": "must_build_now",
+      "layer": "domain",
+      "sourcePath": "books/book-02-core-specification/core-specs/domains/identity.md",
+      "requiredImplementationKind": "structural_contract",
+      "requiredCapabilities": ["domain boundary"],
+      "dependencies": [],
+      "currentDisposition": "validated_skeleton_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-domain-identity-contract"],
+      "implementationFiles": [
+        "src/contracts/domain/core-domain-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "domain has structural contract evidence only; required MVP behavior depth is not proven."
+      ]
+    },
+    {
+      "id": "must-domain-organization",
+      "name": "Organization",
+      "category": "must_build_now",
+      "layer": "domain",
+      "sourcePath": "books/book-02-core-specification/core-specs/domains/organization.md",
+      "requiredImplementationKind": "structural_contract",
+      "requiredCapabilities": ["domain boundary"],
+      "dependencies": [],
+      "currentDisposition": "validated_skeleton_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-domain-organization-contract"],
+      "implementationFiles": [
+        "src/contracts/domain/core-domain-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "domain has structural contract evidence only; required MVP behavior depth is not proven."
+      ]
+    },
+    {
+      "id": "must-domain-user",
+      "name": "User",
+      "category": "must_build_now",
+      "layer": "domain",
+      "sourcePath": "books/book-02-core-specification/core-specs/domains/user.md",
+      "requiredImplementationKind": "structural_contract",
+      "requiredCapabilities": ["domain boundary"],
+      "dependencies": [],
+      "currentDisposition": "validated_skeleton_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-domain-user-contract"],
+      "implementationFiles": [
+        "src/contracts/domain/core-domain-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "domain has structural contract evidence only; required MVP behavior depth is not proven."
+      ]
+    },
+    {
+      "id": "must-domain-permission",
+      "name": "Permission",
+      "category": "must_build_now",
+      "layer": "domain",
+      "sourcePath": "books/book-02-core-specification/core-specs/domains/permission.md",
+      "requiredImplementationKind": "structural_contract",
+      "requiredCapabilities": ["domain boundary"],
+      "dependencies": [],
+      "currentDisposition": "validated_skeleton_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-domain-permission-contract"],
+      "implementationFiles": [
+        "src/contracts/domain/core-domain-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "domain has structural contract evidence only; required MVP behavior depth is not proven."
+      ]
+    },
+    {
+      "id": "must-domain-policy",
+      "name": "Policy",
+      "category": "must_build_now",
+      "layer": "domain",
+      "sourcePath": "books/book-02-core-specification/core-specs/domains/policy.md",
+      "requiredImplementationKind": "structural_contract",
+      "requiredCapabilities": ["domain boundary"],
+      "dependencies": [],
+      "currentDisposition": "validated_skeleton_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-domain-policy-contract"],
+      "implementationFiles": [
+        "src/contracts/domain/core-domain-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "domain has structural contract evidence only; required MVP behavior depth is not proven."
+      ]
+    },
+    {
+      "id": "must-domain-customer",
+      "name": "Customer",
+      "category": "must_build_now",
+      "layer": "domain",
+      "sourcePath": "books/book-02-core-specification/core-specs/domains/customer.md",
+      "requiredImplementationKind": "structural_contract",
+      "requiredCapabilities": ["domain boundary"],
+      "dependencies": [],
+      "currentDisposition": "validated_skeleton_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-domain-customer-contract"],
+      "implementationFiles": [
+        "src/contracts/domain/core-domain-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "domain has structural contract evidence only; required MVP behavior depth is not proven."
+      ]
+    },
+    {
+      "id": "must-domain-brand",
+      "name": "Brand",
+      "category": "must_build_now",
+      "layer": "domain",
+      "sourcePath": "books/book-02-core-specification/core-specs/domains/brand.md",
+      "requiredImplementationKind": "structural_contract",
+      "requiredCapabilities": ["domain boundary"],
+      "dependencies": [],
+      "currentDisposition": "validated_skeleton_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-domain-brand-contract"],
+      "implementationFiles": [
+        "src/contracts/domain/core-domain-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "domain has structural contract evidence only; required MVP behavior depth is not proven."
+      ]
+    },
+    {
+      "id": "must-domain-trademark",
+      "name": "Trademark",
+      "category": "must_build_now",
+      "layer": "domain",
+      "sourcePath": "books/book-02-core-specification/core-specs/domains/trademark.md",
+      "requiredImplementationKind": "structural_contract",
+      "requiredCapabilities": ["domain boundary"],
+      "dependencies": [],
+      "currentDisposition": "validated_skeleton_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-domain-trademark-contract"],
+      "implementationFiles": [
+        "src/contracts/domain/core-domain-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "domain has structural contract evidence only; required MVP behavior depth is not proven."
+      ]
+    },
+    {
+      "id": "must-domain-jurisdiction",
+      "name": "Jurisdiction",
+      "category": "must_build_now",
+      "layer": "domain",
+      "sourcePath": "books/book-02-core-specification/core-specs/domains/jurisdiction.md",
+      "requiredImplementationKind": "structural_contract",
+      "requiredCapabilities": ["domain boundary"],
+      "dependencies": [],
+      "currentDisposition": "validated_skeleton_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-domain-jurisdiction-contract"],
+      "implementationFiles": [
+        "src/contracts/domain/core-domain-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "domain has structural contract evidence only; required MVP behavior depth is not proven."
+      ]
+    },
+    {
+      "id": "must-domain-classification",
+      "name": "Classification",
+      "category": "must_build_now",
+      "layer": "domain",
+      "sourcePath": "books/book-02-core-specification/core-specs/domains/classification.md",
+      "requiredImplementationKind": "structural_contract",
+      "requiredCapabilities": ["domain boundary"],
+      "dependencies": [],
+      "currentDisposition": "validated_skeleton_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-domain-classification-contract"],
+      "implementationFiles": [
+        "src/contracts/domain/core-domain-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "domain has structural contract evidence only; required MVP behavior depth is not proven."
+      ]
+    },
+    {
+      "id": "must-domain-document",
+      "name": "Document",
+      "category": "must_build_now",
+      "layer": "domain",
+      "sourcePath": "books/book-02-core-specification/core-specs/domains/document.md",
+      "requiredImplementationKind": "structural_contract",
+      "requiredCapabilities": ["domain boundary"],
+      "dependencies": [],
+      "currentDisposition": "validated_skeleton_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-domain-document-contract"],
+      "implementationFiles": [
+        "src/contracts/domain/core-domain-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "domain has structural contract evidence only; required MVP behavior depth is not proven."
+      ]
+    },
+    {
+      "id": "must-domain-evidence",
+      "name": "Evidence",
+      "category": "must_build_now",
+      "layer": "domain",
+      "sourcePath": "books/book-02-core-specification/core-specs/domains/evidence.md",
+      "requiredImplementationKind": "structural_contract",
+      "requiredCapabilities": ["domain boundary"],
+      "dependencies": [],
+      "currentDisposition": "validated_skeleton_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-domain-evidence-contract"],
+      "implementationFiles": [
+        "src/contracts/domain/core-domain-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "domain has structural contract evidence only; required MVP behavior depth is not proven."
+      ]
+    },
+    {
+      "id": "must-domain-matter",
+      "name": "Matter",
+      "category": "must_build_now",
+      "layer": "domain",
+      "sourcePath": "books/book-02-core-specification/core-specs/domains/matter.md",
+      "requiredImplementationKind": "structural_contract",
+      "requiredCapabilities": ["domain boundary"],
+      "dependencies": [],
+      "currentDisposition": "validated_skeleton_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-domain-matter-contract"],
+      "implementationFiles": [
+        "src/contracts/domain/core-domain-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "domain has structural contract evidence only; required MVP behavior depth is not proven."
+      ]
+    },
+    {
+      "id": "must-domain-order",
+      "name": "Order",
+      "category": "must_build_now",
+      "layer": "domain",
+      "sourcePath": "books/book-02-core-specification/core-specs/domains/order.md",
+      "requiredImplementationKind": "structural_contract",
+      "requiredCapabilities": ["domain boundary"],
+      "dependencies": [],
+      "currentDisposition": "validated_skeleton_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-domain-order-contract"],
+      "implementationFiles": [
+        "src/contracts/domain/core-domain-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "domain has structural contract evidence only; required MVP behavior depth is not proven."
+      ]
+    },
+    {
+      "id": "must-domain-workflow-contract",
+      "name": "Workflow Contract",
+      "category": "must_build_now",
+      "layer": "domain",
+      "sourcePath": "books/book-02-core-specification/core-specs/domains/workflow-contract.md",
+      "requiredImplementationKind": "structural_contract",
+      "requiredCapabilities": ["domain boundary"],
+      "dependencies": [],
+      "currentDisposition": "validated_skeleton_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-domain-workflow-contract-contract"],
+      "implementationFiles": [
+        "src/contracts/domain/core-domain-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "domain has structural contract evidence only; required MVP behavior depth is not proven."
+      ]
+    },
+    {
+      "id": "must-domain-task",
+      "name": "Task",
+      "category": "must_build_now",
+      "layer": "domain",
+      "sourcePath": "books/book-02-core-specification/core-specs/domains/task.md",
+      "requiredImplementationKind": "structural_contract",
+      "requiredCapabilities": ["domain boundary"],
+      "dependencies": [],
+      "currentDisposition": "validated_skeleton_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-domain-task-contract"],
+      "implementationFiles": [
+        "src/contracts/domain/core-domain-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "domain has structural contract evidence only; required MVP behavior depth is not proven."
+      ]
+    },
+    {
+      "id": "must-domain-event",
+      "name": "Event",
+      "category": "must_build_now",
+      "layer": "domain",
+      "sourcePath": "books/book-02-core-specification/core-specs/domains/event.md",
+      "requiredImplementationKind": "structural_contract",
+      "requiredCapabilities": ["domain boundary"],
+      "dependencies": [],
+      "currentDisposition": "validated_skeleton_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-domain-event-contract"],
+      "implementationFiles": [
+        "src/contracts/domain/core-domain-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "domain has structural contract evidence only; required MVP behavior depth is not proven."
+      ]
+    },
+    {
+      "id": "must-domain-communication",
+      "name": "Communication",
+      "category": "must_build_now",
+      "layer": "domain",
+      "sourcePath": "books/book-02-core-specification/core-specs/domains/communication.md",
+      "requiredImplementationKind": "structural_contract",
+      "requiredCapabilities": ["domain boundary"],
+      "dependencies": [],
+      "currentDisposition": "validated_skeleton_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-domain-communication-contract"],
+      "implementationFiles": [
+        "src/contracts/domain/core-domain-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "domain has structural contract evidence only; required MVP behavior depth is not proven."
+      ]
+    },
+    {
+      "id": "must-object-identity",
+      "name": "Identity Object",
+      "category": "must_build_now",
+      "layer": "object",
+      "sourcePath": "books/book-02-core-specification/core-specs/objects/identity.md",
+      "requiredImplementationKind": "structural_contract",
+      "requiredCapabilities": ["object contract"],
+      "dependencies": [],
+      "currentDisposition": "validated_skeleton_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-object-identity-object-contract"],
+      "implementationFiles": [
+        "src/contracts/object/core-object-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "object has structural contract evidence only; required MVP behavior depth is not proven."
+      ]
+    },
+    {
+      "id": "must-object-organization",
+      "name": "Organization Object",
+      "category": "must_build_now",
+      "layer": "object",
+      "sourcePath": "books/book-02-core-specification/core-specs/objects/organization.md",
+      "requiredImplementationKind": "structural_contract",
+      "requiredCapabilities": ["object contract"],
+      "dependencies": [],
+      "currentDisposition": "validated_skeleton_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-object-organization-object-contract"],
+      "implementationFiles": [
+        "src/contracts/object/core-object-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "object has structural contract evidence only; required MVP behavior depth is not proven."
+      ]
+    },
+    {
+      "id": "must-object-user",
+      "name": "User Object",
+      "category": "must_build_now",
+      "layer": "object",
+      "sourcePath": "books/book-02-core-specification/core-specs/objects/user.md",
+      "requiredImplementationKind": "structural_contract",
+      "requiredCapabilities": ["object contract"],
+      "dependencies": [],
+      "currentDisposition": "validated_skeleton_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-object-user-object-contract"],
+      "implementationFiles": [
+        "src/contracts/object/core-object-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "object has structural contract evidence only; required MVP behavior depth is not proven."
+      ]
+    },
+    {
+      "id": "must-object-permission",
+      "name": "Permission Object",
+      "category": "must_build_now",
+      "layer": "object",
+      "sourcePath": "books/book-02-core-specification/core-specs/objects/permission.md",
+      "requiredImplementationKind": "structural_contract",
+      "requiredCapabilities": ["object contract"],
+      "dependencies": [],
+      "currentDisposition": "validated_skeleton_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-object-permission-object-contract"],
+      "implementationFiles": [
+        "src/contracts/object/core-object-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "object has structural contract evidence only; required MVP behavior depth is not proven."
+      ]
+    },
+    {
+      "id": "must-object-policy",
+      "name": "Policy Object",
+      "category": "must_build_now",
+      "layer": "object",
+      "sourcePath": "books/book-02-core-specification/core-specs/objects/policy.md",
+      "requiredImplementationKind": "structural_contract",
+      "requiredCapabilities": ["object contract"],
+      "dependencies": [],
+      "currentDisposition": "validated_skeleton_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-object-policy-object-contract"],
+      "implementationFiles": [
+        "src/contracts/object/core-object-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "object has structural contract evidence only; required MVP behavior depth is not proven."
+      ]
+    },
+    {
+      "id": "must-object-customer",
+      "name": "Customer Object",
+      "category": "must_build_now",
+      "layer": "object",
+      "sourcePath": "books/book-02-core-specification/core-specs/objects/customer.md",
+      "requiredImplementationKind": "structural_contract",
+      "requiredCapabilities": ["object contract"],
+      "dependencies": [],
+      "currentDisposition": "validated_skeleton_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-object-customer-object-contract"],
+      "implementationFiles": [
+        "src/contracts/object/core-object-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "object has structural contract evidence only; required MVP behavior depth is not proven."
+      ]
+    },
+    {
+      "id": "must-object-brand",
+      "name": "Brand Object",
+      "category": "must_build_now",
+      "layer": "object",
+      "sourcePath": "books/book-02-core-specification/core-specs/objects/brand.md",
+      "requiredImplementationKind": "structural_contract",
+      "requiredCapabilities": ["object contract"],
+      "dependencies": [],
+      "currentDisposition": "validated_skeleton_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-object-brand-object-contract"],
+      "implementationFiles": [
+        "src/contracts/object/core-object-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "object has structural contract evidence only; required MVP behavior depth is not proven."
+      ]
+    },
+    {
+      "id": "must-object-trademark",
+      "name": "Trademark Object",
+      "category": "must_build_now",
+      "layer": "object",
+      "sourcePath": "books/book-02-core-specification/core-specs/objects/trademark.md",
+      "requiredImplementationKind": "structural_contract",
+      "requiredCapabilities": ["object contract"],
+      "dependencies": [],
+      "currentDisposition": "validated_skeleton_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-object-trademark-object-contract"],
+      "implementationFiles": [
+        "src/contracts/object/core-object-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "object has structural contract evidence only; required MVP behavior depth is not proven."
+      ]
+    },
+    {
+      "id": "must-object-jurisdiction",
+      "name": "Jurisdiction Object",
+      "category": "must_build_now",
+      "layer": "object",
+      "sourcePath": "books/book-02-core-specification/core-specs/objects/jurisdiction.md",
+      "requiredImplementationKind": "structural_contract",
+      "requiredCapabilities": ["object contract"],
+      "dependencies": [],
+      "currentDisposition": "validated_skeleton_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-object-jurisdiction-object-contract"],
+      "implementationFiles": [
+        "src/contracts/object/core-object-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "object has structural contract evidence only; required MVP behavior depth is not proven."
+      ]
+    },
+    {
+      "id": "must-object-classification",
+      "name": "Classification Object",
+      "category": "must_build_now",
+      "layer": "object",
+      "sourcePath": "books/book-02-core-specification/core-specs/objects/classification.md",
+      "requiredImplementationKind": "structural_contract",
+      "requiredCapabilities": ["object contract"],
+      "dependencies": [],
+      "currentDisposition": "validated_skeleton_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-object-classification-object-contract"],
+      "implementationFiles": [
+        "src/contracts/object/core-object-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "object has structural contract evidence only; required MVP behavior depth is not proven."
+      ]
+    },
+    {
+      "id": "must-object-document",
+      "name": "Document Object",
+      "category": "must_build_now",
+      "layer": "object",
+      "sourcePath": "books/book-02-core-specification/core-specs/objects/document.md",
+      "requiredImplementationKind": "structural_contract",
+      "requiredCapabilities": ["object contract"],
+      "dependencies": [],
+      "currentDisposition": "validated_skeleton_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-object-document-object-contract"],
+      "implementationFiles": [
+        "src/contracts/object/core-object-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "object has structural contract evidence only; required MVP behavior depth is not proven."
+      ]
+    },
+    {
+      "id": "must-object-evidence",
+      "name": "Evidence Object",
+      "category": "must_build_now",
+      "layer": "object",
+      "sourcePath": "books/book-02-core-specification/core-specs/objects/evidence.md",
+      "requiredImplementationKind": "structural_contract",
+      "requiredCapabilities": ["object contract"],
+      "dependencies": [],
+      "currentDisposition": "validated_skeleton_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-object-evidence-object-contract"],
+      "implementationFiles": [
+        "src/contracts/object/core-object-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "object has structural contract evidence only; required MVP behavior depth is not proven."
+      ]
+    },
+    {
+      "id": "must-object-matter",
+      "name": "Matter Object",
+      "category": "must_build_now",
+      "layer": "object",
+      "sourcePath": "books/book-02-core-specification/core-specs/objects/matter.md",
+      "requiredImplementationKind": "structural_contract",
+      "requiredCapabilities": ["object contract"],
+      "dependencies": [],
+      "currentDisposition": "validated_skeleton_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-object-matter-object-contract"],
+      "implementationFiles": [
+        "src/contracts/object/core-object-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "object has structural contract evidence only; required MVP behavior depth is not proven."
+      ]
+    },
+    {
+      "id": "must-object-order",
+      "name": "Order Object",
+      "category": "must_build_now",
+      "layer": "object",
+      "sourcePath": "books/book-02-core-specification/core-specs/objects/order.md",
+      "requiredImplementationKind": "structural_contract",
+      "requiredCapabilities": ["object contract"],
+      "dependencies": [],
+      "currentDisposition": "validated_skeleton_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-object-order-object-contract"],
+      "implementationFiles": [
+        "src/contracts/object/core-object-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "object has structural contract evidence only; required MVP behavior depth is not proven."
+      ]
+    },
+    {
+      "id": "must-object-workflow-contract",
+      "name": "Workflow Contract Object",
+      "category": "must_build_now",
+      "layer": "object",
+      "sourcePath": "books/book-02-core-specification/core-specs/objects/workflow-contract.md",
+      "requiredImplementationKind": "structural_contract",
+      "requiredCapabilities": ["object contract"],
+      "dependencies": [],
+      "currentDisposition": "validated_skeleton_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-object-workflow-contract-object-contract"],
+      "implementationFiles": [
+        "src/contracts/object/core-object-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "object has structural contract evidence only; required MVP behavior depth is not proven."
+      ]
+    },
+    {
+      "id": "must-object-task",
+      "name": "Task Object",
+      "category": "must_build_now",
+      "layer": "object",
+      "sourcePath": "books/book-02-core-specification/core-specs/objects/task.md",
+      "requiredImplementationKind": "structural_contract",
+      "requiredCapabilities": ["object contract"],
+      "dependencies": [],
+      "currentDisposition": "validated_skeleton_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-object-task-object-contract"],
+      "implementationFiles": [
+        "src/contracts/object/core-object-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "object has structural contract evidence only; required MVP behavior depth is not proven."
+      ]
+    },
+    {
+      "id": "must-object-event",
+      "name": "Event Object",
+      "category": "must_build_now",
+      "layer": "object",
+      "sourcePath": "books/book-02-core-specification/core-specs/objects/event.md",
+      "requiredImplementationKind": "structural_contract",
+      "requiredCapabilities": ["object contract"],
+      "dependencies": [],
+      "currentDisposition": "validated_skeleton_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-object-event-object-contract"],
+      "implementationFiles": [
+        "src/contracts/object/core-object-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "object has structural contract evidence only; required MVP behavior depth is not proven."
+      ]
+    },
+    {
+      "id": "must-object-communication",
+      "name": "Communication Object",
+      "category": "must_build_now",
+      "layer": "object",
+      "sourcePath": "books/book-02-core-specification/core-specs/objects/communication.md",
+      "requiredImplementationKind": "structural_contract",
+      "requiredCapabilities": ["object contract"],
+      "dependencies": [],
+      "currentDisposition": "validated_skeleton_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-object-communication-object-contract"],
+      "implementationFiles": [
+        "src/contracts/object/core-object-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "object has structural contract evidence only; required MVP behavior depth is not proven."
+      ]
+    },
+    {
+      "id": "must-service-identity-service",
+      "name": "Identity Service",
+      "category": "must_build_now",
+      "layer": "service",
+      "sourcePath": "books/book-02-core-specification/core-specs/services/identity-service.md",
+      "requiredImplementationKind": "real_boundary_behavior",
+      "requiredCapabilities": ["service boundary behavior"],
+      "dependencies": [],
+      "currentDisposition": "validated_skeleton_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-service-identity-service-contract"],
+      "implementationFiles": [
+        "src/contracts/service/core-service-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "service has structural contract evidence only; required MVP behavior depth is not proven."
+      ]
+    },
+    {
+      "id": "must-service-organization-service",
+      "name": "Organization Service",
+      "category": "must_build_now",
+      "layer": "service",
+      "sourcePath": "books/book-02-core-specification/core-specs/services/organization-service.md",
+      "requiredImplementationKind": "real_boundary_behavior",
+      "requiredCapabilities": ["service boundary behavior"],
+      "dependencies": [],
+      "currentDisposition": "validated_skeleton_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-service-organization-service-contract"],
+      "implementationFiles": [
+        "src/contracts/service/core-service-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "service has structural contract evidence only; required MVP behavior depth is not proven."
+      ]
+    },
+    {
+      "id": "must-service-user-service",
+      "name": "User Service",
+      "category": "must_build_now",
+      "layer": "service",
+      "sourcePath": "books/book-02-core-specification/core-specs/services/user-service.md",
+      "requiredImplementationKind": "real_boundary_behavior",
+      "requiredCapabilities": ["service boundary behavior"],
+      "dependencies": [],
+      "currentDisposition": "validated_skeleton_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-service-user-service-contract"],
+      "implementationFiles": [
+        "src/contracts/service/core-service-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "service has structural contract evidence only; required MVP behavior depth is not proven."
+      ]
+    },
+    {
+      "id": "must-service-permission-service",
+      "name": "Permission Service",
+      "category": "must_build_now",
+      "layer": "service",
+      "sourcePath": "books/book-02-core-specification/core-specs/services/permission-service.md",
+      "requiredImplementationKind": "real_boundary_behavior",
+      "requiredCapabilities": ["service boundary behavior"],
+      "dependencies": [],
+      "currentDisposition": "validated_skeleton_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-service-permission-service-contract"],
+      "implementationFiles": [
+        "src/contracts/service/core-service-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "service has structural contract evidence only; required MVP behavior depth is not proven."
+      ]
+    },
+    {
+      "id": "must-service-policy-service",
+      "name": "Policy Service",
+      "category": "must_build_now",
+      "layer": "service",
+      "sourcePath": "books/book-02-core-specification/core-specs/services/policy-service.md",
+      "requiredImplementationKind": "real_boundary_behavior",
+      "requiredCapabilities": ["service boundary behavior"],
+      "dependencies": [],
+      "currentDisposition": "validated_skeleton_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-service-policy-service-contract"],
+      "implementationFiles": [
+        "src/contracts/service/core-service-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "service has structural contract evidence only; required MVP behavior depth is not proven."
+      ]
+    },
+    {
+      "id": "must-service-customer-service",
+      "name": "Customer Service",
+      "category": "must_build_now",
+      "layer": "service",
+      "sourcePath": "books/book-02-core-specification/core-specs/services/customer-service.md",
+      "requiredImplementationKind": "real_boundary_behavior",
+      "requiredCapabilities": ["service boundary behavior"],
+      "dependencies": [],
+      "currentDisposition": "validated_skeleton_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-service-customer-service-contract"],
+      "implementationFiles": [
+        "src/contracts/service/core-service-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "service has structural contract evidence only; required MVP behavior depth is not proven."
+      ]
+    },
+    {
+      "id": "must-service-brand-service",
+      "name": "Brand Service",
+      "category": "must_build_now",
+      "layer": "service",
+      "sourcePath": "books/book-02-core-specification/core-specs/services/brand-service.md",
+      "requiredImplementationKind": "real_boundary_behavior",
+      "requiredCapabilities": ["service boundary behavior"],
+      "dependencies": [],
+      "currentDisposition": "validated_skeleton_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-service-brand-service-contract"],
+      "implementationFiles": [
+        "src/contracts/service/core-service-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "service has structural contract evidence only; required MVP behavior depth is not proven."
+      ]
+    },
+    {
+      "id": "must-service-trademark-service",
+      "name": "Trademark Service",
+      "category": "must_build_now",
+      "layer": "service",
+      "sourcePath": "books/book-02-core-specification/core-specs/services/trademark-service.md",
+      "requiredImplementationKind": "real_boundary_behavior",
+      "requiredCapabilities": ["service boundary behavior"],
+      "dependencies": [],
+      "currentDisposition": "validated_skeleton_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-service-trademark-service-contract"],
+      "implementationFiles": [
+        "src/contracts/service/core-service-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "service has structural contract evidence only; required MVP behavior depth is not proven."
+      ]
+    },
+    {
+      "id": "must-service-jurisdiction-service",
+      "name": "Jurisdiction Service",
+      "category": "must_build_now",
+      "layer": "service",
+      "sourcePath": "books/book-02-core-specification/core-specs/services/jurisdiction-service.md",
+      "requiredImplementationKind": "real_boundary_behavior",
+      "requiredCapabilities": ["service boundary behavior"],
+      "dependencies": [],
+      "currentDisposition": "validated_skeleton_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-service-jurisdiction-service-contract"],
+      "implementationFiles": [
+        "src/contracts/service/core-service-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "service has structural contract evidence only; required MVP behavior depth is not proven."
+      ]
+    },
+    {
+      "id": "must-service-classification-service",
+      "name": "Classification Service",
+      "category": "must_build_now",
+      "layer": "service",
+      "sourcePath": "books/book-02-core-specification/core-specs/services/classification-service.md",
+      "requiredImplementationKind": "real_boundary_behavior",
+      "requiredCapabilities": ["service boundary behavior"],
+      "dependencies": [],
+      "currentDisposition": "validated_skeleton_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-service-classification-service-contract"],
+      "implementationFiles": [
+        "src/contracts/service/core-service-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "service has structural contract evidence only; required MVP behavior depth is not proven."
+      ]
+    },
+    {
+      "id": "must-service-document-service",
+      "name": "Document Service",
+      "category": "must_build_now",
+      "layer": "service",
+      "sourcePath": "books/book-02-core-specification/core-specs/services/document-service.md",
+      "requiredImplementationKind": "real_boundary_behavior",
+      "requiredCapabilities": ["service boundary behavior"],
+      "dependencies": [],
+      "currentDisposition": "validated_skeleton_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-service-document-service-contract"],
+      "implementationFiles": [
+        "src/contracts/service/core-service-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "service has structural contract evidence only; required MVP behavior depth is not proven."
+      ]
+    },
+    {
+      "id": "must-service-evidence-service",
+      "name": "Evidence Service",
+      "category": "must_build_now",
+      "layer": "service",
+      "sourcePath": "books/book-02-core-specification/core-specs/services/evidence-service.md",
+      "requiredImplementationKind": "real_boundary_behavior",
+      "requiredCapabilities": ["service boundary behavior"],
+      "dependencies": [],
+      "currentDisposition": "validated_skeleton_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-service-evidence-service-contract"],
+      "implementationFiles": [
+        "src/contracts/service/core-service-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "service has structural contract evidence only; required MVP behavior depth is not proven."
+      ]
+    },
+    {
+      "id": "must-service-matter-service",
+      "name": "Matter Service",
+      "category": "must_build_now",
+      "layer": "service",
+      "sourcePath": "books/book-02-core-specification/core-specs/services/matter-service.md",
+      "requiredImplementationKind": "real_boundary_behavior",
+      "requiredCapabilities": ["service boundary behavior"],
+      "dependencies": [],
+      "currentDisposition": "validated_skeleton_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-service-matter-service-contract"],
+      "implementationFiles": [
+        "src/contracts/service/core-service-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "service has structural contract evidence only; required MVP behavior depth is not proven."
+      ]
+    },
+    {
+      "id": "must-service-order-service",
+      "name": "Order Service",
+      "category": "must_build_now",
+      "layer": "service",
+      "sourcePath": "books/book-02-core-specification/core-specs/services/order-service.md",
+      "requiredImplementationKind": "real_boundary_behavior",
+      "requiredCapabilities": ["service boundary behavior"],
+      "dependencies": [],
+      "currentDisposition": "validated_skeleton_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-service-order-service-contract"],
+      "implementationFiles": [
+        "src/contracts/service/core-service-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "service has structural contract evidence only; required MVP behavior depth is not proven."
+      ]
+    },
+    {
+      "id": "must-service-workflow-contract-service",
+      "name": "Workflow Contract Service",
+      "category": "must_build_now",
+      "layer": "service",
+      "sourcePath": "books/book-02-core-specification/core-specs/services/workflow-contract-service.md",
+      "requiredImplementationKind": "real_boundary_behavior",
+      "requiredCapabilities": ["service boundary behavior"],
+      "dependencies": [],
+      "currentDisposition": "validated_skeleton_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-service-workflow-contract-service-contract"],
+      "implementationFiles": [
+        "src/contracts/service/core-service-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "service has structural contract evidence only; required MVP behavior depth is not proven."
+      ]
+    },
+    {
+      "id": "must-service-task-service",
+      "name": "Task Service",
+      "category": "must_build_now",
+      "layer": "service",
+      "sourcePath": "books/book-02-core-specification/core-specs/services/task-service.md",
+      "requiredImplementationKind": "real_boundary_behavior",
+      "requiredCapabilities": ["service boundary behavior"],
+      "dependencies": [],
+      "currentDisposition": "validated_skeleton_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-service-task-service-contract"],
+      "implementationFiles": [
+        "src/contracts/service/core-service-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "service has structural contract evidence only; required MVP behavior depth is not proven."
+      ]
+    },
+    {
+      "id": "must-service-event-service",
+      "name": "Event Service",
+      "category": "must_build_now",
+      "layer": "service",
+      "sourcePath": "books/book-02-core-specification/core-specs/services/event-service.md",
+      "requiredImplementationKind": "real_boundary_behavior",
+      "requiredCapabilities": ["service boundary behavior"],
+      "dependencies": [],
+      "currentDisposition": "validated_skeleton_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-service-event-service-contract"],
+      "implementationFiles": [
+        "src/contracts/service/core-service-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "service has structural contract evidence only; required MVP behavior depth is not proven."
+      ]
+    },
+    {
+      "id": "must-service-communication-service",
+      "name": "Communication Service",
+      "category": "must_build_now",
+      "layer": "service",
+      "sourcePath": "books/book-02-core-specification/core-specs/services/communication-service.md",
+      "requiredImplementationKind": "real_boundary_behavior",
+      "requiredCapabilities": ["service boundary behavior"],
+      "dependencies": [],
+      "currentDisposition": "validated_skeleton_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-service-communication-service-contract"],
+      "implementationFiles": [
+        "src/contracts/service/core-service-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "service has structural contract evidence only; required MVP behavior depth is not proven."
+      ]
+    },
+    {
+      "id": "must-common-references",
+      "name": "References",
+      "category": "must_build_now",
+      "layer": "common_contract",
+      "sourcePath": "books/book-02-core-specification/core-specs/common/references.md",
+      "requiredImplementationKind": "minimum_depth_behavior",
+      "requiredCapabilities": ["contract hook"],
+      "requiredDepth": "structural_or_minimum_depth",
+      "dependencies": [],
+      "currentDisposition": "partial_evidence",
+      "currentDepth": "minimum_depth_hook",
+      "contractIds": ["core-common_contract-references-contract"],
+      "implementationFiles": [
+        "src/behaviors/core-reference-behavior.ts",
+        "src/behaviors/core-safe-error.ts",
+        "src/behaviors/core-idempotency-behavior.ts",
+        "src/behaviors/core-version-behavior.ts",
+        "src/behaviors/core-ai-context-behavior.ts",
+        "src/behaviors/core-governance-behavior.ts"
+      ],
+      "testFiles": [
+        "tests/unit/core-contract-behavior-acceptance-lock.test.ts"
+      ],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "Selected behavior hooks are accepted at minimum depth, but execution-spine completion is unresolved."
+      ]
+    },
+    {
+      "id": "must-common-errors",
+      "name": "Errors",
+      "category": "must_build_now",
+      "layer": "common_contract",
+      "sourcePath": "books/book-02-core-specification/core-specs/common/errors.md",
+      "requiredImplementationKind": "minimum_depth_behavior",
+      "requiredCapabilities": ["contract hook"],
+      "requiredDepth": "structural_or_minimum_depth",
+      "dependencies": [],
+      "currentDisposition": "partial_evidence",
+      "currentDepth": "minimum_depth_hook",
+      "contractIds": ["core-common_contract-errors-contract"],
+      "implementationFiles": [
+        "src/behaviors/core-reference-behavior.ts",
+        "src/behaviors/core-safe-error.ts",
+        "src/behaviors/core-idempotency-behavior.ts",
+        "src/behaviors/core-version-behavior.ts",
+        "src/behaviors/core-ai-context-behavior.ts",
+        "src/behaviors/core-governance-behavior.ts"
+      ],
+      "testFiles": [
+        "tests/unit/core-contract-behavior-acceptance-lock.test.ts"
+      ],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "Selected behavior hooks are accepted at minimum depth, but execution-spine completion is unresolved."
+      ]
+    },
+    {
+      "id": "must-common-permission-context",
+      "name": "Permission Context",
+      "category": "must_build_now",
+      "layer": "common_contract",
+      "sourcePath": "books/book-02-core-specification/core-specs/common/permission-context.md",
+      "requiredImplementationKind": "minimum_depth_behavior",
+      "requiredCapabilities": ["contract hook"],
+      "requiredDepth": "minimum_depth",
+      "dependencies": [],
+      "currentDisposition": "partial_evidence",
+      "currentDepth": "minimum_depth_hook",
+      "contractIds": ["core-common_contract-permission-context-contract"],
+      "implementationFiles": [
+        "src/behaviors/core-reference-behavior.ts",
+        "src/behaviors/core-safe-error.ts",
+        "src/behaviors/core-idempotency-behavior.ts",
+        "src/behaviors/core-version-behavior.ts",
+        "src/behaviors/core-ai-context-behavior.ts",
+        "src/behaviors/core-governance-behavior.ts"
+      ],
+      "testFiles": [
+        "tests/unit/core-contract-behavior-acceptance-lock.test.ts"
+      ],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "Selected behavior hooks are accepted at minimum depth, but execution-spine completion is unresolved."
+      ]
+    },
+    {
+      "id": "must-common-policy-context",
+      "name": "Policy Context",
+      "category": "must_build_now",
+      "layer": "common_contract",
+      "sourcePath": "books/book-02-core-specification/core-specs/common/policy-context.md",
+      "requiredImplementationKind": "minimum_depth_behavior",
+      "requiredCapabilities": ["contract hook"],
+      "requiredDepth": "minimum_depth",
+      "dependencies": [],
+      "currentDisposition": "partial_evidence",
+      "currentDepth": "minimum_depth_hook",
+      "contractIds": ["core-common_contract-policy-context-contract"],
+      "implementationFiles": [
+        "src/behaviors/core-reference-behavior.ts",
+        "src/behaviors/core-safe-error.ts",
+        "src/behaviors/core-idempotency-behavior.ts",
+        "src/behaviors/core-version-behavior.ts",
+        "src/behaviors/core-ai-context-behavior.ts",
+        "src/behaviors/core-governance-behavior.ts"
+      ],
+      "testFiles": [
+        "tests/unit/core-contract-behavior-acceptance-lock.test.ts"
+      ],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "Selected behavior hooks are accepted at minimum depth, but execution-spine completion is unresolved."
+      ]
+    },
+    {
+      "id": "must-common-idempotency",
+      "name": "Idempotency",
+      "category": "must_build_now",
+      "layer": "common_contract",
+      "sourcePath": "books/book-02-core-specification/core-specs/common/idempotency.md",
+      "requiredImplementationKind": "minimum_depth_behavior",
+      "requiredCapabilities": ["contract hook"],
+      "requiredDepth": "structural_or_minimum_depth",
+      "dependencies": [],
+      "currentDisposition": "partial_evidence",
+      "currentDepth": "minimum_depth_hook",
+      "contractIds": ["core-common_contract-idempotency-contract"],
+      "implementationFiles": [
+        "src/behaviors/core-reference-behavior.ts",
+        "src/behaviors/core-safe-error.ts",
+        "src/behaviors/core-idempotency-behavior.ts",
+        "src/behaviors/core-version-behavior.ts",
+        "src/behaviors/core-ai-context-behavior.ts",
+        "src/behaviors/core-governance-behavior.ts"
+      ],
+      "testFiles": [
+        "tests/unit/core-contract-behavior-acceptance-lock.test.ts"
+      ],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "Selected behavior hooks are accepted at minimum depth, but execution-spine completion is unresolved."
+      ]
+    },
+    {
+      "id": "must-common-audit-context",
+      "name": "Audit Context",
+      "category": "must_build_now",
+      "layer": "common_contract",
+      "sourcePath": "books/book-02-core-specification/core-specs/common/audit-context.md",
+      "requiredImplementationKind": "minimum_depth_behavior",
+      "requiredCapabilities": ["contract hook"],
+      "requiredDepth": "structural_or_minimum_depth",
+      "dependencies": [],
+      "currentDisposition": "partial_evidence",
+      "currentDepth": "minimum_depth_hook",
+      "contractIds": ["core-common_contract-audit-context-contract"],
+      "implementationFiles": [
+        "src/behaviors/core-reference-behavior.ts",
+        "src/behaviors/core-safe-error.ts",
+        "src/behaviors/core-idempotency-behavior.ts",
+        "src/behaviors/core-version-behavior.ts",
+        "src/behaviors/core-ai-context-behavior.ts",
+        "src/behaviors/core-governance-behavior.ts"
+      ],
+      "testFiles": [
+        "tests/unit/core-contract-behavior-acceptance-lock.test.ts"
+      ],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "Selected behavior hooks are accepted at minimum depth, but execution-spine completion is unresolved."
+      ]
+    },
+    {
+      "id": "must-common-versioning",
+      "name": "Versioning",
+      "category": "must_build_now",
+      "layer": "common_contract",
+      "sourcePath": "books/book-02-core-specification/core-specs/common/versioning.md",
+      "requiredImplementationKind": "minimum_depth_behavior",
+      "requiredCapabilities": ["contract hook"],
+      "requiredDepth": "structural_or_minimum_depth",
+      "dependencies": [],
+      "currentDisposition": "partial_evidence",
+      "currentDepth": "minimum_depth_hook",
+      "contractIds": ["core-common_contract-versioning-contract"],
+      "implementationFiles": [
+        "src/behaviors/core-reference-behavior.ts",
+        "src/behaviors/core-safe-error.ts",
+        "src/behaviors/core-idempotency-behavior.ts",
+        "src/behaviors/core-version-behavior.ts",
+        "src/behaviors/core-ai-context-behavior.ts",
+        "src/behaviors/core-governance-behavior.ts"
+      ],
+      "testFiles": [
+        "tests/unit/core-contract-behavior-acceptance-lock.test.ts"
+      ],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "Selected behavior hooks are accepted at minimum depth, but execution-spine completion is unresolved."
+      ]
+    },
+    {
+      "id": "must-common-pagination",
+      "name": "Pagination",
+      "category": "must_build_now",
+      "layer": "common_contract",
+      "sourcePath": "books/book-02-core-specification/core-specs/common/pagination.md",
+      "requiredImplementationKind": "minimum_depth_behavior",
+      "requiredCapabilities": ["contract hook"],
+      "requiredDepth": "structural_or_minimum_depth",
+      "dependencies": [],
+      "currentDisposition": "partial_evidence",
+      "currentDepth": "minimum_depth_hook",
+      "contractIds": ["core-common_contract-pagination-contract"],
+      "implementationFiles": [
+        "src/behaviors/core-reference-behavior.ts",
+        "src/behaviors/core-safe-error.ts",
+        "src/behaviors/core-idempotency-behavior.ts",
+        "src/behaviors/core-version-behavior.ts",
+        "src/behaviors/core-ai-context-behavior.ts",
+        "src/behaviors/core-governance-behavior.ts"
+      ],
+      "testFiles": [
+        "tests/unit/core-contract-behavior-acceptance-lock.test.ts"
+      ],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "Selected behavior hooks are accepted at minimum depth, but execution-spine completion is unresolved."
+      ]
+    },
+    {
+      "id": "must-common-ai-context",
+      "name": "Ai Context",
+      "category": "must_build_now",
+      "layer": "common_contract",
+      "sourcePath": "books/book-02-core-specification/core-specs/common/ai-context.md",
+      "requiredImplementationKind": "minimum_depth_behavior",
+      "requiredCapabilities": ["contract hook"],
+      "requiredDepth": "structural_or_minimum_depth",
+      "dependencies": [],
+      "currentDisposition": "partial_evidence",
+      "currentDepth": "minimum_depth_hook",
+      "contractIds": ["core-common_contract-ai-context-contract"],
+      "implementationFiles": [
+        "src/behaviors/core-reference-behavior.ts",
+        "src/behaviors/core-safe-error.ts",
+        "src/behaviors/core-idempotency-behavior.ts",
+        "src/behaviors/core-version-behavior.ts",
+        "src/behaviors/core-ai-context-behavior.ts",
+        "src/behaviors/core-governance-behavior.ts"
+      ],
+      "testFiles": [
+        "tests/unit/core-contract-behavior-acceptance-lock.test.ts"
+      ],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "Selected behavior hooks are accepted at minimum depth, but execution-spine completion is unresolved."
+      ]
+    },
+    {
+      "id": "must-common-human-review",
+      "name": "Human Review",
+      "category": "must_build_now",
+      "layer": "common_contract",
+      "sourcePath": "books/book-02-core-specification/core-specs/common/human-review.md",
+      "requiredImplementationKind": "minimum_depth_behavior",
+      "requiredCapabilities": ["contract hook"],
+      "requiredDepth": "structural_or_minimum_depth",
+      "dependencies": [],
+      "currentDisposition": "partial_evidence",
+      "currentDepth": "minimum_depth_hook",
+      "contractIds": ["core-common_contract-human-review-contract"],
+      "implementationFiles": [
+        "src/behaviors/core-reference-behavior.ts",
+        "src/behaviors/core-safe-error.ts",
+        "src/behaviors/core-idempotency-behavior.ts",
+        "src/behaviors/core-version-behavior.ts",
+        "src/behaviors/core-ai-context-behavior.ts",
+        "src/behaviors/core-governance-behavior.ts"
+      ],
+      "testFiles": [
+        "tests/unit/core-contract-behavior-acceptance-lock.test.ts"
+      ],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "Selected behavior hooks are accepted at minimum depth, but execution-spine completion is unresolved."
+      ]
+    },
+    {
+      "id": "must-api-identity-api-contract",
+      "name": "Identity API Contract",
+      "category": "must_build_now",
+      "layer": "api",
+      "sourcePath": "books/book-02-core-specification/core-specs/api/identity-api-contract.md",
+      "requiredImplementationKind": "validator_and_service_delegation",
+      "requiredCapabilities": [
+        "request/response validation",
+        "service delegation"
+      ],
+      "dependencies": [],
+      "currentDisposition": "validated_skeleton_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-api-identity-api-contract-contract"],
+      "implementationFiles": [
+        "src/contracts/api/core-api-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "api has structural contract evidence only; required MVP behavior depth is not proven."
+      ]
+    },
+    {
+      "id": "must-api-organization-api-contract",
+      "name": "Organization API Contract",
+      "category": "must_build_now",
+      "layer": "api",
+      "sourcePath": "books/book-02-core-specification/core-specs/api/organization-api-contract.md",
+      "requiredImplementationKind": "validator_and_service_delegation",
+      "requiredCapabilities": [
+        "request/response validation",
+        "service delegation"
+      ],
+      "dependencies": [],
+      "currentDisposition": "validated_skeleton_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-api-organization-api-contract-contract"],
+      "implementationFiles": [
+        "src/contracts/api/core-api-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "api has structural contract evidence only; required MVP behavior depth is not proven."
+      ]
+    },
+    {
+      "id": "must-api-user-api-contract",
+      "name": "User API Contract",
+      "category": "must_build_now",
+      "layer": "api",
+      "sourcePath": "books/book-02-core-specification/core-specs/api/user-api-contract.md",
+      "requiredImplementationKind": "validator_and_service_delegation",
+      "requiredCapabilities": [
+        "request/response validation",
+        "service delegation"
+      ],
+      "dependencies": [],
+      "currentDisposition": "validated_skeleton_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-api-user-api-contract-contract"],
+      "implementationFiles": [
+        "src/contracts/api/core-api-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "api has structural contract evidence only; required MVP behavior depth is not proven."
+      ]
+    },
+    {
+      "id": "must-api-permission-api-contract",
+      "name": "Permission API Contract",
+      "category": "must_build_now",
+      "layer": "api",
+      "sourcePath": "books/book-02-core-specification/core-specs/api/permission-api-contract.md",
+      "requiredImplementationKind": "validator_and_service_delegation",
+      "requiredCapabilities": [
+        "request/response validation",
+        "service delegation"
+      ],
+      "dependencies": [],
+      "currentDisposition": "validated_skeleton_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-api-permission-api-contract-contract"],
+      "implementationFiles": [
+        "src/contracts/api/core-api-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "api has structural contract evidence only; required MVP behavior depth is not proven."
+      ]
+    },
+    {
+      "id": "must-api-policy-api-contract",
+      "name": "Policy API Contract",
+      "category": "must_build_now",
+      "layer": "api",
+      "sourcePath": "books/book-02-core-specification/core-specs/api/policy-api-contract.md",
+      "requiredImplementationKind": "validator_and_service_delegation",
+      "requiredCapabilities": [
+        "request/response validation",
+        "service delegation"
+      ],
+      "dependencies": [],
+      "currentDisposition": "validated_skeleton_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-api-policy-api-contract-contract"],
+      "implementationFiles": [
+        "src/contracts/api/core-api-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "api has structural contract evidence only; required MVP behavior depth is not proven."
+      ]
+    },
+    {
+      "id": "must-api-customer-api-contract",
+      "name": "Customer API Contract",
+      "category": "must_build_now",
+      "layer": "api",
+      "sourcePath": "books/book-02-core-specification/core-specs/api/customer-api-contract.md",
+      "requiredImplementationKind": "validator_and_service_delegation",
+      "requiredCapabilities": [
+        "request/response validation",
+        "service delegation"
+      ],
+      "dependencies": [],
+      "currentDisposition": "validated_skeleton_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-api-customer-api-contract-contract"],
+      "implementationFiles": [
+        "src/contracts/api/core-api-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "api has structural contract evidence only; required MVP behavior depth is not proven."
+      ]
+    },
+    {
+      "id": "must-api-brand-api-contract",
+      "name": "Brand API Contract",
+      "category": "must_build_now",
+      "layer": "api",
+      "sourcePath": "books/book-02-core-specification/core-specs/api/brand-api-contract.md",
+      "requiredImplementationKind": "validator_and_service_delegation",
+      "requiredCapabilities": [
+        "request/response validation",
+        "service delegation"
+      ],
+      "dependencies": [],
+      "currentDisposition": "validated_skeleton_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-api-brand-api-contract-contract"],
+      "implementationFiles": [
+        "src/contracts/api/core-api-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "api has structural contract evidence only; required MVP behavior depth is not proven."
+      ]
+    },
+    {
+      "id": "must-api-trademark-api-contract",
+      "name": "Trademark API Contract",
+      "category": "must_build_now",
+      "layer": "api",
+      "sourcePath": "books/book-02-core-specification/core-specs/api/trademark-api-contract.md",
+      "requiredImplementationKind": "validator_and_service_delegation",
+      "requiredCapabilities": [
+        "request/response validation",
+        "service delegation"
+      ],
+      "dependencies": [],
+      "currentDisposition": "validated_skeleton_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-api-trademark-api-contract-contract"],
+      "implementationFiles": [
+        "src/contracts/api/core-api-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "api has structural contract evidence only; required MVP behavior depth is not proven."
+      ]
+    },
+    {
+      "id": "must-api-jurisdiction-api-contract",
+      "name": "Jurisdiction API Contract",
+      "category": "must_build_now",
+      "layer": "api",
+      "sourcePath": "books/book-02-core-specification/core-specs/api/jurisdiction-api-contract.md",
+      "requiredImplementationKind": "validator_and_service_delegation",
+      "requiredCapabilities": [
+        "request/response validation",
+        "service delegation"
+      ],
+      "dependencies": [],
+      "currentDisposition": "validated_skeleton_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-api-jurisdiction-api-contract-contract"],
+      "implementationFiles": [
+        "src/contracts/api/core-api-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "api has structural contract evidence only; required MVP behavior depth is not proven."
+      ]
+    },
+    {
+      "id": "must-api-classification-api-contract",
+      "name": "Classification API Contract",
+      "category": "must_build_now",
+      "layer": "api",
+      "sourcePath": "books/book-02-core-specification/core-specs/api/classification-api-contract.md",
+      "requiredImplementationKind": "validator_and_service_delegation",
+      "requiredCapabilities": [
+        "request/response validation",
+        "service delegation"
+      ],
+      "dependencies": [],
+      "currentDisposition": "validated_skeleton_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-api-classification-api-contract-contract"],
+      "implementationFiles": [
+        "src/contracts/api/core-api-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "api has structural contract evidence only; required MVP behavior depth is not proven."
+      ]
+    },
+    {
+      "id": "must-api-document-api-contract",
+      "name": "Document API Contract",
+      "category": "must_build_now",
+      "layer": "api",
+      "sourcePath": "books/book-02-core-specification/core-specs/api/document-api-contract.md",
+      "requiredImplementationKind": "validator_and_service_delegation",
+      "requiredCapabilities": [
+        "request/response validation",
+        "service delegation"
+      ],
+      "dependencies": [],
+      "currentDisposition": "validated_skeleton_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-api-document-api-contract-contract"],
+      "implementationFiles": [
+        "src/contracts/api/core-api-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "api has structural contract evidence only; required MVP behavior depth is not proven."
+      ]
+    },
+    {
+      "id": "must-api-evidence-api-contract",
+      "name": "Evidence API Contract",
+      "category": "must_build_now",
+      "layer": "api",
+      "sourcePath": "books/book-02-core-specification/core-specs/api/evidence-api-contract.md",
+      "requiredImplementationKind": "validator_and_service_delegation",
+      "requiredCapabilities": [
+        "request/response validation",
+        "service delegation"
+      ],
+      "dependencies": [],
+      "currentDisposition": "validated_skeleton_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-api-evidence-api-contract-contract"],
+      "implementationFiles": [
+        "src/contracts/api/core-api-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "api has structural contract evidence only; required MVP behavior depth is not proven."
+      ]
+    },
+    {
+      "id": "must-api-matter-api-contract",
+      "name": "Matter API Contract",
+      "category": "must_build_now",
+      "layer": "api",
+      "sourcePath": "books/book-02-core-specification/core-specs/api/matter-api-contract.md",
+      "requiredImplementationKind": "validator_and_service_delegation",
+      "requiredCapabilities": [
+        "request/response validation",
+        "service delegation"
+      ],
+      "dependencies": [],
+      "currentDisposition": "validated_skeleton_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-api-matter-api-contract-contract"],
+      "implementationFiles": [
+        "src/contracts/api/core-api-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "api has structural contract evidence only; required MVP behavior depth is not proven."
+      ]
+    },
+    {
+      "id": "must-api-order-api-contract",
+      "name": "Order API Contract",
+      "category": "must_build_now",
+      "layer": "api",
+      "sourcePath": "books/book-02-core-specification/core-specs/api/order-api-contract.md",
+      "requiredImplementationKind": "validator_and_service_delegation",
+      "requiredCapabilities": [
+        "request/response validation",
+        "service delegation"
+      ],
+      "dependencies": [],
+      "currentDisposition": "validated_skeleton_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-api-order-api-contract-contract"],
+      "implementationFiles": [
+        "src/contracts/api/core-api-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "api has structural contract evidence only; required MVP behavior depth is not proven."
+      ]
+    },
+    {
+      "id": "must-api-workflow-contract-api-contract",
+      "name": "Workflow Contract API Contract",
+      "category": "must_build_now",
+      "layer": "api",
+      "sourcePath": "books/book-02-core-specification/core-specs/api/workflow-contract-api-contract.md",
+      "requiredImplementationKind": "validator_and_service_delegation",
+      "requiredCapabilities": [
+        "request/response validation",
+        "service delegation"
+      ],
+      "dependencies": [],
+      "currentDisposition": "validated_skeleton_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-api-workflow-contract-api-contract-contract"],
+      "implementationFiles": [
+        "src/contracts/api/core-api-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "api has structural contract evidence only; required MVP behavior depth is not proven."
+      ]
+    },
+    {
+      "id": "must-api-task-api-contract",
+      "name": "Task API Contract",
+      "category": "must_build_now",
+      "layer": "api",
+      "sourcePath": "books/book-02-core-specification/core-specs/api/task-api-contract.md",
+      "requiredImplementationKind": "validator_and_service_delegation",
+      "requiredCapabilities": [
+        "request/response validation",
+        "service delegation"
+      ],
+      "dependencies": [],
+      "currentDisposition": "validated_skeleton_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-api-task-api-contract-contract"],
+      "implementationFiles": [
+        "src/contracts/api/core-api-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "api has structural contract evidence only; required MVP behavior depth is not proven."
+      ]
+    },
+    {
+      "id": "must-api-event-api-contract",
+      "name": "Event API Contract",
+      "category": "must_build_now",
+      "layer": "api",
+      "sourcePath": "books/book-02-core-specification/core-specs/api/event-api-contract.md",
+      "requiredImplementationKind": "validator_and_service_delegation",
+      "requiredCapabilities": [
+        "request/response validation",
+        "service delegation"
+      ],
+      "dependencies": [],
+      "currentDisposition": "validated_skeleton_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-api-event-api-contract-contract"],
+      "implementationFiles": [
+        "src/contracts/api/core-api-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "api has structural contract evidence only; required MVP behavior depth is not proven."
+      ]
+    },
+    {
+      "id": "must-api-communication-api-contract",
+      "name": "Communication API Contract",
+      "category": "must_build_now",
+      "layer": "api",
+      "sourcePath": "books/book-02-core-specification/core-specs/api/communication-api-contract.md",
+      "requiredImplementationKind": "validator_and_service_delegation",
+      "requiredCapabilities": [
+        "request/response validation",
+        "service delegation"
+      ],
+      "dependencies": [],
+      "currentDisposition": "validated_skeleton_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-api-communication-api-contract-contract"],
+      "implementationFiles": [
+        "src/contracts/api/core-api-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "api has structural contract evidence only; required MVP behavior depth is not proven."
+      ]
+    },
+    {
+      "id": "must-workflow-customer-intake-workflow",
+      "name": "Customer Intake Workflow",
+      "category": "must_build_now",
+      "layer": "workflow",
+      "sourcePath": "books/book-02-core-specification/core-specs/workflows/customer-intake-workflow.md",
+      "requiredImplementationKind": "preview_apply_validator",
+      "requiredCapabilities": [
+        "preview request validation",
+        "apply request validation",
+        "safe error behavior"
+      ],
+      "dependencies": [],
+      "currentDisposition": "validated_skeleton_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-workflow-customer-intake-workflow-contract"],
+      "implementationFiles": [
+        "src/contracts/workflow/core-workflow-catalog-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "workflow has structural contract evidence only; required MVP behavior depth is not proven."
+      ]
+    },
+    {
+      "id": "must-workflow-trademark-application-workflow",
+      "name": "Trademark Application Workflow",
+      "category": "must_build_now",
+      "layer": "workflow",
+      "sourcePath": "books/book-02-core-specification/core-specs/workflows/trademark-application-workflow.md",
+      "requiredImplementationKind": "preview_apply_validator",
+      "requiredCapabilities": [
+        "preview request validation",
+        "apply request validation",
+        "safe error behavior"
+      ],
+      "dependencies": [],
+      "currentDisposition": "validated_skeleton_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-workflow-trademark-application-workflow-contract"],
+      "implementationFiles": [
+        "src/contracts/workflow/core-workflow-catalog-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "workflow has structural contract evidence only; required MVP behavior depth is not proven."
+      ]
+    },
+    {
+      "id": "must-workflow-communication-review-workflow",
+      "name": "Communication Review Workflow",
+      "category": "must_build_now",
+      "layer": "workflow",
+      "sourcePath": "books/book-02-core-specification/core-specs/workflows/communication-review-workflow.md",
+      "requiredImplementationKind": "preview_apply_validator",
+      "requiredCapabilities": [
+        "preview request validation",
+        "apply request validation",
+        "safe error behavior"
+      ],
+      "dependencies": [],
+      "currentDisposition": "validated_skeleton_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-workflow-communication-review-workflow-contract"],
+      "implementationFiles": [
+        "src/contracts/workflow/core-workflow-catalog-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "workflow has structural contract evidence only; required MVP behavior depth is not proven."
+      ]
+    },
+    {
+      "id": "must-event-customer-created",
+      "name": "Customer Created",
+      "category": "must_build_now",
+      "layer": "event",
+      "sourcePath": "books/book-02-core-specification/core-specs/events/customer-created.md",
+      "requiredImplementationKind": "event_record_or_deterministic_fixture",
+      "requiredCapabilities": [
+        "event reference id",
+        "safe payload",
+        "schema version"
+      ],
+      "dependencies": [],
+      "currentDisposition": "missing",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-event-customer-created-contract"],
+      "implementationFiles": [
+        "src/contracts/event/core-event-catalog-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "No current implementation evidence meets the required MVP depth."
+      ]
+    },
+    {
+      "id": "must-event-brand-created",
+      "name": "Brand Created",
+      "category": "must_build_now",
+      "layer": "event",
+      "sourcePath": "books/book-02-core-specification/core-specs/events/brand-created.md",
+      "requiredImplementationKind": "event_record_or_deterministic_fixture",
+      "requiredCapabilities": [
+        "event reference id",
+        "safe payload",
+        "schema version"
+      ],
+      "dependencies": [],
+      "currentDisposition": "missing",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-event-brand-created-contract"],
+      "implementationFiles": [
+        "src/contracts/event/core-event-catalog-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "No current implementation evidence meets the required MVP depth."
+      ]
+    },
+    {
+      "id": "must-event-trademark-created",
+      "name": "Trademark Created",
+      "category": "must_build_now",
+      "layer": "event",
+      "sourcePath": "books/book-02-core-specification/core-specs/events/trademark-created.md",
+      "requiredImplementationKind": "event_record_or_deterministic_fixture",
+      "requiredCapabilities": [
+        "event reference id",
+        "safe payload",
+        "schema version"
+      ],
+      "dependencies": [],
+      "currentDisposition": "missing",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-event-trademark-created-contract"],
+      "implementationFiles": [
+        "src/contracts/event/core-event-catalog-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "No current implementation evidence meets the required MVP depth."
+      ]
+    },
+    {
+      "id": "must-event-matter-created",
+      "name": "Matter Created",
+      "category": "must_build_now",
+      "layer": "event",
+      "sourcePath": "books/book-02-core-specification/core-specs/events/matter-created.md",
+      "requiredImplementationKind": "event_record_or_deterministic_fixture",
+      "requiredCapabilities": [
+        "event reference id",
+        "safe payload",
+        "schema version"
+      ],
+      "dependencies": [],
+      "currentDisposition": "missing",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-event-matter-created-contract"],
+      "implementationFiles": [
+        "src/contracts/event/core-event-catalog-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "No current implementation evidence meets the required MVP depth."
+      ]
+    },
+    {
+      "id": "must-event-order-created",
+      "name": "Order Created",
+      "category": "must_build_now",
+      "layer": "event",
+      "sourcePath": "books/book-02-core-specification/core-specs/events/order-created.md",
+      "requiredImplementationKind": "event_record_or_deterministic_fixture",
+      "requiredCapabilities": [
+        "event reference id",
+        "safe payload",
+        "schema version"
+      ],
+      "dependencies": [],
+      "currentDisposition": "missing",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-event-order-created-contract"],
+      "implementationFiles": [
+        "src/contracts/event/core-event-catalog-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "No current implementation evidence meets the required MVP depth."
+      ]
+    },
+    {
+      "id": "must-event-document-created",
+      "name": "Document Created",
+      "category": "must_build_now",
+      "layer": "event",
+      "sourcePath": "books/book-02-core-specification/core-specs/events/document-created.md",
+      "requiredImplementationKind": "event_record_or_deterministic_fixture",
+      "requiredCapabilities": [
+        "event reference id",
+        "safe payload",
+        "schema version"
+      ],
+      "dependencies": [],
+      "currentDisposition": "missing",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-event-document-created-contract"],
+      "implementationFiles": [
+        "src/contracts/event/core-event-catalog-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "No current implementation evidence meets the required MVP depth."
+      ]
+    },
+    {
+      "id": "must-event-document-attached",
+      "name": "Document Attached",
+      "category": "must_build_now",
+      "layer": "event",
+      "sourcePath": "books/book-02-core-specification/core-specs/events/document-attached.md",
+      "requiredImplementationKind": "event_record_or_deterministic_fixture",
+      "requiredCapabilities": [
+        "event reference id",
+        "safe payload",
+        "schema version"
+      ],
+      "dependencies": [],
+      "currentDisposition": "missing",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-event-document-attached-contract"],
+      "implementationFiles": [
+        "src/contracts/event/core-event-catalog-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "No current implementation evidence meets the required MVP depth."
+      ]
+    },
+    {
+      "id": "must-event-evidence-created",
+      "name": "Evidence Created",
+      "category": "must_build_now",
+      "layer": "event",
+      "sourcePath": "books/book-02-core-specification/core-specs/events/evidence-created.md",
+      "requiredImplementationKind": "event_record_or_deterministic_fixture",
+      "requiredCapabilities": [
+        "event reference id",
+        "safe payload",
+        "schema version"
+      ],
+      "dependencies": [],
+      "currentDisposition": "missing",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-event-evidence-created-contract"],
+      "implementationFiles": [
+        "src/contracts/event/core-event-catalog-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "No current implementation evidence meets the required MVP depth."
+      ]
+    },
+    {
+      "id": "must-event-task-created",
+      "name": "Task Created",
+      "category": "must_build_now",
+      "layer": "event",
+      "sourcePath": "books/book-02-core-specification/core-specs/events/task-created.md",
+      "requiredImplementationKind": "event_record_or_deterministic_fixture",
+      "requiredCapabilities": [
+        "event reference id",
+        "safe payload",
+        "schema version"
+      ],
+      "dependencies": [],
+      "currentDisposition": "semantic_overlap_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-event-task-created-contract"],
+      "implementationFiles": [
+        "src/contracts/event/core-event-catalog-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "Generic catalog semantics overlap, but no explicit validated canonical alias mapping exists."
+      ]
+    },
+    {
+      "id": "must-event-task-updated",
+      "name": "Task Updated",
+      "category": "must_build_now",
+      "layer": "event",
+      "sourcePath": "books/book-02-core-specification/core-specs/events/task-updated.md",
+      "requiredImplementationKind": "event_record_or_deterministic_fixture",
+      "requiredCapabilities": [
+        "event reference id",
+        "safe payload",
+        "schema version"
+      ],
+      "dependencies": [],
+      "currentDisposition": "missing",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-event-task-updated-contract"],
+      "implementationFiles": [
+        "src/contracts/event/core-event-catalog-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "No current implementation evidence meets the required MVP depth."
+      ]
+    },
+    {
+      "id": "must-event-task-completed",
+      "name": "Task Completed",
+      "category": "must_build_now",
+      "layer": "event",
+      "sourcePath": "books/book-02-core-specification/core-specs/events/task-completed.md",
+      "requiredImplementationKind": "event_record_or_deterministic_fixture",
+      "requiredCapabilities": [
+        "event reference id",
+        "safe payload",
+        "schema version"
+      ],
+      "dependencies": [],
+      "currentDisposition": "missing",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-event-task-completed-contract"],
+      "implementationFiles": [
+        "src/contracts/event/core-event-catalog-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "No current implementation evidence meets the required MVP depth."
+      ]
+    },
+    {
+      "id": "must-event-communication-created",
+      "name": "Communication Created",
+      "category": "must_build_now",
+      "layer": "event",
+      "sourcePath": "books/book-02-core-specification/core-specs/events/communication-created.md",
+      "requiredImplementationKind": "event_record_or_deterministic_fixture",
+      "requiredCapabilities": [
+        "event reference id",
+        "safe payload",
+        "schema version"
+      ],
+      "dependencies": [],
+      "currentDisposition": "missing",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-event-communication-created-contract"],
+      "implementationFiles": [
+        "src/contracts/event/core-event-catalog-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "No current implementation evidence meets the required MVP depth."
+      ]
+    },
+    {
+      "id": "must-event-communication-reviewed",
+      "name": "Communication Reviewed",
+      "category": "must_build_now",
+      "layer": "event",
+      "sourcePath": "books/book-02-core-specification/core-specs/events/communication-reviewed.md",
+      "requiredImplementationKind": "event_record_or_deterministic_fixture",
+      "requiredCapabilities": [
+        "event reference id",
+        "safe payload",
+        "schema version"
+      ],
+      "dependencies": [],
+      "currentDisposition": "semantic_overlap_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-event-communication-reviewed-contract"],
+      "implementationFiles": [
+        "src/contracts/event/core-event-catalog-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "Generic catalog semantics overlap, but no explicit validated canonical alias mapping exists."
+      ]
+    },
+    {
+      "id": "must-event-communication-sent",
+      "name": "Communication Sent",
+      "category": "must_build_now",
+      "layer": "event",
+      "sourcePath": "books/book-02-core-specification/core-specs/events/communication-sent.md",
+      "requiredImplementationKind": "event_record_or_deterministic_fixture",
+      "requiredCapabilities": [
+        "event reference id",
+        "safe payload",
+        "schema version"
+      ],
+      "dependencies": [],
+      "currentDisposition": "missing",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-event-communication-sent-contract"],
+      "implementationFiles": [
+        "src/contracts/event/core-event-catalog-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "No current implementation evidence meets the required MVP depth."
+      ]
+    },
+    {
+      "id": "must-event-workflow-contract-previewed",
+      "name": "Workflow Contract Previewed",
+      "category": "must_build_now",
+      "layer": "event",
+      "sourcePath": "books/book-02-core-specification/core-specs/events/workflow-contract-previewed.md",
+      "requiredImplementationKind": "event_record_or_deterministic_fixture",
+      "requiredCapabilities": [
+        "event reference id",
+        "safe payload",
+        "schema version"
+      ],
+      "dependencies": [],
+      "currentDisposition": "missing",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-event-workflow-contract-previewed-contract"],
+      "implementationFiles": [
+        "src/contracts/event/core-event-catalog-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "No current implementation evidence meets the required MVP depth."
+      ]
+    },
+    {
+      "id": "must-event-workflow-contract-applied",
+      "name": "Workflow Contract Applied",
+      "category": "must_build_now",
+      "layer": "event",
+      "sourcePath": "books/book-02-core-specification/core-specs/events/workflow-contract-applied.md",
+      "requiredImplementationKind": "event_record_or_deterministic_fixture",
+      "requiredCapabilities": [
+        "event reference id",
+        "safe payload",
+        "schema version"
+      ],
+      "dependencies": [],
+      "currentDisposition": "missing",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-event-workflow-contract-applied-contract"],
+      "implementationFiles": [
+        "src/contracts/event/core-event-catalog-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "No current implementation evidence meets the required MVP depth."
+      ]
+    },
+    {
+      "id": "must-event-permission-evaluated",
+      "name": "Permission Evaluated",
+      "category": "must_build_now",
+      "layer": "event",
+      "sourcePath": "books/book-02-core-specification/core-specs/events/permission-evaluated.md",
+      "requiredImplementationKind": "event_record_or_deterministic_fixture",
+      "requiredCapabilities": [
+        "event reference id",
+        "safe payload",
+        "schema version"
+      ],
+      "dependencies": [],
+      "currentDisposition": "missing",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-event-permission-evaluated-contract"],
+      "implementationFiles": [
+        "src/contracts/event/core-event-catalog-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "No current implementation evidence meets the required MVP depth."
+      ]
+    },
+    {
+      "id": "must-event-policy-evaluated",
+      "name": "Policy Evaluated",
+      "category": "must_build_now",
+      "layer": "event",
+      "sourcePath": "books/book-02-core-specification/core-specs/events/policy-evaluated.md",
+      "requiredImplementationKind": "event_record_or_deterministic_fixture",
+      "requiredCapabilities": [
+        "event reference id",
+        "safe payload",
+        "schema version"
+      ],
+      "dependencies": [],
+      "currentDisposition": "missing",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-event-policy-evaluated-contract"],
+      "implementationFiles": [
+        "src/contracts/event/core-event-catalog-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "No current implementation evidence meets the required MVP depth."
+      ]
+    },
+    {
+      "id": "must-agent-knowledge-agent",
+      "name": "Knowledge Agent",
+      "category": "must_build_now",
+      "layer": "agent",
+      "sourcePath": "books/book-02-core-specification/core-specs/agents/knowledge-agent.md",
+      "requiredImplementationKind": "boundary_safe_scaffold",
+      "requiredCapabilities": [
+        "allowed capability validation",
+        "forbidden action validation"
+      ],
+      "dependencies": [],
+      "currentDisposition": "boundary_scaffold_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-agent-knowledge-agent-contract"],
+      "implementationFiles": ["src/behaviors/core-agent-boundary.ts"],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "Boundary scaffold is present without full named MVP runtime behavior."
+      ]
+    },
+    {
+      "id": "must-agent-task-agent",
+      "name": "Task Agent",
+      "category": "must_build_now",
+      "layer": "agent",
+      "sourcePath": "books/book-02-core-specification/core-specs/agents/task-agent.md",
+      "requiredImplementationKind": "boundary_safe_scaffold",
+      "requiredCapabilities": [
+        "allowed capability validation",
+        "forbidden action validation"
+      ],
+      "dependencies": [],
+      "currentDisposition": "boundary_scaffold_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-agent-task-agent-contract"],
+      "implementationFiles": ["src/behaviors/core-agent-boundary.ts"],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "Boundary scaffold is present without full named MVP runtime behavior."
+      ]
+    },
+    {
+      "id": "must-agent-communication-agent",
+      "name": "Communication Agent",
+      "category": "must_build_now",
+      "layer": "agent",
+      "sourcePath": "books/book-02-core-specification/core-specs/agents/communication-agent.md",
+      "requiredImplementationKind": "boundary_safe_scaffold",
+      "requiredCapabilities": [
+        "allowed capability validation",
+        "forbidden action validation"
+      ],
+      "dependencies": [],
+      "currentDisposition": "boundary_scaffold_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-agent-communication-agent-contract"],
+      "implementationFiles": ["src/behaviors/core-agent-boundary.ts"],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "Boundary scaffold is present without full named MVP runtime behavior."
+      ]
+    },
+    {
+      "id": "must-agent-workflow-agent",
+      "name": "Workflow Agent",
+      "category": "must_build_now",
+      "layer": "agent",
+      "sourcePath": "books/book-02-core-specification/core-specs/agents/workflow-agent.md",
+      "requiredImplementationKind": "boundary_safe_scaffold",
+      "requiredCapabilities": [
+        "allowed capability validation",
+        "forbidden action validation"
+      ],
+      "dependencies": [],
+      "currentDisposition": "boundary_scaffold_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-agent-workflow-agent-contract"],
+      "implementationFiles": ["src/behaviors/core-agent-boundary.ts"],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "Boundary scaffold is present without full named MVP runtime behavior."
+      ]
+    },
+    {
+      "id": "must-agent-audit-agent",
+      "name": "Audit Agent",
+      "category": "must_build_now",
+      "layer": "agent",
+      "sourcePath": "books/book-02-core-specification/core-specs/agents/audit-agent.md",
+      "requiredImplementationKind": "boundary_safe_scaffold",
+      "requiredCapabilities": [
+        "allowed capability validation",
+        "forbidden action validation"
+      ],
+      "dependencies": [],
+      "currentDisposition": "boundary_scaffold_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-agent-audit-agent-contract"],
+      "implementationFiles": ["src/behaviors/core-agent-boundary.ts"],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "Boundary scaffold is present without full named MVP runtime behavior."
+      ]
+    },
+    {
+      "id": "must-test-common-contract-tests",
+      "name": "Common Contract Tests",
+      "category": "must_build_now",
+      "layer": "test",
+      "sourcePath": "books/book-02-core-specification/core-specs/tests/common-contract-tests.md",
+      "requiredImplementationKind": "executable_test_family",
+      "requiredCapabilities": ["mapped executable tests"],
+      "dependencies": [],
+      "currentDisposition": "validated_skeleton_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-test-common-contract-tests-contract"],
+      "implementationFiles": [
+        "src/contracts/test/core-test-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "test has structural contract evidence only; required MVP behavior depth is not proven."
+      ]
+    },
+    {
+      "id": "must-test-api-contract-tests",
+      "name": "Api Contract Tests",
+      "category": "must_build_now",
+      "layer": "test",
+      "sourcePath": "books/book-02-core-specification/core-specs/tests/api-contract-tests.md",
+      "requiredImplementationKind": "executable_test_family",
+      "requiredCapabilities": ["mapped executable tests"],
+      "dependencies": [],
+      "currentDisposition": "validated_skeleton_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-test-api-contract-tests-contract"],
+      "implementationFiles": [
+        "src/contracts/test/core-test-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "test has structural contract evidence only; required MVP behavior depth is not proven."
+      ]
+    },
+    {
+      "id": "must-test-workflow-contract-tests",
+      "name": "Workflow Contract Tests",
+      "category": "must_build_now",
+      "layer": "test",
+      "sourcePath": "books/book-02-core-specification/core-specs/tests/workflow-contract-tests.md",
+      "requiredImplementationKind": "executable_test_family",
+      "requiredCapabilities": ["mapped executable tests"],
+      "dependencies": [],
+      "currentDisposition": "validated_skeleton_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-test-workflow-contract-tests-contract"],
+      "implementationFiles": [
+        "src/contracts/test/core-test-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "test has structural contract evidence only; required MVP behavior depth is not proven."
+      ]
+    },
+    {
+      "id": "must-test-agent-boundary-tests",
+      "name": "Agent Boundary Tests",
+      "category": "must_build_now",
+      "layer": "test",
+      "sourcePath": "books/book-02-core-specification/core-specs/tests/agent-boundary-tests.md",
+      "requiredImplementationKind": "executable_test_family",
+      "requiredCapabilities": ["mapped executable tests"],
+      "dependencies": [],
+      "currentDisposition": "validated_skeleton_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-test-agent-boundary-tests-contract"],
+      "implementationFiles": [
+        "src/contracts/test/core-test-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "test has structural contract evidence only; required MVP behavior depth is not proven."
+      ]
+    },
+    {
+      "id": "must-test-permission-policy-tests",
+      "name": "Permission Policy Tests",
+      "category": "must_build_now",
+      "layer": "test",
+      "sourcePath": "books/book-02-core-specification/core-specs/tests/permission-policy-tests.md",
+      "requiredImplementationKind": "executable_test_family",
+      "requiredCapabilities": ["mapped executable tests"],
+      "dependencies": [],
+      "currentDisposition": "validated_skeleton_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-test-permission-policy-tests-contract"],
+      "implementationFiles": [
+        "src/contracts/test/core-test-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "test has structural contract evidence only; required MVP behavior depth is not proven."
+      ]
+    },
+    {
+      "id": "must-test-idempotency-event-tests",
+      "name": "Idempotency Event Tests",
+      "category": "must_build_now",
+      "layer": "test",
+      "sourcePath": "books/book-02-core-specification/core-specs/tests/idempotency-event-tests.md",
+      "requiredImplementationKind": "executable_test_family",
+      "requiredCapabilities": ["mapped executable tests"],
+      "dependencies": [],
+      "currentDisposition": "validated_skeleton_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-test-idempotency-event-tests-contract"],
+      "implementationFiles": [
+        "src/contracts/test/core-test-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "test has structural contract evidence only; required MVP behavior depth is not proven."
+      ]
+    },
+    {
+      "id": "must-test-error-versioning-tests",
+      "name": "Error Versioning Tests",
+      "category": "must_build_now",
+      "layer": "test",
+      "sourcePath": "books/book-02-core-specification/core-specs/tests/error-versioning-tests.md",
+      "requiredImplementationKind": "executable_test_family",
+      "requiredCapabilities": ["mapped executable tests"],
+      "dependencies": [],
+      "currentDisposition": "validated_skeleton_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-test-error-versioning-tests-contract"],
+      "implementationFiles": [
+        "src/contracts/test/core-test-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "test has structural contract evidence only; required MVP behavior depth is not proven."
+      ]
+    },
+    {
+      "id": "stub-domain-knowledge",
+      "name": "Knowledge",
+      "category": "stub_now",
+      "layer": "domain",
+      "sourcePath": "books/book-02-core-specification/core-specs/domains/knowledge.md",
+      "requiredImplementationKind": "bounded_stub",
+      "requiredCapabilities": ["no production execution"],
+      "dependencies": [],
+      "currentDisposition": "boundary_scaffold_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-domain-knowledge-contract"],
+      "implementationFiles": [
+        "src/contracts/domain/core-domain-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "Boundary scaffold is present without full named MVP runtime behavior."
+      ]
+    },
+    {
+      "id": "stub-domain-notification",
+      "name": "Notification",
+      "category": "stub_now",
+      "layer": "domain",
+      "sourcePath": "books/book-02-core-specification/core-specs/domains/notification.md",
+      "requiredImplementationKind": "bounded_stub",
+      "requiredCapabilities": ["no production execution"],
+      "dependencies": [],
+      "currentDisposition": "boundary_scaffold_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-domain-notification-contract"],
+      "implementationFiles": [
+        "src/contracts/domain/core-domain-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "Boundary scaffold is present without full named MVP runtime behavior."
+      ]
+    },
+    {
+      "id": "stub-domain-opportunity",
+      "name": "Opportunity",
+      "category": "stub_now",
+      "layer": "domain",
+      "sourcePath": "books/book-02-core-specification/core-specs/domains/opportunity.md",
+      "requiredImplementationKind": "bounded_stub",
+      "requiredCapabilities": ["no production execution"],
+      "dependencies": [],
+      "currentDisposition": "boundary_scaffold_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-domain-opportunity-contract"],
+      "implementationFiles": [
+        "src/contracts/domain/core-domain-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "Boundary scaffold is present without full named MVP runtime behavior."
+      ]
+    },
+    {
+      "id": "stub-domain-partner",
+      "name": "Partner",
+      "category": "stub_now",
+      "layer": "domain",
+      "sourcePath": "books/book-02-core-specification/core-specs/domains/partner.md",
+      "requiredImplementationKind": "bounded_stub",
+      "requiredCapabilities": ["no production execution"],
+      "dependencies": [],
+      "currentDisposition": "boundary_scaffold_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-domain-partner-contract"],
+      "implementationFiles": [
+        "src/contracts/domain/core-domain-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "Boundary scaffold is present without full named MVP runtime behavior."
+      ]
+    },
+    {
+      "id": "stub-domain-agent",
+      "name": "Agent",
+      "category": "stub_now",
+      "layer": "domain",
+      "sourcePath": "books/book-02-core-specification/core-specs/domains/agent.md",
+      "requiredImplementationKind": "bounded_stub",
+      "requiredCapabilities": ["no production execution"],
+      "dependencies": [],
+      "currentDisposition": "boundary_scaffold_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-domain-agent-contract"],
+      "implementationFiles": [
+        "src/contracts/domain/core-domain-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "Boundary scaffold is present without full named MVP runtime behavior."
+      ]
+    },
+    {
+      "id": "stub-domain-service-provider",
+      "name": "Service Provider",
+      "category": "stub_now",
+      "layer": "domain",
+      "sourcePath": "books/book-02-core-specification/core-specs/domains/service-provider.md",
+      "requiredImplementationKind": "bounded_stub",
+      "requiredCapabilities": ["no production execution"],
+      "dependencies": [],
+      "currentDisposition": "boundary_scaffold_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-domain-service-provider-contract"],
+      "implementationFiles": [
+        "src/contracts/domain/core-domain-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "Boundary scaffold is present without full named MVP runtime behavior."
+      ]
+    },
+    {
+      "id": "stub-domain-service-network",
+      "name": "Service Network",
+      "category": "stub_now",
+      "layer": "domain",
+      "sourcePath": "books/book-02-core-specification/core-specs/domains/service-network.md",
+      "requiredImplementationKind": "bounded_stub",
+      "requiredCapabilities": ["no production execution"],
+      "dependencies": [],
+      "currentDisposition": "boundary_scaffold_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-domain-service-network-contract"],
+      "implementationFiles": [
+        "src/contracts/domain/core-domain-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "Boundary scaffold is present without full named MVP runtime behavior."
+      ]
+    },
+    {
+      "id": "stub-domain-routing",
+      "name": "Routing",
+      "category": "stub_now",
+      "layer": "domain",
+      "sourcePath": "books/book-02-core-specification/core-specs/domains/routing.md",
+      "requiredImplementationKind": "bounded_stub",
+      "requiredCapabilities": ["no production execution"],
+      "dependencies": [],
+      "currentDisposition": "boundary_scaffold_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-domain-routing-contract"],
+      "implementationFiles": [
+        "src/contracts/domain/core-domain-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "Boundary scaffold is present without full named MVP runtime behavior."
+      ]
+    },
+    {
+      "id": "stub-service-knowledge-service",
+      "name": "Knowledge Service",
+      "category": "stub_now",
+      "layer": "service",
+      "sourcePath": "books/book-02-core-specification/core-specs/services/knowledge-service.md",
+      "requiredImplementationKind": "bounded_stub",
+      "requiredCapabilities": ["no production execution"],
+      "dependencies": [],
+      "currentDisposition": "boundary_scaffold_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-service-knowledge-service-contract"],
+      "implementationFiles": [
+        "src/contracts/service/core-service-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "Boundary scaffold is present without full named MVP runtime behavior."
+      ]
+    },
+    {
+      "id": "stub-service-notification-service",
+      "name": "Notification Service",
+      "category": "stub_now",
+      "layer": "service",
+      "sourcePath": "books/book-02-core-specification/core-specs/services/notification-service.md",
+      "requiredImplementationKind": "bounded_stub",
+      "requiredCapabilities": ["no production execution"],
+      "dependencies": [],
+      "currentDisposition": "boundary_scaffold_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-service-notification-service-contract"],
+      "implementationFiles": [
+        "src/contracts/service/core-service-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "Boundary scaffold is present without full named MVP runtime behavior."
+      ]
+    },
+    {
+      "id": "stub-service-opportunity-service",
+      "name": "Opportunity Service",
+      "category": "stub_now",
+      "layer": "service",
+      "sourcePath": "books/book-02-core-specification/core-specs/services/opportunity-service.md",
+      "requiredImplementationKind": "bounded_stub",
+      "requiredCapabilities": ["no production execution"],
+      "dependencies": [],
+      "currentDisposition": "boundary_scaffold_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-service-opportunity-service-contract"],
+      "implementationFiles": [
+        "src/contracts/service/core-service-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "Boundary scaffold is present without full named MVP runtime behavior."
+      ]
+    },
+    {
+      "id": "stub-service-partner-service",
+      "name": "Partner Service",
+      "category": "stub_now",
+      "layer": "service",
+      "sourcePath": "books/book-02-core-specification/core-specs/services/partner-service.md",
+      "requiredImplementationKind": "bounded_stub",
+      "requiredCapabilities": ["no production execution"],
+      "dependencies": [],
+      "currentDisposition": "boundary_scaffold_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-service-partner-service-contract"],
+      "implementationFiles": [
+        "src/contracts/service/core-service-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "Boundary scaffold is present without full named MVP runtime behavior."
+      ]
+    },
+    {
+      "id": "stub-service-agent-service",
+      "name": "Agent Service",
+      "category": "stub_now",
+      "layer": "service",
+      "sourcePath": "books/book-02-core-specification/core-specs/services/agent-service.md",
+      "requiredImplementationKind": "bounded_stub",
+      "requiredCapabilities": ["no production execution"],
+      "dependencies": [],
+      "currentDisposition": "boundary_scaffold_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-service-agent-service-contract"],
+      "implementationFiles": [
+        "src/contracts/service/core-service-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "Boundary scaffold is present without full named MVP runtime behavior."
+      ]
+    },
+    {
+      "id": "stub-service-service-provider-service",
+      "name": "Service Provider Service",
+      "category": "stub_now",
+      "layer": "service",
+      "sourcePath": "books/book-02-core-specification/core-specs/services/service-provider-service.md",
+      "requiredImplementationKind": "bounded_stub",
+      "requiredCapabilities": ["no production execution"],
+      "dependencies": [],
+      "currentDisposition": "boundary_scaffold_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-service-service-provider-service-contract"],
+      "implementationFiles": [
+        "src/contracts/service/core-service-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "Boundary scaffold is present without full named MVP runtime behavior."
+      ]
+    },
+    {
+      "id": "stub-service-service-network-service",
+      "name": "Service Network Service",
+      "category": "stub_now",
+      "layer": "service",
+      "sourcePath": "books/book-02-core-specification/core-specs/services/service-network-service.md",
+      "requiredImplementationKind": "bounded_stub",
+      "requiredCapabilities": ["no production execution"],
+      "dependencies": [],
+      "currentDisposition": "boundary_scaffold_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-service-service-network-service-contract"],
+      "implementationFiles": [
+        "src/contracts/service/core-service-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "Boundary scaffold is present without full named MVP runtime behavior."
+      ]
+    },
+    {
+      "id": "stub-service-routing-service",
+      "name": "Routing Service",
+      "category": "stub_now",
+      "layer": "service",
+      "sourcePath": "books/book-02-core-specification/core-specs/services/routing-service.md",
+      "requiredImplementationKind": "bounded_stub",
+      "requiredCapabilities": ["no production execution"],
+      "dependencies": [],
+      "currentDisposition": "boundary_scaffold_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-service-routing-service-contract"],
+      "implementationFiles": [
+        "src/contracts/service/core-service-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "Boundary scaffold is present without full named MVP runtime behavior."
+      ]
+    },
+    {
+      "id": "stub-api-knowledge-api-contract",
+      "name": "Knowledge API",
+      "category": "stub_now",
+      "layer": "api",
+      "sourcePath": "books/book-02-core-specification/core-specs/api/knowledge-api-contract.md",
+      "requiredImplementationKind": "bounded_stub",
+      "requiredCapabilities": ["validation only"],
+      "dependencies": [],
+      "currentDisposition": "boundary_scaffold_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-api-knowledge-api-contract"],
+      "implementationFiles": [
+        "src/contracts/api/core-api-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "Boundary scaffold is present without full named MVP runtime behavior."
+      ]
+    },
+    {
+      "id": "stub-api-notification-api-contract",
+      "name": "Notification API",
+      "category": "stub_now",
+      "layer": "api",
+      "sourcePath": "books/book-02-core-specification/core-specs/api/notification-api-contract.md",
+      "requiredImplementationKind": "bounded_stub",
+      "requiredCapabilities": ["validation only"],
+      "dependencies": [],
+      "currentDisposition": "boundary_scaffold_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-api-notification-api-contract"],
+      "implementationFiles": [
+        "src/contracts/api/core-api-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "Boundary scaffold is present without full named MVP runtime behavior."
+      ]
+    },
+    {
+      "id": "stub-api-opportunity-api-contract",
+      "name": "Opportunity API",
+      "category": "stub_now",
+      "layer": "api",
+      "sourcePath": "books/book-02-core-specification/core-specs/api/opportunity-api-contract.md",
+      "requiredImplementationKind": "bounded_stub",
+      "requiredCapabilities": ["validation only"],
+      "dependencies": [],
+      "currentDisposition": "boundary_scaffold_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-api-opportunity-api-contract"],
+      "implementationFiles": [
+        "src/contracts/api/core-api-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "Boundary scaffold is present without full named MVP runtime behavior."
+      ]
+    },
+    {
+      "id": "stub-api-partner-api-contract",
+      "name": "Partner API",
+      "category": "stub_now",
+      "layer": "api",
+      "sourcePath": "books/book-02-core-specification/core-specs/api/partner-api-contract.md",
+      "requiredImplementationKind": "bounded_stub",
+      "requiredCapabilities": ["validation only"],
+      "dependencies": [],
+      "currentDisposition": "boundary_scaffold_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-api-partner-api-contract"],
+      "implementationFiles": [
+        "src/contracts/api/core-api-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "Boundary scaffold is present without full named MVP runtime behavior."
+      ]
+    },
+    {
+      "id": "stub-api-agent-api-contract",
+      "name": "Agent API",
+      "category": "stub_now",
+      "layer": "api",
+      "sourcePath": "books/book-02-core-specification/core-specs/api/agent-api-contract.md",
+      "requiredImplementationKind": "bounded_stub",
+      "requiredCapabilities": ["validation only"],
+      "dependencies": [],
+      "currentDisposition": "boundary_scaffold_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-api-agent-api-contract"],
+      "implementationFiles": [
+        "src/contracts/api/core-api-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "Boundary scaffold is present without full named MVP runtime behavior."
+      ]
+    },
+    {
+      "id": "stub-api-service-provider-api-contract",
+      "name": "Service Provider API",
+      "category": "stub_now",
+      "layer": "api",
+      "sourcePath": "books/book-02-core-specification/core-specs/api/service-provider-api-contract.md",
+      "requiredImplementationKind": "bounded_stub",
+      "requiredCapabilities": ["validation only"],
+      "dependencies": [],
+      "currentDisposition": "boundary_scaffold_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-api-service-provider-api-contract"],
+      "implementationFiles": [
+        "src/contracts/api/core-api-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "Boundary scaffold is present without full named MVP runtime behavior."
+      ]
+    },
+    {
+      "id": "stub-api-service-network-api-contract",
+      "name": "Service Network API",
+      "category": "stub_now",
+      "layer": "api",
+      "sourcePath": "books/book-02-core-specification/core-specs/api/service-network-api-contract.md",
+      "requiredImplementationKind": "bounded_stub",
+      "requiredCapabilities": ["validation only"],
+      "dependencies": [],
+      "currentDisposition": "boundary_scaffold_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-api-service-network-api-contract"],
+      "implementationFiles": [
+        "src/contracts/api/core-api-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "Boundary scaffold is present without full named MVP runtime behavior."
+      ]
+    },
+    {
+      "id": "stub-api-routing-api-contract",
+      "name": "Routing API",
+      "category": "stub_now",
+      "layer": "api",
+      "sourcePath": "books/book-02-core-specification/core-specs/api/routing-api-contract.md",
+      "requiredImplementationKind": "bounded_stub",
+      "requiredCapabilities": ["validation only"],
+      "dependencies": [],
+      "currentDisposition": "boundary_scaffold_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-api-routing-api-contract"],
+      "implementationFiles": [
+        "src/contracts/api/core-api-contract-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "Boundary scaffold is present without full named MVP runtime behavior."
+      ]
+    },
+    {
+      "id": "stub-workflow-office-action-response-workflow",
+      "name": "Office Action Response Workflow",
+      "category": "stub_now",
+      "layer": "workflow",
+      "sourcePath": "books/book-02-core-specification/core-specs/workflows/office-action-response-workflow.md",
+      "requiredImplementationKind": "preview_or_validation_only",
+      "requiredCapabilities": [
+        "no official filing",
+        "no external send",
+        "no provider selection"
+      ],
+      "dependencies": [],
+      "currentDisposition": "boundary_scaffold_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-workflow-office-action-response-workflow-contract"],
+      "implementationFiles": [
+        "src/contracts/workflow/core-workflow-catalog-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "Boundary scaffold is present without full named MVP runtime behavior."
+      ]
+    },
+    {
+      "id": "stub-workflow-provider-routing-workflow",
+      "name": "Provider Routing Workflow",
+      "category": "stub_now",
+      "layer": "workflow",
+      "sourcePath": "books/book-02-core-specification/core-specs/workflows/provider-routing-workflow.md",
+      "requiredImplementationKind": "preview_or_validation_only",
+      "requiredCapabilities": [
+        "no official filing",
+        "no external send",
+        "no provider selection"
+      ],
+      "dependencies": [],
+      "currentDisposition": "boundary_scaffold_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-workflow-provider-routing-workflow-contract"],
+      "implementationFiles": [
+        "src/contracts/workflow/core-workflow-catalog-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "Boundary scaffold is present without full named MVP runtime behavior."
+      ]
+    },
+    {
+      "id": "stub-workflow-renewal-workflow",
+      "name": "Renewal Workflow",
+      "category": "stub_now",
+      "layer": "workflow",
+      "sourcePath": "books/book-02-core-specification/core-specs/workflows/renewal-workflow.md",
+      "requiredImplementationKind": "preview_or_validation_only",
+      "requiredCapabilities": [
+        "no official filing",
+        "no external send",
+        "no provider selection"
+      ],
+      "dependencies": [],
+      "currentDisposition": "boundary_scaffold_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-workflow-renewal-workflow-contract"],
+      "implementationFiles": [
+        "src/contracts/workflow/core-workflow-catalog-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "Boundary scaffold is present without full named MVP runtime behavior."
+      ]
+    },
+    {
+      "id": "stub-workflow-assignment-workflow",
+      "name": "Assignment Workflow",
+      "category": "stub_now",
+      "layer": "workflow",
+      "sourcePath": "books/book-02-core-specification/core-specs/workflows/assignment-workflow.md",
+      "requiredImplementationKind": "preview_or_validation_only",
+      "requiredCapabilities": [
+        "no official filing",
+        "no external send",
+        "no provider selection"
+      ],
+      "dependencies": [],
+      "currentDisposition": "boundary_scaffold_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-workflow-assignment-workflow-contract"],
+      "implementationFiles": [
+        "src/contracts/workflow/core-workflow-catalog-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "Boundary scaffold is present without full named MVP runtime behavior."
+      ]
+    },
+    {
+      "id": "stub-workflow-evidence-review-workflow",
+      "name": "Evidence Review Workflow",
+      "category": "stub_now",
+      "layer": "workflow",
+      "sourcePath": "books/book-02-core-specification/core-specs/workflows/evidence-review-workflow.md",
+      "requiredImplementationKind": "preview_or_validation_only",
+      "requiredCapabilities": [
+        "no official filing",
+        "no external send",
+        "no provider selection"
+      ],
+      "dependencies": [],
+      "currentDisposition": "boundary_scaffold_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-workflow-evidence-review-workflow-contract"],
+      "implementationFiles": [
+        "src/contracts/workflow/core-workflow-catalog-skeletons.ts"
+      ],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "Boundary scaffold is present without full named MVP runtime behavior."
+      ]
+    },
+    {
+      "id": "stub-agent-routing-agent",
+      "name": "Routing Agent",
+      "category": "stub_now",
+      "layer": "agent",
+      "sourcePath": "books/book-02-core-specification/core-specs/agents/routing-agent.md",
+      "requiredImplementationKind": "bounded_stub",
+      "requiredCapabilities": ["no production runtime"],
+      "dependencies": [],
+      "currentDisposition": "boundary_scaffold_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-agent-routing-agent-contract"],
+      "implementationFiles": ["src/behaviors/core-agent-boundary.ts"],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "Boundary scaffold is present without full named MVP runtime behavior."
+      ]
+    },
+    {
+      "id": "stub-agent-advanced-agent-registry-runtime",
+      "name": "Advanced Agent Registry Runtime",
+      "category": "stub_now",
+      "layer": "agent",
+      "sourcePath": "books/book-02-core-specification/core-specs/agents/advanced-agent-registry-runtime.md",
+      "requiredImplementationKind": "bounded_stub",
+      "requiredCapabilities": ["no production runtime"],
+      "dependencies": [],
+      "currentDisposition": "boundary_scaffold_only",
+      "currentDepth": "structural_only",
+      "contractIds": ["core-agent-advanced-agent-registry-runtime-contract"],
+      "implementationFiles": ["src/behaviors/core-agent-boundary.ts"],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": [
+        "Boundary scaffold is present without full named MVP runtime behavior."
+      ]
+    },
+    {
+      "id": "document-only-document-only-01",
+      "name": "Document Only 01",
+      "category": "document_only",
+      "layer": "guard",
+      "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md#section-7",
+      "requiredImplementationKind": "document_only",
+      "requiredCapabilities": ["no runtime implementation"],
+      "dependencies": [],
+      "currentDisposition": "not_required",
+      "currentDepth": "outside_mvp",
+      "contractIds": [],
+      "implementationFiles": [],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": []
+    },
+    {
+      "id": "document-only-document-only-02",
+      "name": "Document Only 02",
+      "category": "document_only",
+      "layer": "guard",
+      "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md#section-7",
+      "requiredImplementationKind": "document_only",
+      "requiredCapabilities": ["no runtime implementation"],
+      "dependencies": [],
+      "currentDisposition": "not_required",
+      "currentDepth": "outside_mvp",
+      "contractIds": [],
+      "implementationFiles": [],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": []
+    },
+    {
+      "id": "document-only-document-only-03",
+      "name": "Document Only 03",
+      "category": "document_only",
+      "layer": "guard",
+      "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md#section-7",
+      "requiredImplementationKind": "document_only",
+      "requiredCapabilities": ["no runtime implementation"],
+      "dependencies": [],
+      "currentDisposition": "not_required",
+      "currentDepth": "outside_mvp",
+      "contractIds": [],
+      "implementationFiles": [],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": []
+    },
+    {
+      "id": "document-only-document-only-04",
+      "name": "Document Only 04",
+      "category": "document_only",
+      "layer": "guard",
+      "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md#section-7",
+      "requiredImplementationKind": "document_only",
+      "requiredCapabilities": ["no runtime implementation"],
+      "dependencies": [],
+      "currentDisposition": "not_required",
+      "currentDepth": "outside_mvp",
+      "contractIds": [],
+      "implementationFiles": [],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": []
+    },
+    {
+      "id": "document-only-document-only-05",
+      "name": "Document Only 05",
+      "category": "document_only",
+      "layer": "guard",
+      "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md#section-7",
+      "requiredImplementationKind": "document_only",
+      "requiredCapabilities": ["no runtime implementation"],
+      "dependencies": [],
+      "currentDisposition": "not_required",
+      "currentDepth": "outside_mvp",
+      "contractIds": [],
+      "implementationFiles": [],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": []
+    },
+    {
+      "id": "document-only-document-only-06",
+      "name": "Document Only 06",
+      "category": "document_only",
+      "layer": "guard",
+      "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md#section-7",
+      "requiredImplementationKind": "document_only",
+      "requiredCapabilities": ["no runtime implementation"],
+      "dependencies": [],
+      "currentDisposition": "not_required",
+      "currentDepth": "outside_mvp",
+      "contractIds": [],
+      "implementationFiles": [],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": []
+    },
+    {
+      "id": "document-only-document-only-07",
+      "name": "Document Only 07",
+      "category": "document_only",
+      "layer": "guard",
+      "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md#section-7",
+      "requiredImplementationKind": "document_only",
+      "requiredCapabilities": ["no runtime implementation"],
+      "dependencies": [],
+      "currentDisposition": "not_required",
+      "currentDepth": "outside_mvp",
+      "contractIds": [],
+      "implementationFiles": [],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": []
+    },
+    {
+      "id": "document-only-document-only-08",
+      "name": "Document Only 08",
+      "category": "document_only",
+      "layer": "guard",
+      "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md#section-7",
+      "requiredImplementationKind": "document_only",
+      "requiredCapabilities": ["no runtime implementation"],
+      "dependencies": [],
+      "currentDisposition": "not_required",
+      "currentDepth": "outside_mvp",
+      "contractIds": [],
+      "implementationFiles": [],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": []
+    },
+    {
+      "id": "document-only-document-only-09",
+      "name": "Document Only 09",
+      "category": "document_only",
+      "layer": "guard",
+      "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md#section-7",
+      "requiredImplementationKind": "document_only",
+      "requiredCapabilities": ["no runtime implementation"],
+      "dependencies": [],
+      "currentDisposition": "not_required",
+      "currentDepth": "outside_mvp",
+      "contractIds": [],
+      "implementationFiles": [],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": []
+    },
+    {
+      "id": "document-only-document-only-10",
+      "name": "Document Only 10",
+      "category": "document_only",
+      "layer": "guard",
+      "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md#section-7",
+      "requiredImplementationKind": "document_only",
+      "requiredCapabilities": ["no runtime implementation"],
+      "dependencies": [],
+      "currentDisposition": "not_required",
+      "currentDepth": "outside_mvp",
+      "contractIds": [],
+      "implementationFiles": [],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": []
+    },
+    {
+      "id": "document-only-document-only-11",
+      "name": "Document Only 11",
+      "category": "document_only",
+      "layer": "guard",
+      "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md#section-7",
+      "requiredImplementationKind": "document_only",
+      "requiredCapabilities": ["no runtime implementation"],
+      "dependencies": [],
+      "currentDisposition": "not_required",
+      "currentDepth": "outside_mvp",
+      "contractIds": [],
+      "implementationFiles": [],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": []
+    },
+    {
+      "id": "document-only-document-only-12",
+      "name": "Document Only 12",
+      "category": "document_only",
+      "layer": "guard",
+      "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md#section-7",
+      "requiredImplementationKind": "document_only",
+      "requiredCapabilities": ["no runtime implementation"],
+      "dependencies": [],
+      "currentDisposition": "not_required",
+      "currentDepth": "outside_mvp",
+      "contractIds": [],
+      "implementationFiles": [],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": []
+    },
+    {
+      "id": "document-only-document-only-13",
+      "name": "Document Only 13",
+      "category": "document_only",
+      "layer": "guard",
+      "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md#section-7",
+      "requiredImplementationKind": "document_only",
+      "requiredCapabilities": ["no runtime implementation"],
+      "dependencies": [],
+      "currentDisposition": "not_required",
+      "currentDepth": "outside_mvp",
+      "contractIds": [],
+      "implementationFiles": [],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": []
+    },
+    {
+      "id": "document-only-document-only-14",
+      "name": "Document Only 14",
+      "category": "document_only",
+      "layer": "guard",
+      "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md#section-7",
+      "requiredImplementationKind": "document_only",
+      "requiredCapabilities": ["no runtime implementation"],
+      "dependencies": [],
+      "currentDisposition": "not_required",
+      "currentDepth": "outside_mvp",
+      "contractIds": [],
+      "implementationFiles": [],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": []
+    },
+    {
+      "id": "defer-defer-01",
+      "name": "Defer 01",
+      "category": "defer",
+      "layer": "guard",
+      "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md#section-8",
+      "requiredImplementationKind": "defer",
+      "requiredCapabilities": ["outside MVP implementation"],
+      "dependencies": [],
+      "currentDisposition": "not_required",
+      "currentDepth": "outside_mvp",
+      "contractIds": [],
+      "implementationFiles": [],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": []
+    },
+    {
+      "id": "defer-defer-02",
+      "name": "Defer 02",
+      "category": "defer",
+      "layer": "guard",
+      "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md#section-8",
+      "requiredImplementationKind": "defer",
+      "requiredCapabilities": ["outside MVP implementation"],
+      "dependencies": [],
+      "currentDisposition": "not_required",
+      "currentDepth": "outside_mvp",
+      "contractIds": [],
+      "implementationFiles": [],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": []
+    },
+    {
+      "id": "defer-defer-03",
+      "name": "Defer 03",
+      "category": "defer",
+      "layer": "guard",
+      "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md#section-8",
+      "requiredImplementationKind": "defer",
+      "requiredCapabilities": ["outside MVP implementation"],
+      "dependencies": [],
+      "currentDisposition": "not_required",
+      "currentDepth": "outside_mvp",
+      "contractIds": [],
+      "implementationFiles": [],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": []
+    },
+    {
+      "id": "defer-defer-04",
+      "name": "Defer 04",
+      "category": "defer",
+      "layer": "guard",
+      "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md#section-8",
+      "requiredImplementationKind": "defer",
+      "requiredCapabilities": ["outside MVP implementation"],
+      "dependencies": [],
+      "currentDisposition": "not_required",
+      "currentDepth": "outside_mvp",
+      "contractIds": [],
+      "implementationFiles": [],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": []
+    },
+    {
+      "id": "defer-defer-05",
+      "name": "Defer 05",
+      "category": "defer",
+      "layer": "guard",
+      "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md#section-8",
+      "requiredImplementationKind": "defer",
+      "requiredCapabilities": ["outside MVP implementation"],
+      "dependencies": [],
+      "currentDisposition": "not_required",
+      "currentDepth": "outside_mvp",
+      "contractIds": [],
+      "implementationFiles": [],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": []
+    },
+    {
+      "id": "defer-defer-06",
+      "name": "Defer 06",
+      "category": "defer",
+      "layer": "guard",
+      "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md#section-8",
+      "requiredImplementationKind": "defer",
+      "requiredCapabilities": ["outside MVP implementation"],
+      "dependencies": [],
+      "currentDisposition": "not_required",
+      "currentDepth": "outside_mvp",
+      "contractIds": [],
+      "implementationFiles": [],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": []
+    },
+    {
+      "id": "defer-defer-07",
+      "name": "Defer 07",
+      "category": "defer",
+      "layer": "guard",
+      "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md#section-8",
+      "requiredImplementationKind": "defer",
+      "requiredCapabilities": ["outside MVP implementation"],
+      "dependencies": [],
+      "currentDisposition": "not_required",
+      "currentDepth": "outside_mvp",
+      "contractIds": [],
+      "implementationFiles": [],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": []
+    },
+    {
+      "id": "defer-defer-08",
+      "name": "Defer 08",
+      "category": "defer",
+      "layer": "guard",
+      "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md#section-8",
+      "requiredImplementationKind": "defer",
+      "requiredCapabilities": ["outside MVP implementation"],
+      "dependencies": [],
+      "currentDisposition": "not_required",
+      "currentDepth": "outside_mvp",
+      "contractIds": [],
+      "implementationFiles": [],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": []
+    },
+    {
+      "id": "defer-defer-09",
+      "name": "Defer 09",
+      "category": "defer",
+      "layer": "guard",
+      "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md#section-8",
+      "requiredImplementationKind": "defer",
+      "requiredCapabilities": ["outside MVP implementation"],
+      "dependencies": [],
+      "currentDisposition": "not_required",
+      "currentDepth": "outside_mvp",
+      "contractIds": [],
+      "implementationFiles": [],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": []
+    },
+    {
+      "id": "defer-defer-10",
+      "name": "Defer 10",
+      "category": "defer",
+      "layer": "guard",
+      "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md#section-8",
+      "requiredImplementationKind": "defer",
+      "requiredCapabilities": ["outside MVP implementation"],
+      "dependencies": [],
+      "currentDisposition": "not_required",
+      "currentDepth": "outside_mvp",
+      "contractIds": [],
+      "implementationFiles": [],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": []
+    },
+    {
+      "id": "defer-defer-11",
+      "name": "Defer 11",
+      "category": "defer",
+      "layer": "guard",
+      "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md#section-8",
+      "requiredImplementationKind": "defer",
+      "requiredCapabilities": ["outside MVP implementation"],
+      "dependencies": [],
+      "currentDisposition": "not_required",
+      "currentDepth": "outside_mvp",
+      "contractIds": [],
+      "implementationFiles": [],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": []
+    },
+    {
+      "id": "defer-defer-12",
+      "name": "Defer 12",
+      "category": "defer",
+      "layer": "guard",
+      "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md#section-8",
+      "requiredImplementationKind": "defer",
+      "requiredCapabilities": ["outside MVP implementation"],
+      "dependencies": [],
+      "currentDisposition": "not_required",
+      "currentDepth": "outside_mvp",
+      "contractIds": [],
+      "implementationFiles": [],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": []
+    },
+    {
+      "id": "defer-defer-13",
+      "name": "Defer 13",
+      "category": "defer",
+      "layer": "guard",
+      "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md#section-8",
+      "requiredImplementationKind": "defer",
+      "requiredCapabilities": ["outside MVP implementation"],
+      "dependencies": [],
+      "currentDisposition": "not_required",
+      "currentDepth": "outside_mvp",
+      "contractIds": [],
+      "implementationFiles": [],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": []
+    },
+    {
+      "id": "defer-defer-14",
+      "name": "Defer 14",
+      "category": "defer",
+      "layer": "guard",
+      "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md#section-8",
+      "requiredImplementationKind": "defer",
+      "requiredCapabilities": ["outside MVP implementation"],
+      "dependencies": [],
+      "currentDisposition": "not_required",
+      "currentDepth": "outside_mvp",
+      "contractIds": [],
+      "implementationFiles": [],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": []
+    },
+    {
+      "id": "defer-defer-15",
+      "name": "Defer 15",
+      "category": "defer",
+      "layer": "guard",
+      "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md#section-8",
+      "requiredImplementationKind": "defer",
+      "requiredCapabilities": ["outside MVP implementation"],
+      "dependencies": [],
+      "currentDisposition": "not_required",
+      "currentDepth": "outside_mvp",
+      "contractIds": [],
+      "implementationFiles": [],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": []
+    },
+    {
+      "id": "defer-defer-16",
+      "name": "Defer 16",
+      "category": "defer",
+      "layer": "guard",
+      "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md#section-8",
+      "requiredImplementationKind": "defer",
+      "requiredCapabilities": ["outside MVP implementation"],
+      "dependencies": [],
+      "currentDisposition": "not_required",
+      "currentDepth": "outside_mvp",
+      "contractIds": [],
+      "implementationFiles": [],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": []
+    },
+    {
+      "id": "defer-defer-17",
+      "name": "Defer 17",
+      "category": "defer",
+      "layer": "guard",
+      "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md#section-8",
+      "requiredImplementationKind": "defer",
+      "requiredCapabilities": ["outside MVP implementation"],
+      "dependencies": [],
+      "currentDisposition": "not_required",
+      "currentDepth": "outside_mvp",
+      "contractIds": [],
+      "implementationFiles": [],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": []
+    },
+    {
+      "id": "never-full-workflow-engine",
+      "name": "Full Workflow Engine",
+      "category": "never_in_mvp",
+      "layer": "guard",
+      "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md#section-9",
+      "requiredImplementationKind": "never_in_mvp",
+      "requiredCapabilities": ["must not be implemented"],
+      "dependencies": [],
+      "currentDisposition": "not_required",
+      "currentDepth": "outside_mvp",
+      "contractIds": [],
+      "implementationFiles": [],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": []
+    },
+    {
+      "id": "never-full-policy-engine",
+      "name": "Full Policy Engine",
+      "category": "never_in_mvp",
+      "layer": "guard",
+      "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md#section-9",
+      "requiredImplementationKind": "never_in_mvp",
+      "requiredCapabilities": ["must not be implemented"],
+      "dependencies": [],
+      "currentDisposition": "not_required",
+      "currentDepth": "outside_mvp",
+      "contractIds": [],
+      "implementationFiles": [],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": []
+    },
+    {
+      "id": "never-ai-official-submission",
+      "name": "Ai Official Submission",
+      "category": "never_in_mvp",
+      "layer": "guard",
+      "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md#section-9",
+      "requiredImplementationKind": "never_in_mvp",
+      "requiredCapabilities": ["must not be implemented"],
+      "dependencies": [],
+      "currentDisposition": "not_required",
+      "currentDepth": "outside_mvp",
+      "contractIds": [],
+      "implementationFiles": [],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": []
+    },
+    {
+      "id": "never-ai-deadline-certification",
+      "name": "Ai Deadline Certification",
+      "category": "never_in_mvp",
+      "layer": "guard",
+      "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md#section-9",
+      "requiredImplementationKind": "never_in_mvp",
+      "requiredCapabilities": ["must not be implemented"],
+      "dependencies": [],
+      "currentDisposition": "not_required",
+      "currentDepth": "outside_mvp",
+      "contractIds": [],
+      "implementationFiles": [],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": []
+    },
+    {
+      "id": "never-ai-final-provider-selection",
+      "name": "Ai Final Provider Selection",
+      "category": "never_in_mvp",
+      "layer": "guard",
+      "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md#section-9",
+      "requiredImplementationKind": "never_in_mvp",
+      "requiredCapabilities": ["must not be implemented"],
+      "dependencies": [],
+      "currentDisposition": "not_required",
+      "currentDepth": "outside_mvp",
+      "contractIds": [],
+      "implementationFiles": [],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": []
+    },
+    {
+      "id": "never-api-direct-domain-mutation",
+      "name": "Api Direct Domain Mutation",
+      "category": "never_in_mvp",
+      "layer": "guard",
+      "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md#section-9",
+      "requiredImplementationKind": "never_in_mvp",
+      "requiredCapabilities": ["must not be implemented"],
+      "dependencies": [],
+      "currentDisposition": "not_required",
+      "currentDepth": "outside_mvp",
+      "contractIds": [],
+      "implementationFiles": [],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": []
+    },
+    {
+      "id": "never-workflow-direct-active-task-creation",
+      "name": "Workflow Direct Active Task Creation",
+      "category": "never_in_mvp",
+      "layer": "guard",
+      "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md#section-9",
+      "requiredImplementationKind": "never_in_mvp",
+      "requiredCapabilities": ["must not be implemented"],
+      "dependencies": [],
+      "currentDisposition": "not_required",
+      "currentDepth": "outside_mvp",
+      "contractIds": [],
+      "implementationFiles": [],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": []
+    },
+    {
+      "id": "never-workflow-direct-event-emission",
+      "name": "Workflow Direct Event Emission",
+      "category": "never_in_mvp",
+      "layer": "guard",
+      "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md#section-9",
+      "requiredImplementationKind": "never_in_mvp",
+      "requiredCapabilities": ["must not be implemented"],
+      "dependencies": [],
+      "currentDisposition": "not_required",
+      "currentDepth": "outside_mvp",
+      "contractIds": [],
+      "implementationFiles": [],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": []
+    },
+    {
+      "id": "never-agent-direct-event-emission",
+      "name": "Agent Direct Event Emission",
+      "category": "never_in_mvp",
+      "layer": "guard",
+      "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md#section-9",
+      "requiredImplementationKind": "never_in_mvp",
+      "requiredCapabilities": ["must not be implemented"],
+      "dependencies": [],
+      "currentDisposition": "not_required",
+      "currentDepth": "outside_mvp",
+      "contractIds": [],
+      "implementationFiles": [],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": []
+    },
+    {
+      "id": "never-production-fixtures",
+      "name": "Production Fixtures",
+      "category": "never_in_mvp",
+      "layer": "guard",
+      "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md#section-9",
+      "requiredImplementationKind": "never_in_mvp",
+      "requiredCapabilities": ["must not be implemented"],
+      "dependencies": [],
+      "currentDisposition": "not_required",
+      "currentDepth": "outside_mvp",
+      "contractIds": [],
+      "implementationFiles": [],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": []
+    },
+    {
+      "id": "never-raw-database-ids-in-public-responses",
+      "name": "Raw Database Ids In Public Responses",
+      "category": "never_in_mvp",
+      "layer": "guard",
+      "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md#section-9",
+      "requiredImplementationKind": "never_in_mvp",
+      "requiredCapabilities": ["must not be implemented"],
+      "dependencies": [],
+      "currentDisposition": "not_required",
+      "currentDepth": "outside_mvp",
+      "contractIds": [],
+      "implementationFiles": [],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": []
+    },
+    {
+      "id": "never-unsafe-stack-traces",
+      "name": "Unsafe Stack Traces",
+      "category": "never_in_mvp",
+      "layer": "guard",
+      "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md#section-9",
+      "requiredImplementationKind": "never_in_mvp",
+      "requiredCapabilities": ["must not be implemented"],
+      "dependencies": [],
+      "currentDisposition": "not_required",
+      "currentDepth": "outside_mvp",
+      "contractIds": [],
+      "implementationFiles": [],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": []
+    },
+    {
+      "id": "never-silent-unsupported-version-acceptance",
+      "name": "Silent Unsupported Version Acceptance",
+      "category": "never_in_mvp",
+      "layer": "guard",
+      "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md#section-9",
+      "requiredImplementationKind": "never_in_mvp",
+      "requiredCapabilities": ["must not be implemented"],
+      "dependencies": [],
+      "currentDisposition": "not_required",
+      "currentDepth": "outside_mvp",
+      "contractIds": [],
+      "implementationFiles": [],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": []
+    },
+    {
+      "id": "never-event-bus",
+      "name": "Event Bus",
+      "category": "never_in_mvp",
+      "layer": "guard",
+      "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md#section-9",
+      "requiredImplementationKind": "never_in_mvp",
+      "requiredCapabilities": ["must not be implemented"],
+      "dependencies": [],
+      "currentDisposition": "not_required",
+      "currentDepth": "outside_mvp",
+      "contractIds": [],
+      "implementationFiles": [],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": []
+    },
+    {
+      "id": "never-database-persistence",
+      "name": "Database Persistence",
+      "category": "never_in_mvp",
+      "layer": "guard",
+      "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md#section-9",
+      "requiredImplementationKind": "never_in_mvp",
+      "requiredCapabilities": ["must not be implemented"],
+      "dependencies": [],
+      "currentDisposition": "not_required",
+      "currentDepth": "outside_mvp",
+      "contractIds": [],
+      "implementationFiles": [],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": []
+    },
+    {
+      "id": "never-external-communication-send",
+      "name": "External Communication Send",
+      "category": "never_in_mvp",
+      "layer": "guard",
+      "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md#section-9",
+      "requiredImplementationKind": "never_in_mvp",
+      "requiredCapabilities": ["must not be implemented"],
+      "dependencies": [],
+      "currentDisposition": "not_required",
+      "currentDepth": "outside_mvp",
+      "contractIds": [],
+      "implementationFiles": [],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": []
+    },
+    {
+      "id": "never-official-filing-integration",
+      "name": "Official Filing Integration",
+      "category": "never_in_mvp",
+      "layer": "guard",
+      "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md#section-9",
+      "requiredImplementationKind": "never_in_mvp",
+      "requiredCapabilities": ["must not be implemented"],
+      "dependencies": [],
+      "currentDisposition": "not_required",
+      "currentDepth": "outside_mvp",
+      "contractIds": [],
+      "implementationFiles": [],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": []
+    },
+    {
+      "id": "never-payment-execution",
+      "name": "Payment Execution",
+      "category": "never_in_mvp",
+      "layer": "guard",
+      "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md#section-9",
+      "requiredImplementationKind": "never_in_mvp",
+      "requiredCapabilities": ["must not be implemented"],
+      "dependencies": [],
+      "currentDisposition": "not_required",
+      "currentDepth": "outside_mvp",
+      "contractIds": [],
+      "implementationFiles": [],
+      "testFiles": [],
+      "fixtureFiles": [],
+      "gapReasons": []
+    }
+  ],
+  "acceptanceCriteria": [
+    "book-02-mvp-acceptance-01",
+    "book-02-mvp-acceptance-02",
+    "book-02-mvp-acceptance-03",
+    "book-02-mvp-acceptance-04",
+    "book-02-mvp-acceptance-05",
+    "book-02-mvp-acceptance-06",
+    "book-02-mvp-acceptance-07",
+    "book-02-mvp-acceptance-08",
+    "book-02-mvp-acceptance-09",
+    "book-02-mvp-acceptance-10",
+    "book-02-mvp-acceptance-11",
+    "book-02-mvp-acceptance-12",
+    "book-02-mvp-acceptance-13",
+    "book-02-mvp-acceptance-14",
+    "book-02-mvp-acceptance-15",
+    "book-02-mvp-acceptance-16",
+    "book-02-mvp-acceptance-17",
+    "book-02-mvp-acceptance-18",
+    "book-02-mvp-acceptance-19"
+  ],
+  "summary": {
+    "mustBuildNow": {
+      "total": 115,
+      "meets_required_depth": 0,
+      "partial_evidence": 10,
+      "validated_skeleton_only": 82,
+      "boundary_scaffold_only": 5,
+      "semantic_overlap_only": 2,
+      "fixture_only": 0,
+      "missing": 16
+    },
+    "stubNow": {
+      "total": 31,
+      "safelyBounded": 31,
+      "productionDepthViolations": 0
+    },
+    "documentOnly": {
+      "total": 14,
+      "unexpectedImplementationCount": 0
+    },
+    "defer": {
+      "total": 17,
+      "unexpectedBlockingImplementationCount": 0
+    },
+    "neverInMvp": {
+      "total": 18,
+      "violationCount": 0
+    },
+    "acceptance": {
+      "acceptanceCriteriaSatisfied": 2,
+      "acceptanceCriteriaTotal": 19,
+      "unresolvedCriteria": [
+        "book-02-mvp-acceptance-03",
+        "book-02-mvp-acceptance-04",
+        "book-02-mvp-acceptance-05",
+        "book-02-mvp-acceptance-06",
+        "book-02-mvp-acceptance-07",
+        "book-02-mvp-acceptance-08",
+        "book-02-mvp-acceptance-09",
+        "book-02-mvp-acceptance-10",
+        "book-02-mvp-acceptance-11",
+        "book-02-mvp-acceptance-12",
+        "book-02-mvp-acceptance-13",
+        "book-02-mvp-acceptance-14",
+        "book-02-mvp-acceptance-15",
+        "book-02-mvp-acceptance-16",
+        "book-02-mvp-acceptance-17",
+        "book-02-mvp-acceptance-18",
+        "book-02-mvp-acceptance-19"
+      ],
+      "book02MvpComplete": false
+    },
+    "knownExecutionSpineGaps": [
+      "Service behavior",
+      "API validator/service delegation",
+      "exact MVP Events",
+      "three preview/apply Workflows",
+      "five named Agent scaffolds",
+      "executable test families"
+    ]
+  }
+}

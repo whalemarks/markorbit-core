@@ -29,3 +29,9 @@ Implementation must follow Book 02. This repository is not allowed to redefine B
 ## Current phase
 
 Phase 4 selected Core behavior-hook minimum-depth acceptance is complete. Book 02 MVP remains incomplete; Domain business behavior, the Execution System, complete Workflow and Policy Engines, and production readiness remain outside the accepted scope.
+
+## Book 02 MVP Gap Baseline
+
+Book 02 MVP Gap Baseline is locked. Book 02 MVP remains incomplete. Selected behavior-hook minimum-depth acceptance remains valid. Domain business behavior remains unaccepted. Execution System remains incomplete. Production readiness remains unaccepted.
+
+Run `pnpm gaps:mvp` to print and validate the canonical derived Book 02 MVP gap baseline.
