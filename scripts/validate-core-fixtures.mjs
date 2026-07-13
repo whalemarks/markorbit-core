@@ -29,9 +29,9 @@ import {
   validateCoreIdempotencyEnforcementFixture,
   validateBook02MvpGapBaselineFixture,
   validateCoreMvpObjectPublicReferenceFoundationFixture,
-  validateCoreCustomerServiceCoreLifecycleFixture,
-  validateCoreBrandServiceCoreLifecycleFixture
+  validateCoreCustomerServiceCoreLifecycleFixture
 } from '../src/validation/index.ts';
+import { validateCoreBrandServiceCoreLifecycleFixture } from '../src/validation/core-brand-service-fixture-validation.ts';
 
 const validators = {
   domain_registry: validateCoreDomainRegistryFixture,

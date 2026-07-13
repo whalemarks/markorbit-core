@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { describe, it } from 'node:test';
-import { validateCoreBrandServiceCoreLifecycleFixture } from '../../src/validation/index.ts';
+import { validateCoreBrandServiceCoreLifecycleFixture } from '../../src/validation/core-brand-service-fixture-validation.ts';
 
 describe('Brand Service lifecycle fixture', () => {
   it('executes the registered deterministic Brand scenarios', () => {
