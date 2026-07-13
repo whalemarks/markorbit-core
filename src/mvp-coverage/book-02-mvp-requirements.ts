@@ -117,7 +117,7 @@ export const BOOK_02_EXPECTED_COUNTS = {
   defer: 17,
   neverInMvp: 18,
   acceptanceCriteria: 19,
-  fixtureCount: 28
+  fixtureCount: 29
 } as const;
 const book = 'books/book-02-core-specification/core-specs';
 const mvpCut = `${book}/implementation/mvp-cut-v0.1.md`;

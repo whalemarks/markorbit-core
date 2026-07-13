@@ -26,7 +26,8 @@ export const CORE_FIXTURE_TYPES = [
   'idempotency_enforcement',
   'book_02_mvp_gap_baseline',
   'core_mvp_object_public_reference_foundation',
-  'core_customer_service_core_lifecycle'
+  'core_customer_service_core_lifecycle',
+  'core_brand_service_core_lifecycle'
 ] as const;
 
 export type CoreFixtureType = (typeof CORE_FIXTURE_TYPES)[number];
@@ -200,6 +201,12 @@ export const CORE_FIXTURE_MANIFEST = [
     id: 'core-customer-service-core-lifecycle',
     type: 'core_customer_service_core_lifecycle',
     path: 'fixtures/services/core-customer-service-core-lifecycle.fixture.json',
+    required: true
+  },
+  {
+    id: 'core-brand-service-core-lifecycle',
+    type: 'core_brand_service_core_lifecycle',
+    path: 'fixtures/services/core-brand-service-core-lifecycle.fixture.json',
     required: true
   },
   {

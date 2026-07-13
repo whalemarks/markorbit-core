@@ -29,7 +29,8 @@ import {
   validateCoreIdempotencyEnforcementFixture,
   validateBook02MvpGapBaselineFixture,
   validateCoreMvpObjectPublicReferenceFoundationFixture,
-  validateCoreCustomerServiceCoreLifecycleFixture
+  validateCoreCustomerServiceCoreLifecycleFixture,
+  validateCoreBrandServiceCoreLifecycleFixture
 } from '../src/validation/index.ts';
 
 const validators = {
@@ -61,6 +62,7 @@ const validators = {
   book_02_mvp_gap_baseline: validateBook02MvpGapBaselineFixture,
   core_mvp_object_public_reference_foundation: validateCoreMvpObjectPublicReferenceFoundationFixture,
   core_customer_service_core_lifecycle: validateCoreCustomerServiceCoreLifecycleFixture,
+  core_brand_service_core_lifecycle: validateCoreBrandServiceCoreLifecycleFixture,
   validateCoreMvpObjectPublicReferenceFoundationFixture
 };
 

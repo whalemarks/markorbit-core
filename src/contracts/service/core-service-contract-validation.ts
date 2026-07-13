@@ -105,15 +105,57 @@ export function validateCoreServiceContractSkeletons(contracts: readonly CoreSer
         if (contract.metadata.specificationPath !== 'books/book-02-core-specification/') errors.push(`${path}.metadata.specificationPath must match the locked Book 2 path.`);
         if (contract.metadata.implementationTask !== implementationTask) errors.push(`${path}.metadata.implementationTask must be ${implementationTask}.`);
         if (implementationTask === 'CORE-TASK-023' && contract.metadata.mvpRequirement !== 'stub_now') errors.push(`${path}.metadata.mvpRequirement must be stub_now.`);
-        const isCustomerService = canonicalEntry[0] === 'customer-service';
-        if (isCustomerService) {
-          if (contract.metadata.behaviorImplementationTask !== 'CORE-TASK-036') errors.push(`${path}.metadata.behaviorImplementationTask must be CORE-TASK-036.`);
-          if (contract.metadata.behaviorDepth !== 'level_2_3') errors.push(`${path}.metadata.behaviorDepth must be level_2_3.`);
-          if (JSON.stringify(contract.metadata.implementedOperations) !== JSON.stringify(['createCustomer', 'getCustomer', 'listCustomers', 'validateCustomerReference', 'changeCustomerStatus'])) errors.push(`${path}.metadata.implementedOperations must match the locked Customer Service operations.`);
+        const behaviorLock =
+          canonicalEntry[0] === 'customer-service'
+            ? {
+                task: 'CORE-TASK-036',
+                operations: [
+                  'createCustomer',
+                  'getCustomer',
+                  'listCustomers',
+                  'validateCustomerReference',
+                  'changeCustomerStatus'
+                ]
+              }
+            : canonicalEntry[0] === 'brand-service'
+              ? {
+                  task: 'CORE-TASK-037',
+                  operations: [
+                    'createBrand',
+                    'getBrand',
+                    'listBrands',
+                    'validateBrandReference',
+                    'changeBrandStatus'
+                  ]
+                }
+              : undefined;
+        if (behaviorLock) {
+          if (contract.metadata.behaviorImplementationTask !== behaviorLock.task)
+            errors.push(
+              `${path}.metadata.behaviorImplementationTask must be ${behaviorLock.task}.`
+            );
+          if (contract.metadata.behaviorDepth !== 'level_2_3')
+            errors.push(`${path}.metadata.behaviorDepth must be level_2_3.`);
+          if (
+            JSON.stringify(contract.metadata.implementedOperations) !==
+            JSON.stringify(behaviorLock.operations)
+          )
+            errors.push(
+              `${path}.metadata.implementedOperations must match the locked Service operations.`
+            );
         } else {
-          if ('behaviorImplementationTask' in contract.metadata) errors.push(`${path}.metadata.behaviorImplementationTask must be absent for non-Customer Services.`);
-          if ('behaviorDepth' in contract.metadata) errors.push(`${path}.metadata.behaviorDepth must be absent for non-Customer Services.`);
-          if ('implementedOperations' in contract.metadata) errors.push(`${path}.metadata.implementedOperations must be absent for non-Customer Services.`);
+          if ('behaviorImplementationTask' in contract.metadata)
+            errors.push(
+              `${path}.metadata.behaviorImplementationTask must be absent for Services without behavior evidence.`
+            );
+          if ('behaviorDepth' in contract.metadata)
+            errors.push(
+              `${path}.metadata.behaviorDepth must be absent for Services without behavior evidence.`
+            );
+          if ('implementedOperations' in contract.metadata)
+            errors.push(
+              `${path}.metadata.implementedOperations must be absent for Services without behavior evidence.`
+            );
         }
       }
     }
