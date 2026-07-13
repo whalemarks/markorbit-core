@@ -204,7 +204,8 @@ export function validateCoreBrandServiceEvidenceFixture(
     if (
       !replayedCreate.ok ||
       store.list().length !== expected.recordCountAfterCreate ||
-      traces.visibleTo(['Internal']).length !== expected.eventTraceCountAfterReplay
+      traces.visibleTo(['Internal']).length !==
+        expected.eventTraceCountAfterReplay
     ) {
       issues.push(
         issue(
@@ -340,7 +341,9 @@ export function validateCoreBrandServiceEvidenceFixture(
 
     const statusConflict = service.changeBrandStatus({
       ...statusInput,
-      targetStatus: String(statusConflictRequest.targetStatus) as CoreBrandStatus,
+      targetStatus: String(
+        statusConflictRequest.targetStatus
+      ) as CoreBrandStatus,
       reasonReference: String(statusConflictRequest.reasonReference)
     });
     if (
@@ -358,7 +361,9 @@ export function validateCoreBrandServiceEvidenceFixture(
 
     const invalid = service.changeBrandStatus({
       ...statusInput,
-      targetStatus: String(invalidStatusRequest.targetStatus) as CoreBrandStatus,
+      targetStatus: String(
+        invalidStatusRequest.targetStatus
+      ) as CoreBrandStatus,
       reasonReference: null,
       idempotencyKey: String(invalidStatusRequest.idempotencyKey)
     });

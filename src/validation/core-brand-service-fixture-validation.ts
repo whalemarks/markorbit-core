@@ -1,9 +1,7 @@
 import { validateCoreBrandServiceEvidenceFixture } from '../service-coverage/index.ts';
 import { createCoreValidationResult } from './core-validation-result.ts';
 
-export function validateCoreBrandServiceCoreLifecycleFixture(
-  fixture: unknown
-) {
+export function validateCoreBrandServiceCoreLifecycleFixture(fixture: unknown) {
   return createCoreValidationResult(
     validateCoreBrandServiceEvidenceFixture(fixture).map((entry) => ({
       code: entry.code,

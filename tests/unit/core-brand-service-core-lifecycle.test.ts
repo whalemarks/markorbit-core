@@ -29,7 +29,8 @@ const fixture = JSON.parse(
 ) as Record<string, unknown>;
 
 const brandReference = fixture.publicReferenceRecord as CoreReferenceRecord;
-const customerReference = fixture.customerReferenceRecord as CoreReferenceRecord;
+const customerReference =
+  fixture.customerReferenceRecord as CoreReferenceRecord;
 const objectRecord = fixture.objectRecord as unknown as CoreMvpObjectBaseRecord;
 const brandReferenceId = String(fixture.brandReferenceId);
 const customerReferenceId = String(fixture.customerReferenceId);

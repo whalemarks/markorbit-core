@@ -39,14 +39,12 @@ describe('CORE-TASK-037 Book 02 Service evidence', () => {
       fixture_only: 0,
       missing: 0
     });
-    const serviceCriterion =
-      BOOK_02_MVP_GAP_BASELINE.acceptanceCriteria.find(
-        (criterion) => criterion.id === 'must-build-services-own-behavior'
-      );
+    const serviceCriterion = BOOK_02_MVP_GAP_BASELINE.acceptanceCriteria.find(
+      (criterion) => criterion.id === 'must-build-services-own-behavior'
+    );
     assert.equal(serviceCriterion?.satisfied, false);
     assert.equal(
-      BOOK_02_MVP_GAP_BASELINE.summary.acceptance
-        .acceptanceCriteriaSatisfied,
+      BOOK_02_MVP_GAP_BASELINE.summary.acceptance.acceptanceCriteriaSatisfied,
       11
     );
     assert.equal(

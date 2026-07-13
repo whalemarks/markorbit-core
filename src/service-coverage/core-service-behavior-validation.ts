@@ -106,9 +106,9 @@ function sameValues(
   );
 }
 
-function readFixture(path: string):
-  | { readonly ok: true; readonly value: unknown }
-  | { readonly ok: false } {
+function readFixture(
+  path: string
+): { readonly ok: true; readonly value: unknown } | { readonly ok: false } {
   try {
     return {
       ok: true,
@@ -219,9 +219,7 @@ export function validateCoreServiceBehaviorEvidence(
         )
       );
     }
-    if (
-      !sameValues(entry.provenMinimumCapabilities, expected.capabilities)
-    ) {
+    if (!sameValues(entry.provenMinimumCapabilities, expected.capabilities)) {
       issues.push(
         issue(
           'core.service.capability_missing',

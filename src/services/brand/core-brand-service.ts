@@ -21,8 +21,11 @@ import {
   type CoreErrorCategory,
   type CoreErrorCode
 } from '../../behaviors/core-safe-error.ts';
-import { CORE_SERVICE_CONTRACT_SKELETONS } from '../../contracts/index.ts';
-import { CORE_DOMAIN_REGISTRY, type CoreDomainId } from '../../domains/index.ts';
+import { CORE_SERVICE_CONTRACT_SKELETONS } from '../../contracts/service/core-service-contract-skeletons.ts';
+import {
+  CORE_DOMAIN_REGISTRY,
+  type CoreDomainId
+} from '../../domains/index.ts';
 import {
   CORE_EVENT_ACTIONS,
   createCoreEventType,
@@ -31,7 +34,10 @@ import {
 import type { CoreMvpObjectBaseRecord } from '../../objects/core-mvp-object-base-record.ts';
 import type { CoreObjectStatus } from '../../objects/core-object-status.ts';
 import { validateCoreMvpObjectBaseRecord } from '../../objects/core-mvp-object-validation.ts';
-import { createCoreObjectId, createCoreObjectType } from '../../objects/index.ts';
+import {
+  createCoreObjectId,
+  createCoreObjectType
+} from '../../objects/index.ts';
 
 export const CORE_BRAND_TYPES = [
   'Word',
@@ -110,24 +116,25 @@ const reasonRequiredStatuses = new Set<CoreBrandStatus>([
   'DeletedReferenceOnly'
 ]);
 
-const brandErrorCategories: Partial<Record<CoreErrorCode, CoreErrorCategory>> = {
-  BrandAlreadyExists: 'Conflict',
-  BrandNotFound: 'Reference',
-  InvalidBrandReference: 'Reference',
-  InvalidBrandCustomerReference: 'Reference',
-  InvalidBrandTransition: 'State',
-  InvalidBrandStatus: 'State',
-  PermissionDenied: 'Permission',
-  PolicyRestricted: 'Policy',
-  HumanReviewRequired: 'HumanReview',
-  IdempotencyKeyRequired: 'Idempotency',
-  IdempotencyKeyInvalid: 'Idempotency',
-  IdempotencyConflict: 'Idempotency',
-  EventTraceFailed: 'Event',
-  AuditContextMissing: 'Validation',
-  BrandObjectMismatch: 'Validation',
-  InternalError: 'Internal'
-};
+const brandErrorCategories: Partial<Record<CoreErrorCode, CoreErrorCategory>> =
+  {
+    BrandAlreadyExists: 'Conflict',
+    BrandNotFound: 'Reference',
+    InvalidBrandReference: 'Reference',
+    InvalidBrandCustomerReference: 'Reference',
+    InvalidBrandTransition: 'State',
+    InvalidBrandStatus: 'State',
+    PermissionDenied: 'Permission',
+    PolicyRestricted: 'Policy',
+    HumanReviewRequired: 'HumanReview',
+    IdempotencyKeyRequired: 'Idempotency',
+    IdempotencyKeyInvalid: 'Idempotency',
+    IdempotencyConflict: 'Idempotency',
+    EventTraceFailed: 'Event',
+    AuditContextMissing: 'Validation',
+    BrandObjectMismatch: 'Validation',
+    InternalError: 'Internal'
+  };
 
 export interface CoreBrandServiceRecord {
   readonly objectRecord: CoreMvpObjectBaseRecord;
@@ -151,13 +158,19 @@ export interface CoreBrandGovernanceContext {
 export interface CoreBrandServiceStore {
   get(brandReferenceId: string): CoreBrandServiceRecord | undefined;
   list(): readonly CoreBrandServiceRecord[];
-  insert(record: CoreBrandServiceRecord): CoreBehaviorResult<CoreBrandServiceRecord>;
-  replace(record: CoreBrandServiceRecord): CoreBehaviorResult<CoreBrandServiceRecord>;
+  insert(
+    record: CoreBrandServiceRecord
+  ): CoreBehaviorResult<CoreBrandServiceRecord>;
+  replace(
+    record: CoreBrandServiceRecord
+  ): CoreBehaviorResult<CoreBrandServiceRecord>;
   remove(brandReferenceId: string): CoreBehaviorResult<null>;
 }
 
 export interface CoreBrandEventTracePort {
-  append(record: CoreEventTraceRecord): CoreBehaviorResult<CoreEventTraceRecord>;
+  append(
+    record: CoreEventTraceRecord
+  ): CoreBehaviorResult<CoreEventTraceRecord>;
 }
 
 export interface CoreBrandServiceDependencies {
@@ -285,19 +298,31 @@ function ensureGovernance(
     context.policy.correlationId !== correlationId ||
     context.audit.correlationId !== correlationId
   ) {
-    return safe('ValidationFailed', 'Correlation IDs must match.', correlationId);
+    return safe(
+      'ValidationFailed',
+      'Correlation IDs must match.',
+      correlationId
+    );
   }
   if (
     context.permission.intendedOperation !== expected.operation ||
     !context.permission.requiredPermissionKeys.includes(expected.permission)
   ) {
-    return safe('PermissionDenied', 'Required permission is missing.', correlationId);
+    return safe(
+      'PermissionDenied',
+      'Required permission is missing.',
+      correlationId
+    );
   }
   if (
     context.policy.intendedOperation !== expected.operation ||
     !context.policy.requiredPolicyScopes.includes(expected.policyScope)
   ) {
-    return safe('PolicyRestricted', 'Required policy scope is missing.', correlationId);
+    return safe(
+      'PolicyRestricted',
+      'Required policy scope is missing.',
+      correlationId
+    );
   }
   if (
     context.permission.actorReferenceId !== context.audit.actorReferenceId ||
@@ -339,7 +364,11 @@ function ensureGovernance(
     context.audit.targetObjectReferenceId !== expected.target ||
     !opaque.test(context.auditContextReferenceId)
   ) {
-    return safe('AuditContextMissing', 'Audit context is missing.', correlationId);
+    return safe(
+      'AuditContextMissing',
+      'Audit context is missing.',
+      correlationId
+    );
   }
   const governed = enforceCoreGovernedAction({
     permission: context.permission,
@@ -419,7 +448,8 @@ function validateBrandRecord(
     record.objectRecord.domainId !== BRAND_DOMAIN ||
     record.objectRecord.objectType !== BRAND_OBJECT_TYPE ||
     record.objectRecord.objectContractId !== BRAND_OBJECT_CONTRACT_ID ||
-    record.objectRecord.publicReferenceId !== publicReferenceRecord.referenceId ||
+    record.objectRecord.publicReferenceId !==
+      publicReferenceRecord.referenceId ||
     record.objectRecord.status !==
       CORE_BRAND_STATUS_TO_OBJECT_STATUS[record.brandStatus]
   ) {
@@ -534,7 +564,9 @@ export class CoreInMemoryBrandServiceStore implements CoreBrandServiceStore {
     return [...this.#records.values()].map((record) => immutable(record));
   }
 
-  insert(record: CoreBrandServiceRecord): CoreBehaviorResult<CoreBrandServiceRecord> {
+  insert(
+    record: CoreBrandServiceRecord
+  ): CoreBehaviorResult<CoreBrandServiceRecord> {
     const id = record.objectRecord.publicReferenceId;
     if (this.#records.has(id)) {
       return safe(
@@ -548,7 +580,9 @@ export class CoreInMemoryBrandServiceStore implements CoreBrandServiceStore {
     return { ok: true, value: immutable(stored) };
   }
 
-  replace(record: CoreBrandServiceRecord): CoreBehaviorResult<CoreBrandServiceRecord> {
+  replace(
+    record: CoreBrandServiceRecord
+  ): CoreBehaviorResult<CoreBrandServiceRecord> {
     const id = record.objectRecord.publicReferenceId;
     if (!this.#records.has(id)) {
       return safe(
@@ -595,7 +629,9 @@ export class CoreBrandService {
       organizationScopeOf(input.objectRecord)
     );
     if (!scope.ok) return scope;
-    if (!['Draft', 'ReviewRequired', 'Active'].includes(String(input.brandStatus))) {
+    if (
+      !['Draft', 'ReviewRequired', 'Active'].includes(String(input.brandStatus))
+    ) {
       return safe(
         'InvalidBrandStatus',
         'Initial Brand status is invalid.',
@@ -791,7 +827,10 @@ export class CoreBrandService {
       target: CORE_BRAND_COLLECTION_TARGET
     });
     if (!governed.ok) return governed;
-    if (input.filters?.brandType !== undefined && !isBrandType(input.filters.brandType)) {
+    if (
+      input.filters?.brandType !== undefined &&
+      !isBrandType(input.filters.brandType)
+    ) {
       return safe(
         'InvalidBrandType',
         'Brand type filter is invalid.',
@@ -934,7 +973,8 @@ export class CoreBrandService {
         brandReferenceId: input.brandReferenceId,
         brandType: record.brandType,
         brandStatus: record.brandStatus,
-        reasonCode: record.brandStatus === 'Active' ? 'Valid' : record.brandStatus
+        reasonCode:
+          record.brandStatus === 'Active' ? 'Valid' : record.brandStatus
       }
     };
   }

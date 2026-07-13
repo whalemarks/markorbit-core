@@ -46,9 +46,9 @@ describe('Core Service behavior evidence', () => {
       true
     );
     assert.equal(
-      validateCoreServiceBehaviorEvidence({ evidence: [customer, customer] }).some(
-        (issue) => issue.code === 'core.service.evidence_extra'
-      ),
+      validateCoreServiceBehaviorEvidence({
+        evidence: [customer, customer]
+      }).some((issue) => issue.code === 'core.service.evidence_extra'),
       true
     );
     assert.equal(
@@ -75,7 +75,10 @@ describe('Core Service behavior evidence', () => {
     const [customer, brand] = CORE_SERVICE_BEHAVIOR_EVIDENCE;
     assert.equal(
       validateCoreServiceBehaviorEvidence({
-        evidence: [customer, { ...brand, operations: brand.operations.slice(1) }]
+        evidence: [
+          customer,
+          { ...brand, operations: brand.operations.slice(1) }
+        ]
       }).some((issue) => issue.code === 'core.service.operation_missing'),
       true
     );
@@ -85,8 +88,7 @@ describe('Core Service behavior evidence', () => {
           customer,
           {
             ...brand,
-            provenMinimumCapabilities:
-              brand.provenMinimumCapabilities.slice(1)
+            provenMinimumCapabilities: brand.provenMinimumCapabilities.slice(1)
           }
         ]
       }).some((issue) => issue.code === 'core.service.capability_missing'),
