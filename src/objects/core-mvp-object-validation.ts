@@ -5,7 +5,7 @@ import {
   createCoreValidationResult,
   type CoreValidationIssue,
   type CoreValidationResult
-} from '../validation/index.ts';
+} from '../validation/core-validation-result.ts';
 import { createCoreObjectVersion } from './core-object-version.ts';
 import { CORE_OBJECT_STATUSES } from './core-object-status.ts';
 import {

@@ -74,7 +74,19 @@ const canonicalServiceSkeleton = (
             'changeCustomerStatus'
           ]
         }
-      : {})
+      : serviceType === 'brand-service'
+        ? {
+            behaviorImplementationTask: 'CORE-TASK-037',
+            behaviorDepth: 'level_2_3',
+            implementedOperations: [
+              'createBrand',
+              'getBrand',
+              'listBrands',
+              'validateBrandReference',
+              'changeBrandStatus'
+            ]
+          }
+        : {})
   }
 });
 

@@ -642,17 +642,19 @@ function evidenceFor(identity: Book02MvpRequirementIdentity): CurrentEvidence {
       (entry) => entry.domainId === serviceId
     );
     if (!found) return emptyEvidence();
-    if (identity.id === 'must-service-customer-service') {
-      const evidence = CORE_SERVICE_BEHAVIOR_EVIDENCE[0];
+    const evidence = CORE_SERVICE_BEHAVIOR_EVIDENCE.find(
+      (entry) => entry.requirementId === identity.id
+    );
+    if (evidence) {
       const validEvidence = validateCoreServiceBehaviorEvidence().length === 0;
       return {
         contractIds: [String(found.id)],
         implementationFiles: [
           'src/contracts/service/core-service-contract-skeletons.ts',
-          ...(evidence?.implementationFiles ?? [])
+          ...evidence.implementationFiles
         ],
-        testFiles: evidence?.testFiles ?? [],
-        fixtureFiles: evidence?.fixtureFiles ?? [],
+        testFiles: evidence.testFiles,
+        fixtureFiles: evidence.fixtureFiles,
         currentDepth: validEvidence ? 'level_2_3' : undefined
       };
     }
@@ -865,7 +867,6 @@ function disposition(
   }
   if (identity.layer === 'service') {
     if (
-      identity.id === 'must-service-customer-service' &&
       ev.currentDepth === 'level_2_3' &&
       ev.implementationFiles.length > 1 &&
       ev.testFiles.length > 0 &&

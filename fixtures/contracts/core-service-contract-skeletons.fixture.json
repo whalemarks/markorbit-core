@@ -415,7 +415,16 @@
       "specificationRepository": "whalemarks/markorbit-publication",
       "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
       "specificationPath": "books/book-02-core-specification/",
-      "implementationTask": "CORE-TASK-021"
+      "implementationTask": "CORE-TASK-021",
+      "behaviorImplementationTask": "CORE-TASK-037",
+      "behaviorDepth": "level_2_3",
+      "implementedOperations": [
+        "createBrand",
+        "getBrand",
+        "listBrands",
+        "validateBrandReference",
+        "changeBrandStatus"
+      ]
     }
   },
   {

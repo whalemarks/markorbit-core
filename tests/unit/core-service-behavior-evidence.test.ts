@@ -3,6 +3,8 @@ import { readFile } from 'node:fs/promises';
 import { describe, it } from 'node:test';
 
 import {
+  CORE_BRAND_IMPLEMENTED_OPERATIONS,
+  CORE_BRAND_MINIMUM_CAPABILITIES,
   CORE_CUSTOMER_IMPLEMENTED_OPERATIONS,
   CORE_CUSTOMER_MINIMUM_CAPABILITIES,
   CORE_SERVICE_BEHAVIOR_EVIDENCE,
@@ -10,9 +12,13 @@ import {
 } from '../../src/index.ts';
 
 describe('Core Service behavior evidence', () => {
-  it('validates the exact Customer Service CORE-TASK-036 evidence entry', () => {
+  it('validates exact Customer and Brand Service evidence in canonical order', () => {
     assert.deepEqual(validateCoreServiceBehaviorEvidence(), []);
-    assert.equal(CORE_SERVICE_BEHAVIOR_EVIDENCE.length, 1);
+    assert.equal(CORE_SERVICE_BEHAVIOR_EVIDENCE.length, 2);
+    assert.deepEqual(
+      CORE_SERVICE_BEHAVIOR_EVIDENCE.map((entry) => entry.requirementId),
+      ['must-service-customer-service', 'must-service-brand-service']
+    );
     assert.deepEqual(
       CORE_SERVICE_BEHAVIOR_EVIDENCE[0]?.operations,
       CORE_CUSTOMER_IMPLEMENTED_OPERATIONS
@@ -21,35 +27,68 @@ describe('Core Service behavior evidence', () => {
       CORE_SERVICE_BEHAVIOR_EVIDENCE[0]?.provenMinimumCapabilities,
       CORE_CUSTOMER_MINIMUM_CAPABILITIES
     );
+    assert.deepEqual(
+      CORE_SERVICE_BEHAVIOR_EVIDENCE[1]?.operations,
+      CORE_BRAND_IMPLEMENTED_OPERATIONS
+    );
+    assert.deepEqual(
+      CORE_SERVICE_BEHAVIOR_EVIDENCE[1]?.provenMinimumCapabilities,
+      CORE_BRAND_MINIMUM_CAPABILITIES
+    );
   });
 
-  it('rejects fake contract, wrong domain, missing operation and missing capability', () => {
-    const [entry] = CORE_SERVICE_BEHAVIOR_EVIDENCE;
+  it('rejects missing, duplicate, fake and cross-Service evidence', () => {
+    const [customer, brand] = CORE_SERVICE_BEHAVIOR_EVIDENCE;
     assert.equal(
-      validateCoreServiceBehaviorEvidence({
-        evidence: [{ ...entry, contractId: 'fake-contract' }]
-      })[0]?.code,
-      'core.service.contract_mismatch'
+      validateCoreServiceBehaviorEvidence({ evidence: [customer] }).some(
+        (issue) => issue.code === 'core.service.evidence_missing'
+      ),
+      true
     );
     assert.equal(
       validateCoreServiceBehaviorEvidence({
-        evidence: [{ ...entry, domainId: 'brand' }]
-      })[0]?.code,
-      'core.service.domain_mismatch'
+        evidence: [customer, customer]
+      }).some((issue) => issue.code === 'core.service.evidence_extra'),
+      true
     );
     assert.equal(
       validateCoreServiceBehaviorEvidence({
-        evidence: [{ ...entry, operations: entry.operations.slice(1) }]
+        evidence: [{ ...customer, contractId: 'fake-contract' }, brand]
+      }).some((issue) => issue.code === 'core.service.contract_mismatch'),
+      true
+    );
+    assert.equal(
+      validateCoreServiceBehaviorEvidence({
+        evidence: [customer, { ...brand, domainId: 'customer' }]
+      }).some((issue) => issue.code === 'core.service.domain_mismatch'),
+      true
+    );
+    assert.equal(
+      validateCoreServiceBehaviorEvidence({
+        evidence: [customer, { ...brand, serviceType: 'customer-service' }]
+      }).some((issue) => issue.code === 'core.service.cross_service_evidence'),
+      true
+    );
+  });
+
+  it('rejects missing Brand operations and minimum capabilities', () => {
+    const [customer, brand] = CORE_SERVICE_BEHAVIOR_EVIDENCE;
+    assert.equal(
+      validateCoreServiceBehaviorEvidence({
+        evidence: [
+          customer,
+          { ...brand, operations: brand.operations.slice(1) }
+        ]
       }).some((issue) => issue.code === 'core.service.operation_missing'),
       true
     );
     assert.equal(
       validateCoreServiceBehaviorEvidence({
         evidence: [
+          customer,
           {
-            ...entry,
-            provenMinimumCapabilities:
-              entry.provenMinimumCapabilities.slice(1)
+            ...brand,
+            provenMinimumCapabilities: brand.provenMinimumCapabilities.slice(1)
           }
         ]
       }).some((issue) => issue.code === 'core.service.capability_missing'),
@@ -57,19 +96,32 @@ describe('Core Service behavior evidence', () => {
     );
   });
 
-  it('executes the fixture and rejects corrupted lifecycle expectations', async () => {
-    const fixture = JSON.parse(
+  it('executes both fixtures and rejects corrupted lifecycle expectations', async () => {
+    const customerFixture = JSON.parse(
       await readFile(
         'fixtures/services/core-customer-service-core-lifecycle.fixture.json',
         'utf8'
       )
     ) as { expected: Record<string, unknown> };
-    fixture.expected.eventTraceCountAfterStatusReplay = 999;
-    const issues = validateCoreServiceBehaviorEvidence({
-      customerFixture: fixture
-    });
+    customerFixture.expected.eventTraceCountAfterStatusReplay = 999;
     assert.equal(
-      issues.some((issue) => issue.code === 'core.service.fixture_invalid'),
+      validateCoreServiceBehaviorEvidence({ customerFixture }).some(
+        (issue) => issue.code === 'core.service.fixture_invalid'
+      ),
+      true
+    );
+
+    const brandFixture = JSON.parse(
+      await readFile(
+        'fixtures/services/core-brand-service-core-lifecycle.fixture.json',
+        'utf8'
+      )
+    ) as { expected: Record<string, unknown> };
+    brandFixture.expected.eventTraceCountAfterStatusReplay = 999;
+    assert.equal(
+      validateCoreServiceBehaviorEvidence({ brandFixture }).some(
+        (issue) => issue.code === 'core.service.fixture_invalid'
+      ),
       true
     );
   });

@@ -1,5 +1,9 @@
 import type { CoreDomainId } from '../domains/index.ts';
 import {
+  CORE_BRAND_IMPLEMENTED_OPERATIONS,
+  CORE_BRAND_MINIMUM_CAPABILITIES
+} from '../services/brand/index.ts';
+import {
   CORE_CUSTOMER_IMPLEMENTED_OPERATIONS,
   CORE_CUSTOMER_MINIMUM_CAPABILITIES
 } from '../services/customer/index.ts';
@@ -50,6 +54,31 @@ export const CORE_SERVICE_BEHAVIOR_EVIDENCE = [
     ],
     fixtureFiles: [
       'fixtures/services/core-customer-service-core-lifecycle.fixture.json'
+    ]
+  },
+  {
+    requirementId: 'must-service-brand-service',
+    serviceType: 'brand-service',
+    domainId: 'brand',
+    contractId: 'core-service-brand-service-contract',
+    sourcePath:
+      'books/book-02-core-specification/core-specs/services/brand-service.md',
+    currentDepth: 'level_2_3',
+    operations: CORE_BRAND_IMPLEMENTED_OPERATIONS,
+    provenMinimumCapabilities: CORE_BRAND_MINIMUM_CAPABILITIES,
+    unresolvedServiceOperations: [
+      'updateBrand',
+      'linkBrandCustomer',
+      'unlinkBrandCustomer',
+      'linkBrandTrademark',
+      'unlinkBrandTrademark',
+      'linkBrandAsset',
+      'unlinkBrandAsset'
+    ],
+    implementationFiles: ['src/services/brand/core-brand-service.ts'],
+    testFiles: ['tests/unit/core-brand-service-core-lifecycle.test.ts'],
+    fixtureFiles: [
+      'fixtures/services/core-brand-service-core-lifecycle.fixture.json'
     ]
   }
 ] as const satisfies readonly CoreServiceBehaviorEvidence[];

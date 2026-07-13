@@ -732,63 +732,46 @@ export function validateBook02MvpRequirements(
         );
     }
     if (r.layer === 'service') {
-      const isCustomer = r.id === 'must-service-customer-service';
+      const evidence = CORE_SERVICE_BEHAVIOR_EVIDENCE.find(
+        (entry) => entry.requirementId === r.id
+      );
       const serviceIssues = validateCoreServiceBehaviorEvidence();
-      const customerEvidence = CORE_SERVICE_BEHAVIOR_EVIDENCE[0];
-      if (isCustomer) {
+      if (evidence) {
         if (serviceIssues.length > 0)
           issues.push(
             issue(
               'book02.service.fixture_validation_failed',
-              'Customer Service behavior evidence and fixture must validate.',
+              `${evidence.serviceType} behavior evidence and fixture must validate.`,
               `requirements[${index}]`
             )
           );
-        if (!r.contractIds.includes('core-service-customer-service-contract'))
+        if (!r.contractIds.includes(evidence.contractId))
           issues.push(
             issue(
               'book02.service.contract_mismatch',
-              'Customer Service must reference the exact Service contract.',
+              `${evidence.serviceType} must reference the exact Service contract.`,
               `requirements[${index}].contractIds`
             )
           );
-        for (const operation of customerEvidence?.operations ?? [])
-          if (
-            !r.implementationFiles.some((file) =>
-              file.includes('core-customer-service')
-            )
-          )
-            issues.push(
-              issue(
-                'book02.service.operation_missing',
-                `Customer Service operation evidence is missing for ${operation}.`,
-                `requirements[${index}].implementationFiles`
-              )
-            );
-        for (const capability of customerEvidence?.provenMinimumCapabilities ??
-          [])
-          if (typeof capability !== 'string' || capability.length === 0)
-            issues.push(
-              issue(
-                'book02.service.capability_missing',
-                'Customer Service minimum capability evidence is incomplete.',
-                `requirements[${index}]`
-              )
-            );
+        const exactFiles = [
+          ...evidence.implementationFiles,
+          ...evidence.testFiles,
+          ...evidence.fixtureFiles
+        ].every((file) =>
+          [
+            ...r.implementationFiles,
+            ...r.testFiles,
+            ...r.fixtureFiles
+          ].includes(file)
+        );
         if (
           r.currentDisposition === 'meets_required_depth' &&
-          (r.currentDepth !== 'level_2_3' ||
-            !r.testFiles.includes(
-              'tests/unit/core-customer-service-core-lifecycle.test.ts'
-            ) ||
-            !r.fixtureFiles.includes(
-              'fixtures/services/core-customer-service-core-lifecycle.fixture.json'
-            ))
+          (r.currentDepth !== 'level_2_3' || !exactFiles)
         )
           issues.push(
             issue(
               'book02.service.depth_inconsistent',
-              'Customer Service meets_required_depth requires exact behavior evidence, tests and fixture.',
+              `${evidence.serviceType} meets_required_depth requires exact behavior evidence, tests and executable fixture.`,
               `requirements[${index}]`
             )
           );
@@ -796,7 +779,7 @@ export function validateBook02MvpRequirements(
         issues.push(
           issue(
             'book02.service.cross_service_evidence',
-            'Non-Customer Services cannot be promoted by Customer Service evidence.',
+            'A Service without its own evidence cannot be promoted by another Service implementation.',
             `requirements[${index}]`
           )
         );

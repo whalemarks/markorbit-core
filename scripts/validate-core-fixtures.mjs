@@ -31,6 +31,7 @@ import {
   validateCoreMvpObjectPublicReferenceFoundationFixture,
   validateCoreCustomerServiceCoreLifecycleFixture
 } from '../src/validation/index.ts';
+import { validateCoreBrandServiceCoreLifecycleFixture } from '../src/validation/core-brand-service-fixture-validation.ts';
 
 const validators = {
   domain_registry: validateCoreDomainRegistryFixture,
@@ -61,6 +62,7 @@ const validators = {
   book_02_mvp_gap_baseline: validateBook02MvpGapBaselineFixture,
   core_mvp_object_public_reference_foundation: validateCoreMvpObjectPublicReferenceFoundationFixture,
   core_customer_service_core_lifecycle: validateCoreCustomerServiceCoreLifecycleFixture,
+  core_brand_service_core_lifecycle: validateCoreBrandServiceCoreLifecycleFixture,
   validateCoreMvpObjectPublicReferenceFoundationFixture
 };
 

@@ -1,0 +1,84 @@
+{
+  "fixtureType": "core_brand_service_core_lifecycle",
+  "authority": {
+    "repository": "whalemarks/markorbit-publication",
+    "commit": "3349ecb8955021a8714d023348f8b24f941eb98f"
+  },
+  "fixedNow": "2026-07-14T00:00:00.000Z",
+  "updatedNow": "2026-07-14T00:05:00.000Z",
+  "brandReferenceId": "brand:ref:core-task-037",
+  "customerReferenceId": "customer:ref:core-task-037",
+  "organizationScopeReferenceId": "organization:ref:scope-0001",
+  "publicReferenceRecord": {
+    "referenceId": "brand:ref:core-task-037",
+    "objectType": "brand-record",
+    "referenceDomain": "brand",
+    "status": "Active"
+  },
+  "customerReferenceRecord": {
+    "referenceId": "customer:ref:core-task-037",
+    "objectType": "customer-record",
+    "referenceDomain": "customer",
+    "status": "Active"
+  },
+  "objectRecord": {
+    "publicReferenceId": "brand:ref:core-task-037",
+    "objectType": "brand-record",
+    "domainId": "brand",
+    "objectContractId": "core-object-brand-record-contract",
+    "status": "active",
+    "version": {
+      "version": 1,
+      "createdAt": "2026-07-14T00:00:00.000Z"
+    },
+    "metadata": {},
+    "auditMetadata": {
+      "createdAt": "2026-07-14T00:00:00.000Z",
+      "createdByReferenceId": "user:ref:actor-0001",
+      "correlationId": "corr:core-task-037"
+    },
+    "visibility": {
+      "permissionScopeReferenceId": "permission:ref:scope-0001",
+      "policyScopeReferenceId": "policy:ref:scope-0001",
+      "organizationScopeReferenceId": "organization:ref:scope-0001"
+    }
+  },
+  "createRequest": {
+    "brandType": "Word",
+    "brandStatus": "Active",
+    "nameReference": "name:synthetic:brand-037",
+    "sourceReference": "source:synthetic:brand-037",
+    "idempotencyKey": "idem:create:core-task-037"
+  },
+  "conflictingCreateRequest": {
+    "brandType": "Logo"
+  },
+  "duplicateCreateRequest": {
+    "idempotencyKey": "idem:create:duplicate-brand-037"
+  },
+  "statusTransitionRequest": {
+    "targetStatus": "Archived",
+    "reasonReference": "reason:synthetic:archive-brand",
+    "idempotencyKey": "idem:status:core-task-037"
+  },
+  "statusConflictRequest": {
+    "targetStatus": "ReviewRequired",
+    "reasonReference": "reason:synthetic:review-brand",
+    "idempotencyKey": "idem:status:core-task-037"
+  },
+  "invalidStatusTransitionRequest": {
+    "targetStatus": "Active",
+    "idempotencyKey": "idem:status:invalid-core-task-037"
+  },
+  "expected": {
+    "recordCountAfterCreate": 1,
+    "eventTraceCountAfterCreate": 1,
+    "eventTraceCountAfterReplay": 1,
+    "eventTraceCountAfterStatusChange": 2,
+    "eventTraceCountAfterStatusReplay": 2,
+    "sameKeyConflictCode": "IdempotencyConflict",
+    "duplicateBrandCode": "BrandAlreadyExists",
+    "invalidTransitionCode": "InvalidBrandTransition",
+    "statusConflictCode": "IdempotencyConflict"
+  }
+}
