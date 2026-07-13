@@ -32,7 +32,24 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Apply governed patches and regenerate fixtures
-        run: pnpm exec tsx scripts/core-task-037-apply-patches.mjs
+        id: patch
+        shell: bash
+        run: |
+          set +e
+          pnpm exec tsx scripts/core-task-037-apply-patches.mjs 2>&1 | tee patch.log
+          code=${PIPESTATUS[0]}
+          echo "exit_code=$code" >> "$GITHUB_OUTPUT"
+          exit 0
+
+      - name: Upload migration diagnostics
+        uses: actions/upload-artifact@v4
+        with:
+          name: core-task-037-patch-log
+          path: patch.log
+
+      - name: Fail when migration failed
+        if: steps.patch.outputs.exit_code != '0'
+        run: exit 1
 
       - name: Format governed generated files
         run: pnpm format
