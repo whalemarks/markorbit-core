@@ -1,6 +1,7 @@
 name: Validation
 
 on:
+  pull_request:
   push:
     branches:
       - codex/core-task-037-brand-service-core-lifecycle
