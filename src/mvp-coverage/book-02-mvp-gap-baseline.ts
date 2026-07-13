@@ -27,6 +27,8 @@ import {
   type Book02GuardInspectionStatus,
   type Book02MvpAcceptanceCriterion,
   type Book02MvpAcceptanceCriterionId,
+  type Book02MvpTestFamilyEvidence,
+  type Book02MvpTestFamilyId,
   type Book02StructuredGuardCheck,
   type Book02MvpDepth,
   type Book02MvpDisposition,
@@ -91,6 +93,157 @@ interface CurrentEvidence {
   readonly inspectedFiles?: readonly string[];
   readonly violationReasons?: readonly string[];
 }
+
+export const BOOK_02_MVP_TEST_FAMILY_EVIDENCE = {
+  'common-contract-tests': {
+    contractId: 'core-test-common-contract-tests-contract',
+    implementationFiles: [
+      'src/behaviors/core-reference-behavior.ts',
+      'src/behaviors/core-safe-error.ts',
+      'src/behaviors/core-governance-behavior.ts',
+      'src/behaviors/core-idempotency-behavior.ts',
+      'src/behaviors/core-event-pagination-behavior.ts',
+      'src/behaviors/core-version-behavior.ts',
+      'src/behaviors/core-ai-context-behavior.ts',
+      'src/behaviors/core-agent-boundary.ts'
+    ],
+    testFiles: [
+      'tests/unit/core-safety-boundary-foundations.test.ts',
+      'tests/unit/core-governance-context-review-hooks.test.ts',
+      'tests/unit/core-idempotency-enforcement.test.ts',
+      'tests/unit/core-event-pagination-hooks.test.ts'
+    ],
+    behaviorIds: [
+      'references',
+      'errors',
+      'permission',
+      'policy',
+      'idempotency',
+      'audit-context',
+      'events',
+      'versioning',
+      'pagination',
+      'ai-context',
+      'human-review'
+    ],
+    provenCapabilities: [
+      'contract specification',
+      'mapped executable test files',
+      'positive coverage',
+      'negative coverage',
+      'execution under pnpm test or a dedicated evidence runner'
+    ],
+    unresolvedCapabilities: []
+  },
+  'api-contract-tests': {
+    contractId: 'core-test-api-contract-tests-contract',
+    implementationFiles: ['src/contracts/api/core-api-contract-skeletons.ts'],
+    testFiles: ['tests/unit/core-api-contract-skeletons.test.ts'],
+    behaviorIds: [],
+    provenCapabilities: [
+      'contract specification',
+      'mapped executable test files',
+      'positive coverage',
+      'negative coverage',
+      'execution under pnpm test or a dedicated evidence runner'
+    ],
+    unresolvedCapabilities: [
+      'request/response validator behavior',
+      'Service delegation',
+      'no direct Domain mutation',
+      'no direct Event emission'
+    ]
+  },
+  'workflow-contract-tests': {
+    contractId: 'core-test-workflow-contract-tests-contract',
+    implementationFiles: ['src/workflows/core-workflow-contract-validation.ts'],
+    testFiles: ['tests/unit/core-workflow-contract-validation.test.ts'],
+    behaviorIds: ['workflow-engine'],
+    provenCapabilities: [
+      'contract specification',
+      'mapped executable test files',
+      'positive coverage',
+      'negative coverage',
+      'execution under pnpm test or a dedicated evidence runner'
+    ],
+    unresolvedCapabilities: ['preview/apply workflow behavior']
+  },
+  'agent-boundary-tests': {
+    contractId: 'core-test-agent-boundary-tests-contract',
+    implementationFiles: [
+      'src/behaviors/core-agent-boundary.ts',
+      'src/behaviors/core-ai-context-behavior.ts',
+      'src/behaviors/core-governance-behavior.ts'
+    ],
+    testFiles: [
+      'tests/unit/core-safety-boundary-foundations.test.ts',
+      'tests/unit/core-governance-context-review-hooks.test.ts'
+    ],
+    behaviorIds: ['agent-runtime', 'ai-context', 'human-review'],
+    provenCapabilities: [
+      'contract specification',
+      'mapped executable test files',
+      'positive coverage',
+      'negative coverage',
+      'execution under pnpm test or a dedicated evidence runner'
+    ],
+    unresolvedCapabilities: [
+      'named Agent scaffold coverage',
+      'direct Event emission negative tests'
+    ]
+  },
+  'permission-policy-tests': {
+    contractId: 'core-test-permission-policy-tests-contract',
+    implementationFiles: ['src/behaviors/core-governance-behavior.ts'],
+    testFiles: ['tests/unit/core-governance-context-review-hooks.test.ts'],
+    behaviorIds: ['permission', 'policy', 'human-review', 'audit-context'],
+    provenCapabilities: [
+      'contract specification',
+      'mapped executable test files',
+      'positive coverage',
+      'negative coverage',
+      'execution under pnpm test or a dedicated evidence runner'
+    ],
+    unresolvedCapabilities: []
+  },
+  'idempotency-event-tests': {
+    contractId: 'core-test-idempotency-event-tests-contract',
+    implementationFiles: [
+      'src/behaviors/core-idempotency-behavior.ts',
+      'src/behaviors/core-event-pagination-behavior.ts'
+    ],
+    testFiles: [
+      'tests/unit/core-idempotency-enforcement.test.ts',
+      'tests/unit/core-event-pagination-hooks.test.ts'
+    ],
+    behaviorIds: ['idempotency', 'events'],
+    provenCapabilities: [
+      'contract specification',
+      'mapped executable test files',
+      'positive coverage',
+      'negative coverage',
+      'execution under pnpm test or a dedicated evidence runner'
+    ],
+    unresolvedCapabilities: []
+  },
+  'error-versioning-tests': {
+    contractId: 'core-test-error-versioning-tests-contract',
+    implementationFiles: [
+      'src/behaviors/core-safe-error.ts',
+      'src/behaviors/core-version-behavior.ts'
+    ],
+    testFiles: ['tests/unit/core-safety-boundary-foundations.test.ts'],
+    behaviorIds: ['errors', 'versioning'],
+    provenCapabilities: [
+      'contract specification',
+      'mapped executable test files',
+      'positive coverage',
+      'negative coverage',
+      'execution under pnpm test or a dedicated evidence runner'
+    ],
+    unresolvedCapabilities: []
+  }
+} as const satisfies Record<Book02MvpTestFamilyId, Book02MvpTestFamilyEvidence>;
 
 const existing = (paths: readonly string[]) =>
   paths.filter((path) => existsSync(path));
@@ -509,17 +662,24 @@ function evidenceFor(identity: Book02MvpRequirementIdentity): CurrentEvidence {
     };
   }
   if (identity.layer === 'test') {
-    const family = identity.id.replace('must-test-', '');
+    const family = identity.id.replace(
+      'must-test-',
+      ''
+    ) as Book02MvpTestFamilyId;
     const found = CORE_TEST_CONTRACT_SKELETONS.find(
       (entry) => entry.testType === family
     );
-    return found
+    const evidence = BOOK_02_MVP_TEST_FAMILY_EVIDENCE[family];
+    return found && evidence
       ? {
-          contractIds: [String(found.id)],
-          implementationFiles: [
-            'src/contracts/test/core-test-contract-skeletons.ts'
-          ],
-          testFiles: [],
+          contractIds: [String(found.id)].filter(
+            (id) => id === evidence.contractId
+          ),
+          implementationFiles: existing([
+            'src/contracts/test/core-test-contract-skeletons.ts',
+            ...evidence.implementationFiles
+          ]),
+          testFiles: existing(evidence.testFiles),
           fixtureFiles: []
         }
       : emptyEvidence();
@@ -604,6 +764,26 @@ function disposition(
     return ev.implementationFiles.length > 0
       ? 'boundary_scaffold_only'
       : 'missing';
+  if (identity.layer === 'test') {
+    const family = identity.id.replace(
+      'must-test-',
+      ''
+    ) as Book02MvpTestFamilyId;
+    const evidence = BOOK_02_MVP_TEST_FAMILY_EVIDENCE[family];
+    if (!evidence || ev.contractIds.length === 0) return 'missing';
+    const hasExecutableTests = ev.testFiles.length > 0;
+    const hasAllCapabilities = identity.requiredCapabilities.every(
+      (capability) =>
+        evidence.provenCapabilities.some((proven) => proven === capability)
+    );
+    if (
+      hasExecutableTests &&
+      hasAllCapabilities &&
+      evidence.unresolvedCapabilities.length === 0
+    )
+      return 'meets_required_depth';
+    return hasExecutableTests ? 'partial_evidence' : 'validated_skeleton_only';
+  }
   return ev.contractIds.length > 0 || ev.implementationFiles.length > 0
     ? 'validated_skeleton_only'
     : 'missing';
@@ -731,6 +911,7 @@ function guardsComplete(
 export interface Book02MvpAcceptanceEvaluation {
   readonly satisfied: boolean;
   readonly evidenceRequirementIds: readonly string[];
+  readonly behaviorIds: readonly string[];
   readonly evidenceFiles: readonly string[];
   readonly unresolvedReasons: readonly string[];
 }
@@ -749,12 +930,14 @@ function mappedEvaluation(
   id: AcceptanceCriterionId,
   requirements: readonly Book02MvpRequirement[],
   satisfied: boolean,
-  unresolvedReasons: readonly string[]
+  unresolvedReasons: readonly string[],
+  behaviorIds: readonly string[] = []
 ): Book02MvpAcceptanceEvaluation {
   const mapped = mappedRequirements(id, requirements);
   return {
     satisfied,
     evidenceRequirementIds: MVP_ACCEPTANCE_CRITERION_DEPENDENCIES[id],
+    behaviorIds,
     evidenceFiles: filesFor(mapped),
     unresolvedReasons: satisfied ? [] : unresolvedReasons
   };
@@ -790,23 +973,96 @@ function behaviorEvidenceFiles(behaviorId: string): readonly string[] {
     ...fixtureFilesOf(behavior)
   ]);
 }
+
+function acceptedBehaviorEvidence(behaviorIds: readonly string[]): {
+  readonly ok: boolean;
+  readonly files: readonly string[];
+} {
+  const files = behaviorIds.flatMap((behaviorId) =>
+    behaviorEvidenceFiles(behaviorId)
+  );
+  return {
+    ok:
+      behaviorIds.length > 0 &&
+      behaviorIds.every((behaviorId) => behaviorById.has(behaviorId)) &&
+      files.length > 0,
+    files: [...new Set(files)].sort()
+  };
+}
+function testFamilyEvidence(
+  family: Book02MvpTestFamilyId
+): Book02MvpTestFamilyEvidence {
+  return BOOK_02_MVP_TEST_FAMILY_EVIDENCE[family];
+}
+function testedBehaviorEvaluation(
+  id: AcceptanceCriterionId,
+  requirements: readonly Book02MvpRequirement[],
+  behaviorIds: readonly string[],
+  testFamilies: readonly Book02MvpTestFamilyId[],
+  unresolvedReasons: readonly string[]
+): Book02MvpAcceptanceEvaluation {
+  const behavior = acceptedBehaviorEvidence(behaviorIds);
+  const families = testFamilies.map(testFamilyEvidence);
+  const testsExist = families.every(
+    (family) =>
+      family.testFiles.length > 0 &&
+      family.testFiles.every((file) => existsSync(file))
+  );
+  const familyBehaviorIds = new Set(
+    families.flatMap((family) => family.behaviorIds)
+  );
+  const behaviorMapped = behaviorIds.every((behaviorId) =>
+    familyBehaviorIds.has(behaviorId)
+  );
+  const mapped = mappedRequirements(id, requirements);
+  return {
+    ...mappedEvaluation(
+      id,
+      requirements,
+      behavior.ok && testsExist && behaviorMapped,
+      unresolvedReasons,
+      behaviorIds
+    ),
+    evidenceFiles: [
+      ...new Set([
+        ...filesFor(mapped),
+        ...behavior.files,
+        ...families.flatMap((family) => family.testFiles),
+        ...families.flatMap((family) => family.implementationFiles)
+      ])
+    ].sort()
+  };
+}
 export const ACCEPTANCE_CRITERION_EVALUATORS = {
   'must-build-domains-implemented-or-scaffolded-with-tests': (requirements) => {
     const mapped = mappedRequirements(
       'must-build-domains-implemented-or-scaffolded-with-tests',
       requirements
     );
-    const domainTestExists = existsSync(
-      'tests/unit/core-domain-contract-skeletons.test.ts'
-    );
-    return mappedEvaluation(
-      'must-build-domains-implemented-or-scaffolded-with-tests',
-      requirements,
-      requirementsMeet(mapped) && domainTestExists,
-      [
-        'All 18 Domain requirements must meet required depth and executable Domain contract tests must exist.'
-      ]
-    );
+    const domainTest = 'tests/unit/core-domain-contract-skeletons.test.ts';
+    const domainTestExists = existsSync(domainTest);
+    const allDomainSkeletons =
+      mapped.length === 18 &&
+      mapped.every(
+        (r) =>
+          r.layer === 'domain' &&
+          r.currentDisposition === 'validated_skeleton_only' &&
+          r.contractIds.length === 1 &&
+          r.implementationFiles.includes(
+            'src/contracts/domain/core-domain-contract-skeletons.ts'
+          )
+      );
+    return {
+      ...mappedEvaluation(
+        'must-build-domains-implemented-or-scaffolded-with-tests',
+        requirements,
+        allDomainSkeletons && domainTestExists,
+        [
+          'All 18 Domain requirements must have validated skeletons and executable Domain skeleton tests.'
+        ]
+      ),
+      evidenceFiles: [...new Set([...filesFor(mapped), domainTest])].sort()
+    };
   },
   'must-build-objects-have-public-reference-ids': (requirements) => {
     const mapped = mappedRequirements(
@@ -884,63 +1140,56 @@ export const ACCEPTANCE_CRITERION_EVALUATORS = {
       ['Communication Review Workflow must prove preview/apply validation.']
     ),
   'permission-and-policy-fail-closed': (requirements) =>
-    mappedEvaluation(
+    testedBehaviorEvaluation(
       'permission-and-policy-fail-closed',
       requirements,
-      requirementsMeet(
-        mappedRequirements('permission-and-policy-fail-closed', requirements)
-      ),
+      ['permission', 'policy'],
+      ['permission-policy-tests'],
       [
-        'Permission and Policy fail-closed behavior plus executable tests must meet depth.'
+        'Permission and Policy fail-closed behavior plus executable negative tests must be accepted.'
       ]
     ),
   'ai-forbidden-actions-are-blocked': (requirements) =>
-    mappedEvaluation(
+    testedBehaviorEvaluation(
       'ai-forbidden-actions-are-blocked',
       requirements,
-      requirementsMeet(
-        mappedRequirements('ai-forbidden-actions-are-blocked', requirements)
-      ),
+      ['ai-context', 'agent-runtime'],
+      ['agent-boundary-tests'],
       [
-        'AI forbidden-action boundary evidence and executable Agent tests must meet depth.'
+        'AI forbidden-action and Agent boundary behavior must be accepted with executable tests.'
       ]
     ),
   'human-review-gates-protected-actions': (requirements) =>
-    mappedEvaluation(
+    testedBehaviorEvaluation(
       'human-review-gates-protected-actions',
       requirements,
-      requirementsMeet(
-        mappedRequirements('human-review-gates-protected-actions', requirements)
-      ),
+      ['human-review', 'permission', 'policy'],
+      ['permission-policy-tests'],
       [
-        'Human Review protected-action gates require mapped behavior and executable review tests.'
+        'Human Review protected-action gates require accepted review, permission, and policy tests.'
       ]
     ),
   'idempotency-replay-and-conflict-are-tested': (requirements) =>
-    mappedEvaluation(
+    testedBehaviorEvaluation(
       'idempotency-replay-and-conflict-are-tested',
       requirements,
-      requirementsMeet(
-        mappedRequirements(
-          'idempotency-replay-and-conflict-are-tested',
-          requirements
-        )
-      ),
-      [
-        'Idempotency replay/conflict behavior and executable tests must meet depth.'
-      ]
+      ['idempotency'],
+      ['idempotency-event-tests'],
+      ['Idempotency replay and conflict tests must be accepted.']
     ),
   'event-trace-exists-and-is-not-command': (requirements) => {
     const mapped = mappedRequirements(
       'event-trace-exists-and-is-not-command',
       requirements
     );
-    const eventTraceFiles = behaviorEvidenceFiles('events');
+    const guardMapped = mapped.filter((r) => r.layer === 'guard');
+    const behavior = acceptedBehaviorEvidence(['events']);
+    const family = testFamilyEvidence('idempotency-event-tests');
     const satisfied =
-      eventTraceFiles.length > 0 &&
-      requirementsMeet(mapped.filter((r) => r.layer !== 'guard')) &&
-      guardsComplete(mapped.filter((r) => r.layer === 'guard')) &&
-      noViolations(mapped);
+      behavior.ok &&
+      family.behaviorIds.includes('events') &&
+      guardsComplete(guardMapped) &&
+      noViolations(guardMapped);
     return {
       ...mappedEvaluation(
         'event-trace-exists-and-is-not-command',
@@ -948,10 +1197,16 @@ export const ACCEPTANCE_CRITERION_EVALUATORS = {
         satisfied,
         [
           'Accepted generic Event trace behavior, executable tests, and event-reference-not-command guard evidence are required.'
-        ]
+        ],
+        ['events']
       ),
       evidenceFiles: [
-        ...new Set([...filesFor(mapped), ...eventTraceFiles])
+        ...new Set([
+          ...filesFor(mapped),
+          ...behavior.files,
+          ...family.testFiles,
+          ...family.implementationFiles
+        ])
       ].sort()
     };
   },
@@ -994,19 +1249,19 @@ export const ACCEPTANCE_CRITERION_EVALUATORS = {
       ['Executable Agent negative tests must prove no direct Event emission.']
     ),
   'errors-are-safe': (requirements) =>
-    mappedEvaluation(
+    testedBehaviorEvaluation(
       'errors-are-safe',
       requirements,
-      requirementsMeet(mappedRequirements('errors-are-safe', requirements)),
-      ['Safe error behavior and negative error tests must meet depth.']
+      ['errors'],
+      ['error-versioning-tests'],
+      ['Safe error behavior and negative error tests must be accepted.']
     ),
   'unsupported-versions-fail-closed': (requirements) =>
-    mappedEvaluation(
+    testedBehaviorEvaluation(
       'unsupported-versions-fail-closed',
       requirements,
-      requirementsMeet(
-        mappedRequirements('unsupported-versions-fail-closed', requirements)
-      ),
+      ['versioning'],
+      ['error-versioning-tests'],
       ['Unsupported version handling and negative tests must fail closed.']
     ),
   'deferred-items-do-not-block-mvp': (requirements) =>
@@ -1027,6 +1282,7 @@ export function deriveBook02MvpAcceptanceCriteria(
       ...criterion,
       satisfied: evaluation.satisfied,
       evidenceRequirementIds: evaluation.evidenceRequirementIds,
+      behaviorIds: evaluation.behaviorIds,
       evidenceFiles: evaluation.evidenceFiles,
       unresolvedReasons: evaluation.unresolvedReasons
     };

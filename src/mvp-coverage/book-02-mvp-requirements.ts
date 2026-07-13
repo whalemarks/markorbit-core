@@ -95,6 +95,7 @@ export interface Book02MvpAcceptanceCriterionIdentity {
 export interface Book02MvpAcceptanceCriterion extends Book02MvpAcceptanceCriterionIdentity {
   readonly satisfied: boolean;
   readonly evidenceRequirementIds: readonly string[];
+  readonly behaviorIds: readonly string[];
   readonly evidenceFiles: readonly string[];
   readonly unresolvedReasons: readonly string[];
 }
@@ -234,6 +235,15 @@ export const MUST_BUILD_TESTS = [
   'idempotency-event-tests',
   'error-versioning-tests'
 ] as const;
+export type Book02MvpTestFamilyId = (typeof MUST_BUILD_TESTS)[number];
+export interface Book02MvpTestFamilyEvidence {
+  readonly contractId: string;
+  readonly implementationFiles: readonly string[];
+  readonly testFiles: readonly string[];
+  readonly behaviorIds: readonly string[];
+  readonly provenCapabilities: readonly string[];
+  readonly unresolvedCapabilities: readonly string[];
+}
 export const STUB_DOMAINS = [
   'knowledge',
   'notification',

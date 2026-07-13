@@ -3047,18 +3047,29 @@
         "execution under pnpm test or a dedicated evidence runner"
       ],
       "dependencies": [],
-      "currentDisposition": "validated_skeleton_only",
+      "currentDisposition": "meets_required_depth",
       "currentDepth": "level_0",
       "contractIds": ["core-test-common-contract-tests-contract"],
       "implementationFiles": [
-        "src/contracts/test/core-test-contract-skeletons.ts"
+        "src/contracts/test/core-test-contract-skeletons.ts",
+        "src/behaviors/core-reference-behavior.ts",
+        "src/behaviors/core-safe-error.ts",
+        "src/behaviors/core-governance-behavior.ts",
+        "src/behaviors/core-idempotency-behavior.ts",
+        "src/behaviors/core-event-pagination-behavior.ts",
+        "src/behaviors/core-version-behavior.ts",
+        "src/behaviors/core-ai-context-behavior.ts",
+        "src/behaviors/core-agent-boundary.ts"
       ],
-      "testFiles": [],
+      "testFiles": [
+        "tests/unit/core-safety-boundary-foundations.test.ts",
+        "tests/unit/core-governance-context-review-hooks.test.ts",
+        "tests/unit/core-idempotency-enforcement.test.ts",
+        "tests/unit/core-event-pagination-hooks.test.ts"
+      ],
       "fixtureFiles": [],
       "violationReasons": [],
-      "gapReasons": [
-        "test has structural contract evidence only; required MVP behavior depth is not proven."
-      ]
+      "gapReasons": []
     },
     {
       "id": "must-test-api-contract-tests",
@@ -3076,17 +3087,18 @@
         "execution under pnpm test or a dedicated evidence runner"
       ],
       "dependencies": [],
-      "currentDisposition": "validated_skeleton_only",
+      "currentDisposition": "partial_evidence",
       "currentDepth": "level_0",
       "contractIds": ["core-test-api-contract-tests-contract"],
       "implementationFiles": [
-        "src/contracts/test/core-test-contract-skeletons.ts"
+        "src/contracts/test/core-test-contract-skeletons.ts",
+        "src/contracts/api/core-api-contract-skeletons.ts"
       ],
-      "testFiles": [],
+      "testFiles": ["tests/unit/core-api-contract-skeletons.test.ts"],
       "fixtureFiles": [],
       "violationReasons": [],
       "gapReasons": [
-        "test has structural contract evidence only; required MVP behavior depth is not proven."
+        "Selected behavior hooks are accepted at minimum depth, but execution-spine completion is unresolved."
       ]
     },
     {
@@ -3105,17 +3117,18 @@
         "execution under pnpm test or a dedicated evidence runner"
       ],
       "dependencies": [],
-      "currentDisposition": "validated_skeleton_only",
+      "currentDisposition": "partial_evidence",
       "currentDepth": "level_0",
       "contractIds": ["core-test-workflow-contract-tests-contract"],
       "implementationFiles": [
-        "src/contracts/test/core-test-contract-skeletons.ts"
+        "src/contracts/test/core-test-contract-skeletons.ts",
+        "src/workflows/core-workflow-contract-validation.ts"
       ],
-      "testFiles": [],
+      "testFiles": ["tests/unit/core-workflow-contract-validation.test.ts"],
       "fixtureFiles": [],
       "violationReasons": [],
       "gapReasons": [
-        "test has structural contract evidence only; required MVP behavior depth is not proven."
+        "Selected behavior hooks are accepted at minimum depth, but execution-spine completion is unresolved."
       ]
     },
     {
@@ -3134,17 +3147,23 @@
         "execution under pnpm test or a dedicated evidence runner"
       ],
       "dependencies": [],
-      "currentDisposition": "validated_skeleton_only",
+      "currentDisposition": "partial_evidence",
       "currentDepth": "level_0",
       "contractIds": ["core-test-agent-boundary-tests-contract"],
       "implementationFiles": [
-        "src/contracts/test/core-test-contract-skeletons.ts"
+        "src/contracts/test/core-test-contract-skeletons.ts",
+        "src/behaviors/core-agent-boundary.ts",
+        "src/behaviors/core-ai-context-behavior.ts",
+        "src/behaviors/core-governance-behavior.ts"
       ],
-      "testFiles": [],
+      "testFiles": [
+        "tests/unit/core-safety-boundary-foundations.test.ts",
+        "tests/unit/core-governance-context-review-hooks.test.ts"
+      ],
       "fixtureFiles": [],
       "violationReasons": [],
       "gapReasons": [
-        "test has structural contract evidence only; required MVP behavior depth is not proven."
+        "Selected behavior hooks are accepted at minimum depth, but execution-spine completion is unresolved."
       ]
     },
     {
@@ -3163,18 +3182,17 @@
         "execution under pnpm test or a dedicated evidence runner"
       ],
       "dependencies": [],
-      "currentDisposition": "validated_skeleton_only",
+      "currentDisposition": "meets_required_depth",
       "currentDepth": "level_0",
       "contractIds": ["core-test-permission-policy-tests-contract"],
       "implementationFiles": [
-        "src/contracts/test/core-test-contract-skeletons.ts"
+        "src/contracts/test/core-test-contract-skeletons.ts",
+        "src/behaviors/core-governance-behavior.ts"
       ],
-      "testFiles": [],
+      "testFiles": ["tests/unit/core-governance-context-review-hooks.test.ts"],
       "fixtureFiles": [],
       "violationReasons": [],
-      "gapReasons": [
-        "test has structural contract evidence only; required MVP behavior depth is not proven."
-      ]
+      "gapReasons": []
     },
     {
       "id": "must-test-idempotency-event-tests",
@@ -3192,18 +3210,21 @@
         "execution under pnpm test or a dedicated evidence runner"
       ],
       "dependencies": [],
-      "currentDisposition": "validated_skeleton_only",
+      "currentDisposition": "meets_required_depth",
       "currentDepth": "level_0",
       "contractIds": ["core-test-idempotency-event-tests-contract"],
       "implementationFiles": [
-        "src/contracts/test/core-test-contract-skeletons.ts"
+        "src/contracts/test/core-test-contract-skeletons.ts",
+        "src/behaviors/core-idempotency-behavior.ts",
+        "src/behaviors/core-event-pagination-behavior.ts"
       ],
-      "testFiles": [],
+      "testFiles": [
+        "tests/unit/core-idempotency-enforcement.test.ts",
+        "tests/unit/core-event-pagination-hooks.test.ts"
+      ],
       "fixtureFiles": [],
       "violationReasons": [],
-      "gapReasons": [
-        "test has structural contract evidence only; required MVP behavior depth is not proven."
-      ]
+      "gapReasons": []
     },
     {
       "id": "must-test-error-versioning-tests",
@@ -3221,18 +3242,18 @@
         "execution under pnpm test or a dedicated evidence runner"
       ],
       "dependencies": [],
-      "currentDisposition": "validated_skeleton_only",
+      "currentDisposition": "meets_required_depth",
       "currentDepth": "level_0",
       "contractIds": ["core-test-error-versioning-tests-contract"],
       "implementationFiles": [
-        "src/contracts/test/core-test-contract-skeletons.ts"
+        "src/contracts/test/core-test-contract-skeletons.ts",
+        "src/behaviors/core-safe-error.ts",
+        "src/behaviors/core-version-behavior.ts"
       ],
-      "testFiles": [],
+      "testFiles": ["tests/unit/core-safety-boundary-foundations.test.ts"],
       "fixtureFiles": [],
       "violationReasons": [],
-      "gapReasons": [
-        "test has structural contract evidence only; required MVP behavior depth is not proven."
-      ]
+      "gapReasons": []
     },
     {
       "id": "stub-domain-knowledge",
@@ -13039,7 +13060,7 @@
         "must-domain-event",
         "must-domain-communication"
       ],
-      "satisfied": false,
+      "satisfied": true,
       "evidenceRequirementIds": [
         "must-domain-identity",
         "must-domain-organization",
@@ -13060,12 +13081,12 @@
         "must-domain-event",
         "must-domain-communication"
       ],
+      "behaviorIds": [],
       "evidenceFiles": [
-        "src/contracts/domain/core-domain-contract-skeletons.ts"
+        "src/contracts/domain/core-domain-contract-skeletons.ts",
+        "tests/unit/core-domain-contract-skeletons.test.ts"
       ],
-      "unresolvedReasons": [
-        "All 18 Domain requirements must meet required depth and executable Domain contract tests must exist."
-      ]
+      "unresolvedReasons": []
     },
     {
       "id": "must-build-objects-have-public-reference-ids",
@@ -13113,6 +13134,7 @@
         "must-object-event",
         "must-object-communication"
       ],
+      "behaviorIds": [],
       "evidenceFiles": [
         "src/contracts/object/core-object-contract-skeletons.ts"
       ],
@@ -13166,6 +13188,7 @@
         "must-service-event-service",
         "must-service-communication-service"
       ],
+      "behaviorIds": [],
       "evidenceFiles": [
         "src/contracts/service/core-service-contract-skeletons.ts"
       ],
@@ -13219,6 +13242,7 @@
         "must-api-event-api-contract",
         "must-api-communication-api-contract"
       ],
+      "behaviorIds": [],
       "evidenceFiles": ["src/contracts/api/core-api-contract-skeletons.ts"],
       "unresolvedReasons": [
         "All 18 API requirements must prove validators, delegation, and no direct mutation/emission tests."
@@ -13232,6 +13256,7 @@
       "dependencies": ["must-workflow-customer-intake-workflow"],
       "satisfied": false,
       "evidenceRequirementIds": ["must-workflow-customer-intake-workflow"],
+      "behaviorIds": [],
       "evidenceFiles": [
         "src/contracts/workflow/core-workflow-catalog-skeletons.ts"
       ],
@@ -13249,6 +13274,7 @@
       "evidenceRequirementIds": [
         "must-workflow-trademark-application-workflow"
       ],
+      "behaviorIds": [],
       "evidenceFiles": [
         "src/contracts/workflow/core-workflow-catalog-skeletons.ts"
       ],
@@ -13264,6 +13290,7 @@
       "dependencies": ["must-workflow-communication-review-workflow"],
       "satisfied": false,
       "evidenceRequirementIds": ["must-workflow-communication-review-workflow"],
+      "behaviorIds": [],
       "evidenceFiles": [
         "src/contracts/workflow/core-workflow-catalog-skeletons.ts"
       ],
@@ -13281,20 +13308,19 @@
         "must-common-policy-context",
         "must-test-permission-policy-tests"
       ],
-      "satisfied": false,
+      "satisfied": true,
       "evidenceRequirementIds": [
         "must-common-permission-context",
         "must-common-policy-context",
         "must-test-permission-policy-tests"
       ],
+      "behaviorIds": ["permission", "policy"],
       "evidenceFiles": [
         "src/behaviors/core-governance-behavior.ts",
         "src/contracts/test/core-test-contract-skeletons.ts",
         "tests/unit/core-governance-context-review-hooks.test.ts"
       ],
-      "unresolvedReasons": [
-        "Permission and Policy fail-closed behavior plus executable tests must meet depth."
-      ]
+      "unresolvedReasons": []
     },
     {
       "id": "ai-forbidden-actions-are-blocked",
@@ -13306,22 +13332,23 @@
         "must-agent-knowledge-agent",
         "must-test-agent-boundary-tests"
       ],
-      "satisfied": false,
+      "satisfied": true,
       "evidenceRequirementIds": [
         "must-common-ai-context",
         "must-agent-knowledge-agent",
         "must-test-agent-boundary-tests"
       ],
+      "behaviorIds": ["ai-context", "agent-runtime"],
       "evidenceFiles": [
         "fixtures/behaviors/core-safety-boundary-foundations.fixture.json",
         "src/behaviors/core-agent-boundary.ts",
         "src/behaviors/core-ai-context-behavior.ts",
+        "src/behaviors/core-governance-behavior.ts",
         "src/contracts/test/core-test-contract-skeletons.ts",
+        "tests/unit/core-governance-context-review-hooks.test.ts",
         "tests/unit/core-safety-boundary-foundations.test.ts"
       ],
-      "unresolvedReasons": [
-        "AI forbidden-action boundary evidence and executable Agent tests must meet depth."
-      ]
+      "unresolvedReasons": []
     },
     {
       "id": "human-review-gates-protected-actions",
@@ -13334,21 +13361,20 @@
         "must-common-policy-context",
         "must-test-permission-policy-tests"
       ],
-      "satisfied": false,
+      "satisfied": true,
       "evidenceRequirementIds": [
         "must-common-human-review",
         "must-common-permission-context",
         "must-common-policy-context",
         "must-test-permission-policy-tests"
       ],
+      "behaviorIds": ["human-review", "permission", "policy"],
       "evidenceFiles": [
         "src/behaviors/core-governance-behavior.ts",
         "src/contracts/test/core-test-contract-skeletons.ts",
         "tests/unit/core-governance-context-review-hooks.test.ts"
       ],
-      "unresolvedReasons": [
-        "Human Review protected-action gates require mapped behavior and executable review tests."
-      ]
+      "unresolvedReasons": []
     },
     {
       "id": "idempotency-replay-and-conflict-are-tested",
@@ -13359,20 +13385,21 @@
         "must-common-idempotency",
         "must-test-idempotency-event-tests"
       ],
-      "satisfied": false,
+      "satisfied": true,
       "evidenceRequirementIds": [
         "must-common-idempotency",
         "must-test-idempotency-event-tests"
       ],
+      "behaviorIds": ["idempotency"],
       "evidenceFiles": [
         "fixtures/behaviors/core-idempotency-enforcement.fixture.json",
+        "src/behaviors/core-event-pagination-behavior.ts",
         "src/behaviors/core-idempotency-behavior.ts",
         "src/contracts/test/core-test-contract-skeletons.ts",
+        "tests/unit/core-event-pagination-hooks.test.ts",
         "tests/unit/core-idempotency-enforcement.test.ts"
       ],
-      "unresolvedReasons": [
-        "Idempotency replay/conflict behavior and executable tests must meet depth."
-      ]
+      "unresolvedReasons": []
     },
     {
       "id": "event-trace-exists-and-is-not-command",
@@ -13384,12 +13411,13 @@
         "must-test-idempotency-event-tests",
         "never-event-references-triggering-commands"
       ],
-      "satisfied": false,
+      "satisfied": true,
       "evidenceRequirementIds": [
         "must-common-idempotency",
         "must-test-idempotency-event-tests",
         "never-event-references-triggering-commands"
       ],
+      "behaviorIds": ["events"],
       "evidenceFiles": [
         "fixtures/behaviors/core-idempotency-enforcement.fixture.json",
         "src/behaviors/core-event-pagination-behavior.ts",
@@ -13398,9 +13426,7 @@
         "tests/unit/core-event-pagination-hooks.test.ts",
         "tests/unit/core-idempotency-enforcement.test.ts"
       ],
-      "unresolvedReasons": [
-        "Accepted generic Event trace behavior, executable tests, and event-reference-not-command guard evidence are required."
-      ]
+      "unresolvedReasons": []
     },
     {
       "id": "api-layer-does-not-emit-events-directly",
@@ -13410,7 +13436,12 @@
       "dependencies": ["must-test-api-contract-tests"],
       "satisfied": false,
       "evidenceRequirementIds": ["must-test-api-contract-tests"],
-      "evidenceFiles": ["src/contracts/test/core-test-contract-skeletons.ts"],
+      "behaviorIds": [],
+      "evidenceFiles": [
+        "src/contracts/api/core-api-contract-skeletons.ts",
+        "src/contracts/test/core-test-contract-skeletons.ts",
+        "tests/unit/core-api-contract-skeletons.test.ts"
+      ],
       "unresolvedReasons": [
         "Executable API negative tests must prove no direct Event emission."
       ]
@@ -13423,7 +13454,12 @@
       "dependencies": ["must-test-workflow-contract-tests"],
       "satisfied": false,
       "evidenceRequirementIds": ["must-test-workflow-contract-tests"],
-      "evidenceFiles": ["src/contracts/test/core-test-contract-skeletons.ts"],
+      "behaviorIds": [],
+      "evidenceFiles": [
+        "src/contracts/test/core-test-contract-skeletons.ts",
+        "src/workflows/core-workflow-contract-validation.ts",
+        "tests/unit/core-workflow-contract-validation.test.ts"
+      ],
       "unresolvedReasons": [
         "Executable Workflow negative tests must prove no direct Event emission."
       ]
@@ -13436,7 +13472,15 @@
       "dependencies": ["must-test-agent-boundary-tests"],
       "satisfied": false,
       "evidenceRequirementIds": ["must-test-agent-boundary-tests"],
-      "evidenceFiles": ["src/contracts/test/core-test-contract-skeletons.ts"],
+      "behaviorIds": [],
+      "evidenceFiles": [
+        "src/behaviors/core-agent-boundary.ts",
+        "src/behaviors/core-ai-context-behavior.ts",
+        "src/behaviors/core-governance-behavior.ts",
+        "src/contracts/test/core-test-contract-skeletons.ts",
+        "tests/unit/core-governance-context-review-hooks.test.ts",
+        "tests/unit/core-safety-boundary-foundations.test.ts"
+      ],
       "unresolvedReasons": [
         "Executable Agent negative tests must prove no direct Event emission."
       ]
@@ -13450,20 +13494,20 @@
         "must-common-errors",
         "must-test-error-versioning-tests"
       ],
-      "satisfied": false,
+      "satisfied": true,
       "evidenceRequirementIds": [
         "must-common-errors",
         "must-test-error-versioning-tests"
       ],
+      "behaviorIds": ["errors"],
       "evidenceFiles": [
         "fixtures/behaviors/core-safety-boundary-foundations.fixture.json",
         "src/behaviors/core-safe-error.ts",
+        "src/behaviors/core-version-behavior.ts",
         "src/contracts/test/core-test-contract-skeletons.ts",
         "tests/unit/core-safety-boundary-foundations.test.ts"
       ],
-      "unresolvedReasons": [
-        "Safe error behavior and negative error tests must meet depth."
-      ]
+      "unresolvedReasons": []
     },
     {
       "id": "unsupported-versions-fail-closed",
@@ -13474,20 +13518,20 @@
         "must-common-versioning",
         "must-test-error-versioning-tests"
       ],
-      "satisfied": false,
+      "satisfied": true,
       "evidenceRequirementIds": [
         "must-common-versioning",
         "must-test-error-versioning-tests"
       ],
+      "behaviorIds": ["versioning"],
       "evidenceFiles": [
         "fixtures/behaviors/core-safety-boundary-foundations.fixture.json",
+        "src/behaviors/core-safe-error.ts",
         "src/behaviors/core-version-behavior.ts",
         "src/contracts/test/core-test-contract-skeletons.ts",
         "tests/unit/core-safety-boundary-foundations.test.ts"
       ],
-      "unresolvedReasons": [
-        "Unsupported version handling and negative tests must fail closed."
-      ]
+      "unresolvedReasons": []
     },
     {
       "id": "deferred-items-do-not-block-mvp",
@@ -13561,6 +13605,7 @@
         "document-only-official-deadline-certification-automation",
         "document-only-professional-registrability-decision-automation"
       ],
+      "behaviorIds": [],
       "evidenceFiles": [],
       "unresolvedReasons": []
     },
@@ -13610,6 +13655,7 @@
         "never-silent-unsupported-version-acceptance",
         "never-silent-historical-version-rewriting"
       ],
+      "behaviorIds": [],
       "evidenceFiles": [],
       "unresolvedReasons": []
     }
@@ -13617,9 +13663,9 @@
   "summary": {
     "mustBuildNow": {
       "total": 115,
-      "meets_required_depth": 10,
-      "partial_evidence": 0,
-      "validated_skeleton_only": 82,
+      "meets_required_depth": 14,
+      "partial_evidence": 3,
+      "validated_skeleton_only": 75,
       "boundary_scaffold_only": 5,
       "semantic_overlap_only": 18,
       "fixture_only": 0,
@@ -13649,26 +13695,18 @@
       "violationCount": 0
     },
     "acceptance": {
-      "acceptanceCriteriaSatisfied": 2,
+      "acceptanceCriteriaSatisfied": 10,
       "acceptanceCriteriaTotal": 19,
       "unresolvedCriteria": [
-        "must-build-domains-implemented-or-scaffolded-with-tests",
         "must-build-objects-have-public-reference-ids",
         "must-build-services-own-behavior",
         "must-build-api-validators-exist",
         "customer-intake-workflow-supports-preview-apply",
         "trademark-application-workflow-supports-preview-apply",
         "communication-review-workflow-supports-preview-apply",
-        "permission-and-policy-fail-closed",
-        "ai-forbidden-actions-are-blocked",
-        "human-review-gates-protected-actions",
-        "idempotency-replay-and-conflict-are-tested",
-        "event-trace-exists-and-is-not-command",
         "api-layer-does-not-emit-events-directly",
         "workflow-layer-does-not-emit-events-directly",
-        "agent-layer-does-not-emit-events-directly",
-        "errors-are-safe",
-        "unsupported-versions-fail-closed"
+        "agent-layer-does-not-emit-events-directly"
       ],
       "book02MvpComplete": false
     },

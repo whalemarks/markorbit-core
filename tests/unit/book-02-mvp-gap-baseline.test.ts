@@ -6,6 +6,9 @@ import { describe, it } from 'node:test';
 import {
   ACCEPTANCE_CRITERION_EVALUATORS,
   BOOK_02_MVP_GAP_BASELINE,
+  BOOK_02_MVP_TEST_FAMILY_EVIDENCE,
+  CORE_CONTRACT_BEHAVIOR_ACCEPTANCE_LOCK,
+  CORE_CONTRACT_INDEX,
   MVP_ACCEPTANCE_CRITERION_IDS,
   inspectBook02MvpGuard,
   deriveBook02MvpAcceptanceCriteria,
@@ -264,6 +267,111 @@ describe('Book 02 MVP gap baseline validation', () => {
     }
   });
 
+  it('maps exact Test Family evidence to real contracts, behavior IDs, and executable tests', () => {
+    assert.deepEqual(Object.keys(BOOK_02_MVP_TEST_FAMILY_EVIDENCE), [
+      'common-contract-tests',
+      'api-contract-tests',
+      'workflow-contract-tests',
+      'agent-boundary-tests',
+      'permission-policy-tests',
+      'idempotency-event-tests',
+      'error-versioning-tests'
+    ]);
+    const contractIds = new Set(
+      CORE_CONTRACT_INDEX.map((entry) => String(entry.id))
+    );
+    const behaviorIds = new Set(
+      CORE_CONTRACT_BEHAVIOR_ACCEPTANCE_LOCK.evidence.map(
+        (entry) => entry.behaviorId
+      )
+    );
+    for (const evidence of Object.values(BOOK_02_MVP_TEST_FAMILY_EVIDENCE)) {
+      assert.equal(contractIds.has(evidence.contractId), true);
+      assert.equal(evidence.testFiles.length > 0, true);
+      assert.equal(
+        evidence.behaviorIds.every((behaviorId) => behaviorIds.has(behaviorId)),
+        true
+      );
+    }
+    assert.deepEqual(
+      BOOK_02_MVP_GAP_BASELINE.requirements
+        .filter((requirement) => requirement.layer === 'test')
+        .map((requirement) => [requirement.id, requirement.currentDisposition]),
+      [
+        ['must-test-common-contract-tests', 'meets_required_depth'],
+        ['must-test-api-contract-tests', 'partial_evidence'],
+        ['must-test-workflow-contract-tests', 'partial_evidence'],
+        ['must-test-agent-boundary-tests', 'partial_evidence'],
+        ['must-test-permission-policy-tests', 'meets_required_depth'],
+        ['must-test-idempotency-event-tests', 'meets_required_depth'],
+        ['must-test-error-versioning-tests', 'meets_required_depth']
+      ]
+    );
+  });
+
+  it('keeps Domain disposition separate from scaffold-with-tests acceptance', () => {
+    const domainCriterion = BOOK_02_MVP_GAP_BASELINE.acceptanceCriteria.find(
+      (criterion) =>
+        criterion.id ===
+        'must-build-domains-implemented-or-scaffolded-with-tests'
+    );
+    if (!domainCriterion) throw new Error('Expected Domain criterion.');
+    assert.equal(domainCriterion.satisfied, true);
+    assert.equal(
+      BOOK_02_MVP_GAP_BASELINE.requirements
+        .filter(
+          (requirement) =>
+            requirement.layer === 'domain' &&
+            requirement.category === 'must_build_now'
+        )
+        .every(
+          (requirement) =>
+            requirement.currentDisposition === 'validated_skeleton_only'
+        ),
+      true
+    );
+
+    const withoutDomainTest = cloneRecord();
+    const criterionRecords = withoutDomainTest.acceptanceCriteria as Record<
+      string,
+      unknown
+    >[];
+    const mutatedDomainCriterion = criterionRecords.find(
+      (criterion) =>
+        criterion.id ===
+        'must-build-domains-implemented-or-scaffolded-with-tests'
+    );
+    if (!mutatedDomainCriterion) throw new Error('Expected Domain criterion.');
+    mutatedDomainCriterion.satisfied = false;
+    mutatedDomainCriterion.evidenceFiles = [];
+    mutatedDomainCriterion.unresolvedReasons = [
+      'Domain executable skeleton test removed.'
+    ];
+    assert.ok(
+      codes(validateBook02MvpGapBaseline(withoutDomainTest)).includes(
+        'book02.acceptance.inconsistent_criterion'
+      )
+    );
+
+    const missingDomain = cloneRecord();
+    const domainRequirement = requirementsOf(missingDomain).find(
+      (requirement) => requirement.id === 'must-domain-identity'
+    );
+    if (!domainRequirement) throw new Error('Expected Domain requirement.');
+    domainRequirement.currentDisposition = 'missing';
+    const missingCriteria = deriveBook02MvpAcceptanceCriteria(
+      missingDomain.requirements as typeof BOOK_02_MVP_GAP_BASELINE.requirements
+    );
+    assert.equal(
+      missingCriteria.find(
+        (criterion) =>
+          criterion.id ===
+          'must-build-domains-implemented-or-scaffolded-with-tests'
+      )?.satisfied,
+      false
+    );
+  });
+
   it('preserves depth distinctions and scope guards', () => {
     for (const [predicate, code] of [
       [
@@ -281,10 +389,6 @@ describe('Book 02 MVP gap baseline validation', () => {
       [
         (r: Record<string, unknown>) => r.layer === 'agent',
         'book02.depth.generic_agent_boundary'
-      ],
-      [
-        (r: Record<string, unknown>) => r.layer === 'test',
-        'book02.depth.test_contract_skeleton_only'
       ]
     ] as const) {
       const baseline = cloneRecord();
@@ -293,6 +397,19 @@ describe('Book 02 MVP gap baseline validation', () => {
       req.currentDisposition = 'meets_required_depth';
       assert.ok(codes(validateBook02MvpGapBaseline(baseline)).includes(code));
     }
+    const testDepth = cloneRecord();
+    const testReq = requirementsOf(testDepth).find(
+      (r) => r.id === 'must-test-api-contract-tests'
+    );
+    if (!testReq) throw new Error('Expected Test Family requirement.');
+    testReq.currentDisposition = 'meets_required_depth';
+    testReq.testFiles = [];
+    assert.ok(
+      codes(validateBook02MvpGapBaseline(testDepth)).includes(
+        'book02.depth.test_contract_skeleton_only'
+      )
+    );
+
     const event = cloneRecord();
     const er = requirementsOf(event).find(
       (r) => r.currentDisposition === 'semantic_overlap_only'
@@ -340,7 +457,7 @@ describe('Book 02 MVP gap baseline validation', () => {
           criterion.id ===
           'must-build-domains-implemented-or-scaffolded-with-tests'
       )?.satisfied,
-      false
+      true
     );
     assert.equal(
       BOOK_02_MVP_GAP_BASELINE.acceptanceCriteria.find(
@@ -377,6 +494,40 @@ describe('Book 02 MVP gap baseline validation', () => {
       true
     );
 
+    const satisfiedIds = criteria
+      .filter((criterion) => criterion.satisfied)
+      .map((criterion) => criterion.id);
+    assert.deepEqual(satisfiedIds, [
+      'must-build-domains-implemented-or-scaffolded-with-tests',
+      'permission-and-policy-fail-closed',
+      'ai-forbidden-actions-are-blocked',
+      'human-review-gates-protected-actions',
+      'idempotency-replay-and-conflict-are-tested',
+      'event-trace-exists-and-is-not-command',
+      'errors-are-safe',
+      'unsupported-versions-fail-closed',
+      'deferred-items-do-not-block-mvp',
+      'never-in-mvp-items-are-not-implemented'
+    ]);
+    assert.deepEqual(
+      criteria.find(
+        (criterion) => criterion.id === 'permission-and-policy-fail-closed'
+      )?.behaviorIds,
+      ['permission', 'policy']
+    );
+    assert.deepEqual(
+      criteria.find(
+        (criterion) => criterion.id === 'ai-forbidden-actions-are-blocked'
+      )?.behaviorIds,
+      ['ai-context', 'agent-runtime']
+    );
+    assert.equal(
+      criteria.find(
+        (criterion) =>
+          criterion.id === 'api-layer-does-not-emit-events-directly'
+      )?.satisfied,
+      false
+    );
     assert.deepEqual(criteria, BOOK_02_MVP_GAP_BASELINE.acceptanceCriteria);
     assert.deepEqual(
       deriveBook02MvpGapSummary(
@@ -436,6 +587,23 @@ describe('Book 02 MVP gap baseline validation', () => {
     assert.ok(
       codes(validateBook02MvpGapBaseline(unknownStructuredCheck)).includes(
         'book02.guard.structured_check_unknown'
+      )
+    );
+
+    const fakeBehavior = cloneRecord();
+    const fakeBehaviorCriteria = fakeBehavior.acceptanceCriteria as Record<
+      string,
+      unknown
+    >[];
+    const permissionCriterion = fakeBehaviorCriteria.find(
+      (criterion) => criterion.id === 'permission-and-policy-fail-closed'
+    );
+    if (!permissionCriterion)
+      throw new Error('Expected Permission/Policy acceptance criterion.');
+    permissionCriterion.behaviorIds = ['permission', 'fabricated-behavior'];
+    assert.ok(
+      codes(validateBook02MvpGapBaseline(fakeBehavior)).includes(
+        'book02.acceptance.behavior_evidence_missing'
       )
     );
 

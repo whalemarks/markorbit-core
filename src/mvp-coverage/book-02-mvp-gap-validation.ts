@@ -1,5 +1,6 @@
 import { existsSync } from 'node:fs';
 import { isAbsolute } from 'node:path';
+import { CORE_CONTRACT_BEHAVIOR_ACCEPTANCE_LOCK } from '../behavior-coverage/index.ts';
 import { CORE_CONTRACT_INDEX } from '../contracts/index.ts';
 import {
   BOOK_02_AUTHORITY,
@@ -17,6 +18,7 @@ import {
 import {
   ACCEPTANCE_CRITERION_EVALUATORS,
   BOOK_02_MVP_GAP_BASELINE,
+  BOOK_02_MVP_TEST_FAMILY_EVIDENCE,
   deriveBook02MvpAcceptanceCriteria,
   deriveBook02MvpGapSummary,
   type Book02MvpGapBaseline
@@ -38,6 +40,11 @@ const isStringArray = (value: unknown): value is readonly string[] =>
   Array.isArray(value) && value.every((entry) => typeof entry === 'string');
 const actualContractIds = new Set(
   CORE_CONTRACT_INDEX.map((entry) => String(entry.id))
+);
+const acceptedBehaviorIds = new Set(
+  CORE_CONTRACT_BEHAVIOR_ACCEPTANCE_LOCK.evidence.map((entry) =>
+    String(entry.behaviorId)
+  )
 );
 const isWindowsAbsolute = (p: string) =>
   /^[A-Za-z]:[\\/]/.test(p) || p.startsWith('\\\\');
@@ -161,6 +168,66 @@ function validateAcceptanceEvaluatorCoverage(
         issue(
           'book02.acceptance.evaluator_extra',
           `Unexpected evaluator ${id}.`,
+          id
+        )
+      );
+}
+
+function validateTestFamilyEvidenceCoverage(
+  issues: Book02MvpValidationIssue[]
+): void {
+  const expected = BOOK_02_MVP_REQUIREMENT_IDENTITIES.filter(
+    (identity) => identity.layer === 'test'
+  ).map((identity) => identity.id.replace('must-test-', ''));
+  const actual = Object.keys(BOOK_02_MVP_TEST_FAMILY_EVIDENCE);
+  for (const id of expected) {
+    const evidence =
+      BOOK_02_MVP_TEST_FAMILY_EVIDENCE[
+        id as keyof typeof BOOK_02_MVP_TEST_FAMILY_EVIDENCE
+      ];
+    if (!evidence) {
+      issues.push(
+        issue(
+          'book02.test_family.evidence_missing',
+          `Missing Test Family evidence ${id}.`,
+          id
+        )
+      );
+      continue;
+    }
+    if (!actualContractIds.has(evidence.contractId))
+      issues.push(
+        issue(
+          'book02.test_family.fake_contract_id',
+          `Unexpected Test Family contract id ${evidence.contractId}.`,
+          id
+        )
+      );
+    for (const behaviorId of evidence.behaviorIds)
+      if (!acceptedBehaviorIds.has(behaviorId))
+        issues.push(
+          issue(
+            'book02.test_family.fake_behavior_id',
+            `Unexpected Test Family behavior id ${behaviorId}.`,
+            id
+          )
+        );
+    for (const file of evidence.testFiles)
+      if (!rel(file) || !existsSync(file))
+        issues.push(
+          issue(
+            'book02.test_family.missing_test_file',
+            `Mapped Test Family file ${file} is missing or unsafe.`,
+            file
+          )
+        );
+  }
+  for (const id of actual)
+    if (!expected.includes(id))
+      issues.push(
+        issue(
+          'book02.test_family.evidence_extra',
+          `Unexpected Test Family evidence ${id}.`,
           id
         )
       );
@@ -574,7 +641,8 @@ function validateDispositionConsistency(
   if (
     r.layer === 'test' &&
     r.currentDisposition === 'meets_required_depth' &&
-    r.implementationFiles.some((f) => f.includes('contracts/test'))
+    (r.testFiles.length === 0 ||
+      r.implementationFiles.every((f) => f.includes('contracts/test')))
   )
     issues.push(
       issue(
@@ -632,6 +700,7 @@ export function validateBook02MvpGapBaseline(
   const issues = [...validateBook02MvpRequirements(baseline.requirements)];
   validateGuardRuleCoverage(issues);
   validateAcceptanceEvaluatorCoverage(issues);
+  validateTestFamilyEvidenceCoverage(issues);
   if (JSON.stringify(baseline.authority) !== JSON.stringify(BOOK_02_AUTHORITY))
     issues.push(
       issue(
@@ -735,6 +804,7 @@ function validateAcceptanceCriterionShape(
   for (const key of [
     'dependencies',
     'evidenceRequirementIds',
+    'behaviorIds',
     'evidenceFiles',
     'unresolvedReasons'
   ]) {
@@ -803,6 +873,43 @@ function validateAcceptance(
         issue(
           'book02.acceptance.inconsistent_criterion',
           `Acceptance criterion must be derived from evidence.`,
+          `acceptanceCriteria[${index}]`
+        )
+      );
+    for (const behaviorId of criterion.behaviorIds ?? [])
+      if (!acceptedBehaviorIds.has(behaviorId))
+        issues.push(
+          issue(
+            'book02.acceptance.behavior_evidence_missing',
+            `Acceptance criterion reports unknown behavior evidence ${behaviorId}.`,
+            `acceptanceCriteria[${index}].behaviorIds`
+          )
+        );
+    if (
+      criterion.id ===
+        'must-build-domains-implemented-or-scaffolded-with-tests' &&
+      !criterion.satisfied
+    ) {
+      const derivedCriterion = derived.find(
+        (entry) => entry.id === criterion.id
+      );
+      if (derivedCriterion?.satisfied)
+        issues.push(
+          issue(
+            'book02.acceptance.domain_scaffold_test_inconsistent',
+            'Domain scaffold-with-tests acceptance must be satisfied when exact Domain skeleton evidence and tests exist.',
+            `acceptanceCriteria[${index}]`
+          )
+        );
+    }
+    if (
+      criterion.id === 'must-build-objects-have-public-reference-ids' &&
+      criterion.satisfied
+    )
+      issues.push(
+        issue(
+          'book02.acceptance.public_reference_unproven',
+          'Object public-reference acceptance cannot be satisfied without explicit public-reference evidence.',
           `acceptanceCriteria[${index}]`
         )
       );
