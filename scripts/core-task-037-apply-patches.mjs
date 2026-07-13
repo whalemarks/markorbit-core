@@ -78,10 +78,10 @@ update('src/mvp-coverage/book-02-mvp-gap-baseline.ts', (text) => {
     `    const evidence = CORE_SERVICE_BEHAVIOR_EVIDENCE.find(\n      (entry) => entry.requirementId === identity.id\n    );\n    if (evidence) {\n      const validEvidence = validateCoreServiceBehaviorEvidence().length === 0;\n      return {\n        contractIds: [String(found.id)],\n        implementationFiles: [\n          'src/contracts/service/core-service-contract-skeletons.ts',\n          ...evidence.implementationFiles\n        ],\n        testFiles: evidence.testFiles,\n        fixtureFiles: evidence.fixtureFiles,\n        currentDepth: validEvidence ? 'level_2_3' : undefined\n      };\n    }\n    return {`,
     'service evidence derivation'
   );
-  return replaceRegexRequired(
+  return replaceRequired(
     text,
-    /(function disposition\([\s\S]*?  if \(identity\.layer === 'object'\) \{[\s\S]*?  \}\n)  if \(identity\.layer === 'service'\) \{[\s\S]*?  \}\n  if \(identity\.layer === 'test'\)/,
-    `$1  if (identity.layer === 'service') {\n    if (\n      ev.currentDepth === 'level_2_3' &&\n      ev.implementationFiles.length > 1 &&\n      ev.testFiles.length > 0 &&\n      ev.fixtureFiles.length > 0\n    )\n      return 'meets_required_depth';\n    return ev.testFiles.length > 0\n      ? 'partial_evidence'\n      : ev.contractIds.length > 0\n        ? 'validated_skeleton_only'\n        : 'missing';\n  }\n  if (identity.layer === 'test')`,
+    `  if (identity.layer === 'service') {\n    if (\n      identity.id === 'must-service-customer-service' &&\n      ev.currentDepth === 'level_2_3' &&\n      ev.implementationFiles.length > 1 &&\n      ev.testFiles.length > 0 &&\n      ev.fixtureFiles.length > 0\n    )\n      return 'meets_required_depth';\n    return ev.testFiles.length > 0\n      ? 'partial_evidence'\n      : ev.contractIds.length > 0\n        ? 'validated_skeleton_only'\n        : 'missing';\n  }`,
+    `  if (identity.layer === 'service') {\n    if (\n      ev.currentDepth === 'level_2_3' &&\n      ev.implementationFiles.length > 1 &&\n      ev.testFiles.length > 0 &&\n      ev.fixtureFiles.length > 0\n    )\n      return 'meets_required_depth';\n    return ev.testFiles.length > 0\n      ? 'partial_evidence'\n      : ev.contractIds.length > 0\n        ? 'validated_skeleton_only'\n        : 'missing';\n  }`,
     'service disposition'
   );
 });
