@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'scripts/core-task-040-generate.mjs'
+      - 'scripts/core-task-040-repair.mjs'
       - '.github/workflows/core-task-040-generate.yml'
       - '.github/core-task-040-trigger'
 
@@ -26,6 +27,7 @@ jobs:
       - run: corepack enable
       - run: pnpm install --frozen-lockfile
       - run: pnpm exec tsx scripts/core-task-040-generate.mjs
+      - run: node scripts/core-task-040-repair.mjs
       - run: pnpm format
       - name: Commit generated changes
         run: |
