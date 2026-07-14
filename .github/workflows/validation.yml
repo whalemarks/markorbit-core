@@ -2,25 +2,27 @@ name: Validation
 
 on:
   pull_request:
-
-permissions:
-  contents: write
+  push:
+    branches:
+      - main
+      - codex/core-task-032-validation-traceability-lock
 
 jobs:
-  generate-core-task-038:
-    if: github.actor != 'github-actions[bot]'
+  validation:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: [20, 22]
+
     steps:
-      - name: Checkout task branch
+      - name: Checkout
         uses: actions/checkout@v4
-        with:
-          ref: codex/core-task-038-trademark-service-core-lifecycle
-          fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: ${{ matrix.node-version }}
 
       - name: Enable Corepack
         run: corepack enable
@@ -28,38 +30,37 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Repair generator target
-        run: pnpm exec tsx scripts/core-task-038-fix-generator.mjs
+      - name: Typecheck
+        run: pnpm typecheck
 
-      - name: Run generator
-        id: generate
-        shell: bash
-        run: |
-          set +e
-          pnpm exec tsx scripts/core-task-038-generate.mjs 2>&1 | tee generator.log
-          code=${PIPESTATUS[0]}
-          echo "exit_code=$code" >> "$GITHUB_OUTPUT"
-          exit 0
+      - name: Lint
+        run: pnpm lint
 
-      - name: Upload generator diagnostics
-        uses: actions/upload-artifact@v4
-        with:
-          name: core-task-038-generator-log
-          path: generator.log
+      - name: Check formatting
+        run: pnpm format:check
 
-      - name: Format governed files
-        if: steps.generate.outputs.exit_code == '0'
-        run: pnpm format
+      - name: Validate fixtures
+        run: pnpm validate:fixtures
 
-      - name: Commit generated batch
-        if: steps.generate.outputs.exit_code == '0'
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A
-          git commit -m "CORE-TASK-038 — Implement Trademark Service core lifecycle"
-          git push origin HEAD:codex/core-task-038-trademark-service-core-lifecycle
+      - name: Test
+        run: pnpm test
 
-      - name: Fail when generator failed
-        if: steps.generate.outputs.exit_code != '0'
-        run: exit 1
+      - name: Contract coverage
+        run: pnpm coverage:contracts
+
+      - name: Contract gaps
+        run: pnpm gaps:contracts
+
+      - name: Contract acceptance
+        run: pnpm acceptance:contracts
+
+      - name: Behavior coverage
+        run: pnpm coverage:behavior
+
+      - name: Behavior gaps
+        run: pnpm gaps:behavior
+      - name: Behavior acceptance
+        run: pnpm acceptance:behavior
+
+      - name: Book 02 MVP gaps
+        run: pnpm gaps:mvp
