@@ -1,99 +1,99 @@
 import {
   paginateCoreItems,
   type CoreEventTraceRecord,
-  type CorePaginatedResult,
-} from "../../behaviors/core-event-pagination-behavior.ts";
+  type CorePaginatedResult
+} from '../../behaviors/core-event-pagination-behavior.ts';
 import {
   enforceCoreGovernedAction,
   type CoreAuditContext,
   type CoreHumanReviewContext,
   type CorePermissionContext,
-  type CorePolicyContext,
-} from "../../behaviors/core-governance-behavior.ts";
-import { CoreIdempotencyRegistry } from "../../behaviors/core-idempotency-behavior.ts";
+  type CorePolicyContext
+} from '../../behaviors/core-governance-behavior.ts';
+import { CoreIdempotencyRegistry } from '../../behaviors/core-idempotency-behavior.ts';
 import {
   CoreReferenceRegistry,
-  type CoreReferenceRecord,
-} from "../../behaviors/core-reference-behavior.ts";
+  type CoreReferenceRecord
+} from '../../behaviors/core-reference-behavior.ts';
 import {
   createCoreSafeError,
   type CoreBehaviorResult,
   type CoreErrorCategory,
-  type CoreErrorCode,
-} from "../../behaviors/core-safe-error.ts";
+  type CoreErrorCode
+} from '../../behaviors/core-safe-error.ts';
 import {
   CORE_DOMAIN_REGISTRY,
-  type CoreDomainId,
-} from "../../domains/index.ts";
+  type CoreDomainId
+} from '../../domains/index.ts';
 import {
   CORE_EVENT_ACTIONS,
   createCoreEventType,
-  type CoreEventId,
-} from "../../events/index.ts";
-import type { CoreMvpObjectBaseRecord } from "../../objects/core-mvp-object-base-record.ts";
-import type { CoreObjectStatus } from "../../objects/core-object-status.ts";
-import { validateCoreMvpObjectBaseRecord } from "../../objects/core-mvp-object-validation.ts";
+  type CoreEventId
+} from '../../events/index.ts';
+import type { CoreMvpObjectBaseRecord } from '../../objects/core-mvp-object-base-record.ts';
+import type { CoreObjectStatus } from '../../objects/core-object-status.ts';
+import { validateCoreMvpObjectBaseRecord } from '../../objects/core-mvp-object-validation.ts';
 import {
   createCoreObjectId,
-  createCoreObjectType,
-} from "../../objects/index.ts";
+  createCoreObjectType
+} from '../../objects/index.ts';
 
 export const CORE_DOCUMENT_TYPES = [
-  "PowerOfAttorney",
-  "ApplicationForm",
-  "OfficialNotice",
-  "OfficeAction",
-  "Certificate",
-  "AssignmentDocument",
-  "RenewalDocument",
-  "ChangeDocument",
-  "EvidenceMaterial",
-  "ClientInstruction",
-  "AgentInstruction",
-  "Translation",
-  "Draft",
-  "Other",
-  "Unknown",
+  'PowerOfAttorney',
+  'ApplicationForm',
+  'OfficialNotice',
+  'OfficeAction',
+  'Certificate',
+  'AssignmentDocument',
+  'RenewalDocument',
+  'ChangeDocument',
+  'EvidenceMaterial',
+  'ClientInstruction',
+  'AgentInstruction',
+  'Translation',
+  'Draft',
+  'Other',
+  'Unknown'
 ] as const;
 export type CoreDocumentType = (typeof CORE_DOCUMENT_TYPES)[number];
 
 export const CORE_DOCUMENT_STATUSES = [
-  "Draft",
-  "Received",
-  "Uploaded",
-  "ReviewRequired",
-  "Reviewed",
-  "Approved",
-  "Rejected",
-  "Filed",
-  "Issued",
-  "Archived",
-  "DeletedReferenceOnly",
+  'Draft',
+  'Received',
+  'Uploaded',
+  'ReviewRequired',
+  'Reviewed',
+  'Approved',
+  'Rejected',
+  'Filed',
+  'Issued',
+  'Archived',
+  'DeletedReferenceOnly'
 ] as const;
 export type CoreDocumentStatus = (typeof CORE_DOCUMENT_STATUSES)[number];
 
 export const CORE_DOCUMENT_REVIEW_STATUSES = [
-  "Unreviewed",
-  "ReviewRequired",
-  "HumanReviewed",
-  "AIReviewedDraft",
-  "ApprovedForUse",
-  "Rejected",
-  "NeedsRevision",
+  'Unreviewed',
+  'ReviewRequired',
+  'HumanReviewed',
+  'AIReviewedDraft',
+  'ApprovedForUse',
+  'Rejected',
+  'NeedsRevision'
 ] as const;
 export type CoreDocumentReviewStatus =
   (typeof CORE_DOCUMENT_REVIEW_STATUSES)[number];
 
 export type CoreDocumentReviewDecisionStatus =
-  "HumanReviewed" | "ApprovedForUse" | "Rejected" | "NeedsRevision";
+  'HumanReviewed' | 'ApprovedForUse' | 'Rejected' | 'NeedsRevision';
 
 export const CORE_DOCUMENT_CONFIDENTIALITY_LEVELS = [
-  "Public",
-  "Internal",
-  "Confidential",
-  "HighlyConfidential",
-  "Restricted",
-  "Unknown",
+  'Public',
+  'Internal',
+  'Confidential',
+  'HighlyConfidential',
+  'Restricted',
+  'Unknown'
 ] as const;
 export type CoreDocumentConfidentialityLevel =
   (typeof CORE_DOCUMENT_CONFIDENTIALITY_LEVELS)[number];
@@ -102,88 +102,88 @@ export const CORE_DOCUMENT_STATUS_TO_OBJECT_STATUS: Record<
   CoreDocumentStatus,
   CoreObjectStatus
 > = {
-  Draft: "draft",
-  Received: "draft",
-  Uploaded: "draft",
-  ReviewRequired: "draft",
-  Reviewed: "active",
-  Approved: "active",
-  Rejected: "inactive",
-  Filed: "active",
-  Issued: "active",
-  Archived: "archived",
-  DeletedReferenceOnly: "deleted",
+  Draft: 'draft',
+  Received: 'draft',
+  Uploaded: 'draft',
+  ReviewRequired: 'draft',
+  Reviewed: 'active',
+  Approved: 'active',
+  Rejected: 'inactive',
+  Filed: 'active',
+  Issued: 'active',
+  Archived: 'archived',
+  DeletedReferenceOnly: 'deleted'
 };
 
 export const CORE_DOCUMENT_IMPLEMENTED_OPERATIONS = [
-  "createDocument",
-  "getDocument",
-  "listDocuments",
-  "validateDocumentReference",
-  "linkDocumentFile",
-  "requireDocumentReview",
-  "reviewDocument",
-  "changeDocumentStatus",
+  'createDocument',
+  'getDocument',
+  'listDocuments',
+  'validateDocumentReference',
+  'linkDocumentFile',
+  'requireDocumentReview',
+  'reviewDocument',
+  'changeDocumentStatus'
 ] as const;
 
 export const CORE_DOCUMENT_MINIMUM_CAPABILITIES = [
-  "create where required",
-  "read where required",
-  "search/list where required",
-  "validate_reference",
-  "basic status transition where required",
-  "file reference linkage",
-  "human review gate",
-  "permission check hook",
-  "policy check hook",
-  "safe error return",
-  "event trace handoff where applicable",
-  "idempotency handling where duplicate-sensitive",
+  'create where required',
+  'read where required',
+  'search/list where required',
+  'validate_reference',
+  'basic status transition where required',
+  'file reference linkage',
+  'human review gate',
+  'permission check hook',
+  'policy check hook',
+  'safe error return',
+  'event trace handoff where applicable',
+  'idempotency handling where duplicate-sensitive'
 ] as const;
 
-export const CORE_DOCUMENT_COLLECTION_TARGET = "document:collection";
+export const CORE_DOCUMENT_COLLECTION_TARGET = 'document:collection';
 
-const CONTRACT_ID = "core-service-document-service-contract";
-const DOCUMENT_OBJECT_TYPE = "document-record";
-const DOCUMENT_DOMAIN = "document";
-const DOCUMENT_OBJECT_CONTRACT_ID = "core-object-document-record-contract";
+const CONTRACT_ID = 'core-service-document-service-contract';
+const DOCUMENT_OBJECT_TYPE = 'document-record';
+const DOCUMENT_DOMAIN = 'document';
+const DOCUMENT_OBJECT_CONTRACT_ID = 'core-object-document-record-contract';
 const opaque = /^[A-Za-z0-9][A-Za-z0-9:_./-]{2,127}$/;
 const controlledReference = /^[a-z0-9][a-z0-9:_-]{2,127}$/;
 
 const lifecycleTransitions = new Set([
-  "Draft->Received",
-  "Received->Uploaded",
-  "Approved->Archived",
-  "Rejected->Archived",
+  'Draft->Received',
+  'Received->Uploaded',
+  'Approved->Archived',
+  'Rejected->Archived'
 ]);
 
 const documentErrorCategories: Partial<
   Record<CoreErrorCode, CoreErrorCategory>
 > = {
-  DocumentAlreadyExists: "Conflict",
-  DocumentNotFound: "Reference",
-  InvalidDocumentType: "Validation",
-  InvalidDocumentStatus: "State",
-  InvalidDocumentReviewStatus: "State",
-  InvalidDocumentConfidentialityLevel: "Validation",
-  InvalidDocumentTransition: "State",
-  InvalidDocumentReference: "Reference",
-  DocumentTitleRequired: "Validation",
-  DocumentSourceReferenceRequired: "Validation",
-  DocumentFileReferenceRequired: "Validation",
-  DocumentFileAlreadyLinked: "Conflict",
-  DocumentReviewNoteRequired: "Validation",
-  DocumentReasonReferenceRequired: "Validation",
-  DocumentObjectMismatch: "Validation",
-  PermissionDenied: "Permission",
-  PolicyRestricted: "Policy",
-  HumanReviewRequired: "HumanReview",
-  IdempotencyKeyRequired: "Idempotency",
-  IdempotencyKeyInvalid: "Idempotency",
-  IdempotencyConflict: "Idempotency",
-  EventTraceFailed: "Event",
-  AuditContextMissing: "Validation",
-  InternalError: "Internal",
+  DocumentAlreadyExists: 'Conflict',
+  DocumentNotFound: 'Reference',
+  InvalidDocumentType: 'Validation',
+  InvalidDocumentStatus: 'State',
+  InvalidDocumentReviewStatus: 'State',
+  InvalidDocumentConfidentialityLevel: 'Validation',
+  InvalidDocumentTransition: 'State',
+  InvalidDocumentReference: 'Reference',
+  DocumentTitleRequired: 'Validation',
+  DocumentSourceReferenceRequired: 'Validation',
+  DocumentFileReferenceRequired: 'Validation',
+  DocumentFileAlreadyLinked: 'Conflict',
+  DocumentReviewNoteRequired: 'Validation',
+  DocumentReasonReferenceRequired: 'Validation',
+  DocumentObjectMismatch: 'Validation',
+  PermissionDenied: 'Permission',
+  PolicyRestricted: 'Policy',
+  HumanReviewRequired: 'HumanReview',
+  IdempotencyKeyRequired: 'Idempotency',
+  IdempotencyKeyInvalid: 'Idempotency',
+  IdempotencyConflict: 'Idempotency',
+  EventTraceFailed: 'Event',
+  AuditContextMissing: 'Validation',
+  InternalError: 'Internal'
 };
 
 export interface CoreDocumentServiceRecord {
@@ -213,17 +213,17 @@ export interface CoreDocumentServiceStore {
   get(documentReferenceId: string): CoreDocumentServiceRecord | undefined;
   list(): readonly CoreDocumentServiceRecord[];
   insert(
-    record: CoreDocumentServiceRecord,
+    record: CoreDocumentServiceRecord
   ): CoreBehaviorResult<CoreDocumentServiceRecord>;
   replace(
-    record: CoreDocumentServiceRecord,
+    record: CoreDocumentServiceRecord
   ): CoreBehaviorResult<CoreDocumentServiceRecord>;
   remove(documentReferenceId: string): CoreBehaviorResult<null>;
 }
 
 export interface CoreDocumentEventTracePort {
   append(
-    record: CoreEventTraceRecord,
+    record: CoreEventTraceRecord
   ): CoreBehaviorResult<CoreEventTraceRecord>;
 }
 
@@ -233,11 +233,11 @@ export interface CoreDocumentRequestingServiceDirectoryEntry {
 }
 
 export type CoreDocumentMutationOperation =
-  | "createDocument"
-  | "linkDocumentFile"
-  | "requireDocumentReview"
-  | "reviewDocument"
-  | "changeDocumentStatus";
+  | 'createDocument'
+  | 'linkDocumentFile'
+  | 'requireDocumentReview'
+  | 'reviewDocument'
+  | 'changeDocumentStatus';
 
 export interface CoreDocumentServiceDependencies {
   readonly store: CoreDocumentServiceStore;
@@ -249,7 +249,7 @@ export interface CoreDocumentServiceDependencies {
   readonly eventIdFactory: (
     operation: CoreDocumentMutationOperation,
     documentReferenceId: string,
-    idempotencyKey: string,
+    idempotencyKey: string
   ) => CoreEventId;
   readonly cursorSecret: string;
 }
@@ -268,13 +268,13 @@ export interface CoreDocumentListSummary extends Record<string, unknown> {
 }
 
 export type CoreDocumentValidationReason =
-  | "Valid"
-  | "ReviewRequired"
-  | "NotFound"
-  | "InvalidReference"
-  | "Archived"
-  | "Rejected"
-  | "ConfidentialityRestricted";
+  | 'Valid'
+  | 'ReviewRequired'
+  | 'NotFound'
+  | 'InvalidReference'
+  | 'Archived'
+  | 'Rejected'
+  | 'ConfidentialityRestricted';
 
 export interface CoreDocumentValidationResult {
   readonly isValid: boolean;
@@ -285,30 +285,30 @@ export interface CoreDocumentValidationResult {
   readonly versionReference: string | null;
   readonly reasonCode: CoreDocumentValidationReason;
   readonly reviewRequired: boolean;
-  readonly confidentialityHint: "Visible" | "Restricted" | null;
+  readonly confidentialityHint: 'Visible' | 'Restricted' | null;
   readonly fileLinked: boolean;
 }
 
 function safe<T = never>(
   code: CoreErrorCode,
   message: string,
-  correlationId?: string,
+  correlationId?: string
 ): CoreBehaviorResult<T> {
   return {
     ok: false,
     error: createCoreSafeError({
       code,
-      category: documentErrorCategories[code] ?? "Validation",
+      category: documentErrorCategories[code] ?? 'Validation',
       message,
-      correlationId,
-    }),
+      correlationId
+    })
   };
 }
 
 function immutable<T>(value: T): T {
   const cloned = structuredClone(value);
   const freeze = (candidate: unknown): void => {
-    if (typeof candidate !== "object" || candidate === null) return;
+    if (typeof candidate !== 'object' || candidate === null) return;
     for (const nested of Object.values(candidate)) freeze(nested);
     Object.freeze(candidate);
   };
@@ -318,9 +318,9 @@ function immutable<T>(value: T): T {
 
 function included<T extends readonly string[]>(
   values: T,
-  value: unknown,
+  value: unknown
 ): value is T[number] {
-  return typeof value === "string" && values.includes(value);
+  return typeof value === 'string' && values.includes(value);
 }
 
 function validUtcTimestamp(value: string): boolean {
@@ -329,24 +329,24 @@ function validUtcTimestamp(value: string): boolean {
 }
 
 function organizationScopeOf(
-  record: CoreDocumentServiceRecord | CoreMvpObjectBaseRecord,
+  record: CoreDocumentServiceRecord | CoreMvpObjectBaseRecord
 ): string | null {
-  const objectRecord = "objectRecord" in record ? record.objectRecord : record;
+  const objectRecord = 'objectRecord' in record ? record.objectRecord : record;
   return objectRecord.visibility?.organizationScopeReferenceId ?? null;
 }
 
 function enforceOrganizationScope(
   governance: CoreDocumentGovernanceContext,
-  expectedScope: string | null,
+  expectedScope: string | null
 ): CoreBehaviorResult<null> {
   if (
     expectedScope !== null &&
     governance.authorizedOrganizationReferenceId !== expectedScope
   ) {
     return safe(
-      "PolicyRestricted",
-      "Document organization scope is not authorized.",
-      governance.correlationId,
+      'PolicyRestricted',
+      'Document organization scope is not authorized.',
+      governance.correlationId
     );
   }
   return { ok: true, value: null };
@@ -361,7 +361,7 @@ interface GovernanceExpectation {
 
 function ensureGovernance(
   context: CoreDocumentGovernanceContext,
-  expected: GovernanceExpectation,
+  expected: GovernanceExpectation
 ): CoreBehaviorResult<null> {
   const correlationId = context.correlationId;
   if (
@@ -370,9 +370,9 @@ function ensureGovernance(
     context.audit.correlationId !== correlationId
   ) {
     return safe(
-      "ValidationFailed",
-      "Correlation IDs must match.",
-      correlationId,
+      'ValidationFailed',
+      'Correlation IDs must match.',
+      correlationId
     );
   }
   if (
@@ -380,9 +380,9 @@ function ensureGovernance(
     !context.permission.requiredPermissionKeys.includes(expected.permission)
   ) {
     return safe(
-      "PermissionDenied",
-      "Required permission is missing.",
-      correlationId,
+      'PermissionDenied',
+      'Required permission is missing.',
+      correlationId
     );
   }
   if (
@@ -390,9 +390,9 @@ function ensureGovernance(
     !context.policy.requiredPolicyScopes.includes(expected.policyScope)
   ) {
     return safe(
-      "PolicyRestricted",
-      "Required policy scope is missing.",
-      correlationId,
+      'PolicyRestricted',
+      'Required policy scope is missing.',
+      correlationId
     );
   }
   if (
@@ -403,9 +403,9 @@ function ensureGovernance(
       context.audit.policyDecisionReferenceId
   ) {
     return safe(
-      "AuditContextMissing",
-      "Governance audit linkage is invalid.",
-      correlationId,
+      'AuditContextMissing',
+      'Governance audit linkage is invalid.',
+      correlationId
     );
   }
   if (
@@ -413,9 +413,9 @@ function ensureGovernance(
     context.review.targetObjectReferenceId !== expected.target
   ) {
     return safe(
-      "HumanReviewRequired",
-      "Human Review target is invalid.",
-      correlationId,
+      'HumanReviewRequired',
+      'Human Review target is invalid.',
+      correlationId
     );
   }
   if (
@@ -424,9 +424,9 @@ function ensureGovernance(
       context.audit.humanReviewReferenceId
   ) {
     return safe(
-      "HumanReviewRequired",
-      "Human Review audit linkage is invalid.",
-      correlationId,
+      'HumanReviewRequired',
+      'Human Review audit linkage is invalid.',
+      correlationId
     );
   }
   if (
@@ -436,16 +436,16 @@ function ensureGovernance(
     !opaque.test(context.auditContextReferenceId)
   ) {
     return safe(
-      "AuditContextMissing",
-      "Audit context is missing.",
-      correlationId,
+      'AuditContextMissing',
+      'Audit context is missing.',
+      correlationId
     );
   }
   const governed = enforceCoreGovernedAction({
     permission: context.permission,
     policy: context.policy,
     review: context.review,
-    audit: context.audit,
+    audit: context.audit
   });
   if (!governed.ok) return governed;
   return { ok: true, value: null };
@@ -453,7 +453,7 @@ function ensureGovernance(
 
 function referenceMatches(
   supplied: CoreReferenceRecord,
-  registered: CoreReferenceRecord,
+  registered: CoreReferenceRecord
 ): boolean {
   return (
     supplied.referenceId === registered.referenceId &&
@@ -465,47 +465,47 @@ function referenceMatches(
 
 function validateDocumentReferenceRecord(
   registry: CoreReferenceRegistry,
-  referenceId: string,
+  referenceId: string
 ): CoreBehaviorResult<CoreReferenceRecord> {
   const resolved = registry.resolve({
     referenceId,
     expectedObjectType: DOCUMENT_OBJECT_TYPE,
-    expectedDomain: DOCUMENT_DOMAIN,
+    expectedDomain: DOCUMENT_DOMAIN
   });
   return resolved.ok
     ? resolved
-    : safe("InvalidDocumentReference", "Document reference is invalid.");
+    : safe('InvalidDocumentReference', 'Document reference is invalid.');
 }
 
 function validateRequestingService(
   requestingDomain: string,
   requestingService: string,
-  directory: readonly CoreDocumentRequestingServiceDirectoryEntry[],
+  directory: readonly CoreDocumentRequestingServiceDirectoryEntry[]
 ): CoreBehaviorResult<null> {
   if (!CORE_DOMAIN_REGISTRY.some((domain) => domain.id === requestingDomain)) {
-    return safe("InvalidDocumentReference", "Requesting Domain is invalid.");
+    return safe('InvalidDocumentReference', 'Requesting Domain is invalid.');
   }
   const service = directory.find(
     (entry) =>
       entry.serviceType === requestingService &&
-      entry.domainId === requestingDomain,
+      entry.domainId === requestingDomain
   );
   return service
     ? { ok: true, value: null }
-    : safe("InvalidDocumentReference", "Requesting Service is invalid.");
+    : safe('InvalidDocumentReference', 'Requesting Service is invalid.');
 }
 
 function idempotencyScope(
   governance: CoreDocumentGovernanceContext,
-  operation: string,
+  operation: string
 ): string {
   return [
     CONTRACT_ID,
     operation,
     governance.authorizedOrganizationReferenceId ??
       governance.permission.actorReferenceId ??
-      "anonymous",
-  ].join("|");
+      'anonymous'
+  ].join('|');
 }
 
 function eventTrace(input: {
@@ -520,7 +520,7 @@ function eventTrace(input: {
 }): CoreEventTraceRecord {
   return {
     auditContextReferenceId: input.auditContextReferenceId,
-    visibility: "Internal",
+    visibility: 'Internal',
     event: {
       id: input.id,
       type: createCoreEventType(input.type),
@@ -529,33 +529,33 @@ function eventTrace(input: {
       object: {
         id: createCoreObjectId(input.documentReferenceId),
         type: createCoreObjectType(DOCUMENT_OBJECT_TYPE),
-        domainId: DOCUMENT_DOMAIN,
+        domainId: DOCUMENT_DOMAIN
       },
-      source: { actorType: "service", actorId: CONTRACT_ID },
+      source: { actorType: 'service', actorId: CONTRACT_ID },
       occurredAt: input.occurredAt,
       correlationId: input.correlationId,
-      payload: input.payload,
-    },
+      payload: input.payload
+    }
   };
 }
 
 function validStatusReviewPair(
   status: CoreDocumentStatus,
-  reviewStatus: CoreDocumentReviewStatus,
+  reviewStatus: CoreDocumentReviewStatus
 ): boolean {
-  if (["Draft", "Received", "Uploaded"].includes(status)) {
-    return reviewStatus === "Unreviewed" || reviewStatus === "AIReviewedDraft";
+  if (['Draft', 'Received', 'Uploaded'].includes(status)) {
+    return reviewStatus === 'Unreviewed' || reviewStatus === 'AIReviewedDraft';
   }
-  if (status === "ReviewRequired") {
+  if (status === 'ReviewRequired') {
     return (
-      reviewStatus === "ReviewRequired" || reviewStatus === "NeedsRevision"
+      reviewStatus === 'ReviewRequired' || reviewStatus === 'NeedsRevision'
     );
   }
-  if (status === "Reviewed") return reviewStatus === "HumanReviewed";
-  if (status === "Approved") return reviewStatus === "ApprovedForUse";
-  if (status === "Rejected") return reviewStatus === "Rejected";
-  if (status === "Filed" || status === "Issued") {
-    return reviewStatus === "ApprovedForUse";
+  if (status === 'Reviewed') return reviewStatus === 'HumanReviewed';
+  if (status === 'Approved') return reviewStatus === 'ApprovedForUse';
+  if (status === 'Rejected') return reviewStatus === 'Rejected';
+  if (status === 'Filed' || status === 'Issued') {
+    return reviewStatus === 'ApprovedForUse';
   }
   return true;
 }
@@ -563,29 +563,29 @@ function validStatusReviewPair(
 function validateDocumentRecord(
   record: CoreDocumentServiceRecord,
   publicReferenceRecord: CoreReferenceRecord,
-  registry: CoreReferenceRegistry,
+  registry: CoreReferenceRegistry
 ): CoreBehaviorResult<CoreDocumentServiceRecord> {
   if (!included(CORE_DOCUMENT_TYPES, record.documentType)) {
-    return safe("InvalidDocumentType", "Document type is invalid.");
+    return safe('InvalidDocumentType', 'Document type is invalid.');
   }
   if (!included(CORE_DOCUMENT_STATUSES, record.documentStatus)) {
-    return safe("InvalidDocumentStatus", "Document status is invalid.");
+    return safe('InvalidDocumentStatus', 'Document status is invalid.');
   }
   if (
     !included(CORE_DOCUMENT_REVIEW_STATUSES, record.reviewStatus) ||
     !validStatusReviewPair(record.documentStatus, record.reviewStatus)
   ) {
     return safe(
-      "InvalidDocumentReviewStatus",
-      "Document review status is invalid.",
+      'InvalidDocumentReviewStatus',
+      'Document review status is invalid.'
     );
   }
   if (
     !included(CORE_DOCUMENT_CONFIDENTIALITY_LEVELS, record.confidentialityLevel)
   ) {
     return safe(
-      "InvalidDocumentConfidentialityLevel",
-      "Document confidentiality level is invalid.",
+      'InvalidDocumentConfidentialityLevel',
+      'Document confidentiality level is invalid.'
     );
   }
   if (
@@ -598,23 +598,23 @@ function validateDocumentRecord(
       CORE_DOCUMENT_STATUS_TO_OBJECT_STATUS[record.documentStatus]
   ) {
     return safe(
-      "DocumentObjectMismatch",
-      "Document Object foundation does not match.",
-      record.objectRecord.auditMetadata.correlationId,
+      'DocumentObjectMismatch',
+      'Document Object foundation does not match.',
+      record.objectRecord.auditMetadata.correlationId
     );
   }
   if (!opaque.test(record.titleReference)) {
     return safe(
-      "DocumentTitleRequired",
-      "Document title reference is required.",
-      record.objectRecord.auditMetadata.correlationId,
+      'DocumentTitleRequired',
+      'Document title reference is required.',
+      record.objectRecord.auditMetadata.correlationId
     );
   }
   if (!opaque.test(record.sourceReference)) {
     return safe(
-      "DocumentSourceReferenceRequired",
-      "Document source reference is required.",
-      record.objectRecord.auditMetadata.correlationId,
+      'DocumentSourceReferenceRequired',
+      'Document source reference is required.',
+      record.objectRecord.auditMetadata.correlationId
     );
   }
   const hasFile =
@@ -625,13 +625,13 @@ function validateDocumentRecord(
   if (
     hasFile !== hasFileSource ||
     (hasFile &&
-      (!controlledReference.test(record.fileReferenceId ?? "") ||
-        !opaque.test(record.fileSourceReference ?? "")))
+      (!controlledReference.test(record.fileReferenceId ?? '') ||
+        !opaque.test(record.fileSourceReference ?? '')))
   ) {
     return safe(
-      "DocumentFileReferenceRequired",
-      "Document file reference and source must be linked together.",
-      record.objectRecord.auditMetadata.correlationId,
+      'DocumentFileReferenceRequired',
+      'Document file reference and source must be linked together.',
+      record.objectRecord.auditMetadata.correlationId
     );
   }
   if (
@@ -640,23 +640,23 @@ function validateDocumentRecord(
     !opaque.test(record.versionReference)
   ) {
     return safe(
-      "ValidationFailed",
-      "Document version reference is invalid.",
-      record.objectRecord.auditMetadata.correlationId,
+      'ValidationFailed',
+      'Document version reference is invalid.',
+      record.objectRecord.auditMetadata.correlationId
     );
   }
   const objectValidation = validateCoreMvpObjectBaseRecord(
     record.objectRecord,
     {
       publicReferenceRecord,
-      relatedReferenceRegistry: registry,
-    },
+      relatedReferenceRegistry: registry
+    }
   );
   if (!objectValidation.ok) {
     return safe(
-      "ValidationFailed",
-      "Document Object base record is invalid.",
-      record.objectRecord.auditMetadata.correlationId,
+      'ValidationFailed',
+      'Document Object base record is invalid.',
+      record.objectRecord.auditMetadata.correlationId
     );
   }
   return { ok: true, value: immutable(record) };
@@ -664,7 +664,7 @@ function validateDocumentRecord(
 
 function validationResult(
   record: CoreDocumentServiceRecord,
-  restrictedFieldsOmitted: boolean,
+  restrictedFieldsOmitted: boolean
 ): CoreDocumentValidationResult {
   const base = {
     documentReferenceId: record.objectRecord.publicReferenceId,
@@ -672,53 +672,53 @@ function validationResult(
     documentStatus: record.documentStatus,
     reviewStatus: record.reviewStatus,
     versionReference: record.versionReference ?? null,
-    fileLinked: Boolean(record.fileReferenceId),
+    fileLinked: Boolean(record.fileReferenceId)
   } as const;
   if (
-    ["HighlyConfidential", "Restricted"].includes(
-      record.confidentialityLevel,
+    ['HighlyConfidential', 'Restricted'].includes(
+      record.confidentialityLevel
     ) &&
     restrictedFieldsOmitted
   ) {
     return {
       ...base,
       isValid: false,
-      reasonCode: "ConfidentialityRestricted",
+      reasonCode: 'ConfidentialityRestricted',
       reviewRequired: false,
-      confidentialityHint: "Restricted",
+      confidentialityHint: 'Restricted'
     };
   }
-  if (record.documentStatus === "Archived") {
+  if (record.documentStatus === 'Archived') {
     return {
       ...base,
       isValid: false,
-      reasonCode: "Archived",
+      reasonCode: 'Archived',
       reviewRequired: false,
-      confidentialityHint: "Visible",
+      confidentialityHint: 'Visible'
     };
   }
   if (
-    record.documentStatus === "DeletedReferenceOnly" ||
-    record.documentStatus === "Rejected"
+    record.documentStatus === 'DeletedReferenceOnly' ||
+    record.documentStatus === 'Rejected'
   ) {
     return {
       ...base,
       isValid: false,
       reasonCode:
-        record.documentStatus === "Rejected" ? "Rejected" : "InvalidReference",
+        record.documentStatus === 'Rejected' ? 'Rejected' : 'InvalidReference',
       reviewRequired: false,
-      confidentialityHint: "Visible",
+      confidentialityHint: 'Visible'
     };
   }
   const reviewRequired =
-    record.documentStatus !== "Approved" ||
-    record.reviewStatus !== "ApprovedForUse";
+    record.documentStatus !== 'Approved' ||
+    record.reviewStatus !== 'ApprovedForUse';
   return {
     ...base,
     isValid: true,
-    reasonCode: reviewRequired ? "ReviewRequired" : "Valid",
+    reasonCode: reviewRequired ? 'ReviewRequired' : 'Valid',
     reviewRequired,
-    confidentialityHint: "Visible",
+    confidentialityHint: 'Visible'
   };
 }
 
@@ -726,13 +726,13 @@ function updateObjectRecord(
   current: CoreDocumentServiceRecord,
   now: string,
   actorReferenceId: string | null,
-  documentStatus: CoreDocumentStatus,
+  documentStatus: CoreDocumentStatus
 ): CoreBehaviorResult<CoreMvpObjectBaseRecord> {
   if (current.objectRecord.version === undefined) {
     return safe(
-      "ValidationFailed",
-      "Document Object version is required.",
-      current.objectRecord.auditMetadata.correlationId,
+      'ValidationFailed',
+      'Document Object version is required.',
+      current.objectRecord.auditMetadata.correlationId
     );
   }
   return {
@@ -745,13 +745,13 @@ function updateObjectRecord(
         updatedAt: now,
         updatedByReferenceId:
           actorReferenceId ??
-          current.objectRecord.auditMetadata.createdByReferenceId,
+          current.objectRecord.auditMetadata.createdByReferenceId
       },
       version: {
         ...current.objectRecord.version,
-        updatedAt: now,
-      },
-    },
+        updatedAt: now
+      }
+    }
   };
 }
 
@@ -768,14 +768,14 @@ export class CoreInMemoryDocumentServiceStore implements CoreDocumentServiceStor
   }
 
   insert(
-    record: CoreDocumentServiceRecord,
+    record: CoreDocumentServiceRecord
   ): CoreBehaviorResult<CoreDocumentServiceRecord> {
     const id = record.objectRecord.publicReferenceId;
     if (this.#records.has(id)) {
       return safe(
-        "DocumentAlreadyExists",
-        "Document already exists.",
-        record.objectRecord.auditMetadata.correlationId,
+        'DocumentAlreadyExists',
+        'Document already exists.',
+        record.objectRecord.auditMetadata.correlationId
       );
     }
     const stored = immutable(record);
@@ -784,14 +784,14 @@ export class CoreInMemoryDocumentServiceStore implements CoreDocumentServiceStor
   }
 
   replace(
-    record: CoreDocumentServiceRecord,
+    record: CoreDocumentServiceRecord
   ): CoreBehaviorResult<CoreDocumentServiceRecord> {
     const id = record.objectRecord.publicReferenceId;
     if (!this.#records.has(id)) {
       return safe(
-        "DocumentNotFound",
-        "Document was not found.",
-        record.objectRecord.auditMetadata.correlationId,
+        'DocumentNotFound',
+        'Document was not found.',
+        record.objectRecord.auditMetadata.correlationId
       );
     }
     const stored = immutable(record);
@@ -823,31 +823,31 @@ export class CoreDocumentService {
   }): CoreBehaviorResult<CoreDocumentServiceRecord> {
     const target = input.objectRecord.publicReferenceId;
     const governed = ensureGovernance(input.governance, {
-      operation: "document.create",
-      permission: "document:create",
-      policyScope: "document.write",
-      target,
+      operation: 'document.create',
+      permission: 'document:create',
+      policyScope: 'document.write',
+      target
     });
     if (!governed.ok) return governed;
     const scope = enforceOrganizationScope(
       input.governance,
-      organizationScopeOf(input.objectRecord),
+      organizationScopeOf(input.objectRecord)
     );
     if (!scope.ok) return scope;
     if (
-      input.documentStatus !== "Draft" ||
-      input.reviewStatus !== "Unreviewed"
+      input.documentStatus !== 'Draft' ||
+      input.reviewStatus !== 'Unreviewed'
     ) {
       return safe(
-        "InvalidDocumentStatus",
-        "Document creation must start as Draft and Unreviewed.",
-        input.governance.correlationId,
+        'InvalidDocumentStatus',
+        'Document creation must start as Draft and Unreviewed.',
+        input.governance.correlationId
       );
     }
     const registered = this.deps.relatedReferenceRegistry.resolve({
       referenceId: input.publicReferenceRecord.referenceId,
       expectedObjectType: DOCUMENT_OBJECT_TYPE,
-      expectedDomain: DOCUMENT_DOMAIN,
+      expectedDomain: DOCUMENT_DOMAIN
     });
     if (
       !registered.ok ||
@@ -855,16 +855,16 @@ export class CoreDocumentService {
       !referenceMatches(input.publicReferenceRecord, registered.value)
     ) {
       return safe(
-        "InvalidDocumentReference",
-        "Document reference is invalid.",
-        input.governance.correlationId,
+        'InvalidDocumentReference',
+        'Document reference is invalid.',
+        input.governance.correlationId
       );
     }
     const idempotent = this.deps.idempotencyRegistry.executeBehavior(
       {
         idempotencyKey: input.idempotencyKey,
-        idempotencyScope: idempotencyScope(input.governance, "createDocument"),
-        operationName: "createDocument",
+        idempotencyScope: idempotencyScope(input.governance, 'createDocument'),
+        operationName: 'createDocument',
         request: {
           objectRecord: input.objectRecord,
           publicReferenceRecord: input.publicReferenceRecord,
@@ -874,18 +874,18 @@ export class CoreDocumentService {
           reviewStatus: input.reviewStatus,
           confidentialityLevel: input.confidentialityLevel,
           versionReference: input.versionReference ?? null,
-          sourceReference: input.sourceReference,
+          sourceReference: input.sourceReference
         },
         permissionAllowed: true,
         policyAllowed: true,
-        correlationId: input.governance.correlationId,
+        correlationId: input.governance.correlationId
       },
       () => {
         if (this.deps.store.get(target)) {
           return safe(
-            "DocumentAlreadyExists",
-            "Document already exists.",
-            input.governance.correlationId,
+            'DocumentAlreadyExists',
+            'Document already exists.',
+            input.governance.correlationId
           );
         }
         const record: CoreDocumentServiceRecord = {
@@ -899,20 +899,20 @@ export class CoreDocumentService {
           fileReferenceId: null,
           fileSourceReference: null,
           versionReference: input.versionReference ?? null,
-          sourceReference: input.sourceReference,
+          sourceReference: input.sourceReference
         };
         const valid = validateDocumentRecord(
           record,
           input.publicReferenceRecord,
-          this.deps.relatedReferenceRegistry,
+          this.deps.relatedReferenceRegistry
         );
         if (!valid.ok) return valid;
         const now = this.deps.now();
         if (!validUtcTimestamp(now)) {
           return safe(
-            "ValidationFailed",
-            "Clock value is invalid.",
-            input.governance.correlationId,
+            'ValidationFailed',
+            'Clock value is invalid.',
+            input.governance.correlationId
           );
         }
         let inserted: CoreBehaviorResult<CoreDocumentServiceRecord>;
@@ -920,9 +920,9 @@ export class CoreDocumentService {
           inserted = this.deps.store.insert(valid.value);
         } catch {
           return safe(
-            "InternalError",
-            "Document Service dependency failed safely.",
-            input.governance.correlationId,
+            'InternalError',
+            'Document Service dependency failed safely.',
+            input.governance.correlationId
           );
         }
         if (!inserted.ok) return inserted;
@@ -931,11 +931,11 @@ export class CoreDocumentService {
           event = this.deps.eventTracePort.append(
             eventTrace({
               id: this.deps.eventIdFactory(
-                "createDocument",
+                'createDocument',
                 target,
-                input.idempotencyKey ?? "",
+                input.idempotencyKey ?? ''
               ),
-              type: "core-object-created",
+              type: 'core-object-created',
               action: CORE_EVENT_ACTIONS.created,
               documentReferenceId: target,
               occurredAt: now,
@@ -947,30 +947,30 @@ export class CoreDocumentService {
                 documentStatus: valid.value.documentStatus,
                 reviewStatus: valid.value.reviewStatus,
                 confidentialityLevel: valid.value.confidentialityLevel,
-                fileLinked: false,
-              },
-            }),
+                fileLinked: false
+              }
+            })
           );
         } catch {
-          event = safe("EventTraceFailed", "Event trace failed.");
+          event = safe('EventTraceFailed', 'Event trace failed.');
         }
         if (!event.ok) {
           const rollback = this.deps.store.remove(target);
           if (!rollback.ok) {
             return safe(
-              "InternalError",
-              "Document create rollback failed.",
-              input.governance.correlationId,
+              'InternalError',
+              'Document create rollback failed.',
+              input.governance.correlationId
             );
           }
           return safe(
-            "EventTraceFailed",
-            "Event trace failed.",
-            input.governance.correlationId,
+            'EventTraceFailed',
+            'Event trace failed.',
+            input.governance.correlationId
           );
         }
         return inserted;
-      },
+      }
     );
     return idempotent.ok
       ? { ok: true, value: idempotent.value.result }
@@ -982,28 +982,28 @@ export class CoreDocumentService {
     readonly governance: CoreDocumentGovernanceContext;
   }): CoreBehaviorResult<CoreDocumentServiceRecord> {
     const governed = ensureGovernance(input.governance, {
-      operation: "document.read",
-      permission: "document:read",
-      policyScope: "document.read",
-      target: input.documentReferenceId,
+      operation: 'document.read',
+      permission: 'document:read',
+      policyScope: 'document.read',
+      target: input.documentReferenceId
     });
     if (!governed.ok) return governed;
     const reference = validateDocumentReferenceRecord(
       this.deps.relatedReferenceRegistry,
-      input.documentReferenceId,
+      input.documentReferenceId
     );
     if (!reference.ok) return reference;
     const record = this.deps.store.get(input.documentReferenceId);
     if (!record) {
       return safe(
-        "DocumentNotFound",
-        "Document was not found.",
-        input.governance.correlationId,
+        'DocumentNotFound',
+        'Document was not found.',
+        input.governance.correlationId
       );
     }
     const scope = enforceOrganizationScope(
       input.governance,
-      organizationScopeOf(record),
+      organizationScopeOf(record)
     );
     if (!scope.ok) return scope;
     return { ok: true, value: immutable(record) };
@@ -1022,31 +1022,31 @@ export class CoreDocumentService {
       readonly cursor?: string | null;
       readonly limit?: number | null;
       readonly sortField?: string | null;
-      readonly sortDirection?: "Asc" | "Desc" | null;
+      readonly sortDirection?: 'Asc' | 'Desc' | null;
       readonly includeTotalCount?: boolean | null;
     };
     readonly governance: CoreDocumentGovernanceContext;
   }): CoreBehaviorResult<CorePaginatedResult<CoreDocumentListSummary>> {
     const governed = ensureGovernance(input.governance, {
-      operation: "document.list",
-      permission: "document:list",
-      policyScope: "document.list",
-      target: CORE_DOCUMENT_COLLECTION_TARGET,
+      operation: 'document.list',
+      permission: 'document:list',
+      policyScope: 'document.list',
+      target: CORE_DOCUMENT_COLLECTION_TARGET
     });
     if (!governed.ok) return governed;
     if (
       input.filters?.documentType !== undefined &&
       !included(CORE_DOCUMENT_TYPES, input.filters.documentType)
     ) {
-      return safe("InvalidDocumentType", "Document type filter is invalid.");
+      return safe('InvalidDocumentType', 'Document type filter is invalid.');
     }
     if (
       input.filters?.documentStatus !== undefined &&
       !included(CORE_DOCUMENT_STATUSES, input.filters.documentStatus)
     ) {
       return safe(
-        "InvalidDocumentStatus",
-        "Document status filter is invalid.",
+        'InvalidDocumentStatus',
+        'Document status filter is invalid.'
       );
     }
     if (
@@ -1054,39 +1054,39 @@ export class CoreDocumentService {
       !included(CORE_DOCUMENT_REVIEW_STATUSES, input.filters.reviewStatus)
     ) {
       return safe(
-        "InvalidDocumentReviewStatus",
-        "Document review filter is invalid.",
+        'InvalidDocumentReviewStatus',
+        'Document review filter is invalid.'
       );
     }
     if (
       input.filters?.confidentialityLevel !== undefined &&
       !included(
         CORE_DOCUMENT_CONFIDENTIALITY_LEVELS,
-        input.filters.confidentialityLevel,
+        input.filters.confidentialityLevel
       )
     ) {
       return safe(
-        "InvalidDocumentConfidentialityLevel",
-        "Document confidentiality filter is invalid.",
+        'InvalidDocumentConfidentialityLevel',
+        'Document confidentiality filter is invalid.'
       );
     }
     if (
       input.filters?.publicReferenceId !== undefined &&
-      (typeof input.filters.publicReferenceId !== "string" ||
+      (typeof input.filters.publicReferenceId !== 'string' ||
         !controlledReference.test(input.filters.publicReferenceId))
     ) {
       return safe(
-        "InvalidDocumentReference",
-        "Document list reference filter is invalid.",
+        'InvalidDocumentReference',
+        'Document list reference filter is invalid.'
       );
     }
     if (
       input.filters?.fileLinked !== undefined &&
-      typeof input.filters.fileLinked !== "boolean"
+      typeof input.filters.fileLinked !== 'boolean'
     ) {
       return safe(
-        "DocumentFileReferenceRequired",
-        "Document file-linked filter is invalid.",
+        'DocumentFileReferenceRequired',
+        'Document file-linked filter is invalid.'
       );
     }
     const items = this.deps.store
@@ -1094,7 +1094,7 @@ export class CoreDocumentService {
       .filter(
         (record) =>
           organizationScopeOf(record) ===
-          (input.governance.authorizedOrganizationReferenceId ?? null),
+          (input.governance.authorizedOrganizationReferenceId ?? null)
       )
       .filter(
         (record) =>
@@ -1111,7 +1111,7 @@ export class CoreDocumentService {
             record.objectRecord.publicReferenceId ===
               input.filters.publicReferenceId) &&
           (input.filters?.fileLinked === undefined ||
-            Boolean(record.fileReferenceId) === input.filters.fileLinked),
+            Boolean(record.fileReferenceId) === input.filters.fileLinked)
       )
       .map((record): CoreDocumentListSummary => ({
         publicReferenceId: record.objectRecord.publicReferenceId,
@@ -1123,7 +1123,7 @@ export class CoreDocumentService {
         versionReferencePresent: Boolean(record.versionReference),
         genericObjectStatus: record.objectRecord.status,
         createdAt: record.objectRecord.auditMetadata.createdAt,
-        updatedAt: record.objectRecord.auditMetadata.updatedAt,
+        updatedAt: record.objectRecord.auditMetadata.updatedAt
       }));
     return paginateCoreItems(
       items,
@@ -1133,22 +1133,22 @@ export class CoreDocumentService {
         policyAllowed: true,
         actorReferenceId: input.governance.permission.actorReferenceId,
         allowedSortFields: [
-          "publicReferenceId",
-          "documentType",
-          "documentStatus",
-          "reviewStatus",
-          "confidentialityLevel",
-          "fileLinked",
+          'publicReferenceId',
+          'documentType',
+          'documentStatus',
+          'reviewStatus',
+          'confidentialityLevel',
+          'fileLinked'
         ],
         totalCountAllowed:
           input.governance.policy.restrictedFieldsOmitted === false,
-        correlationId: input.governance.correlationId,
+        correlationId: input.governance.correlationId
       },
       {
         queryKey: JSON.stringify(input.filters ?? {}),
         cursorSecret: this.deps.cursorSecret,
-        visible: () => true,
-      },
+        visible: () => true
+      }
     );
   }
 
@@ -1159,21 +1159,21 @@ export class CoreDocumentService {
     readonly governance: CoreDocumentGovernanceContext;
   }): CoreBehaviorResult<CoreDocumentValidationResult> {
     const governed = ensureGovernance(input.governance, {
-      operation: "document.validate_reference",
-      permission: "document:validate_reference",
-      policyScope: "document.reference",
-      target: input.documentReferenceId,
+      operation: 'document.validate_reference',
+      permission: 'document:validate_reference',
+      policyScope: 'document.reference',
+      target: input.documentReferenceId
     });
     if (!governed.ok) return governed;
     const requester = validateRequestingService(
       String(input.requestingDomain),
       input.requestingService,
-      this.deps.requestingServiceDirectory,
+      this.deps.requestingServiceDirectory
     );
     if (!requester.ok) return requester;
     const reference = validateDocumentReferenceRecord(
       this.deps.relatedReferenceRegistry,
-      input.documentReferenceId,
+      input.documentReferenceId
     );
     if (!reference.ok) {
       return {
@@ -1185,11 +1185,11 @@ export class CoreDocumentService {
           documentStatus: null,
           reviewStatus: null,
           versionReference: null,
-          reasonCode: "InvalidReference",
+          reasonCode: 'InvalidReference',
           reviewRequired: false,
           confidentialityHint: null,
-          fileLinked: false,
-        },
+          fileLinked: false
+        }
       };
     }
     const record = this.deps.store.get(input.documentReferenceId);
@@ -1207,11 +1207,11 @@ export class CoreDocumentService {
           documentStatus: null,
           reviewStatus: null,
           versionReference: null,
-          reasonCode: "NotFound",
+          reasonCode: 'NotFound',
           reviewRequired: false,
           confidentialityHint: null,
-          fileLinked: false,
-        },
+          fileLinked: false
+        }
       };
     }
     return {
@@ -1219,9 +1219,9 @@ export class CoreDocumentService {
       value: immutable(
         validationResult(
           record,
-          input.governance.policy.restrictedFieldsOmitted,
-        ),
-      ),
+          input.governance.policy.restrictedFieldsOmitted
+        )
+      )
     };
   }
 
@@ -1233,10 +1233,10 @@ export class CoreDocumentService {
     readonly governance: CoreDocumentGovernanceContext;
   }): CoreBehaviorResult<CoreDocumentServiceRecord> {
     const governed = ensureGovernance(input.governance, {
-      operation: "document.link_file",
-      permission: "document:link_file",
-      policyScope: "document.file",
-      target: input.documentReferenceId,
+      operation: 'document.link_file',
+      permission: 'document:link_file',
+      policyScope: 'document.file',
+      target: input.documentReferenceId
     });
     if (!governed.ok) return governed;
     if (
@@ -1244,21 +1244,21 @@ export class CoreDocumentService {
       !opaque.test(input.fileSourceReference)
     ) {
       return safe(
-        "DocumentFileReferenceRequired",
-        "Document file reference and source are required.",
-        input.governance.correlationId,
+        'DocumentFileReferenceRequired',
+        'Document file reference and source are required.',
+        input.governance.correlationId
       );
     }
     return this.mutate(
       {
-        operationName: "linkDocumentFile",
+        operationName: 'linkDocumentFile',
         idempotencyKey: input.idempotencyKey,
         documentReferenceId: input.documentReferenceId,
         governance: input.governance,
         request: {
           fileReferenceId: input.fileReferenceId,
-          fileSourceReference: input.fileSourceReference,
-        },
+          fileSourceReference: input.fileSourceReference
+        }
       },
       (current, now) => {
         if (
@@ -1268,25 +1268,25 @@ export class CoreDocumentService {
             current.fileSourceReference !== input.fileSourceReference)
         ) {
           return safe(
-            "DocumentFileAlreadyLinked",
-            "Document already has a different file reference.",
-            input.governance.correlationId,
+            'DocumentFileAlreadyLinked',
+            'Document already has a different file reference.',
+            input.governance.correlationId
           );
         }
         if (
-          !["Draft", "Received", "Uploaded"].includes(current.documentStatus)
+          !['Draft', 'Received', 'Uploaded'].includes(current.documentStatus)
         ) {
           return safe(
-            "InvalidDocumentTransition",
-            "Document file cannot be linked in the current status.",
-            input.governance.correlationId,
+            'InvalidDocumentTransition',
+            'Document file cannot be linked in the current status.',
+            input.governance.correlationId
           );
         }
         const objectRecord = updateObjectRecord(
           current,
           now,
           input.governance.permission.actorReferenceId,
-          "Uploaded",
+          'Uploaded'
         );
         if (!objectRecord.ok) return objectRecord;
         return {
@@ -1296,20 +1296,20 @@ export class CoreDocumentService {
               ...current,
               fileReferenceId: input.fileReferenceId,
               fileSourceReference: input.fileSourceReference,
-              documentStatus: "Uploaded",
-              objectRecord: objectRecord.value,
+              documentStatus: 'Uploaded',
+              objectRecord: objectRecord.value
             },
-            eventType: "core-object-updated",
+            eventType: 'core-object-updated',
             eventAction: CORE_EVENT_ACTIONS.updated,
             eventPayload: {
               documentReferenceId: input.documentReferenceId,
               fileReferenceId: input.fileReferenceId,
-              documentStatus: "Uploaded",
-              fileLinked: true,
-            },
-          },
+              documentStatus: 'Uploaded',
+              fileLinked: true
+            }
+          }
         };
-      },
+      }
     );
   }
 
@@ -1320,42 +1320,42 @@ export class CoreDocumentService {
     readonly governance: CoreDocumentGovernanceContext;
   }): CoreBehaviorResult<CoreDocumentServiceRecord> {
     const governed = ensureGovernance(input.governance, {
-      operation: "document.require_review",
-      permission: "document:require_review",
-      policyScope: "document.review",
-      target: input.documentReferenceId,
+      operation: 'document.require_review',
+      permission: 'document:require_review',
+      policyScope: 'document.review',
+      target: input.documentReferenceId
     });
     if (!governed.ok) return governed;
     if (!opaque.test(input.reviewNoteReference)) {
       return safe(
-        "DocumentReviewNoteRequired",
-        "Document review note reference is required.",
-        input.governance.correlationId,
+        'DocumentReviewNoteRequired',
+        'Document review note reference is required.',
+        input.governance.correlationId
       );
     }
     return this.mutate(
       {
-        operationName: "requireDocumentReview",
+        operationName: 'requireDocumentReview',
         idempotencyKey: input.idempotencyKey,
         documentReferenceId: input.documentReferenceId,
         governance: input.governance,
-        request: { reviewNoteReference: input.reviewNoteReference },
+        request: { reviewNoteReference: input.reviewNoteReference }
       },
       (current, now) => {
         if (
-          !["Draft", "Received", "Uploaded"].includes(current.documentStatus)
+          !['Draft', 'Received', 'Uploaded'].includes(current.documentStatus)
         ) {
           return safe(
-            "InvalidDocumentTransition",
-            "Document cannot require review in the current status.",
-            input.governance.correlationId,
+            'InvalidDocumentTransition',
+            'Document cannot require review in the current status.',
+            input.governance.correlationId
           );
         }
         const objectRecord = updateObjectRecord(
           current,
           now,
           input.governance.permission.actorReferenceId,
-          "ReviewRequired",
+          'ReviewRequired'
         );
         if (!objectRecord.ok) return objectRecord;
         return {
@@ -1363,22 +1363,22 @@ export class CoreDocumentService {
           value: {
             record: {
               ...current,
-              documentStatus: "ReviewRequired",
-              reviewStatus: "ReviewRequired",
-              objectRecord: objectRecord.value,
+              documentStatus: 'ReviewRequired',
+              reviewStatus: 'ReviewRequired',
+              objectRecord: objectRecord.value
             },
-            eventType: "core-object-status-changed",
+            eventType: 'core-object-status-changed',
             eventAction: CORE_EVENT_ACTIONS.requested,
             eventPayload: {
               documentReferenceId: input.documentReferenceId,
               previousStatus: current.documentStatus,
-              newStatus: "ReviewRequired",
-              reviewStatus: "ReviewRequired",
-              reviewNoteReference: input.reviewNoteReference,
-            },
-          },
+              newStatus: 'ReviewRequired',
+              reviewStatus: 'ReviewRequired',
+              reviewNoteReference: input.reviewNoteReference
+            }
+          }
         };
-      },
+      }
     );
   }
 
@@ -1390,66 +1390,66 @@ export class CoreDocumentService {
     readonly governance: CoreDocumentGovernanceContext;
   }): CoreBehaviorResult<CoreDocumentServiceRecord> {
     const governed = ensureGovernance(input.governance, {
-      operation: "document.review",
-      permission: "document:review",
-      policyScope: "document.review",
-      target: input.documentReferenceId,
+      operation: 'document.review',
+      permission: 'document:review',
+      policyScope: 'document.review',
+      target: input.documentReferenceId
     });
     if (!governed.ok) return governed;
     if (!opaque.test(input.reviewNoteReference)) {
       return safe(
-        "DocumentReviewNoteRequired",
-        "Document review note reference is required.",
-        input.governance.correlationId,
+        'DocumentReviewNoteRequired',
+        'Document review note reference is required.',
+        input.governance.correlationId
       );
     }
     if (
-      input.governance.policy.policyDecision !== "HumanReviewRequired" ||
+      input.governance.policy.policyDecision !== 'HumanReviewRequired' ||
       !input.governance.review.humanReviewRequired ||
-      input.governance.review.reviewStatus !== "Completed" ||
-      input.governance.review.reviewDecision !== "Approved" ||
+      input.governance.review.reviewStatus !== 'Completed' ||
+      input.governance.review.reviewDecision !== 'Approved' ||
       !input.governance.review.reviewerUserReferenceId
     ) {
       return safe(
-        "HumanReviewRequired",
-        "Completed human review is required.",
-        input.governance.correlationId,
+        'HumanReviewRequired',
+        'Completed human review is required.',
+        input.governance.correlationId
       );
     }
     return this.mutate(
       {
-        operationName: "reviewDocument",
+        operationName: 'reviewDocument',
         idempotencyKey: input.idempotencyKey,
         documentReferenceId: input.documentReferenceId,
         governance: input.governance,
         request: {
           targetReviewStatus: input.targetReviewStatus,
-          reviewNoteReference: input.reviewNoteReference,
-        },
+          reviewNoteReference: input.reviewNoteReference
+        }
       },
       (current, now) => {
-        if (current.documentStatus !== "ReviewRequired") {
+        if (current.documentStatus !== 'ReviewRequired') {
           return safe(
-            "InvalidDocumentTransition",
-            "Document review requires ReviewRequired status.",
-            input.governance.correlationId,
+            'InvalidDocumentTransition',
+            'Document review requires ReviewRequired status.',
+            input.governance.correlationId
           );
         }
         const statusByReview: Record<
           CoreDocumentReviewDecisionStatus,
           CoreDocumentStatus
         > = {
-          HumanReviewed: "Reviewed",
-          ApprovedForUse: "Approved",
-          Rejected: "Rejected",
-          NeedsRevision: "ReviewRequired",
+          HumanReviewed: 'Reviewed',
+          ApprovedForUse: 'Approved',
+          Rejected: 'Rejected',
+          NeedsRevision: 'ReviewRequired'
         };
         const targetStatus = statusByReview[input.targetReviewStatus];
         const objectRecord = updateObjectRecord(
           current,
           now,
           input.governance.permission.actorReferenceId,
-          targetStatus,
+          targetStatus
         );
         if (!objectRecord.ok) return objectRecord;
         return {
@@ -1459,13 +1459,13 @@ export class CoreDocumentService {
               ...current,
               documentStatus: targetStatus,
               reviewStatus: input.targetReviewStatus,
-              objectRecord: objectRecord.value,
+              objectRecord: objectRecord.value
             },
-            eventType: "core-object-updated",
+            eventType: 'core-object-updated',
             eventAction:
-              input.targetReviewStatus === "ApprovedForUse"
+              input.targetReviewStatus === 'ApprovedForUse'
                 ? CORE_EVENT_ACTIONS.approved
-                : input.targetReviewStatus === "Rejected"
+                : input.targetReviewStatus === 'Rejected'
                   ? CORE_EVENT_ACTIONS.rejected
                   : CORE_EVENT_ACTIONS.reviewed,
             eventPayload: {
@@ -1473,11 +1473,11 @@ export class CoreDocumentService {
               previousStatus: current.documentStatus,
               newStatus: targetStatus,
               reviewStatus: input.targetReviewStatus,
-              reviewNoteReference: input.reviewNoteReference,
-            },
-          },
+              reviewNoteReference: input.reviewNoteReference
+            }
+          }
         };
-      },
+      }
     );
   }
 
@@ -1489,51 +1489,51 @@ export class CoreDocumentService {
     readonly governance: CoreDocumentGovernanceContext;
   }): CoreBehaviorResult<CoreDocumentServiceRecord> {
     const governed = ensureGovernance(input.governance, {
-      operation: "document.change_status",
-      permission: "document:change_status",
-      policyScope: "document.lifecycle",
-      target: input.documentReferenceId,
+      operation: 'document.change_status',
+      permission: 'document:change_status',
+      policyScope: 'document.lifecycle',
+      target: input.documentReferenceId
     });
     if (!governed.ok) return governed;
     if (!included(CORE_DOCUMENT_STATUSES, input.targetStatus)) {
       return safe(
-        "InvalidDocumentStatus",
-        "Document target status is invalid.",
-        input.governance.correlationId,
+        'InvalidDocumentStatus',
+        'Document target status is invalid.',
+        input.governance.correlationId
       );
     }
     return this.mutate(
       {
-        operationName: "changeDocumentStatus",
+        operationName: 'changeDocumentStatus',
         idempotencyKey: input.idempotencyKey,
         documentReferenceId: input.documentReferenceId,
         governance: input.governance,
         request: {
           targetStatus: input.targetStatus,
-          reasonReference: input.reasonReference ?? null,
-        },
+          reasonReference: input.reasonReference ?? null
+        }
       },
       (current, now) => {
         if (
           !lifecycleTransitions.has(
-            `${current.documentStatus}->${input.targetStatus}`,
+            `${current.documentStatus}->${input.targetStatus}`
           )
         ) {
           return safe(
-            "InvalidDocumentTransition",
-            "Document status transition is invalid.",
-            input.governance.correlationId,
+            'InvalidDocumentTransition',
+            'Document status transition is invalid.',
+            input.governance.correlationId
           );
         }
         if (
-          input.targetStatus === "Archived" &&
-          (typeof input.reasonReference !== "string" ||
+          input.targetStatus === 'Archived' &&
+          (typeof input.reasonReference !== 'string' ||
             !opaque.test(input.reasonReference))
         ) {
           return safe(
-            "DocumentReasonReferenceRequired",
-            "Document archive reason reference is required.",
-            input.governance.correlationId,
+            'DocumentReasonReferenceRequired',
+            'Document archive reason reference is required.',
+            input.governance.correlationId
           );
         }
         const nextReviewStatus = current.reviewStatus;
@@ -1541,7 +1541,7 @@ export class CoreDocumentService {
           current,
           now,
           input.governance.permission.actorReferenceId,
-          input.targetStatus,
+          input.targetStatus
         );
         if (!objectRecord.ok) return objectRecord;
         return {
@@ -1551,11 +1551,11 @@ export class CoreDocumentService {
               ...current,
               documentStatus: input.targetStatus,
               reviewStatus: nextReviewStatus,
-              objectRecord: objectRecord.value,
+              objectRecord: objectRecord.value
             },
-            eventType: "core-object-status-changed",
+            eventType: 'core-object-status-changed',
             eventAction:
-              input.targetStatus === "Archived"
+              input.targetStatus === 'Archived'
                 ? CORE_EVENT_ACTIONS.archived
                 : CORE_EVENT_ACTIONS.statusChanged,
             eventPayload: {
@@ -1563,11 +1563,11 @@ export class CoreDocumentService {
               previousStatus: current.documentStatus,
               newStatus: input.targetStatus,
               reviewStatus: nextReviewStatus,
-              reasonReference: input.reasonReference ?? null,
-            },
-          },
+              reasonReference: input.reasonReference ?? null
+            }
+          }
         };
-      },
+      }
     );
   }
 
@@ -1575,7 +1575,7 @@ export class CoreDocumentService {
     input: {
       readonly operationName: Exclude<
         CoreDocumentMutationOperation,
-        "createDocument"
+        'createDocument'
       >;
       readonly idempotencyKey?: string | null;
       readonly documentReferenceId: string;
@@ -1584,30 +1584,30 @@ export class CoreDocumentService {
     },
     build: (
       current: CoreDocumentServiceRecord,
-      now: string,
+      now: string
     ) => CoreBehaviorResult<{
       readonly record: CoreDocumentServiceRecord;
       readonly eventType: string;
       readonly eventAction: (typeof CORE_EVENT_ACTIONS)[keyof typeof CORE_EVENT_ACTIONS];
       readonly eventPayload: Record<string, unknown>;
-    }>,
+    }>
   ): CoreBehaviorResult<CoreDocumentServiceRecord> {
     const reference = validateDocumentReferenceRecord(
       this.deps.relatedReferenceRegistry,
-      input.documentReferenceId,
+      input.documentReferenceId
     );
     if (!reference.ok) return reference;
     const existing = this.deps.store.get(input.documentReferenceId);
     if (!existing) {
       return safe(
-        "DocumentNotFound",
-        "Document was not found.",
-        input.governance.correlationId,
+        'DocumentNotFound',
+        'Document was not found.',
+        input.governance.correlationId
       );
     }
     const scope = enforceOrganizationScope(
       input.governance,
-      organizationScopeOf(existing),
+      organizationScopeOf(existing)
     );
     if (!scope.ok) return scope;
     const idempotent = this.deps.idempotencyRegistry.executeBehavior(
@@ -1615,24 +1615,24 @@ export class CoreDocumentService {
         idempotencyKey: input.idempotencyKey,
         idempotencyScope: idempotencyScope(
           input.governance,
-          input.operationName,
+          input.operationName
         ),
         operationName: input.operationName,
         request: {
           documentReferenceId: input.documentReferenceId,
-          ...input.request,
+          ...input.request
         },
         permissionAllowed: true,
         policyAllowed: true,
-        correlationId: input.governance.correlationId,
+        correlationId: input.governance.correlationId
       },
       () => {
         const current = this.deps.store.get(input.documentReferenceId);
         if (!current) {
           return safe(
-            "DocumentNotFound",
-            "Document was not found.",
-            input.governance.correlationId,
+            'DocumentNotFound',
+            'Document was not found.',
+            input.governance.correlationId
           );
         }
         const now = this.deps.now();
@@ -1642,9 +1642,9 @@ export class CoreDocumentService {
             new Date(current.objectRecord.auditMetadata.createdAt).getTime()
         ) {
           return safe(
-            "ValidationFailed",
-            "Clock value is invalid.",
-            input.governance.correlationId,
+            'ValidationFailed',
+            'Clock value is invalid.',
+            input.governance.correlationId
           );
         }
         const built = build(current, now);
@@ -1652,7 +1652,7 @@ export class CoreDocumentService {
         const valid = validateDocumentRecord(
           built.value.record,
           reference.value,
-          this.deps.relatedReferenceRegistry,
+          this.deps.relatedReferenceRegistry
         );
         if (!valid.ok) return valid;
         let replaced: CoreBehaviorResult<CoreDocumentServiceRecord>;
@@ -1660,9 +1660,9 @@ export class CoreDocumentService {
           replaced = this.deps.store.replace(valid.value);
         } catch {
           return safe(
-            "InternalError",
-            "Document Service dependency failed safely.",
-            input.governance.correlationId,
+            'InternalError',
+            'Document Service dependency failed safely.',
+            input.governance.correlationId
           );
         }
         if (!replaced.ok) return replaced;
@@ -1673,7 +1673,7 @@ export class CoreDocumentService {
               id: this.deps.eventIdFactory(
                 input.operationName,
                 input.documentReferenceId,
-                input.idempotencyKey ?? "",
+                input.idempotencyKey ?? ''
               ),
               type: built.value.eventType,
               action: built.value.eventAction,
@@ -1681,29 +1681,29 @@ export class CoreDocumentService {
               occurredAt: now,
               correlationId: input.governance.correlationId,
               auditContextReferenceId: input.governance.auditContextReferenceId,
-              payload: built.value.eventPayload,
-            }),
+              payload: built.value.eventPayload
+            })
           );
         } catch {
-          event = safe("EventTraceFailed", "Event trace failed.");
+          event = safe('EventTraceFailed', 'Event trace failed.');
         }
         if (!event.ok) {
           const rollback = this.deps.store.replace(current);
           if (!rollback.ok) {
             return safe(
-              "InternalError",
-              "Document mutation rollback failed.",
-              input.governance.correlationId,
+              'InternalError',
+              'Document mutation rollback failed.',
+              input.governance.correlationId
             );
           }
           return safe(
-            "EventTraceFailed",
-            "Event trace failed.",
-            input.governance.correlationId,
+            'EventTraceFailed',
+            'Event trace failed.',
+            input.governance.correlationId
           );
         }
         return replaced;
-      },
+      }
     );
     return idempotent.ok
       ? { ok: true, value: idempotent.value.result }

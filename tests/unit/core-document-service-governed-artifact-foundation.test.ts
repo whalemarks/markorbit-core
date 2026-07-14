@@ -24,7 +24,8 @@ describe('CORE-TASK-041 Document Service governed artifact foundation', () => {
     fixture.expected.eventTraceCountAfterArchiveReplay = 999;
     assert.ok(
       validateCoreDocumentServiceEvidenceFixture(fixture).some(
-        (entry) => entry.code === 'core.document_service.evidence_archive_failed'
+        (entry) =>
+          entry.code === 'core.document_service.evidence_archive_failed'
       )
     );
   });

@@ -451,7 +451,8 @@ export function validateCoreDocumentServiceEvidenceFixture(
     });
     if (
       !approvedReference.ok ||
-      approvedReference.value.reasonCode !== expected.approvedValidationReason ||
+      approvedReference.value.reasonCode !==
+        expected.approvedValidationReason ||
       !approvedReference.value.isValid ||
       approvedReference.value.reviewRequired
     ) {

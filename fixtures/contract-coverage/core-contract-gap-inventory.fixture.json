@@ -399,12 +399,10 @@
       "requirement": "must_build_now",
       "layer": "service",
       "sourcePath": "books/book-02-core-specification/core-specs/services/document-service.md",
-      "targetContractId": "core-service-document-reference-service-contract",
+      "targetContractId": "core-service-document-service-contract",
       "targetName": "Core Document Service Contract Skeleton",
       "disposition": "map_existing_skeleton",
-      "existingContractIds": [
-        "core-service-document-reference-service-contract"
-      ],
+      "existingContractIds": ["core-service-document-service-contract"],
       "implementationBatch": null,
       "targetDepth": "validated_skeleton"
     },
