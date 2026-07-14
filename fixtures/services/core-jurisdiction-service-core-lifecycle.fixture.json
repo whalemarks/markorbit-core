@@ -1,0 +1,79 @@
+{
+  "fixtureType": "core_jurisdiction_service_core_lifecycle",
+  "authority": {
+    "repository": "whalemarks/markorbit-publication",
+    "commit": "3349ecb8955021a8714d023348f8b24f941eb98f"
+  },
+  "fixedNow": "2026-07-14T01:00:00.000Z",
+  "updatedNow": "2026-07-14T01:05:00.000Z",
+  "jurisdictionReferenceId": "jurisdiction:ref:core-task-039",
+  "organizationScopeReferenceId": "organization:ref:scope-0001",
+  "publicReferenceRecord": {
+    "referenceId": "jurisdiction:ref:core-task-039",
+    "objectType": "jurisdiction-record",
+    "referenceDomain": "jurisdiction",
+    "status": "Active"
+  },
+  "objectRecord": {
+    "publicReferenceId": "jurisdiction:ref:core-task-039",
+    "objectType": "jurisdiction-record",
+    "domainId": "jurisdiction",
+    "objectContractId": "core-object-jurisdiction-record-contract",
+    "status": "active",
+    "version": {
+      "version": 1,
+      "createdAt": "2026-07-14T01:00:00.000Z"
+    },
+    "metadata": {},
+    "auditMetadata": {
+      "createdAt": "2026-07-14T01:00:00.000Z",
+      "createdByReferenceId": "user:ref:actor-0001",
+      "correlationId": "corr:core-task-039"
+    },
+    "visibility": {
+      "permissionScopeReferenceId": "permission:ref:scope-0001",
+      "policyScopeReferenceId": "policy:ref:scope-0001",
+      "organizationScopeReferenceId": "organization:ref:scope-0001"
+    }
+  },
+  "createRequest": {
+    "jurisdictionCode": "US",
+    "jurisdictionType": "National",
+    "jurisdictionStatus": "Active",
+    "nameReference": "name:synthetic:jurisdiction-us-039",
+    "sourceReference": "source:synthetic:jurisdiction-039",
+    "idempotencyKey": "idem:create:core-task-039"
+  },
+  "conflictingCreateRequest": {
+    "jurisdictionType": "Regional"
+  },
+  "duplicateCreateRequest": {
+    "idempotencyKey": "idem:create:duplicate-jurisdiction-039"
+  },
+  "statusTransitionRequest": {
+    "targetStatus": "Deprecated",
+    "reasonReference": "reason:synthetic:deprecate-jurisdiction",
+    "idempotencyKey": "idem:status:core-task-039"
+  },
+  "statusConflictRequest": {
+    "targetStatus": "ReviewRequired",
+    "reasonReference": "reason:synthetic:review-jurisdiction",
+    "idempotencyKey": "idem:status:core-task-039"
+  },
+  "invalidStatusTransitionRequest": {
+    "targetStatus": "Active",
+    "idempotencyKey": "idem:status:invalid-core-task-039"
+  },
+  "expected": {
+    "recordCountAfterCreate": 1,
+    "eventTraceCountAfterCreate": 1,
+    "eventTraceCountAfterReplay": 1,
+    "eventTraceCountAfterStatusChange": 2,
+    "eventTraceCountAfterStatusReplay": 2,
+    "sameKeyConflictCode": "IdempotencyConflict",
+    "duplicateJurisdictionCode": "JurisdictionAlreadyExists",
+    "invalidTransitionCode": "InvalidJurisdictionTransition",
+    "statusConflictCode": "IdempotencyConflict",
+    "resolvedReferenceId": "jurisdiction:ref:core-task-039"
+  }
+}

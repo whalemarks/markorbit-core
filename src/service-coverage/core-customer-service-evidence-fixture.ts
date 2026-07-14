@@ -4,10 +4,7 @@ import {
   CoreReferenceRegistry,
   type CoreReferenceRecord
 } from '../behaviors/index.ts';
-import {
-  createCoreEventId,
-  type CoreEventId
-} from '../events/index.ts';
+import { createCoreEventId, type CoreEventId } from '../events/index.ts';
 import {
   CORE_MVP_OBJECT_FIXTURE_RELATED_REFERENCE_RECORDS,
   type CoreMvpObjectBaseRecord
