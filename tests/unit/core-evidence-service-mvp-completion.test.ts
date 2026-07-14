@@ -23,7 +23,8 @@ const evidenceReference = CORE_MVP_OBJECT_FIXTURE_PUBLIC_REFERENCE_RECORDS.find(
   (reference) => reference.referenceId === evidenceReferenceId
 );
 
-if (!evidenceReference) throw new Error('Evidence fixture reference is missing.');
+if (!evidenceReference)
+  throw new Error('Evidence fixture reference is missing.');
 const governedEvidenceReference = evidenceReference;
 
 function governance(
@@ -195,7 +196,10 @@ describe('CORE-TASK-042B Evidence Service MVP completion', () => {
     });
     assert.equal(updated.ok, true);
     if (!updated.ok) return;
-    assert.equal(updated.value.objectRecord.publicReferenceId, evidenceReferenceId);
+    assert.equal(
+      updated.value.objectRecord.publicReferenceId,
+      evidenceReferenceId
+    );
     assert.equal(updated.value.objectRecord.version?.version, 2);
     assert.equal(updated.value.evidenceType, 'OnlineUseEvidence');
 

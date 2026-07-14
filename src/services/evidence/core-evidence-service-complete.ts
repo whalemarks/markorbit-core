@@ -84,8 +84,7 @@ export interface CoreEvidenceCompletedRecord extends CoreEvidenceServiceRecord {
   readonly goodsServicesItemReferenceIds?: readonly string[];
 }
 
-export interface CoreEvidenceCompletedValidationResult
-  extends CoreEvidenceValidationResult {
+export interface CoreEvidenceCompletedValidationResult extends CoreEvidenceValidationResult {
   readonly trademarkLinked: boolean;
   readonly brandLinked: boolean;
   readonly classificationLinked: boolean;
@@ -194,8 +193,7 @@ function normalizeRecord(
     trademarkReferenceIds: completed.trademarkReferenceIds ?? [],
     brandReferenceIds: completed.brandReferenceIds ?? [],
     classificationReferenceIds: completed.classificationReferenceIds ?? [],
-    goodsServicesItemReferenceIds:
-      completed.goodsServicesItemReferenceIds ?? []
+    goodsServicesItemReferenceIds: completed.goodsServicesItemReferenceIds ?? []
   });
 }
 
@@ -891,8 +889,7 @@ export class CoreEvidenceService extends CoreEvidenceServiceFoundation {
       ok: true,
       value: immutable({
         ...result.value,
-        trademarkLinked:
-          (completed?.trademarkReferenceIds?.length ?? 0) > 0,
+        trademarkLinked: (completed?.trademarkReferenceIds?.length ?? 0) > 0,
         brandLinked: (completed?.brandReferenceIds?.length ?? 0) > 0,
         classificationLinked:
           (completed?.classificationReferenceIds?.length ?? 0) > 0,
@@ -1108,8 +1105,7 @@ export class CoreEvidenceService extends CoreEvidenceServiceFoundation {
               evidenceReferenceId: input.evidenceReferenceId,
               occurredAt: now,
               correlationId: input.governance.correlationId,
-              auditContextReferenceId:
-                input.governance.auditContextReferenceId,
+              auditContextReferenceId: input.governance.auditContextReferenceId,
               payload: built.value.eventPayload
             })
           );
