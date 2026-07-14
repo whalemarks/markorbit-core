@@ -1,994 +1,249 @@
 exit_code=1
---- test log ---
-      duration_ms: 3.692871
-      type: 'test'
-      ...
-    1..1
-ok 86 - CORE-TASK-041 Document Service contract metadata
-  ---
-  duration_ms: 4.783278
-  type: 'suite'
-  ...
-# Subtest: CORE-TASK-042 Book 02 Service evidence
-    # Subtest: promotes Customer through Order in dependency order
-    ok 1 - promotes Customer through Order in dependency order
-      ---
-      duration_ms: 1.418322
-      type: 'test'
-      ...
-    # Subtest: derives 41 / 3 / 48 and leaves global Service acceptance unresolved
-    ok 2 - derives 41 / 3 / 48 and leaves global Service acceptance unresolved
-      ---
-      duration_ms: 0.209223
-      type: 'test'
-      ...
-    1..2
-ok 87 - CORE-TASK-042 Book 02 Service evidence
-  ---
-  duration_ms: 2.661825
-  type: 'suite'
-  ...
-# Subtest: CORE-TASK-042B Evidence Service contract metadata
-    # Subtest: promotes the index-8 Evidence placeholder in place
-    ok 1 - promotes the index-8 Evidence placeholder in place
-      ---
-      duration_ms: 3.629191
-      type: 'test'
-      ...
-    1..1
-ok 88 - CORE-TASK-042B Evidence Service contract metadata
-  ---
-  duration_ms: 4.815848
-  type: 'suite'
-  ...
-# Subtest: CORE-TASK-043B Matter Service contract metadata
-    # Subtest: locks Matter behavior evidence to the implemented operation set
-    ok 1 - locks Matter behavior evidence to the implemented operation set
-      ---
-      duration_ms: 1.746518
-      type: 'test'
-      ...
-    1..1
-ok 89 - CORE-TASK-043B Matter Service contract metadata
-  ---
-  duration_ms: 2.927194
-  type: 'suite'
-  ...
-# Subtest: CORE-TASK-044 Order Service contract metadata
-    # Subtest: promotes Order Service behavior without overclaiming production depth
-    ok 1 - promotes Order Service behavior without overclaiming production depth
-      ---
-      duration_ms: 3.794072
-      type: 'test'
-      ...
-    1..1
-ok 90 - CORE-TASK-044 Order Service contract metadata
-  ---
-  duration_ms: 5.049287
-  type: 'suite'
-  ...
-# Subtest: CORE-TASK-045 Book 02 Opportunity Service evidence
-    # Subtest: records Phase 4 partial behavior while retaining the locked stub-now disposition
-    ok 1 - records Phase 4 partial behavior while retaining the locked stub-now disposition
-      ---
-      duration_ms: 1.249736
-      type: 'test'
-      ...
-    # Subtest: does not claim an additional Must Build Now completion
-    ok 2 - does not claim an additional Must Build Now completion
-      ---
-      duration_ms: 0.146004
-      type: 'test'
-      ...
-    1..2
-ok 91 - CORE-TASK-045 Book 02 Opportunity Service evidence
-  ---
-  duration_ms: 2.388684
-  type: 'suite'
-  ...
-# Subtest: CORE-TASK-045 Opportunity Service contract metadata
-    # Subtest: promotes partial Opportunity behavior without claiming CRM or production depth
-    ok 1 - promotes partial Opportunity behavior without claiming CRM or production depth
-      ---
-      duration_ms: 3.755318
-      type: 'test'
-      ...
-    1..1
-ok 92 - CORE-TASK-045 Opportunity Service contract metadata
-  ---
-  duration_ms: 4.990617
-  type: 'suite'
-  ...
-# Subtest: Core Task base primitives
-    # Subtest: createCoreTaskId accepts valid ids
-    ok 1 - createCoreTaskId accepts valid ids
-      ---
-      duration_ms: 1.729376
-      type: 'test'
-      ...
-    # Subtest: createCoreTaskId rejects empty values
-    ok 2 - createCoreTaskId rejects empty values
-      ---
-      duration_ms: 0.360617
-      type: 'test'
-      ...
-    # Subtest: createCoreTaskId rejects values with spaces
-    ok 3 - createCoreTaskId rejects values with spaces
-      ---
-      duration_ms: 0.205766
-      type: 'test'
-      ...
-    # Subtest: createCoreTaskType accepts kebab-case values
-    ok 4 - createCoreTaskType accepts kebab-case values
-      ---
-      duration_ms: 0.270467
-      type: 'test'
-      ...
-    # Subtest: createCoreTaskType rejects empty values
-    ok 5 - createCoreTaskType rejects empty values
-      ---
-      duration_ms: 0.198754
-      type: 'test'
-      ...
-    # Subtest: createCoreTaskType rejects values with spaces
-    ok 6 - createCoreTaskType rejects values with spaces
-      ---
-      duration_ms: 0.298931
-      type: 'test'
-      ...
-    # Subtest: createCoreTaskType rejects non-kebab-case values
-    ok 7 - createCoreTaskType rejects non-kebab-case values
-      ---
-      duration_ms: 0.260669
-      type: 'test'
-      ...
-    # Subtest: CoreTaskStatus contains exactly the listed statuses
-    ok 8 - CoreTaskStatus contains exactly the listed statuses
-      ---
-      duration_ms: 1.086249
-      type: 'test'
-      ...
-    # Subtest: CoreTaskPriority contains exactly low, normal, high, urgent
-    ok 9 - CoreTaskPriority contains exactly low, normal, high, urgent
-      ---
-      duration_ms: 0.304021
-      type: 'test'
-      ...
-    # Subtest: CoreTaskActor actorType contains exactly the listed actor types
-    ok 10 - CoreTaskActor actorType contains exactly the listed actor types
-      ---
-      duration_ms: 0.563798
-      type: 'test'
-      ...
-    # Subtest: CoreTaskReviewOutcome contains exactly approved, rejected, revision_requested
-    ok 11 - CoreTaskReviewOutcome contains exactly approved, rejected, revision_requested
-      ---
-      duration_ms: 0.18625
-      type: 'test'
-      ...
-    1..11
-ok 93 - Core Task base primitives
-  ---
-  duration_ms: 7.686397
-  type: 'suite'
-  ...
-# Subtest: validateCoreTask
-    # Subtest: returns no errors for a valid task
-    ok 1 - returns no errors for a valid task
-      ---
-      duration_ms: 2.125058
-      type: 'test'
-      ...
-    # Subtest: returns errors for missing id
-    ok 2 - returns errors for missing id
-      ---
-      duration_ms: 0.271679
-      type: 'test'
-      ...
-    # Subtest: returns errors for missing type
-    ok 3 - returns errors for missing type
-      ---
-      duration_ms: 0.22376
-      type: 'test'
-      ...
-    # Subtest: returns errors for missing title
-    ok 4 - returns errors for missing title
-      ---
-      duration_ms: 0.194545
-      type: 'test'
-      ...
-    # Subtest: returns errors for missing domainId
-    ok 5 - returns errors for missing domainId
-      ---
-      duration_ms: 0.184897
-      type: 'test'
-      ...
-    # Subtest: returns errors for missing status
-    ok 6 - returns errors for missing status
-      ---
-      duration_ms: 0.321263
-      type: 'test'
-      ...
-    # Subtest: returns errors for missing priority
-    ok 7 - returns errors for missing priority
-      ---
-      duration_ms: 0.250891
-      type: 'test'
-      ...
-    # Subtest: returns errors for missing createdAt
-    ok 8 - returns errors for missing createdAt
-      ---
-      duration_ms: 0.282039
-      type: 'test'
-      ...
-    # Subtest: returns errors if metadata is not a plain object
-    ok 9 - returns errors if metadata is not a plain object
-      ---
-      duration_ms: 0.418395
-      type: 'test'
-      ...
-    # Subtest: returns errors if relatedEventIds is not an array
-    ok 10 - returns errors if relatedEventIds is not an array
-      ---
-      duration_ms: 0.5064
-      type: 'test'
-      ...
-    # Subtest: returns errors if assignee is missing actorType or actorId
-    ok 11 - returns errors if assignee is missing actorType or actorId
-      ---
-      duration_ms: 0.294533
-      type: 'test'
-      ...
-    1..11
-ok 94 - validateCoreTask
-  ---
-  duration_ms: 6.981724
-  type: 'suite'
-  ...
-# Subtest: Core Test Contract Skeletons
-    # Subtest: has exactly the 7 inventory-locked targets
-    ok 1 - has exactly the 7 inventory-locked targets
-      ---
-      duration_ms: 1.446505
-      type: 'test'
-      ...
-    # Subtest: passes Test Contract skeleton validation
-    ok 2 - passes Test Contract skeleton validation
-      ---
-      duration_ms: 0.781647
-      type: 'test'
-      ...
-    # Subtest: uses unique Test types and exact Book 2 source paths
-    ok 3 - uses unique Test types and exact Book 2 source paths
-      ---
-      duration_ms: 0.241082
-      type: 'test'
-      ...
-    # Subtest: declares subjects and fixture families without executable tests
-    ok 4 - declares subjects and fixture families without executable tests
-      ---
-      duration_ms: 0.39446
-      type: 'test'
-      ...
-    # Subtest: locks the publication repository, commit, path, and implementation task
-    ok 5 - locks the publication repository, commit, path, and implementation task
-      ---
-      duration_ms: 0.135835
-      type: 'test'
-      ...
-    # Subtest: rejects executable test fields
-    ok 6 - rejects executable test fields
-      ---
-      duration_ms: 0.385233
-      type: 'test'
-      ...
-    1..6
-ok 95 - Core Test Contract Skeletons
-  ---
-  duration_ms: 4.585928
-  type: 'suite'
-  ...
-# Subtest: Trademark Service core lifecycle boundary
-    # Subtest: locks Trademark Object controlled values and executes the canonical fixture
-    ok 1 - locks Trademark Object controlled values and executes the canonical fixture
-      ---
-      duration_ms: 24.713214
-      type: 'test'
-      ...
-    # Subtest: creates and replays Trademark state and status without duplicate Events
-    ok 2 - creates and replays Trademark state and status without duplicate Events
-      ---
-      duration_ms: 1.876853
-      type: 'test'
-      ...
-    # Subtest: requires a registered active Brand reference
-    ok 3 - requires a registered active Brand reference
-      ---
-      duration_ms: 0.408507
-      type: 'test'
-      ...
-    # Subtest: requires a registered active Jurisdiction reference
-    ok 4 - requires a registered active Jurisdiction reference
-      ---
-      duration_ms: 0.421451
-      type: 'test'
-      ...
-    # Subtest: returns safe list and reference-validation outputs
-    ok 5 - returns safe list and reference-validation outputs
-      ---
-      duration_ms: 0.776026
-      type: 'test'
-      ...
-    # Subtest: fails closed for missing archive reason and organization mismatch
-    ok 6 - fails closed for missing archive reason and organization mismatch
-      ---
-      duration_ms: 0.955524
-      type: 'test'
-      ...
-    1..6
-ok 96 - Trademark Service core lifecycle boundary
-  ---
-  duration_ms: 30.474187
-  type: 'suite'
-  ...
-# Subtest: CoreValidationResult
-    # Subtest: returns ok true with no issues
-    ok 1 - returns ok true with no issues
-      ---
-      duration_ms: 0.710012
-      type: 'test'
-      ...
-    # Subtest: returns ok true with only warnings and info
-    ok 2 - returns ok true with only warnings and info
-      ---
-      duration_ms: 0.144682
-      type: 'test'
-      ...
-    # Subtest: returns ok false with at least one error
-    ok 3 - returns ok false with at least one error
-      ---
-      duration_ms: 0.118112
-      type: 'test'
-      ...
-    # Subtest: CoreValidationSeverity contains exactly error, warning, info
-    ok 4 - CoreValidationSeverity contains exactly error, warning, info
-      ---
-      duration_ms: 0.705574
-      type: 'test'
-      ...
-    1..4
-ok 97 - CoreValidationResult
-  ---
-  duration_ms: 2.771532
-  type: 'suite'
-  ...
-# Subtest: MARKORBIT_CORE_VERSION
-    # Subtest: exists
-    ok 1 - exists
-      ---
-      duration_ms: 0.972074
-      type: 'test'
-      ...
-    1..1
-ok 98 - MARKORBIT_CORE_VERSION
-  ---
-  duration_ms: 2.221389
-  type: 'suite'
-  ...
-# Subtest: Core Workflow Catalog Skeletons
-    # Subtest: has exactly 16 entries
-    ok 1 - has exactly 16 entries
-      ---
-      duration_ms: 1.494244
-      type: 'test'
-      ...
-    # Subtest: validateCoreWorkflowCatalogSkeletons returns no errors
-    ok 2 - validateCoreWorkflowCatalogSkeletons returns no errors
-      ---
-      duration_ms: 2.404212
-      type: 'test'
-      ...
-    # Subtest: all skeleton ids are unique
-    ok 3 - all skeleton ids are unique
-      ---
-      duration_ms: 0.194094
-      type: 'test'
-      ...
-    # Subtest: all workflowTypes are unique
-    ok 4 - all workflowTypes are unique
-      ---
-      duration_ms: 0.178515
-      type: 'test'
-      ...
-    # Subtest: every domainId exists in CORE_DOMAIN_REGISTRY
-    ok 5 - every domainId exists in CORE_DOMAIN_REGISTRY
-      ---
-      duration_ms: 0.232066
-      type: 'test'
-      ...
-    # Subtest: no excluded workflow concepts are present
-    ok 6 - no excluded workflow concepts are present
-      ---
-      duration_ms: 0.381186
-      type: 'test'
-      ...
-    # Subtest: each skeleton has non-empty purpose
-    ok 7 - each skeleton has non-empty purpose
-      ---
-      duration_ms: 0.259648
-      type: 'test'
-      ...
-    # Subtest: each skeleton has owns array
-    ok 8 - each skeleton has owns array
-      ---
-      duration_ms: 0.267612
-      type: 'test'
-      ...
-    # Subtest: each skeleton has nonGoals array
-    ok 9 - each skeleton has nonGoals array
-      ---
-      duration_ms: 0.369894
-      type: 'test'
-      ...
-    # Subtest: workflowType values are kebab-case
-    ok 10 - workflowType values are kebab-case
-      ---
-      duration_ms: 0.512962
-      type: 'test'
-      ...
-    # Subtest: adds exactly the 8 locked CORE-TASK-024 Workflow Contract targets
-    ok 11 - adds exactly the 8 locked CORE-TASK-024 Workflow Contract targets
-      ---
-      duration_ms: 0.590899
-      type: 'test'
-      ...
-    1..11
-ok 99 - Core Workflow Catalog Skeletons
-  ---
-  duration_ms: 8.862163
-  type: 'suite'
-  ...
-# Subtest: Core Workflow Contract base primitives
-    # Subtest: createCoreWorkflowContractId accepts valid ids
-    ok 1 - createCoreWorkflowContractId accepts valid ids
-      ---
-      duration_ms: 1.686635
-      type: 'test'
-      ...
-    # Subtest: createCoreWorkflowContractId rejects empty values
-    ok 2 - createCoreWorkflowContractId rejects empty values
-      ---
-      duration_ms: 0.360586
-      type: 'test'
-      ...
-    # Subtest: createCoreWorkflowContractId rejects values with spaces
-    ok 3 - createCoreWorkflowContractId rejects values with spaces
-      ---
-      duration_ms: 0.189686
-      type: 'test'
-      ...
-    # Subtest: createCoreWorkflowContractType accepts kebab-case values
-    ok 4 - createCoreWorkflowContractType accepts kebab-case values
-      ---
-      duration_ms: 0.166783
-      type: 'test'
-      ...
-    # Subtest: createCoreWorkflowContractType rejects empty values
-    ok 5 - createCoreWorkflowContractType rejects empty values
-      ---
-      duration_ms: 0.213
-      type: 'test'
-      ...
-    # Subtest: createCoreWorkflowContractType rejects values with spaces
-    ok 6 - createCoreWorkflowContractType rejects values with spaces
-      ---
-      duration_ms: 0.272121
-      type: 'test'
-      ...
-    # Subtest: createCoreWorkflowContractType rejects non-kebab-case values
-    ok 7 - createCoreWorkflowContractType rejects non-kebab-case values
-      ---
-      duration_ms: 0.217228
-      type: 'test'
-      ...
-    # Subtest: CoreWorkflowContractStatus contains exactly draft, active, inactive, deprecated, archived
-    ok 8 - CoreWorkflowContractStatus contains exactly draft, active, inactive, deprecated, archived
-      ---
-      duration_ms: 1.034361
-      type: 'test'
-      ...
-    # Subtest: createCoreWorkflowStepId accepts valid kebab-case ids
-    ok 9 - createCoreWorkflowStepId accepts valid kebab-case ids
-      ---
-      duration_ms: 0.329548
-      type: 'test'
-      ...
-    # Subtest: createCoreWorkflowStepId rejects empty values
-    ok 10 - createCoreWorkflowStepId rejects empty values
-      ---
-      duration_ms: 0.477446
-      type: 'test'
-      ...
-    # Subtest: createCoreWorkflowStepId rejects values with spaces
-    ok 11 - createCoreWorkflowStepId rejects values with spaces
-      ---
-      duration_ms: 0.198683
-      type: 'test'
-      ...
-    # Subtest: createCoreWorkflowStepId rejects non-kebab-case values
-    ok 12 - createCoreWorkflowStepId rejects non-kebab-case values
-      ---
-      duration_ms: 0.285717
-      type: 'test'
-      ...
-    1..12
-ok 100 - Core Workflow Contract base primitives
-  ---
-  duration_ms: 7.588061
-  type: 'suite'
-  ...
-# Subtest: validateCoreWorkflowContract
-    # Subtest: returns no errors for a valid contract
-    ok 1 - returns no errors for a valid contract
-      ---
-      duration_ms: 1.588181
-      type: 'test'
-      ...
-    # Subtest: returns errors for missing id
-    ok 2 - returns errors for missing id
-      ---
-      duration_ms: 0.208642
-      type: 'test'
-      ...
-    # Subtest: returns errors for missing type
-    ok 3 - returns errors for missing type
-      ---
-      duration_ms: 0.181821
-      type: 'test'
-      ...
-    # Subtest: returns errors for missing name
-    ok 4 - returns errors for missing name
-      ---
-      duration_ms: 0.134152
-      type: 'test'
-      ...
-    # Subtest: returns errors for missing domainId
-    ok 5 - returns errors for missing domainId
-      ---
-      duration_ms: 0.136556
-      type: 'test'
-      ...
-    # Subtest: returns errors for missing status
-    ok 6 - returns errors for missing status
-      ---
-      duration_ms: 0.196599
-      type: 'test'
-      ...
-    # Subtest: returns errors for non-positive version
-    ok 7 - returns errors for non-positive version
-      ---
-      duration_ms: 0.137919
-      type: 'test'
-      ...
-    # Subtest: returns errors when steps is missing or empty
-    ok 8 - returns errors when steps is missing or empty
-      ---
-      duration_ms: 0.221917
-      type: 'test'
-      ...
-    # Subtest: returns errors if a step is missing id or name
-    ok 9 - returns errors if a step is missing id or name
-      ---
-      duration_ms: 0.285285
-      type: 'test'
-      ...
-    # Subtest: returns errors if transition references unknown step ids
-    ok 10 - returns errors if transition references unknown step ids
-      ---
-      duration_ms: 0.450145
-      type: 'test'
-      ...
-    # Subtest: returns errors if metadata is not a plain object
-    ok 11 - returns errors if metadata is not a plain object
-      ---
-      duration_ms: 0.194084
-      type: 'test'
-      ...
-    1..11
-ok 101 - validateCoreWorkflowContract
-  ---
-  duration_ms: 5.102036
-  type: 'suite'
-  ...
-# Subtest: core fixture validation
-    # Subtest: returns ok true for existing fixtures
-    ok 1 - returns ok true for existing fixtures
-      ---
-      duration_ms: 231.275797
-      type: 'test'
-      ...
-    # Subtest: safety boundary validator rejects changed deterministic fixtures
-    ok 2 - safety boundary validator rejects changed deterministic fixtures
-      ---
-      duration_ms: 1.524522
-      type: 'test'
-      ...
-    # Subtest: behavior acceptance lock validator rejects evidence drift
-    ok 3 - behavior acceptance lock validator rejects evidence drift
-      ---
-      duration_ms: 1.425726
-      type: 'test'
-      ...
-    # Subtest: behavior gap inventory validator rejects changed batch
-    ok 4 - behavior gap inventory validator rejects changed batch
-      ---
-      duration_ms: 1.006739
-      type: 'test'
-      ...
-    # Subtest: behavior baseline validator rejects inflated depth
-    ok 5 - behavior baseline validator rejects inflated depth
-      ---
-      duration_ms: 0.907634
-      type: 'test'
-      ...
-    # Subtest: acceptance lock validator rejects structural acceptance drift
-    ok 6 - acceptance lock validator rejects structural acceptance drift
-      ---
-      duration_ms: 0.874552
-      type: 'test'
-      ...
-    # Subtest: each validator returns ok false for invalid non-array input
-    ok 7 - each validator returns ok false for invalid non-array input
-      ---
-      duration_ms: 0.316494
-      type: 'test'
-      ...
-    # Subtest: domain skeleton validator rejects missing domainId
-    ok 8 - domain skeleton validator rejects missing domainId
-      ---
-      duration_ms: 1.546685
-      type: 'test'
-      ...
-    # Subtest: domain skeleton validator rejects unknown domainId
-    ok 9 - domain skeleton validator rejects unknown domainId
-      ---
-      duration_ms: 1.234527
-      type: 'test'
-      ...
-    # Subtest: domain skeleton validator rejects duplicate domainId
-    ok 10 - domain skeleton validator rejects duplicate domainId
-      ---
-      duration_ms: 1.231632
-      type: 'test'
-      ...
-    # Subtest: object skeleton validator rejects missing objectType
-    ok 11 - object skeleton validator rejects missing objectType
-      ---
-      duration_ms: 1.973233
-      type: 'test'
-      ...
-    # Subtest: object skeleton validator rejects unknown domainId
-    ok 12 - object skeleton validator rejects unknown domainId
-      ---
-      duration_ms: 1.80086
-      type: 'test'
-      ...
-    # Subtest: object skeleton validator rejects duplicate objectType
-    ok 13 - object skeleton validator rejects duplicate objectType
-      ---
-      duration_ms: 2.617002
-      type: 'test'
-      ...
-    # Subtest: object skeleton validator rejects changed canonical source path
-    ok 14 - object skeleton validator rejects changed canonical source path
-      ---
-      duration_ms: 4.078234
-      type: 'test'
-      ...
-    # Subtest: service skeleton validator rejects missing serviceType
-    ok 15 - service skeleton validator rejects missing serviceType
-      ---
-      duration_ms: 1.972431
-      type: 'test'
-      ...
-    # Subtest: service skeleton validator rejects unknown domainId
-    ok 16 - service skeleton validator rejects unknown domainId
-      ---
-      duration_ms: 1.836256
-      type: 'test'
-      ...
-    # Subtest: service skeleton validator rejects duplicate serviceType
-    ok 17 - service skeleton validator rejects duplicate serviceType
-      ---
-      duration_ms: 1.692095
-      type: 'test'
-      ...
-    # Subtest: service skeleton validator rejects changed canonical source commit
-    ok 18 - service skeleton validator rejects changed canonical source commit
-      ---
-      duration_ms: 1.778308
-      type: 'test'
-      ...
-    # Subtest: api skeleton validator rejects missing apiType
-    ok 19 - api skeleton validator rejects missing apiType
-      ---
-      duration_ms: 2.047874
-      type: 'test'
-      ...
-    # Subtest: api skeleton validator rejects unknown domainId
-    ok 20 - api skeleton validator rejects unknown domainId
-      ---
-      duration_ms: 1.927117
-      type: 'test'
-      ...
-    # Subtest: api skeleton validator rejects duplicate apiType
-    ok 21 - api skeleton validator rejects duplicate apiType
-      ---
-      duration_ms: 1.890578
-      type: 'test'
-      ...
-    # Subtest: api skeleton validator rejects changed canonical source path
-    ok 22 - api skeleton validator rejects changed canonical source path
-      ---
-      duration_ms: 1.898163
-      type: 'test'
-      ...
-    # Subtest: stub skeleton validators reject changed MVP requirement metadata
-    ok 23 - stub skeleton validators reject changed MVP requirement metadata
-      ---
-      duration_ms: 4.227715
-      type: 'test'
-      ...
-    # Subtest: object validator rejects unknown domainId
-    ok 24 - object validator rejects unknown domainId
-      ---
-      duration_ms: 1.8914
-      type: 'test'
-      ...
-    # Subtest: event validator rejects invalid event shape
-    ok 25 - event validator rejects invalid event shape
-      ---
-      duration_ms: 0.924936
-      type: 'test'
-      ...
-    # Subtest: task validator rejects invalid task shape
-    ok 26 - task validator rejects invalid task shape
-      ---
-      duration_ms: 0.808958
-      type: 'test'
-      ...
-    # Subtest: workflow validator rejects invalid workflow contract shape
-    ok 27 - workflow validator rejects invalid workflow contract shape
-      ---
-      duration_ms: 0.84681
-      type: 'test'
-      ...
-    # Subtest: event catalog skeleton validator returns ok true for existing fixture
-    ok 28 - event catalog skeleton validator returns ok true for existing fixture
-      ---
-      duration_ms: 2.013509
-      type: 'test'
-      ...
-    # Subtest: event catalog skeleton validator rejects invalid non-array input
-    ok 29 - event catalog skeleton validator rejects invalid non-array input
-      ---
-      duration_ms: 0.11166
-      type: 'test'
-      ...
-    # Subtest: event catalog skeleton validator rejects missing eventType
-    ok 30 - event catalog skeleton validator rejects missing eventType
-      ---
-      duration_ms: 1.452155
-      type: 'test'
-      ...
-    # Subtest: event catalog skeleton validator rejects unknown domainId
-    ok 31 - event catalog skeleton validator rejects unknown domainId
-      ---
-      duration_ms: 0.979629
-      type: 'test'
-      ...
-    # Subtest: event catalog skeleton validator rejects duplicate eventType
-    ok 32 - event catalog skeleton validator rejects duplicate eventType
-      ---
-      duration_ms: 0.998474
-      type: 'test'
-      ...
-    # Subtest: event catalog skeleton validator rejects concrete payload schema keywords
-    ok 33 - event catalog skeleton validator rejects concrete payload schema keywords
-      ---
-      duration_ms: 1.055591
-      type: 'test'
-      ...
-    # Subtest: workflow catalog skeleton validator returns ok true for existing fixture
-    ok 34 - workflow catalog skeleton validator returns ok true for existing fixture
-      ---
-      duration_ms: 1.616894
-      type: 'test'
-      ...
-    # Subtest: workflow catalog skeleton validator rejects invalid non-array input
-    ok 35 - workflow catalog skeleton validator rejects invalid non-array input
-      ---
-      duration_ms: 0.136536
-      type: 'test'
-      ...
-    # Subtest: workflow catalog skeleton validator rejects missing workflowType
-    ok 36 - workflow catalog skeleton validator rejects missing workflowType
-      ---
-      duration_ms: 1.616774
-      type: 'test'
-      ...
-    # Subtest: workflow catalog skeleton validator rejects unknown domainId
-    ok 37 - workflow catalog skeleton validator rejects unknown domainId
-      ---
-      duration_ms: 1.135851
-      type: 'test'
-      ...
-    # Subtest: workflow catalog skeleton validator rejects duplicate workflowType
-    ok 38 - workflow catalog skeleton validator rejects duplicate workflowType
-      ---
-      duration_ms: 1.091378
-      type: 'test'
-      ...
-    # Subtest: workflow catalog skeleton validator rejects executable workflow/runtime keywords
-    ok 39 - workflow catalog skeleton validator rejects executable workflow/runtime keywords
-      ---
-      duration_ms: 1.142774
-      type: 'test'
-      ...
-    # Subtest: workflow catalog skeleton validator rejects changed canonical source path
-    ok 40 - workflow catalog skeleton validator rejects changed canonical source path
-      ---
-      duration_ms: 1.106207
-      type: 'test'
-      ...
-    # Subtest: permission skeleton validator returns ok true for existing fixture
-    ok 41 - permission skeleton validator returns ok true for existing fixture
-      ---
-      duration_ms: 1.143266
-      type: 'test'
-      ...
-    # Subtest: permission skeleton validator rejects invalid non-array input
-    ok 42 - permission skeleton validator rejects invalid non-array input
-      ---
-      duration_ms: 0.136596
-      type: 'test'
-      ...
-    # Subtest: permission skeleton validator rejects missing permissionType
-    ok 43 - permission skeleton validator rejects missing permissionType
-      ---
-      duration_ms: 1.844712
-      type: 'test'
-      ...
-    # Subtest: permission skeleton validator rejects unknown domainId
-    ok 44 - permission skeleton validator rejects unknown domainId
-      ---
-      duration_ms: 0.786746
-      type: 'test'
-      ...
-    # Subtest: permission skeleton validator rejects duplicate permissionType
-    ok 45 - permission skeleton validator rejects duplicate permissionType
-      ---
-      duration_ms: 0.745309
-      type: 'test'
-      ...
-    # Subtest: permission skeleton validator rejects bypass/runtime/engine/autonomous-agent permission keywords
-    ok 46 - permission skeleton validator rejects bypass/runtime/engine/autonomous-agent permission keywords
-      ---
-      duration_ms: 2.355732
-      type: 'test'
-      ...
-    # Subtest: policy skeleton validator returns ok true for existing fixture
-    ok 47 - policy skeleton validator returns ok true for existing fixture
-      ---
-      duration_ms: 0.683313
-      type: 'test'
-      ...
-    # Subtest: policy skeleton validator rejects invalid non-array input
-    ok 48 - policy skeleton validator rejects invalid non-array input
-      ---
-      duration_ms: 0.102973
-      type: 'test'
-      ...
-    # Subtest: policy skeleton validator rejects missing policyType
-    ok 49 - policy skeleton validator rejects missing policyType
-      ---
-      duration_ms: 0.894318
-      type: 'test'
-      ...
-    # Subtest: policy skeleton validator rejects unknown domainId
-    ok 50 - policy skeleton validator rejects unknown domainId
-      ---
-      duration_ms: 0.723268
-      type: 'test'
-      ...
-    # Subtest: policy skeleton validator rejects duplicate policyType
-    ok 51 - policy skeleton validator rejects duplicate policyType
-      ---
-      duration_ms: 0.703921
-      type: 'test'
-      ...
-    # Subtest: policy skeleton validator rejects bypass/runtime/engine/autonomous-agent policy keywords
-    ok 52 - policy skeleton validator rejects bypass/runtime/engine/autonomous-agent policy keywords
-      ---
-      duration_ms: 1.983432
-      type: 'test'
-      ...
-    # Subtest: AI governance skeleton validator returns ok true for the locked fixture
-    ok 53 - AI governance skeleton validator returns ok true for the locked fixture
-      ---
-      duration_ms: 0.86317
-      type: 'test'
-      ...
-    # Subtest: AI governance skeleton validator rejects a missing governanceType
-    ok 54 - AI governance skeleton validator rejects a missing governanceType
-      ---
-      duration_ms: 1.002812
-      type: 'test'
-      ...
-    # Subtest: AI governance skeleton validator rejects a changed locked id
-    ok 55 - AI governance skeleton validator rejects a changed locked id
-      ---
-      duration_ms: 1.067263
-      type: 'test'
-      ...
-    # Subtest: AI governance skeleton validator rejects a non-agent domain
-    ok 56 - AI governance skeleton validator rejects a non-agent domain
-      ---
-      duration_ms: 0.908776
-      type: 'test'
-      ...
-    # Subtest: AI governance skeleton validator rejects protected-action authority
-    ok 57 - AI governance skeleton validator rejects protected-action authority
-      ---
-      duration_ms: 2.746395
-      type: 'test'
-      ...
-    # Subtest: AI governance skeleton validator rejects executable fields
-    ok 58 - AI governance skeleton validator rejects executable fields
-      ---
-      duration_ms: 0.975852
-      type: 'test'
-      ...
-    # Subtest: contract coverage baseline validator rejects non-object input
-    ok 59 - contract coverage baseline validator rejects non-object input
-      ---
-      duration_ms: 0.132358
-      type: 'test'
-      ...
-    # Subtest: Common Contract fixture validator rejects a changed source path
-    ok 60 - Common Contract fixture validator rejects a changed source path
-      ---
-      duration_ms: 0.956445
-      type: 'test'
-      ...
-    # Subtest: Test Contract fixture validator rejects executable fields
-    ok 61 - Test Contract fixture validator rejects executable fields
-      ---
-      duration_ms: 0.832783
-      type: 'test'
-      ...
-    # Subtest: contract coverage baseline validator rejects stale summary counts
-    ok 62 - contract coverage baseline validator rejects stale summary counts
-      ---
-      duration_ms: 1.149587
-      type: 'test'
-      ...
-    # Subtest: contract gap inventory validator rejects non-object input
-    ok 63 - contract gap inventory validator rejects non-object input
-      ---
-      duration_ms: 0.162204
-      type: 'test'
-      ...
-    # Subtest: contract gap inventory validator rejects changed batch counts
+--- not ok context ---
+3177-  duration_ms: 11.815156
+3178-  type: 'suite'
+3179-  ...
+3180-# Subtest: CORE-TASK-037 Book 02 Service evidence
+3181-    # Subtest: retains Customer and Brand Services at owned behavior depth
+3182-    ok 1 - retains Customer and Brand Services at owned behavior depth
+3183-      ---
+3184-      duration_ms: 1.167517
+3185-      type: 'test'
+3186-      ...
+3187-    # Subtest: keeps global Service acceptance unresolved until every required Service owns behavior
+3188-    ok 2 - keeps global Service acceptance unresolved until every required Service owns behavior
+3189-      ---
+3190-      duration_ms: 0.226564
+3191-      type: 'test'
+3192-      ...
+3193-    1..2
+3194-ok 77 - CORE-TASK-037 Book 02 Service evidence
+3195-  ---
+3196-  duration_ms: 3.02741
+3197-  type: 'suite'
+3198-  ...
+3199-# Subtest: CORE-TASK-037 Service contract behavior metadata
+3200-    # Subtest: locks Customer and Brand behavior metadata without changing skeleton depth
+3201-    ok 1 - locks Customer and Brand behavior metadata without changing skeleton depth
+3202-      ---
+3203-      duration_ms: 1.890579
+3204-      type: 'test'
+3205-      ...
+3206-    # Subtest: keeps behavior metadata absent from Services without executable evidence
+3207:    not ok 2 - keeps behavior metadata absent from Services without executable evidence
+3208-      ---
+3209-      duration_ms: 7.33024
+3210-      type: 'test'
+3211-      location: '/home/runner/work/markorbit-core/markorbit-core/tests/unit/core-task-037-service-contract-metadata.test.ts:1:1364'
+3212-      failureType: 'testCodeFailure'
+3213-      error: |-
+3214-        The expression evaluated to a falsy value:
+3215-        
+3216-          assert.ok(
+3217-        
+3218-      code: 'ERR_ASSERTION'
+3219-      name: 'AssertionError'
+3220-      expected: true
+3221-      actual: false
+3222-      operator: '=='
+3223-      stack: |-
+3224-        TestContext.<anonymous> (/home/runner/work/markorbit-core/markorbit-core/tests/unit/core-task-037-service-contract-metadata.test.ts:60:12)
+3225-        Test.runInAsyncScope (node:async_hooks:214:14)
+3226-        Test.run (node:internal/test_runner/test:1047:25)
+3227-        Suite.processPendingSubtests (node:internal/test_runner/test:744:18)
+3228-        Test.postRun (node:internal/test_runner/test:1173:19)
+3229-        Test.run (node:internal/test_runner/test:1101:12)
+3230-        async Promise.all (index 0)
+3231-        async Suite.run (node:internal/test_runner/test:1442:7)
+3232-        async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+3233-      ...
+3234-    1..2
+3235:not ok 78 - CORE-TASK-037 Service contract behavior metadata
+3236-  ---
+3237-  duration_ms: 10.788551
+3238-  type: 'suite'
+3239-  location: '/home/runner/work/markorbit-core/markorbit-core/tests/unit/core-task-037-service-contract-metadata.test.ts:1:176'
+3240-  failureType: 'subtestsFailed'
+3241-  error: '1 subtest failed'
+3242-  code: 'ERR_TEST_FAILURE'
+3243-  ...
+3244-# Subtest: CORE-TASK-038 Book 02 Service evidence
+3245-    # Subtest: preserves Customer, Brand, and Trademark Service evidence
+3246-    ok 1 - preserves Customer, Brand, and Trademark Service evidence
+3247-      ---
+3248-      duration_ms: 1.202829
+3249-      type: 'test'
+3250-      ...
+3251-    # Subtest: preserves the CORE-TASK-038 acceptance boundary
+3252-    ok 2 - preserves the CORE-TASK-038 acceptance boundary
+3253-      ---
+3254-      duration_ms: 0.288521
+3255-      type: 'test'
+3256-      ...
+3257-    1..2
+3258-ok 79 - CORE-TASK-038 Book 02 Service evidence
+3259-  ---
+3260-  duration_ms: 2.973822
+3261-  type: 'suite'
+3262-  ...
+3263-# Subtest: CORE-TASK-038 Trademark Service contract metadata
+3264-    # Subtest: locks the canonical behavior metadata without changing the reference-only contract
+3265-    ok 1 - locks the canonical behavior metadata without changing the reference-only contract
+3266-      ---
+3267-      duration_ms: 1.895197
+3268-      type: 'test'
+3269-      ...
+3270-    1..1
+3271-ok 80 - CORE-TASK-038 Trademark Service contract metadata
+3272-  ---
+3273-  duration_ms: 3.142969
+3274-  type: 'suite'
+3275-  ...
+3276-# Subtest: CORE-TASK-039 Book 02 Service evidence
+3277-    # Subtest: preserves Customer through Jurisdiction after later Service batches
+3278-    ok 1 - preserves Customer through Jurisdiction after later Service batches
+3279-      ---
+3280-      duration_ms: 1.297796
+3281-      type: 'test'
+3282-      ...
+3283-    # Subtest: keeps global Service acceptance unresolved until every Must Build Service owns behavior
+3284-    ok 2 - keeps global Service acceptance unresolved until every Must Build Service owns behavior
+3285-      ---
+3286-      duration_ms: 0.14893
+3287-      type: 'test'
+3288-      ...
+3289-    1..2
+3290-ok 81 - CORE-TASK-039 Book 02 Service evidence
+3291-  ---
+3292-  duration_ms: 2.421285
+3293-  type: 'suite'
+3294-  ...
+3295-# Subtest: CORE-TASK-039 Jurisdiction Service contract metadata
+3296-    # Subtest: locks the promoted canonical behavior metadata
+3297-    ok 1 - locks the promoted canonical behavior metadata
+3298-      ---
+3299-      duration_ms: 1.857968
+3300-      type: 'test'
+3301-      ...
+3302-    1..1
+3303-ok 82 - CORE-TASK-039 Jurisdiction Service contract metadata
+3304-  ---
+3305-  duration_ms: 3.103495
+3306-  type: 'suite'
+3307-  ...
+3308-# Subtest: CORE-TASK-040 Book 02 Service evidence
+3309-    # Subtest: preserves Customer through Classification after later Service batches
+3310-    ok 1 - preserves Customer through Classification after later Service batches
+3311-      ---
+3312-      duration_ms: 1.807202
+3313-      type: 'test'
+3314-      ...
+3315-    # Subtest: keeps global Service acceptance unresolved until every Must Build Service owns behavior
+--- assertion context ---
+3197-  type: 'suite'
+3198-  ...
+3199-# Subtest: CORE-TASK-037 Service contract behavior metadata
+3200-    # Subtest: locks Customer and Brand behavior metadata without changing skeleton depth
+3201-    ok 1 - locks Customer and Brand behavior metadata without changing skeleton depth
+3202-      ---
+3203-      duration_ms: 1.890579
+3204-      type: 'test'
+3205-      ...
+3206-    # Subtest: keeps behavior metadata absent from Services without executable evidence
+3207-    not ok 2 - keeps behavior metadata absent from Services without executable evidence
+3208-      ---
+3209-      duration_ms: 7.33024
+3210-      type: 'test'
+3211-      location: '/home/runner/work/markorbit-core/markorbit-core/tests/unit/core-task-037-service-contract-metadata.test.ts:1:1364'
+3212:      failureType: 'testCodeFailure'
+3213-      error: |-
+3214-        The expression evaluated to a falsy value:
+3215-        
+3216-          assert.ok(
+3217-        
+3218:      code: 'ERR_ASSERTION'
+3219:      name: 'AssertionError'
+3220:      expected: true
+3221:      actual: false
+3222-      operator: '=='
+3223-      stack: |-
+3224-        TestContext.<anonymous> (/home/runner/work/markorbit-core/markorbit-core/tests/unit/core-task-037-service-contract-metadata.test.ts:60:12)
+3225-        Test.runInAsyncScope (node:async_hooks:214:14)
+3226-        Test.run (node:internal/test_runner/test:1047:25)
+3227-        Suite.processPendingSubtests (node:internal/test_runner/test:744:18)
+3228-        Test.postRun (node:internal/test_runner/test:1173:19)
+3229-        Test.run (node:internal/test_runner/test:1101:12)
+3230-        async Promise.all (index 0)
+3231-        async Suite.run (node:internal/test_runner/test:1442:7)
+3232-        async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)
+3233-      ...
+3234-    1..2
+3235-not ok 78 - CORE-TASK-037 Service contract behavior metadata
+3236-  ---
+3237-  duration_ms: 10.788551
+3238-  type: 'suite'
+3239-  location: '/home/runner/work/markorbit-core/markorbit-core/tests/unit/core-task-037-service-contract-metadata.test.ts:1:176'
+3240:  failureType: 'subtestsFailed'
+3241-  error: '1 subtest failed'
+3242-  code: 'ERR_TEST_FAILURE'
+3243-  ...
+3244-# Subtest: CORE-TASK-038 Book 02 Service evidence
+3245-    # Subtest: preserves Customer, Brand, and Trademark Service evidence
+3246-    ok 1 - preserves Customer, Brand, and Trademark Service evidence
+3247-      ---
+3248-      duration_ms: 1.202829
+3249-      type: 'test'
+3250-      ...
+3251-    # Subtest: preserves the CORE-TASK-038 acceptance boundary
+3252-    ok 2 - preserves the CORE-TASK-038 acceptance boundary
+3253-      ---
+3254-      duration_ms: 0.288521
+3255-      type: 'test'
+3256-      ...
+3257-    1..2
+3258-ok 79 - CORE-TASK-038 Book 02 Service evidence
+3259-  ---
+3260-  duration_ms: 2.973822
+3261-  type: 'suite'
+3262-  ...
+3263-# Subtest: CORE-TASK-038 Trademark Service contract metadata
+3264-    # Subtest: locks the canonical behavior metadata without changing the reference-only contract
+3265-    ok 1 - locks the canonical behavior metadata without changing the reference-only contract
+3266-      ---
+3267-      duration_ms: 1.895197
+3268-      type: 'test'
+3269-      ...
+3270-    1..1
+3271-ok 80 - CORE-TASK-038 Trademark Service contract metadata
+3272-  ---
+3273-  duration_ms: 3.142969
+3274-  type: 'suite'
+3275-  ...
+3276-# Subtest: CORE-TASK-039 Book 02 Service evidence
+3277-    # Subtest: preserves Customer through Jurisdiction after later Service batches
+3278-    ok 1 - preserves Customer through Jurisdiction after later Service batches
+3279-      ---
+3280-      duration_ms: 1.297796
+3281-      type: 'test'
+3282-      ...
+3283-    # Subtest: keeps global Service acceptance unresolved until every Must Build Service owns behavior
+3284-    ok 2 - keeps global Service acceptance unresolved until every Must Build Service owns behavior
+3285-      ---
+3286-      duration_ms: 0.14893
+3287-      type: 'test'
+3288-      ...
+3289-    1..2
+3290-ok 81 - CORE-TASK-039 Book 02 Service evidence
+--- summary ---
     ok 64 - contract gap inventory validator rejects changed batch counts
       ---
-      duration_ms: 1.311061
+      duration_ms: 1.269943
       type: 'test'
       ...
     1..64
 ok 102 - core fixture validation
   ---
-  duration_ms: 317.812859
+  duration_ms: 297.252819
   type: 'suite'
   ...
 1..102
@@ -999,4 +254,4 @@ ok 102 - core fixture validation
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 69894.231733
+# duration_ms 67239.293095
