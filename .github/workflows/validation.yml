@@ -7,7 +7,85 @@ on:
       - main
       - codex/core-task-032-validation-traceability-lock
 
+permissions:
+  contents: write
+
 jobs:
+  generate-core-task-039:
+    if: github.event_name == 'pull_request' && github.head_ref == 'codex/core-task-039-jurisdiction-service-core-lifecycle'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout task branch
+        uses: actions/checkout@v4
+        with:
+          ref: codex/core-task-039-jurisdiction-service-core-lifecycle
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Generate governed Jurisdiction Service batch
+        run: |
+          if test -f src/services/jurisdiction/core-jurisdiction-service.ts; then
+            echo "CORE-TASK-039 implementation already generated."
+            exit 0
+          fi
+          node scripts/core-task-039-generate-service.mjs
+          node scripts/core-task-039-generate-evidence.mjs
+          node scripts/core-task-039-generate-integration.mjs
+          node scripts/core-task-039-generate-tests.mjs
+          node scripts/core-task-039-generate-derived.mjs
+          pnpm exec prettier --write \
+            src/services/jurisdiction \
+            src/services/index.ts \
+            src/behaviors/core-safe-error.ts \
+            src/service-coverage \
+            src/validation \
+            src/contracts/service \
+            src/mvp-coverage/book-02-mvp-requirements.ts \
+            scripts/validate-core-fixtures.mjs \
+            fixtures/services/core-jurisdiction-service-core-lifecycle.fixture.json \
+            fixtures/contracts/core-service-contract-skeletons.fixture.json \
+            fixtures/contracts/core-contract-index.fixture.json \
+            fixtures/contract-coverage/core-contract-coverage-baseline.fixture.json \
+            fixtures/contract-coverage/core-contract-gap-inventory.fixture.json \
+            fixtures/contract-coverage/core-contract-coverage-acceptance-lock.fixture.json \
+            fixtures/mvp-coverage/book-02-mvp-gap-baseline.fixture.json \
+            tests/fixtures/core-jurisdiction-service-core-lifecycle-fixture.test.ts \
+            tests/unit/core-jurisdiction-service-core-lifecycle.test.ts \
+            tests/unit/core-service-behavior-evidence.test.ts \
+            tests/unit/core-service-contract-skeletons.test.ts \
+            tests/unit/core-fixture-manifest.test.ts \
+            tests/unit/core-task-038-book-02-service-evidence.test.ts \
+            tests/unit/core-task-037-service-contract-metadata.test.ts \
+            tests/unit/core-task-039-book-02-service-evidence.test.ts \
+            tests/unit/core-task-039-service-contract-metadata.test.ts \
+            README.md CORE-MANIFEST.md CORE-ROADMAP.md CHANGELOG.md \
+            docs/architecture/core-jurisdiction-service-lifecycle-resolution-boundary.md
+
+      - name: Commit generated implementation
+        run: |
+          if git diff --quiet && git diff --cached --quiet; then
+            echo "No generated changes to commit."
+            exit 0
+          fi
+          git config user.name "markorbit-core automation"
+          git config user.email "actions@users.noreply.github.com"
+          git add \
+            src fixtures tests scripts/validate-core-fixtures.mjs \
+            README.md CORE-MANIFEST.md CORE-ROADMAP.md CHANGELOG.md \
+            docs/architecture/core-jurisdiction-service-lifecycle-resolution-boundary.md
+          git commit -m "CORE-TASK-039 — Implement Jurisdiction Service lifecycle and resolution"
+          git push origin HEAD:codex/core-task-039-jurisdiction-service-core-lifecycle
+
   validation:
     runs-on: ubuntu-latest
     strategy:
