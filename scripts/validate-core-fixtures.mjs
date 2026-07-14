@@ -37,6 +37,7 @@ import { validateCoreJurisdictionServiceCoreLifecycleFixture } from '../src/vali
 import { validateCoreClassificationServiceCoreScopeValidationFixture } from '../src/validation/core-classification-service-fixture-validation.ts';
 import { validateCoreDocumentServiceGovernedArtifactFoundationFixture } from '../src/validation/core-document-service-fixture-validation.ts';
 import { validateCoreEvidenceServiceProofLayerFoundationFixture } from '../src/validation/core-evidence-service-fixture-validation.ts';
+import { validateCoreMatterServiceExecutionContainerFoundationFixture } from '../src/validation/core-matter-service-fixture-validation.ts';
 
 const validators = {
   domain_registry: validateCoreDomainRegistryFixture,
@@ -85,7 +86,9 @@ const validators = {
   core_document_service_governed_artifact_foundation:
     validateCoreDocumentServiceGovernedArtifactFoundationFixture,
   core_evidence_service_proof_layer_foundation:
-    validateCoreEvidenceServiceProofLayerFoundationFixture
+    validateCoreEvidenceServiceProofLayerFoundationFixture,
+  core_matter_service_execution_container_foundation:
+    validateCoreMatterServiceExecutionContainerFoundationFixture
 };
 
 let hasErrors = false;

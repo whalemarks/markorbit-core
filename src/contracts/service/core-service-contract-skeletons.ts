@@ -61,7 +61,8 @@ const canonicalServiceSkeleton = (
     | 'CORE-TASK-039'
     | 'CORE-TASK-040'
     | 'CORE-TASK-041'
-    | 'CORE-TASK-042' = 'CORE-TASK-021'
+    | 'CORE-TASK-042'
+    | 'CORE-TASK-043' = 'CORE-TASK-021'
 ): CoreServiceContract => ({
   ...serviceSkeleton(
     serviceType,
@@ -180,7 +181,28 @@ const canonicalServiceSkeleton = (
                         'changeEvidenceStatus'
                       ]
                     }
-                  : {})
+                  : serviceType === 'matter-service'
+                    ? {
+                        behaviorImplementationTask: 'CORE-TASK-043B',
+                        behaviorDepth: 'level_2_3',
+                        implementedOperations: [
+                          'createMatter',
+                          'getMatter',
+                          'listMatters',
+                          'updateMatter',
+                          'changeMatterStatus',
+                          'linkMatterOrder',
+                          'linkMatterCustomer',
+                          'linkMatterBrand',
+                          'linkMatterTrademark',
+                          'linkMatterWorkflowContract',
+                          'linkMatterTask',
+                          'linkMatterDocument',
+                          'linkMatterEvidence',
+                          'validateMatterReference'
+                        ]
+                      }
+                    : {})
   }
 });
 
@@ -441,8 +463,9 @@ export const CORE_SERVICE_CONTRACT_SKELETONS = [
     ['matter, order, workflow, task, document, and evidence references'],
     ['matter boundary references'],
     [
-      'Professional execution, case decisions, workflow apply, task creation, status mutation, filing, or Product UI case cards.'
-    ]
+      'Professional execution, case decisions, workflow apply, task creation, filing, or Product UI case cards.'
+    ],
+    'CORE-TASK-043'
   ),
   canonicalServiceSkeleton(
     'order-service',

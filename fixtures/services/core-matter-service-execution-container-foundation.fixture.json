@@ -1,0 +1,27 @@
+{
+  "fixtureType": "core_matter_service_execution_container_foundation",
+  "task": "CORE-TASK-043B",
+  "serviceType": "matter-service",
+  "implementedOperations": [
+    "createMatter",
+    "getMatter",
+    "listMatters",
+    "updateMatter",
+    "changeMatterStatus",
+    "linkMatterOrder",
+    "linkMatterCustomer",
+    "linkMatterBrand",
+    "linkMatterTrademark",
+    "linkMatterWorkflowContract",
+    "linkMatterTask",
+    "linkMatterDocument",
+    "linkMatterEvidence",
+    "validateMatterReference"
+  ],
+  "expected": {
+    "operationCount": 14,
+    "lifecycleLocked": true,
+    "eventRollbackRequired": true,
+    "crossOrganizationNonEnumeration": true
+  }
+}

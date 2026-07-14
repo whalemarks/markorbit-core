@@ -27,6 +27,10 @@ import {
   CORE_EVIDENCE_IMPLEMENTED_OPERATIONS,
   CORE_EVIDENCE_MINIMUM_CAPABILITIES
 } from '../services/evidence/index.ts';
+import {
+  CORE_MATTER_IMPLEMENTED_OPERATIONS,
+  CORE_MATTER_MINIMUM_CAPABILITIES
+} from '../services/matter/index.ts';
 
 export interface CoreServiceBehaviorEvidence {
   readonly requirementId: string;
@@ -238,6 +242,29 @@ export const CORE_SERVICE_BEHAVIOR_EVIDENCE = [
     ],
     fixtureFiles: [
       'fixtures/services/core-evidence-service-proof-layer-foundation.fixture.json'
+    ]
+  },
+  {
+    requirementId: 'must-service-matter-service',
+    serviceType: 'matter-service',
+    domainId: 'matter',
+    contractId: 'core-service-matter-service-contract',
+    sourcePath:
+      'books/book-02-core-specification/core-specs/services/matter-service.md',
+    currentDepth: 'level_2_3',
+    operations: CORE_MATTER_IMPLEMENTED_OPERATIONS,
+    provenMinimumCapabilities: CORE_MATTER_MINIMUM_CAPABILITIES,
+    unresolvedServiceOperations: [
+      'linkMatterCommunication',
+      'linkMatterJurisdiction',
+      'linkMatterClassification',
+      'linkMatterParticipant',
+      'archiveMatter'
+    ],
+    implementationFiles: ['src/services/matter/core-matter-service.ts'],
+    testFiles: ['tests/unit/core-matter-service-execution-container.test.ts'],
+    fixtureFiles: [
+      'fixtures/services/core-matter-service-execution-container-foundation.fixture.json'
     ]
   }
 ] as const satisfies readonly CoreServiceBehaviorEvidence[];
