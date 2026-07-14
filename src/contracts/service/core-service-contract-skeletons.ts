@@ -60,7 +60,8 @@ const canonicalServiceSkeleton = (
     | 'CORE-TASK-038'
     | 'CORE-TASK-039'
     | 'CORE-TASK-040'
-    | 'CORE-TASK-041' = 'CORE-TASK-021'
+    | 'CORE-TASK-041'
+    | 'CORE-TASK-042' = 'CORE-TASK-021'
 ): CoreServiceContract => ({
   ...serviceSkeleton(
     serviceType,
@@ -158,7 +159,24 @@ const canonicalServiceSkeleton = (
                       'changeDocumentStatus'
                     ]
                   }
-                : {})
+                : serviceType === 'evidence-service'
+                  ? {
+                      behaviorImplementationTask: 'CORE-TASK-042',
+                      behaviorDepth: 'level_2_3',
+                      implementedOperations: [
+                        'createEvidence',
+                        'getEvidence',
+                        'listEvidence',
+                        'validateEvidenceReference',
+                        'linkEvidenceSource',
+                        'linkEvidenceClaim',
+                        'linkEvidenceDocument',
+                        'requireEvidenceReview',
+                        'reviewEvidence',
+                        'changeEvidenceStatus'
+                      ]
+                    }
+                  : {})
   }
 });
 
@@ -317,15 +335,25 @@ export const CORE_SERVICE_CONTRACT_SKELETONS = [
     ],
     'CORE-TASK-041'
   ),
-  serviceSkeleton(
-    'evidence-reference-service',
+  canonicalServiceSkeleton(
+    'evidence-service',
     'evidence',
-    'Evidence Reference Service Contract Skeleton',
-    'Skeleton contract boundary for evidence reference service responsibilities.',
-    'Establishes a service contract placeholder for evidence references without evidence processing behavior.',
-    ['Evidence reference service contract boundary.'],
-    ['evidence domain references'],
-    ['evidence reference outputs']
+    'Core Evidence Service Contract Skeleton',
+    'evidence-service.md',
+    'Defines the Evidence service ownership boundary for governed proof-layer records without implementing automatic sufficiency decisions, legal conclusions, OCR, authenticity verification, evidence-package runtime, or external integrations.',
+    [
+      'Evidence service ownership, proof purpose, source linkage, claim linkage, Document linkage, professional review gating, lifecycle, validation, and reference boundary.'
+    ],
+    [
+      'evidence, document, trademark, brand, classification, jurisdiction, matter, order, communication, user, permission, and policy references'
+    ],
+    [
+      'evidence boundary references, governed proof validation results, and Event trace handoff'
+    ],
+    [
+      'Automatic evidence sufficiency scoring, professional legal conclusion, OCR or extraction, authenticity verification, litigation chronology, Evidence Package runtime, external evidence integrations, or filing execution.'
+    ],
+    'CORE-TASK-042'
   ),
   serviceSkeleton(
     'communication-reference-service',

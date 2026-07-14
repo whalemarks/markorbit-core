@@ -435,12 +435,10 @@
       "requirement": "must_build_now",
       "layer": "service",
       "sourcePath": "books/book-02-core-specification/core-specs/services/evidence-service.md",
-      "targetContractId": "core-service-evidence-reference-service-contract",
+      "targetContractId": "core-service-evidence-service-contract",
       "targetName": "Core Evidence Service Contract Skeleton",
       "disposition": "map_existing_skeleton",
-      "existingContractIds": [
-        "core-service-evidence-reference-service-contract"
-      ],
+      "existingContractIds": ["core-service-evidence-service-contract"],
       "implementationBatch": null,
       "targetDepth": "validated_skeleton"
     },

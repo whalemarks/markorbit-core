@@ -11,6 +11,8 @@ import {
   CORE_CUSTOMER_MINIMUM_CAPABILITIES,
   CORE_DOCUMENT_IMPLEMENTED_OPERATIONS,
   CORE_DOCUMENT_MINIMUM_CAPABILITIES,
+  CORE_EVIDENCE_IMPLEMENTED_OPERATIONS,
+  CORE_EVIDENCE_MINIMUM_CAPABILITIES,
   CORE_JURISDICTION_IMPLEMENTED_OPERATIONS,
   CORE_JURISDICTION_MINIMUM_CAPABILITIES,
   CORE_SERVICE_BEHAVIOR_EVIDENCE,
@@ -25,13 +27,14 @@ const expectedRequirements = [
   'must-service-trademark-service',
   'must-service-jurisdiction-service',
   'must-service-classification-service',
-  'must-service-document-service'
+  'must-service-document-service',
+  'must-service-evidence-service'
 ];
 
 describe('Core Service behavior evidence', () => {
   it('validates exact dependency-first Service evidence in canonical order', () => {
     assert.deepEqual(validateCoreServiceBehaviorEvidence(), []);
-    assert.equal(CORE_SERVICE_BEHAVIOR_EVIDENCE.length, 6);
+    assert.equal(CORE_SERVICE_BEHAVIOR_EVIDENCE.length, 7);
     assert.deepEqual(
       CORE_SERVICE_BEHAVIOR_EVIDENCE.map((entry) => entry.requirementId),
       expectedRequirements
@@ -54,7 +57,11 @@ describe('Core Service behavior evidence', () => {
         CORE_CLASSIFICATION_IMPLEMENTED_OPERATIONS,
         CORE_CLASSIFICATION_MINIMUM_CAPABILITIES
       ],
-      [CORE_DOCUMENT_IMPLEMENTED_OPERATIONS, CORE_DOCUMENT_MINIMUM_CAPABILITIES]
+      [
+        CORE_DOCUMENT_IMPLEMENTED_OPERATIONS,
+        CORE_DOCUMENT_MINIMUM_CAPABILITIES
+      ],
+      [CORE_EVIDENCE_IMPLEMENTED_OPERATIONS, CORE_EVIDENCE_MINIMUM_CAPABILITIES]
     ] as const;
     for (const [index, [operations, capabilities]] of expectations.entries()) {
       assert.deepEqual(
@@ -69,11 +76,25 @@ describe('Core Service behavior evidence', () => {
   });
 
   it('rejects missing, duplicate, fake and cross-Service evidence', () => {
-    const [customer, brand, trademark, jurisdiction, classification, document] =
-      CORE_SERVICE_BEHAVIOR_EVIDENCE;
+    const [
+      customer,
+      brand,
+      trademark,
+      jurisdiction,
+      classification,
+      document,
+      evidence
+    ] = CORE_SERVICE_BEHAVIOR_EVIDENCE;
     assert.equal(
       validateCoreServiceBehaviorEvidence({
-        evidence: [customer, brand, trademark, jurisdiction, classification]
+        evidence: [
+          customer,
+          brand,
+          trademark,
+          jurisdiction,
+          classification,
+          document
+        ]
       }).some((entry) => entry.code === 'core.service.evidence_missing'),
       true
     );
@@ -85,7 +106,8 @@ describe('Core Service behavior evidence', () => {
           trademark,
           jurisdiction,
           classification,
-          document
+          document,
+          evidence
         ]
       }).some((entry) => entry.code === 'core.service.evidence_extra'),
       true
@@ -98,7 +120,8 @@ describe('Core Service behavior evidence', () => {
           trademark,
           jurisdiction,
           classification,
-          document
+          document,
+          evidence
         ]
       }).some((entry) => entry.code === 'core.service.contract_mismatch'),
       true
@@ -111,7 +134,8 @@ describe('Core Service behavior evidence', () => {
           trademark,
           jurisdiction,
           classification,
-          document
+          document,
+          evidence
         ]
       }).some((entry) => entry.code === 'core.service.domain_mismatch'),
       true
@@ -124,7 +148,8 @@ describe('Core Service behavior evidence', () => {
           trademark,
           jurisdiction,
           classification,
-          document
+          document,
+          evidence
         ]
       }).some((entry) => entry.code === 'core.service.cross_service_evidence'),
       true
@@ -132,8 +157,15 @@ describe('Core Service behavior evidence', () => {
   });
 
   it('rejects missing operations and minimum capabilities', () => {
-    const [customer, brand, trademark, jurisdiction, classification, document] =
-      CORE_SERVICE_BEHAVIOR_EVIDENCE;
+    const [
+      customer,
+      brand,
+      trademark,
+      jurisdiction,
+      classification,
+      document,
+      evidence
+    ] = CORE_SERVICE_BEHAVIOR_EVIDENCE;
     assert.equal(
       validateCoreServiceBehaviorEvidence({
         evidence: [
@@ -142,7 +174,8 @@ describe('Core Service behavior evidence', () => {
           trademark,
           jurisdiction,
           classification,
-          { ...document, operations: document.operations.slice(1) }
+          document,
+          { ...evidence, operations: evidence.operations.slice(1) }
         ]
       }).some((entry) => entry.code === 'core.service.operation_missing'),
       true
@@ -155,10 +188,11 @@ describe('Core Service behavior evidence', () => {
           trademark,
           jurisdiction,
           classification,
+          document,
           {
-            ...document,
+            ...evidence,
             provenMinimumCapabilities:
-              document.provenMinimumCapabilities.slice(1)
+              evidence.provenMinimumCapabilities.slice(1)
           }
         ]
       }).some((entry) => entry.code === 'core.service.capability_missing'),
@@ -166,7 +200,7 @@ describe('Core Service behavior evidence', () => {
     );
   });
 
-  it('executes all six fixtures and rejects corrupted expectations', async () => {
+  it('executes all seven fixtures and rejects corrupted expectations', async () => {
     const fixtures = [
       [
         'customerFixture',
@@ -196,6 +230,11 @@ describe('Core Service behavior evidence', () => {
       [
         'documentFixture',
         'fixtures/services/core-document-service-governed-artifact-foundation.fixture.json',
+        'eventTraceCountAfterArchiveReplay'
+      ],
+      [
+        'evidenceFixture',
+        'fixtures/services/core-evidence-service-proof-layer-foundation.fixture.json',
         'eventTraceCountAfterArchiveReplay'
       ]
     ] as const;

@@ -190,6 +190,21 @@ const behaviorLocks = {
       'reviewDocument',
       'changeDocumentStatus'
     ]
+  },
+  'evidence-service': {
+    task: 'CORE-TASK-042',
+    operations: [
+      'createEvidence',
+      'getEvidence',
+      'listEvidence',
+      'validateEvidenceReference',
+      'linkEvidenceSource',
+      'linkEvidenceClaim',
+      'linkEvidenceDocument',
+      'requireEvidenceReview',
+      'reviewEvidence',
+      'changeEvidenceStatus'
+    ]
   }
 } as const;
 
@@ -225,6 +240,14 @@ const promotedContracts = {
     name: 'Core Document Service Contract Skeleton',
     sourceFile: 'document-service.md',
     task: 'CORE-TASK-041'
+  },
+  8: {
+    id: 'core-service-evidence-service-contract',
+    serviceType: 'evidence-service',
+    domainId: 'evidence',
+    name: 'Core Evidence Service Contract Skeleton',
+    sourceFile: 'evidence-service.md',
+    task: 'CORE-TASK-042'
   }
 } as const;
 

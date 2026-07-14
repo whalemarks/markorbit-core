@@ -36,6 +36,7 @@ import { validateCoreTrademarkServiceCoreLifecycleFixture } from '../src/validat
 import { validateCoreJurisdictionServiceCoreLifecycleFixture } from '../src/validation/core-jurisdiction-service-fixture-validation.ts';
 import { validateCoreClassificationServiceCoreScopeValidationFixture } from '../src/validation/core-classification-service-fixture-validation.ts';
 import { validateCoreDocumentServiceGovernedArtifactFoundationFixture } from '../src/validation/core-document-service-fixture-validation.ts';
+import { validateCoreEvidenceServiceProofLayerFoundationFixture } from '../src/validation/core-evidence-service-fixture-validation.ts';
 
 const validators = {
   domain_registry: validateCoreDomainRegistryFixture,
@@ -82,7 +83,9 @@ const validators = {
   core_classification_service_core_scope_validation:
     validateCoreClassificationServiceCoreScopeValidationFixture,
   core_document_service_governed_artifact_foundation:
-    validateCoreDocumentServiceGovernedArtifactFoundationFixture
+    validateCoreDocumentServiceGovernedArtifactFoundationFixture,
+  core_evidence_service_proof_layer_foundation:
+    validateCoreEvidenceServiceProofLayerFoundationFixture
 };
 
 let hasErrors = false;
