@@ -1285,10 +1285,12 @@
       "contractIds": ["core-service-evidence-service-contract"],
       "implementationFiles": [
         "src/contracts/service/core-service-contract-skeletons.ts",
-        "src/services/evidence/core-evidence-service.ts"
+        "src/services/evidence/core-evidence-service.ts",
+        "src/services/evidence/core-evidence-service-complete.ts"
       ],
       "testFiles": [
-        "tests/unit/core-evidence-service-proof-layer-foundation.test.ts"
+        "tests/unit/core-evidence-service-proof-layer-foundation.test.ts",
+        "tests/unit/core-evidence-service-mvp-completion.test.ts"
       ],
       "fixtureFiles": [
         "fixtures/services/core-evidence-service-proof-layer-foundation.fixture.json"
