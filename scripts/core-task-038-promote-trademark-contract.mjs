@@ -46,12 +46,19 @@ skeletons = replacePattern(
   `${wrapper}\nconst stubServiceTargets = [`,
   'Trademark Service wrapper insertion'
 );
-skeletons = replacePattern(
-  skeletons,
-  /^\s{2}serviceSkeleton\('trademark-reference-service',[\s\S]*?\),$/m,
-  '  trademarkServiceSkeleton(),',
-  'legacy Trademark reference Service promotion'
-);
+
+const promotedTrademarkLine = '  trademarkServiceSkeleton(),';
+const skeletonLines = skeletons.split(/\r?\n/);
+const legacyIndexes = skeletonLines
+  .map((line, index) => (line.includes("'trademark-reference-service'") ? index : -1))
+  .filter((index) => index >= 0);
+if (legacyIndexes.length !== 1) {
+  throw new Error(
+    `Expected exactly one legacy Trademark reference Service line, found ${legacyIndexes.length}.`
+  );
+}
+skeletonLines[legacyIndexes[0]] = promotedTrademarkLine;
+skeletons = skeletonLines.join('\n');
 write('src/contracts/service/core-service-contract-skeletons.ts', skeletons);
 
 let validation = read('src/contracts/service/core-service-contract-validation.ts');
