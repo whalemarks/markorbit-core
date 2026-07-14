@@ -1,6 +1,9 @@
 name: CORE-TASK-045 Test Diagnostics
 
 on:
+  pull_request:
+    branches:
+      - main
   push:
     branches:
       - agent/core-task-045-opportunity-service-foundation
