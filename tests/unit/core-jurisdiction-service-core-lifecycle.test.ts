@@ -217,7 +217,7 @@ describe('Jurisdiction Service core lifecycle boundary', () => {
     const resolved = service.resolveJurisdictionByCode({
       jurisdictionCode: 'us',
       requestingDomain: 'classification',
-      requestingService: 'classification-reference-service',
+      requestingService: 'classification-service',
       governance: governance(
         'jurisdiction.resolve_by_code',
         'jurisdiction:resolve',

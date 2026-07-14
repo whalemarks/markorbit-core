@@ -330,7 +330,7 @@ export function validateCoreJurisdictionServiceEvidenceFixture(
     const resolved = service.resolveJurisdictionByCode({
       jurisdictionCode: String(createRequest.jurisdictionCode),
       requestingDomain: 'classification',
-      requestingService: 'classification-reference-service',
+      requestingService: 'classification-service',
       governance: governance(
         'jurisdiction.resolve_by_code',
         'jurisdiction:resolve',
