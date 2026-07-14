@@ -1,0 +1,90 @@
+{
+  "fixtureType": "core_classification_service_core_scope_validation",
+  "authority": {
+    "repository": "whalemarks/markorbit-publication",
+    "commit": "3349ecb8955021a8714d023348f8b24f941eb98f"
+  },
+  "fixedNow": "2026-07-14T02:30:00.000Z",
+  "reviewNow": "2026-07-14T02:35:00.000Z",
+  "approvedNow": "2026-07-14T02:40:00.000Z",
+  "classificationReferenceId": "classification:ref:core-task-040",
+  "organizationScopeReferenceId": "organization:ref:scope-0001",
+  "publicReferenceRecord": {
+    "referenceId": "classification:ref:core-task-040",
+    "objectType": "classification-record",
+    "referenceDomain": "classification",
+    "status": "Active"
+  },
+  "objectRecord": {
+    "publicReferenceId": "classification:ref:core-task-040",
+    "objectType": "classification-record",
+    "domainId": "classification",
+    "objectContractId": "core-object-classification-record-contract",
+    "status": "draft",
+    "version": {
+      "version": 1,
+      "createdAt": "2026-07-14T02:30:00.000Z"
+    },
+    "metadata": {},
+    "auditMetadata": {
+      "createdAt": "2026-07-14T02:30:00.000Z",
+      "createdByReferenceId": "user:ref:actor-0001",
+      "correlationId": "corr:core-task-040"
+    },
+    "visibility": {
+      "permissionScopeReferenceId": "permission:ref:scope-0001",
+      "policyScopeReferenceId": "policy:ref:scope-0001",
+      "organizationScopeReferenceId": "organization:ref:scope-0001"
+    }
+  },
+  "createRequest": {
+    "classificationScheme": "Nice",
+    "classReferences": ["class:ref:025"],
+    "goodsServicesItems": [
+      {
+        "itemReferenceId": "classification-item:ref:0001",
+        "classReference": "class:ref:025",
+        "itemType": "Goods",
+        "sourceReference": "source:classification-item:040"
+      }
+    ],
+    "classificationStatus": "Draft",
+    "reviewStatus": "Unreviewed",
+    "trademarkReferenceId": "trademark:ref:00008",
+    "brandReferenceId": "brand:ref:00007",
+    "jurisdictionReferenceId": "jurisdiction:ref:00009",
+    "sourceReference": "source:synthetic:classification-040",
+    "idempotencyKey": "idem:create:classification-040"
+  },
+  "conflictingCreateRequest": {
+    "classificationScheme": "Local"
+  },
+  "reviewRequiredRequest": {
+    "targetStatus": "ReviewRequired",
+    "targetReviewStatus": "NeedsRevision",
+    "idempotencyKey": "idem:status:classification-review-040"
+  },
+  "approvalRequest": {
+    "targetStatus": "Approved",
+    "targetReviewStatus": "ApprovedForFiling",
+    "idempotencyKey": "idem:status:classification-approve-040"
+  },
+  "approvalConflictRequest": {
+    "targetStatus": "Rejected",
+    "targetReviewStatus": "Rejected",
+    "idempotencyKey": "idem:status:classification-approve-040"
+  },
+  "expected": {
+    "recordCountAfterCreate": 1,
+    "eventTraceCountAfterCreate": 1,
+    "eventTraceCountAfterCreateReplay": 1,
+    "eventTraceCountAfterReviewRequired": 2,
+    "eventTraceCountAfterApproval": 3,
+    "eventTraceCountAfterApprovalReplay": 3,
+    "createConflictCode": "IdempotencyConflict",
+    "approvalWithoutReviewCode": "HumanReviewRequired",
+    "approvalConflictCode": "IdempotencyConflict",
+    "draftValidationReason": "ReviewRequired",
+    "approvedValidationReason": "Valid"
+  }
+}
