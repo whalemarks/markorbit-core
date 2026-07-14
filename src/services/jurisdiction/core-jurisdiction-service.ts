@@ -96,9 +96,10 @@ export const CORE_JURISDICTION_MINIMUM_CAPABILITIES = [
 
 export const CORE_JURISDICTION_COLLECTION_TARGET = 'jurisdiction:collection';
 const CONTRACT_ID = 'core-service-jurisdiction-service-contract';
-const BRAND_OBJECT_TYPE = 'jurisdiction-record';
-const BRAND_DOMAIN = 'jurisdiction';
-const BRAND_OBJECT_CONTRACT_ID = 'core-object-jurisdiction-record-contract';
+const JURISDICTION_OBJECT_TYPE = 'jurisdiction-record';
+const JURISDICTION_DOMAIN = 'jurisdiction';
+const JURISDICTION_OBJECT_CONTRACT_ID =
+  'core-object-jurisdiction-record-contract';
 const opaque = /^[A-Za-z0-9][A-Za-z0-9:_./-]{2,127}$/;
 const controlledReference = /^[a-z0-9][a-z0-9:_-]{2,127}$/;
 
@@ -367,7 +368,7 @@ function ensureGovernance(
     );
   }
   if (
-    context.review.targetObjectType !== BRAND_OBJECT_TYPE ||
+    context.review.targetObjectType !== JURISDICTION_OBJECT_TYPE ||
     context.review.targetObjectReferenceId !== expected.target
   ) {
     return safe(
@@ -389,7 +390,7 @@ function ensureGovernance(
   }
   if (
     context.audit.operationName !== expected.operation ||
-    context.audit.targetObjectType !== BRAND_OBJECT_TYPE ||
+    context.audit.targetObjectType !== JURISDICTION_OBJECT_TYPE ||
     context.audit.targetObjectReferenceId !== expected.target ||
     !opaque.test(context.auditContextReferenceId)
   ) {
@@ -427,8 +428,8 @@ function validateJurisdictionReferenceRecord(
 ): CoreBehaviorResult<CoreReferenceRecord> {
   const resolved = registry.resolve({
     referenceId,
-    expectedObjectType: BRAND_OBJECT_TYPE,
-    expectedDomain: BRAND_DOMAIN
+    expectedObjectType: JURISDICTION_OBJECT_TYPE,
+    expectedDomain: JURISDICTION_DOMAIN
   });
   return resolved.ok
     ? resolved
@@ -458,9 +459,9 @@ function validateJurisdictionRecord(
     );
   }
   if (
-    record.objectRecord.domainId !== BRAND_DOMAIN ||
-    record.objectRecord.objectType !== BRAND_OBJECT_TYPE ||
-    record.objectRecord.objectContractId !== BRAND_OBJECT_CONTRACT_ID ||
+    record.objectRecord.domainId !== JURISDICTION_DOMAIN ||
+    record.objectRecord.objectType !== JURISDICTION_OBJECT_TYPE ||
+    record.objectRecord.objectContractId !== JURISDICTION_OBJECT_CONTRACT_ID ||
     record.objectRecord.publicReferenceId !==
       publicReferenceRecord.referenceId ||
     record.objectRecord.status !==
@@ -563,11 +564,11 @@ function eventTrace(input: {
       id: input.id,
       type: createCoreEventType(input.type),
       action: input.action,
-      domainId: BRAND_DOMAIN,
+      domainId: JURISDICTION_DOMAIN,
       object: {
         id: createCoreObjectId(input.jurisdictionReferenceId),
-        type: createCoreObjectType(BRAND_OBJECT_TYPE),
-        domainId: BRAND_DOMAIN
+        type: createCoreObjectType(JURISDICTION_OBJECT_TYPE),
+        domainId: JURISDICTION_DOMAIN
       },
       source: { actorType: 'service', actorId: CONTRACT_ID },
       occurredAt: input.occurredAt,
@@ -667,8 +668,8 @@ export class CoreJurisdictionService {
     }
     const registered = this.deps.relatedReferenceRegistry.resolve({
       referenceId: input.publicReferenceRecord.referenceId,
-      expectedObjectType: BRAND_OBJECT_TYPE,
-      expectedDomain: BRAND_DOMAIN
+      expectedObjectType: JURISDICTION_OBJECT_TYPE,
+      expectedDomain: JURISDICTION_DOMAIN
     });
     if (
       !registered.ok ||
@@ -842,7 +843,7 @@ export class CoreJurisdictionService {
     );
     if (!reference.ok) return reference;
     const record = this.deps.store.get(input.jurisdictionReferenceId);
-    if (!record || record.jurisdictionStatus === 'DeletedReferenceOnly') {
+    if (!record) {
       return safe(
         'JurisdictionNotFound',
         'Jurisdiction was not found.',
