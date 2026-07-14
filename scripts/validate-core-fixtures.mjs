@@ -33,6 +33,7 @@ import {
 } from '../src/validation/index.ts';
 import { validateCoreBrandServiceCoreLifecycleFixture } from '../src/validation/core-brand-service-fixture-validation.ts';
 import { validateCoreTrademarkServiceCoreLifecycleFixture } from '../src/validation/core-trademark-service-fixture-validation.ts';
+import { validateCoreJurisdictionServiceCoreLifecycleFixture } from '../src/validation/core-jurisdiction-service-fixture-validation.ts';
 
 const validators = {
   domain_registry: validateCoreDomainRegistryFixture,
@@ -49,24 +50,33 @@ const validators = {
   workflow_catalog_skeletons: validateCoreWorkflowCatalogSkeletonsFixture,
   permission_contract_skeletons: validateCorePermissionContractSkeletonsFixture,
   policy_contract_skeletons: validateCorePolicyContractSkeletonsFixture,
-  ai_governance_contract_skeletons: validateCoreAiGovernanceContractSkeletonsFixture,
+  ai_governance_contract_skeletons:
+    validateCoreAiGovernanceContractSkeletonsFixture,
   common_contract_skeletons: validateCoreCommonContractSkeletonsFixture,
   test_contract_skeletons: validateCoreTestContractSkeletonsFixture,
   contract_coverage_baseline: validateCoreContractCoverageBaselineFixture,
   contract_gap_inventory: validateCoreContractGapInventoryFixture,
-  contract_coverage_acceptance_lock: validateCoreContractCoverageAcceptanceLockFixture,
-  contract_behavior_coverage_baseline: validateCoreContractBehaviorCoverageBaselineFixture,
-  contract_behavior_gap_inventory: validateCoreContractBehaviorGapInventoryFixture,
-  contract_behavior_acceptance_lock: validateCoreContractBehaviorAcceptanceLockFixture,
+  contract_coverage_acceptance_lock:
+    validateCoreContractCoverageAcceptanceLockFixture,
+  contract_behavior_coverage_baseline:
+    validateCoreContractBehaviorCoverageBaselineFixture,
+  contract_behavior_gap_inventory:
+    validateCoreContractBehaviorGapInventoryFixture,
+  contract_behavior_acceptance_lock:
+    validateCoreContractBehaviorAcceptanceLockFixture,
   safety_boundary_foundations: validateCoreSafetyBoundaryFoundationsFixture,
   idempotency_enforcement: validateCoreIdempotencyEnforcementFixture,
   book_02_mvp_gap_baseline: validateBook02MvpGapBaselineFixture,
-  core_mvp_object_public_reference_foundation: validateCoreMvpObjectPublicReferenceFoundationFixture,
-  core_customer_service_core_lifecycle: validateCoreCustomerServiceCoreLifecycleFixture,
-  core_brand_service_core_lifecycle: validateCoreBrandServiceCoreLifecycleFixture,
+  core_mvp_object_public_reference_foundation:
+    validateCoreMvpObjectPublicReferenceFoundationFixture,
+  core_customer_service_core_lifecycle:
+    validateCoreCustomerServiceCoreLifecycleFixture,
+  core_brand_service_core_lifecycle:
+    validateCoreBrandServiceCoreLifecycleFixture,
   core_trademark_service_core_lifecycle:
     validateCoreTrademarkServiceCoreLifecycleFixture,
-  validateCoreMvpObjectPublicReferenceFoundationFixture
+  core_jurisdiction_service_core_lifecycle:
+    validateCoreJurisdictionServiceCoreLifecycleFixture
 };
 
 let hasErrors = false;
@@ -85,13 +95,10 @@ for (const entry of CORE_FIXTURE_MANIFEST) {
   console.log(`${result.ok ? 'PASS' : 'FAIL'} ${entry.id} (${entry.path})`);
 
   for (const issue of result.issues) {
-    console.log(`  [${issue.severity}] ${issue.code}: ${issue.message}${issue.path ? ` (${issue.path})` : ''}`);
+    console.log(
+      `  [${issue.severity}] ${issue.code}: ${issue.message}${issue.path ? ` (${issue.path})` : ''}`
+    );
   }
 }
 
-if (hasErrors) {
-  console.error('Core fixture validation failed.');
-  process.exit(1);
-}
-
-console.log('All required Core fixtures passed validation.');
+if (hasErrors) process.exitCode = 1;

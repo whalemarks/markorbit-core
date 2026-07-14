@@ -11,6 +11,10 @@ import {
   CORE_TRADEMARK_IMPLEMENTED_OPERATIONS,
   CORE_TRADEMARK_MINIMUM_CAPABILITIES
 } from '../services/trademark/index.ts';
+import {
+  CORE_JURISDICTION_IMPLEMENTED_OPERATIONS,
+  CORE_JURISDICTION_MINIMUM_CAPABILITIES
+} from '../services/jurisdiction/index.ts';
 
 export interface CoreServiceBehaviorEvidence {
   readonly requirementId: string;
@@ -111,6 +115,31 @@ export const CORE_SERVICE_BEHAVIOR_EVIDENCE = [
     testFiles: ['tests/unit/core-trademark-service-core-lifecycle.test.ts'],
     fixtureFiles: [
       'fixtures/services/core-trademark-service-core-lifecycle.fixture.json'
+    ]
+  },
+  {
+    requirementId: 'must-service-jurisdiction-service',
+    serviceType: 'jurisdiction-service',
+    domainId: 'jurisdiction',
+    contractId: 'core-service-jurisdiction-service-contract',
+    sourcePath:
+      'books/book-02-core-specification/core-specs/services/jurisdiction-service.md',
+    currentDepth: 'level_2_3',
+    operations: CORE_JURISDICTION_IMPLEMENTED_OPERATIONS,
+    provenMinimumCapabilities: CORE_JURISDICTION_MINIMUM_CAPABILITIES,
+    unresolvedServiceOperations: [
+      'updateJurisdiction',
+      'linkJurisdictionOffice',
+      'linkJurisdictionRuleReference',
+      'linkJurisdictionServiceScope',
+      'archiveJurisdiction'
+    ],
+    implementationFiles: [
+      'src/services/jurisdiction/core-jurisdiction-service.ts'
+    ],
+    testFiles: ['tests/unit/core-jurisdiction-service-core-lifecycle.test.ts'],
+    fixtureFiles: [
+      'fixtures/services/core-jurisdiction-service-core-lifecycle.fixture.json'
     ]
   }
 ] as const satisfies readonly CoreServiceBehaviorEvidence[];
