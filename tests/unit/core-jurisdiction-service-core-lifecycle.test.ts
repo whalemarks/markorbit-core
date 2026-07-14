@@ -31,8 +31,15 @@ const fixture = JSON.parse(
 
 const jurisdictionReference =
   fixture.publicReferenceRecord as CoreReferenceRecord;
+const duplicateCodeJurisdictionReference =
+  fixture.duplicateCodePublicReferenceRecord as CoreReferenceRecord;
 const objectRecord = fixture.objectRecord as unknown as CoreMvpObjectBaseRecord;
+const duplicateCodeObjectRecord =
+  fixture.duplicateCodeObjectRecord as unknown as CoreMvpObjectBaseRecord;
 const jurisdictionReferenceId = String(fixture.jurisdictionReferenceId);
+const duplicateCodeJurisdictionReferenceId = String(
+  fixture.duplicateCodeJurisdictionReferenceId
+);
 const organizationScopeReferenceId = String(
   fixture.organizationScopeReferenceId
 );
@@ -227,6 +234,42 @@ describe('Jurisdiction Service core lifecycle boundary', () => {
       );
       assert.equal(resolved.value.jurisdictionCode, 'US');
     }
+    assert.equal(traces.visibleTo(['Internal']).length, 1);
+  });
+
+  it('rejects the same normalized code for a different Jurisdiction reference', () => {
+    const { service, store, traces } = setup([
+      duplicateCodeJurisdictionReference
+    ]);
+    assert.equal(createJurisdiction(service).ok, true);
+    const duplicateCodeRequest = fixture.duplicateCodeCreateRequest as Record<
+      string,
+      unknown
+    >;
+    const duplicate = service.createJurisdiction({
+      objectRecord: duplicateCodeObjectRecord,
+      publicReferenceRecord: duplicateCodeJurisdictionReference,
+      jurisdictionCode: String(duplicateCodeRequest.jurisdictionCode),
+      jurisdictionType: duplicateCodeRequest.jurisdictionType,
+      jurisdictionStatus: duplicateCodeRequest.jurisdictionStatus,
+      nameReference: String(duplicateCodeRequest.nameReference),
+      sourceReference: String(duplicateCodeRequest.sourceReference),
+      idempotencyKey: String(duplicateCodeRequest.idempotencyKey),
+      governance: governance(
+        'jurisdiction.create',
+        'jurisdiction:create',
+        'jurisdiction.write',
+        duplicateCodeJurisdictionReferenceId
+      )
+    });
+    assert.equal(duplicate.ok, false);
+    if (!duplicate.ok) {
+      assert.deepEqual(
+        [duplicate.error.code, duplicate.error.category],
+        ['JurisdictionCodeAlreadyExists', 'Conflict']
+      );
+    }
+    assert.equal(store.list().length, 1);
     assert.equal(traces.visibleTo(['Internal']).length, 1);
   });
 

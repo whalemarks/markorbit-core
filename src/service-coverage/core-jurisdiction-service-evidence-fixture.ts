@@ -110,8 +110,12 @@ export function validateCoreJurisdictionServiceEvidenceFixture(
   }
 
   const publicReference = fixture.publicReferenceRecord;
+  const duplicateCodePublicReference =
+    fixture.duplicateCodePublicReferenceRecord;
   const objectRecord = fixture.objectRecord;
+  const duplicateCodeObjectRecord = fixture.duplicateCodeObjectRecord;
   const createRequest = fixture.createRequest;
+  const duplicateCodeCreateRequest = fixture.duplicateCodeCreateRequest;
   const conflictingCreateRequest = fixture.conflictingCreateRequest;
   const duplicateCreateRequest = fixture.duplicateCreateRequest;
   const statusRequest = fixture.statusTransitionRequest;
@@ -121,12 +125,16 @@ export function validateCoreJurisdictionServiceEvidenceFixture(
   if (
     fixture.fixtureType !== 'core_jurisdiction_service_core_lifecycle' ||
     typeof fixture.jurisdictionReferenceId !== 'string' ||
+    typeof fixture.duplicateCodeJurisdictionReferenceId !== 'string' ||
     typeof fixture.organizationScopeReferenceId !== 'string' ||
     typeof fixture.fixedNow !== 'string' ||
     typeof fixture.updatedNow !== 'string' ||
     !isRecord(publicReference) ||
+    !isRecord(duplicateCodePublicReference) ||
     !isRecord(objectRecord) ||
+    !isRecord(duplicateCodeObjectRecord) ||
     !isRecord(createRequest) ||
+    !isRecord(duplicateCodeCreateRequest) ||
     !isRecord(conflictingCreateRequest) ||
     !isRecord(duplicateCreateRequest) ||
     !isRecord(statusRequest) ||
@@ -143,6 +151,9 @@ export function validateCoreJurisdictionServiceEvidenceFixture(
   }
 
   const jurisdictionReferenceRecord = referenceRecord(publicReference);
+  const duplicateCodeJurisdictionReferenceRecord = referenceRecord(
+    duplicateCodePublicReference
+  );
   const traces = new CoreEventTraceRegistry();
   const store = new CoreInMemoryJurisdictionServiceStore();
   const clocks = [String(fixture.fixedNow), String(fixture.updatedNow)];
@@ -155,7 +166,8 @@ export function validateCoreJurisdictionServiceEvidenceFixture(
     ),
     relatedReferenceRegistry: new CoreReferenceRegistry([
       ...CORE_MVP_OBJECT_FIXTURE_RELATED_REFERENCE_RECORDS,
-      jurisdictionReferenceRecord
+      jurisdictionReferenceRecord,
+      duplicateCodeJurisdictionReferenceRecord
     ]),
     now: () => clocks.shift() ?? String(fixture.updatedNow),
     eventIdFactory: (operation, jurisdictionReferenceId, idempotencyKey) =>
@@ -245,6 +257,40 @@ export function validateCoreJurisdictionServiceEvidenceFixture(
           'core.jurisdiction_service.evidence_duplicate_failed',
           'Jurisdiction Service evidence duplicate scenario failed.',
           'duplicateCreateRequest'
+        )
+      );
+    }
+
+    const duplicateCode = service.createJurisdiction({
+      objectRecord:
+        duplicateCodeObjectRecord as unknown as CoreMvpObjectBaseRecord,
+      publicReferenceRecord: duplicateCodeJurisdictionReferenceRecord,
+      jurisdictionCode: String(duplicateCodeCreateRequest.jurisdictionCode),
+      jurisdictionType: duplicateCodeCreateRequest.jurisdictionType,
+      jurisdictionStatus: duplicateCodeCreateRequest.jurisdictionStatus,
+      nameReference: String(duplicateCodeCreateRequest.nameReference),
+      sourceReference: String(duplicateCodeCreateRequest.sourceReference),
+      idempotencyKey: String(duplicateCodeCreateRequest.idempotencyKey),
+      governance: governance(
+        'jurisdiction.create',
+        'jurisdiction:create',
+        'jurisdiction.write',
+        fixture.duplicateCodeJurisdictionReferenceId,
+        fixture.organizationScopeReferenceId
+      )
+    });
+    if (
+      duplicateCode.ok ||
+      duplicateCode.error.code !== expected.duplicateCodeConflictCode ||
+      store.list().length !== expected.recordCountAfterCreate ||
+      traces.visibleTo(['Internal']).length !==
+        expected.eventTraceCountAfterReplay
+    ) {
+      issues.push(
+        issue(
+          'core.jurisdiction_service.evidence_duplicate_code_failed',
+          'Jurisdiction Service duplicate code scenario failed.',
+          'duplicateCodeCreateRequest'
         )
       );
     }
