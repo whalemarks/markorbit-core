@@ -32,25 +32,41 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Generate governed Jurisdiction Service batch
+      - name: Generate Jurisdiction Service
         run: |
+          set -o pipefail
           if test -f src/services/jurisdiction/core-jurisdiction-service.ts; then
-            echo "CORE-TASK-039 implementation already generated."
+            echo "CORE-TASK-039 implementation already generated." | tee core-task-039-generation.log
             exit 0
           fi
-          node scripts/core-task-039-generate-service.mjs
-          node scripts/core-task-039-generate-evidence.mjs
-          node scripts/core-task-039-generate-integration.mjs
-          node scripts/core-task-039-generate-tests.mjs
-          node scripts/core-task-039-generate-derived.mjs
+          node scripts/core-task-039-generate-service.mjs 2>&1 | tee core-task-039-generation.log
+
+      - name: Generate Jurisdiction evidence
+        run: |
+          set -o pipefail
+          node scripts/core-task-039-generate-evidence.mjs 2>&1 | tee -a core-task-039-generation.log
+
+      - name: Generate Jurisdiction integration
+        run: |
+          set -o pipefail
+          node scripts/core-task-039-generate-integration.mjs 2>&1 | tee -a core-task-039-generation.log
+
+      - name: Generate validation and tests
+        run: |
+          set -o pipefail
+          node scripts/core-task-039-generate-tests.mjs 2>&1 | tee -a core-task-039-generation.log
+
+      - name: Generate derived fixtures
+        run: |
+          set -o pipefail
+          node scripts/core-task-039-generate-derived.mjs 2>&1 | tee -a core-task-039-generation.log
+
+      - name: Format generated implementation
+        run: |
           pnpm exec prettier --write \
-            src/services/jurisdiction \
-            src/services/index.ts \
-            src/behaviors/core-safe-error.ts \
-            src/service-coverage \
-            src/validation \
-            src/contracts/service \
-            src/mvp-coverage/book-02-mvp-requirements.ts \
+            src/services/jurisdiction src/services/index.ts \
+            src/behaviors/core-safe-error.ts src/service-coverage src/validation \
+            src/contracts/service src/mvp-coverage/book-02-mvp-requirements.ts \
             scripts/validate-core-fixtures.mjs \
             fixtures/services/core-jurisdiction-service-core-lifecycle.fixture.json \
             fixtures/contracts/core-service-contract-skeletons.fixture.json \
@@ -70,6 +86,14 @@ jobs:
             tests/unit/core-task-039-service-contract-metadata.test.ts \
             README.md CORE-MANIFEST.md CORE-ROADMAP.md CHANGELOG.md \
             docs/architecture/core-jurisdiction-service-lifecycle-resolution-boundary.md
+
+      - name: Upload generation diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: core-task-039-generation-log
+          path: core-task-039-generation.log
+          if-no-files-found: ignore
 
       - name: Commit generated implementation
         run: |
