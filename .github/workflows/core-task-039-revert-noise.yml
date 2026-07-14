@@ -28,12 +28,12 @@ jobs:
 
       - name: Commit cleanup
         run: |
-          if git diff --quiet; then
-            echo "No formatting noise to remove."
+          if git diff --quiet && git diff --cached --quiet; then
+            echo "No files changed."
             exit 0
           fi
           git config user.name "markorbit-core automation"
           git config user.email "actions@users.noreply.github.com"
           git add src/contracts/service/index.ts src/service-coverage/core-customer-service-evidence-fixture.ts src/validation/core-fixture-validation.ts src/validation/core-validation-result.ts
-          git commit -m "CORE-TASK-039 — Remove unrelated formatting noise"
+          git commit -m "CORE-TASK-039 — Restore unrelated files"
           git push origin HEAD:codex/core-task-039-jurisdiction-service-core-lifecycle
