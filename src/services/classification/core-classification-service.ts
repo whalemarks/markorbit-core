@@ -1165,6 +1165,10 @@ export class CoreClassificationService {
         );
       }
     }
+    const classReferenceFilter =
+      typeof input.filters?.classReference === 'string'
+        ? input.filters.classReference
+        : undefined;
     const items = this.deps.store
       .list()
       .filter(
@@ -1193,8 +1197,8 @@ export class CoreClassificationService {
           (input.filters?.jurisdictionReferenceId === undefined ||
             record.jurisdictionReferenceId ===
               input.filters.jurisdictionReferenceId) &&
-          (input.filters?.classReference === undefined ||
-            record.classReferences.includes(input.filters.classReference))
+          (classReferenceFilter === undefined ||
+            record.classReferences.includes(classReferenceFilter))
       )
       .map((record): CoreClassificationListSummary => ({
         publicReferenceId: record.objectRecord.publicReferenceId,
@@ -1465,6 +1469,13 @@ export class CoreClassificationService {
           return safe(
             'ValidationFailed',
             'Clock value is invalid.',
+            input.governance.correlationId
+          );
+        }
+        if (current.objectRecord.version === undefined) {
+          return safe(
+            'ValidationFailed',
+            'Classification Object version is required.',
             input.governance.correlationId
           );
         }
