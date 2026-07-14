@@ -129,7 +129,7 @@ function createTrademark(service: CoreTrademarkService) {
     objectRecord,
     publicReferenceRecord: trademarkReference,
     trademarkType: 'Word',
-    trademarkStatus: 'Active',
+    trademarkStatus: 'Draft',
     markRepresentationReference: 'name:synthetic:trademark-037',
     sourceReference: 'source:synthetic:trademark-037',
     jurisdictionReferenceId,
@@ -250,7 +250,7 @@ describe('Trademark Service core lifecycle boundary', () => {
     const { service, traces } = setup();
     assert.equal(createTrademark(service).ok, true);
     const listed = service.listTrademarks({
-      filters: { trademarkType: 'Word', trademarkStatus: 'Active' },
+      filters: { trademarkType: 'Word', trademarkStatus: 'Draft' },
       pagination: { limit: 10, sortField: 'publicReferenceId' },
       governance: governance(
         'trademark.list',
