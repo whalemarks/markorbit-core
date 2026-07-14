@@ -72,7 +72,7 @@ describe('CORE_SERVICE_CONTRACT_SKELETONS', () => {
         kebabCasePattern.test(contract.serviceType)
       )
     ));
-  it('adds exactly the 9 locked CORE-TASK-021 Service targets', () => {
+  it('preserves exactly the 9 locked CORE-TASK-021 Service targets in place', () => {
     const targets = CORE_DOMAIN_CONTRACT_TARGETS.filter(
       (target) =>
         target.implementationBatch === 'CORE-TASK-021' &&
@@ -93,7 +93,9 @@ describe('CORE_SERVICE_CONTRACT_SKELETONS', () => {
     );
     assert.ok(
       additions.every(
-        (entry) => entry.metadata?.implementationTask === 'CORE-TASK-021'
+        (entry) =>
+          entry.metadata?.specificationCommit ===
+          '3349ecb8955021a8714d023348f8b24f941eb98f'
       )
     );
   });
