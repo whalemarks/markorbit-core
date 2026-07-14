@@ -15,6 +15,10 @@ import {
   CORE_JURISDICTION_IMPLEMENTED_OPERATIONS,
   CORE_JURISDICTION_MINIMUM_CAPABILITIES
 } from '../services/jurisdiction/index.ts';
+import {
+  CORE_CLASSIFICATION_IMPLEMENTED_OPERATIONS,
+  CORE_CLASSIFICATION_MINIMUM_CAPABILITIES
+} from '../services/classification/index.ts';
 
 export interface CoreServiceBehaviorEvidence {
   readonly requirementId: string;
@@ -140,6 +144,37 @@ export const CORE_SERVICE_BEHAVIOR_EVIDENCE = [
     testFiles: ['tests/unit/core-jurisdiction-service-core-lifecycle.test.ts'],
     fixtureFiles: [
       'fixtures/services/core-jurisdiction-service-core-lifecycle.fixture.json'
+    ]
+  },
+  {
+    requirementId: 'must-service-classification-service',
+    serviceType: 'classification-service',
+    domainId: 'classification',
+    contractId: 'core-service-classification-service-contract',
+    sourcePath:
+      'books/book-02-core-specification/core-specs/services/classification-service.md',
+    currentDepth: 'level_2_3',
+    operations: CORE_CLASSIFICATION_IMPLEMENTED_OPERATIONS,
+    provenMinimumCapabilities: CORE_CLASSIFICATION_MINIMUM_CAPABILITIES,
+    unresolvedServiceOperations: [
+      'updateClassification',
+      'addClassificationItem',
+      'updateClassificationItem',
+      'removeClassificationItem',
+      'linkClassificationTrademark',
+      'linkClassificationJurisdiction',
+      'recommendClassification',
+      'reviewClassification',
+      'archiveClassification'
+    ],
+    implementationFiles: [
+      'src/services/classification/core-classification-service.ts'
+    ],
+    testFiles: [
+      'tests/unit/core-classification-service-core-scope-validation.test.ts'
+    ],
+    fixtureFiles: [
+      'fixtures/services/core-classification-service-core-scope-validation.fixture.json'
     ]
   }
 ] as const satisfies readonly CoreServiceBehaviorEvidence[];

@@ -65,9 +65,7 @@ function governance(
       intendedOperation: operation,
       requiredPolicyScopes: [policyScope],
       policyDecisionReferenceId: 'policy:decision:allow-0001',
-      policyDecision: humanReviewRequired
-        ? 'HumanReviewRequired'
-        : 'Allowed',
+      policyDecision: humanReviewRequired ? 'HumanReviewRequired' : 'Allowed',
       restrictedFieldsOmitted: true,
       correlationId: 'corr:core-task-040'
     },
@@ -302,8 +300,7 @@ export function validateCoreClassificationServiceEvidenceFixture(
       list.value.items.length !== 1 ||
       'goodsServicesItems' in list.value.items[0] ||
       !draftValidation.ok ||
-      draftValidation.value.reasonCode !==
-        expected.draftValidationReason ||
+      draftValidation.value.reasonCode !== expected.draftValidationReason ||
       !referenceValidation.ok ||
       !referenceValidation.value.isValid
     ) {
@@ -367,8 +364,7 @@ export function validateCoreClassificationServiceEvidenceFixture(
     });
     if (
       approvalWithoutReview.ok ||
-      approvalWithoutReview.error.code !==
-        expected.approvalWithoutReviewCode
+      approvalWithoutReview.error.code !== expected.approvalWithoutReviewCode
     ) {
       issues.push(
         issue(

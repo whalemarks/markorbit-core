@@ -2,3 +2,4 @@ export * from './customer/index.ts';
 export * from './brand/index.ts';
 export * from './trademark/index.ts';
 export * from './jurisdiction/index.ts';
+export * from './classification/index.ts';

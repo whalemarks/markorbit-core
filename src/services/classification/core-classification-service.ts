@@ -247,8 +247,7 @@ export interface CoreClassificationServiceDependencies {
   readonly cursorSecret: string;
 }
 
-export interface CoreClassificationListSummary
-  extends Record<string, unknown> {
+export interface CoreClassificationListSummary extends Record<string, unknown> {
   readonly publicReferenceId: string;
   readonly classificationScheme: CoreClassificationScheme;
   readonly classificationStatus: CoreClassificationStatus;
@@ -361,7 +360,11 @@ function ensureGovernance(
     context.policy.correlationId !== correlationId ||
     context.audit.correlationId !== correlationId
   ) {
-    return safe('ValidationFailed', 'Correlation IDs must match.', correlationId);
+    return safe(
+      'ValidationFailed',
+      'Correlation IDs must match.',
+      correlationId
+    );
   }
   if (
     context.permission.intendedOperation !== expected.operation ||
@@ -499,10 +502,7 @@ function validateRequestingService(
   );
   return service
     ? { ok: true, value: null }
-    : safe(
-        'InvalidClassificationReference',
-        'Requesting Service is invalid.'
-      );
+    : safe('InvalidClassificationReference', 'Requesting Service is invalid.');
 }
 
 function idempotencyScope(
@@ -590,9 +590,7 @@ function normalizeItems(
         ? item.itemReferenceId.trim()
         : '';
     const classReference =
-      typeof item.classReference === 'string'
-        ? item.classReference.trim()
-        : '';
+      typeof item.classReference === 'string' ? item.classReference.trim() : '';
     if (
       !controlledReference.test(itemReferenceId) ||
       !controlledReference.test(classReference) ||
@@ -723,9 +721,7 @@ function validateClassificationRecord(
     record.objectRecord.publicReferenceId !==
       publicReferenceRecord.referenceId ||
     record.objectRecord.status !==
-      CORE_CLASSIFICATION_STATUS_TO_OBJECT_STATUS[
-        record.classificationStatus
-      ]
+      CORE_CLASSIFICATION_STATUS_TO_OBJECT_STATUS[record.classificationStatus]
   ) {
     return safe(
       'ClassificationObjectMismatch',
@@ -829,9 +825,7 @@ function validationResult(
   };
 }
 
-export class CoreInMemoryClassificationServiceStore
-  implements CoreClassificationServiceStore
-{
+export class CoreInMemoryClassificationServiceStore implements CoreClassificationServiceStore {
   readonly #records = new Map<string, CoreClassificationServiceRecord>();
 
   get(id: string): CoreClassificationServiceRecord | undefined {
@@ -986,8 +980,7 @@ export class CoreClassificationService {
           trademarkReferenceId: input.trademarkReferenceId ?? null,
           brandReferenceId: input.brandReferenceId ?? null,
           jurisdictionReferenceId: input.jurisdictionReferenceId ?? null,
-          recommendationReferenceId:
-            input.recommendationReferenceId ?? null,
+          recommendationReferenceId: input.recommendationReferenceId ?? null,
           sourceReference: input.sourceReference
         };
         const valid = validateClassificationRecord(
@@ -1029,8 +1022,7 @@ export class CoreClassificationService {
               classificationReferenceId: target,
               occurredAt: now,
               correlationId: input.governance.correlationId,
-              auditContextReferenceId:
-                input.governance.auditContextReferenceId,
+              auditContextReferenceId: input.governance.auditContextReferenceId,
               payload: {
                 classificationReferenceId: target,
                 classificationScheme: valid.value.classificationScheme,
@@ -1118,9 +1110,7 @@ export class CoreClassificationService {
       readonly includeTotalCount?: boolean | null;
     };
     readonly governance: CoreClassificationGovernanceContext;
-  }): CoreBehaviorResult<
-    CorePaginatedResult<CoreClassificationListSummary>
-  > {
+  }): CoreBehaviorResult<CorePaginatedResult<CoreClassificationListSummary>> {
     const governed = ensureGovernance(input.governance, {
       operation: 'classification.list',
       permission: 'classification:list',
@@ -1130,10 +1120,7 @@ export class CoreClassificationService {
     if (!governed.ok) return governed;
     if (
       input.filters?.classificationScheme !== undefined &&
-      !included(
-        CORE_CLASSIFICATION_SCHEMES,
-        input.filters.classificationScheme
-      )
+      !included(CORE_CLASSIFICATION_SCHEMES, input.filters.classificationScheme)
     ) {
       return safe(
         'InvalidClassificationScheme',
@@ -1154,10 +1141,7 @@ export class CoreClassificationService {
     }
     if (
       input.filters?.reviewStatus !== undefined &&
-      !included(
-        CORE_CLASSIFICATION_REVIEW_STATUSES,
-        input.filters.reviewStatus
-      )
+      !included(CORE_CLASSIFICATION_REVIEW_STATUSES, input.filters.reviewStatus)
     ) {
       return safe(
         'InvalidClassificationReviewStatus',
@@ -1212,19 +1196,17 @@ export class CoreClassificationService {
           (input.filters?.classReference === undefined ||
             record.classReferences.includes(input.filters.classReference))
       )
-      .map(
-        (record): CoreClassificationListSummary => ({
-          publicReferenceId: record.objectRecord.publicReferenceId,
-          classificationScheme: record.classificationScheme,
-          classificationStatus: record.classificationStatus,
-          reviewStatus: record.reviewStatus,
-          classReferenceCount: record.classReferences.length,
-          itemCount: record.goodsServicesItems.length,
-          genericObjectStatus: record.objectRecord.status,
-          createdAt: record.objectRecord.auditMetadata.createdAt,
-          updatedAt: record.objectRecord.auditMetadata.updatedAt
-        })
-      );
+      .map((record): CoreClassificationListSummary => ({
+        publicReferenceId: record.objectRecord.publicReferenceId,
+        classificationScheme: record.classificationScheme,
+        classificationStatus: record.classificationStatus,
+        reviewStatus: record.reviewStatus,
+        classReferenceCount: record.classReferences.length,
+        itemCount: record.goodsServicesItems.length,
+        genericObjectStatus: record.objectRecord.status,
+        createdAt: record.objectRecord.auditMetadata.createdAt,
+        updatedAt: record.objectRecord.auditMetadata.updatedAt
+      }));
     return paginateCoreItems(
       items,
       input.pagination ?? {},
@@ -1401,9 +1383,7 @@ export class CoreClassificationService {
         correlationId: input.governance.correlationId
       },
       () => {
-        const current = this.deps.store.get(
-          input.classificationReferenceId
-        );
+        const current = this.deps.store.get(input.classificationReferenceId);
         if (!current) {
           return safe(
             'ClassificationNotFound',
@@ -1428,10 +1408,7 @@ export class CoreClassificationService {
           !transitions.has(
             `${current.classificationStatus}->${input.targetStatus}`
           ) ||
-          !validStatusReviewPair(
-            input.targetStatus,
-            input.targetReviewStatus
-          )
+          !validStatusReviewPair(input.targetStatus, input.targetReviewStatus)
         ) {
           return safe(
             'InvalidClassificationTransition',
@@ -1445,8 +1422,7 @@ export class CoreClassificationService {
             input.targetStatus === 'Rejected');
         if (
           protectedTransition &&
-          (input.governance.policy.policyDecision !==
-            'HumanReviewRequired' ||
+          (input.governance.policy.policyDecision !== 'HumanReviewRequired' ||
             !input.governance.review.humanReviewRequired ||
             input.governance.review.reviewStatus !== 'Completed' ||
             input.governance.review.reviewDecision !== 'Approved' ||
@@ -1499,9 +1475,7 @@ export class CoreClassificationService {
           objectRecord: {
             ...current.objectRecord,
             status:
-              CORE_CLASSIFICATION_STATUS_TO_OBJECT_STATUS[
-                input.targetStatus
-              ],
+              CORE_CLASSIFICATION_STATUS_TO_OBJECT_STATUS[input.targetStatus],
             auditMetadata: {
               ...current.objectRecord.auditMetadata,
               updatedAt: now,
@@ -1547,11 +1521,9 @@ export class CoreClassificationService {
               classificationReferenceId: input.classificationReferenceId,
               occurredAt: now,
               correlationId: input.governance.correlationId,
-              auditContextReferenceId:
-                input.governance.auditContextReferenceId,
+              auditContextReferenceId: input.governance.auditContextReferenceId,
               payload: {
-                classificationReferenceId:
-                  input.classificationReferenceId,
+                classificationReferenceId: input.classificationReferenceId,
                 previousStatus: previous.classificationStatus,
                 newStatus: input.targetStatus,
                 reviewStatus: input.targetReviewStatus,

@@ -69,9 +69,7 @@ function governance(
       intendedOperation: operation,
       requiredPolicyScopes: [policyScope],
       policyDecisionReferenceId: 'policy:decision:allow-0001',
-      policyDecision: humanReviewRequired
-        ? 'HumanReviewRequired'
-        : 'Allowed',
+      policyDecision: humanReviewRequired ? 'HumanReviewRequired' : 'Allowed',
       restrictedFieldsOmitted: true,
       correlationId: 'corr:core-task-040'
     },
@@ -214,7 +212,8 @@ describe('Classification Service core scope and validation boundary', () => {
       idempotencyKey: 'idem:class-only:040'
     });
     assert.equal(classOnly.ok, false);
-    if (!classOnly.ok) assert.equal(classOnly.error.code, 'ClassNumberOnlyNotAllowed');
+    if (!classOnly.ok)
+      assert.equal(classOnly.error.code, 'ClassNumberOnlyNotAllowed');
 
     const mismatched = service.createClassification({
       ...base,
@@ -363,7 +362,10 @@ describe('Classification Service core scope and validation boundary', () => {
     };
     const approved = service.changeClassificationStatus(approvalInput);
     assert.equal(approved.ok, true);
-    assert.deepEqual(service.changeClassificationStatus(approvalInput), approved);
+    assert.deepEqual(
+      service.changeClassificationStatus(approvalInput),
+      approved
+    );
     assert.equal(traces.visibleTo(['Internal']).length, 3);
     const conflict = service.changeClassificationStatus({
       ...approvalInput,

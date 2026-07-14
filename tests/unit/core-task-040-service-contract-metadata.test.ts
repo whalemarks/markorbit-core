@@ -8,7 +8,10 @@ const classification = CORE_SERVICE_CONTRACT_SKELETONS[6];
 describe('CORE-TASK-040 Classification Service contract metadata', () => {
   it('promotes the index-6 Classification placeholder in place', () => {
     assert.equal(CORE_SERVICE_CONTRACT_SKELETONS.length, 26);
-    assert.equal(classification?.id, 'core-service-classification-service-contract');
+    assert.equal(
+      classification?.id,
+      'core-service-classification-service-contract'
+    );
     assert.equal(classification?.serviceType, 'classification-service');
     assert.equal(classification?.domainId, 'classification');
     assert.equal(
@@ -32,7 +35,10 @@ describe('CORE-TASK-040 Classification Service contract metadata', () => {
         'changeClassificationStatus'
       ]
     });
-    assert.deepEqual(validateCoreServiceContractSkeletons(CORE_SERVICE_CONTRACT_SKELETONS), []);
+    assert.deepEqual(
+      validateCoreServiceContractSkeletons(CORE_SERVICE_CONTRACT_SKELETONS),
+      []
+    );
     assert.equal(
       CORE_SERVICE_CONTRACT_SKELETONS.some(
         (entry) => entry.serviceType === 'classification-reference-service'
