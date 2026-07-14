@@ -1,0 +1,197 @@
+name: CORE-TASK-042B Sync Metadata
+
+on:
+  pull_request:
+
+permissions:
+  contents: write
+
+jobs:
+  sync-metadata:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout head branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+
+      - name: Synchronize Evidence metadata
+        shell: python
+        run: |
+          from pathlib import Path
+          import json
+          import re
+
+          operations = [
+              'createEvidence',
+              'getEvidence',
+              'listEvidence',
+              'updateEvidence',
+              'validateEvidenceReference',
+              'linkEvidenceSource',
+              'linkEvidenceClaim',
+              'linkEvidenceDocument',
+              'linkEvidenceTrademark',
+              'linkEvidenceBrand',
+              'linkEvidenceClassification',
+              'requireEvidenceReview',
+              'reviewEvidence',
+              'changeEvidenceStatus',
+          ]
+
+          def array(values, indent):
+              lines = ['[']
+              for index, value in enumerate(values):
+                  suffix = ',' if index < len(values) - 1 else ''
+                  lines.append(' ' * indent + repr(value) + suffix)
+              lines.append(' ' * (indent - 2) + ']')
+              return '\n'.join(lines)
+
+          path = Path('src/contracts/service/core-service-contract-skeletons.ts')
+          text = path.read_text()
+          text = text.replace(
+              "behaviorImplementationTask: 'CORE-TASK-042',",
+              "behaviorImplementationTask: 'CORE-TASK-042B',",
+              1,
+          )
+          pattern = r"(serviceType === 'evidence-service'[\s\S]*?implementedOperations: )\[[\s\S]*?\](\n\s*}\n\s*: \{\})"
+          match = re.search(pattern, text)
+          if not match:
+              raise RuntimeError('Evidence contract skeleton operations were not found.')
+          text = text[:match.start()] + match.group(1) + array(operations, 24) + match.group(2) + text[match.end():]
+          path.write_text(text)
+
+          path = Path('src/contracts/service/core-service-contract-validation.ts')
+          text = path.read_text()
+          text = text.replace(
+              "'evidence-service': {\n    task: 'CORE-TASK-042',",
+              "'evidence-service': {\n    task: 'CORE-TASK-042B',",
+              1,
+          )
+          pattern = r"('evidence-service': \{\n\s*task: 'CORE-TASK-042B',\n\s*operations: )\[[\s\S]*?\](\n\s*}\n} as const;)"
+          match = re.search(pattern, text)
+          if not match:
+              raise RuntimeError('Evidence behavior lock operations were not found.')
+          text = text[:match.start()] + match.group(1) + array(operations, 6) + match.group(2) + text[match.end():]
+          path.write_text(text)
+
+          path = Path('fixtures/contracts/core-service-contract-skeletons.fixture.json')
+          fixture = json.loads(path.read_text())
+          entry = next(item for item in fixture if item.get('serviceType') == 'evidence-service')
+          entry['metadata']['behaviorImplementationTask'] = 'CORE-TASK-042B'
+          entry['metadata']['implementedOperations'] = operations
+          path.write_text(json.dumps(fixture, indent=2, ensure_ascii=False) + '\n')
+
+          path = Path('tests/unit/core-task-042-service-contract-metadata.test.ts')
+          text = path.read_text()
+          text = text.replace(
+              "describe('CORE-TASK-042 Evidence Service contract metadata'",
+              "describe('CORE-TASK-042B Evidence Service contract metadata'",
+          )
+          text = text.replace(
+              "behaviorImplementationTask: 'CORE-TASK-042',",
+              "behaviorImplementationTask: 'CORE-TASK-042B',",
+          )
+          pattern = r"(behaviorDepth: 'level_2_3',\n\s*implementedOperations: )\[[\s\S]*?\](\n\s*}\);)"
+          match = re.search(pattern, text)
+          if not match:
+              raise RuntimeError('Evidence metadata test operations were not found.')
+          text = text[:match.start()] + match.group(1) + array(operations, 8) + match.group(2) + text[match.end():]
+          path.write_text(text)
+
+          path = Path('src/service-coverage/core-service-behavior-evidence.ts')
+          text = path.read_text()
+          text = re.sub(
+              r"    unresolvedServiceOperations: \[\n      'updateEvidence',[\s\S]*?      'archiveEvidence'\n    \],",
+              "    unresolvedServiceOperations: [\n      'unlinkEvidenceSource',\n      'linkEvidenceMatter',\n      'linkEvidenceJurisdiction'\n    ],",
+              text,
+              count=1,
+          )
+          text = text.replace(
+              "implementationFiles: ['src/services/evidence/core-evidence-service.ts'],",
+              "implementationFiles: [\n      'src/services/evidence/core-evidence-service.ts',\n      'src/services/evidence/core-evidence-service-complete.ts'\n    ],",
+          )
+          text = text.replace(
+              "'tests/unit/core-evidence-service-proof-layer-foundation.test.ts'\n    ],",
+              "'tests/unit/core-evidence-service-proof-layer-foundation.test.ts',\n      'tests/unit/core-evidence-service-mvp-completion.test.ts'\n    ],",
+              1,
+          )
+          path.write_text(text)
+
+          path = Path('src/service-coverage/core-service-behavior-validation.ts')
+          text = path.read_text()
+          text = re.sub(
+              r"    unresolved: \[\n      'updateEvidence',[\s\S]*?      'archiveEvidence'\n    \],",
+              "    unresolved: [\n      'unlinkEvidenceSource',\n      'linkEvidenceMatter',\n      'linkEvidenceJurisdiction'\n    ],",
+              text,
+              count=1,
+          )
+          path.write_text(text)
+
+          Path('docs/architecture/core-evidence-service-mvp-completion.md').write_text("""# Core Evidence Service MVP completion
+
+CORE-TASK-042B completes the governed Evidence Service behavior that was intentionally left outside the CORE-TASK-042 proof-layer foundation.
+
+## Authority
+
+- Specification repository: `whalemarks/markorbit-publication`
+- Locked commit: `3349ecb8955021a8714d023348f8b24f941eb98f`
+- Primary authority: Evidence Domain, Evidence Object, Evidence Service and related Document, Trademark, Brand and Classification specifications in Book 02.
+
+## Controlled-value resolution
+
+The Evidence Object specification is used as the canonical MVP controlled-value authority where the Evidence Service draft contains older names. This matches the existing CORE-TASK-042 runtime values and avoids inventing aliases or silently merging enums. Service inputs, tests, contract metadata and executable behavior therefore use the Evidence Object values consistently.
+
+## Completed operations
+
+- `updateEvidence` for governed mutable metadata only
+- `linkEvidenceTrademark`
+- `linkEvidenceBrand`
+- `linkEvidenceClassification`, including governed goods/services item references
+
+The existing create, read, list, validation, source, claim, Document, review and status operations remain part of the canonical Evidence boundary.
+
+## Lifecycle correction
+
+Professional decisions now require the explicit sequence:
+
+`ReviewRequired → Reviewed → Accepted | Rejected | Insufficient`
+
+`HumanReviewed` records the first transition. Acceptance, rejection and insufficiency cannot occur directly from `ReviewRequired`, and AI draft review never counts as professional acceptance. Remaining status transitions follow Book 02, including filing, archival and `Archived → DeletedReferenceOnly`.
+
+## Reliability and privacy
+
+Completed mutations preserve immutable public identity, organization scope, audit/version metadata, success-only idempotency and Event rollback. Relationship targets are validated through the governed reference registry. List, validation and Event payloads expose relationship presence or counts rather than protected reference IDs. Cross-organization validation remains a safe not-found result.
+
+## Compatibility boundary
+
+The original foundation class remains exported from the Evidence module for historical fixture execution. The repository root exports the completed class as the canonical `CoreEvidenceService`. New production-facing behavior and direct tests target the completed class.
+
+## Remaining non-goals
+
+- source unlinking
+- Matter and Jurisdiction relationship mutation
+- Evidence Package and litigation chronology runtime
+- OCR, authenticity verification or automatic legal sufficiency scoring
+- persistence, API routes, Workflow execution and external integrations
+""")
+
+      - name: Commit metadata synchronization
+        shell: bash
+        run: |
+          if git diff --quiet; then
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/contracts/service/core-service-contract-skeletons.ts \
+            src/contracts/service/core-service-contract-validation.ts \
+            fixtures/contracts/core-service-contract-skeletons.fixture.json \
+            tests/unit/core-task-042-service-contract-metadata.test.ts \
+            src/service-coverage/core-service-behavior-evidence.ts \
+            src/service-coverage/core-service-behavior-validation.ts \
+            docs/architecture/core-evidence-service-mvp-completion.md
+          git commit -m "CORE-TASK-042B — synchronize Evidence metadata"
+          git push origin HEAD:${{ github.event.pull_request.head.ref }}
