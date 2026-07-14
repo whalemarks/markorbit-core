@@ -28,16 +28,35 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Promote Trademark contract and regenerate fixtures
-        run: pnpm exec tsx scripts/core-task-038-promote-trademark-contract.mjs
+      - name: Run contract promotion repair
+        id: repair
+        shell: bash
+        run: |
+          set +e
+          pnpm exec tsx scripts/core-task-038-promote-trademark-contract.mjs 2>&1 | tee repair.log
+          code=${PIPESTATUS[0]}
+          echo "exit_code=$code" >> "$GITHUB_OUTPUT"
+          exit 0
+
+      - name: Upload repair diagnostics
+        uses: actions/upload-artifact@v4
+        with:
+          name: core-task-038-contract-repair-log
+          path: repair.log
 
       - name: Format governed files
+        if: steps.repair.outputs.exit_code == '0'
         run: pnpm format
 
       - name: Commit repair
+        if: steps.repair.outputs.exit_code == '0'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A
           git commit -m "CORE-TASK-038 — Promote Trademark Service contract in place"
           git push origin HEAD:codex/core-task-038-trademark-service-core-lifecycle
+
+      - name: Fail when repair failed
+        if: steps.repair.outputs.exit_code != '0'
+        run: exit 1
