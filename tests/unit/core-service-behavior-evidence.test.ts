@@ -34,14 +34,29 @@ describe('Core Service behavior evidence', () => {
       expectedRequirements
     );
     const expectations = [
-      [CORE_CUSTOMER_IMPLEMENTED_OPERATIONS, CORE_CUSTOMER_MINIMUM_CAPABILITIES],
+      [
+        CORE_CUSTOMER_IMPLEMENTED_OPERATIONS,
+        CORE_CUSTOMER_MINIMUM_CAPABILITIES
+      ],
       [CORE_BRAND_IMPLEMENTED_OPERATIONS, CORE_BRAND_MINIMUM_CAPABILITIES],
-      [CORE_TRADEMARK_IMPLEMENTED_OPERATIONS, CORE_TRADEMARK_MINIMUM_CAPABILITIES],
-      [CORE_JURISDICTION_IMPLEMENTED_OPERATIONS, CORE_JURISDICTION_MINIMUM_CAPABILITIES],
-      [CORE_CLASSIFICATION_IMPLEMENTED_OPERATIONS, CORE_CLASSIFICATION_MINIMUM_CAPABILITIES]
+      [
+        CORE_TRADEMARK_IMPLEMENTED_OPERATIONS,
+        CORE_TRADEMARK_MINIMUM_CAPABILITIES
+      ],
+      [
+        CORE_JURISDICTION_IMPLEMENTED_OPERATIONS,
+        CORE_JURISDICTION_MINIMUM_CAPABILITIES
+      ],
+      [
+        CORE_CLASSIFICATION_IMPLEMENTED_OPERATIONS,
+        CORE_CLASSIFICATION_MINIMUM_CAPABILITIES
+      ]
     ] as const;
     for (const [index, [operations, capabilities]] of expectations.entries()) {
-      assert.deepEqual(CORE_SERVICE_BEHAVIOR_EVIDENCE[index]?.operations, operations);
+      assert.deepEqual(
+        CORE_SERVICE_BEHAVIOR_EVIDENCE[index]?.operations,
+        operations
+      );
       assert.deepEqual(
         CORE_SERVICE_BEHAVIOR_EVIDENCE[index]?.provenMinimumCapabilities,
         capabilities
@@ -137,11 +152,31 @@ describe('Core Service behavior evidence', () => {
 
   it('executes all five fixtures and rejects corrupted expectations', async () => {
     const fixtures = [
-      ['customerFixture', 'fixtures/services/core-customer-service-core-lifecycle.fixture.json', 'eventTraceCountAfterStatusReplay'],
-      ['brandFixture', 'fixtures/services/core-brand-service-core-lifecycle.fixture.json', 'eventTraceCountAfterStatusReplay'],
-      ['trademarkFixture', 'fixtures/services/core-trademark-service-core-lifecycle.fixture.json', 'eventTraceCountAfterStatusReplay'],
-      ['jurisdictionFixture', 'fixtures/services/core-jurisdiction-service-core-lifecycle.fixture.json', 'eventTraceCountAfterStatusReplay'],
-      ['classificationFixture', 'fixtures/services/core-classification-service-core-scope-validation.fixture.json', 'eventTraceCountAfterApprovalReplay']
+      [
+        'customerFixture',
+        'fixtures/services/core-customer-service-core-lifecycle.fixture.json',
+        'eventTraceCountAfterStatusReplay'
+      ],
+      [
+        'brandFixture',
+        'fixtures/services/core-brand-service-core-lifecycle.fixture.json',
+        'eventTraceCountAfterStatusReplay'
+      ],
+      [
+        'trademarkFixture',
+        'fixtures/services/core-trademark-service-core-lifecycle.fixture.json',
+        'eventTraceCountAfterStatusReplay'
+      ],
+      [
+        'jurisdictionFixture',
+        'fixtures/services/core-jurisdiction-service-core-lifecycle.fixture.json',
+        'eventTraceCountAfterStatusReplay'
+      ],
+      [
+        'classificationFixture',
+        'fixtures/services/core-classification-service-core-scope-validation.fixture.json',
+        'eventTraceCountAfterApprovalReplay'
+      ]
     ] as const;
 
     for (const [option, path, expectation] of fixtures) {
