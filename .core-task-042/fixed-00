@@ -1,0 +1,175 @@
+diff --git a/base/.github/workflows/core-task-042-source-snapshot.yml b/base/.github/workflows/core-task-042-source-snapshot.yml
+deleted file mode 100644
+index 6462740..0000000
+--- a/base/.github/workflows/core-task-042-source-snapshot.yml
++++ /dev/null
+@@ -1,21 +0,0 @@
+-name: CORE-TASK-042 Source Snapshot
+-
+-on:
+-  pull_request:
+-    branches: [main]
+-    paths:
+-      - '.github/workflows/core-task-042-source-snapshot.yml'
+-
+-jobs:
+-  snapshot:
+-    runs-on: ubuntu-latest
+-    steps:
+-      - uses: actions/checkout@v4
+-      - name: Create source archive
+-        shell: bash
+-        run: |
+-          git archive --format=zip --output=markorbit-core-source.zip HEAD
+-      - uses: actions/upload-artifact@v4
+-        with:
+-          name: core-task-042-source
+-          path: markorbit-core-source.zip
+diff --git a/repo/fixtures/services/core-evidence-service-proof-layer-foundation.fixture.json b/repo/fixtures/services/core-evidence-service-proof-layer-foundation.fixture.json
+new file mode 100644
+index 0000000..b60a176
+--- /dev/null
++++ b/repo/fixtures/services/core-evidence-service-proof-layer-foundation.fixture.json
+@@ -0,0 +1,134 @@
++{
++  "fixtureType": "core_evidence_service_proof_layer_foundation",
++  "authority": {
++    "repository": "whalemarks/markorbit-publication",
++    "commit": "3349ecb8955021a8714d023348f8b24f941eb98f"
++  },
++  "clocks": [
++    "2026-07-14T08:00:00.000Z",
++    "2026-07-14T08:05:00.000Z",
++    "2026-07-14T08:10:00.000Z",
++    "2026-07-14T08:15:00.000Z",
++    "2026-07-14T08:20:00.000Z",
++    "2026-07-14T08:25:00.000Z",
++    "2026-07-14T08:30:00.000Z"
++  ],
++  "evidenceReferenceId": "evidence:ref:core-task-042",
++  "organizationScopeReferenceId": "organization:ref:scope-0001",
++  "publicReferenceRecord": {
++    "referenceId": "evidence:ref:core-task-042",
++    "objectType": "evidence-record",
++    "referenceDomain": "evidence",
++    "status": "Active"
++  },
++  "secondaryDocumentReferenceRecord": {
++    "referenceId": "document:ref:secondary-042",
++    "objectType": "document-record",
++    "referenceDomain": "document",
++    "status": "Active"
++  },
++  "objectRecord": {
++    "publicReferenceId": "evidence:ref:core-task-042",
++    "objectType": "evidence-record",
++    "domainId": "evidence",
++    "objectContractId": "core-object-evidence-record-contract",
++    "status": "draft",
++    "version": {
++      "version": 1,
++      "createdAt": "2026-07-14T08:00:00.000Z"
++    },
++    "metadata": {},
++    "auditMetadata": {
++      "createdAt": "2026-07-14T08:00:00.000Z",
++      "createdByReferenceId": "user:ref:actor-0001",
++      "correlationId": "corr:core-task-042"
++    },
++    "visibility": {
++      "permissionScopeReferenceId": "permission:ref:scope-0001",
++      "policyScopeReferenceId": "policy:ref:scope-0001",
++      "organizationScopeReferenceId": "organization:ref:scope-0001"
++    }
++  },
++  "createRequest": {
++    "evidenceType": "UseEvidence",
++    "evidencePurpose": "ProofOfUse",
++    "evidenceStatus": "Draft",
++    "reviewStatus": "Unreviewed",
++    "confidentialityLevel": "Confidential",
++    "sourceReliability": "ClientProvided",
++    "sourceType": "ClientProvided",
++    "sourceReferenceId": "source:client:042",
++    "idempotencyKey": "idem:create:evidence-042"
++  },
++  "conflictingCreateRequest": {
++    "evidenceType": "OwnershipEvidence"
++  },
++  "sourceRequest": {
++    "sourceType": "DocumentReference",
++    "sourceReferenceId": "document:ref:00011",
++    "idempotencyKey": "idem:source:evidence-042"
++  },
++  "sourceConflictRequest": {
++    "sourceType": "DocumentReference",
++    "sourceReferenceId": "document:ref:secondary-042"
++  },
++  "claimRequest": {
++    "claimReferenceId": "claim:use:042",
++    "idempotencyKey": "idem:claim:evidence-042"
++  },
++  "claimConflictRequest": {
++    "claimReferenceId": "claim:ownership:042"
++  },
++  "documentRequest": {
++    "documentReferenceId": "document:ref:00011",
++    "idempotencyKey": "idem:document:evidence-042"
++  },
++  "documentConflictRequest": {
++    "documentReferenceId": "document:ref:secondary-042"
++  },
++  "reviewRequiredRequest": {
++    "reviewNoteReference": "review-note:evidence-required:042",
++    "idempotencyKey": "idem:review-required:evidence-042"
++  },
++  "approvalRequest": {
++    "targetReviewStatus": "AcceptedForUse",
++    "reviewNoteReference": "review-note:evidence-approved:042",
++    "idempotencyKey": "idem:review:evidence-042"
++  },
++  "approvalConflictRequest": {
++    "targetReviewStatus": "Rejected"
++  },
++  "archiveRequest": {
++    "targetStatus": "Archived",
++    "reasonReference": "reason:evidence-archive:042",
++    "idempotencyKey": "idem:archive:evidence-042"
++  },
++  "expected": {
++    "recordCountAfterCreate": 1,
++    "eventTraceCountAfterCreate": 1,
++    "eventTraceCountAfterCreateReplay": 1,
++    "eventTraceCountAfterSource": 2,
++    "eventTraceCountAfterSourceReplay": 2,
++    "eventTraceCountAfterClaim": 3,
++    "eventTraceCountAfterClaimReplay": 3,
++    "eventTraceCountAfterDocument": 4,
++    "eventTraceCountAfterDocumentReplay": 4,
++    "eventTraceCountAfterReviewRequired": 5,
++    "eventTraceCountAfterApproval": 6,
++    "eventTraceCountAfterApprovalReplay": 6,
++    "eventTraceCountAfterArchive": 7,
++    "eventTraceCountAfterArchiveReplay": 7,
++    "createConflictCode": "IdempotencyConflict",
++    "sourceConflictCode": "IdempotencyConflict",
++    "claimConflictCode": "IdempotencyConflict",
++    "documentConflictCode": "IdempotencyConflict",
++    "approvalWithoutReviewCode": "HumanReviewRequired",
++    "approvalConflictCode": "IdempotencyConflict",
++    "draftValidationReason": "ReviewRequired",
++    "acceptedValidationReason": "Valid",
++    "archivedValidationReason": "Archived",
++    "finalSourceCount": 2,
++    "finalClaimCount": 1,
++    "finalDocumentCount": 1
++  }
++}
+diff --git a/base/package.json b/repo/package.json
+index d3e7fdb..d563c56 100644
+--- a/base/package.json
++++ b/repo/package.json
+@@ -9,8 +9,8 @@
+     "test": "node scripts/run-tests.mjs",
+     "lint": "eslint \"src/**/*.ts\" \"tests/**/*.ts\" \"scripts/**/*.mjs\" eslint.config.js",
+     "typecheck": "tsc --noEmit",
