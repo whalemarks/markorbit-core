@@ -1,0 +1,40 @@
+name: CORE-TASK-040 Generate
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'scripts/core-task-040-generate.mjs'
+      - '.github/workflows/core-task-040-generate.yml'
+      - '.github/core-task-040-trigger'
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: corepack enable
+      - run: pnpm install --frozen-lockfile
+      - run: node scripts/core-task-040-generate.mjs
+      - run: pnpm format
+      - name: Commit generated changes
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add -A
+          if git diff --cached --quiet; then
+            echo 'No generated changes.'
+            exit 0
+          fi
+          git commit -m 'CORE-TASK-040 — Generate Classification Service boundary'
+          git push
