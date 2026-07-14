@@ -1,0 +1,29 @@
+{
+  "fixtureType": "core_opportunity_service_potential_demand_foundation",
+  "task": "CORE-TASK-045",
+  "serviceType": "opportunity-service",
+  "implementedOperations": [
+    "createOpportunity",
+    "getOpportunity",
+    "listOpportunities",
+    "updateOpportunity",
+    "changeOpportunityStatus",
+    "qualifyOpportunity",
+    "disqualifyOpportunity",
+    "linkOpportunityCustomer",
+    "linkOpportunityBrand",
+    "linkOpportunityTrademark",
+    "linkOpportunityCommunication",
+    "convertOpportunityToOrder",
+    "validateOpportunityReference",
+    "archiveOpportunity"
+  ],
+  "expected": {
+    "operationCount": 14,
+    "partialImplementBoundary": true,
+    "aiSuggestionRequiresReview": true,
+    "conversionDelegatesToOrderService": true,
+    "eventRollbackRequired": true,
+    "crossOrganizationNonEnumeration": true
+  }
+}

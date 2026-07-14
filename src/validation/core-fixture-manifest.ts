@@ -34,7 +34,8 @@ export const CORE_FIXTURE_TYPES = [
   'core_document_service_governed_artifact_foundation',
   'core_evidence_service_proof_layer_foundation',
   'core_matter_service_execution_container_foundation',
-  'core_order_service_commercial_request_foundation'
+  'core_order_service_commercial_request_foundation',
+  'core_opportunity_service_potential_demand_foundation'
 ] as const;
 
 export type CoreFixtureType = (typeof CORE_FIXTURE_TYPES)[number];
@@ -256,6 +257,12 @@ export const CORE_FIXTURE_MANIFEST = [
     id: 'core-order-service-commercial-request-foundation',
     type: 'core_order_service_commercial_request_foundation',
     path: 'fixtures/services/core-order-service-commercial-request-foundation.fixture.json',
+    required: true
+  },
+  {
+    id: 'core-opportunity-service-potential-demand-foundation',
+    type: 'core_opportunity_service_potential_demand_foundation',
+    path: 'fixtures/services/core-opportunity-service-potential-demand-foundation.fixture.json',
     required: true
   },
   {

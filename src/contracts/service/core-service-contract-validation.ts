@@ -229,6 +229,25 @@ const behaviorLocks = {
       'cancelOrder'
     ]
   },
+  'opportunity-service': {
+    task: 'CORE-TASK-045',
+    operations: [
+      'createOpportunity',
+      'getOpportunity',
+      'listOpportunities',
+      'updateOpportunity',
+      'changeOpportunityStatus',
+      'qualifyOpportunity',
+      'disqualifyOpportunity',
+      'linkOpportunityCustomer',
+      'linkOpportunityBrand',
+      'linkOpportunityTrademark',
+      'linkOpportunityCommunication',
+      'convertOpportunityToOrder',
+      'validateOpportunityReference',
+      'archiveOpportunity'
+    ]
+  },
   'evidence-service': {
     task: 'CORE-TASK-042B',
     operations: [
