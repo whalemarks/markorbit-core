@@ -8,7 +8,9 @@ import {
   CoreIdempotencyRegistry,
   CoreInMemoryEvidenceServiceStore,
   CoreReferenceRegistry,
+  createCoreContractId,
   createCoreEventId,
+  createCoreObjectType,
   createCoreSafeError,
   type CoreEventId,
   type CoreEvidenceGovernanceContext,
@@ -22,6 +24,7 @@ const evidenceReference = CORE_MVP_OBJECT_FIXTURE_PUBLIC_REFERENCE_RECORDS.find(
 );
 
 if (!evidenceReference) throw new Error('Evidence fixture reference is missing.');
+const governedEvidenceReference = evidenceReference;
 
 function governance(
   operation: string,
@@ -83,9 +86,11 @@ function governance(
 function objectRecord(): CoreMvpObjectBaseRecord {
   return {
     publicReferenceId: evidenceReferenceId,
-    objectType: 'evidence-record',
+    objectType: createCoreObjectType('evidence-record'),
     domainId: 'evidence',
-    objectContractId: 'core-object-evidence-record-contract',
+    objectContractId: createCoreContractId(
+      'core-object-evidence-record-contract'
+    ),
     status: 'draft',
     version: {
       version: 1,
@@ -144,7 +149,7 @@ function buildHarness() {
 function createEvidence(service: CoreEvidenceService) {
   return service.createEvidence({
     objectRecord: objectRecord(),
-    publicReferenceRecord: evidenceReference,
+    publicReferenceRecord: governedEvidenceReference,
     evidenceType: 'UseEvidence',
     evidencePurpose: 'ProofOfUse',
     evidenceStatus: 'Draft',

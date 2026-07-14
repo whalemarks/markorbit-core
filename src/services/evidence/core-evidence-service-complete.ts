@@ -1033,7 +1033,10 @@ export class CoreEvidenceService extends CoreEvidenceServiceFoundation {
     }
     const scope = enforceOrganizationScope(input.governance, existing);
     if (!scope.ok) return scope;
-    const idempotent = this.deps.idempotencyRegistry.executeBehavior(
+    const idempotent = this.deps.idempotencyRegistry.executeBehavior<
+      Record<string, unknown>,
+      CoreEvidenceCompletedRecord
+    >(
       {
         idempotencyKey: input.idempotencyKey,
         idempotencyScope: idempotencyScope(
