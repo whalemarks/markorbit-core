@@ -23,8 +23,8 @@ jobs:
       - name: Reassemble validated payload
         shell: bash
         run: |
-          base64 -d .core-task-044-payload/part1.b64 > /tmp/core-task-044-payload.tgz
-          base64 -d .core-task-044-payload/part2.b64 >> /tmp/core-task-044-payload.tgz
+          base64 -d .core-task-044-payload/part1.b64 > /tmp/part1.bin
+          base64 -d .core-task-044-payload/part2.b64 > /tmp/part2.bin
           cat \
             .core-task-044-payload/part3a0.bin \
             .core-task-044-payload/part3a1.bin \
@@ -38,8 +38,13 @@ jobs:
             .core-task-044-payload/part3c.bin \
             .core-task-044-payload/part3d.bin \
             .core-task-044-payload/part3e.bin \
-            >> /tmp/core-task-044-payload.tgz
-          base64 -d .core-task-044-payload/part4.b64 >> /tmp/core-task-044-payload.tgz
+            > /tmp/part3.bin
+          base64 -d .core-task-044-payload/part4.b64 > /tmp/part4.bin
+          echo 'b60fe58efff8a0938cc5639c94f7706a4666f9a16c3f61c1370fe7cc96db4da6  /tmp/part1.bin' | sha256sum -c -
+          echo 'b4053435a85b4f0b14ee508c7646b9f32f925d6d0aff199c2be2abf0ba33966d  /tmp/part2.bin' | sha256sum -c -
+          echo 'cdb3741267f5192038c2ccba9e0d307050a06ccf6779bb82bb80c864f4895832  /tmp/part3.bin' | sha256sum -c -
+          echo '36eafdc18edfa9e773fcb36eb894a718ad7e9c9bdc032bbe7960f0286ef83948  /tmp/part4.bin' | sha256sum -c -
+          cat /tmp/part1.bin /tmp/part2.bin /tmp/part3.bin /tmp/part4.bin > /tmp/core-task-044-payload.tgz
           echo '8010a36debd895632c6deae964dd30ace71d72a299caee714396ff235424e3c4  /tmp/core-task-044-payload.tgz' | sha256sum -c -
           tar -xzf /tmp/core-task-044-payload.tgz -C .
           rm -rf .core-task-044-payload
