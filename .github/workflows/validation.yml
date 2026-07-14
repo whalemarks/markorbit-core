@@ -45,7 +45,7 @@ jobs:
             node scripts/core-task-039-generate-evidence.mjs
             node scripts/core-task-039-generate-integration.mjs
             node scripts/core-task-039-generate-tests.mjs
-            node scripts/core-task-039-generate-derived.mjs
+            pnpm exec tsx scripts/core-task-039-generate-derived.mjs
             pnpm exec prettier --write \
               src/services/jurisdiction src/services/index.ts \
               src/behaviors/core-safe-error.ts src/service-coverage src/validation \
