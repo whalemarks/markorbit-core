@@ -158,6 +158,7 @@ export function validateCoreDocumentServiceEvidenceFixture(
   const traces = new CoreEventTraceRegistry();
   const store = new CoreInMemoryDocumentServiceStore();
   const clocks = fixture.clocks.map(String);
+  const lastClock = clocks.at(-1) ?? '';
   const service = new CoreDocumentService({
     store,
     idempotencyRegistry: new CoreIdempotencyRegistry(() => 1),
@@ -170,7 +171,7 @@ export function validateCoreDocumentServiceEvidenceFixture(
       ...CORE_MVP_OBJECT_FIXTURE_PUBLIC_REFERENCE_RECORDS,
       documentReferenceRecord
     ]),
-    now: () => clocks.shift() ?? String(fixture.clocks.at(-1)),
+    now: () => clocks.shift() ?? lastClock,
     eventIdFactory: (operation, documentReferenceId, idempotencyKey) =>
       createCoreEventId(
         `event-evidence-${operation}-${documentReferenceId.replaceAll(':', '-')}-${idempotencyKey}`
