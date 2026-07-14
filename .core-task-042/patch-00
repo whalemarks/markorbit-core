@@ -1,0 +1,176 @@
+diff --git a/base/.github/workflows/core-task-042-source-snapshot.yml b/base/.github/workflows/core-task-042-source-snapshot.yml
+deleted file mode 100644
+index 6462740..0000000
+--- a/base/.github/workflows/core-task-042-source-snapshot.yml
++++ /dev/null
+@@ -1,21 +0,0 @@
+-name: CORE-TASK-042 Source Snapshot
+-
+-on:
+-  pull_request:
+-    branches: [main]
+-    paths:
+-      - '.github/workflows/core-task-042-source-snapshot.yml'
+-
+-jobs:
+-  snapshot:
+-    runs-on: ubuntu-latest
+-    steps:
+-      - uses: actions/checkout@v4
+-      - name: Create source archive
+-        shell: bash
+-        run: |
+-          git archive --format=zip --output=markorbit-core-source.zip HEAD
+-      - uses: actions/upload-artifact@v4
+-        with:
+-          name: core-task-042-source
+-          path: markorbit-core-source.zip
+diff --git a/repo/fixtures/services/core-evidence-service-proof-layer-foundation.fixture.json b/repo/fixtures/services/core-evidence-service-proof-layer-foundation.fixture.json
+new file mode 100644
+index 0000000..b60a176
+--- /dev/null
++++ b/repo/fixtures/services/core-evidence-service-proof-layer-foundation.fixture.json
+@@ -0,0 +1,134 @@
++{
++  "fixtureType": "core_evidence_service_proof_layer_foundation",
++  "authority": {
++    "repository": "whalemarks/markorbit-publication",
++    "commit": "3349ecb8955021a8714d023348f8b24f941eb98f"
++  },
++  "clocks": [
++    "2026-07-14T08:00:00.000Z",
++    "2026-07-14T08:05:00.000Z",
++    "2026-07-14T08:10:00.000Z",
++    "2026-07-14T08:15:00.000Z",
++    "2026-07-14T08:20:00.000Z",
++    "2026-07-14T08:25:00.000Z",
++    "2026-07-14T08:30:00.000Z"
++  ],
++  "evidenceReferenceId": "evidence:ref:core-task-042",
++  "organizationScopeReferenceId": "organization:ref:scope-0001",
++  "publicReferenceRecord": {
++    "referenceId": "evidence:ref:core-task-042",
++    "objectType": "evidence-record",
++    "referenceDomain": "evidence",
++    "status": "Active"
++  },
++  "secondaryDocumentReferenceRecord": {
++    "referenceId": "document:ref:secondary-042",
++    "objectType": "document-record",
++    "referenceDomain": "document",
++    "status": "Active"
++  },
++  "objectRecord": {
++    "publicReferenceId": "evidence:ref:core-task-042",
++    "objectType": "evidence-record",
++    "domainId": "evidence",
++    "objectContractId": "core-object-evidence-record-contract",
++    "status": "draft",
++    "version": {
++      "version": 1,
++      "createdAt": "2026-07-14T08:00:00.000Z"
++    },
++    "metadata": {},
++    "auditMetadata": {
++      "createdAt": "2026-07-14T08:00:00.000Z",
++      "createdByReferenceId": "user:ref:actor-0001",
++      "correlationId": "corr:core-task-042"
++    },
++    "visibility": {
++      "permissionScopeReferenceId": "permission:ref:scope-0001",
++      "policyScopeReferenceId": "policy:ref:scope-0001",
++      "organizationScopeReferenceId": "organization:ref:scope-0001"
++    }
++  },
++  "createRequest": {
++    "evidenceType": "UseEvidence",
++    "evidencePurpose": "ProofOfUse",
++    "evidenceStatus": "Draft",
++    "reviewStatus": "Unreviewed",
++    "confidentialityLevel": "Confidential",
++    "sourceReliability": "ClientProvided",
++    "sourceType": "ClientProvided",
++    "sourceReferenceId": "source:client:042",
++    "idempotencyKey": "idem:create:evidence-042"
++  },
++  "conflictingCreateRequest": {
++    "evidenceType": "OwnershipEvidence"
++  },
++  "sourceRequest": {
++    "sourceType": "DocumentReference",
++    "sourceReferenceId": "document:ref:00011",
++    "idempotencyKey": "idem:source:evidence-042"
++  },
++  "sourceConflictRequest": {
++    "sourceType": "DocumentReference",
++    "sourceReferenceId": "document:ref:secondary-042"
++  },
++  "claimRequest": {
++    "claimReferenceId": "claim:use:042",
++    "idempotencyKey": "idem:claim:evidence-042"
++  },
++  "claimConflictRequest": {
++    "claimReferenceId": "claim:ownership:042"
++  },
++  "documentRequest": {
++    "documentReferenceId": "document:ref:00011",
++    "idempotencyKey": "idem:document:evidence-042"
++  },
++  "documentConflictRequest": {
++    "documentReferenceId": "document:ref:secondary-042"
++  },
++  "reviewRequiredRequest": {
++    "reviewNoteReference": "review-note:evidence-required:042",
++    "idempotencyKey": "idem:review-required:evidence-042"
++  },
++  "approvalRequest": {
++    "targetReviewStatus": "AcceptedForUse",
++    "reviewNoteReference": "review-note:evidence-approved:042",
++    "idempotencyKey": "idem:review:evidence-042"
++  },
++  "approvalConflictRequest": {
++    "targetReviewStatus": "Rejected"
++  },
++  "archiveRequest": {
++    "targetStatus": "Archived",
++    "reasonReference": "reason:evidence-archive:042",
++    "idempotencyKey": "idem:archive:evidence-042"
++  },
++  "expected": {
++    "recordCountAfterCreate": 1,
++    "eventTraceCountAfterCreate": 1,
++    "eventTraceCountAfterCreateReplay": 1,
++    "eventTraceCountAfterSource": 2,
++    "eventTraceCountAfterSourceReplay": 2,
++    "eventTraceCountAfterClaim": 3,
++    "eventTraceCountAfterClaimReplay": 3,
++    "eventTraceCountAfterDocument": 4,
++    "eventTraceCountAfterDocumentReplay": 4,
++    "eventTraceCountAfterReviewRequired": 5,
++    "eventTraceCountAfterApproval": 6,
++    "eventTraceCountAfterApprovalReplay": 6,
++    "eventTraceCountAfterArchive": 7,
++    "eventTraceCountAfterArchiveReplay": 7,
++    "createConflictCode": "IdempotencyConflict",
++    "sourceConflictCode": "IdempotencyConflict",
++    "claimConflictCode": "IdempotencyConflict",
++    "documentConflictCode": "IdempotencyConflict",
++    "approvalWithoutReviewCode": "HumanReviewRequired",
++    "approvalConflictCode": "IdempotencyConflict",
++    "draftValidationReason": "ReviewRequired",
++    "acceptedValidationReason": "Valid",
++    "archivedValidationReason": "Archived",
++    "finalSourceCount": 2,
++    "finalClaimCount": 1,
++    "finalDocumentCount": 1
++  }
++}
+diff --git a/base/package.json b/repo/package.json
+index d3e7fdb..d563c56 100644
+--- a/base/package.json
++++ b/repo/package.json
+@@ -9,8 +9,8 @@
+     "test": "node scripts/run-tests.mjs",
+     "lint": "eslint \"src/**/*.ts\" \"tests/**/*.ts\" \"scripts/**/*.mjs\" eslint.config.js",
+     "typecheck": "tsc --noEmit",
+-    "format": "prettier --write package.json tsconfig.json eslint.config.js scripts/run-tests.mjs .github/**/*.yml README.md CORE-MANIFEST.md CORE-ROADMAP.md CHANGELOG.md src/behavior-coverage/core-contract-behavior-coverage-baseline.ts tests/unit/core-contract-behavior-coverage-baseline.test.ts fixtures/behavior-coverage/core-contract-behavior-coverage-baseline.fixture.json fixtures/behavior-coverage/core-contract-behavior-gap-inventory.fixture.json src/behavior-coverage/core-contract-behavior-acceptance-lock.ts scripts/report-core-contract-behavior-acceptance.mjs fixtures/behavior-coverage/core-contract-behavior-acceptance-lock.fixture.json tests/unit/core-contract-behavior-acceptance-lock.test.ts tests/fixtures/core-contract-behavior-acceptance-lock-fixture.test.ts docs/architecture/core-contract-behavior-acceptance-lock.md src/mvp-coverage/book-02-mvp-requirements.ts src/mvp-coverage/book-02-mvp-gap-baseline.ts src/mvp-coverage/book-02-mvp-gap-validation.ts src/mvp-coverage/index.ts scripts/report-book-02-mvp-gaps.mjs fixtures/mvp-coverage/book-02-mvp-gap-baseline.fixture.json tests/unit/book-02-mvp-requirements.test.ts tests/unit/book-02-mvp-gap-baseline.test.ts tests/fixtures/book-02-mvp-gap-baseline-fixture.test.ts docs/architecture/book-02-mvp-gap-baseline-lock.md docs/architecture/core-brand-service-lifecycle-boundary.md fixtures/services/core-brand-service-core-lifecycle.fixture.json src/services/brand/core-brand-service.ts src/services/brand/index.ts src/services/index.ts src/service-coverage/core-brand-service-evidence-fixture.ts src/service-coverage/core-service-behavior-evidence.ts src/service-coverage/core-service-behavior-validation.ts src/service-coverage/index.ts src/validation/core-brand-service-fixture-validation.ts src/validation/index.ts tests/fixtures/core-brand-service-core-lifecycle-fixture.test.ts tests/unit/core-brand-service-core-lifecycle.test.ts tests/unit/core-customer-service-core-lifecycle.test.ts tests/unit/core-service-behavior-evidence.test.ts tests/unit/core-task-037-book-02-service-evidence.test.ts tests/unit/core-task-037-service-contract-metadata.test.ts docs/architecture/core-trademark-service-lifecycle-boundary.md fixtures/services/core-trademark-service-core-lifecycle.fixture.json src/services/trademark/core-trademark-service.ts src/services/trademark/index.ts src/service-coverage/core-trademark-service-evidence-fixture.ts src/validation/core-trademark-service-fixture-validation.ts tests/fixtures/core-trademark-service-core-lifecycle-fixture.test.ts tests/unit/core-trademark-service-core-lifecycle.test.ts tests/unit/core-task-038-book-02-service-evidence.test.ts tests/unit/core-task-038-service-contract-metadata.test.ts docs/architecture/core-jurisdiction-service-lifecycle-resolution-boundary.md fixtures/services/core-jurisdiction-service-core-lifecycle.fixture.json src/services/jurisdiction/core-jurisdiction-service.ts src/services/jurisdiction/index.ts src/service-coverage/core-jurisdiction-service-evidence-fixture.ts src/validation/core-jurisdiction-service-fixture-validation.ts tests/fixtures/core-jurisdiction-service-core-lifecycle-fixture.test.ts tests/unit/core-jurisdiction-service-core-lifecycle.test.ts tests/unit/core-task-039-book-02-service-evidence.test.ts tests/unit/core-task-039-service-contract-metadata.test.ts src/contracts/service/core-service-contract-skeletons.ts src/contracts/service/core-service-contract-validation.ts fixtures/contracts/core-service-contract-skeletons.fixture.json fixtures/contracts/core-contract-index.fixture.json fixtures/contract-coverage/core-contract-coverage-baseline.fixture.json fixtures/contract-coverage/core-contract-gap-inventory.fixture.json src/validation/core-fixture-manifest.ts scripts/validate-core-fixtures.mjs docs/architecture/core-classification-service-scope-validation-boundary.md fixtures/services/core-classification-service-core-scope-validation.fixture.json src/services/classification/core-classification-service.ts src/services/classification/index.ts src/service-coverage/core-classification-service-evidence-fixture.ts src/validation/core-classification-service-fixture-validation.ts tests/fixtures/core-classification-service-core-scope-validation-fixture.test.ts tests/unit/core-classification-service-core-scope-validation.test.ts tests/unit/core-task-040-book-02-service-evidence.test.ts tests/unit/core-task-040-service-contract-metadata.test.ts docs/architecture/core-document-service-governed-artifact-foundation.md fixtures/services/core-document-service-governed-artifact-foundation.fixture.json src/services/document/core-document-service.ts src/services/document/index.ts src/service-coverage/core-document-service-evidence-fixture.ts src/validation/core-document-service-fixture-validation.ts tests/fixtures/core-document-service-governed-artifact-foundation-fixture.test.ts tests/unit/core-document-service-governed-artifact-foundation.test.ts tests/unit/core-task-041-book-02-service-evidence.test.ts tests/unit/core-task-041-service-contract-metadata.test.ts
