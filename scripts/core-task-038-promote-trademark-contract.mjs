@@ -11,6 +11,16 @@ const replacePattern = (text, pattern, replacement, label) => {
 
 let skeletons = read('src/contracts/service/core-service-contract-skeletons.ts');
 
+const legacyMarker = "'trademark-reference-service'";
+const markerIndex = skeletons.indexOf(legacyMarker);
+if (markerIndex < 0) {
+  throw new Error('Legacy Trademark reference Service marker was not found.');
+}
+const lineStart = skeletons.lastIndexOf('\n', markerIndex) + 1;
+const lineEndCandidate = skeletons.indexOf('\n', markerIndex);
+const lineEnd = lineEndCandidate < 0 ? skeletons.length : lineEndCandidate;
+skeletons = `${skeletons.slice(0, lineStart)}  trademarkServiceSkeleton(),${skeletons.slice(lineEnd)}`;
+
 skeletons = replacePattern(
   skeletons,
   /\s{2}canonicalServiceSkeleton\(\r?\n\s{4}'trademark-service',[\s\S]*?\r?\n\s{2}\),\r?\n\s{2}\.\.\.stubServiceTargets/,
@@ -46,19 +56,6 @@ skeletons = replacePattern(
   `${wrapper}\nconst stubServiceTargets = [`,
   'Trademark Service wrapper insertion'
 );
-
-const promotedTrademarkLine = '  trademarkServiceSkeleton(),';
-const skeletonLines = skeletons.split(/\r?\n/);
-const legacyIndexes = skeletonLines
-  .map((line, index) => (line.includes("'trademark-reference-service'") ? index : -1))
-  .filter((index) => index >= 0);
-if (legacyIndexes.length !== 1) {
-  throw new Error(
-    `Expected exactly one legacy Trademark reference Service line, found ${legacyIndexes.length}.`
-  );
-}
-skeletonLines[legacyIndexes[0]] = promotedTrademarkLine;
-skeletons = skeletonLines.join('\n');
 write('src/contracts/service/core-service-contract-skeletons.ts', skeletons);
 
 let validation = read('src/contracts/service/core-service-contract-validation.ts');
