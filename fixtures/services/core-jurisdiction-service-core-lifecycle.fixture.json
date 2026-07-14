@@ -7,6 +7,7 @@
   "fixedNow": "2026-07-14T01:00:00.000Z",
   "updatedNow": "2026-07-14T01:05:00.000Z",
   "jurisdictionReferenceId": "jurisdiction:ref:core-task-039",
+  "duplicateCodeJurisdictionReferenceId": "jurisdiction:ref:core-task-039-duplicate-code",
   "organizationScopeReferenceId": "organization:ref:scope-0001",
   "publicReferenceRecord": {
     "referenceId": "jurisdiction:ref:core-task-039",
@@ -14,8 +15,36 @@
     "referenceDomain": "jurisdiction",
     "status": "Active"
   },
+  "duplicateCodePublicReferenceRecord": {
+    "referenceId": "jurisdiction:ref:core-task-039-duplicate-code",
+    "objectType": "jurisdiction-record",
+    "referenceDomain": "jurisdiction",
+    "status": "Active"
+  },
   "objectRecord": {
     "publicReferenceId": "jurisdiction:ref:core-task-039",
+    "objectType": "jurisdiction-record",
+    "domainId": "jurisdiction",
+    "objectContractId": "core-object-jurisdiction-record-contract",
+    "status": "active",
+    "version": {
+      "version": 1,
+      "createdAt": "2026-07-14T01:00:00.000Z"
+    },
+    "metadata": {},
+    "auditMetadata": {
+      "createdAt": "2026-07-14T01:00:00.000Z",
+      "createdByReferenceId": "user:ref:actor-0001",
+      "correlationId": "corr:core-task-039"
+    },
+    "visibility": {
+      "permissionScopeReferenceId": "permission:ref:scope-0001",
+      "policyScopeReferenceId": "policy:ref:scope-0001",
+      "organizationScopeReferenceId": "organization:ref:scope-0001"
+    }
+  },
+  "duplicateCodeObjectRecord": {
+    "publicReferenceId": "jurisdiction:ref:core-task-039-duplicate-code",
     "objectType": "jurisdiction-record",
     "domainId": "jurisdiction",
     "objectContractId": "core-object-jurisdiction-record-contract",
@@ -50,6 +79,14 @@
   "duplicateCreateRequest": {
     "idempotencyKey": "idem:create:duplicate-jurisdiction-039"
   },
+  "duplicateCodeCreateRequest": {
+    "jurisdictionCode": "us",
+    "jurisdictionType": "National",
+    "jurisdictionStatus": "Active",
+    "nameReference": "name:synthetic:jurisdiction-us-duplicate-039",
+    "sourceReference": "source:synthetic:jurisdiction-duplicate-039",
+    "idempotencyKey": "idem:create:duplicate-code-jurisdiction-039"
+  },
   "statusTransitionRequest": {
     "targetStatus": "Deprecated",
     "reasonReference": "reason:synthetic:deprecate-jurisdiction",
@@ -72,6 +109,7 @@
     "eventTraceCountAfterStatusReplay": 2,
     "sameKeyConflictCode": "IdempotencyConflict",
     "duplicateJurisdictionCode": "JurisdictionAlreadyExists",
+    "duplicateCodeConflictCode": "JurisdictionCodeAlreadyExists",
     "invalidTransitionCode": "InvalidJurisdictionTransition",
     "statusConflictCode": "IdempotencyConflict",
     "resolvedReferenceId": "jurisdiction:ref:core-task-039"
