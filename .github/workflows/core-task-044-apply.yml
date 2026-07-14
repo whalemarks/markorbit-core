@@ -1,6 +1,9 @@
 name: CORE-TASK-044 Apply
 
 on:
+  pull_request:
+    branches:
+      - main
   push:
     branches:
       - agent/core-task-044-order-service-foundation
@@ -15,6 +18,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
+          ref: agent/core-task-044-order-service-foundation
           fetch-depth: 0
       - name: Reassemble validated payload
         shell: bash
@@ -41,4 +45,4 @@ jobs:
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
           git add -A
           git commit -m 'CORE-TASK-044 — implement Order Service commercial-request foundation'
-          git push
+          git push origin HEAD:agent/core-task-044-order-service-foundation
