@@ -94,7 +94,7 @@ describe('Core Service behavior evidence', () => {
   });
 
   it('rejects missing Brand operations and minimum capabilities', () => {
-    const [customer, brand] = CORE_SERVICE_BEHAVIOR_EVIDENCE;
+    const [customer, brand, trademark] = CORE_SERVICE_BEHAVIOR_EVIDENCE;
     assert.equal(
       validateCoreServiceBehaviorEvidence({
         evidence: [
@@ -120,7 +120,7 @@ describe('Core Service behavior evidence', () => {
     );
   });
 
-  it('executes both fixtures and rejects corrupted lifecycle expectations', async () => {
+  it('executes all three fixtures and rejects corrupted lifecycle expectations', async () => {
     const customerFixture = JSON.parse(
       await readFile(
         'fixtures/services/core-customer-service-core-lifecycle.fixture.json',
