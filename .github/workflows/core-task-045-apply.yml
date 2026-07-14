@@ -27,7 +27,7 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - name: Verify payload part 00
         run: |
-          base64 -d .core-task-045-payload/part-00.b64 > /tmp/part-00.bin
+          cat .core-task-045-payload/part-00-{0,1,2,3,4,5,6,7}.bin > /tmp/part-00.bin
           echo '1104e0776859cfe8a893c25d9023473710278dfb5c30a1d7adf7c4585ace40fc  /tmp/part-00.bin' | sha256sum -c -
       - name: Verify payload part 01
         run: |
