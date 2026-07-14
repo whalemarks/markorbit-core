@@ -13,32 +13,69 @@ jobs:
           node-version: 22
       - run: corepack enable
       - run: pnpm install --frozen-lockfile
-      - name: Capture fixture validation and derived criterion
+      - name: Capture canonical fixture differences
         shell: bash
         run: |
           set +e
           pnpm validate:fixtures > fixture-validation.log 2>&1
           echo $? > fixture-validation.exit
-          pnpm exec tsx <<'TS' > acceptance-comparison.log 2>&1
+          pnpm exec tsx <<'TS' > baseline-diff.log 2>&1
           import { readFileSync } from 'node:fs';
           import { BOOK_02_MVP_GAP_BASELINE } from './src/index.ts';
-          const fixture = JSON.parse(
+
+          const stored = JSON.parse(
             readFileSync(
               'fixtures/mvp-coverage/book-02-mvp-gap-baseline.fixture.json',
               'utf8'
             )
           );
-          const id = 'must-build-services-own-behavior';
-          const derived = BOOK_02_MVP_GAP_BASELINE.acceptanceCriteria.find(
-            (entry) => entry.id === id
-          );
-          const stored = fixture.acceptanceCriteria.find(
-            (entry: { id: string }) => entry.id === id
-          );
-          console.log('DERIVED');
-          console.log(JSON.stringify(derived, null, 2));
-          console.log('STORED');
-          console.log(JSON.stringify(stored, null, 2));
+          const derived = JSON.parse(JSON.stringify(BOOK_02_MVP_GAP_BASELINE));
+          const differences: Array<{
+            path: string;
+            derived: unknown;
+            stored: unknown;
+          }> = [];
+
+          function compare(a: unknown, b: unknown, path: string): void {
+            if (differences.length >= 100) return;
+            if (Object.is(a, b)) return;
+            if (Array.isArray(a) || Array.isArray(b)) {
+              if (!Array.isArray(a) || !Array.isArray(b)) {
+                differences.push({ path, derived: a, stored: b });
+                return;
+              }
+              if (a.length !== b.length) {
+                differences.push({
+                  path: `${path}.length`,
+                  derived: a.length,
+                  stored: b.length
+                });
+              }
+              const length = Math.max(a.length, b.length);
+              for (let index = 0; index < length; index += 1) {
+                compare(a[index], b[index], `${path}[${index}]`);
+              }
+              return;
+            }
+            const aObject = typeof a === 'object' && a !== null;
+            const bObject = typeof b === 'object' && b !== null;
+            if (aObject || bObject) {
+              if (!aObject || !bObject) {
+                differences.push({ path, derived: a, stored: b });
+                return;
+              }
+              const aRecord = a as Record<string, unknown>;
+              const bRecord = b as Record<string, unknown>;
+              for (const key of [...new Set([...Object.keys(aRecord), ...Object.keys(bRecord)])].sort()) {
+                compare(aRecord[key], bRecord[key], path ? `${path}.${key}` : key);
+              }
+              return;
+            }
+            differences.push({ path, derived: a, stored: b });
+          }
+
+          compare(derived, stored, '');
+          console.log(JSON.stringify(differences, null, 2));
           TS
           exit 0
       - uses: actions/upload-artifact@v4
@@ -47,4 +84,4 @@ jobs:
           path: |
             fixture-validation.log
             fixture-validation.exit
-            acceptance-comparison.log
+            baseline-diff.log
