@@ -19,11 +19,15 @@
       "sourcePath": "books/book-02-core-specification/core-specs/domains/identity.md",
       "sourceSection": "Section 5.1",
       "requiredImplementationKind": "structural_contract",
-      "requiredCapabilities": ["domain boundary"],
+      "requiredCapabilities": [
+        "domain boundary"
+      ],
       "dependencies": [],
       "currentDisposition": "validated_skeleton_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-domain-identity-contract"],
+      "contractIds": [
+        "core-domain-identity-contract"
+      ],
       "implementationFiles": [
         "src/contracts/domain/core-domain-contract-skeletons.ts"
       ],
@@ -42,11 +46,15 @@
       "sourcePath": "books/book-02-core-specification/core-specs/domains/organization.md",
       "sourceSection": "Section 5.1",
       "requiredImplementationKind": "structural_contract",
-      "requiredCapabilities": ["domain boundary"],
+      "requiredCapabilities": [
+        "domain boundary"
+      ],
       "dependencies": [],
       "currentDisposition": "validated_skeleton_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-domain-organization-contract"],
+      "contractIds": [
+        "core-domain-organization-contract"
+      ],
       "implementationFiles": [
         "src/contracts/domain/core-domain-contract-skeletons.ts"
       ],
@@ -65,11 +73,15 @@
       "sourcePath": "books/book-02-core-specification/core-specs/domains/user.md",
       "sourceSection": "Section 5.1",
       "requiredImplementationKind": "structural_contract",
-      "requiredCapabilities": ["domain boundary"],
+      "requiredCapabilities": [
+        "domain boundary"
+      ],
       "dependencies": [],
       "currentDisposition": "validated_skeleton_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-domain-user-contract"],
+      "contractIds": [
+        "core-domain-user-contract"
+      ],
       "implementationFiles": [
         "src/contracts/domain/core-domain-contract-skeletons.ts"
       ],
@@ -88,11 +100,15 @@
       "sourcePath": "books/book-02-core-specification/core-specs/domains/permission.md",
       "sourceSection": "Section 5.1",
       "requiredImplementationKind": "structural_contract",
-      "requiredCapabilities": ["domain boundary"],
+      "requiredCapabilities": [
+        "domain boundary"
+      ],
       "dependencies": [],
       "currentDisposition": "validated_skeleton_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-domain-permission-contract"],
+      "contractIds": [
+        "core-domain-permission-contract"
+      ],
       "implementationFiles": [
         "src/contracts/domain/core-domain-contract-skeletons.ts"
       ],
@@ -111,11 +127,15 @@
       "sourcePath": "books/book-02-core-specification/core-specs/domains/policy.md",
       "sourceSection": "Section 5.1",
       "requiredImplementationKind": "structural_contract",
-      "requiredCapabilities": ["domain boundary"],
+      "requiredCapabilities": [
+        "domain boundary"
+      ],
       "dependencies": [],
       "currentDisposition": "validated_skeleton_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-domain-policy-contract"],
+      "contractIds": [
+        "core-domain-policy-contract"
+      ],
       "implementationFiles": [
         "src/contracts/domain/core-domain-contract-skeletons.ts"
       ],
@@ -134,11 +154,15 @@
       "sourcePath": "books/book-02-core-specification/core-specs/domains/customer.md",
       "sourceSection": "Section 5.1",
       "requiredImplementationKind": "structural_contract",
-      "requiredCapabilities": ["domain boundary"],
+      "requiredCapabilities": [
+        "domain boundary"
+      ],
       "dependencies": [],
       "currentDisposition": "validated_skeleton_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-domain-customer-contract"],
+      "contractIds": [
+        "core-domain-customer-contract"
+      ],
       "implementationFiles": [
         "src/contracts/domain/core-domain-contract-skeletons.ts"
       ],
@@ -157,11 +181,15 @@
       "sourcePath": "books/book-02-core-specification/core-specs/domains/brand.md",
       "sourceSection": "Section 5.1",
       "requiredImplementationKind": "structural_contract",
-      "requiredCapabilities": ["domain boundary"],
+      "requiredCapabilities": [
+        "domain boundary"
+      ],
       "dependencies": [],
       "currentDisposition": "validated_skeleton_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-domain-brand-contract"],
+      "contractIds": [
+        "core-domain-brand-contract"
+      ],
       "implementationFiles": [
         "src/contracts/domain/core-domain-contract-skeletons.ts"
       ],
@@ -180,11 +208,15 @@
       "sourcePath": "books/book-02-core-specification/core-specs/domains/trademark.md",
       "sourceSection": "Section 5.1",
       "requiredImplementationKind": "structural_contract",
-      "requiredCapabilities": ["domain boundary"],
+      "requiredCapabilities": [
+        "domain boundary"
+      ],
       "dependencies": [],
       "currentDisposition": "validated_skeleton_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-domain-trademark-contract"],
+      "contractIds": [
+        "core-domain-trademark-contract"
+      ],
       "implementationFiles": [
         "src/contracts/domain/core-domain-contract-skeletons.ts"
       ],
@@ -203,11 +235,15 @@
       "sourcePath": "books/book-02-core-specification/core-specs/domains/jurisdiction.md",
       "sourceSection": "Section 5.1",
       "requiredImplementationKind": "structural_contract",
-      "requiredCapabilities": ["domain boundary"],
+      "requiredCapabilities": [
+        "domain boundary"
+      ],
       "dependencies": [],
       "currentDisposition": "validated_skeleton_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-domain-jurisdiction-contract"],
+      "contractIds": [
+        "core-domain-jurisdiction-contract"
+      ],
       "implementationFiles": [
         "src/contracts/domain/core-domain-contract-skeletons.ts"
       ],
@@ -226,11 +262,15 @@
       "sourcePath": "books/book-02-core-specification/core-specs/domains/classification.md",
       "sourceSection": "Section 5.1",
       "requiredImplementationKind": "structural_contract",
-      "requiredCapabilities": ["domain boundary"],
+      "requiredCapabilities": [
+        "domain boundary"
+      ],
       "dependencies": [],
       "currentDisposition": "validated_skeleton_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-domain-classification-contract"],
+      "contractIds": [
+        "core-domain-classification-contract"
+      ],
       "implementationFiles": [
         "src/contracts/domain/core-domain-contract-skeletons.ts"
       ],
@@ -249,11 +289,15 @@
       "sourcePath": "books/book-02-core-specification/core-specs/domains/document.md",
       "sourceSection": "Section 5.1",
       "requiredImplementationKind": "structural_contract",
-      "requiredCapabilities": ["domain boundary"],
+      "requiredCapabilities": [
+        "domain boundary"
+      ],
       "dependencies": [],
       "currentDisposition": "validated_skeleton_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-domain-document-contract"],
+      "contractIds": [
+        "core-domain-document-contract"
+      ],
       "implementationFiles": [
         "src/contracts/domain/core-domain-contract-skeletons.ts"
       ],
@@ -272,11 +316,15 @@
       "sourcePath": "books/book-02-core-specification/core-specs/domains/evidence.md",
       "sourceSection": "Section 5.1",
       "requiredImplementationKind": "structural_contract",
-      "requiredCapabilities": ["domain boundary"],
+      "requiredCapabilities": [
+        "domain boundary"
+      ],
       "dependencies": [],
       "currentDisposition": "validated_skeleton_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-domain-evidence-contract"],
+      "contractIds": [
+        "core-domain-evidence-contract"
+      ],
       "implementationFiles": [
         "src/contracts/domain/core-domain-contract-skeletons.ts"
       ],
@@ -295,11 +343,15 @@
       "sourcePath": "books/book-02-core-specification/core-specs/domains/matter.md",
       "sourceSection": "Section 5.1",
       "requiredImplementationKind": "structural_contract",
-      "requiredCapabilities": ["domain boundary"],
+      "requiredCapabilities": [
+        "domain boundary"
+      ],
       "dependencies": [],
       "currentDisposition": "validated_skeleton_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-domain-matter-contract"],
+      "contractIds": [
+        "core-domain-matter-contract"
+      ],
       "implementationFiles": [
         "src/contracts/domain/core-domain-contract-skeletons.ts"
       ],
@@ -318,11 +370,15 @@
       "sourcePath": "books/book-02-core-specification/core-specs/domains/order.md",
       "sourceSection": "Section 5.1",
       "requiredImplementationKind": "structural_contract",
-      "requiredCapabilities": ["domain boundary"],
+      "requiredCapabilities": [
+        "domain boundary"
+      ],
       "dependencies": [],
       "currentDisposition": "validated_skeleton_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-domain-order-contract"],
+      "contractIds": [
+        "core-domain-order-contract"
+      ],
       "implementationFiles": [
         "src/contracts/domain/core-domain-contract-skeletons.ts"
       ],
@@ -341,11 +397,15 @@
       "sourcePath": "books/book-02-core-specification/core-specs/domains/workflow-contract.md",
       "sourceSection": "Section 5.1",
       "requiredImplementationKind": "structural_contract",
-      "requiredCapabilities": ["domain boundary"],
+      "requiredCapabilities": [
+        "domain boundary"
+      ],
       "dependencies": [],
       "currentDisposition": "validated_skeleton_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-domain-workflow-contract-contract"],
+      "contractIds": [
+        "core-domain-workflow-contract-contract"
+      ],
       "implementationFiles": [
         "src/contracts/domain/core-domain-contract-skeletons.ts"
       ],
@@ -364,11 +424,15 @@
       "sourcePath": "books/book-02-core-specification/core-specs/domains/task.md",
       "sourceSection": "Section 5.1",
       "requiredImplementationKind": "structural_contract",
-      "requiredCapabilities": ["domain boundary"],
+      "requiredCapabilities": [
+        "domain boundary"
+      ],
       "dependencies": [],
       "currentDisposition": "validated_skeleton_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-domain-task-contract"],
+      "contractIds": [
+        "core-domain-task-contract"
+      ],
       "implementationFiles": [
         "src/contracts/domain/core-domain-contract-skeletons.ts"
       ],
@@ -387,11 +451,15 @@
       "sourcePath": "books/book-02-core-specification/core-specs/domains/event.md",
       "sourceSection": "Section 5.1",
       "requiredImplementationKind": "structural_contract",
-      "requiredCapabilities": ["domain boundary"],
+      "requiredCapabilities": [
+        "domain boundary"
+      ],
       "dependencies": [],
       "currentDisposition": "validated_skeleton_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-domain-event-contract"],
+      "contractIds": [
+        "core-domain-event-contract"
+      ],
       "implementationFiles": [
         "src/contracts/domain/core-domain-contract-skeletons.ts"
       ],
@@ -410,11 +478,15 @@
       "sourcePath": "books/book-02-core-specification/core-specs/domains/communication.md",
       "sourceSection": "Section 5.1",
       "requiredImplementationKind": "structural_contract",
-      "requiredCapabilities": ["domain boundary"],
+      "requiredCapabilities": [
+        "domain boundary"
+      ],
       "dependencies": [],
       "currentDisposition": "validated_skeleton_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-domain-communication-contract"],
+      "contractIds": [
+        "core-domain-communication-contract"
+      ],
       "implementationFiles": [
         "src/contracts/domain/core-domain-contract-skeletons.ts"
       ],
@@ -433,11 +505,16 @@
       "sourcePath": "books/book-02-core-specification/core-specs/objects/identity.md",
       "sourceSection": "Section 5.2",
       "requiredImplementationKind": "structural_contract",
-      "requiredCapabilities": ["object contract", "public reference id"],
+      "requiredCapabilities": [
+        "object contract",
+        "public reference id"
+      ],
       "dependencies": [],
       "currentDisposition": "meets_required_depth",
       "currentDepth": "level_2",
-      "contractIds": ["core-object-identity-record-contract"],
+      "contractIds": [
+        "core-object-identity-record-contract"
+      ],
       "implementationFiles": [
         "src/contracts/object/core-object-contract-skeletons.ts",
         "src/objects/core-mvp-object-profiles.ts",
@@ -463,11 +540,16 @@
       "sourcePath": "books/book-02-core-specification/core-specs/objects/organization.md",
       "sourceSection": "Section 5.2",
       "requiredImplementationKind": "structural_contract",
-      "requiredCapabilities": ["object contract", "public reference id"],
+      "requiredCapabilities": [
+        "object contract",
+        "public reference id"
+      ],
       "dependencies": [],
       "currentDisposition": "meets_required_depth",
       "currentDepth": "level_2",
-      "contractIds": ["core-object-organization-record-contract"],
+      "contractIds": [
+        "core-object-organization-record-contract"
+      ],
       "implementationFiles": [
         "src/contracts/object/core-object-contract-skeletons.ts",
         "src/objects/core-mvp-object-profiles.ts",
@@ -493,11 +575,16 @@
       "sourcePath": "books/book-02-core-specification/core-specs/objects/user.md",
       "sourceSection": "Section 5.2",
       "requiredImplementationKind": "structural_contract",
-      "requiredCapabilities": ["object contract", "public reference id"],
+      "requiredCapabilities": [
+        "object contract",
+        "public reference id"
+      ],
       "dependencies": [],
       "currentDisposition": "meets_required_depth",
       "currentDepth": "level_2",
-      "contractIds": ["core-object-user-record-contract"],
+      "contractIds": [
+        "core-object-user-record-contract"
+      ],
       "implementationFiles": [
         "src/contracts/object/core-object-contract-skeletons.ts",
         "src/objects/core-mvp-object-profiles.ts",
@@ -523,11 +610,16 @@
       "sourcePath": "books/book-02-core-specification/core-specs/objects/permission.md",
       "sourceSection": "Section 5.2",
       "requiredImplementationKind": "structural_contract",
-      "requiredCapabilities": ["object contract", "public reference id"],
+      "requiredCapabilities": [
+        "object contract",
+        "public reference id"
+      ],
       "dependencies": [],
       "currentDisposition": "meets_required_depth",
       "currentDepth": "level_2",
-      "contractIds": ["core-object-permission-record-contract"],
+      "contractIds": [
+        "core-object-permission-record-contract"
+      ],
       "implementationFiles": [
         "src/contracts/object/core-object-contract-skeletons.ts",
         "src/objects/core-mvp-object-profiles.ts",
@@ -553,11 +645,16 @@
       "sourcePath": "books/book-02-core-specification/core-specs/objects/policy.md",
       "sourceSection": "Section 5.2",
       "requiredImplementationKind": "structural_contract",
-      "requiredCapabilities": ["object contract", "public reference id"],
+      "requiredCapabilities": [
+        "object contract",
+        "public reference id"
+      ],
       "dependencies": [],
       "currentDisposition": "meets_required_depth",
       "currentDepth": "level_2",
-      "contractIds": ["core-object-permission-policy-record-contract"],
+      "contractIds": [
+        "core-object-permission-policy-record-contract"
+      ],
       "implementationFiles": [
         "src/contracts/object/core-object-contract-skeletons.ts",
         "src/objects/core-mvp-object-profiles.ts",
@@ -583,11 +680,16 @@
       "sourcePath": "books/book-02-core-specification/core-specs/objects/customer.md",
       "sourceSection": "Section 5.2",
       "requiredImplementationKind": "structural_contract",
-      "requiredCapabilities": ["object contract", "public reference id"],
+      "requiredCapabilities": [
+        "object contract",
+        "public reference id"
+      ],
       "dependencies": [],
       "currentDisposition": "meets_required_depth",
       "currentDepth": "level_2",
-      "contractIds": ["core-object-customer-record-contract"],
+      "contractIds": [
+        "core-object-customer-record-contract"
+      ],
       "implementationFiles": [
         "src/contracts/object/core-object-contract-skeletons.ts",
         "src/objects/core-mvp-object-profiles.ts",
@@ -613,11 +715,16 @@
       "sourcePath": "books/book-02-core-specification/core-specs/objects/brand.md",
       "sourceSection": "Section 5.2",
       "requiredImplementationKind": "structural_contract",
-      "requiredCapabilities": ["object contract", "public reference id"],
+      "requiredCapabilities": [
+        "object contract",
+        "public reference id"
+      ],
       "dependencies": [],
       "currentDisposition": "meets_required_depth",
       "currentDepth": "level_2",
-      "contractIds": ["core-object-brand-record-contract"],
+      "contractIds": [
+        "core-object-brand-record-contract"
+      ],
       "implementationFiles": [
         "src/contracts/object/core-object-contract-skeletons.ts",
         "src/objects/core-mvp-object-profiles.ts",
@@ -643,11 +750,16 @@
       "sourcePath": "books/book-02-core-specification/core-specs/objects/trademark.md",
       "sourceSection": "Section 5.2",
       "requiredImplementationKind": "structural_contract",
-      "requiredCapabilities": ["object contract", "public reference id"],
+      "requiredCapabilities": [
+        "object contract",
+        "public reference id"
+      ],
       "dependencies": [],
       "currentDisposition": "meets_required_depth",
       "currentDepth": "level_2",
-      "contractIds": ["core-object-trademark-record-contract"],
+      "contractIds": [
+        "core-object-trademark-record-contract"
+      ],
       "implementationFiles": [
         "src/contracts/object/core-object-contract-skeletons.ts",
         "src/objects/core-mvp-object-profiles.ts",
@@ -673,11 +785,16 @@
       "sourcePath": "books/book-02-core-specification/core-specs/objects/jurisdiction.md",
       "sourceSection": "Section 5.2",
       "requiredImplementationKind": "structural_contract",
-      "requiredCapabilities": ["object contract", "public reference id"],
+      "requiredCapabilities": [
+        "object contract",
+        "public reference id"
+      ],
       "dependencies": [],
       "currentDisposition": "meets_required_depth",
       "currentDepth": "level_2",
-      "contractIds": ["core-object-jurisdiction-record-contract"],
+      "contractIds": [
+        "core-object-jurisdiction-record-contract"
+      ],
       "implementationFiles": [
         "src/contracts/object/core-object-contract-skeletons.ts",
         "src/objects/core-mvp-object-profiles.ts",
@@ -703,11 +820,16 @@
       "sourcePath": "books/book-02-core-specification/core-specs/objects/classification.md",
       "sourceSection": "Section 5.2",
       "requiredImplementationKind": "structural_contract",
-      "requiredCapabilities": ["object contract", "public reference id"],
+      "requiredCapabilities": [
+        "object contract",
+        "public reference id"
+      ],
       "dependencies": [],
       "currentDisposition": "meets_required_depth",
       "currentDepth": "level_2",
-      "contractIds": ["core-object-classification-record-contract"],
+      "contractIds": [
+        "core-object-classification-record-contract"
+      ],
       "implementationFiles": [
         "src/contracts/object/core-object-contract-skeletons.ts",
         "src/objects/core-mvp-object-profiles.ts",
@@ -733,11 +855,16 @@
       "sourcePath": "books/book-02-core-specification/core-specs/objects/document.md",
       "sourceSection": "Section 5.2",
       "requiredImplementationKind": "structural_contract",
-      "requiredCapabilities": ["object contract", "public reference id"],
+      "requiredCapabilities": [
+        "object contract",
+        "public reference id"
+      ],
       "dependencies": [],
       "currentDisposition": "meets_required_depth",
       "currentDepth": "level_2",
-      "contractIds": ["core-object-document-record-contract"],
+      "contractIds": [
+        "core-object-document-record-contract"
+      ],
       "implementationFiles": [
         "src/contracts/object/core-object-contract-skeletons.ts",
         "src/objects/core-mvp-object-profiles.ts",
@@ -763,11 +890,16 @@
       "sourcePath": "books/book-02-core-specification/core-specs/objects/evidence.md",
       "sourceSection": "Section 5.2",
       "requiredImplementationKind": "structural_contract",
-      "requiredCapabilities": ["object contract", "public reference id"],
+      "requiredCapabilities": [
+        "object contract",
+        "public reference id"
+      ],
       "dependencies": [],
       "currentDisposition": "meets_required_depth",
       "currentDepth": "level_2",
-      "contractIds": ["core-object-evidence-record-contract"],
+      "contractIds": [
+        "core-object-evidence-record-contract"
+      ],
       "implementationFiles": [
         "src/contracts/object/core-object-contract-skeletons.ts",
         "src/objects/core-mvp-object-profiles.ts",
@@ -793,11 +925,16 @@
       "sourcePath": "books/book-02-core-specification/core-specs/objects/matter.md",
       "sourceSection": "Section 5.2",
       "requiredImplementationKind": "structural_contract",
-      "requiredCapabilities": ["object contract", "public reference id"],
+      "requiredCapabilities": [
+        "object contract",
+        "public reference id"
+      ],
       "dependencies": [],
       "currentDisposition": "meets_required_depth",
       "currentDepth": "level_2",
-      "contractIds": ["core-object-matter-record-contract"],
+      "contractIds": [
+        "core-object-matter-record-contract"
+      ],
       "implementationFiles": [
         "src/contracts/object/core-object-contract-skeletons.ts",
         "src/objects/core-mvp-object-profiles.ts",
@@ -823,11 +960,16 @@
       "sourcePath": "books/book-02-core-specification/core-specs/objects/order.md",
       "sourceSection": "Section 5.2",
       "requiredImplementationKind": "structural_contract",
-      "requiredCapabilities": ["object contract", "public reference id"],
+      "requiredCapabilities": [
+        "object contract",
+        "public reference id"
+      ],
       "dependencies": [],
       "currentDisposition": "meets_required_depth",
       "currentDepth": "level_2",
-      "contractIds": ["core-object-order-record-contract"],
+      "contractIds": [
+        "core-object-order-record-contract"
+      ],
       "implementationFiles": [
         "src/contracts/object/core-object-contract-skeletons.ts",
         "src/objects/core-mvp-object-profiles.ts",
@@ -853,11 +995,16 @@
       "sourcePath": "books/book-02-core-specification/core-specs/objects/workflow-contract.md",
       "sourceSection": "Section 5.2",
       "requiredImplementationKind": "structural_contract",
-      "requiredCapabilities": ["object contract", "public reference id"],
+      "requiredCapabilities": [
+        "object contract",
+        "public reference id"
+      ],
       "dependencies": [],
       "currentDisposition": "meets_required_depth",
       "currentDepth": "level_2",
-      "contractIds": ["core-object-workflow-contract-record-contract"],
+      "contractIds": [
+        "core-object-workflow-contract-record-contract"
+      ],
       "implementationFiles": [
         "src/contracts/object/core-object-contract-skeletons.ts",
         "src/objects/core-mvp-object-profiles.ts",
@@ -883,11 +1030,16 @@
       "sourcePath": "books/book-02-core-specification/core-specs/objects/task.md",
       "sourceSection": "Section 5.2",
       "requiredImplementationKind": "structural_contract",
-      "requiredCapabilities": ["object contract", "public reference id"],
+      "requiredCapabilities": [
+        "object contract",
+        "public reference id"
+      ],
       "dependencies": [],
       "currentDisposition": "meets_required_depth",
       "currentDepth": "level_2",
-      "contractIds": ["core-object-task-record-contract"],
+      "contractIds": [
+        "core-object-task-record-contract"
+      ],
       "implementationFiles": [
         "src/contracts/object/core-object-contract-skeletons.ts",
         "src/objects/core-mvp-object-profiles.ts",
@@ -913,11 +1065,16 @@
       "sourcePath": "books/book-02-core-specification/core-specs/objects/event.md",
       "sourceSection": "Section 5.2",
       "requiredImplementationKind": "structural_contract",
-      "requiredCapabilities": ["object contract", "public reference id"],
+      "requiredCapabilities": [
+        "object contract",
+        "public reference id"
+      ],
       "dependencies": [],
       "currentDisposition": "meets_required_depth",
       "currentDepth": "level_2",
-      "contractIds": ["core-object-event-record-contract"],
+      "contractIds": [
+        "core-object-event-record-contract"
+      ],
       "implementationFiles": [
         "src/contracts/object/core-object-contract-skeletons.ts",
         "src/objects/core-mvp-object-profiles.ts",
@@ -943,11 +1100,16 @@
       "sourcePath": "books/book-02-core-specification/core-specs/objects/communication.md",
       "sourceSection": "Section 5.2",
       "requiredImplementationKind": "structural_contract",
-      "requiredCapabilities": ["object contract", "public reference id"],
+      "requiredCapabilities": [
+        "object contract",
+        "public reference id"
+      ],
       "dependencies": [],
       "currentDisposition": "meets_required_depth",
       "currentDepth": "level_2",
-      "contractIds": ["core-object-communication-record-contract"],
+      "contractIds": [
+        "core-object-communication-record-contract"
+      ],
       "implementationFiles": [
         "src/contracts/object/core-object-contract-skeletons.ts",
         "src/objects/core-mvp-object-profiles.ts",
@@ -980,7 +1142,9 @@
       "dependencies": [],
       "currentDisposition": "validated_skeleton_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-service-identity-resolution-service-contract"],
+      "contractIds": [
+        "core-service-identity-resolution-service-contract"
+      ],
       "implementationFiles": [
         "src/contracts/service/core-service-contract-skeletons.ts"
       ],
@@ -1006,7 +1170,9 @@
       "dependencies": [],
       "currentDisposition": "validated_skeleton_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-service-organization-service-contract"],
+      "contractIds": [
+        "core-service-organization-service-contract"
+      ],
       "implementationFiles": [
         "src/contracts/service/core-service-contract-skeletons.ts"
       ],
@@ -1032,7 +1198,9 @@
       "dependencies": [],
       "currentDisposition": "validated_skeleton_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-service-user-service-contract"],
+      "contractIds": [
+        "core-service-user-service-contract"
+      ],
       "implementationFiles": [
         "src/contracts/service/core-service-contract-skeletons.ts"
       ],
@@ -1058,7 +1226,9 @@
       "dependencies": [],
       "currentDisposition": "validated_skeleton_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-service-permission-evaluation-service-contract"],
+      "contractIds": [
+        "core-service-permission-evaluation-service-contract"
+      ],
       "implementationFiles": [
         "src/contracts/service/core-service-contract-skeletons.ts"
       ],
@@ -1084,7 +1254,9 @@
       "dependencies": [],
       "currentDisposition": "validated_skeleton_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-service-policy-evaluation-service-contract"],
+      "contractIds": [
+        "core-service-policy-evaluation-service-contract"
+      ],
       "implementationFiles": [
         "src/contracts/service/core-service-contract-skeletons.ts"
       ],
@@ -1110,7 +1282,9 @@
       "dependencies": [],
       "currentDisposition": "meets_required_depth",
       "currentDepth": "level_2_3",
-      "contractIds": ["core-service-customer-service-contract"],
+      "contractIds": [
+        "core-service-customer-service-contract"
+      ],
       "implementationFiles": [
         "src/contracts/service/core-service-contract-skeletons.ts",
         "src/services/customer/core-customer-service.ts",
@@ -1141,12 +1315,16 @@
       "dependencies": [],
       "currentDisposition": "meets_required_depth",
       "currentDepth": "level_2_3",
-      "contractIds": ["core-service-brand-service-contract"],
+      "contractIds": [
+        "core-service-brand-service-contract"
+      ],
       "implementationFiles": [
         "src/contracts/service/core-service-contract-skeletons.ts",
         "src/services/brand/core-brand-service.ts"
       ],
-      "testFiles": ["tests/unit/core-brand-service-core-lifecycle.test.ts"],
+      "testFiles": [
+        "tests/unit/core-brand-service-core-lifecycle.test.ts"
+      ],
       "fixtureFiles": [
         "fixtures/services/core-brand-service-core-lifecycle.fixture.json"
       ],
@@ -1168,12 +1346,16 @@
       "dependencies": [],
       "currentDisposition": "meets_required_depth",
       "currentDepth": "level_2_3",
-      "contractIds": ["core-service-trademark-service-contract"],
+      "contractIds": [
+        "core-service-trademark-service-contract"
+      ],
       "implementationFiles": [
         "src/contracts/service/core-service-contract-skeletons.ts",
         "src/services/trademark/core-trademark-service.ts"
       ],
-      "testFiles": ["tests/unit/core-trademark-service-core-lifecycle.test.ts"],
+      "testFiles": [
+        "tests/unit/core-trademark-service-core-lifecycle.test.ts"
+      ],
       "fixtureFiles": [
         "fixtures/services/core-trademark-service-core-lifecycle.fixture.json"
       ],
@@ -1195,7 +1377,9 @@
       "dependencies": [],
       "currentDisposition": "meets_required_depth",
       "currentDepth": "level_2_3",
-      "contractIds": ["core-service-jurisdiction-service-contract"],
+      "contractIds": [
+        "core-service-jurisdiction-service-contract"
+      ],
       "implementationFiles": [
         "src/contracts/service/core-service-contract-skeletons.ts",
         "src/services/jurisdiction/core-jurisdiction-service.ts"
@@ -1224,7 +1408,9 @@
       "dependencies": [],
       "currentDisposition": "meets_required_depth",
       "currentDepth": "level_2_3",
-      "contractIds": ["core-service-classification-service-contract"],
+      "contractIds": [
+        "core-service-classification-service-contract"
+      ],
       "implementationFiles": [
         "src/contracts/service/core-service-contract-skeletons.ts",
         "src/services/classification/core-classification-service.ts"
@@ -1253,7 +1439,9 @@
       "dependencies": [],
       "currentDisposition": "validated_skeleton_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-service-document-reference-service-contract"],
+      "contractIds": [
+        "core-service-document-reference-service-contract"
+      ],
       "implementationFiles": [
         "src/contracts/service/core-service-contract-skeletons.ts"
       ],
@@ -1279,7 +1467,9 @@
       "dependencies": [],
       "currentDisposition": "validated_skeleton_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-service-evidence-reference-service-contract"],
+      "contractIds": [
+        "core-service-evidence-reference-service-contract"
+      ],
       "implementationFiles": [
         "src/contracts/service/core-service-contract-skeletons.ts"
       ],
@@ -1305,7 +1495,9 @@
       "dependencies": [],
       "currentDisposition": "validated_skeleton_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-service-matter-service-contract"],
+      "contractIds": [
+        "core-service-matter-service-contract"
+      ],
       "implementationFiles": [
         "src/contracts/service/core-service-contract-skeletons.ts"
       ],
@@ -1331,7 +1523,9 @@
       "dependencies": [],
       "currentDisposition": "validated_skeleton_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-service-order-service-contract"],
+      "contractIds": [
+        "core-service-order-service-contract"
+      ],
       "implementationFiles": [
         "src/contracts/service/core-service-contract-skeletons.ts"
       ],
@@ -1357,7 +1551,9 @@
       "dependencies": [],
       "currentDisposition": "validated_skeleton_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-service-workflow-contract-service-contract"],
+      "contractIds": [
+        "core-service-workflow-contract-service-contract"
+      ],
       "implementationFiles": [
         "src/contracts/service/core-service-contract-skeletons.ts"
       ],
@@ -1383,7 +1579,9 @@
       "dependencies": [],
       "currentDisposition": "validated_skeleton_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-service-task-service-contract"],
+      "contractIds": [
+        "core-service-task-service-contract"
+      ],
       "implementationFiles": [
         "src/contracts/service/core-service-contract-skeletons.ts"
       ],
@@ -1409,7 +1607,9 @@
       "dependencies": [],
       "currentDisposition": "validated_skeleton_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-service-event-service-contract"],
+      "contractIds": [
+        "core-service-event-service-contract"
+      ],
       "implementationFiles": [
         "src/contracts/service/core-service-contract-skeletons.ts"
       ],
@@ -1435,7 +1635,9 @@
       "dependencies": [],
       "currentDisposition": "validated_skeleton_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-service-communication-reference-service-contract"],
+      "contractIds": [
+        "core-service-communication-reference-service-contract"
+      ],
       "implementationFiles": [
         "src/contracts/service/core-service-contract-skeletons.ts"
       ],
@@ -1454,14 +1656,23 @@
       "sourcePath": "books/book-02-core-specification/core-specs/contracts/common/references.md",
       "sourceSection": "Section 5.4",
       "requiredImplementationKind": "book_02_depth_matrix_behavior",
-      "requiredCapabilities": ["contract hook", "executable behavior evidence"],
+      "requiredCapabilities": [
+        "contract hook",
+        "executable behavior evidence"
+      ],
       "requiredDepth": "level_3",
       "dependencies": [],
       "currentDisposition": "meets_required_depth",
       "currentDepth": "level_3",
-      "contractIds": ["core-common-references-contract"],
-      "implementationFiles": ["src/behaviors/core-reference-behavior.ts"],
-      "testFiles": ["tests/unit/core-safety-boundary-foundations.test.ts"],
+      "contractIds": [
+        "core-common-references-contract"
+      ],
+      "implementationFiles": [
+        "src/behaviors/core-reference-behavior.ts"
+      ],
+      "testFiles": [
+        "tests/unit/core-safety-boundary-foundations.test.ts"
+      ],
       "fixtureFiles": [
         "fixtures/behaviors/core-safety-boundary-foundations.fixture.json"
       ],
@@ -1476,14 +1687,23 @@
       "sourcePath": "books/book-02-core-specification/core-specs/contracts/common/errors.md",
       "sourceSection": "Section 5.4",
       "requiredImplementationKind": "book_02_depth_matrix_behavior",
-      "requiredCapabilities": ["contract hook", "executable behavior evidence"],
+      "requiredCapabilities": [
+        "contract hook",
+        "executable behavior evidence"
+      ],
       "requiredDepth": "level_3",
       "dependencies": [],
       "currentDisposition": "meets_required_depth",
       "currentDepth": "level_3",
-      "contractIds": ["core-common-errors-contract"],
-      "implementationFiles": ["src/behaviors/core-safe-error.ts"],
-      "testFiles": ["tests/unit/core-safety-boundary-foundations.test.ts"],
+      "contractIds": [
+        "core-common-errors-contract"
+      ],
+      "implementationFiles": [
+        "src/behaviors/core-safe-error.ts"
+      ],
+      "testFiles": [
+        "tests/unit/core-safety-boundary-foundations.test.ts"
+      ],
       "fixtureFiles": [
         "fixtures/behaviors/core-safety-boundary-foundations.fixture.json"
       ],
@@ -1498,14 +1718,23 @@
       "sourcePath": "books/book-02-core-specification/core-specs/contracts/common/permission-context.md",
       "sourceSection": "Section 5.4",
       "requiredImplementationKind": "book_02_depth_matrix_behavior",
-      "requiredCapabilities": ["contract hook", "executable behavior evidence"],
+      "requiredCapabilities": [
+        "contract hook",
+        "executable behavior evidence"
+      ],
       "requiredDepth": "level_2_3",
       "dependencies": [],
       "currentDisposition": "meets_required_depth",
       "currentDepth": "level_2",
-      "contractIds": ["core-common-permission-context-contract"],
-      "implementationFiles": ["src/behaviors/core-governance-behavior.ts"],
-      "testFiles": ["tests/unit/core-governance-context-review-hooks.test.ts"],
+      "contractIds": [
+        "core-common-permission-context-contract"
+      ],
+      "implementationFiles": [
+        "src/behaviors/core-governance-behavior.ts"
+      ],
+      "testFiles": [
+        "tests/unit/core-governance-context-review-hooks.test.ts"
+      ],
       "fixtureFiles": [],
       "violationReasons": [],
       "gapReasons": []
@@ -1518,14 +1747,23 @@
       "sourcePath": "books/book-02-core-specification/core-specs/contracts/common/policy-context.md",
       "sourceSection": "Section 5.4",
       "requiredImplementationKind": "book_02_depth_matrix_behavior",
-      "requiredCapabilities": ["contract hook", "executable behavior evidence"],
+      "requiredCapabilities": [
+        "contract hook",
+        "executable behavior evidence"
+      ],
       "requiredDepth": "level_1_2",
       "dependencies": [],
       "currentDisposition": "meets_required_depth",
       "currentDepth": "level_1",
-      "contractIds": ["core-common-policy-context-contract"],
-      "implementationFiles": ["src/behaviors/core-governance-behavior.ts"],
-      "testFiles": ["tests/unit/core-governance-context-review-hooks.test.ts"],
+      "contractIds": [
+        "core-common-policy-context-contract"
+      ],
+      "implementationFiles": [
+        "src/behaviors/core-governance-behavior.ts"
+      ],
+      "testFiles": [
+        "tests/unit/core-governance-context-review-hooks.test.ts"
+      ],
       "fixtureFiles": [],
       "violationReasons": [],
       "gapReasons": []
@@ -1538,14 +1776,23 @@
       "sourcePath": "books/book-02-core-specification/core-specs/contracts/common/idempotency.md",
       "sourceSection": "Section 5.4",
       "requiredImplementationKind": "book_02_depth_matrix_behavior",
-      "requiredCapabilities": ["contract hook", "executable behavior evidence"],
+      "requiredCapabilities": [
+        "contract hook",
+        "executable behavior evidence"
+      ],
       "requiredDepth": "level_3",
       "dependencies": [],
       "currentDisposition": "meets_required_depth",
       "currentDepth": "level_3",
-      "contractIds": ["core-common-idempotency-contract"],
-      "implementationFiles": ["src/behaviors/core-idempotency-behavior.ts"],
-      "testFiles": ["tests/unit/core-idempotency-enforcement.test.ts"],
+      "contractIds": [
+        "core-common-idempotency-contract"
+      ],
+      "implementationFiles": [
+        "src/behaviors/core-idempotency-behavior.ts"
+      ],
+      "testFiles": [
+        "tests/unit/core-idempotency-enforcement.test.ts"
+      ],
       "fixtureFiles": [
         "fixtures/behaviors/core-idempotency-enforcement.fixture.json"
       ],
@@ -1560,14 +1807,23 @@
       "sourcePath": "books/book-02-core-specification/core-specs/contracts/common/audit-context.md",
       "sourceSection": "Section 5.4",
       "requiredImplementationKind": "book_02_depth_matrix_behavior",
-      "requiredCapabilities": ["contract hook", "executable behavior evidence"],
+      "requiredCapabilities": [
+        "contract hook",
+        "executable behavior evidence"
+      ],
       "requiredDepth": "level_2",
       "dependencies": [],
       "currentDisposition": "meets_required_depth",
       "currentDepth": "level_2",
-      "contractIds": ["core-common-audit-context-contract"],
-      "implementationFiles": ["src/behaviors/core-governance-behavior.ts"],
-      "testFiles": ["tests/unit/core-governance-context-review-hooks.test.ts"],
+      "contractIds": [
+        "core-common-audit-context-contract"
+      ],
+      "implementationFiles": [
+        "src/behaviors/core-governance-behavior.ts"
+      ],
+      "testFiles": [
+        "tests/unit/core-governance-context-review-hooks.test.ts"
+      ],
       "fixtureFiles": [],
       "violationReasons": [],
       "gapReasons": []
@@ -1580,14 +1836,23 @@
       "sourcePath": "books/book-02-core-specification/core-specs/contracts/common/versioning.md",
       "sourceSection": "Section 5.4",
       "requiredImplementationKind": "book_02_depth_matrix_behavior",
-      "requiredCapabilities": ["contract hook", "executable behavior evidence"],
+      "requiredCapabilities": [
+        "contract hook",
+        "executable behavior evidence"
+      ],
       "requiredDepth": "level_1",
       "dependencies": [],
       "currentDisposition": "meets_required_depth",
       "currentDepth": "level_1",
-      "contractIds": ["core-common-versioning-contract"],
-      "implementationFiles": ["src/behaviors/core-version-behavior.ts"],
-      "testFiles": ["tests/unit/core-safety-boundary-foundations.test.ts"],
+      "contractIds": [
+        "core-common-versioning-contract"
+      ],
+      "implementationFiles": [
+        "src/behaviors/core-version-behavior.ts"
+      ],
+      "testFiles": [
+        "tests/unit/core-safety-boundary-foundations.test.ts"
+      ],
       "fixtureFiles": [
         "fixtures/behaviors/core-safety-boundary-foundations.fixture.json"
       ],
@@ -1602,16 +1867,23 @@
       "sourcePath": "books/book-02-core-specification/core-specs/contracts/common/pagination.md",
       "sourceSection": "Section 5.4",
       "requiredImplementationKind": "book_02_depth_matrix_behavior",
-      "requiredCapabilities": ["contract hook", "executable behavior evidence"],
+      "requiredCapabilities": [
+        "contract hook",
+        "executable behavior evidence"
+      ],
       "requiredDepth": "level_2",
       "dependencies": [],
       "currentDisposition": "meets_required_depth",
       "currentDepth": "level_2",
-      "contractIds": ["core-common-pagination-contract"],
+      "contractIds": [
+        "core-common-pagination-contract"
+      ],
       "implementationFiles": [
         "src/behaviors/core-event-pagination-behavior.ts"
       ],
-      "testFiles": ["tests/unit/core-event-pagination-hooks.test.ts"],
+      "testFiles": [
+        "tests/unit/core-event-pagination-hooks.test.ts"
+      ],
       "fixtureFiles": [],
       "violationReasons": [],
       "gapReasons": []
@@ -1624,14 +1896,23 @@
       "sourcePath": "books/book-02-core-specification/core-specs/contracts/common/ai-context.md",
       "sourceSection": "Section 5.4",
       "requiredImplementationKind": "book_02_depth_matrix_behavior",
-      "requiredCapabilities": ["contract hook", "executable behavior evidence"],
+      "requiredCapabilities": [
+        "contract hook",
+        "executable behavior evidence"
+      ],
       "requiredDepth": "level_1",
       "dependencies": [],
       "currentDisposition": "meets_required_depth",
       "currentDepth": "level_1",
-      "contractIds": ["core-common-ai-context-contract"],
-      "implementationFiles": ["src/behaviors/core-ai-context-behavior.ts"],
-      "testFiles": ["tests/unit/core-safety-boundary-foundations.test.ts"],
+      "contractIds": [
+        "core-common-ai-context-contract"
+      ],
+      "implementationFiles": [
+        "src/behaviors/core-ai-context-behavior.ts"
+      ],
+      "testFiles": [
+        "tests/unit/core-safety-boundary-foundations.test.ts"
+      ],
       "fixtureFiles": [
         "fixtures/behaviors/core-safety-boundary-foundations.fixture.json"
       ],
@@ -1646,14 +1927,23 @@
       "sourcePath": "books/book-02-core-specification/core-specs/contracts/common/human-review.md",
       "sourceSection": "Section 5.4",
       "requiredImplementationKind": "book_02_depth_matrix_behavior",
-      "requiredCapabilities": ["contract hook", "executable behavior evidence"],
+      "requiredCapabilities": [
+        "contract hook",
+        "executable behavior evidence"
+      ],
       "requiredDepth": "level_2",
       "dependencies": [],
       "currentDisposition": "meets_required_depth",
       "currentDepth": "level_2",
-      "contractIds": ["core-common-human-review-contract"],
-      "implementationFiles": ["src/behaviors/core-governance-behavior.ts"],
-      "testFiles": ["tests/unit/core-governance-context-review-hooks.test.ts"],
+      "contractIds": [
+        "core-common-human-review-contract"
+      ],
+      "implementationFiles": [
+        "src/behaviors/core-governance-behavior.ts"
+      ],
+      "testFiles": [
+        "tests/unit/core-governance-context-review-hooks.test.ts"
+      ],
       "fixtureFiles": [],
       "violationReasons": [],
       "gapReasons": []
@@ -1682,7 +1972,9 @@
       "dependencies": [],
       "currentDisposition": "validated_skeleton_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-api-identity-api-contract"],
+      "contractIds": [
+        "core-api-identity-api-contract"
+      ],
       "implementationFiles": [
         "src/contracts/api/core-api-contract-skeletons.ts"
       ],
@@ -1717,7 +2009,9 @@
       "dependencies": [],
       "currentDisposition": "validated_skeleton_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-api-organization-api-contract"],
+      "contractIds": [
+        "core-api-organization-api-contract"
+      ],
       "implementationFiles": [
         "src/contracts/api/core-api-contract-skeletons.ts"
       ],
@@ -1752,7 +2046,9 @@
       "dependencies": [],
       "currentDisposition": "validated_skeleton_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-api-user-api-contract"],
+      "contractIds": [
+        "core-api-user-api-contract"
+      ],
       "implementationFiles": [
         "src/contracts/api/core-api-contract-skeletons.ts"
       ],
@@ -1787,7 +2083,9 @@
       "dependencies": [],
       "currentDisposition": "validated_skeleton_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-api-permission-api-contract"],
+      "contractIds": [
+        "core-api-permission-api-contract"
+      ],
       "implementationFiles": [
         "src/contracts/api/core-api-contract-skeletons.ts"
       ],
@@ -1822,7 +2120,9 @@
       "dependencies": [],
       "currentDisposition": "validated_skeleton_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-api-core-validation-api-contract"],
+      "contractIds": [
+        "core-api-core-validation-api-contract"
+      ],
       "implementationFiles": [
         "src/contracts/api/core-api-contract-skeletons.ts"
       ],
@@ -1857,7 +2157,9 @@
       "dependencies": [],
       "currentDisposition": "validated_skeleton_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-api-customer-api-contract"],
+      "contractIds": [
+        "core-api-customer-api-contract"
+      ],
       "implementationFiles": [
         "src/contracts/api/core-api-contract-skeletons.ts"
       ],
@@ -1892,7 +2194,9 @@
       "dependencies": [],
       "currentDisposition": "validated_skeleton_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-api-brand-api-contract"],
+      "contractIds": [
+        "core-api-brand-api-contract"
+      ],
       "implementationFiles": [
         "src/contracts/api/core-api-contract-skeletons.ts"
       ],
@@ -1927,7 +2231,9 @@
       "dependencies": [],
       "currentDisposition": "validated_skeleton_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-api-trademark-api-contract"],
+      "contractIds": [
+        "core-api-trademark-api-contract"
+      ],
       "implementationFiles": [
         "src/contracts/api/core-api-contract-skeletons.ts"
       ],
@@ -1962,7 +2268,9 @@
       "dependencies": [],
       "currentDisposition": "validated_skeleton_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-api-jurisdiction-api-contract"],
+      "contractIds": [
+        "core-api-jurisdiction-api-contract"
+      ],
       "implementationFiles": [
         "src/contracts/api/core-api-contract-skeletons.ts"
       ],
@@ -1997,7 +2305,9 @@
       "dependencies": [],
       "currentDisposition": "validated_skeleton_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-api-classification-api-contract"],
+      "contractIds": [
+        "core-api-classification-api-contract"
+      ],
       "implementationFiles": [
         "src/contracts/api/core-api-contract-skeletons.ts"
       ],
@@ -2032,7 +2342,9 @@
       "dependencies": [],
       "currentDisposition": "validated_skeleton_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-api-document-api-contract"],
+      "contractIds": [
+        "core-api-document-api-contract"
+      ],
       "implementationFiles": [
         "src/contracts/api/core-api-contract-skeletons.ts"
       ],
@@ -2067,7 +2379,9 @@
       "dependencies": [],
       "currentDisposition": "validated_skeleton_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-api-evidence-api-contract"],
+      "contractIds": [
+        "core-api-evidence-api-contract"
+      ],
       "implementationFiles": [
         "src/contracts/api/core-api-contract-skeletons.ts"
       ],
@@ -2102,7 +2416,9 @@
       "dependencies": [],
       "currentDisposition": "validated_skeleton_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-api-matter-api-contract"],
+      "contractIds": [
+        "core-api-matter-api-contract"
+      ],
       "implementationFiles": [
         "src/contracts/api/core-api-contract-skeletons.ts"
       ],
@@ -2137,7 +2453,9 @@
       "dependencies": [],
       "currentDisposition": "validated_skeleton_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-api-order-api-contract"],
+      "contractIds": [
+        "core-api-order-api-contract"
+      ],
       "implementationFiles": [
         "src/contracts/api/core-api-contract-skeletons.ts"
       ],
@@ -2172,7 +2490,9 @@
       "dependencies": [],
       "currentDisposition": "validated_skeleton_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-api-core-workflow-contract-reference-api-contract"],
+      "contractIds": [
+        "core-api-core-workflow-contract-reference-api-contract"
+      ],
       "implementationFiles": [
         "src/contracts/api/core-api-contract-skeletons.ts"
       ],
@@ -2207,7 +2527,9 @@
       "dependencies": [],
       "currentDisposition": "validated_skeleton_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-api-core-task-reference-api-contract"],
+      "contractIds": [
+        "core-api-core-task-reference-api-contract"
+      ],
       "implementationFiles": [
         "src/contracts/api/core-api-contract-skeletons.ts"
       ],
@@ -2242,7 +2564,9 @@
       "dependencies": [],
       "currentDisposition": "validated_skeleton_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-api-core-event-reference-api-contract"],
+      "contractIds": [
+        "core-api-core-event-reference-api-contract"
+      ],
       "implementationFiles": [
         "src/contracts/api/core-api-contract-skeletons.ts"
       ],
@@ -2277,7 +2601,9 @@
       "dependencies": [],
       "currentDisposition": "validated_skeleton_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-api-communication-api-contract"],
+      "contractIds": [
+        "core-api-communication-api-contract"
+      ],
       "implementationFiles": [
         "src/contracts/api/core-api-contract-skeletons.ts"
       ],
@@ -2312,7 +2638,9 @@
       "dependencies": [],
       "currentDisposition": "validated_skeleton_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-workflow-customer-intake-workflow-contract"],
+      "contractIds": [
+        "core-workflow-customer-intake-workflow-contract"
+      ],
       "implementationFiles": [
         "src/contracts/workflow/core-workflow-catalog-skeletons.ts"
       ],
@@ -2347,7 +2675,9 @@
       "dependencies": [],
       "currentDisposition": "validated_skeleton_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-workflow-trademark-application-workflow-contract"],
+      "contractIds": [
+        "core-workflow-trademark-application-workflow-contract"
+      ],
       "implementationFiles": [
         "src/contracts/workflow/core-workflow-catalog-skeletons.ts"
       ],
@@ -2382,7 +2712,9 @@
       "dependencies": [],
       "currentDisposition": "validated_skeleton_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-workflow-communication-review-workflow-contract"],
+      "contractIds": [
+        "core-workflow-communication-review-workflow-contract"
+      ],
       "implementationFiles": [
         "src/contracts/workflow/core-workflow-catalog-skeletons.ts"
       ],
@@ -2416,7 +2748,9 @@
       "dependencies": [],
       "currentDisposition": "semantic_overlap_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-event-core-object-created-contract"],
+      "contractIds": [
+        "core-event-core-object-created-contract"
+      ],
       "implementationFiles": [
         "src/contracts/event/core-event-catalog-skeletons.ts"
       ],
@@ -2450,7 +2784,9 @@
       "dependencies": [],
       "currentDisposition": "semantic_overlap_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-event-core-object-created-contract"],
+      "contractIds": [
+        "core-event-core-object-created-contract"
+      ],
       "implementationFiles": [
         "src/contracts/event/core-event-catalog-skeletons.ts"
       ],
@@ -2484,7 +2820,9 @@
       "dependencies": [],
       "currentDisposition": "semantic_overlap_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-event-core-object-created-contract"],
+      "contractIds": [
+        "core-event-core-object-created-contract"
+      ],
       "implementationFiles": [
         "src/contracts/event/core-event-catalog-skeletons.ts"
       ],
@@ -2518,7 +2856,9 @@
       "dependencies": [],
       "currentDisposition": "semantic_overlap_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-event-core-object-created-contract"],
+      "contractIds": [
+        "core-event-core-object-created-contract"
+      ],
       "implementationFiles": [
         "src/contracts/event/core-event-catalog-skeletons.ts"
       ],
@@ -2552,7 +2892,9 @@
       "dependencies": [],
       "currentDisposition": "semantic_overlap_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-event-core-object-created-contract"],
+      "contractIds": [
+        "core-event-core-object-created-contract"
+      ],
       "implementationFiles": [
         "src/contracts/event/core-event-catalog-skeletons.ts"
       ],
@@ -2586,7 +2928,9 @@
       "dependencies": [],
       "currentDisposition": "semantic_overlap_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-event-core-object-created-contract"],
+      "contractIds": [
+        "core-event-core-object-created-contract"
+      ],
       "implementationFiles": [
         "src/contracts/event/core-event-catalog-skeletons.ts"
       ],
@@ -2620,7 +2964,9 @@
       "dependencies": [],
       "currentDisposition": "semantic_overlap_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-event-core-object-updated-contract"],
+      "contractIds": [
+        "core-event-core-object-updated-contract"
+      ],
       "implementationFiles": [
         "src/contracts/event/core-event-catalog-skeletons.ts"
       ],
@@ -2654,7 +3000,9 @@
       "dependencies": [],
       "currentDisposition": "semantic_overlap_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-event-core-object-created-contract"],
+      "contractIds": [
+        "core-event-core-object-created-contract"
+      ],
       "implementationFiles": [
         "src/contracts/event/core-event-catalog-skeletons.ts"
       ],
@@ -2688,7 +3036,9 @@
       "dependencies": [],
       "currentDisposition": "semantic_overlap_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-event-core-task-created-contract"],
+      "contractIds": [
+        "core-event-core-task-created-contract"
+      ],
       "implementationFiles": [
         "src/contracts/event/core-event-catalog-skeletons.ts"
       ],
@@ -2722,7 +3072,9 @@
       "dependencies": [],
       "currentDisposition": "semantic_overlap_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-event-core-task-status-changed-contract"],
+      "contractIds": [
+        "core-event-core-task-status-changed-contract"
+      ],
       "implementationFiles": [
         "src/contracts/event/core-event-catalog-skeletons.ts"
       ],
@@ -2756,7 +3108,9 @@
       "dependencies": [],
       "currentDisposition": "semantic_overlap_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-event-core-task-status-changed-contract"],
+      "contractIds": [
+        "core-event-core-task-status-changed-contract"
+      ],
       "implementationFiles": [
         "src/contracts/event/core-event-catalog-skeletons.ts"
       ],
@@ -2790,7 +3144,9 @@
       "dependencies": [],
       "currentDisposition": "semantic_overlap_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-event-core-communication-draft-created-contract"],
+      "contractIds": [
+        "core-event-core-communication-draft-created-contract"
+      ],
       "implementationFiles": [
         "src/contracts/event/core-event-catalog-skeletons.ts"
       ],
@@ -2824,7 +3180,9 @@
       "dependencies": [],
       "currentDisposition": "semantic_overlap_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-event-core-communication-approved-contract"],
+      "contractIds": [
+        "core-event-core-communication-approved-contract"
+      ],
       "implementationFiles": [
         "src/contracts/event/core-event-catalog-skeletons.ts"
       ],
@@ -2858,7 +3216,9 @@
       "dependencies": [],
       "currentDisposition": "semantic_overlap_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-event-core-communication-approved-contract"],
+      "contractIds": [
+        "core-event-core-communication-approved-contract"
+      ],
       "implementationFiles": [
         "src/contracts/event/core-event-catalog-skeletons.ts"
       ],
@@ -2892,7 +3252,9 @@
       "dependencies": [],
       "currentDisposition": "semantic_overlap_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-event-core-workflow-contract-registered-contract"],
+      "contractIds": [
+        "core-event-core-workflow-contract-registered-contract"
+      ],
       "implementationFiles": [
         "src/contracts/event/core-event-catalog-skeletons.ts"
       ],
@@ -2926,7 +3288,9 @@
       "dependencies": [],
       "currentDisposition": "semantic_overlap_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-event-core-workflow-contract-registered-contract"],
+      "contractIds": [
+        "core-event-core-workflow-contract-registered-contract"
+      ],
       "implementationFiles": [
         "src/contracts/event/core-event-catalog-skeletons.ts"
       ],
@@ -2960,7 +3324,9 @@
       "dependencies": [],
       "currentDisposition": "semantic_overlap_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-event-core-review-completed-contract"],
+      "contractIds": [
+        "core-event-core-review-completed-contract"
+      ],
       "implementationFiles": [
         "src/contracts/event/core-event-catalog-skeletons.ts"
       ],
@@ -2994,7 +3360,9 @@
       "dependencies": [],
       "currentDisposition": "semantic_overlap_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-event-core-review-completed-contract"],
+      "contractIds": [
+        "core-event-core-review-completed-contract"
+      ],
       "implementationFiles": [
         "src/contracts/event/core-event-catalog-skeletons.ts"
       ],
@@ -3028,8 +3396,12 @@
       "currentDisposition": "boundary_scaffold_only",
       "currentDepth": "level_0",
       "contractIds": [],
-      "implementationFiles": ["src/behaviors/core-agent-boundary.ts"],
-      "testFiles": ["tests/unit/core-safety-boundary-foundations.test.ts"],
+      "implementationFiles": [
+        "src/behaviors/core-agent-boundary.ts"
+      ],
+      "testFiles": [
+        "tests/unit/core-safety-boundary-foundations.test.ts"
+      ],
       "fixtureFiles": [
         "fixtures/behaviors/core-safety-boundary-foundations.fixture.json"
       ],
@@ -3061,8 +3433,12 @@
       "currentDisposition": "boundary_scaffold_only",
       "currentDepth": "level_0",
       "contractIds": [],
-      "implementationFiles": ["src/behaviors/core-agent-boundary.ts"],
-      "testFiles": ["tests/unit/core-safety-boundary-foundations.test.ts"],
+      "implementationFiles": [
+        "src/behaviors/core-agent-boundary.ts"
+      ],
+      "testFiles": [
+        "tests/unit/core-safety-boundary-foundations.test.ts"
+      ],
       "fixtureFiles": [
         "fixtures/behaviors/core-safety-boundary-foundations.fixture.json"
       ],
@@ -3094,8 +3470,12 @@
       "currentDisposition": "boundary_scaffold_only",
       "currentDepth": "level_0",
       "contractIds": [],
-      "implementationFiles": ["src/behaviors/core-agent-boundary.ts"],
-      "testFiles": ["tests/unit/core-safety-boundary-foundations.test.ts"],
+      "implementationFiles": [
+        "src/behaviors/core-agent-boundary.ts"
+      ],
+      "testFiles": [
+        "tests/unit/core-safety-boundary-foundations.test.ts"
+      ],
       "fixtureFiles": [
         "fixtures/behaviors/core-safety-boundary-foundations.fixture.json"
       ],
@@ -3127,8 +3507,12 @@
       "currentDisposition": "boundary_scaffold_only",
       "currentDepth": "level_0",
       "contractIds": [],
-      "implementationFiles": ["src/behaviors/core-agent-boundary.ts"],
-      "testFiles": ["tests/unit/core-safety-boundary-foundations.test.ts"],
+      "implementationFiles": [
+        "src/behaviors/core-agent-boundary.ts"
+      ],
+      "testFiles": [
+        "tests/unit/core-safety-boundary-foundations.test.ts"
+      ],
       "fixtureFiles": [
         "fixtures/behaviors/core-safety-boundary-foundations.fixture.json"
       ],
@@ -3160,8 +3544,12 @@
       "currentDisposition": "boundary_scaffold_only",
       "currentDepth": "level_0",
       "contractIds": [],
-      "implementationFiles": ["src/behaviors/core-agent-boundary.ts"],
-      "testFiles": ["tests/unit/core-safety-boundary-foundations.test.ts"],
+      "implementationFiles": [
+        "src/behaviors/core-agent-boundary.ts"
+      ],
+      "testFiles": [
+        "tests/unit/core-safety-boundary-foundations.test.ts"
+      ],
       "fixtureFiles": [
         "fixtures/behaviors/core-safety-boundary-foundations.fixture.json"
       ],
@@ -3188,7 +3576,9 @@
       "dependencies": [],
       "currentDisposition": "meets_required_depth",
       "currentDepth": "level_0",
-      "contractIds": ["core-test-common-contract-tests-contract"],
+      "contractIds": [
+        "core-test-common-contract-tests-contract"
+      ],
       "implementationFiles": [
         "src/contracts/test/core-test-contract-skeletons.ts",
         "src/behaviors/core-reference-behavior.ts",
@@ -3228,12 +3618,16 @@
       "dependencies": [],
       "currentDisposition": "partial_evidence",
       "currentDepth": "level_0",
-      "contractIds": ["core-test-api-contract-tests-contract"],
+      "contractIds": [
+        "core-test-api-contract-tests-contract"
+      ],
       "implementationFiles": [
         "src/contracts/test/core-test-contract-skeletons.ts",
         "src/contracts/api/core-api-contract-skeletons.ts"
       ],
-      "testFiles": ["tests/unit/core-api-contract-skeletons.test.ts"],
+      "testFiles": [
+        "tests/unit/core-api-contract-skeletons.test.ts"
+      ],
       "fixtureFiles": [],
       "violationReasons": [],
       "gapReasons": [
@@ -3258,12 +3652,16 @@
       "dependencies": [],
       "currentDisposition": "partial_evidence",
       "currentDepth": "level_0",
-      "contractIds": ["core-test-workflow-contract-tests-contract"],
+      "contractIds": [
+        "core-test-workflow-contract-tests-contract"
+      ],
       "implementationFiles": [
         "src/contracts/test/core-test-contract-skeletons.ts",
         "src/workflows/core-workflow-contract-validation.ts"
       ],
-      "testFiles": ["tests/unit/core-workflow-contract-validation.test.ts"],
+      "testFiles": [
+        "tests/unit/core-workflow-contract-validation.test.ts"
+      ],
       "fixtureFiles": [],
       "violationReasons": [],
       "gapReasons": [
@@ -3288,7 +3686,9 @@
       "dependencies": [],
       "currentDisposition": "partial_evidence",
       "currentDepth": "level_0",
-      "contractIds": ["core-test-agent-boundary-tests-contract"],
+      "contractIds": [
+        "core-test-agent-boundary-tests-contract"
+      ],
       "implementationFiles": [
         "src/contracts/test/core-test-contract-skeletons.ts",
         "src/behaviors/core-agent-boundary.ts",
@@ -3323,12 +3723,16 @@
       "dependencies": [],
       "currentDisposition": "meets_required_depth",
       "currentDepth": "level_0",
-      "contractIds": ["core-test-permission-policy-tests-contract"],
+      "contractIds": [
+        "core-test-permission-policy-tests-contract"
+      ],
       "implementationFiles": [
         "src/contracts/test/core-test-contract-skeletons.ts",
         "src/behaviors/core-governance-behavior.ts"
       ],
-      "testFiles": ["tests/unit/core-governance-context-review-hooks.test.ts"],
+      "testFiles": [
+        "tests/unit/core-governance-context-review-hooks.test.ts"
+      ],
       "fixtureFiles": [],
       "violationReasons": [],
       "gapReasons": []
@@ -3351,7 +3755,9 @@
       "dependencies": [],
       "currentDisposition": "meets_required_depth",
       "currentDepth": "level_0",
-      "contractIds": ["core-test-idempotency-event-tests-contract"],
+      "contractIds": [
+        "core-test-idempotency-event-tests-contract"
+      ],
       "implementationFiles": [
         "src/contracts/test/core-test-contract-skeletons.ts",
         "src/behaviors/core-idempotency-behavior.ts",
@@ -3383,13 +3789,17 @@
       "dependencies": [],
       "currentDisposition": "meets_required_depth",
       "currentDepth": "level_0",
-      "contractIds": ["core-test-error-versioning-tests-contract"],
+      "contractIds": [
+        "core-test-error-versioning-tests-contract"
+      ],
       "implementationFiles": [
         "src/contracts/test/core-test-contract-skeletons.ts",
         "src/behaviors/core-safe-error.ts",
         "src/behaviors/core-version-behavior.ts"
       ],
-      "testFiles": ["tests/unit/core-safety-boundary-foundations.test.ts"],
+      "testFiles": [
+        "tests/unit/core-safety-boundary-foundations.test.ts"
+      ],
       "fixtureFiles": [],
       "violationReasons": [],
       "gapReasons": []
@@ -3402,11 +3812,15 @@
       "sourcePath": "books/book-02-core-specification/core-specs/domains/knowledge.md",
       "sourceSection": "Section 6.1",
       "requiredImplementationKind": "bounded_stub",
-      "requiredCapabilities": ["no production execution"],
+      "requiredCapabilities": [
+        "no production execution"
+      ],
       "dependencies": [],
       "currentDisposition": "boundary_scaffold_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-domain-knowledge-contract"],
+      "contractIds": [
+        "core-domain-knowledge-contract"
+      ],
       "implementationFiles": [
         "src/contracts/domain/core-domain-contract-skeletons.ts"
       ],
@@ -3425,11 +3839,15 @@
       "sourcePath": "books/book-02-core-specification/core-specs/domains/notification.md",
       "sourceSection": "Section 6.1",
       "requiredImplementationKind": "bounded_stub",
-      "requiredCapabilities": ["no production execution"],
+      "requiredCapabilities": [
+        "no production execution"
+      ],
       "dependencies": [],
       "currentDisposition": "boundary_scaffold_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-domain-notification-contract"],
+      "contractIds": [
+        "core-domain-notification-contract"
+      ],
       "implementationFiles": [
         "src/contracts/domain/core-domain-contract-skeletons.ts"
       ],
@@ -3448,11 +3866,15 @@
       "sourcePath": "books/book-02-core-specification/core-specs/domains/opportunity.md",
       "sourceSection": "Section 6.1",
       "requiredImplementationKind": "bounded_stub",
-      "requiredCapabilities": ["no production execution"],
+      "requiredCapabilities": [
+        "no production execution"
+      ],
       "dependencies": [],
       "currentDisposition": "boundary_scaffold_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-domain-opportunity-contract"],
+      "contractIds": [
+        "core-domain-opportunity-contract"
+      ],
       "implementationFiles": [
         "src/contracts/domain/core-domain-contract-skeletons.ts"
       ],
@@ -3471,11 +3893,15 @@
       "sourcePath": "books/book-02-core-specification/core-specs/domains/partner.md",
       "sourceSection": "Section 6.1",
       "requiredImplementationKind": "bounded_stub",
-      "requiredCapabilities": ["no production execution"],
+      "requiredCapabilities": [
+        "no production execution"
+      ],
       "dependencies": [],
       "currentDisposition": "boundary_scaffold_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-domain-partner-contract"],
+      "contractIds": [
+        "core-domain-partner-contract"
+      ],
       "implementationFiles": [
         "src/contracts/domain/core-domain-contract-skeletons.ts"
       ],
@@ -3494,11 +3920,15 @@
       "sourcePath": "books/book-02-core-specification/core-specs/domains/agent.md",
       "sourceSection": "Section 6.1",
       "requiredImplementationKind": "bounded_stub",
-      "requiredCapabilities": ["no production execution"],
+      "requiredCapabilities": [
+        "no production execution"
+      ],
       "dependencies": [],
       "currentDisposition": "boundary_scaffold_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-domain-agent-contract"],
+      "contractIds": [
+        "core-domain-agent-contract"
+      ],
       "implementationFiles": [
         "src/contracts/domain/core-domain-contract-skeletons.ts"
       ],
@@ -3517,11 +3947,15 @@
       "sourcePath": "books/book-02-core-specification/core-specs/domains/service-provider.md",
       "sourceSection": "Section 6.1",
       "requiredImplementationKind": "bounded_stub",
-      "requiredCapabilities": ["no production execution"],
+      "requiredCapabilities": [
+        "no production execution"
+      ],
       "dependencies": [],
       "currentDisposition": "boundary_scaffold_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-domain-service-provider-contract"],
+      "contractIds": [
+        "core-domain-service-provider-contract"
+      ],
       "implementationFiles": [
         "src/contracts/domain/core-domain-contract-skeletons.ts"
       ],
@@ -3540,11 +3974,15 @@
       "sourcePath": "books/book-02-core-specification/core-specs/domains/service-network.md",
       "sourceSection": "Section 6.1",
       "requiredImplementationKind": "bounded_stub",
-      "requiredCapabilities": ["no production execution"],
+      "requiredCapabilities": [
+        "no production execution"
+      ],
       "dependencies": [],
       "currentDisposition": "boundary_scaffold_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-domain-service-network-contract"],
+      "contractIds": [
+        "core-domain-service-network-contract"
+      ],
       "implementationFiles": [
         "src/contracts/domain/core-domain-contract-skeletons.ts"
       ],
@@ -3563,11 +4001,15 @@
       "sourcePath": "books/book-02-core-specification/core-specs/domains/routing.md",
       "sourceSection": "Section 6.1",
       "requiredImplementationKind": "bounded_stub",
-      "requiredCapabilities": ["no production execution"],
+      "requiredCapabilities": [
+        "no production execution"
+      ],
       "dependencies": [],
       "currentDisposition": "boundary_scaffold_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-domain-routing-contract"],
+      "contractIds": [
+        "core-domain-routing-contract"
+      ],
       "implementationFiles": [
         "src/contracts/domain/core-domain-contract-skeletons.ts"
       ],
@@ -3586,11 +4028,15 @@
       "sourcePath": "books/book-02-core-specification/core-specs/services/knowledge-service.md",
       "sourceSection": "Section 6.2",
       "requiredImplementationKind": "bounded_stub",
-      "requiredCapabilities": ["no production execution"],
+      "requiredCapabilities": [
+        "no production execution"
+      ],
       "dependencies": [],
       "currentDisposition": "boundary_scaffold_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-service-knowledge-reference-service-contract"],
+      "contractIds": [
+        "core-service-knowledge-reference-service-contract"
+      ],
       "implementationFiles": [
         "src/contracts/service/core-service-contract-skeletons.ts"
       ],
@@ -3609,11 +4055,15 @@
       "sourcePath": "books/book-02-core-specification/core-specs/services/notification-service.md",
       "sourceSection": "Section 6.2",
       "requiredImplementationKind": "bounded_stub",
-      "requiredCapabilities": ["no production execution"],
+      "requiredCapabilities": [
+        "no production execution"
+      ],
       "dependencies": [],
       "currentDisposition": "boundary_scaffold_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-service-notification-service-contract"],
+      "contractIds": [
+        "core-service-notification-service-contract"
+      ],
       "implementationFiles": [
         "src/contracts/service/core-service-contract-skeletons.ts"
       ],
@@ -3632,11 +4082,15 @@
       "sourcePath": "books/book-02-core-specification/core-specs/services/opportunity-service.md",
       "sourceSection": "Section 6.2",
       "requiredImplementationKind": "bounded_stub",
-      "requiredCapabilities": ["no production execution"],
+      "requiredCapabilities": [
+        "no production execution"
+      ],
       "dependencies": [],
       "currentDisposition": "boundary_scaffold_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-service-opportunity-service-contract"],
+      "contractIds": [
+        "core-service-opportunity-service-contract"
+      ],
       "implementationFiles": [
         "src/contracts/service/core-service-contract-skeletons.ts"
       ],
@@ -3655,11 +4109,15 @@
       "sourcePath": "books/book-02-core-specification/core-specs/services/partner-service.md",
       "sourceSection": "Section 6.2",
       "requiredImplementationKind": "bounded_stub",
-      "requiredCapabilities": ["no production execution"],
+      "requiredCapabilities": [
+        "no production execution"
+      ],
       "dependencies": [],
       "currentDisposition": "boundary_scaffold_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-service-partner-service-contract"],
+      "contractIds": [
+        "core-service-partner-service-contract"
+      ],
       "implementationFiles": [
         "src/contracts/service/core-service-contract-skeletons.ts"
       ],
@@ -3678,11 +4136,15 @@
       "sourcePath": "books/book-02-core-specification/core-specs/services/agent-service.md",
       "sourceSection": "Section 6.2",
       "requiredImplementationKind": "bounded_stub",
-      "requiredCapabilities": ["no production execution"],
+      "requiredCapabilities": [
+        "no production execution"
+      ],
       "dependencies": [],
       "currentDisposition": "boundary_scaffold_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-service-agent-service-contract"],
+      "contractIds": [
+        "core-service-agent-service-contract"
+      ],
       "implementationFiles": [
         "src/contracts/service/core-service-contract-skeletons.ts"
       ],
@@ -3701,11 +4163,15 @@
       "sourcePath": "books/book-02-core-specification/core-specs/services/service-provider-service.md",
       "sourceSection": "Section 6.2",
       "requiredImplementationKind": "bounded_stub",
-      "requiredCapabilities": ["no production execution"],
+      "requiredCapabilities": [
+        "no production execution"
+      ],
       "dependencies": [],
       "currentDisposition": "boundary_scaffold_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-service-service-provider-service-contract"],
+      "contractIds": [
+        "core-service-service-provider-service-contract"
+      ],
       "implementationFiles": [
         "src/contracts/service/core-service-contract-skeletons.ts"
       ],
@@ -3724,11 +4190,15 @@
       "sourcePath": "books/book-02-core-specification/core-specs/services/service-network-service.md",
       "sourceSection": "Section 6.2",
       "requiredImplementationKind": "bounded_stub",
-      "requiredCapabilities": ["no production execution"],
+      "requiredCapabilities": [
+        "no production execution"
+      ],
       "dependencies": [],
       "currentDisposition": "boundary_scaffold_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-service-service-network-service-contract"],
+      "contractIds": [
+        "core-service-service-network-service-contract"
+      ],
       "implementationFiles": [
         "src/contracts/service/core-service-contract-skeletons.ts"
       ],
@@ -3747,11 +4217,15 @@
       "sourcePath": "books/book-02-core-specification/core-specs/services/routing-service.md",
       "sourceSection": "Section 6.2",
       "requiredImplementationKind": "bounded_stub",
-      "requiredCapabilities": ["no production execution"],
+      "requiredCapabilities": [
+        "no production execution"
+      ],
       "dependencies": [],
       "currentDisposition": "boundary_scaffold_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-service-routing-service-contract"],
+      "contractIds": [
+        "core-service-routing-service-contract"
+      ],
       "implementationFiles": [
         "src/contracts/service/core-service-contract-skeletons.ts"
       ],
@@ -3770,11 +4244,15 @@
       "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/knowledge-api-contract.md",
       "sourceSection": "Section 6.3",
       "requiredImplementationKind": "bounded_stub",
-      "requiredCapabilities": ["validation only"],
+      "requiredCapabilities": [
+        "validation only"
+      ],
       "dependencies": [],
       "currentDisposition": "boundary_scaffold_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-api-knowledge-api-contract"],
+      "contractIds": [
+        "core-api-knowledge-api-contract"
+      ],
       "implementationFiles": [
         "src/contracts/api/core-api-contract-skeletons.ts"
       ],
@@ -3793,11 +4271,15 @@
       "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/notification-api-contract.md",
       "sourceSection": "Section 6.3",
       "requiredImplementationKind": "bounded_stub",
-      "requiredCapabilities": ["validation only"],
+      "requiredCapabilities": [
+        "validation only"
+      ],
       "dependencies": [],
       "currentDisposition": "boundary_scaffold_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-api-notification-api-contract"],
+      "contractIds": [
+        "core-api-notification-api-contract"
+      ],
       "implementationFiles": [
         "src/contracts/api/core-api-contract-skeletons.ts"
       ],
@@ -3816,11 +4298,15 @@
       "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/opportunity-api-contract.md",
       "sourceSection": "Section 6.3",
       "requiredImplementationKind": "bounded_stub",
-      "requiredCapabilities": ["validation only"],
+      "requiredCapabilities": [
+        "validation only"
+      ],
       "dependencies": [],
       "currentDisposition": "boundary_scaffold_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-api-opportunity-api-contract"],
+      "contractIds": [
+        "core-api-opportunity-api-contract"
+      ],
       "implementationFiles": [
         "src/contracts/api/core-api-contract-skeletons.ts"
       ],
@@ -3839,11 +4325,15 @@
       "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/partner-api-contract.md",
       "sourceSection": "Section 6.3",
       "requiredImplementationKind": "bounded_stub",
-      "requiredCapabilities": ["validation only"],
+      "requiredCapabilities": [
+        "validation only"
+      ],
       "dependencies": [],
       "currentDisposition": "boundary_scaffold_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-api-partner-api-contract"],
+      "contractIds": [
+        "core-api-partner-api-contract"
+      ],
       "implementationFiles": [
         "src/contracts/api/core-api-contract-skeletons.ts"
       ],
@@ -3862,11 +4352,15 @@
       "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/agent-api-contract.md",
       "sourceSection": "Section 6.3",
       "requiredImplementationKind": "bounded_stub",
-      "requiredCapabilities": ["validation only"],
+      "requiredCapabilities": [
+        "validation only"
+      ],
       "dependencies": [],
       "currentDisposition": "boundary_scaffold_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-api-agent-api-contract"],
+      "contractIds": [
+        "core-api-agent-api-contract"
+      ],
       "implementationFiles": [
         "src/contracts/api/core-api-contract-skeletons.ts"
       ],
@@ -3885,11 +4379,15 @@
       "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/service-provider-api-contract.md",
       "sourceSection": "Section 6.3",
       "requiredImplementationKind": "bounded_stub",
-      "requiredCapabilities": ["validation only"],
+      "requiredCapabilities": [
+        "validation only"
+      ],
       "dependencies": [],
       "currentDisposition": "boundary_scaffold_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-api-service-provider-api-contract"],
+      "contractIds": [
+        "core-api-service-provider-api-contract"
+      ],
       "implementationFiles": [
         "src/contracts/api/core-api-contract-skeletons.ts"
       ],
@@ -3908,11 +4406,15 @@
       "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/service-network-api-contract.md",
       "sourceSection": "Section 6.3",
       "requiredImplementationKind": "bounded_stub",
-      "requiredCapabilities": ["validation only"],
+      "requiredCapabilities": [
+        "validation only"
+      ],
       "dependencies": [],
       "currentDisposition": "boundary_scaffold_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-api-service-network-api-contract"],
+      "contractIds": [
+        "core-api-service-network-api-contract"
+      ],
       "implementationFiles": [
         "src/contracts/api/core-api-contract-skeletons.ts"
       ],
@@ -3931,11 +4433,15 @@
       "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/routing-api-contract.md",
       "sourceSection": "Section 6.3",
       "requiredImplementationKind": "bounded_stub",
-      "requiredCapabilities": ["validation only"],
+      "requiredCapabilities": [
+        "validation only"
+      ],
       "dependencies": [],
       "currentDisposition": "boundary_scaffold_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-api-routing-api-contract"],
+      "contractIds": [
+        "core-api-routing-api-contract"
+      ],
       "implementationFiles": [
         "src/contracts/api/core-api-contract-skeletons.ts"
       ],
@@ -3964,7 +4470,9 @@
       "dependencies": [],
       "currentDisposition": "boundary_scaffold_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-workflow-office-action-response-workflow-contract"],
+      "contractIds": [
+        "core-workflow-office-action-response-workflow-contract"
+      ],
       "implementationFiles": [
         "src/contracts/workflow/core-workflow-catalog-skeletons.ts"
       ],
@@ -3993,7 +4501,9 @@
       "dependencies": [],
       "currentDisposition": "boundary_scaffold_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-workflow-provider-routing-workflow-contract"],
+      "contractIds": [
+        "core-workflow-provider-routing-workflow-contract"
+      ],
       "implementationFiles": [
         "src/contracts/workflow/core-workflow-catalog-skeletons.ts"
       ],
@@ -4022,7 +4532,9 @@
       "dependencies": [],
       "currentDisposition": "boundary_scaffold_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-workflow-renewal-workflow-contract"],
+      "contractIds": [
+        "core-workflow-renewal-workflow-contract"
+      ],
       "implementationFiles": [
         "src/contracts/workflow/core-workflow-catalog-skeletons.ts"
       ],
@@ -4051,7 +4563,9 @@
       "dependencies": [],
       "currentDisposition": "boundary_scaffold_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-workflow-assignment-workflow-contract"],
+      "contractIds": [
+        "core-workflow-assignment-workflow-contract"
+      ],
       "implementationFiles": [
         "src/contracts/workflow/core-workflow-catalog-skeletons.ts"
       ],
@@ -4080,7 +4594,9 @@
       "dependencies": [],
       "currentDisposition": "boundary_scaffold_only",
       "currentDepth": "level_0",
-      "contractIds": ["core-workflow-evidence-review-workflow-contract"],
+      "contractIds": [
+        "core-workflow-evidence-review-workflow-contract"
+      ],
       "implementationFiles": [
         "src/contracts/workflow/core-workflow-catalog-skeletons.ts"
       ],
@@ -4099,13 +4615,19 @@
       "sourcePath": "books/book-02-core-specification/core-specs/agents/routing-agent.md",
       "sourceSection": "Section 6.5",
       "requiredImplementationKind": "bounded_stub",
-      "requiredCapabilities": ["no production runtime"],
+      "requiredCapabilities": [
+        "no production runtime"
+      ],
       "dependencies": [],
       "currentDisposition": "boundary_scaffold_only",
       "currentDepth": "level_0",
       "contractIds": [],
-      "implementationFiles": ["src/behaviors/core-agent-boundary.ts"],
-      "testFiles": ["tests/unit/core-safety-boundary-foundations.test.ts"],
+      "implementationFiles": [
+        "src/behaviors/core-agent-boundary.ts"
+      ],
+      "testFiles": [
+        "tests/unit/core-safety-boundary-foundations.test.ts"
+      ],
       "fixtureFiles": [
         "fixtures/behaviors/core-safety-boundary-foundations.fixture.json"
       ],
@@ -4122,13 +4644,19 @@
       "sourcePath": "books/book-02-core-specification/core-specs/agents/advanced-agent-registry-runtime.md",
       "sourceSection": "Section 6.5",
       "requiredImplementationKind": "bounded_stub",
-      "requiredCapabilities": ["no production runtime"],
+      "requiredCapabilities": [
+        "no production runtime"
+      ],
       "dependencies": [],
       "currentDisposition": "boundary_scaffold_only",
       "currentDepth": "level_0",
       "contractIds": [],
-      "implementationFiles": ["src/behaviors/core-agent-boundary.ts"],
-      "testFiles": ["tests/unit/core-safety-boundary-foundations.test.ts"],
+      "implementationFiles": [
+        "src/behaviors/core-agent-boundary.ts"
+      ],
+      "testFiles": [
+        "tests/unit/core-safety-boundary-foundations.test.ts"
+      ],
       "fixtureFiles": [
         "fixtures/behaviors/core-safety-boundary-foundations.fixture.json"
       ],
@@ -4145,7 +4673,9 @@
       "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
       "sourceSection": "Section 7",
       "requiredImplementationKind": "document_only",
-      "requiredCapabilities": ["no runtime implementation"],
+      "requiredCapabilities": [
+        "no runtime implementation"
+      ],
       "dependencies": [],
       "currentDisposition": "not_required",
       "currentDepth": "level_0",
@@ -4153,10 +4683,21 @@
       "implementationFiles": [],
       "testFiles": [],
       "fixtureFiles": [],
-      "inspectionPaths": ["src", "fixtures", "package.json"],
-      "forbiddenIndicators": ["createFullPolicyEngine", "FullPolicyEngine"],
-      "forbiddenPathPatterns": ["src/policy-engine/"],
-      "structuredChecks": ["runtime-export:createFullPolicyEngine"],
+      "inspectionPaths": [
+        "src",
+        "fixtures",
+        "package.json"
+      ],
+      "forbiddenIndicators": [
+        "createFullPolicyEngine",
+        "FullPolicyEngine"
+      ],
+      "forbiddenPathPatterns": [
+        "src/policy-engine/"
+      ],
+      "structuredChecks": [
+        "runtime-export:createFullPolicyEngine"
+      ],
       "excludedPaths": [
         "src/mvp-coverage/",
         "fixtures/mvp-coverage/",
@@ -4359,7 +4900,9 @@
       "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
       "sourceSection": "Section 7",
       "requiredImplementationKind": "document_only",
-      "requiredCapabilities": ["no runtime implementation"],
+      "requiredCapabilities": [
+        "no runtime implementation"
+      ],
       "dependencies": [],
       "currentDisposition": "not_required",
       "currentDepth": "level_0",
@@ -4367,12 +4910,18 @@
       "implementationFiles": [],
       "testFiles": [],
       "fixtureFiles": [],
-      "inspectionPaths": ["src", "fixtures", "package.json"],
+      "inspectionPaths": [
+        "src",
+        "fixtures",
+        "package.json"
+      ],
       "forbiddenIndicators": [
         "createFullAgentRuntimeOrchestration",
         "FullAgentRuntimeOrchestrator"
       ],
-      "forbiddenPathPatterns": ["src/agent-runtime/"],
+      "forbiddenPathPatterns": [
+        "src/agent-runtime/"
+      ],
       "structuredChecks": [
         "runtime-export:createFullAgentRuntimeOrchestration"
       ],
@@ -4578,7 +5127,9 @@
       "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
       "sourceSection": "Section 7",
       "requiredImplementationKind": "document_only",
-      "requiredCapabilities": ["no runtime implementation"],
+      "requiredCapabilities": [
+        "no runtime implementation"
+      ],
       "dependencies": [],
       "currentDisposition": "not_required",
       "currentDepth": "level_0",
@@ -4586,10 +5137,21 @@
       "implementationFiles": [],
       "testFiles": [],
       "fixtureFiles": [],
-      "inspectionPaths": ["src", "fixtures", "package.json"],
-      "forbiddenIndicators": ["createFullWorkflowEngine", "FullWorkflowEngine"],
-      "forbiddenPathPatterns": ["src/workflow-engine/"],
-      "structuredChecks": ["runtime-export:createFullWorkflowEngine"],
+      "inspectionPaths": [
+        "src",
+        "fixtures",
+        "package.json"
+      ],
+      "forbiddenIndicators": [
+        "createFullWorkflowEngine",
+        "FullWorkflowEngine"
+      ],
+      "forbiddenPathPatterns": [
+        "src/workflow-engine/"
+      ],
+      "structuredChecks": [
+        "runtime-export:createFullWorkflowEngine"
+      ],
       "excludedPaths": [
         "src/mvp-coverage/",
         "fixtures/mvp-coverage/",
@@ -4792,7 +5354,9 @@
       "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
       "sourceSection": "Section 7",
       "requiredImplementationKind": "document_only",
-      "requiredCapabilities": ["no runtime implementation"],
+      "requiredCapabilities": [
+        "no runtime implementation"
+      ],
       "dependencies": [],
       "currentDisposition": "not_required",
       "currentDepth": "level_0",
@@ -4800,13 +5364,21 @@
       "implementationFiles": [],
       "testFiles": [],
       "fixtureFiles": [],
-      "inspectionPaths": ["src", "fixtures", "package.json"],
+      "inspectionPaths": [
+        "src",
+        "fixtures",
+        "package.json"
+      ],
       "forbiddenIndicators": [
         "executeOfficialFiling",
         "submitOfficialTrademarkApplication"
       ],
-      "forbiddenPathPatterns": ["src/integrations/official-filing/"],
-      "structuredChecks": ["package-dependency:official-filing-sdk"],
+      "forbiddenPathPatterns": [
+        "src/integrations/official-filing/"
+      ],
+      "structuredChecks": [
+        "package-dependency:official-filing-sdk"
+      ],
       "excludedPaths": [
         "src/mvp-coverage/",
         "fixtures/mvp-coverage/",
@@ -5009,7 +5581,9 @@
       "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
       "sourceSection": "Section 7",
       "requiredImplementationKind": "document_only",
-      "requiredCapabilities": ["no runtime implementation"],
+      "requiredCapabilities": [
+        "no runtime implementation"
+      ],
       "dependencies": [],
       "currentDisposition": "not_required",
       "currentDepth": "level_0",
@@ -5017,13 +5591,21 @@
       "implementationFiles": [],
       "testFiles": [],
       "fixtureFiles": [],
-      "inspectionPaths": ["src", "fixtures", "package.json"],
+      "inspectionPaths": [
+        "src",
+        "fixtures",
+        "package.json"
+      ],
       "forbiddenIndicators": [
         "connectForeignAssociateLiveNetwork",
         "ForeignAssociateLiveNetworkClient"
       ],
-      "forbiddenPathPatterns": ["src/integrations/foreign-associate/"],
-      "structuredChecks": ["package-dependency:foreign-associate-network-sdk"],
+      "forbiddenPathPatterns": [
+        "src/integrations/foreign-associate/"
+      ],
+      "structuredChecks": [
+        "package-dependency:foreign-associate-network-sdk"
+      ],
       "excludedPaths": [
         "src/mvp-coverage/",
         "fixtures/mvp-coverage/",
@@ -5226,7 +5808,9 @@
       "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
       "sourceSection": "Section 7",
       "requiredImplementationKind": "document_only",
-      "requiredCapabilities": ["no runtime implementation"],
+      "requiredCapabilities": [
+        "no runtime implementation"
+      ],
       "dependencies": [],
       "currentDisposition": "not_required",
       "currentDepth": "level_0",
@@ -5234,10 +5818,21 @@
       "implementationFiles": [],
       "testFiles": [],
       "fixtureFiles": [],
-      "inspectionPaths": ["src", "fixtures", "package.json"],
-      "forbiddenIndicators": ["executePayment", "PaymentExecution"],
-      "forbiddenPathPatterns": ["src/payments/"],
-      "structuredChecks": ["package-dependency:stripe"],
+      "inspectionPaths": [
+        "src",
+        "fixtures",
+        "package.json"
+      ],
+      "forbiddenIndicators": [
+        "executePayment",
+        "PaymentExecution"
+      ],
+      "forbiddenPathPatterns": [
+        "src/payments/"
+      ],
+      "structuredChecks": [
+        "package-dependency:stripe"
+      ],
       "excludedPaths": [
         "src/mvp-coverage/",
         "fixtures/mvp-coverage/",
@@ -5440,7 +6035,9 @@
       "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
       "sourceSection": "Section 7",
       "requiredImplementationKind": "document_only",
-      "requiredCapabilities": ["no runtime implementation"],
+      "requiredCapabilities": [
+        "no runtime implementation"
+      ],
       "dependencies": [],
       "currentDisposition": "not_required",
       "currentDepth": "level_0",
@@ -5448,13 +6045,21 @@
       "implementationFiles": [],
       "testFiles": [],
       "fixtureFiles": [],
-      "inspectionPaths": ["src", "fixtures", "package.json"],
+      "inspectionPaths": [
+        "src",
+        "fixtures",
+        "package.json"
+      ],
       "forbiddenIndicators": [
         "settleProviderMarketplacePayment",
         "ProviderMarketplaceSettlement"
       ],
-      "forbiddenPathPatterns": ["src/provider-marketplace/settlement/"],
-      "structuredChecks": ["package-dependency:marketplace-settlement-sdk"],
+      "forbiddenPathPatterns": [
+        "src/provider-marketplace/settlement/"
+      ],
+      "structuredChecks": [
+        "package-dependency:marketplace-settlement-sdk"
+      ],
       "excludedPaths": [
         "src/mvp-coverage/",
         "fixtures/mvp-coverage/",
@@ -5657,7 +6262,9 @@
       "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
       "sourceSection": "Section 7",
       "requiredImplementationKind": "document_only",
-      "requiredCapabilities": ["no runtime implementation"],
+      "requiredCapabilities": [
+        "no runtime implementation"
+      ],
       "dependencies": [],
       "currentDisposition": "not_required",
       "currentDepth": "level_0",
@@ -5665,13 +6272,21 @@
       "implementationFiles": [],
       "testFiles": [],
       "fixtureFiles": [],
-      "inspectionPaths": ["src", "fixtures", "package.json"],
+      "inspectionPaths": [
+        "src",
+        "fixtures",
+        "package.json"
+      ],
       "forbiddenIndicators": [
         "runAdvancedAnalytics",
         "AdvancedAnalyticsEngine"
       ],
-      "forbiddenPathPatterns": ["src/analytics/advanced/"],
-      "structuredChecks": ["package-script:analytics:advanced"],
+      "forbiddenPathPatterns": [
+        "src/analytics/advanced/"
+      ],
+      "structuredChecks": [
+        "package-script:analytics:advanced"
+      ],
       "excludedPaths": [
         "src/mvp-coverage/",
         "fixtures/mvp-coverage/",
@@ -5874,7 +6489,9 @@
       "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
       "sourceSection": "Section 7",
       "requiredImplementationKind": "document_only",
-      "requiredCapabilities": ["no runtime implementation"],
+      "requiredCapabilities": [
+        "no runtime implementation"
+      ],
       "dependencies": [],
       "currentDisposition": "not_required",
       "currentDepth": "level_0",
@@ -5882,13 +6499,21 @@
       "implementationFiles": [],
       "testFiles": [],
       "fixtureFiles": [],
-      "inspectionPaths": ["src", "fixtures", "package.json"],
+      "inspectionPaths": [
+        "src",
+        "fixtures",
+        "package.json"
+      ],
       "forbiddenIndicators": [
         "optimizeAdvancedServiceNetwork",
         "AdvancedServiceNetworkOptimizer"
       ],
-      "forbiddenPathPatterns": ["src/service-network/optimization/"],
-      "structuredChecks": ["runtime-export:optimizeAdvancedServiceNetwork"],
+      "forbiddenPathPatterns": [
+        "src/service-network/optimization/"
+      ],
+      "structuredChecks": [
+        "runtime-export:optimizeAdvancedServiceNetwork"
+      ],
       "excludedPaths": [
         "src/mvp-coverage/",
         "fixtures/mvp-coverage/",
@@ -6091,7 +6716,9 @@
       "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
       "sourceSection": "Section 7",
       "requiredImplementationKind": "document_only",
-      "requiredCapabilities": ["no runtime implementation"],
+      "requiredCapabilities": [
+        "no runtime implementation"
+      ],
       "dependencies": [],
       "currentDisposition": "not_required",
       "currentDepth": "level_0",
@@ -6099,13 +6726,21 @@
       "implementationFiles": [],
       "testFiles": [],
       "fixtureFiles": [],
-      "inspectionPaths": ["src", "fixtures", "package.json"],
+      "inspectionPaths": [
+        "src",
+        "fixtures",
+        "package.json"
+      ],
       "forbiddenIndicators": [
         "createMultiProductAppMarketplace",
         "MultiProductAppMarketplace"
       ],
-      "forbiddenPathPatterns": ["src/app-marketplace/"],
-      "structuredChecks": ["package-script:marketplace:apps"],
+      "forbiddenPathPatterns": [
+        "src/app-marketplace/"
+      ],
+      "structuredChecks": [
+        "package-script:marketplace:apps"
+      ],
       "excludedPaths": [
         "src/mvp-coverage/",
         "fixtures/mvp-coverage/",
@@ -6308,7 +6943,9 @@
       "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
       "sourceSection": "Section 7",
       "requiredImplementationKind": "document_only",
-      "requiredCapabilities": ["no runtime implementation"],
+      "requiredCapabilities": [
+        "no runtime implementation"
+      ],
       "dependencies": [],
       "currentDisposition": "not_required",
       "currentDepth": "level_0",
@@ -6316,13 +6953,21 @@
       "implementationFiles": [],
       "testFiles": [],
       "fixtureFiles": [],
-      "inspectionPaths": ["src", "fixtures", "package.json"],
+      "inspectionPaths": [
+        "src",
+        "fixtures",
+        "package.json"
+      ],
       "forbiddenIndicators": [
         "createPublicDeveloperApiPortal",
         "PublicDeveloperApiPortal"
       ],
-      "forbiddenPathPatterns": ["src/developer-portal/"],
-      "structuredChecks": ["package-script:developer-portal"],
+      "forbiddenPathPatterns": [
+        "src/developer-portal/"
+      ],
+      "structuredChecks": [
+        "package-script:developer-portal"
+      ],
       "excludedPaths": [
         "src/mvp-coverage/",
         "fixtures/mvp-coverage/",
@@ -6525,7 +7170,9 @@
       "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
       "sourceSection": "Section 7",
       "requiredImplementationKind": "document_only",
-      "requiredCapabilities": ["no runtime implementation"],
+      "requiredCapabilities": [
+        "no runtime implementation"
+      ],
       "dependencies": [],
       "currentDisposition": "not_required",
       "currentDepth": "level_0",
@@ -6533,13 +7180,21 @@
       "implementationFiles": [],
       "testFiles": [],
       "fixtureFiles": [],
-      "inspectionPaths": ["src", "fixtures", "package.json"],
+      "inspectionPaths": [
+        "src",
+        "fixtures",
+        "package.json"
+      ],
       "forbiddenIndicators": [
         "executeAutonomousAiWorkflow",
         "AutonomousAiWorkflowExecutor"
       ],
-      "forbiddenPathPatterns": ["src/ai/autonomous-workflow/"],
-      "structuredChecks": ["runtime-export:executeAutonomousAiWorkflow"],
+      "forbiddenPathPatterns": [
+        "src/ai/autonomous-workflow/"
+      ],
+      "structuredChecks": [
+        "runtime-export:executeAutonomousAiWorkflow"
+      ],
       "excludedPaths": [
         "src/mvp-coverage/",
         "fixtures/mvp-coverage/",
@@ -6742,7 +7397,9 @@
       "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
       "sourceSection": "Section 7",
       "requiredImplementationKind": "document_only",
-      "requiredCapabilities": ["no runtime implementation"],
+      "requiredCapabilities": [
+        "no runtime implementation"
+      ],
       "dependencies": [],
       "currentDisposition": "not_required",
       "currentDepth": "level_0",
@@ -6750,13 +7407,21 @@
       "implementationFiles": [],
       "testFiles": [],
       "fixtureFiles": [],
-      "inspectionPaths": ["src", "fixtures", "package.json"],
+      "inspectionPaths": [
+        "src",
+        "fixtures",
+        "package.json"
+      ],
       "forbiddenIndicators": [
         "certifyLegalDeadline",
         "OfficialDeadlineCertificationAutomation"
       ],
-      "forbiddenPathPatterns": ["src/deadlines/certification/"],
-      "structuredChecks": ["runtime-export:certifyLegalDeadline"],
+      "forbiddenPathPatterns": [
+        "src/deadlines/certification/"
+      ],
+      "structuredChecks": [
+        "runtime-export:certifyLegalDeadline"
+      ],
       "excludedPaths": [
         "src/mvp-coverage/",
         "fixtures/mvp-coverage/",
@@ -6959,7 +7624,9 @@
       "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
       "sourceSection": "Section 7",
       "requiredImplementationKind": "document_only",
-      "requiredCapabilities": ["no runtime implementation"],
+      "requiredCapabilities": [
+        "no runtime implementation"
+      ],
       "dependencies": [],
       "currentDisposition": "not_required",
       "currentDepth": "level_0",
@@ -6967,13 +7634,21 @@
       "implementationFiles": [],
       "testFiles": [],
       "fixtureFiles": [],
-      "inspectionPaths": ["src", "fixtures", "package.json"],
+      "inspectionPaths": [
+        "src",
+        "fixtures",
+        "package.json"
+      ],
       "forbiddenIndicators": [
         "certifyTrademarkRegistrability",
         "ProfessionalRegistrabilityDecisionAutomation"
       ],
-      "forbiddenPathPatterns": ["src/registrability/automation/"],
-      "structuredChecks": ["runtime-export:certifyTrademarkRegistrability"],
+      "forbiddenPathPatterns": [
+        "src/registrability/automation/"
+      ],
+      "structuredChecks": [
+        "runtime-export:certifyTrademarkRegistrability"
+      ],
       "excludedPaths": [
         "src/mvp-coverage/",
         "fixtures/mvp-coverage/",
@@ -7176,7 +7851,9 @@
       "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
       "sourceSection": "Section 8",
       "requiredImplementationKind": "defer",
-      "requiredCapabilities": ["outside MVP implementation"],
+      "requiredCapabilities": [
+        "outside MVP implementation"
+      ],
       "dependencies": [],
       "currentDisposition": "not_required",
       "currentDepth": "level_0",
@@ -7184,13 +7861,21 @@
       "implementationFiles": [],
       "testFiles": [],
       "fixtureFiles": [],
-      "inspectionPaths": ["src", "fixtures", "package.json"],
+      "inspectionPaths": [
+        "src",
+        "fixtures",
+        "package.json"
+      ],
       "forbiddenIndicators": [
         "executeRenewalProductionWorkflow",
         "RenewalProductionWorkflowRunner"
       ],
-      "forbiddenPathPatterns": ["src/workflows/renewal/production/"],
-      "structuredChecks": ["runtime-export:executeRenewalProductionWorkflow"],
+      "forbiddenPathPatterns": [
+        "src/workflows/renewal/production/"
+      ],
+      "structuredChecks": [
+        "runtime-export:executeRenewalProductionWorkflow"
+      ],
       "excludedPaths": [
         "src/mvp-coverage/",
         "fixtures/mvp-coverage/",
@@ -7393,7 +8078,9 @@
       "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
       "sourceSection": "Section 8",
       "requiredImplementationKind": "defer",
-      "requiredCapabilities": ["outside MVP implementation"],
+      "requiredCapabilities": [
+        "outside MVP implementation"
+      ],
       "dependencies": [],
       "currentDisposition": "not_required",
       "currentDepth": "level_0",
@@ -7401,12 +8088,18 @@
       "implementationFiles": [],
       "testFiles": [],
       "fixtureFiles": [],
-      "inspectionPaths": ["src", "fixtures", "package.json"],
+      "inspectionPaths": [
+        "src",
+        "fixtures",
+        "package.json"
+      ],
       "forbiddenIndicators": [
         "executeAssignmentProductionWorkflow",
         "AssignmentProductionWorkflowRunner"
       ],
-      "forbiddenPathPatterns": ["src/workflows/assignment/production/"],
+      "forbiddenPathPatterns": [
+        "src/workflows/assignment/production/"
+      ],
       "structuredChecks": [
         "runtime-export:executeAssignmentProductionWorkflow"
       ],
@@ -7612,7 +8305,9 @@
       "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
       "sourceSection": "Section 8",
       "requiredImplementationKind": "defer",
-      "requiredCapabilities": ["outside MVP implementation"],
+      "requiredCapabilities": [
+        "outside MVP implementation"
+      ],
       "dependencies": [],
       "currentDisposition": "not_required",
       "currentDepth": "level_0",
@@ -7620,7 +8315,11 @@
       "implementationFiles": [],
       "testFiles": [],
       "fixtureFiles": [],
-      "inspectionPaths": ["src", "fixtures", "package.json"],
+      "inspectionPaths": [
+        "src",
+        "fixtures",
+        "package.json"
+      ],
       "forbiddenIndicators": [
         "executeOfficeActionResponseProductionWorkflow",
         "OfficeActionResponseProductionWorkflowRunner"
@@ -7833,7 +8532,9 @@
       "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
       "sourceSection": "Section 8",
       "requiredImplementationKind": "defer",
-      "requiredCapabilities": ["outside MVP implementation"],
+      "requiredCapabilities": [
+        "outside MVP implementation"
+      ],
       "dependencies": [],
       "currentDisposition": "not_required",
       "currentDepth": "level_0",
@@ -7841,12 +8542,18 @@
       "implementationFiles": [],
       "testFiles": [],
       "fixtureFiles": [],
-      "inspectionPaths": ["src", "fixtures", "package.json"],
+      "inspectionPaths": [
+        "src",
+        "fixtures",
+        "package.json"
+      ],
       "forbiddenIndicators": [
         "executeEvidenceReviewProductionWorkflow",
         "EvidenceReviewProductionWorkflowRunner"
       ],
-      "forbiddenPathPatterns": ["src/workflows/evidence-review/production/"],
+      "forbiddenPathPatterns": [
+        "src/workflows/evidence-review/production/"
+      ],
       "structuredChecks": [
         "runtime-export:executeEvidenceReviewProductionWorkflow"
       ],
@@ -8052,7 +8759,9 @@
       "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
       "sourceSection": "Section 8",
       "requiredImplementationKind": "defer",
-      "requiredCapabilities": ["outside MVP implementation"],
+      "requiredCapabilities": [
+        "outside MVP implementation"
+      ],
       "dependencies": [],
       "currentDisposition": "not_required",
       "currentDepth": "level_0",
@@ -8060,12 +8769,18 @@
       "implementationFiles": [],
       "testFiles": [],
       "fixtureFiles": [],
-      "inspectionPaths": ["src", "fixtures", "package.json"],
+      "inspectionPaths": [
+        "src",
+        "fixtures",
+        "package.json"
+      ],
       "forbiddenIndicators": [
         "executeProviderRoutingProductionWorkflow",
         "ProviderRoutingProductionWorkflowRunner"
       ],
-      "forbiddenPathPatterns": ["src/workflows/provider-routing/production/"],
+      "forbiddenPathPatterns": [
+        "src/workflows/provider-routing/production/"
+      ],
       "structuredChecks": [
         "runtime-export:executeProviderRoutingProductionWorkflow"
       ],
@@ -8271,7 +8986,9 @@
       "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
       "sourceSection": "Section 8",
       "requiredImplementationKind": "defer",
-      "requiredCapabilities": ["outside MVP implementation"],
+      "requiredCapabilities": [
+        "outside MVP implementation"
+      ],
       "dependencies": [],
       "currentDisposition": "not_required",
       "currentDepth": "level_0",
@@ -8279,13 +8996,21 @@
       "implementationFiles": [],
       "testFiles": [],
       "fixtureFiles": [],
-      "inspectionPaths": ["src", "fixtures", "package.json"],
+      "inspectionPaths": [
+        "src",
+        "fixtures",
+        "package.json"
+      ],
       "forbiddenIndicators": [
         "automateForeignAgentOnboarding",
         "ForeignAgentOnboardingAutomation"
       ],
-      "forbiddenPathPatterns": ["src/foreign-agent/onboarding/"],
-      "structuredChecks": ["runtime-export:automateForeignAgentOnboarding"],
+      "forbiddenPathPatterns": [
+        "src/foreign-agent/onboarding/"
+      ],
+      "structuredChecks": [
+        "runtime-export:automateForeignAgentOnboarding"
+      ],
       "excludedPaths": [
         "src/mvp-coverage/",
         "fixtures/mvp-coverage/",
@@ -8488,7 +9213,9 @@
       "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
       "sourceSection": "Section 8",
       "requiredImplementationKind": "defer",
-      "requiredCapabilities": ["outside MVP implementation"],
+      "requiredCapabilities": [
+        "outside MVP implementation"
+      ],
       "dependencies": [],
       "currentDisposition": "not_required",
       "currentDepth": "level_0",
@@ -8496,13 +9223,21 @@
       "implementationFiles": [],
       "testFiles": [],
       "fixtureFiles": [],
-      "inspectionPaths": ["src", "fixtures", "package.json"],
+      "inspectionPaths": [
+        "src",
+        "fixtures",
+        "package.json"
+      ],
       "forbiddenIndicators": [
         "launchPartnerMiniProgram",
         "PartnerFacingMiniProgram"
       ],
-      "forbiddenPathPatterns": ["src/partner-mini-program/"],
-      "structuredChecks": ["package-script:partner-mini-program"],
+      "forbiddenPathPatterns": [
+        "src/partner-mini-program/"
+      ],
+      "structuredChecks": [
+        "package-script:partner-mini-program"
+      ],
       "excludedPaths": [
         "src/mvp-coverage/",
         "fixtures/mvp-coverage/",
@@ -8705,7 +9440,9 @@
       "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
       "sourceSection": "Section 8",
       "requiredImplementationKind": "defer",
-      "requiredCapabilities": ["outside MVP implementation"],
+      "requiredCapabilities": [
+        "outside MVP implementation"
+      ],
       "dependencies": [],
       "currentDisposition": "not_required",
       "currentDepth": "level_0",
@@ -8713,13 +9450,21 @@
       "implementationFiles": [],
       "testFiles": [],
       "fixtureFiles": [],
-      "inspectionPaths": ["src", "fixtures", "package.json"],
+      "inspectionPaths": [
+        "src",
+        "fixtures",
+        "package.json"
+      ],
       "forbiddenIndicators": [
         "launchClientSelfServiceFilingPortal",
         "ClientSelfServiceFilingPortal"
       ],
-      "forbiddenPathPatterns": ["src/client-filing-portal/"],
-      "structuredChecks": ["package-script:client-filing-portal"],
+      "forbiddenPathPatterns": [
+        "src/client-filing-portal/"
+      ],
+      "structuredChecks": [
+        "package-script:client-filing-portal"
+      ],
       "excludedPaths": [
         "src/mvp-coverage/",
         "fixtures/mvp-coverage/",
@@ -8922,7 +9667,9 @@
       "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
       "sourceSection": "Section 8",
       "requiredImplementationKind": "defer",
-      "requiredCapabilities": ["outside MVP implementation"],
+      "requiredCapabilities": [
+        "outside MVP implementation"
+      ],
       "dependencies": [],
       "currentDisposition": "not_required",
       "currentDepth": "level_0",
@@ -8930,13 +9677,21 @@
       "implementationFiles": [],
       "testFiles": [],
       "fixtureFiles": [],
-      "inspectionPaths": ["src", "fixtures", "package.json"],
+      "inspectionPaths": [
+        "src",
+        "fixtures",
+        "package.json"
+      ],
       "forbiddenIndicators": [
         "automateGlobalJurisdictionRules",
         "GlobalJurisdictionRuleAutomation"
       ],
-      "forbiddenPathPatterns": ["src/jurisdiction-rules/automation/"],
-      "structuredChecks": ["runtime-export:automateGlobalJurisdictionRules"],
+      "forbiddenPathPatterns": [
+        "src/jurisdiction-rules/automation/"
+      ],
+      "structuredChecks": [
+        "runtime-export:automateGlobalJurisdictionRules"
+      ],
       "excludedPaths": [
         "src/mvp-coverage/",
         "fixtures/mvp-coverage/",
@@ -9139,7 +9894,9 @@
       "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
       "sourceSection": "Section 8",
       "requiredImplementationKind": "defer",
-      "requiredCapabilities": ["outside MVP implementation"],
+      "requiredCapabilities": [
+        "outside MVP implementation"
+      ],
       "dependencies": [],
       "currentDisposition": "not_required",
       "currentDepth": "level_0",
@@ -9147,13 +9904,21 @@
       "implementationFiles": [],
       "testFiles": [],
       "fixtureFiles": [],
-      "inspectionPaths": ["src", "fixtures", "package.json"],
+      "inspectionPaths": [
+        "src",
+        "fixtures",
+        "package.json"
+      ],
       "forbiddenIndicators": [
         "calculateOfficialFees",
         "OfficialFeeCalculationEngine"
       ],
-      "forbiddenPathPatterns": ["src/fees/official/"],
-      "structuredChecks": ["runtime-export:calculateOfficialFees"],
+      "forbiddenPathPatterns": [
+        "src/fees/official/"
+      ],
+      "structuredChecks": [
+        "runtime-export:calculateOfficialFees"
+      ],
       "excludedPaths": [
         "src/mvp-coverage/",
         "fixtures/mvp-coverage/",
@@ -9356,7 +10121,9 @@
       "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
       "sourceSection": "Section 8",
       "requiredImplementationKind": "defer",
-      "requiredCapabilities": ["outside MVP implementation"],
+      "requiredCapabilities": [
+        "outside MVP implementation"
+      ],
       "dependencies": [],
       "currentDisposition": "not_required",
       "currentDepth": "level_0",
@@ -9364,13 +10131,21 @@
       "implementationFiles": [],
       "testFiles": [],
       "fixtureFiles": [],
-      "inspectionPaths": ["src", "fixtures", "package.json"],
+      "inspectionPaths": [
+        "src",
+        "fixtures",
+        "package.json"
+      ],
       "forbiddenIndicators": [
         "startTrademarkWatchMonitoring",
         "TrademarkWatchMonitoringService"
       ],
-      "forbiddenPathPatterns": ["src/trademark-watch/"],
-      "structuredChecks": ["runtime-export:startTrademarkWatchMonitoring"],
+      "forbiddenPathPatterns": [
+        "src/trademark-watch/"
+      ],
+      "structuredChecks": [
+        "runtime-export:startTrademarkWatchMonitoring"
+      ],
       "excludedPaths": [
         "src/mvp-coverage/",
         "fixtures/mvp-coverage/",
@@ -9573,7 +10348,9 @@
       "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
       "sourceSection": "Section 8",
       "requiredImplementationKind": "defer",
-      "requiredCapabilities": ["outside MVP implementation"],
+      "requiredCapabilities": [
+        "outside MVP implementation"
+      ],
       "dependencies": [],
       "currentDisposition": "not_required",
       "currentDepth": "level_0",
@@ -9581,13 +10358,21 @@
       "implementationFiles": [],
       "testFiles": [],
       "fixtureFiles": [],
-      "inspectionPaths": ["src", "fixtures", "package.json"],
+      "inspectionPaths": [
+        "src",
+        "fixtures",
+        "package.json"
+      ],
       "forbiddenIndicators": [
         "generateBulkOpportunities",
         "BulkOpportunityGeneration"
       ],
-      "forbiddenPathPatterns": ["src/opportunities/bulk/"],
-      "structuredChecks": ["runtime-export:generateBulkOpportunities"],
+      "forbiddenPathPatterns": [
+        "src/opportunities/bulk/"
+      ],
+      "structuredChecks": [
+        "runtime-export:generateBulkOpportunities"
+      ],
       "excludedPaths": [
         "src/mvp-coverage/",
         "fixtures/mvp-coverage/",
@@ -9790,7 +10575,9 @@
       "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
       "sourceSection": "Section 8",
       "requiredImplementationKind": "defer",
-      "requiredCapabilities": ["outside MVP implementation"],
+      "requiredCapabilities": [
+        "outside MVP implementation"
+      ],
       "dependencies": [],
       "currentDisposition": "not_required",
       "currentDepth": "level_0",
@@ -9798,13 +10585,21 @@
       "implementationFiles": [],
       "testFiles": [],
       "fixtureFiles": [],
-      "inspectionPaths": ["src", "fixtures", "package.json"],
+      "inspectionPaths": [
+        "src",
+        "fixtures",
+        "package.json"
+      ],
       "forbiddenIndicators": [
         "scoreServiceProvider",
         "ServiceProviderScoringEngine"
       ],
-      "forbiddenPathPatterns": ["src/service-provider/scoring/"],
-      "structuredChecks": ["runtime-export:scoreServiceProvider"],
+      "forbiddenPathPatterns": [
+        "src/service-provider/scoring/"
+      ],
+      "structuredChecks": [
+        "runtime-export:scoreServiceProvider"
+      ],
       "excludedPaths": [
         "src/mvp-coverage/",
         "fixtures/mvp-coverage/",
@@ -10007,7 +10802,9 @@
       "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
       "sourceSection": "Section 8",
       "requiredImplementationKind": "defer",
-      "requiredCapabilities": ["outside MVP implementation"],
+      "requiredCapabilities": [
+        "outside MVP implementation"
+      ],
       "dependencies": [],
       "currentDisposition": "not_required",
       "currentDepth": "level_0",
@@ -10015,13 +10812,21 @@
       "implementationFiles": [],
       "testFiles": [],
       "fixtureFiles": [],
-      "inspectionPaths": ["src", "fixtures", "package.json"],
+      "inspectionPaths": [
+        "src",
+        "fixtures",
+        "package.json"
+      ],
       "forbiddenIndicators": [
         "sendExternalCommunication",
         "CommunicationDeliveryIntegration"
       ],
-      "forbiddenPathPatterns": ["src/integrations/communication-delivery/"],
-      "structuredChecks": ["package-dependency:sendgrid"],
+      "forbiddenPathPatterns": [
+        "src/integrations/communication-delivery/"
+      ],
+      "structuredChecks": [
+        "package-dependency:sendgrid"
+      ],
       "excludedPaths": [
         "src/mvp-coverage/",
         "fixtures/mvp-coverage/",
@@ -10224,7 +11029,9 @@
       "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
       "sourceSection": "Section 8",
       "requiredImplementationKind": "defer",
-      "requiredCapabilities": ["outside MVP implementation"],
+      "requiredCapabilities": [
+        "outside MVP implementation"
+      ],
       "dependencies": [],
       "currentDisposition": "not_required",
       "currentDepth": "level_0",
@@ -10232,13 +11039,21 @@
       "implementationFiles": [],
       "testFiles": [],
       "fixtureFiles": [],
-      "inspectionPaths": ["src", "fixtures", "package.json"],
+      "inspectionPaths": [
+        "src",
+        "fixtures",
+        "package.json"
+      ],
       "forbiddenIndicators": [
         "executeDocumentESignature",
         "DocumentESignatureIntegration"
       ],
-      "forbiddenPathPatterns": ["src/integrations/e-signature/"],
-      "structuredChecks": ["package-dependency:docusign"],
+      "forbiddenPathPatterns": [
+        "src/integrations/e-signature/"
+      ],
+      "structuredChecks": [
+        "package-dependency:docusign"
+      ],
       "excludedPaths": [
         "src/mvp-coverage/",
         "fixtures/mvp-coverage/",
@@ -10441,7 +11256,9 @@
       "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
       "sourceSection": "Section 8",
       "requiredImplementationKind": "defer",
-      "requiredCapabilities": ["outside MVP implementation"],
+      "requiredCapabilities": [
+        "outside MVP implementation"
+      ],
       "dependencies": [],
       "currentDisposition": "not_required",
       "currentDepth": "level_0",
@@ -10449,13 +11266,21 @@
       "implementationFiles": [],
       "testFiles": [],
       "fixtureFiles": [],
-      "inspectionPaths": ["src", "fixtures", "package.json"],
+      "inspectionPaths": [
+        "src",
+        "fixtures",
+        "package.json"
+      ],
       "forbiddenIndicators": [
         "writeExternalStorageObject",
         "ExternalStorageIntegration"
       ],
-      "forbiddenPathPatterns": ["src/integrations/external-storage/"],
-      "structuredChecks": ["package-dependency:@aws-sdk/client-s3"],
+      "forbiddenPathPatterns": [
+        "src/integrations/external-storage/"
+      ],
+      "structuredChecks": [
+        "package-dependency:@aws-sdk/client-s3"
+      ],
       "excludedPaths": [
         "src/mvp-coverage/",
         "fixtures/mvp-coverage/",
@@ -10658,7 +11483,9 @@
       "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
       "sourceSection": "Section 8",
       "requiredImplementationKind": "defer",
-      "requiredCapabilities": ["outside MVP implementation"],
+      "requiredCapabilities": [
+        "outside MVP implementation"
+      ],
       "dependencies": [],
       "currentDisposition": "not_required",
       "currentDepth": "level_0",
@@ -10666,13 +11493,21 @@
       "implementationFiles": [],
       "testFiles": [],
       "fixtureFiles": [],
-      "inspectionPaths": ["src", "fixtures", "package.json"],
+      "inspectionPaths": [
+        "src",
+        "fixtures",
+        "package.json"
+      ],
       "forbiddenIndicators": [
         "automateBillingAndInvoicing",
         "BillingInvoiceAutomation"
       ],
-      "forbiddenPathPatterns": ["src/billing/automation/"],
-      "structuredChecks": ["runtime-export:automateBillingAndInvoicing"],
+      "forbiddenPathPatterns": [
+        "src/billing/automation/"
+      ],
+      "structuredChecks": [
+        "runtime-export:automateBillingAndInvoicing"
+      ],
       "excludedPaths": [
         "src/mvp-coverage/",
         "fixtures/mvp-coverage/",
@@ -10875,7 +11710,9 @@
       "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
       "sourceSection": "Section 9",
       "requiredImplementationKind": "never_in_mvp",
-      "requiredCapabilities": ["must not be implemented"],
+      "requiredCapabilities": [
+        "must not be implemented"
+      ],
       "requiredDepth": "forbidden",
       "dependencies": [],
       "currentDisposition": "not_required",
@@ -10884,13 +11721,21 @@
       "implementationFiles": [],
       "testFiles": [],
       "fixtureFiles": [],
-      "inspectionPaths": ["src", "fixtures", "package.json"],
+      "inspectionPaths": [
+        "src",
+        "fixtures",
+        "package.json"
+      ],
       "forbiddenIndicators": [
         "aiSubmitOfficialFiling",
         "submitOfficialFilingWithAi"
       ],
-      "forbiddenPathPatterns": ["src/ai/official-filing/"],
-      "structuredChecks": ["runtime-export:aiSubmitOfficialFiling"],
+      "forbiddenPathPatterns": [
+        "src/ai/official-filing/"
+      ],
+      "structuredChecks": [
+        "runtime-export:aiSubmitOfficialFiling"
+      ],
       "excludedPaths": [
         "src/mvp-coverage/",
         "fixtures/mvp-coverage/",
@@ -11093,7 +11938,9 @@
       "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
       "sourceSection": "Section 9",
       "requiredImplementationKind": "never_in_mvp",
-      "requiredCapabilities": ["must not be implemented"],
+      "requiredCapabilities": [
+        "must not be implemented"
+      ],
       "requiredDepth": "forbidden",
       "dependencies": [],
       "currentDisposition": "not_required",
@@ -11102,13 +11949,21 @@
       "implementationFiles": [],
       "testFiles": [],
       "fixtureFiles": [],
-      "inspectionPaths": ["src", "fixtures", "package.json"],
+      "inspectionPaths": [
+        "src",
+        "fixtures",
+        "package.json"
+      ],
       "forbiddenIndicators": [
         "aiCertifyLegalDeadline",
         "certifyLegalDeadlineWithAi"
       ],
-      "forbiddenPathPatterns": ["src/ai/deadline-certification/"],
-      "structuredChecks": ["runtime-export:aiCertifyLegalDeadline"],
+      "forbiddenPathPatterns": [
+        "src/ai/deadline-certification/"
+      ],
+      "structuredChecks": [
+        "runtime-export:aiCertifyLegalDeadline"
+      ],
       "excludedPaths": [
         "src/mvp-coverage/",
         "fixtures/mvp-coverage/",
@@ -11311,7 +12166,9 @@
       "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
       "sourceSection": "Section 9",
       "requiredImplementationKind": "never_in_mvp",
-      "requiredCapabilities": ["must not be implemented"],
+      "requiredCapabilities": [
+        "must not be implemented"
+      ],
       "requiredDepth": "forbidden",
       "dependencies": [],
       "currentDisposition": "not_required",
@@ -11320,13 +12177,21 @@
       "implementationFiles": [],
       "testFiles": [],
       "fixtureFiles": [],
-      "inspectionPaths": ["src", "fixtures", "package.json"],
+      "inspectionPaths": [
+        "src",
+        "fixtures",
+        "package.json"
+      ],
       "forbiddenIndicators": [
         "aiCertifyTrademarkRegistrability",
         "certifyTrademarkRegistrabilityWithAi"
       ],
-      "forbiddenPathPatterns": ["src/ai/registrability-certification/"],
-      "structuredChecks": ["runtime-export:aiCertifyTrademarkRegistrability"],
+      "forbiddenPathPatterns": [
+        "src/ai/registrability-certification/"
+      ],
+      "structuredChecks": [
+        "runtime-export:aiCertifyTrademarkRegistrability"
+      ],
       "excludedPaths": [
         "src/mvp-coverage/",
         "fixtures/mvp-coverage/",
@@ -11529,7 +12394,9 @@
       "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
       "sourceSection": "Section 9",
       "requiredImplementationKind": "never_in_mvp",
-      "requiredCapabilities": ["must not be implemented"],
+      "requiredCapabilities": [
+        "must not be implemented"
+      ],
       "requiredDepth": "forbidden",
       "dependencies": [],
       "currentDisposition": "not_required",
@@ -11538,13 +12405,21 @@
       "implementationFiles": [],
       "testFiles": [],
       "fixtureFiles": [],
-      "inspectionPaths": ["src", "fixtures", "package.json"],
+      "inspectionPaths": [
+        "src",
+        "fixtures",
+        "package.json"
+      ],
       "forbiddenIndicators": [
         "aiDecideEvidenceSufficiencyAsTruth",
         "EvidenceSufficiencyProfessionalTruth"
       ],
-      "forbiddenPathPatterns": ["src/ai/evidence-sufficiency/"],
-      "structuredChecks": ["runtime-export:aiDecideEvidenceSufficiencyAsTruth"],
+      "forbiddenPathPatterns": [
+        "src/ai/evidence-sufficiency/"
+      ],
+      "structuredChecks": [
+        "runtime-export:aiDecideEvidenceSufficiencyAsTruth"
+      ],
       "excludedPaths": [
         "src/mvp-coverage/",
         "fixtures/mvp-coverage/",
@@ -11747,7 +12622,9 @@
       "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
       "sourceSection": "Section 9",
       "requiredImplementationKind": "never_in_mvp",
-      "requiredCapabilities": ["must not be implemented"],
+      "requiredCapabilities": [
+        "must not be implemented"
+      ],
       "requiredDepth": "forbidden",
       "dependencies": [],
       "currentDisposition": "not_required",
@@ -11756,13 +12633,21 @@
       "implementationFiles": [],
       "testFiles": [],
       "fixtureFiles": [],
-      "inspectionPaths": ["src", "fixtures", "package.json"],
+      "inspectionPaths": [
+        "src",
+        "fixtures",
+        "package.json"
+      ],
       "forbiddenIndicators": [
         "selectFinalServiceProvider",
         "aiSelectFinalServiceProvider"
       ],
-      "forbiddenPathPatterns": ["src/ai/provider-selection/"],
-      "structuredChecks": ["runtime-export:selectFinalServiceProvider"],
+      "forbiddenPathPatterns": [
+        "src/ai/provider-selection/"
+      ],
+      "structuredChecks": [
+        "runtime-export:selectFinalServiceProvider"
+      ],
       "excludedPaths": [
         "src/mvp-coverage/",
         "fixtures/mvp-coverage/",
@@ -11965,7 +12850,9 @@
       "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
       "sourceSection": "Section 9",
       "requiredImplementationKind": "never_in_mvp",
-      "requiredCapabilities": ["must not be implemented"],
+      "requiredCapabilities": [
+        "must not be implemented"
+      ],
       "requiredDepth": "forbidden",
       "dependencies": [],
       "currentDisposition": "not_required",
@@ -11974,12 +12861,18 @@
       "implementationFiles": [],
       "testFiles": [],
       "fixtureFiles": [],
-      "inspectionPaths": ["src", "fixtures", "package.json"],
+      "inspectionPaths": [
+        "src",
+        "fixtures",
+        "package.json"
+      ],
       "forbiddenIndicators": [
         "sendExternalCommunicationWithoutReview",
         "aiSendExternalCommunicationWithoutHumanReview"
       ],
-      "forbiddenPathPatterns": ["src/ai/external-communication/"],
+      "forbiddenPathPatterns": [
+        "src/ai/external-communication/"
+      ],
       "structuredChecks": [
         "runtime-export:sendExternalCommunicationWithoutReview"
       ],
@@ -12185,7 +13078,9 @@
       "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
       "sourceSection": "Section 9",
       "requiredImplementationKind": "never_in_mvp",
-      "requiredCapabilities": ["must not be implemented"],
+      "requiredCapabilities": [
+        "must not be implemented"
+      ],
       "requiredDepth": "forbidden",
       "dependencies": [],
       "currentDisposition": "not_required",
@@ -12194,13 +13089,21 @@
       "implementationFiles": [],
       "testFiles": [],
       "fixtureFiles": [],
-      "inspectionPaths": ["src", "fixtures", "package.json"],
+      "inspectionPaths": [
+        "src",
+        "fixtures",
+        "package.json"
+      ],
       "forbiddenIndicators": [
         "apiDirectDomainMutation",
         "mutateDomainStateFromApi"
       ],
-      "forbiddenPathPatterns": ["src/api/domain-mutation/"],
-      "structuredChecks": ["runtime-export:apiDirectDomainMutation"],
+      "forbiddenPathPatterns": [
+        "src/api/domain-mutation/"
+      ],
+      "structuredChecks": [
+        "runtime-export:apiDirectDomainMutation"
+      ],
       "excludedPaths": [
         "src/mvp-coverage/",
         "fixtures/mvp-coverage/",
@@ -12403,7 +13306,9 @@
       "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
       "sourceSection": "Section 9",
       "requiredImplementationKind": "never_in_mvp",
-      "requiredCapabilities": ["must not be implemented"],
+      "requiredCapabilities": [
+        "must not be implemented"
+      ],
       "requiredDepth": "forbidden",
       "dependencies": [],
       "currentDisposition": "not_required",
@@ -12412,13 +13317,21 @@
       "implementationFiles": [],
       "testFiles": [],
       "fixtureFiles": [],
-      "inspectionPaths": ["src", "fixtures", "package.json"],
+      "inspectionPaths": [
+        "src",
+        "fixtures",
+        "package.json"
+      ],
       "forbiddenIndicators": [
         "workflowDirectTaskActivation",
         "createActiveTaskOutsideTaskService"
       ],
-      "forbiddenPathPatterns": ["src/workflows/task-activation/"],
-      "structuredChecks": ["runtime-export:workflowDirectTaskActivation"],
+      "forbiddenPathPatterns": [
+        "src/workflows/task-activation/"
+      ],
+      "structuredChecks": [
+        "runtime-export:workflowDirectTaskActivation"
+      ],
       "excludedPaths": [
         "src/mvp-coverage/",
         "fixtures/mvp-coverage/",
@@ -12621,7 +13534,9 @@
       "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
       "sourceSection": "Section 9",
       "requiredImplementationKind": "never_in_mvp",
-      "requiredCapabilities": ["must not be implemented"],
+      "requiredCapabilities": [
+        "must not be implemented"
+      ],
       "requiredDepth": "forbidden",
       "dependencies": [],
       "currentDisposition": "not_required",
@@ -12630,13 +13545,21 @@
       "implementationFiles": [],
       "testFiles": [],
       "fixtureFiles": [],
-      "inspectionPaths": ["src", "fixtures", "package.json"],
+      "inspectionPaths": [
+        "src",
+        "fixtures",
+        "package.json"
+      ],
       "forbiddenIndicators": [
         "workflowDirectEventEmission",
         "emitDomainEventFromWorkflow"
       ],
-      "forbiddenPathPatterns": ["src/workflows/event-emission/"],
-      "structuredChecks": ["runtime-export:workflowDirectEventEmission"],
+      "forbiddenPathPatterns": [
+        "src/workflows/event-emission/"
+      ],
+      "structuredChecks": [
+        "runtime-export:workflowDirectEventEmission"
+      ],
       "excludedPaths": [
         "src/mvp-coverage/",
         "fixtures/mvp-coverage/",
@@ -12839,7 +13762,9 @@
       "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
       "sourceSection": "Section 9",
       "requiredImplementationKind": "never_in_mvp",
-      "requiredCapabilities": ["must not be implemented"],
+      "requiredCapabilities": [
+        "must not be implemented"
+      ],
       "requiredDepth": "forbidden",
       "dependencies": [],
       "currentDisposition": "not_required",
@@ -12848,13 +13773,21 @@
       "implementationFiles": [],
       "testFiles": [],
       "fixtureFiles": [],
-      "inspectionPaths": ["src", "fixtures", "package.json"],
+      "inspectionPaths": [
+        "src",
+        "fixtures",
+        "package.json"
+      ],
       "forbiddenIndicators": [
         "agentDirectEventEmission",
         "emitDomainEventFromAgent"
       ],
-      "forbiddenPathPatterns": ["src/agents/event-emission/"],
-      "structuredChecks": ["runtime-export:agentDirectEventEmission"],
+      "forbiddenPathPatterns": [
+        "src/agents/event-emission/"
+      ],
+      "structuredChecks": [
+        "runtime-export:agentDirectEventEmission"
+      ],
       "excludedPaths": [
         "src/mvp-coverage/",
         "fixtures/mvp-coverage/",
@@ -13057,7 +13990,9 @@
       "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
       "sourceSection": "Section 9",
       "requiredImplementationKind": "never_in_mvp",
-      "requiredCapabilities": ["must not be implemented"],
+      "requiredCapabilities": [
+        "must not be implemented"
+      ],
       "requiredDepth": "forbidden",
       "dependencies": [],
       "currentDisposition": "not_required",
@@ -13066,13 +14001,21 @@
       "implementationFiles": [],
       "testFiles": [],
       "fixtureFiles": [],
-      "inspectionPaths": ["src", "fixtures", "package.json"],
+      "inspectionPaths": [
+        "src",
+        "fixtures",
+        "package.json"
+      ],
       "forbiddenIndicators": [
         "eventReferenceCommandExecution",
         "executeCommandFromEventReference"
       ],
-      "forbiddenPathPatterns": ["src/events/command-execution/"],
-      "structuredChecks": ["runtime-export:eventReferenceCommandExecution"],
+      "forbiddenPathPatterns": [
+        "src/events/command-execution/"
+      ],
+      "structuredChecks": [
+        "runtime-export:eventReferenceCommandExecution"
+      ],
       "excludedPaths": [
         "src/mvp-coverage/",
         "fixtures/mvp-coverage/",
@@ -13275,7 +14218,9 @@
       "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
       "sourceSection": "Section 9",
       "requiredImplementationKind": "never_in_mvp",
-      "requiredCapabilities": ["must not be implemented"],
+      "requiredCapabilities": [
+        "must not be implemented"
+      ],
       "requiredDepth": "forbidden",
       "dependencies": [],
       "currentDisposition": "not_required",
@@ -13284,13 +14229,21 @@
       "implementationFiles": [],
       "testFiles": [],
       "fixtureFiles": [],
-      "inspectionPaths": ["src", "fixtures", "package.json"],
+      "inspectionPaths": [
+        "src",
+        "fixtures",
+        "package.json"
+      ],
       "forbiddenIndicators": [
         "bypassPermissionEvaluation",
         "permissionBypassForConvenience"
       ],
-      "forbiddenPathPatterns": ["src/permissions/bypass/"],
-      "structuredChecks": ["runtime-export:bypassPermissionEvaluation"],
+      "forbiddenPathPatterns": [
+        "src/permissions/bypass/"
+      ],
+      "structuredChecks": [
+        "runtime-export:bypassPermissionEvaluation"
+      ],
       "excludedPaths": [
         "src/mvp-coverage/",
         "fixtures/mvp-coverage/",
@@ -13493,7 +14446,9 @@
       "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
       "sourceSection": "Section 9",
       "requiredImplementationKind": "never_in_mvp",
-      "requiredCapabilities": ["must not be implemented"],
+      "requiredCapabilities": [
+        "must not be implemented"
+      ],
       "requiredDepth": "forbidden",
       "dependencies": [],
       "currentDisposition": "not_required",
@@ -13502,13 +14457,21 @@
       "implementationFiles": [],
       "testFiles": [],
       "fixtureFiles": [],
-      "inspectionPaths": ["src", "fixtures", "package.json"],
+      "inspectionPaths": [
+        "src",
+        "fixtures",
+        "package.json"
+      ],
       "forbiddenIndicators": [
         "bypassPolicyEvaluation",
         "policyBypassForConvenience"
       ],
-      "forbiddenPathPatterns": ["src/policies/bypass/"],
-      "structuredChecks": ["runtime-export:bypassPolicyEvaluation"],
+      "forbiddenPathPatterns": [
+        "src/policies/bypass/"
+      ],
+      "structuredChecks": [
+        "runtime-export:bypassPolicyEvaluation"
+      ],
       "excludedPaths": [
         "src/mvp-coverage/",
         "fixtures/mvp-coverage/",
@@ -13711,7 +14674,9 @@
       "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
       "sourceSection": "Section 9",
       "requiredImplementationKind": "never_in_mvp",
-      "requiredCapabilities": ["must not be implemented"],
+      "requiredCapabilities": [
+        "must not be implemented"
+      ],
       "requiredDepth": "forbidden",
       "dependencies": [],
       "currentDisposition": "not_required",
@@ -13720,10 +14685,21 @@
       "implementationFiles": [],
       "testFiles": [],
       "fixtureFiles": [],
-      "inspectionPaths": ["src", "fixtures", "package.json"],
-      "forbiddenIndicators": ["productionFixture", "production_data_fixture"],
-      "forbiddenPathPatterns": ["fixtures/production/"],
-      "structuredChecks": ["fixture-type:production"],
+      "inspectionPaths": [
+        "src",
+        "fixtures",
+        "package.json"
+      ],
+      "forbiddenIndicators": [
+        "productionFixture",
+        "production_data_fixture"
+      ],
+      "forbiddenPathPatterns": [
+        "fixtures/production/"
+      ],
+      "structuredChecks": [
+        "fixture-type:production"
+      ],
       "excludedPaths": [
         "src/mvp-coverage/",
         "fixtures/mvp-coverage/",
@@ -13926,7 +14902,9 @@
       "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
       "sourceSection": "Section 9",
       "requiredImplementationKind": "never_in_mvp",
-      "requiredCapabilities": ["must not be implemented"],
+      "requiredCapabilities": [
+        "must not be implemented"
+      ],
       "requiredDepth": "forbidden",
       "dependencies": [],
       "currentDisposition": "not_required",
@@ -13935,10 +14913,21 @@
       "implementationFiles": [],
       "testFiles": [],
       "fixtureFiles": [],
-      "inspectionPaths": ["src", "fixtures", "package.json"],
-      "forbiddenIndicators": ["exposeRawDatabaseId", "rawDatabaseId"],
-      "forbiddenPathPatterns": ["src/api/response/raw-database-id/"],
-      "structuredChecks": ["runtime-export:exposeRawDatabaseId"],
+      "inspectionPaths": [
+        "src",
+        "fixtures",
+        "package.json"
+      ],
+      "forbiddenIndicators": [
+        "exposeRawDatabaseId",
+        "rawDatabaseId"
+      ],
+      "forbiddenPathPatterns": [
+        "src/api/response/raw-database-id/"
+      ],
+      "structuredChecks": [
+        "runtime-export:exposeRawDatabaseId"
+      ],
       "excludedPaths": [
         "src/mvp-coverage/",
         "fixtures/mvp-coverage/",
@@ -14141,7 +15130,9 @@
       "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
       "sourceSection": "Section 9",
       "requiredImplementationKind": "never_in_mvp",
-      "requiredCapabilities": ["must not be implemented"],
+      "requiredCapabilities": [
+        "must not be implemented"
+      ],
       "requiredDepth": "forbidden",
       "dependencies": [],
       "currentDisposition": "not_required",
@@ -14150,13 +15141,21 @@
       "implementationFiles": [],
       "testFiles": [],
       "fixtureFiles": [],
-      "inspectionPaths": ["src", "fixtures", "package.json"],
+      "inspectionPaths": [
+        "src",
+        "fixtures",
+        "package.json"
+      ],
       "forbiddenIndicators": [
         "unsafeStackTraceResponse",
         "exposeUnsafeStackTrace"
       ],
-      "forbiddenPathPatterns": ["src/api/errors/unsafe-stack-trace/"],
-      "structuredChecks": ["runtime-export:unsafeStackTraceResponse"],
+      "forbiddenPathPatterns": [
+        "src/api/errors/unsafe-stack-trace/"
+      ],
+      "structuredChecks": [
+        "runtime-export:unsafeStackTraceResponse"
+      ],
       "excludedPaths": [
         "src/mvp-coverage/",
         "fixtures/mvp-coverage/",
@@ -14359,7 +15358,9 @@
       "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
       "sourceSection": "Section 9",
       "requiredImplementationKind": "never_in_mvp",
-      "requiredCapabilities": ["must not be implemented"],
+      "requiredCapabilities": [
+        "must not be implemented"
+      ],
       "requiredDepth": "forbidden",
       "dependencies": [],
       "currentDisposition": "not_required",
@@ -14368,7 +15369,11 @@
       "implementationFiles": [],
       "testFiles": [],
       "fixtureFiles": [],
-      "inspectionPaths": ["src", "fixtures", "package.json"],
+      "inspectionPaths": [
+        "src",
+        "fixtures",
+        "package.json"
+      ],
       "forbiddenIndicators": [
         "acceptUnsupportedVersionSilently",
         "silentUnsupportedVersionAcceptance"
@@ -14376,7 +15381,9 @@
       "forbiddenPathPatterns": [
         "src/versioning/unsupported-silent-acceptance/"
       ],
-      "structuredChecks": ["runtime-export:acceptUnsupportedVersionSilently"],
+      "structuredChecks": [
+        "runtime-export:acceptUnsupportedVersionSilently"
+      ],
       "excludedPaths": [
         "src/mvp-coverage/",
         "fixtures/mvp-coverage/",
@@ -14579,7 +15586,9 @@
       "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
       "sourceSection": "Section 9",
       "requiredImplementationKind": "never_in_mvp",
-      "requiredCapabilities": ["must not be implemented"],
+      "requiredCapabilities": [
+        "must not be implemented"
+      ],
       "requiredDepth": "forbidden",
       "dependencies": [],
       "currentDisposition": "not_required",
@@ -14588,13 +15597,21 @@
       "implementationFiles": [],
       "testFiles": [],
       "fixtureFiles": [],
-      "inspectionPaths": ["src", "fixtures", "package.json"],
+      "inspectionPaths": [
+        "src",
+        "fixtures",
+        "package.json"
+      ],
       "forbiddenIndicators": [
         "rewriteHistoricalVersionSilently",
         "silentHistoricalVersionRewrite"
       ],
-      "forbiddenPathPatterns": ["src/versioning/historical-rewrite/"],
-      "structuredChecks": ["runtime-export:rewriteHistoricalVersionSilently"],
+      "forbiddenPathPatterns": [
+        "src/versioning/historical-rewrite/"
+      ],
+      "structuredChecks": [
+        "runtime-export:rewriteHistoricalVersionSilently"
+      ],
       "excludedPaths": [
         "src/mvp-coverage/",
         "fixtures/mvp-coverage/",
@@ -15021,7 +16038,9 @@
         "must-api-communication-api-contract"
       ],
       "behaviorIds": [],
-      "evidenceFiles": ["src/contracts/api/core-api-contract-skeletons.ts"],
+      "evidenceFiles": [
+        "src/contracts/api/core-api-contract-skeletons.ts"
+      ],
       "unresolvedReasons": [
         "All 18 API requirements must prove validators, delegation, and no direct mutation/emission tests."
       ]
@@ -15031,9 +16050,13 @@
       "name": "Customer Intake Workflow Supports Preview Apply",
       "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
       "sourceSection": "Section 14",
-      "dependencies": ["must-workflow-customer-intake-workflow"],
+      "dependencies": [
+        "must-workflow-customer-intake-workflow"
+      ],
       "satisfied": false,
-      "evidenceRequirementIds": ["must-workflow-customer-intake-workflow"],
+      "evidenceRequirementIds": [
+        "must-workflow-customer-intake-workflow"
+      ],
       "behaviorIds": [],
       "evidenceFiles": [
         "src/contracts/workflow/core-workflow-catalog-skeletons.ts"
@@ -15047,7 +16070,9 @@
       "name": "Trademark Application Workflow Supports Preview Apply",
       "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
       "sourceSection": "Section 14",
-      "dependencies": ["must-workflow-trademark-application-workflow"],
+      "dependencies": [
+        "must-workflow-trademark-application-workflow"
+      ],
       "satisfied": false,
       "evidenceRequirementIds": [
         "must-workflow-trademark-application-workflow"
@@ -15065,9 +16090,13 @@
       "name": "Communication Review Workflow Supports Preview Apply",
       "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
       "sourceSection": "Section 14",
-      "dependencies": ["must-workflow-communication-review-workflow"],
+      "dependencies": [
+        "must-workflow-communication-review-workflow"
+      ],
       "satisfied": false,
-      "evidenceRequirementIds": ["must-workflow-communication-review-workflow"],
+      "evidenceRequirementIds": [
+        "must-workflow-communication-review-workflow"
+      ],
       "behaviorIds": [],
       "evidenceFiles": [
         "src/contracts/workflow/core-workflow-catalog-skeletons.ts"
@@ -15092,7 +16121,10 @@
         "must-common-policy-context",
         "must-test-permission-policy-tests"
       ],
-      "behaviorIds": ["permission", "policy"],
+      "behaviorIds": [
+        "permission",
+        "policy"
+      ],
       "evidenceFiles": [
         "src/behaviors/core-governance-behavior.ts",
         "src/contracts/test/core-test-contract-skeletons.ts",
@@ -15116,7 +16148,10 @@
         "must-agent-knowledge-agent",
         "must-test-agent-boundary-tests"
       ],
-      "behaviorIds": ["ai-context", "agent-runtime"],
+      "behaviorIds": [
+        "ai-context",
+        "agent-runtime"
+      ],
       "evidenceFiles": [
         "fixtures/behaviors/core-safety-boundary-foundations.fixture.json",
         "src/behaviors/core-agent-boundary.ts",
@@ -15146,7 +16181,11 @@
         "must-common-policy-context",
         "must-test-permission-policy-tests"
       ],
-      "behaviorIds": ["human-review", "permission", "policy"],
+      "behaviorIds": [
+        "human-review",
+        "permission",
+        "policy"
+      ],
       "evidenceFiles": [
         "src/behaviors/core-governance-behavior.ts",
         "src/contracts/test/core-test-contract-skeletons.ts",
@@ -15168,7 +16207,9 @@
         "must-common-idempotency",
         "must-test-idempotency-event-tests"
       ],
-      "behaviorIds": ["idempotency"],
+      "behaviorIds": [
+        "idempotency"
+      ],
       "evidenceFiles": [
         "fixtures/behaviors/core-idempotency-enforcement.fixture.json",
         "src/behaviors/core-event-pagination-behavior.ts",
@@ -15195,7 +16236,9 @@
         "must-test-idempotency-event-tests",
         "never-event-references-triggering-commands"
       ],
-      "behaviorIds": ["events"],
+      "behaviorIds": [
+        "events"
+      ],
       "evidenceFiles": [
         "fixtures/behaviors/core-idempotency-enforcement.fixture.json",
         "src/behaviors/core-event-pagination-behavior.ts",
@@ -15211,9 +16254,13 @@
       "name": "Api Layer Does Not Emit Events Directly",
       "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
       "sourceSection": "Section 14",
-      "dependencies": ["must-test-api-contract-tests"],
+      "dependencies": [
+        "must-test-api-contract-tests"
+      ],
       "satisfied": false,
-      "evidenceRequirementIds": ["must-test-api-contract-tests"],
+      "evidenceRequirementIds": [
+        "must-test-api-contract-tests"
+      ],
       "behaviorIds": [],
       "evidenceFiles": [
         "src/contracts/api/core-api-contract-skeletons.ts",
@@ -15229,9 +16276,13 @@
       "name": "Workflow Layer Does Not Emit Events Directly",
       "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
       "sourceSection": "Section 14",
-      "dependencies": ["must-test-workflow-contract-tests"],
+      "dependencies": [
+        "must-test-workflow-contract-tests"
+      ],
       "satisfied": false,
-      "evidenceRequirementIds": ["must-test-workflow-contract-tests"],
+      "evidenceRequirementIds": [
+        "must-test-workflow-contract-tests"
+      ],
       "behaviorIds": [],
       "evidenceFiles": [
         "src/contracts/test/core-test-contract-skeletons.ts",
@@ -15247,9 +16298,13 @@
       "name": "Agent Layer Does Not Emit Events Directly",
       "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
       "sourceSection": "Section 14",
-      "dependencies": ["must-test-agent-boundary-tests"],
+      "dependencies": [
+        "must-test-agent-boundary-tests"
+      ],
       "satisfied": false,
-      "evidenceRequirementIds": ["must-test-agent-boundary-tests"],
+      "evidenceRequirementIds": [
+        "must-test-agent-boundary-tests"
+      ],
       "behaviorIds": [],
       "evidenceFiles": [
         "src/behaviors/core-agent-boundary.ts",
@@ -15277,7 +16332,9 @@
         "must-common-errors",
         "must-test-error-versioning-tests"
       ],
-      "behaviorIds": ["errors"],
+      "behaviorIds": [
+        "errors"
+      ],
       "evidenceFiles": [
         "fixtures/behaviors/core-safety-boundary-foundations.fixture.json",
         "src/behaviors/core-safe-error.ts",
@@ -15301,7 +16358,9 @@
         "must-common-versioning",
         "must-test-error-versioning-tests"
       ],
-      "behaviorIds": ["versioning"],
+      "behaviorIds": [
+        "versioning"
+      ],
       "evidenceFiles": [
         "fixtures/behaviors/core-safety-boundary-foundations.fixture.json",
         "src/behaviors/core-safe-error.ts",
