@@ -3,17 +3,39 @@ import { readFileSync, writeFileSync } from 'node:fs';
 const path = 'src/services/classification/core-classification-service.ts';
 let content = readFileSync(path, 'utf8');
 
-content = content.replace(
-  "    const items = this.deps.store\n      .list()",
-  "    const classReferenceFilter =\n      typeof input.filters?.classReference === 'string'\n        ? input.filters.classReference\n        : undefined;\n    const items = this.deps.store\n      .list()"
-);
+const filterBlock = `    const classReferenceFilter =
+      typeof input.filters?.classReference === 'string'
+        ? input.filters.classReference
+        : undefined;`;
+while (content.includes(`${filterBlock}\n${filterBlock}`)) {
+  content = content.replace(`${filterBlock}\n${filterBlock}`, filterBlock);
+}
+if (!content.includes(filterBlock)) {
+  content = content.replace(
+    "    const items = this.deps.store\n      .list()",
+    `${filterBlock}\n    const items = this.deps.store\n      .list()`
+  );
+}
 content = content.replace(
   "          (input.filters?.classReference === undefined ||\n            record.classReferences.includes(input.filters.classReference))",
   "          (classReferenceFilter === undefined ||\n            record.classReferences.includes(classReferenceFilter))"
 );
-content = content.replace(
-  "        const updated: CoreClassificationServiceRecord = {",
-  "        if (current.objectRecord.version === undefined) {\n          return safe(\n            'ValidationFailed',\n            'Classification Object version is required.',\n            input.governance.correlationId\n          );\n        }\n        const updated: CoreClassificationServiceRecord = {"
-);
+
+const versionGuard = `        if (current.objectRecord.version === undefined) {
+          return safe(
+            'ValidationFailed',
+            'Classification Object version is required.',
+            input.governance.correlationId
+          );
+        }`;
+while (content.includes(`${versionGuard}\n${versionGuard}`)) {
+  content = content.replace(`${versionGuard}\n${versionGuard}`, versionGuard);
+}
+if (!content.includes(versionGuard)) {
+  content = content.replace(
+    '        const updated: CoreClassificationServiceRecord = {',
+    `${versionGuard}\n        const updated: CoreClassificationServiceRecord = {`
+  );
+}
 
 writeFileSync(path, content);
