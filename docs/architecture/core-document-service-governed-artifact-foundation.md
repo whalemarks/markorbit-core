@@ -29,6 +29,10 @@ Creation starts as Draft and Unreviewed. A Document owns governed artifact metad
 
 Mutations use success-only idempotency and Event trace handoff. A failed Event append restores the prior Document state so artifact metadata and trace history cannot diverge.
 
+## Executable evidence
+
+Required fixture 33 executes governed creation, create replay and conflict, safe read/list/reference validation, explicit file linkage, review-required transition, human-review approval, approval replay and conflict, archive replay, Event counts and payload-safety checks.
+
 ## Derived boundary
 
 The independently derived target is 38 Must Build requirements meeting required depth, 3 partial evidence, 51 validated skeleton only, 5 boundary scaffold only and 18 semantic overlap only. Acceptance remains 11 of 19 because 12 Must Build Services still lack executable owned behavior.
