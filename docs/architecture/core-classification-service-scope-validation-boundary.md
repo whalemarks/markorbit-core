@@ -23,9 +23,13 @@ Classification requires a controlled scheme, at least one class reference, and a
 
 Draft scope is structurally valid but remains review-required. ReviewRequired to Approved or Rejected requires completed governed human review. AIRecommended is never treated as ApprovedForFiling. Classification Service does not file applications or certify official wording.
 
+The lifecycle batch intentionally stops before Filed and Amended transitions. Those states require filing or prosecution synchronization that does not belong in this foundation task.
+
 ## Safety and governance
 
 The boundary reuses Object, Reference, Permission, Policy, Human Review, Audit, Idempotency, Pagination, Safe Error, and Event trace foundations. Organization scope is enforced before reads, list pagination, validation, reference validation, and mutation. List, validation, and Event outputs omit item contents, source references, visibility, metadata, and governance internals.
+
+Mutating operations use success-only idempotency. Event handoff failure rolls back the inserted Classification or restores the prior lifecycle state.
 
 ## Evidence
 
