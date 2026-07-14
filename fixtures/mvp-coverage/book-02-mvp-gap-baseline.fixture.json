@@ -15462,6 +15462,7 @@
         "src/services/customer/core-customer-service-guarded.ts",
         "src/services/customer/core-customer-service.ts",
         "src/services/document/core-document-service.ts",
+        "src/services/evidence/core-evidence-service-complete.ts",
         "src/services/evidence/core-evidence-service.ts",
         "src/services/jurisdiction/core-jurisdiction-service.ts",
         "src/services/trademark/core-trademark-service.ts",
@@ -15470,6 +15471,7 @@
         "tests/unit/core-customer-service-core-lifecycle.test.ts",
         "tests/unit/core-customer-service-replay-evidence.test.ts",
         "tests/unit/core-document-service-governed-artifact-foundation.test.ts",
+        "tests/unit/core-evidence-service-mvp-completion.test.ts",
         "tests/unit/core-evidence-service-proof-layer-foundation.test.ts",
         "tests/unit/core-jurisdiction-service-core-lifecycle.test.ts",
         "tests/unit/core-trademark-service-core-lifecycle.test.ts"
