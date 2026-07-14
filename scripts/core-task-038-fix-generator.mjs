@@ -1,4 +1,6 @@
-import { readFileSync, writeFileSync } from 'node:fs';
+import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+
+mkdirSync('src/services/trademark', { recursive: true });
 
 const path = 'scripts/core-task-038-generate.mjs';
 const before = readFileSync(path, 'utf8');
