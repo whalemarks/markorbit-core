@@ -1,0 +1,33 @@
+name: CORE-TASK-043B Test Diagnostic
+
+on:
+  push:
+    branches:
+      - agent/core-task-043b-matter-service-completion
+
+jobs:
+  test-log:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: corepack enable
+      - run: pnpm install --frozen-lockfile
+      - name: Run complete tests
+        shell: bash
+        run: |
+          set +e
+          pnpm test > test-output.log 2>&1
+          code=$?
+          echo "$code" > test-exit-code.txt
+          exit 0
+      - uses: actions/upload-artifact@v4
+        with:
+          name: core-task-043b-test-log
+          path: |
+            test-output.log
+            test-exit-code.txt
+          retention-days: 1
