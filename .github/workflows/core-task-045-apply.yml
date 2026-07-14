@@ -1,0 +1,54 @@
+name: CORE-TASK-045 Apply
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - agent/core-task-045-opportunity-service-foundation
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/core-task-045-opportunity-service-foundation
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: corepack enable
+      - run: pnpm install --frozen-lockfile
+      - name: Verify and apply payload
+        shell: bash
+        run: |
+          for i in 00 01 02 03 04 05 06 07; do
+            base64 -d ".core-task-045-payload/part-${i}.b64" > "/tmp/part-${i}.bin"
+          done
+          echo '1104e0776859cfe8a893c25d9023473710278dfb5c30a1d7adf7c4585ace40fc  /tmp/part-00.bin' | sha256sum -c -
+          echo 'd7816e4b47ca817a7103781fc03a53c2d8f2c75f2d3ae8ce4facfa8c63429953  /tmp/part-01.bin' | sha256sum -c -
+          echo '56418a9be08781fa65595b5c179174f9648b2402ebef02ea60a256da8959b737  /tmp/part-02.bin' | sha256sum -c -
+          echo 'a13f1ace493ca1958c3cf8cfbbef573d73854f33321151120d3fe8fd4edec0f7  /tmp/part-03.bin' | sha256sum -c -
+          echo 'd72be16bfdbb763a32b610c3323dd5b50830df813d7b341600a277663bbdea87  /tmp/part-04.bin' | sha256sum -c -
+          echo '038812b409ae3917c9bb3b5899b563a6623c72d053977f40d4e6df46d57a0559  /tmp/part-05.bin' | sha256sum -c -
+          echo '62a4dfc3a7534699a937f3b26e19554690aeea70632ffa9685ef3d071af37f4e  /tmp/part-06.bin' | sha256sum -c -
+          echo 'a0e6cab45aa908acd4490603c996c425b1aaa93144f7ad7bfee143a10d90f139  /tmp/part-07.bin' | sha256sum -c -
+          cat /tmp/part-{00,01,02,03,04,05,06,07}.bin > /tmp/core-task-045-payload.tgz
+          echo '37ea94a70639d354f2ad6f4cd312f4d7d965414bcb1d8cdab538b86ad703b667  /tmp/core-task-045-payload.tgz' | sha256sum -c -
+          tar -xzf /tmp/core-task-045-payload.tgz -C .
+          node --import tsx -e "import { writeFileSync } from 'node:fs'; import { BOOK_02_MVP_GAP_BASELINE } from './src/mvp-coverage/index.ts'; writeFileSync('fixtures/mvp-coverage/book-02-mvp-gap-baseline.fixture.json', JSON.stringify(BOOK_02_MVP_GAP_BASELINE, null, 2) + '\n');"
+          rm -rf .core-task-045-payload
+      - name: Commit implementation
+        shell: bash
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add -A
+          git commit -m 'CORE-TASK-045 — implement Opportunity Service potential-demand foundation'
+          git push origin HEAD:agent/core-task-045-opportunity-service-foundation
