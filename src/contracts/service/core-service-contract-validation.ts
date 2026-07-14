@@ -42,7 +42,7 @@ const canonicalServiceEntries = [
     'matter',
     'Core Matter Service Contract Skeleton',
     'matter-service.md',
-    'CORE-TASK-021'
+    'CORE-TASK-043'
   ],
   [
     'order-service',
@@ -191,6 +191,25 @@ const behaviorLocks = {
       'changeDocumentStatus'
     ]
   },
+  'matter-service': {
+    task: 'CORE-TASK-043B',
+    operations: [
+      'createMatter',
+      'getMatter',
+      'listMatters',
+      'updateMatter',
+      'changeMatterStatus',
+      'linkMatterOrder',
+      'linkMatterCustomer',
+      'linkMatterBrand',
+      'linkMatterTrademark',
+      'linkMatterWorkflowContract',
+      'linkMatterTask',
+      'linkMatterDocument',
+      'linkMatterEvidence',
+      'validateMatterReference'
+    ]
+  },
   'evidence-service': {
     task: 'CORE-TASK-042B',
     operations: [
@@ -244,6 +263,14 @@ const promotedContracts = {
     name: 'Core Document Service Contract Skeleton',
     sourceFile: 'document-service.md',
     task: 'CORE-TASK-041'
+  },
+  14: {
+    id: 'core-service-matter-service-contract',
+    serviceType: 'matter-service',
+    domainId: 'matter',
+    name: 'Core Matter Service Contract Skeleton',
+    sourceFile: 'matter-service.md',
+    task: 'CORE-TASK-043'
   },
   8: {
     id: 'core-service-evidence-service-contract',

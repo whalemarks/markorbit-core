@@ -28,6 +28,10 @@ import {
   CORE_EVIDENCE_IMPLEMENTED_OPERATIONS,
   CORE_EVIDENCE_MINIMUM_CAPABILITIES
 } from '../services/evidence/index.ts';
+import {
+  CORE_MATTER_IMPLEMENTED_OPERATIONS,
+  CORE_MATTER_MINIMUM_CAPABILITIES
+} from '../services/matter/index.ts';
 import { validateCoreBrandServiceEvidenceFixture } from './core-brand-service-evidence-fixture.ts';
 import { validateCoreCustomerServiceEvidenceFixture } from './core-customer-service-evidence-fixture.ts';
 import { validateCoreTrademarkServiceEvidenceFixture } from './core-trademark-service-evidence-fixture.ts';
@@ -35,6 +39,7 @@ import { validateCoreJurisdictionServiceEvidenceFixture } from './core-jurisdict
 import { validateCoreClassificationServiceEvidenceFixture } from './core-classification-service-evidence-fixture.ts';
 import { validateCoreDocumentServiceEvidenceFixture } from './core-document-service-evidence-fixture.ts';
 import { validateCoreEvidenceServiceEvidenceFixture } from './core-evidence-service-evidence-fixture.ts';
+import { validateCoreMatterServiceExecutionContainerFoundationFixture } from '../validation/core-matter-service-fixture-validation.ts';
 import {
   CORE_SERVICE_BEHAVIOR_EVIDENCE,
   type CoreServiceBehaviorEvidence
@@ -55,6 +60,7 @@ export interface CoreServiceBehaviorValidationOptions {
   readonly classificationFixture?: unknown;
   readonly documentFixture?: unknown;
   readonly evidenceFixture?: unknown;
+  readonly matterFixture?: unknown;
 }
 
 interface ExpectedServiceEvidence {
@@ -67,7 +73,8 @@ interface ExpectedServiceEvidence {
     | 'jurisdiction'
     | 'classification'
     | 'document'
-    | 'evidence';
+    | 'evidence'
+    | 'matter';
   readonly contractId: string;
   readonly sourcePath: string;
   readonly operations: readonly string[];
@@ -80,7 +87,8 @@ interface ExpectedServiceEvidence {
     | 'jurisdictionFixture'
     | 'classificationFixture'
     | 'documentFixture'
-    | 'evidenceFixture';
+    | 'evidenceFixture'
+    | 'matterFixture';
   readonly fixtureValidator: (
     fixture: unknown
   ) => readonly { readonly code: string }[];
@@ -234,6 +242,27 @@ const expectedEvidence = [
     ],
     fixtureOverride: 'evidenceFixture',
     fixtureValidator: validateCoreEvidenceServiceEvidenceFixture
+  },
+  {
+    requirementId: 'must-service-matter-service',
+    serviceType: 'matter-service',
+    domainId: 'matter',
+    contractId: 'core-service-matter-service-contract',
+    sourcePath:
+      'books/book-02-core-specification/core-specs/services/matter-service.md',
+    operations: CORE_MATTER_IMPLEMENTED_OPERATIONS,
+    capabilities: CORE_MATTER_MINIMUM_CAPABILITIES,
+    unresolved: [
+      'linkMatterCommunication',
+      'linkMatterJurisdiction',
+      'linkMatterClassification',
+      'linkMatterParticipant',
+      'archiveMatter'
+    ],
+    fixtureOverride: 'matterFixture',
+    fixtureValidator: (fixture) =>
+      validateCoreMatterServiceExecutionContainerFoundationFixture(fixture)
+        .issues
   }
 ] as const satisfies readonly ExpectedServiceEvidence[];
 

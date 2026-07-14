@@ -557,7 +557,7 @@
       "Executable service method definitions or service implementations.",
       "API routes, database access, workflow runtime, or Book 03 execution behavior.",
       "Product UI behavior, concrete business logic, or AI agent authority.",
-      "Professional execution, case decisions, workflow apply, task creation, status mutation, filing, or Product UI case cards."
+      "Professional execution, case decisions, workflow apply, task creation, filing, or Product UI case cards."
     ],
     "createdAt": "2026-07-11T00:00:00.000Z",
     "sourcePath": "books/book-02-core-specification/core-specs/services/matter-service.md",
@@ -566,7 +566,25 @@
       "specificationRepository": "whalemarks/markorbit-publication",
       "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
       "specificationPath": "books/book-02-core-specification/",
-      "implementationTask": "CORE-TASK-021"
+      "implementationTask": "CORE-TASK-043",
+      "behaviorImplementationTask": "CORE-TASK-043B",
+      "behaviorDepth": "level_2_3",
+      "implementedOperations": [
+        "createMatter",
+        "getMatter",
+        "listMatters",
+        "updateMatter",
+        "changeMatterStatus",
+        "linkMatterOrder",
+        "linkMatterCustomer",
+        "linkMatterBrand",
+        "linkMatterTrademark",
+        "linkMatterWorkflowContract",
+        "linkMatterTask",
+        "linkMatterDocument",
+        "linkMatterEvidence",
+        "validateMatterReference"
+      ]
     }
   },
   {
