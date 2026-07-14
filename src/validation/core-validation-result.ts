@@ -1,7 +1,6 @@
 export const CORE_VALIDATION_SEVERITIES = ['error', 'warning', 'info'] as const;
 
-export type CoreValidationSeverity =
-  (typeof CORE_VALIDATION_SEVERITIES)[number];
+export type CoreValidationSeverity = (typeof CORE_VALIDATION_SEVERITIES)[number];
 
 export interface CoreValidationIssue {
   readonly code: string;
@@ -16,9 +15,7 @@ export interface CoreValidationResult {
   readonly issues: readonly CoreValidationIssue[];
 }
 
-export function createCoreValidationResult(
-  issues: readonly CoreValidationIssue[]
-): CoreValidationResult {
+export function createCoreValidationResult(issues: readonly CoreValidationIssue[]): CoreValidationResult {
   return {
     ok: !issues.some((issue) => issue.severity === 'error'),
     issues
