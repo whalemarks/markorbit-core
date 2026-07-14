@@ -26,7 +26,14 @@ jobs:
           base64 -d .core-task-044-payload/part1.b64 > /tmp/core-task-044-payload.tgz
           base64 -d .core-task-044-payload/part2.b64 >> /tmp/core-task-044-payload.tgz
           cat \
-            .core-task-044-payload/part3a.bin \
+            .core-task-044-payload/part3a0.bin \
+            .core-task-044-payload/part3a1.bin \
+            .core-task-044-payload/part3a2.bin \
+            .core-task-044-payload/part3a3.bin \
+            .core-task-044-payload/part3a4.bin \
+            .core-task-044-payload/part3a5.bin \
+            .core-task-044-payload/part3a6.bin \
+            .core-task-044-payload/part3a7.bin \
             .core-task-044-payload/part3b.bin \
             .core-task-044-payload/part3c.bin \
             .core-task-044-payload/part3d.bin \
