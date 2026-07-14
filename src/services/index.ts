@@ -7,3 +7,4 @@ export * from './document/index.ts';
 export * from './evidence/index.ts';
 export { CoreEvidenceServiceComplete as CoreEvidenceService } from './evidence/index.ts';
 export * from './matter/index.ts';
+export * from './order/index.ts';

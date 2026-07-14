@@ -31,6 +31,10 @@ import {
   CORE_MATTER_IMPLEMENTED_OPERATIONS,
   CORE_MATTER_MINIMUM_CAPABILITIES
 } from '../services/matter/index.ts';
+import {
+  CORE_ORDER_IMPLEMENTED_OPERATIONS,
+  CORE_ORDER_MINIMUM_CAPABILITIES
+} from '../services/order/index.ts';
 
 export interface CoreServiceBehaviorEvidence {
   readonly requirementId: string;
@@ -265,6 +269,29 @@ export const CORE_SERVICE_BEHAVIOR_EVIDENCE = [
     testFiles: ['tests/unit/core-matter-service-execution-container.test.ts'],
     fixtureFiles: [
       'fixtures/services/core-matter-service-execution-container-foundation.fixture.json'
+    ]
+  },
+  {
+    requirementId: 'must-service-order-service',
+    serviceType: 'order-service',
+    domainId: 'order',
+    contractId: 'core-service-order-service-contract',
+    sourcePath:
+      'books/book-02-core-specification/core-specs/services/order-service.md',
+    currentDepth: 'level_2_3',
+    operations: CORE_ORDER_IMPLEMENTED_OPERATIONS,
+    provenMinimumCapabilities: CORE_ORDER_MINIMUM_CAPABILITIES,
+    unresolvedServiceOperations: [
+      'linkOrderJurisdiction',
+      'linkOrderClassification',
+      'linkOrderDocument',
+      'linkOrderCommunication',
+      'archiveOrder'
+    ],
+    implementationFiles: ['src/services/order/core-order-service.ts'],
+    testFiles: ['tests/unit/core-order-service-commercial-request.test.ts'],
+    fixtureFiles: [
+      'fixtures/services/core-order-service-commercial-request-foundation.fixture.json'
     ]
   }
 ] as const satisfies readonly CoreServiceBehaviorEvidence[];

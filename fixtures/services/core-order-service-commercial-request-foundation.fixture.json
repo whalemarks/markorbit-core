@@ -1,0 +1,28 @@
+{
+  "fixtureType": "core_order_service_commercial_request_foundation",
+  "task": "CORE-TASK-044",
+  "serviceType": "order-service",
+  "implementedOperations": [
+    "createOrder",
+    "getOrder",
+    "listOrders",
+    "updateOrder",
+    "changeOrderStatus",
+    "linkOrderCustomer",
+    "linkOrderOpportunity",
+    "linkOrderBrand",
+    "linkOrderTrademark",
+    "linkOrderMatter",
+    "validateOrderReference",
+    "validateOrderReadiness",
+    "acceptOrder",
+    "cancelOrder"
+  ],
+  "expected": {
+    "operationCount": 14,
+    "lifecycleLocked": true,
+    "readinessDoesNotCreateMatter": true,
+    "eventRollbackRequired": true,
+    "crossOrganizationNonEnumeration": true
+  }
+}

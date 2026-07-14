@@ -49,7 +49,7 @@ const canonicalServiceEntries = [
     'order',
     'Core Order Service Contract Skeleton',
     'order-service.md',
-    'CORE-TASK-021'
+    'CORE-TASK-044'
   ],
   [
     'workflow-contract-service',
@@ -210,6 +210,25 @@ const behaviorLocks = {
       'validateMatterReference'
     ]
   },
+  'order-service': {
+    task: 'CORE-TASK-044',
+    operations: [
+      'createOrder',
+      'getOrder',
+      'listOrders',
+      'updateOrder',
+      'changeOrderStatus',
+      'linkOrderCustomer',
+      'linkOrderOpportunity',
+      'linkOrderBrand',
+      'linkOrderTrademark',
+      'linkOrderMatter',
+      'validateOrderReference',
+      'validateOrderReadiness',
+      'acceptOrder',
+      'cancelOrder'
+    ]
+  },
   'evidence-service': {
     task: 'CORE-TASK-042B',
     operations: [
@@ -271,6 +290,14 @@ const promotedContracts = {
     name: 'Core Matter Service Contract Skeleton',
     sourceFile: 'matter-service.md',
     task: 'CORE-TASK-043'
+  },
+  15: {
+    id: 'core-service-order-service-contract',
+    serviceType: 'order-service',
+    domainId: 'order',
+    name: 'Core Order Service Contract Skeleton',
+    sourceFile: 'order-service.md',
+    task: 'CORE-TASK-044'
   },
   8: {
     id: 'core-service-evidence-service-contract',
