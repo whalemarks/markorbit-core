@@ -10,18 +10,155 @@ permissions:
   contents: write
 
 jobs:
-  diagnose-patch:
+  integrate:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.head.ref }}
-      - name: Reassemble remote source patch
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: corepack enable
+      - name: Reassemble and verify repaired source patch
         shell: bash
         run: |
-          cat .core-task-042/patch-{00..10} > core-task-042-remote.patch
-          sha256sum core-task-042-remote.patch
-      - uses: actions/upload-artifact@v4
-        with:
-          name: core-task-042-remote-patch
-          path: core-task-042-remote.patch
+          cat .core-task-042/patch-{00..10} > /tmp/core-task-042-remote.patch
+          python - <<'PY'
+          from pathlib import Path
+
+          lines = Path('/tmp/core-task-042-remote.patch').read_text().splitlines()
+
+          package_start = next(
+              index
+              for index, line in enumerate(lines)
+              if line.startswith('diff --git a/base/package.json ')
+          )
+          package_end = next(
+              index
+              for index, line in enumerate(lines[package_start + 1 :], package_start + 1)
+              if line.startswith('diff --git a/base/scripts/validate-core-fixtures.mjs ')
+          )
+          del lines[package_start:package_end]
+
+          review_marker = next(
+              index
+              for index, line in enumerate(lines)
+              if line == '+    const reviewRequired = service.requireEvidenceReview({'
+          )
+          duplicate_start = next(
+              index
+              for index, line in enumerate(lines[review_marker + 1 :], review_marker + 1)
+              if line == '+    };'
+          )
+          duplicate_end = next(
+              index
+              for index, line in enumerate(lines[duplicate_start + 1 :], duplicate_start + 1)
+              if line == '+    });'
+          )
+          del lines[duplicate_start:duplicate_end]
+
+          lines = [
+              '+        value: {' if line == '+         value: {' else line
+              for line in lines
+          ]
+          Path('/tmp/core-task-042.patch').write_text('\n'.join(lines) + '\n')
+          PY
+          echo "ce5d3f581200ce31702c24525c362ea19527d279bf378f1d10ff89fd6e0585ba  /tmp/core-task-042.patch" | sha256sum -c -
+      - name: Apply Evidence Service implementation
+        shell: bash
+        run: git apply -p2 --whitespace=error-all /tmp/core-task-042.patch
+      - name: Extend governed formatting scope
+        shell: bash
+        run: |
+          node <<'NODE'
+          const fs = require('node:fs');
+          const packageJson = JSON.parse(fs.readFileSync('package.json', 'utf8'));
+          const paths = [
+            'docs/architecture/core-evidence-service-proof-layer-foundation.md',
+            'fixtures/services/core-evidence-service-proof-layer-foundation.fixture.json',
+            'src/services/evidence/core-evidence-service.ts',
+            'src/services/evidence/index.ts',
+            'src/service-coverage/core-evidence-service-evidence-fixture.ts',
+            'src/validation/core-evidence-service-fixture-validation.ts',
+            'tests/fixtures/core-evidence-service-proof-layer-foundation-fixture.test.ts',
+            'tests/unit/core-evidence-service-proof-layer-foundation.test.ts',
+            'tests/unit/core-task-042-book-02-service-evidence.test.ts',
+            'tests/unit/core-task-042-service-contract-metadata.test.ts'
+          ];
+          const suffix = ` ${paths.join(' ')}`;
+          for (const scriptName of ['format', 'format:check']) {
+            if (!packageJson.scripts[scriptName].includes(paths[0])) {
+              packageJson.scripts[scriptName] += suffix;
+            }
+          }
+          fs.writeFileSync('package.json', `${JSON.stringify(packageJson, null, 2)}\n`);
+          NODE
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm format
+      - name: Refresh deterministic governance fixtures
+        shell: bash
+        run: |
+          cat > scripts/.core-task-042-refresh.ts <<'EOF'
+          import { writeFile } from 'node:fs/promises';
+          import {
+            BOOK_02_MVP_GAP_BASELINE,
+            CORE_CONTRACT_COVERAGE_BASELINE,
+            CORE_CONTRACT_GAP_INVENTORY,
+            CORE_CONTRACT_INDEX,
+            CORE_SERVICE_CONTRACT_SKELETONS
+          } from '../src/index.ts';
+
+          const writes: readonly (readonly [string, unknown])[] = [
+            [
+              'fixtures/contracts/core-service-contract-skeletons.fixture.json',
+              CORE_SERVICE_CONTRACT_SKELETONS
+            ],
+            ['fixtures/contracts/core-contract-index.fixture.json', CORE_CONTRACT_INDEX],
+            [
+              'fixtures/contract-coverage/core-contract-coverage-baseline.fixture.json',
+              CORE_CONTRACT_COVERAGE_BASELINE
+            ],
+            [
+              'fixtures/contract-coverage/core-contract-gap-inventory.fixture.json',
+              CORE_CONTRACT_GAP_INVENTORY
+            ],
+            [
+              'fixtures/mvp-coverage/book-02-mvp-gap-baseline.fixture.json',
+              BOOK_02_MVP_GAP_BASELINE
+            ]
+          ];
+
+          await Promise.all(
+            writes.map(([path, value]) =>
+              writeFile(path, `${JSON.stringify(value, null, 2)}\n`)
+            )
+          );
+          EOF
+          pnpm exec tsx scripts/.core-task-042-refresh.ts
+      - run: pnpm format
+      - run: pnpm typecheck
+      - run: pnpm lint
+      - run: pnpm format:check
+      - run: pnpm validate:fixtures
+      - run: pnpm test
+      - run: pnpm coverage:contracts
+      - run: pnpm gaps:contracts
+      - run: pnpm acceptance:contracts
+      - run: pnpm coverage:behavior
+      - run: pnpm gaps:behavior
+      - run: pnpm acceptance:behavior
+      - run: pnpm gaps:mvp
+      - name: Remove temporary tooling and publish implementation
+        shell: bash
+        run: |
+          rm -rf .core-task-042
+          rm -f .github/workflows/core-task-042-integrate.yml
+          rm -f .github/workflows/core-task-042-source-snapshot.yml
+          rm -f scripts/.core-task-042-refresh.ts
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add -A
+          git commit -m "CORE-TASK-042 — Implement Evidence Service proof-layer foundation"
+          git push origin HEAD:${{ github.event.pull_request.head.ref }}
