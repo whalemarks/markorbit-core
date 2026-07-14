@@ -3,39 +3,49 @@ import { readFileSync, writeFileSync } from 'node:fs';
 const read = (path) => readFileSync(path, 'utf8');
 const write = (path, value) =>
   writeFileSync(path, value.endsWith('\n') ? value : `${value}\n`);
-const replaceRequired = (text, search, replacement, label) => {
-  if (!text.includes(search)) throw new Error(`Missing target: ${label}`);
-  return text.replace(search, replacement);
+const replacePattern = (text, pattern, replacement, label) => {
+  if (!pattern.test(text)) throw new Error(`Missing target: ${label}`);
+  pattern.lastIndex = 0;
+  return text.replace(pattern, replacement);
 };
 
 let skeletons = read('src/contracts/service/core-service-contract-skeletons.ts');
 
-skeletons = replaceRequired(
+skeletons = replacePattern(
   skeletons,
-  `  produces: readonly string[],\n  specificNonGoals: readonly string[]\n): CoreServiceContract => ({`,
-  `  produces: readonly string[],\n  specificNonGoals: readonly string[],\n  implementationTask: 'CORE-TASK-021' | 'CORE-TASK-038' = 'CORE-TASK-021'\n): CoreServiceContract => ({`,
+  /(\s+produces: readonly string\[\],\r?\n\s+specificNonGoals: readonly string\[\])(\r?\n\): CoreServiceContract => \(\{)/,
+  `$1,\n  implementationTask: 'CORE-TASK-021' | 'CORE-TASK-038' = 'CORE-TASK-021'$2`,
   'canonical Service implementation task parameter'
 );
-skeletons = replaceRequired(
+skeletons = replacePattern(
   skeletons,
-  `    implementationTask: 'CORE-TASK-021',`,
-  `    implementationTask,`,
+  /implementationTask: 'CORE-TASK-021',/,
+  'implementationTask,',
   'canonical Service implementation task metadata'
 );
 
-const duplicateTrademarkBlock = `  canonicalServiceSkeleton(\n    'trademark-service',\n    'trademark',\n    'Core Trademark Service Contract Skeleton',\n    'trademark-service.md',\n    'Defines the Trademark service ownership boundary for legal and procedural protection records without implementing filing, prosecution, registry synchronization, deadline calculation, fee calculation, similarity scoring, or legal conclusions.',\n    ['Trademark service ownership, validation, lifecycle, relationship-reference, and reference boundary.'],\n    ['trademark, brand, jurisdiction, classification, document, evidence, and matter references'],\n    ['trademark boundary references'],\n    ['Official registry synchronization, filing execution, prosecution workflow, deadline engine, fee engine, registrability scoring, similarity search, or legal opinion automation.']\n  ),\n`;
-skeletons = replaceRequired(
+skeletons = replacePattern(
   skeletons,
-  duplicateTrademarkBlock,
-  '',
+  /\s{2}canonicalServiceSkeleton\(\r?\n\s{4}'trademark-service',[\s\S]*?\r?\n\s{2}\),\r?\n\s{2}\.\.\.stubServiceTargets/,
+  '\n  ...stubServiceTargets',
   'duplicate Trademark Service contract'
 );
 
-const legacyTrademarkLine = `  serviceSkeleton('trademark-reference-service', 'trademark', 'Trademark Reference Service Contract Skeleton', 'Skeleton contract boundary for trademark reference service responsibilities.', 'Establishes a service contract placeholder for trademark references without trademark-specific service behavior.', ['Trademark reference service contract boundary.'], ['trademark domain references'], ['trademark reference outputs']),`;
-const promotedTrademarkBlock = `  canonicalServiceSkeleton(\n    'trademark-service',\n    'trademark',\n    'Core Trademark Service Contract Skeleton',\n    'trademark-service.md',\n    'Defines the Trademark service ownership boundary for legal and procedural protection records without implementing filing, prosecution, registry synchronization, deadline calculation, fee calculation, similarity scoring, or legal conclusions.',\n    ['Trademark service ownership, validation, lifecycle, relationship-reference, and reference boundary.'],\n    ['trademark, brand, jurisdiction, classification, document, evidence, and matter references'],\n    ['trademark boundary references'],\n    ['Official registry synchronization, filing execution, prosecution workflow, deadline engine, fee engine, registrability scoring, similarity search, or legal opinion automation.'],\n    'CORE-TASK-038'\n  ),`;
-skeletons = replaceRequired(
+const promotedTrademarkBlock = `  canonicalServiceSkeleton(
+    'trademark-service',
+    'trademark',
+    'Core Trademark Service Contract Skeleton',
+    'trademark-service.md',
+    'Defines the Trademark service ownership boundary for legal and procedural protection records without implementing filing, prosecution, registry synchronization, deadline calculation, fee calculation, similarity scoring, or legal conclusions.',
+    ['Trademark service ownership, validation, lifecycle, relationship-reference, and reference boundary.'],
+    ['trademark, brand, jurisdiction, classification, document, evidence, and matter references'],
+    ['trademark boundary references'],
+    ['Official registry synchronization, filing execution, prosecution workflow, deadline engine, fee engine, registrability scoring, similarity search, or legal opinion automation.'],
+    'CORE-TASK-038'
+  ),`;
+skeletons = replacePattern(
   skeletons,
-  legacyTrademarkLine,
+  /^\s{2}serviceSkeleton\('trademark-reference-service',[\s\S]*?\),$/m,
   promotedTrademarkBlock,
   'legacy Trademark reference Service promotion'
 );
@@ -43,14 +53,14 @@ write('src/contracts/service/core-service-contract-skeletons.ts', skeletons);
 
 let validation = read('src/contracts/service/core-service-contract-validation.ts');
 validation = validation.replace(
-  `  ['trademark-service', 'trademark', 'Core Trademark Service Contract Skeleton', 'trademark-service.md', 'CORE-TASK-038'],\n`,
+  /^\s{2}\['trademark-service', 'trademark',[\s\S]*?'CORE-TASK-038'\],\r?\n/m,
   ''
 );
 validation = validation
   .replace('contracts.length !== 27', 'contracts.length !== 26')
   .replace('exactly 27 entries', 'exactly 26 entries');
 validation = validation.replace(
-  /\n\s*: canonicalEntry\[0\] === 'trademark-service'[\s\S]*?\n\s*: undefined;/,
+  /\r?\n\s*: canonicalEntry\[0\] === 'trademark-service'[\s\S]*?\r?\n\s*: undefined;/,
   '\n              : undefined;'
 );
 write('src/contracts/service/core-service-contract-validation.ts', validation);
@@ -58,14 +68,35 @@ write('src/contracts/service/core-service-contract-validation.ts', validation);
 let serviceTest = read('tests/unit/core-service-contract-skeletons.test.ts');
 serviceTest = serviceTest
   .replace('has exactly 27 entries', 'has exactly 26 entries')
-  .replace('CORE_SERVICE_CONTRACT_SKELETONS.length, 27', 'CORE_SERVICE_CONTRACT_SKELETONS.length, 26')
-  .replace("adds the CORE-TASK-038 Trademark Service contract at index 19", "promotes the legacy Trademark reference contract in place")
-  .replace('const trademark = CORE_SERVICE_CONTRACT_SKELETONS[19];', 'const trademark = CORE_SERVICE_CONTRACT_SKELETONS[4];')
-  .replace('const additions = CORE_SERVICE_CONTRACT_SKELETONS.slice(20);', 'const additions = CORE_SERVICE_CONTRACT_SKELETONS.slice(19);');
-serviceTest = replaceRequired(
+  .replace(
+    'CORE_SERVICE_CONTRACT_SKELETONS.length, 27',
+    'CORE_SERVICE_CONTRACT_SKELETONS.length, 26'
+  )
+  .replace(
+    'adds the CORE-TASK-038 Trademark Service contract at index 19',
+    'promotes the legacy Trademark reference contract in place'
+  )
+  .replace(
+    'const trademark = CORE_SERVICE_CONTRACT_SKELETONS[19];',
+    'const trademark = CORE_SERVICE_CONTRACT_SKELETONS[4];'
+  )
+  .replace(
+    'const additions = CORE_SERVICE_CONTRACT_SKELETONS.slice(20);',
+    'const additions = CORE_SERVICE_CONTRACT_SKELETONS.slice(19);'
+  );
+serviceTest = replacePattern(
   serviceTest,
-  `    assert.equal(trademark?.metadata?.behaviorImplementationTask, 'CORE-TASK-038');`,
-  `    assert.equal(trademark?.serviceType, 'trademark-service');\n    assert.equal(trademark?.sourcePath, 'books/book-02-core-specification/core-specs/services/trademark-service.md');\n    assert.equal(trademark?.metadata?.implementationTask, 'CORE-TASK-038');\n    assert.equal(trademark?.metadata?.behaviorImplementationTask, 'CORE-TASK-038');`,
+  /\s{4}assert\.equal\(trademark\?\.metadata\?\.behaviorImplementationTask, 'CORE-TASK-038'\);/,
+  `    assert.equal(trademark?.serviceType, 'trademark-service');
+    assert.equal(
+      trademark?.sourcePath,
+      'books/book-02-core-specification/core-specs/services/trademark-service.md'
+    );
+    assert.equal(trademark?.metadata?.implementationTask, 'CORE-TASK-038');
+    assert.equal(
+      trademark?.metadata?.behaviorImplementationTask,
+      'CORE-TASK-038'
+    );`,
   'Trademark promoted contract assertions'
 );
 write('tests/unit/core-service-contract-skeletons.test.ts', serviceTest);
@@ -75,13 +106,21 @@ for (const path of [
   'tests/unit/core-brand-service-core-lifecycle.test.ts'
 ]) {
   const current = read(path);
-  write(path, current.replaceAll("'trademark-reference-service'", "'trademark-service'"));
+  write(
+    path,
+    current.replaceAll(
+      "'trademark-reference-service'",
+      "'trademark-service'"
+    )
+  );
 }
 
 const cacheBust = `task038-contract-promotion-${Date.now()}`;
 const contracts = await import(`../src/contracts/index.ts?${cacheBust}`);
 const coverage = await import(`../src/contract-coverage/index.ts?${cacheBust}`);
-const mvp = await import(`../src/mvp-coverage/book-02-mvp-gap-baseline.ts?${cacheBust}`);
+const mvp = await import(
+  `../src/mvp-coverage/book-02-mvp-gap-baseline.ts?${cacheBust}`
+);
 
 const json = (value) => `${JSON.stringify(value, null, 2)}\n`;
 writeFileSync(
