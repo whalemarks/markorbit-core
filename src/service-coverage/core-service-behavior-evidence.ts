@@ -224,18 +224,17 @@ export const CORE_SERVICE_BEHAVIOR_EVIDENCE = [
     operations: CORE_EVIDENCE_IMPLEMENTED_OPERATIONS,
     provenMinimumCapabilities: CORE_EVIDENCE_MINIMUM_CAPABILITIES,
     unresolvedServiceOperations: [
-      'updateEvidence',
       'unlinkEvidenceSource',
-      'linkEvidenceTrademark',
-      'linkEvidenceBrand',
-      'linkEvidenceClassification',
       'linkEvidenceMatter',
-      'linkEvidenceJurisdiction',
-      'archiveEvidence'
+      'linkEvidenceJurisdiction'
     ],
-    implementationFiles: ['src/services/evidence/core-evidence-service.ts'],
+    implementationFiles: [
+      'src/services/evidence/core-evidence-service.ts',
+      'src/services/evidence/core-evidence-service-complete.ts'
+    ],
     testFiles: [
-      'tests/unit/core-evidence-service-proof-layer-foundation.test.ts'
+      'tests/unit/core-evidence-service-proof-layer-foundation.test.ts',
+      'tests/unit/core-evidence-service-mvp-completion.test.ts'
     ],
     fixtureFiles: [
       'fixtures/services/core-evidence-service-proof-layer-foundation.fixture.json'

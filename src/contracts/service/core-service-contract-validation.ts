@@ -192,15 +192,19 @@ const behaviorLocks = {
     ]
   },
   'evidence-service': {
-    task: 'CORE-TASK-042',
+    task: 'CORE-TASK-042B',
     operations: [
       'createEvidence',
       'getEvidence',
       'listEvidence',
+      'updateEvidence',
       'validateEvidenceReference',
       'linkEvidenceSource',
       'linkEvidenceClaim',
       'linkEvidenceDocument',
+      'linkEvidenceTrademark',
+      'linkEvidenceBrand',
+      'linkEvidenceClassification',
       'requireEvidenceReview',
       'reviewEvidence',
       'changeEvidenceStatus'

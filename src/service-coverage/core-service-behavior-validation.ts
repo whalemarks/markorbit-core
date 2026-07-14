@@ -228,14 +228,9 @@ const expectedEvidence = [
     operations: CORE_EVIDENCE_IMPLEMENTED_OPERATIONS,
     capabilities: CORE_EVIDENCE_MINIMUM_CAPABILITIES,
     unresolved: [
-      'updateEvidence',
       'unlinkEvidenceSource',
-      'linkEvidenceTrademark',
-      'linkEvidenceBrand',
-      'linkEvidenceClassification',
       'linkEvidenceMatter',
-      'linkEvidenceJurisdiction',
-      'archiveEvidence'
+      'linkEvidenceJurisdiction'
     ],
     fixtureOverride: 'evidenceFixture',
     fixtureValidator: validateCoreEvidenceServiceEvidenceFixture

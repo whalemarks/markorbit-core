@@ -161,16 +161,20 @@ const canonicalServiceSkeleton = (
                   }
                 : serviceType === 'evidence-service'
                   ? {
-                      behaviorImplementationTask: 'CORE-TASK-042',
+                      behaviorImplementationTask: 'CORE-TASK-042B',
                       behaviorDepth: 'level_2_3',
                       implementedOperations: [
                         'createEvidence',
                         'getEvidence',
                         'listEvidence',
+                        'updateEvidence',
                         'validateEvidenceReference',
                         'linkEvidenceSource',
                         'linkEvidenceClaim',
                         'linkEvidenceDocument',
+                        'linkEvidenceTrademark',
+                        'linkEvidenceBrand',
+                        'linkEvidenceClassification',
                         'requireEvidenceReview',
                         'reviewEvidence',
                         'changeEvidenceStatus'
