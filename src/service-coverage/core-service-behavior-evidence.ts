@@ -23,6 +23,10 @@ import {
   CORE_DOCUMENT_IMPLEMENTED_OPERATIONS,
   CORE_DOCUMENT_MINIMUM_CAPABILITIES
 } from '../services/document/index.ts';
+import {
+  CORE_EVIDENCE_IMPLEMENTED_OPERATIONS,
+  CORE_EVIDENCE_MINIMUM_CAPABILITIES
+} from '../services/evidence/index.ts';
 
 export interface CoreServiceBehaviorEvidence {
   readonly requirementId: string;
@@ -207,6 +211,34 @@ export const CORE_SERVICE_BEHAVIOR_EVIDENCE = [
     ],
     fixtureFiles: [
       'fixtures/services/core-document-service-governed-artifact-foundation.fixture.json'
+    ]
+  },
+  {
+    requirementId: 'must-service-evidence-service',
+    serviceType: 'evidence-service',
+    domainId: 'evidence',
+    contractId: 'core-service-evidence-service-contract',
+    sourcePath:
+      'books/book-02-core-specification/core-specs/services/evidence-service.md',
+    currentDepth: 'level_2_3',
+    operations: CORE_EVIDENCE_IMPLEMENTED_OPERATIONS,
+    provenMinimumCapabilities: CORE_EVIDENCE_MINIMUM_CAPABILITIES,
+    unresolvedServiceOperations: [
+      'updateEvidence',
+      'unlinkEvidenceSource',
+      'linkEvidenceTrademark',
+      'linkEvidenceBrand',
+      'linkEvidenceClassification',
+      'linkEvidenceMatter',
+      'linkEvidenceJurisdiction',
+      'archiveEvidence'
+    ],
+    implementationFiles: ['src/services/evidence/core-evidence-service.ts'],
+    testFiles: [
+      'tests/unit/core-evidence-service-proof-layer-foundation.test.ts'
+    ],
+    fixtureFiles: [
+      'fixtures/services/core-evidence-service-proof-layer-foundation.fixture.json'
     ]
   }
 ] as const satisfies readonly CoreServiceBehaviorEvidence[];

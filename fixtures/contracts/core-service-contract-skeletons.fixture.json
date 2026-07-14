@@ -294,17 +294,23 @@
     }
   },
   {
-    "id": "core-service-evidence-reference-service-contract",
-    "serviceType": "evidence-reference-service",
+    "id": "core-service-evidence-service-contract",
+    "serviceType": "evidence-service",
     "domainId": "evidence",
-    "name": "Evidence Reference Service Contract Skeleton",
-    "description": "Skeleton contract boundary for evidence reference service responsibilities.",
+    "name": "Core Evidence Service Contract Skeleton",
+    "description": "Canonical metadata skeleton for the evidence Core Service boundary.",
     "status": "active",
     "book": "Book 02 — MarkOrbit Core Specification",
-    "purpose": "Establishes a service contract placeholder for evidence references without evidence processing behavior.",
-    "owns": ["Evidence reference service contract boundary."],
-    "consumes": ["evidence domain references"],
-    "produces": ["evidence reference outputs"],
+    "purpose": "Defines the Evidence service ownership boundary for governed proof-layer records without implementing automatic sufficiency decisions, legal conclusions, OCR, authenticity verification, evidence-package runtime, or external integrations.",
+    "owns": [
+      "Evidence service ownership, proof purpose, source linkage, claim linkage, Document linkage, professional review gating, lifecycle, validation, and reference boundary."
+    ],
+    "consumes": [
+      "evidence, document, trademark, brand, classification, jurisdiction, matter, order, communication, user, permission, and policy references"
+    ],
+    "produces": [
+      "evidence boundary references, governed proof validation results, and Event trace handoff"
+    ],
     "allowedOperations": [
       "reference lookup category",
       "boundary evaluation category",
@@ -313,9 +319,32 @@
     "nonGoals": [
       "Executable service method definitions or service implementations.",
       "API routes, database access, workflow runtime, or Book 03 execution behavior.",
-      "Product UI behavior, concrete business logic, or AI agent authority."
+      "Product UI behavior, concrete business logic, or AI agent authority.",
+      "Automatic evidence sufficiency scoring, professional legal conclusion, OCR or extraction, authenticity verification, litigation chronology, Evidence Package runtime, external evidence integrations, or filing execution."
     ],
-    "createdAt": "2026-07-09T00:00:00.000Z"
+    "createdAt": "2026-07-11T00:00:00.000Z",
+    "sourcePath": "books/book-02-core-specification/core-specs/services/evidence-service.md",
+    "implementationDepth": "validated_skeleton",
+    "metadata": {
+      "specificationRepository": "whalemarks/markorbit-publication",
+      "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+      "specificationPath": "books/book-02-core-specification/",
+      "implementationTask": "CORE-TASK-042",
+      "behaviorImplementationTask": "CORE-TASK-042",
+      "behaviorDepth": "level_2_3",
+      "implementedOperations": [
+        "createEvidence",
+        "getEvidence",
+        "listEvidence",
+        "validateEvidenceReference",
+        "linkEvidenceSource",
+        "linkEvidenceClaim",
+        "linkEvidenceDocument",
+        "requireEvidenceReview",
+        "reviewEvidence",
+        "changeEvidenceStatus"
+      ]
+    }
   },
   {
     "id": "core-service-communication-reference-service-contract",

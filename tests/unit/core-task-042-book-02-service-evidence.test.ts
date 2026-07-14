@@ -8,11 +8,12 @@ const implementedServiceIds = [
   'must-service-trademark-service',
   'must-service-jurisdiction-service',
   'must-service-classification-service',
-  'must-service-document-service'
+  'must-service-document-service',
+  'must-service-evidence-service'
 ];
 
-describe('CORE-TASK-041 Book 02 Service evidence', () => {
-  it('promotes Customer through Document in dependency order', () => {
+describe('CORE-TASK-042 Book 02 Service evidence', () => {
+  it('promotes Customer through Evidence in dependency order', () => {
     const services = BOOK_02_MVP_GAP_BASELINE.requirements.filter(
       (requirement) => requirement.layer === 'service'
     );
@@ -20,9 +21,7 @@ describe('CORE-TASK-041 Book 02 Service evidence', () => {
       (requirement) => requirement.currentDisposition === 'meets_required_depth'
     );
     assert.deepEqual(
-      implemented
-        .slice(0, implementedServiceIds.length)
-        .map((requirement) => requirement.id),
+      implemented.map((requirement) => requirement.id),
       implementedServiceIds
     );
     assert.ok(
@@ -30,9 +29,26 @@ describe('CORE-TASK-041 Book 02 Service evidence', () => {
         (requirement) => requirement.currentDepth === 'level_2_3'
       )
     );
+    assert.equal(
+      services.filter(
+        (requirement) =>
+          requirement.currentDisposition === 'validated_skeleton_only'
+      ).length,
+      11
+    );
   });
 
-  it('keeps global Service acceptance unresolved after later Service batches', () => {
+  it('derives 39 / 3 / 50 and leaves global Service acceptance unresolved', () => {
+    assert.deepEqual(BOOK_02_MVP_GAP_BASELINE.summary.mustBuildNow, {
+      total: 115,
+      meets_required_depth: 39,
+      partial_evidence: 3,
+      validated_skeleton_only: 50,
+      boundary_scaffold_only: 5,
+      semantic_overlap_only: 18,
+      fixture_only: 0,
+      missing: 0
+    });
     const criterion = BOOK_02_MVP_GAP_BASELINE.acceptanceCriteria.find(
       (entry) => entry.id === 'must-build-services-own-behavior'
     );

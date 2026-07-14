@@ -519,7 +519,7 @@
         },
         "service": {
           "status": "validated_skeleton",
-          "contractIds": ["core-service-evidence-reference-service-contract"]
+          "contractIds": ["core-service-evidence-service-contract"]
         },
         "api": {
           "status": "validated_skeleton",

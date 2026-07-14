@@ -31,7 +31,8 @@ export const CORE_FIXTURE_TYPES = [
   'core_trademark_service_core_lifecycle',
   'core_jurisdiction_service_core_lifecycle',
   'core_classification_service_core_scope_validation',
-  'core_document_service_governed_artifact_foundation'
+  'core_document_service_governed_artifact_foundation',
+  'core_evidence_service_proof_layer_foundation'
 ] as const;
 
 export type CoreFixtureType = (typeof CORE_FIXTURE_TYPES)[number];
@@ -235,6 +236,12 @@ export const CORE_FIXTURE_MANIFEST = [
     id: 'core-document-service-governed-artifact-foundation',
     type: 'core_document_service_governed_artifact_foundation',
     path: 'fixtures/services/core-document-service-governed-artifact-foundation.fixture.json',
+    required: true
+  },
+  {
+    id: 'core-evidence-service-proof-layer-foundation',
+    type: 'core_evidence_service_proof_layer_foundation',
+    path: 'fixtures/services/core-evidence-service-proof-layer-foundation.fixture.json',
     required: true
   },
   {

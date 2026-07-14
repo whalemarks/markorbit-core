@@ -944,10 +944,10 @@
     "createdAt": "2026-07-11T00:00:00.000Z"
   },
   {
-    "id": "core-service-evidence-reference-service-contract",
+    "id": "core-service-evidence-service-contract",
     "type": "service",
-    "name": "Evidence Reference Service Contract Skeleton",
-    "description": "Skeleton contract boundary for evidence reference service responsibilities.",
+    "name": "Core Evidence Service Contract Skeleton",
+    "description": "Canonical metadata skeleton for the evidence Core Service boundary.",
     "status": "active",
     "scope": {
       "domainId": "evidence"
@@ -955,7 +955,7 @@
     "version": 1,
     "book": "Book 02 — MarkOrbit Core Specification",
     "source": "CORE_SERVICE_CONTRACT_SKELETONS",
-    "createdAt": "2026-07-09T00:00:00.000Z"
+    "createdAt": "2026-07-11T00:00:00.000Z"
   },
   {
     "id": "core-service-communication-reference-service-contract",
