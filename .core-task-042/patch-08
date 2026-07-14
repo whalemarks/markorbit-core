@@ -1,0 +1,436 @@
+ value: {
++          isValid: false,
++          evidenceReferenceId: input.evidenceReferenceId,
++          evidenceType: null,
++          evidencePurpose: null,
++          evidenceStatus: null,
++          reviewStatus: null,
++          sourceType: null,
++          reasonCode: 'InvalidReference',
++          reviewRequired: false,
++          sufficiencyHint: null,
++          confidentialityHint: null,
++          sourceLinked: false,
++          claimLinked: false,
++          documentLinked: false
++        }
++      };
++    }
++    const record = this.deps.store.get(input.evidenceReferenceId);
++    if (
++      !record ||
++      organizationScopeOf(record) !==
++        (input.governance.authorizedOrganizationReferenceId ?? null)
++    ) {
++      return {
++        ok: true,
++        value: {
++          isValid: false,
++          evidenceReferenceId: input.evidenceReferenceId,
++          evidenceType: null,
++          evidencePurpose: null,
++          evidenceStatus: null,
++          reviewStatus: null,
++          sourceType: null,
++          reasonCode: 'NotFound',
++          reviewRequired: false,
++          sufficiencyHint: null,
++          confidentialityHint: null,
++          sourceLinked: false,
++          claimLinked: false,
++          documentLinked: false
++        }
++      };
++    }
++    return {
++      ok: true,
++      value: immutable(
++        validationResult(
++          record,
++          input.governance.policy.restrictedFieldsOmitted
++        )
++      )
++    };
++  }
++
++  linkEvidenceSource(input: {
++    readonly evidenceReferenceId: string;
++    readonly sourceType: CoreEvidenceSourceType;
++    readonly sourceReferenceId: string;
++    readonly idempotencyKey?: string | null;
++    readonly governance: CoreEvidenceGovernanceContext;
++  }): CoreBehaviorResult<CoreEvidenceServiceRecord> {
++    const governed = ensureGovernance(input.governance, {
++      operation: 'evidence.link_source',
++      permission: 'evidence:link_source',
++      policyScope: 'evidence.source',
++      target: input.evidenceReferenceId
++    });
++    if (!governed.ok) return governed;
++    const source = validateSourceLink(
++      {
++        sourceType: input.sourceType,
++        sourceReferenceId: input.sourceReferenceId
++      },
++      this.deps.relatedReferenceRegistry
++    );
++    if (!source.ok) return source;
++    return this.mutate(
++      {
++        operationName: 'linkEvidenceSource',
++        idempotencyKey: input.idempotencyKey,
++        evidenceReferenceId: input.evidenceReferenceId,
++        governance: input.governance,
++        request: {
++          sourceType: input.sourceType,
++          sourceReferenceId: input.sourceReferenceId
++        }
++      },
++      (current, now) => {
++        if (!recordMutable(current.evidenceStatus)) {
++          return safe(
++            'InvalidEvidenceTransition',
++            'Evidence source cannot change after professional finalization.',
++            input.governance.correlationId
++          );
++        }
++        if (current.sourceLinks.some((link) => sourceKey(link) === sourceKey(source.value))) {
++          return safe(
++            'EvidenceSourceAlreadyLinked',
++            'Evidence source is already linked.',
++            input.governance.correlationId
++          );
++        }
++        const objectRecord = updateObjectRecord(
++          current,
++          now,
++          input.governance.permission.actorReferenceId,
++          current.evidenceStatus
++        );
++        if (!objectRecord.ok) return objectRecord;
++        const nextLinks = [...current.sourceLinks, source.value];
++        return {
++          ok: true,
++          value: {
++            record: {
++              ...current,
++              sourceLinks: nextLinks,
++              objectRecord: objectRecord.value
++            },
++            eventType: 'core-object-updated',
++            eventAction: CORE_EVENT_ACTIONS.updated,
++            eventPayload: {
++              evidenceReferenceId: input.evidenceReferenceId,
++              evidenceStatus: current.evidenceStatus,
++              sourceType: input.sourceType,
++              sourceCount: nextLinks.length
++            }
++          }
++        };
++      }
++    );
++  }
++
++  linkEvidenceClaim(input: {
++    readonly evidenceReferenceId: string;
++    readonly claimReferenceId: string;
++    readonly idempotencyKey?: string | null;
++    readonly governance: CoreEvidenceGovernanceContext;
++  }): CoreBehaviorResult<CoreEvidenceServiceRecord> {
++    const governed = ensureGovernance(input.governance, {
++      operation: 'evidence.link_claim',
++      permission: 'evidence:link_claim',
++      policyScope: 'evidence.claim',
++      target: input.evidenceReferenceId
++    });
++    if (!governed.ok) return governed;
++    if (!controlledReference.test(input.claimReferenceId)) {
++      return safe(
++        'InvalidEvidenceClaimReference',
++        'Evidence claim reference is invalid.',
++        input.governance.correlationId
++      );
++    }
++    return this.mutate(
++      {
++        operationName: 'linkEvidenceClaim',
++        idempotencyKey: input.idempotencyKey,
++        evidenceReferenceId: input.evidenceReferenceId,
++        governance: input.governance,
++        request: { claimReferenceId: input.claimReferenceId }
++      },
++      (current, now) => {
++        if (!recordMutable(current.evidenceStatus)) {
++          return safe(
++            'InvalidEvidenceTransition',
++            'Evidence claim cannot change after professional finalization.',
++            input.governance.correlationId
++          );
++        }
++        if (current.claimReferenceIds.includes(input.claimReferenceId)) {
++          return safe(
++            'EvidenceClaimAlreadyLinked',
++            'Evidence claim is already linked.',
++            input.governance.correlationId
++          );
++        }
++        const objectRecord = updateObjectRecord(
++          current,
++          now,
++          input.governance.permission.actorReferenceId,
++          current.evidenceStatus
++        );
++        if (!objectRecord.ok) return objectRecord;
++        const nextClaims = [
++          ...current.claimReferenceIds,
++          input.claimReferenceId
++        ];
++        return {
++          ok: true,
++          value: {
++            record: {
++              ...current,
++              claimReferenceIds: nextClaims,
++              objectRecord: objectRecord.value
++            },
++            eventType: 'core-object-updated',
++            eventAction: CORE_EVENT_ACTIONS.updated,
++            eventPayload: {
++              evidenceReferenceId: input.evidenceReferenceId,
++              evidenceStatus: current.evidenceStatus,
++              claimCount: nextClaims.length
++            }
++          }
++        };
++      }
++    );
++  }
++
++  linkEvidenceDocument(input: {
++    readonly evidenceReferenceId: string;
++    readonly documentReferenceId: string;
++    readonly idempotencyKey?: string | null;
++    readonly governance: CoreEvidenceGovernanceContext;
++  }): CoreBehaviorResult<CoreEvidenceServiceRecord> {
++    const governed = ensureGovernance(input.governance, {
++      operation: 'evidence.link_document',
++      permission: 'evidence:link_document',
++      policyScope: 'evidence.document',
++      target: input.evidenceReferenceId
++    });
++    if (!governed.ok) return governed;
++    const document = validateDocumentReferenceRecord(
++      this.deps.relatedReferenceRegistry,
++      input.documentReferenceId
++    );
++    if (!document.ok) return document;
++    return this.mutate(
++      {
++        operationName: 'linkEvidenceDocument',
++        idempotencyKey: input.idempotencyKey,
++        evidenceReferenceId: input.evidenceReferenceId,
++        governance: input.governance,
++        request: { documentReferenceId: input.documentReferenceId }
++      },
++      (current, now) => {
++        if (!recordMutable(current.evidenceStatus)) {
++          return safe(
++            'InvalidEvidenceTransition',
++            'Evidence Document cannot change after professional finalization.',
++            input.governance.correlationId
++          );
++        }
++        if (current.documentReferenceIds.includes(input.documentReferenceId)) {
++          return safe(
++            'EvidenceDocumentAlreadyLinked',
++            'Evidence Document is already linked.',
++            input.governance.correlationId
++          );
++        }
++        const objectRecord = updateObjectRecord(
++          current,
++          now,
++          input.governance.permission.actorReferenceId,
++          current.evidenceStatus
++        );
++        if (!objectRecord.ok) return objectRecord;
++        const nextDocuments = [
++          ...current.documentReferenceIds,
++          input.documentReferenceId
++        ];
++        return {
++          ok: true,
++          value: {
++            record: {
++              ...current,
++              documentReferenceIds: nextDocuments,
++              objectRecord: objectRecord.value
++            },
++            eventType: 'core-object-updated',
++            eventAction: CORE_EVENT_ACTIONS.updated,
++            eventPayload: {
++              evidenceReferenceId: input.evidenceReferenceId,
++              evidenceStatus: current.evidenceStatus,
++              documentCount: nextDocuments.length
++            }
++          }
++        };
++      }
++    );
++  }
++
++  requireEvidenceReview(input: {
++    readonly evidenceReferenceId: string;
++    readonly reviewNoteReference: string;
++    readonly idempotencyKey?: string | null;
++    readonly governance: CoreEvidenceGovernanceContext;
++  }): CoreBehaviorResult<CoreEvidenceServiceRecord> {
++    const governed = ensureGovernance(input.governance, {
++      operation: 'evidence.require_review',
++      permission: 'evidence:require_review',
++      policyScope: 'evidence.review',
++      target: input.evidenceReferenceId
++    });
++    if (!governed.ok) return governed;
++    if (!opaque.test(input.reviewNoteReference)) {
++      return safe(
++        'EvidenceReviewNoteRequired',
++        'Evidence review note reference is required.',
++        input.governance.correlationId
++      );
++    }
++    return this.mutate(
++      {
++        operationName: 'requireEvidenceReview',
++        idempotencyKey: input.idempotencyKey,
++        evidenceReferenceId: input.evidenceReferenceId,
++        governance: input.governance,
++        request: { reviewNoteReference: input.reviewNoteReference }
++      },
++      (current, now) => {
++        if (!['Draft', 'Collected', 'Insufficient'].includes(current.evidenceStatus)) {
++          return safe(
++            'InvalidEvidenceTransition',
++            'Evidence cannot enter review from the current status.',
++            input.governance.correlationId
++          );
++        }
++        const objectRecord = updateObjectRecord(
++          current,
++          now,
++          input.governance.permission.actorReferenceId,
++          'ReviewRequired'
++        );
++        if (!objectRecord.ok) return objectRecord;
++        const nextReviewStatus =
++          current.reviewStatus === 'AIReviewedDraft'
++            ? 'AIReviewedDraft'
++            : 'Unreviewed';
++        return {
++          ok: true,
++          value: {
++            record: {
++              ...current,
++              evidenceStatus: 'ReviewRequired',
++              reviewStatus: nextReviewStatus,
++              objectRecord: objectRecord.value
++            },
++            eventType: 'core-object-status-changed',
++            eventAction: CORE_EVENT_ACTIONS.requested,
++            eventPayload: {
++              evidenceReferenceId: input.evidenceReferenceId,
++              previousStatus: current.evidenceStatus,
++              newStatus: 'ReviewRequired',
++              reviewStatus: nextReviewStatus,
++              sourceCount: current.sourceLinks.length,
++              claimCount: current.claimReferenceIds.length,
++              documentCount: current.documentReferenceIds.length
++            }
++          }
++        };
++      }
++    );
++  }
++
++  reviewEvidence(input: {
++    readonly evidenceReferenceId: string;
++    readonly targetReviewStatus: CoreEvidenceReviewDecisionStatus;
++    readonly reviewNoteReference: string;
++    readonly idempotencyKey?: string | null;
++    readonly governance: CoreEvidenceGovernanceContext;
++  }): CoreBehaviorResult<CoreEvidenceServiceRecord> {
++    const governed = ensureGovernance(input.governance, {
++      operation: 'evidence.review',
++      permission: 'evidence:review',
++      policyScope: 'evidence.review',
++      target: input.evidenceReferenceId
++    });
++    if (!governed.ok) return governed;
++    if (!opaque.test(input.reviewNoteReference)) {
++      return safe(
++        'EvidenceReviewNoteRequired',
++        'Evidence review note reference is required.',
++        input.governance.correlationId
++      );
++    }
++    const requestedReviewStatus = String(input.targetReviewStatus);
++    if (
++      !included(CORE_EVIDENCE_REVIEW_STATUSES, requestedReviewStatus) ||
++      requestedReviewStatus === 'Unreviewed' ||
++      requestedReviewStatus === 'AIReviewedDraft'
++    ) {
++      return safe(
++        'InvalidEvidenceReviewStatus',
++        'Evidence review decision is invalid.',
++        input.governance.correlationId
++      );
++    }
++    if (
++      input.governance.policy.policyDecision !== 'HumanReviewRequired' ||
++      !input.governance.review.humanReviewRequired ||
++      input.governance.review.reviewStatus !== 'Completed' ||
++      input.governance.review.reviewDecision !== 'Approved' ||
++      !input.governance.review.reviewerUserReferenceId
++    ) {
++      return safe(
++        'HumanReviewRequired',
++        'Completed human review is required.',
++        input.governance.correlationId
++      );
++    }
++    return this.mutate(
++      {
++        operationName: 'reviewEvidence',
++        idempotencyKey: input.idempotencyKey,
++        evidenceReferenceId: input.evidenceReferenceId,
++        governance: input.governance,
++        request: {
++          targetReviewStatus: input.targetReviewStatus,
++          reviewNoteReference: input.reviewNoteReference
++        }
++      },
++      (current, now) => {
++        if (current.evidenceStatus !== 'ReviewRequired') {
++          return safe(
++            'InvalidEvidenceTransition',
++            'Evidence review requires ReviewRequired status.',
++            input.governance.correlationId
++          );
++        }
++        const statusByReview: Record<
++          CoreEvidenceReviewDecisionStatus,
++          CoreEvidenceStatus
++        > = {
++          HumanReviewed: 'Reviewed',
++          AcceptedForUse: 'Accepted',
++          Rejected: 'Rejected',
++          NeedsMoreEvidence: 'Insufficient',
++          NeedsTranslation: 'Insufficient',
++          NeedsSourceVerification: 'Insufficient'
++        };
++        const targetStatus = statusByReview[input.targetReviewStatus];
++        const objectRecord = updateObjectRecord(
++          current,
++          now,
++          input.governance.permission.actorReferenceId,
++          targetSt
