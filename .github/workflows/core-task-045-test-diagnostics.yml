@@ -26,7 +26,7 @@ jobs:
           node-version: 22
       - run: corepack enable
       - run: pnpm install --frozen-lockfile
-      - name: Capture complete test result
+      - name: Capture failure context
         shell: bash
         run: |
           set +e
@@ -34,8 +34,12 @@ jobs:
           code=$?
           {
             echo "exit_code=$code"
-            echo "--- test log ---"
-            tail -n 1000 /tmp/core-task-045-test.log
+            echo "--- not ok context ---"
+            grep -n -B 30 -A 80 'not ok' /tmp/core-task-045-test.log || true
+            echo "--- assertion context ---"
+            grep -n -B 15 -A 50 -E 'failureType|AssertionError|ERR_ASSERTION|actual:|expected:' /tmp/core-task-045-test.log || true
+            echo "--- summary ---"
+            tail -n 20 /tmp/core-task-045-test.log
           } > .core-task-045-test-diagnostics.txt
           exit 0
       - name: Commit diagnostics
@@ -44,5 +48,5 @@ jobs:
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
           git add .core-task-045-test-diagnostics.txt
-          git commit -m 'CORE-TASK-045 — capture test diagnostics'
+          git commit -m 'CORE-TASK-045 — capture failure context'
           git push origin HEAD:agent/core-task-045-opportunity-service-foundation
