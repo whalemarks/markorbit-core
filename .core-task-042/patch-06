@@ -1,0 +1,481 @@
+ctedObjectType: EVIDENCE_OBJECT_TYPE,
++    expectedDomain: EVIDENCE_DOMAIN
++  });
++  return resolved.ok
++    ? resolved
++    : safe('InvalidEvidenceReference', 'Evidence reference is invalid.');
++}
++
++function validateDocumentReferenceRecord(
++  registry: CoreReferenceRegistry,
++  referenceId: string
++): CoreBehaviorResult<CoreReferenceRecord> {
++  const resolved = registry.resolve({
++    referenceId,
++    expectedObjectType: DOCUMENT_OBJECT_TYPE,
++    expectedDomain: DOCUMENT_DOMAIN
++  });
++  return resolved.ok
++    ? resolved
++    : safe(
++        'InvalidEvidenceDocumentReference',
++        'Evidence Document reference is invalid.'
++      );
++}
++
++function validateRequestingService(
++  requestingDomain: string,
++  requestingService: string,
++  directory: readonly CoreEvidenceRequestingServiceDirectoryEntry[]
++): CoreBehaviorResult<null> {
++  if (!CORE_DOMAIN_REGISTRY.some((domain) => domain.id === requestingDomain)) {
++    return safe('InvalidEvidenceReference', 'Requesting Domain is invalid.');
++  }
++  const service = directory.find(
++    (entry) =>
++      entry.serviceType === requestingService &&
++      entry.domainId === requestingDomain
++  );
++  return service
++    ? { ok: true, value: null }
++    : safe('InvalidEvidenceReference', 'Requesting Service is invalid.');
++}
++
++function idempotencyScope(
++  governance: CoreEvidenceGovernanceContext,
++  operation: string
++): string {
++  return [
++    CONTRACT_ID,
++    operation,
++    governance.authorizedOrganizationReferenceId ??
++      governance.permission.actorReferenceId ??
++      'anonymous'
++  ].join('|');
++}
++
++function eventTrace(input: {
++  readonly id: CoreEventId;
++  readonly type: string;
++  readonly action: (typeof CORE_EVENT_ACTIONS)[keyof typeof CORE_EVENT_ACTIONS];
++  readonly evidenceReferenceId: string;
++  readonly occurredAt: string;
++  readonly correlationId: string;
++  readonly auditContextReferenceId: string;
++  readonly payload: Record<string, unknown>;
++}): CoreEventTraceRecord {
++  return {
++    auditContextReferenceId: input.auditContextReferenceId,
++    visibility: 'Internal',
++    event: {
++      id: input.id,
++      type: createCoreEventType(input.type),
++      action: input.action,
++      domainId: EVIDENCE_DOMAIN,
++      object: {
++        id: createCoreObjectId(input.evidenceReferenceId),
++        type: createCoreObjectType(EVIDENCE_OBJECT_TYPE),
++        domainId: EVIDENCE_DOMAIN
++      },
++      source: { actorType: 'service', actorId: CONTRACT_ID },
++      occurredAt: input.occurredAt,
++      correlationId: input.correlationId,
++      payload: input.payload
++    }
++  };
++}
++
++function validStatusReviewPair(
++  status: CoreEvidenceStatus,
++  reviewStatus: CoreEvidenceReviewStatus
++): boolean {
++  if (status === 'Draft' || status === 'Collected') {
++    return reviewStatus === 'Unreviewed' || reviewStatus === 'AIReviewedDraft';
++  }
++  if (status === 'ReviewRequired') {
++    return reviewStatus === 'Unreviewed' || reviewStatus === 'AIReviewedDraft';
++  }
++  if (status === 'Reviewed') return reviewStatus === 'HumanReviewed';
++  if (status === 'Accepted') return reviewStatus === 'AcceptedForUse';
++  if (status === 'Rejected') return reviewStatus === 'Rejected';
++  if (status === 'Insufficient') {
++    return (
++      reviewStatus === 'NeedsMoreEvidence' ||
++      reviewStatus === 'NeedsTranslation' ||
++      reviewStatus === 'NeedsSourceVerification'
++    );
++  }
++  if (status === 'Filed') return reviewStatus === 'AcceptedForUse';
++  return true;
++}
++
++function uniqueStrings(values: readonly string[]): boolean {
++  return new Set(values).size === values.length;
++}
++
++function sourceKey(link: CoreEvidenceSourceLink): string {
++  return `${link.sourceType}|${link.sourceReferenceId}`;
++}
++
++function validateSourceLink(
++  link: CoreEvidenceSourceLink,
++  registry: CoreReferenceRegistry
++): CoreBehaviorResult<CoreEvidenceSourceLink> {
++  if (
++    !included(CORE_EVIDENCE_SOURCE_TYPES, link.sourceType) ||
++    link.sourceType === 'Unknown'
++  ) {
++    return safe('InvalidEvidenceSourceType', 'Evidence source type is invalid.');
++  }
++  if (!controlledReference.test(link.sourceReferenceId)) {
++    return safe(
++      'InvalidEvidenceSourceReference',
++      'Evidence source reference is invalid.'
++    );
++  }
++  if (link.sourceType === 'DocumentReference') {
++    const document = validateDocumentReferenceRecord(
++      registry,
++      link.sourceReferenceId
++    );
++    if (!document.ok) return document;
++  }
++  return { ok: true, value: immutable(link) };
++}
++
++function validateEvidenceRecord(
++  record: CoreEvidenceServiceRecord,
++  publicReferenceRecord: CoreReferenceRecord,
++  registry: CoreReferenceRegistry
++): CoreBehaviorResult<CoreEvidenceServiceRecord> {
++  if (!included(CORE_EVIDENCE_TYPES, record.evidenceType)) {
++    return safe('InvalidEvidenceType', 'Evidence type is invalid.');
++  }
++  if (!included(CORE_EVIDENCE_PURPOSES, record.evidencePurpose)) {
++    return safe('InvalidEvidencePurpose', 'Evidence purpose is invalid.');
++  }
++  if (!included(CORE_EVIDENCE_STATUSES, record.evidenceStatus)) {
++    return safe('InvalidEvidenceStatus', 'Evidence status is invalid.');
++  }
++  if (
++    !included(CORE_EVIDENCE_REVIEW_STATUSES, record.reviewStatus) ||
++    !validStatusReviewPair(record.evidenceStatus, record.reviewStatus)
++  ) {
++    return safe(
++      'InvalidEvidenceReviewStatus',
++      'Evidence review status is invalid.'
++    );
++  }
++  if (
++    !included(
++      CORE_EVIDENCE_CONFIDENTIALITY_LEVELS,
++      record.confidentialityLevel
++    )
++  ) {
++    return safe(
++      'InvalidEvidenceConfidentialityLevel',
++      'Evidence confidentiality level is invalid.'
++    );
++  }
++  if (
++    !included(
++      CORE_EVIDENCE_SOURCE_RELIABILITIES,
++      record.sourceReliability
++    )
++  ) {
++    return safe(
++      'InvalidEvidenceSourceReliability',
++      'Evidence source reliability is invalid.'
++    );
++  }
++  if (
++    record.objectRecord.domainId !== EVIDENCE_DOMAIN ||
++    record.objectRecord.objectType !== EVIDENCE_OBJECT_TYPE ||
++    record.objectRecord.objectContractId !== EVIDENCE_OBJECT_CONTRACT_ID ||
++    record.objectRecord.publicReferenceId !==
++      publicReferenceRecord.referenceId ||
++    record.objectRecord.status !==
++      CORE_EVIDENCE_STATUS_TO_OBJECT_STATUS[record.evidenceStatus]
++  ) {
++    return safe(
++      'EvidenceObjectMismatch',
++      'Evidence Object foundation does not match.',
++      record.objectRecord.auditMetadata.correlationId
++    );
++  }
++  if (
++    record.evidencePurpose === 'Unknown' &&
++    record.claimReferenceIds.length === 0
++  ) {
++    return safe(
++      'EvidencePurposeRequired',
++      'Evidence requires a proof purpose or claim relationship.',
++      record.objectRecord.auditMetadata.correlationId
++    );
++  }
++  if (record.sourceLinks.length === 0) {
++    return safe(
++      'EvidenceSourceRequired',
++      'Evidence requires at least one source.',
++      record.objectRecord.auditMetadata.correlationId
++    );
++  }
++  const sourceKeys = record.sourceLinks.map(sourceKey);
++  if (!uniqueStrings(sourceKeys)) {
++    return safe(
++      'EvidenceSourceAlreadyLinked',
++      'Evidence source links must be unique.',
++      record.objectRecord.auditMetadata.correlationId
++    );
++  }
++  for (const link of record.sourceLinks) {
++    const validSource = validateSourceLink(link, registry);
++    if (!validSource.ok) return validSource;
++  }
++  if (
++    !uniqueStrings(record.claimReferenceIds) ||
++    record.claimReferenceIds.some((reference) =>
++      !controlledReference.test(reference)
++    )
++  ) {
++    return safe(
++      'InvalidEvidenceClaimReference',
++      'Evidence claim references are invalid.',
++      record.objectRecord.auditMetadata.correlationId
++    );
++  }
++  if (!uniqueStrings(record.documentReferenceIds)) {
++    return safe(
++      'EvidenceDocumentAlreadyLinked',
++      'Evidence Document references must be unique.',
++      record.objectRecord.auditMetadata.correlationId
++    );
++  }
++  for (const documentReferenceId of record.documentReferenceIds) {
++    const validDocument = validateDocumentReferenceRecord(
++      registry,
++      documentReferenceId
++    );
++    if (!validDocument.ok) return validDocument;
++  }
++  const objectValidation = validateCoreMvpObjectBaseRecord(
++    record.objectRecord,
++    {
++      publicReferenceRecord,
++      relatedReferenceRegistry: registry
++    }
++  );
++  if (!objectValidation.ok) {
++    return safe(
++      'ValidationFailed',
++      'Evidence Object base record is invalid.',
++      record.objectRecord.auditMetadata.correlationId
++    );
++  }
++  return { ok: true, value: immutable(record) };
++}
++
++function validationResult(
++  record: CoreEvidenceServiceRecord,
++  restrictedFieldsOmitted: boolean
++): CoreEvidenceValidationResult {
++  const primarySource = record.sourceLinks[0];
++  const base = {
++    evidenceReferenceId: record.objectRecord.publicReferenceId,
++    evidenceType: record.evidenceType,
++    evidencePurpose: record.evidencePurpose,
++    evidenceStatus: record.evidenceStatus,
++    reviewStatus: record.reviewStatus,
++    sourceType: primarySource?.sourceType ?? null,
++    sourceLinked: record.sourceLinks.length > 0,
++    claimLinked: record.claimReferenceIds.length > 0,
++    documentLinked: record.documentReferenceIds.length > 0
++  } as const;
++  if (
++    ['HighlyConfidential', 'Restricted'].includes(
++      record.confidentialityLevel
++    ) &&
++    restrictedFieldsOmitted
++  ) {
++    return {
++      ...base,
++      isValid: false,
++      reasonCode: 'ConfidentialityRestricted',
++      reviewRequired: false,
++      sufficiencyHint: null,
++      confidentialityHint: 'Restricted'
++    };
++  }
++  if (record.evidenceStatus === 'Archived') {
++    return {
++      ...base,
++      isValid: false,
++      reasonCode: 'Archived',
++      reviewRequired: false,
++      sufficiencyHint: 'Unknown',
++      confidentialityHint: 'Visible'
++    };
++  }
++  if (record.evidenceStatus === 'Rejected') {
++    return {
++      ...base,
++      isValid: false,
++      reasonCode: 'Rejected',
++      reviewRequired: false,
++      sufficiencyHint: 'Rejected',
++      confidentialityHint: 'Visible'
++    };
++  }
++  if (record.evidenceStatus === 'Insufficient') {
++    return {
++      ...base,
++      isValid: false,
++      reasonCode: 'Insufficient',
++      reviewRequired: true,
++      sufficiencyHint: 'Insufficient',
++      confidentialityHint: 'Visible'
++    };
++  }
++  if (record.evidenceStatus === 'DeletedReferenceOnly') {
++    return {
++      ...base,
++      isValid: false,
++      reasonCode: 'InvalidReference',
++      reviewRequired: false,
++      sufficiencyHint: 'Unknown',
++      confidentialityHint: 'Visible'
++    };
++  }
++  const accepted =
++    (record.evidenceStatus === 'Accepted' ||
++      record.evidenceStatus === 'Filed') &&
++    record.reviewStatus === 'AcceptedForUse';
++  return {
++    ...base,
++    isValid: true,
++    reasonCode: accepted ? 'Valid' : 'ReviewRequired',
++    reviewRequired: !accepted,
++    sufficiencyHint: accepted ? 'Accepted' : 'PendingProfessionalReview',
++    confidentialityHint: 'Visible'
++  };
++}
++
++function updateObjectRecord(
++  current: CoreEvidenceServiceRecord,
++  now: string,
++  actorReferenceId: string | null,
++  evidenceStatus: CoreEvidenceStatus
++): CoreBehaviorResult<CoreMvpObjectBaseRecord> {
++  if (current.objectRecord.version === undefined) {
++    return safe(
++      'ValidationFailed',
++      'Evidence Object version is required.',
++      current.objectRecord.auditMetadata.correlationId
++    );
++  }
++  return {
++    ok: true,
++    value: {
++      ...current.objectRecord,
++      status: CORE_EVIDENCE_STATUS_TO_OBJECT_STATUS[evidenceStatus],
++      auditMetadata: {
++        ...current.objectRecord.auditMetadata,
++        updatedAt: now,
++        updatedByReferenceId:
++          actorReferenceId ??
++          current.objectRecord.auditMetadata.createdByReferenceId
++      },
++      version: {
++        ...current.objectRecord.version,
++        updatedAt: now
++      }
++    }
++  };
++}
++
++function recordMutable(status: CoreEvidenceStatus): boolean {
++  return !['Accepted', 'Rejected', 'Filed', 'Archived', 'DeletedReferenceOnly'].includes(
++    status
++  );
++}
++
++export class CoreInMemoryEvidenceServiceStore implements CoreEvidenceServiceStore {
++  readonly #records = new Map<string, CoreEvidenceServiceRecord>();
++
++  get(id: string): CoreEvidenceServiceRecord | undefined {
++    const record = this.#records.get(id);
++    return record ? immutable(record) : undefined;
++  }
++
++  list(): readonly CoreEvidenceServiceRecord[] {
++    return [...this.#records.values()].map((record) => immutable(record));
++  }
++
++  insert(
++    record: CoreEvidenceServiceRecord
++  ): CoreBehaviorResult<CoreEvidenceServiceRecord> {
++    const id = record.objectRecord.publicReferenceId;
++    if (this.#records.has(id)) {
++      return safe(
++        'EvidenceAlreadyExists',
++        'Evidence already exists.',
++        record.objectRecord.auditMetadata.correlationId
++      );
++    }
++    const stored = immutable(record);
++    this.#records.set(id, stored);
++    return { ok: true, value: immutable(stored) };
++  }
++
++  replace(
++    record: CoreEvidenceServiceRecord
++  ): CoreBehaviorResult<CoreEvidenceServiceRecord> {
++    const id = record.objectRecord.publicReferenceId;
++    if (!this.#records.has(id)) {
++      return safe(
++        'EvidenceNotFound',
++        'Evidence was not found.',
++        record.objectRecord.auditMetadata.correlationId
++      );
++    }
++    const stored = immutable(record);
++    this.#records.set(id, stored);
++    return { ok: true, value: immutable(stored) };
++  }
++
++  remove(evidenceReferenceId: string): CoreBehaviorResult<null> {
++    this.#records.delete(evidenceReferenceId);
++    return { ok: true, value: null };
++  }
++}
++
++export class CoreEvidenceService {
++  constructor(readonly deps: CoreEvidenceServiceDependencies) {}
++
++  createEvidence(input: {
++    readonly objectRecord: CoreMvpObjectBaseRecord;
++    readonly publicReferenceRecord: CoreReferenceRecord;
++    readonly evidenceType: unknown;
++    readonly evidencePurpose: unknown;
++    readonly evidenceStatus: unknown;
++    readonly reviewStatus: unknown;
++    readonly confidentialityLevel: unknown;
++    readonly sourceReliability: unknown;
++    readonly sourceType: unknown;
++    readonly sourceReferenceId: string;
++    readonly initialClaimReferenceId?: string | null;
++    readonly initialDocumentReferenceId?: string | null;
++    readonly idempotencyKey?: string | null;
++    readonly governance: CoreEvidenceGovernanceContext;
++  }): CoreBehaviorResult<CoreEvidenceServiceRecord> {
++    const target = input.objectRecord.publicReferenceId;
++    const governed = ensureGovernance(input.governance, {
++      operation: 'evidence.create',
++      permission: 'evidence:create',
++      policyScope: 'evidence.write',
++      target
++    });
++    if (!governed.ok) return governed;
++    const scope = enforceOrganizationScope(
++      input.governance,
++      o
