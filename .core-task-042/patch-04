@@ -1,0 +1,360 @@
+    fixture.evidenceReferenceId,
++        fixture.organizationScopeReferenceId
++      )
++    });
++    if (!reviewRequired.ok || traces.visibleTo(['Internal']).length !== expected.eventTraceCountAfterReviewRequired) {
++      issues.push(issue('core.evidence_service.review_required_failed', 'Evidence review-required transition failed.', 'reviewRequiredRequest'));
++    }
++
++    const approvalWithoutReview = service.reviewEvidence({
++      evidenceReferenceId: fixture.evidenceReferenceId,
++      targetReviewStatus: approvalRequest.targetReviewStatus as CoreEvidenceReviewDecisionStatus,
++      reviewNoteReference: String(approvalRequest.reviewNoteReference),
++      idempotencyKey: String(approvalRequest.idempotencyKey),
++      governance: governance(
++        'evidence.review',
++        'evidence:review',
++        'evidence.review',
++        fixture.evidenceReferenceId,
++        fixture.organizationScopeReferenceId
++      )
++    });
++    if (errorCode(approvalWithoutReview) !== expected.approvalWithoutReviewCode) {
++      issues.push(issue('core.evidence_service.approval_gate_failed', 'Evidence approval gate failed.', 'approvalRequest'));
++    }
++
++    const approvalInput = {
++      evidenceReferenceId: fixture.evidenceReferenceId,
++      targetReviewStatus: approvalRequest.targetReviewStatus as CoreEvidenceReviewDecisionStatus,
++      reviewNoteReference: String(approvalRequest.reviewNoteReference),
++      idempotencyKey: String(approvalRequest.idempotencyKey),
++      governance: governance(
++        'evidence.review',
++        'evidence:review',
++        'evidence.review',
++        fixture.evidenceReferenceId,
++        fixture.organizationScopeReferenceId,
++        true
++      )
++    };
++    const approved = service.reviewEvidence(approvalInput);
++    if (!approved.ok || traces.visibleTo(['Internal']).length !== expected.eventTraceCountAfterApproval) {
++      issues.push(issue('core.evidence_service.approval_failed', 'Evidence professional approval failed.', 'approvalRequest'));
++    }
++    const approvalReplay = service.reviewEvidence(approvalInput);
++    if (!approvalReplay.ok || traces.visibleTo(['Internal']).length !== expected.eventTraceCountAfterApprovalReplay) {
++      issues.push(issue('core.evidence_service.approval_replay_failed', 'Evidence approval replay failed.', 'approvalRequest'));
++    }
++    const approvalConflict = service.reviewEvidence({
++      ...approvalInput,
++      targetReviewStatus: approvalConflictRequest.targetReviewStatus as CoreEvidenceReviewDecisionStatus
++    });
++    if (errorCode(approvalConflict) !== expected.approvalConflictCode) {
++      issues.push(issue('core.evidence_service.approval_conflict_failed', 'Evidence approval conflict failed.', 'approvalConflictRequest'));
++    }
++
++    const acceptedValidation = service.validateEvidenceReference({
++      evidenceReferenceId: fixture.evidenceReferenceId,
++      requestingDomain: 'evidence',
++      requestingService: 'evidence-service',
++      governance: governance(
++        'evidence.validate_reference',
++        'evidence:validate_reference',
++        'evidence.reference',
++        fixture.evidenceReferenceId,
++        fixture.organizationScopeReferenceId
++      )
++    });
++    if (!acceptedValidation.ok || acceptedValidation.value.reasonCode !== expected.acceptedValidationReason) {
++      issues.push(issue('core.evidence_service.accepted_validation_failed', 'Accepted Evidence validation failed.'));
++    }
++
++    const archiveInput = {
++      evidenceReferenceId: fixture.evidenceReferenceId,
++      targetStatus: archiveRequest.targetStatus as CoreEvidenceStatus,
++      reasonReference: String(archiveRequest.reasonReference),
++      idempotencyKey: String(archiveRequest.idempotencyKey),
++      governance: governance(
++        'evidence.change_status',
++        'evidence:change_status',
++        'evidence.lifecycle',
++        fixture.evidenceReferenceId,
++        fixture.organizationScopeReferenceId
++      )
++    };
++    const archived = service.changeEvidenceStatus(archiveInput);
++    if (!archived.ok || traces.visibleTo(['Internal']).length !== expected.eventTraceCountAfterArchive) {
++      issues.push(issue('core.evidence_service.archive_failed', 'Evidence archive failed.', 'archiveRequest'));
++    }
++    const archiveReplay = service.changeEvidenceStatus(archiveInput);
++    if (!archiveReplay.ok || traces.visibleTo(['Internal']).length !== expected.eventTraceCountAfterArchiveReplay) {
++      issues.push(issue('core.evidence_service.archive_replay_failed', 'Evidence archive replay failed.', 'archiveRequest'));
++    }
++
++    const archivedValidation = service.validateEvidenceReference({
++      evidenceReferenceId: fixture.evidenceReferenceId,
++      requestingDomain: 'evidence',
++      requestingService: 'evidence-service',
++      governance: governance(
++        'evidence.validate_reference',
++        'evidence:validate_reference',
++        'evidence.reference',
++        fixture.evidenceReferenceId,
++        fixture.organizationScopeReferenceId
++      )
++    });
++    if (!archivedValidation.ok || archivedValidation.value.reasonCode !== expected.archivedValidationReason) {
++      issues.push(issue('core.evidence_service.archived_validation_failed', 'Archived Evidence validation failed.'));
++    }
++
++    const finalRecord = store.get(fixture.evidenceReferenceId);
++    if (
++      !finalRecord ||
++      finalRecord.sourceLinks.length !== expected.finalSourceCount ||
++      finalRecord.claimReferenceIds.length !== expected.finalClaimCount ||
++      finalRecord.documentReferenceIds.length !== expected.finalDocumentCount
++    ) {
++      issues.push(issue('core.evidence_service.final_relationships_failed', 'Evidence final relationship counts are incorrect.'));
++    }
++
++    const traceJson = JSON.stringify(traces.visibleTo(['Internal']));
++    for (const sensitive of [
++      createRequest.sourceReferenceId,
++      sourceRequest.sourceReferenceId,
++      claimRequest.claimReferenceId,
++      documentRequest.documentReferenceId,
++      reviewRequiredRequest.reviewNoteReference,
++      approvalRequest.reviewNoteReference,
++      archiveRequest.reasonReference
++    ]) {
++      if (traceJson.includes(String(sensitive))) {
++        issues.push(issue('core.evidence_service.event_payload_leak', 'Evidence Event payload leaked a protected reference.'));
++        break;
++      }
++    }
++  } catch {
++    issues.push(
++      issue(
++        'core.evidence_service.evidence_fixture_execution_failed',
++        'Evidence Service evidence fixture execution failed safely.'
++      )
++    );
++  }
++
++  return issues;
++}
+diff --git a/base/src/service-coverage/core-service-behavior-evidence.ts b/repo/src/service-coverage/core-service-behavior-evidence.ts
+index 9162f61..b74a980 100644
+--- a/base/src/service-coverage/core-service-behavior-evidence.ts
++++ b/repo/src/service-coverage/core-service-behavior-evidence.ts
+@@ -23,6 +23,10 @@ import {
+   CORE_DOCUMENT_IMPLEMENTED_OPERATIONS,
+   CORE_DOCUMENT_MINIMUM_CAPABILITIES
+ } from '../services/document/index.ts';
++import {
++  CORE_EVIDENCE_IMPLEMENTED_OPERATIONS,
++  CORE_EVIDENCE_MINIMUM_CAPABILITIES
++} from '../services/evidence/index.ts';
+ 
+ export interface CoreServiceBehaviorEvidence {
+   readonly requirementId: string;
+@@ -208,5 +212,34 @@ export const CORE_SERVICE_BEHAVIOR_EVIDENCE = [
+     fixtureFiles: [
+       'fixtures/services/core-document-service-governed-artifact-foundation.fixture.json'
+     ]
++  },
++  {
++    requirementId: 'must-service-evidence-service',
++    serviceType: 'evidence-service',
++    domainId: 'evidence',
++    contractId: 'core-service-evidence-service-contract',
++    sourcePath:
++      'books/book-02-core-specification/core-specs/services/evidence-service.md',
++    currentDepth: 'level_2_3',
++    operations: CORE_EVIDENCE_IMPLEMENTED_OPERATIONS,
++    provenMinimumCapabilities: CORE_EVIDENCE_MINIMUM_CAPABILITIES,
++    unresolvedServiceOperations: [
++      'updateEvidence',
++      'unlinkEvidenceSource',
++      'linkEvidenceTrademark',
++      'linkEvidenceBrand',
++      'linkEvidenceClassification',
++      'linkEvidenceMatter',
++      'linkEvidenceJurisdiction',
++      'archiveEvidence'
++    ],
++    implementationFiles: ['src/services/evidence/core-evidence-service.ts'],
++    testFiles: [
++      'tests/unit/core-evidence-service-proof-layer-foundation.test.ts'
++    ],
++    fixtureFiles: [
++      'fixtures/services/core-evidence-service-proof-layer-foundation.fixture.json'
++    ]
+   }
++
+ ] as const satisfies readonly CoreServiceBehaviorEvidence[];
+diff --git a/base/src/service-coverage/core-service-behavior-validation.ts b/repo/src/service-coverage/core-service-behavior-validation.ts
+index 4202e92..f94d044 100644
+--- a/base/src/service-coverage/core-service-behavior-validation.ts
++++ b/repo/src/service-coverage/core-service-behavior-validation.ts
+@@ -24,12 +24,17 @@ import {
+   CORE_DOCUMENT_IMPLEMENTED_OPERATIONS,
+   CORE_DOCUMENT_MINIMUM_CAPABILITIES
+ } from '../services/document/index.ts';
++import {
++  CORE_EVIDENCE_IMPLEMENTED_OPERATIONS,
++  CORE_EVIDENCE_MINIMUM_CAPABILITIES
++} from '../services/evidence/index.ts';
+ import { validateCoreBrandServiceEvidenceFixture } from './core-brand-service-evidence-fixture.ts';
+ import { validateCoreCustomerServiceEvidenceFixture } from './core-customer-service-evidence-fixture.ts';
+ import { validateCoreTrademarkServiceEvidenceFixture } from './core-trademark-service-evidence-fixture.ts';
+ import { validateCoreJurisdictionServiceEvidenceFixture } from './core-jurisdiction-service-evidence-fixture.ts';
+ import { validateCoreClassificationServiceEvidenceFixture } from './core-classification-service-evidence-fixture.ts';
+ import { validateCoreDocumentServiceEvidenceFixture } from './core-document-service-evidence-fixture.ts';
++import { validateCoreEvidenceServiceEvidenceFixture } from './core-evidence-service-evidence-fixture.ts';
+ import {
+   CORE_SERVICE_BEHAVIOR_EVIDENCE,
+   type CoreServiceBehaviorEvidence
+@@ -49,6 +54,7 @@ export interface CoreServiceBehaviorValidationOptions {
+   readonly jurisdictionFixture?: unknown;
+   readonly classificationFixture?: unknown;
+   readonly documentFixture?: unknown;
++  readonly evidenceFixture?: unknown;
+ }
+ 
+ interface ExpectedServiceEvidence {
+@@ -60,7 +66,8 @@ interface ExpectedServiceEvidence {
+     | 'trademark'
+     | 'jurisdiction'
+     | 'classification'
+-    | 'document';
++    | 'document'
++    | 'evidence';
+   readonly contractId: string;
+   readonly sourcePath: string;
+   readonly operations: readonly string[];
+@@ -72,7 +79,8 @@ interface ExpectedServiceEvidence {
+     | 'trademarkFixture'
+     | 'jurisdictionFixture'
+     | 'classificationFixture'
+-    | 'documentFixture';
++    | 'documentFixture'
++    | 'evidenceFixture';
+   readonly fixtureValidator: (
+     fixture: unknown
+   ) => readonly { readonly code: string }[];
+@@ -209,7 +217,30 @@ const expectedEvidence = [
+     ],
+     fixtureOverride: 'documentFixture',
+     fixtureValidator: validateCoreDocumentServiceEvidenceFixture
++  },
++  {
++    requirementId: 'must-service-evidence-service',
++    serviceType: 'evidence-service',
++    domainId: 'evidence',
++    contractId: 'core-service-evidence-service-contract',
++    sourcePath:
++      'books/book-02-core-specification/core-specs/services/evidence-service.md',
++    operations: CORE_EVIDENCE_IMPLEMENTED_OPERATIONS,
++    capabilities: CORE_EVIDENCE_MINIMUM_CAPABILITIES,
++    unresolved: [
++      'updateEvidence',
++      'unlinkEvidenceSource',
++      'linkEvidenceTrademark',
++      'linkEvidenceBrand',
++      'linkEvidenceClassification',
++      'linkEvidenceMatter',
++      'linkEvidenceJurisdiction',
++      'archiveEvidence'
++    ],
++    fixtureOverride: 'evidenceFixture',
++    fixtureValidator: validateCoreEvidenceServiceEvidenceFixture
+   }
++
+ ] as const satisfies readonly ExpectedServiceEvidence[];
+ 
+ function issue(
+@@ -258,7 +289,7 @@ export function validateCoreServiceBehaviorEvidence(
+         evidence.length < expectedEvidence.length
+           ? 'core.service.evidence_missing'
+           : 'core.service.evidence_extra',
+-        'Service behavior evidence must contain exactly Customer, Brand, Trademark, Jurisdiction, Classification, and Document entries in canonical order.',
++        'Service behavior evidence must contain exactly Customer, Brand, Trademark, Jurisdiction, Classification, Document, and Evidence entries in canonical order.',
+         'evidence'
+       )
+     );
+diff --git a/base/src/service-coverage/index.ts b/repo/src/service-coverage/index.ts
+index c26fc89..66778cd 100644
+--- a/base/src/service-coverage/index.ts
++++ b/repo/src/service-coverage/index.ts
+@@ -6,3 +6,4 @@ export * from './core-service-behavior-validation.ts';
+ export * from './core-jurisdiction-service-evidence-fixture.ts';
+ export * from './core-classification-service-evidence-fixture.ts';
+ export * from './core-document-service-evidence-fixture.ts';
++export * from './core-evidence-service-evidence-fixture.ts';
+diff --git a/repo/src/services/evidence/core-evidence-service.ts b/repo/src/services/evidence/core-evidence-service.ts
+new file mode 100644
+index 0000000..62c3e69
+--- /dev/null
++++ b/repo/src/services/evidence/core-evidence-service.ts
+@@ -0,0 +1,2144 @@
++import {
++  paginateCoreItems,
++  type CoreEventTraceRecord,
++  type CorePaginatedResult
++} from '../../behaviors/core-event-pagination-behavior.ts';
++import {
++  enforceCoreGovernedAction,
++  type CoreAuditContext,
++  type CoreHumanReviewContext,
++  type CorePermissionContext,
++  type CorePolicyContext
++} from '../../behaviors/core-governance-behavior.ts';
++import { CoreIdempotencyRegistry } from '../../behaviors/core-idempotency-behavior.ts';
++import {
++  CoreReferenceRegistry,
++  type CoreReferenceRecord
++} from '../../behaviors/core-reference-behavior.ts';
++import {
++  createCoreSafeError,
++  type CoreBehaviorResult,
++  type CoreErrorCategory,
++  type CoreErrorCode
++} from '../../behaviors/core-safe-error.ts';
++import {
++  CORE_DOMAIN_REGISTRY,
++  type CoreDomainId
++} from '../../domains/index.ts';
++import {
++  CORE_EVENT_ACTIONS,
++  createCoreEventType,
++  type CoreEventId
++} from '../../events/index.ts';
++import type { CoreMvpObjectBaseRecord } from '../../objects/core-mvp-object-base-record.ts';
++import type { CoreObjectStatus } from '../../objects/core-object-status.ts';
++import { validateCoreMvpObjectBaseRecord } from '../../objects/core-mvp-object-validation.ts';
++import {
++  createCoreObjectId,
++  createCoreObjectType
++} from '../../objects/index.ts';
++
++export const CORE_EVIDENCE_TYPES = [
++  'UseEvidence',
++  'OwnershipEvidence',
++  'PriorityEvidence',
++  'DistinctivenessEvidence',
++  'ReputationEvidence',
++  'SalesEvidence',
++  'AdvertisingEvidence',
++  'OnlineUseEvidence',
++  'PackagingEvidence',
++  'ProductEvidence',
++  'OfficialRecordEvidence',
++  'CommunicationEvidence',
++  'Other',
++  'Unknown'
++] as const;
++export type CoreEvidenceType = (typeof CORE_EVIDENCE_TYPES)[number];
++
++export const CORE_EVIDENCE_PURPOSES = [
++  'Pro
