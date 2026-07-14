@@ -43,8 +43,6 @@ Required fixture 32 executes create, replay, idempotency conflict, safe reads, s
 
 Historical Customer, Brand, Trademark, and Jurisdiction evidence remains independently validated; Classification is appended as the fifth dependency-first Service rather than replacing or weakening prior evidence.
 
-The final governed diff contains no temporary generator, repair, diagnosis, refresh, history-update, trigger, or cleanup workflow files.
-
 ## Derived boundary
 
 The independently derived target is 37 Must Build requirements meeting required depth, 3 partial evidence, 52 validated skeleton only, 5 boundary scaffold only, and 18 semantic overlap only. Acceptance remains 11 of 19 because 13 Must Build Services still lack executable owned behavior.
