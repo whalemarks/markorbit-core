@@ -26,7 +26,13 @@ jobs:
           echo 'b60fe58efff8a0938cc5639c94f7706a4666f9a16c3f61c1370fe7cc96db4da6  /tmp/part1.bin' | sha256sum -c -
       - name: Verify payload part 2
         run: |
-          base64 -d .core-task-044-payload/part2.b64 > /tmp/part2.bin
+          cat \
+            .core-task-044-payload/part2-0.bin \
+            .core-task-044-payload/part2-1.bin \
+            .core-task-044-payload/part2-2.bin \
+            .core-task-044-payload/part2-3.bin \
+            .core-task-044-payload/part2-4.bin \
+            > /tmp/part2.bin
           echo 'b4053435a85b4f0b14ee508c7646b9f32f925d6d0aff199c2be2abf0ba33966d  /tmp/part2.bin' | sha256sum -c -
       - name: Verify payload part 3
         run: |
