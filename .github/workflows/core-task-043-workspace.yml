@@ -1,0 +1,24 @@
+name: CORE-TASK-043 Workspace
+
+on:
+  push:
+    branches:
+      - agent/core-task-043-matter-service-foundation
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: corepack enable
+      - run: pnpm install --frozen-lockfile
+      - name: Package workspace
+        run: tar --exclude=.git -czf /tmp/markorbit-core-workspace.tgz .
+      - uses: actions/upload-artifact@v4
+        with:
+          name: core-task-043-workspace
+          path: /tmp/markorbit-core-workspace.tgz
+          retention-days: 1
