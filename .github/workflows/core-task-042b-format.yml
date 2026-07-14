@@ -1,0 +1,44 @@
+name: CORE-TASK-042B Format
+
+on:
+  pull_request:
+
+permissions:
+  contents: write
+
+jobs:
+  format:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout head branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Format synchronized fixture
+        run: pnpm exec prettier --write fixtures/contracts/core-service-contract-skeletons.fixture.json
+
+      - name: Commit formatting
+        shell: bash
+        run: |
+          if git diff --quiet; then
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add fixtures/contracts/core-service-contract-skeletons.fixture.json
+          git commit -m "CORE-TASK-042B — format Evidence contract fixture"
+          git push origin HEAD:${{ github.event.pull_request.head.ref }}
