@@ -1,6 +1,9 @@
 name: CORE-TASK-043B Test Diagnostic
 
 on:
+  pull_request:
+    branches:
+      - main
   push:
     branches:
       - agent/core-task-043b-matter-service-completion
