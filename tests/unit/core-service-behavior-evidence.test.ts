@@ -17,6 +17,8 @@ import {
   CORE_JURISDICTION_MINIMUM_CAPABILITIES,
   CORE_MATTER_IMPLEMENTED_OPERATIONS,
   CORE_MATTER_MINIMUM_CAPABILITIES,
+  CORE_ORDER_IMPLEMENTED_OPERATIONS,
+  CORE_ORDER_MINIMUM_CAPABILITIES,
   CORE_SERVICE_BEHAVIOR_EVIDENCE,
   CORE_TRADEMARK_IMPLEMENTED_OPERATIONS,
   CORE_TRADEMARK_MINIMUM_CAPABILITIES,
@@ -31,13 +33,14 @@ const expectedRequirements = [
   'must-service-classification-service',
   'must-service-document-service',
   'must-service-evidence-service',
-  'must-service-matter-service'
+  'must-service-matter-service',
+  'must-service-order-service'
 ];
 
 describe('Core Service behavior evidence', () => {
   it('validates exact dependency-first Service evidence in canonical order', () => {
     assert.deepEqual(validateCoreServiceBehaviorEvidence(), []);
-    assert.equal(CORE_SERVICE_BEHAVIOR_EVIDENCE.length, 8);
+    assert.equal(CORE_SERVICE_BEHAVIOR_EVIDENCE.length, 9);
     assert.deepEqual(
       CORE_SERVICE_BEHAVIOR_EVIDENCE.map((entry) => entry.requirementId),
       expectedRequirements
@@ -68,7 +71,8 @@ describe('Core Service behavior evidence', () => {
         CORE_EVIDENCE_IMPLEMENTED_OPERATIONS,
         CORE_EVIDENCE_MINIMUM_CAPABILITIES
       ],
-      [CORE_MATTER_IMPLEMENTED_OPERATIONS, CORE_MATTER_MINIMUM_CAPABILITIES]
+      [CORE_MATTER_IMPLEMENTED_OPERATIONS, CORE_MATTER_MINIMUM_CAPABILITIES],
+      [CORE_ORDER_IMPLEMENTED_OPERATIONS, CORE_ORDER_MINIMUM_CAPABILITIES]
     ] as const;
     for (const [index, [operations, capabilities]] of expectations.entries()) {
       assert.deepEqual(
@@ -91,7 +95,8 @@ describe('Core Service behavior evidence', () => {
       classification,
       document,
       evidence,
-      matter
+      matter,
+      order
     ] = CORE_SERVICE_BEHAVIOR_EVIDENCE;
     assert.equal(
       validateCoreServiceBehaviorEvidence({
@@ -117,7 +122,8 @@ describe('Core Service behavior evidence', () => {
           classification,
           document,
           evidence,
-          matter
+          matter,
+          order
         ]
       }).some((entry) => entry.code === 'core.service.evidence_extra'),
       true
@@ -132,7 +138,8 @@ describe('Core Service behavior evidence', () => {
           classification,
           document,
           evidence,
-          matter
+          matter,
+          order
         ]
       }).some((entry) => entry.code === 'core.service.contract_mismatch'),
       true
@@ -147,7 +154,8 @@ describe('Core Service behavior evidence', () => {
           classification,
           document,
           evidence,
-          matter
+          matter,
+          order
         ]
       }).some((entry) => entry.code === 'core.service.domain_mismatch'),
       true
@@ -162,7 +170,8 @@ describe('Core Service behavior evidence', () => {
           classification,
           document,
           evidence,
-          matter
+          matter,
+          order
         ]
       }).some((entry) => entry.code === 'core.service.cross_service_evidence'),
       true
@@ -178,7 +187,8 @@ describe('Core Service behavior evidence', () => {
       classification,
       document,
       evidence,
-      matter
+      matter,
+      order
     ] = CORE_SERVICE_BEHAVIOR_EVIDENCE;
     assert.equal(
       validateCoreServiceBehaviorEvidence({
@@ -190,7 +200,8 @@ describe('Core Service behavior evidence', () => {
           classification,
           document,
           { ...evidence, operations: evidence.operations.slice(1) },
-          matter
+          matter,
+          order
         ]
       }).some((entry) => entry.code === 'core.service.operation_missing'),
       true
@@ -209,14 +220,15 @@ describe('Core Service behavior evidence', () => {
             provenMinimumCapabilities:
               evidence.provenMinimumCapabilities.slice(1)
           },
-          matter
+          matter,
+          order
         ]
       }).some((entry) => entry.code === 'core.service.capability_missing'),
       true
     );
   });
 
-  it('executes all eight fixtures and rejects corrupted expectations', async () => {
+  it('executes all nine fixtures and rejects corrupted expectations', async () => {
     const fixtures = [
       [
         'customerFixture',
@@ -256,6 +268,11 @@ describe('Core Service behavior evidence', () => {
       [
         'matterFixture',
         'fixtures/services/core-matter-service-execution-container-foundation.fixture.json',
+        'operationCount'
+      ],
+      [
+        'orderFixture',
+        'fixtures/services/core-order-service-commercial-request-foundation.fixture.json',
         'operationCount'
       ]
     ] as const;

@@ -62,7 +62,8 @@ const canonicalServiceSkeleton = (
     | 'CORE-TASK-040'
     | 'CORE-TASK-041'
     | 'CORE-TASK-042'
-    | 'CORE-TASK-043' = 'CORE-TASK-021'
+    | 'CORE-TASK-043'
+    | 'CORE-TASK-044' = 'CORE-TASK-021'
 ): CoreServiceContract => ({
   ...serviceSkeleton(
     serviceType,
@@ -202,7 +203,28 @@ const canonicalServiceSkeleton = (
                           'validateMatterReference'
                         ]
                       }
-                    : {})
+                    : serviceType === 'order-service'
+                      ? {
+                          behaviorImplementationTask: 'CORE-TASK-044',
+                          behaviorDepth: 'level_2_3',
+                          implementedOperations: [
+                            'createOrder',
+                            'getOrder',
+                            'listOrders',
+                            'updateOrder',
+                            'changeOrderStatus',
+                            'linkOrderCustomer',
+                            'linkOrderOpportunity',
+                            'linkOrderBrand',
+                            'linkOrderTrademark',
+                            'linkOrderMatter',
+                            'validateOrderReference',
+                            'validateOrderReadiness',
+                            'acceptOrder',
+                            'cancelOrder'
+                          ]
+                        }
+                      : {})
   }
 });
 
@@ -479,8 +501,9 @@ export const CORE_SERVICE_CONTRACT_SKELETONS = [
     ['order, customer, opportunity, brand, trademark, and matter references'],
     ['order boundary references'],
     [
-      'Order mutation, pricing engine, payment, invoicing, checkout, matter creation, workflow execution, or professional work.'
-    ]
+      'Pricing engine, payment, invoicing, checkout, Matter creation, workflow execution, or professional work.'
+    ],
+    'CORE-TASK-044'
   ),
   canonicalServiceSkeleton(
     'workflow-contract-service',
