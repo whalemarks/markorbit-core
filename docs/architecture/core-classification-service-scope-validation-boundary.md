@@ -41,6 +41,8 @@ The existing index-6 Classification reference placeholder is promoted in place t
 
 Required fixture 32 executes create, replay, idempotency conflict, safe reads, structural validation, reference validation, review-required transition, governed approval, approval replay, approval conflict, record counts, Event counts, and payload safety.
 
+Historical Customer, Brand, Trademark, and Jurisdiction evidence remains independently validated; Classification is appended as the fifth dependency-first Service rather than replacing or weakening prior evidence.
+
 ## Explicit non-goals
 
 Item add/update/remove operations, metadata update, relationship mutation, AI recommendation, official item synchronization, legal-rule and fee engines, filing execution, API validators, Workflow preview/apply, persistence, Event bus runtime, Book 02 completion, and production readiness remain incomplete.
