@@ -11,14 +11,14 @@ import {
   type CoreMvpObjectBaseRecord
 } from '../objects/core-mvp-object-base-record.ts';
 import {
-  CORE_BRAND_COLLECTION_TARGET,
-  CoreBrandService,
-  CoreInMemoryBrandServiceStore,
-  type CoreBrandGovernanceContext,
-  type CoreBrandStatus
-} from '../services/brand/index.ts';
+  CORE_TRADEMARK_COLLECTION_TARGET,
+  CoreTrademarkService,
+  CoreInMemoryTrademarkServiceStore,
+  type CoreTrademarkGovernanceContext,
+  type CoreTrademarkStatus
+} from '../services/trademark/index.ts';
 
-export interface CoreBrandServiceEvidenceFixtureIssue {
+export interface CoreTrademarkServiceEvidenceFixtureIssue {
   readonly code: string;
   readonly message: string;
   readonly path?: string;
@@ -32,7 +32,7 @@ function issue(
   code: string,
   message: string,
   path?: string
-): CoreBrandServiceEvidenceFixtureIssue {
+): CoreTrademarkServiceEvidenceFixtureIssue {
   return { code, message, path };
 }
 
@@ -42,7 +42,7 @@ function governance(
   policyScope: string,
   target: string,
   organizationScopeReferenceId: string
-): CoreBrandGovernanceContext {
+): CoreTrademarkGovernanceContext {
   return {
     correlationId: 'corr:core-task-037',
     auditContextReferenceId: 'audit:ctx:core-task-037',
@@ -70,14 +70,14 @@ function governance(
       reviewScope: null,
       reviewDecision: null,
       reviewerUserReferenceId: null,
-      targetObjectType: 'brand-record',
+      targetObjectType: 'trademark-record',
       targetObjectReferenceId: target
     },
     audit: {
       operationName: operation,
       operationCategory: 'Service',
       actorReferenceId: 'user:ref:actor-0001',
-      targetObjectType: 'brand-record',
+      targetObjectType: 'trademark-record',
       targetObjectReferenceId: target,
       permissionDecisionReferenceId: 'permission:decision:allow-0001',
       policyDecisionReferenceId: 'policy:decision:allow-0001',
@@ -96,21 +96,22 @@ function referenceRecord(value: Record<string, unknown>): CoreReferenceRecord {
   };
 }
 
-export function validateCoreBrandServiceEvidenceFixture(
+export function validateCoreTrademarkServiceEvidenceFixture(
   fixture: unknown
-): readonly CoreBrandServiceEvidenceFixtureIssue[] {
-  const issues: CoreBrandServiceEvidenceFixtureIssue[] = [];
+): readonly CoreTrademarkServiceEvidenceFixtureIssue[] {
+  const issues: CoreTrademarkServiceEvidenceFixtureIssue[] = [];
   if (!isRecord(fixture)) {
     return [
       issue(
-        'core.brand_service.evidence_fixture_invalid',
-        'Brand Service evidence fixture must be an object.'
+        'core.trademark_service.evidence_fixture_invalid',
+        'Trademark Service evidence fixture must be an object.'
       )
     ];
   }
 
   const publicReference = fixture.publicReferenceRecord;
-  const customerReference = fixture.customerReferenceRecord;
+  const brandReference = fixture.brandReferenceRecord;
+  const jurisdictionReference = fixture.jurisdictionReferenceRecord;
   const objectRecord = fixture.objectRecord;
   const createRequest = fixture.createRequest;
   const conflictingCreateRequest = fixture.conflictingCreateRequest;
@@ -120,14 +121,16 @@ export function validateCoreBrandServiceEvidenceFixture(
   const invalidStatusRequest = fixture.invalidStatusTransitionRequest;
   const expected = fixture.expected;
   if (
-    fixture.fixtureType !== 'core_brand_service_core_lifecycle' ||
+    fixture.fixtureType !== 'core_trademark_service_core_lifecycle' ||
+    typeof fixture.trademarkReferenceId !== 'string' ||
     typeof fixture.brandReferenceId !== 'string' ||
-    typeof fixture.customerReferenceId !== 'string' ||
+    typeof fixture.jurisdictionReferenceId !== 'string' ||
     typeof fixture.organizationScopeReferenceId !== 'string' ||
     typeof fixture.fixedNow !== 'string' ||
     typeof fixture.updatedNow !== 'string' ||
     !isRecord(publicReference) ||
-    !isRecord(customerReference) ||
+    !isRecord(brandReference) ||
+    !isRecord(jurisdictionReference) ||
     !isRecord(objectRecord) ||
     !isRecord(createRequest) ||
     !isRecord(conflictingCreateRequest) ||
@@ -139,18 +142,19 @@ export function validateCoreBrandServiceEvidenceFixture(
   ) {
     return [
       issue(
-        'core.brand_service.evidence_fixture_shape',
-        'Brand Service evidence fixture is missing executable fields.'
+        'core.trademark_service.evidence_fixture_shape',
+        'Trademark Service evidence fixture is missing executable fields.'
       )
     ];
   }
 
-  const brandReferenceRecord = referenceRecord(publicReference);
-  const customerReferenceRecord = referenceRecord(customerReference);
+  const trademarkReferenceRecord = referenceRecord(publicReference);
+  const brandReferenceRecord = referenceRecord(brandReference);
+  const jurisdictionReferenceRecord = referenceRecord(jurisdictionReference);
   const traces = new CoreEventTraceRegistry();
-  const store = new CoreInMemoryBrandServiceStore();
+  const store = new CoreInMemoryTrademarkServiceStore();
   const clocks = [String(fixture.fixedNow), String(fixture.updatedNow)];
-  const service = new CoreBrandService({
+  const service = new CoreTrademarkService({
     store,
     idempotencyRegistry: new CoreIdempotencyRegistry(() => 1),
     eventTracePort: traces,
@@ -159,36 +163,40 @@ export function validateCoreBrandServiceEvidenceFixture(
     ),
     relatedReferenceRegistry: new CoreReferenceRegistry([
       ...CORE_MVP_OBJECT_FIXTURE_RELATED_REFERENCE_RECORDS,
+      trademarkReferenceRecord,
       brandReferenceRecord,
-      customerReferenceRecord
+      jurisdictionReferenceRecord
     ]),
     now: () => clocks.shift() ?? String(fixture.updatedNow),
-    eventIdFactory: (operation, brandReferenceId, idempotencyKey) =>
+    eventIdFactory: (operation, trademarkReferenceId, idempotencyKey) =>
       createCoreEventId(
-        `event-evidence-${operation}-${brandReferenceId.replaceAll(':', '-')}-${idempotencyKey}`
+        `event-evidence-${operation}-${trademarkReferenceId.replaceAll(':', '-')}-${idempotencyKey}`
       ) as CoreEventId,
-    cursorSecret: 'brand-service-evidence-fixture-secret'
+    cursorSecret: 'trademark-service-evidence-fixture-secret'
   });
 
   try {
     const createInput = {
       objectRecord: objectRecord as unknown as CoreMvpObjectBaseRecord,
-      publicReferenceRecord: brandReferenceRecord,
-      brandType: createRequest.brandType,
-      brandStatus: createRequest.brandStatus,
-      nameReference: String(createRequest.nameReference),
+      publicReferenceRecord: trademarkReferenceRecord,
+      trademarkType: createRequest.trademarkType,
+      trademarkStatus: createRequest.trademarkStatus,
+      markRepresentationReference: String(
+        createRequest.markRepresentationReference
+      ),
       sourceReference: String(createRequest.sourceReference),
-      customerReferenceId: fixture.customerReferenceId,
+      jurisdictionReferenceId: fixture.jurisdictionReferenceId,
+      brandReferenceId: fixture.brandReferenceId,
       idempotencyKey: String(createRequest.idempotencyKey),
       governance: governance(
-        'brand.create',
-        'brand:create',
-        'brand.write',
-        fixture.brandReferenceId,
+        'trademark.create',
+        'trademark:create',
+        'trademark.write',
+        fixture.trademarkReferenceId,
         fixture.organizationScopeReferenceId
       )
     };
-    const created = service.createBrand(createInput);
+    const created = service.createTrademark(createInput);
     if (
       !created.ok ||
       store.list().length !== expected.recordCountAfterCreate ||
@@ -197,14 +205,14 @@ export function validateCoreBrandServiceEvidenceFixture(
     ) {
       issues.push(
         issue(
-          'core.brand_service.evidence_create_failed',
-          'Brand Service evidence create scenario failed.',
+          'core.trademark_service.evidence_create_failed',
+          'Trademark Service evidence create scenario failed.',
           'createRequest'
         )
       );
     }
 
-    const replayedCreate = service.createBrand(createInput);
+    const replayedCreate = service.createTrademark(createInput);
     if (
       !replayedCreate.ok ||
       store.list().length !== expected.recordCountAfterCreate ||
@@ -213,16 +221,16 @@ export function validateCoreBrandServiceEvidenceFixture(
     ) {
       issues.push(
         issue(
-          'core.brand_service.evidence_create_replay_failed',
-          'Brand Service evidence create replay failed.',
+          'core.trademark_service.evidence_create_replay_failed',
+          'Trademark Service evidence create replay failed.',
           'createRequest'
         )
       );
     }
 
-    const createConflict = service.createBrand({
+    const createConflict = service.createTrademark({
       ...createInput,
-      brandType: conflictingCreateRequest.brandType
+      trademarkType: conflictingCreateRequest.trademarkType
     });
     if (
       createConflict.ok ||
@@ -230,56 +238,59 @@ export function validateCoreBrandServiceEvidenceFixture(
     ) {
       issues.push(
         issue(
-          'core.brand_service.evidence_create_conflict_failed',
-          'Brand Service evidence create conflict failed.',
+          'core.trademark_service.evidence_create_conflict_failed',
+          'Trademark Service evidence create conflict failed.',
           'conflictingCreateRequest'
         )
       );
     }
 
-    const duplicate = service.createBrand({
+    const duplicate = service.createTrademark({
       ...createInput,
       idempotencyKey: String(duplicateCreateRequest.idempotencyKey)
     });
-    if (duplicate.ok || duplicate.error.code !== expected.duplicateBrandCode) {
+    if (
+      duplicate.ok ||
+      duplicate.error.code !== expected.duplicateTrademarkCode
+    ) {
       issues.push(
         issue(
-          'core.brand_service.evidence_duplicate_failed',
-          'Brand Service evidence duplicate scenario failed.',
+          'core.trademark_service.evidence_duplicate_failed',
+          'Trademark Service evidence duplicate scenario failed.',
           'duplicateCreateRequest'
         )
       );
     }
 
-    const get = service.getBrand({
-      brandReferenceId: fixture.brandReferenceId,
+    const get = service.getTrademark({
+      trademarkReferenceId: fixture.trademarkReferenceId,
       governance: governance(
-        'brand.read',
-        'brand:read',
-        'brand.read',
-        fixture.brandReferenceId,
+        'trademark.read',
+        'trademark:read',
+        'trademark.read',
+        fixture.trademarkReferenceId,
         fixture.organizationScopeReferenceId
       )
     });
-    const list = service.listBrands({
+    const list = service.listTrademarks({
       pagination: { limit: 10, sortField: 'publicReferenceId' },
       governance: governance(
-        'brand.list',
-        'brand:list',
-        'brand.list',
-        CORE_BRAND_COLLECTION_TARGET,
+        'trademark.list',
+        'trademark:list',
+        'trademark.list',
+        CORE_TRADEMARK_COLLECTION_TARGET,
         fixture.organizationScopeReferenceId
       )
     });
-    const validation = service.validateBrandReference({
-      brandReferenceId: fixture.brandReferenceId,
-      requestingDomain: 'trademark',
-      requestingService: 'trademark-service',
+    const validation = service.validateTrademarkReference({
+      trademarkReferenceId: fixture.trademarkReferenceId,
+      requestingDomain: 'matter',
+      requestingService: 'matter-service',
       governance: governance(
-        'brand.validate_reference',
-        'brand:validate_reference',
-        'brand.reference',
-        fixture.brandReferenceId,
+        'trademark.validate_reference',
+        'trademark:validate_reference',
+        'trademark.reference',
+        fixture.trademarkReferenceId,
         fixture.organizationScopeReferenceId
       )
     });
@@ -292,26 +303,29 @@ export function validateCoreBrandServiceEvidenceFixture(
     ) {
       issues.push(
         issue(
-          'core.brand_service.evidence_read_failed',
-          'Brand Service evidence read/list/reference scenarios failed.'
+          'core.trademark_service.evidence_read_failed',
+          'Trademark Service evidence read/list/reference scenarios failed.'
         )
       );
     }
 
     const statusInput = {
-      brandReferenceId: fixture.brandReferenceId,
-      targetStatus: String(statusRequest.targetStatus) as CoreBrandStatus,
-      reasonReference: String(statusRequest.reasonReference),
+      trademarkReferenceId: fixture.trademarkReferenceId,
+      targetStatus: String(statusRequest.targetStatus) as CoreTrademarkStatus,
+      reasonReference:
+        statusRequest.reasonReference === null
+          ? null
+          : String(statusRequest.reasonReference),
       idempotencyKey: String(statusRequest.idempotencyKey),
       governance: governance(
-        'brand.change_status',
-        'brand:change_status',
-        'brand.lifecycle',
-        fixture.brandReferenceId,
+        'trademark.change_status',
+        'trademark:change_status',
+        'trademark.lifecycle',
+        fixture.trademarkReferenceId,
         fixture.organizationScopeReferenceId
       )
     };
-    const changed = service.changeBrandStatus(statusInput);
+    const changed = service.changeTrademarkStatus(statusInput);
     if (
       !changed.ok ||
       traces.visibleTo(['Internal']).length !==
@@ -319,14 +333,14 @@ export function validateCoreBrandServiceEvidenceFixture(
     ) {
       issues.push(
         issue(
-          'core.brand_service.evidence_status_failed',
-          'Brand Service evidence status transition failed.',
+          'core.trademark_service.evidence_status_failed',
+          'Trademark Service evidence status transition failed.',
           'statusTransitionRequest'
         )
       );
     }
 
-    const replayedStatus = service.changeBrandStatus(statusInput);
+    const replayedStatus = service.changeTrademarkStatus(statusInput);
     if (
       !replayedStatus.ok ||
       !changed.ok ||
@@ -336,19 +350,22 @@ export function validateCoreBrandServiceEvidenceFixture(
     ) {
       issues.push(
         issue(
-          'core.brand_service.evidence_status_replay_failed',
-          'Brand Service evidence status replay failed.',
+          'core.trademark_service.evidence_status_replay_failed',
+          'Trademark Service evidence status replay failed.',
           'statusTransitionRequest'
         )
       );
     }
 
-    const statusConflict = service.changeBrandStatus({
+    const statusConflict = service.changeTrademarkStatus({
       ...statusInput,
       targetStatus: String(
         statusConflictRequest.targetStatus
-      ) as CoreBrandStatus,
-      reasonReference: String(statusConflictRequest.reasonReference)
+      ) as CoreTrademarkStatus,
+      reasonReference:
+        statusConflictRequest.reasonReference === null
+          ? null
+          : String(statusConflictRequest.reasonReference)
     });
     if (
       statusConflict.ok ||
@@ -356,26 +373,26 @@ export function validateCoreBrandServiceEvidenceFixture(
     ) {
       issues.push(
         issue(
-          'core.brand_service.evidence_status_conflict_failed',
-          'Brand Service evidence status conflict failed.',
+          'core.trademark_service.evidence_status_conflict_failed',
+          'Trademark Service evidence status conflict failed.',
           'statusConflictRequest'
         )
       );
     }
 
-    const invalid = service.changeBrandStatus({
+    const invalid = service.changeTrademarkStatus({
       ...statusInput,
       targetStatus: String(
         invalidStatusRequest.targetStatus
-      ) as CoreBrandStatus,
+      ) as CoreTrademarkStatus,
       reasonReference: null,
       idempotencyKey: String(invalidStatusRequest.idempotencyKey)
     });
     if (invalid.ok || invalid.error.code !== expected.invalidTransitionCode) {
       issues.push(
         issue(
-          'core.brand_service.evidence_invalid_transition_failed',
-          'Brand Service evidence invalid transition failed.',
+          'core.trademark_service.evidence_invalid_transition_failed',
+          'Trademark Service evidence invalid transition failed.',
           'invalidStatusTransitionRequest'
         )
       );
@@ -383,8 +400,8 @@ export function validateCoreBrandServiceEvidenceFixture(
   } catch {
     issues.push(
       issue(
-        'core.brand_service.evidence_fixture_exception',
-        'Brand Service evidence fixture failed safely.'
+        'core.trademark_service.evidence_fixture_exception',
+        'Trademark Service evidence fixture failed safely.'
       )
     );
   }

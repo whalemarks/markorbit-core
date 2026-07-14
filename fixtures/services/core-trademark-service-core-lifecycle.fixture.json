@@ -1,0 +1,91 @@
+{
+  "fixtureType": "core_trademark_service_core_lifecycle",
+  "authority": {
+    "repository": "whalemarks/markorbit-publication",
+    "commit": "3349ecb8955021a8714d023348f8b24f941eb98f"
+  },
+  "fixedNow": "2026-07-14T01:00:00.000Z",
+  "updatedNow": "2026-07-14T01:05:00.000Z",
+  "trademarkReferenceId": "trademark:ref:core-task-038",
+  "jurisdictionReferenceId": "jurisdiction:ref:core-task-038",
+  "brandReferenceId": "brand:ref:core-task-038",
+  "organizationScopeReferenceId": "organization:ref:scope-0001",
+  "publicReferenceRecord": {
+    "referenceId": "trademark:ref:core-task-038",
+    "objectType": "trademark-record",
+    "referenceDomain": "trademark",
+    "status": "Active"
+  },
+  "jurisdictionReferenceRecord": {
+    "referenceId": "jurisdiction:ref:core-task-038",
+    "objectType": "jurisdiction-record",
+    "referenceDomain": "jurisdiction",
+    "status": "Active"
+  },
+  "brandReferenceRecord": {
+    "referenceId": "brand:ref:core-task-038",
+    "objectType": "brand-record",
+    "referenceDomain": "brand",
+    "status": "Active"
+  },
+  "objectRecord": {
+    "publicReferenceId": "trademark:ref:core-task-038",
+    "objectType": "trademark-record",
+    "domainId": "trademark",
+    "objectContractId": "core-object-trademark-record-contract",
+    "status": "draft",
+    "version": {
+      "version": 1,
+      "createdAt": "2026-07-14T01:00:00.000Z"
+    },
+    "metadata": {},
+    "auditMetadata": {
+      "createdAt": "2026-07-14T01:00:00.000Z",
+      "createdByReferenceId": "user:ref:actor-0001",
+      "correlationId": "corr:core-task-038"
+    },
+    "visibility": {
+      "permissionScopeReferenceId": "permission:ref:scope-0001",
+      "policyScopeReferenceId": "policy:ref:scope-0001",
+      "organizationScopeReferenceId": "organization:ref:scope-0001"
+    }
+  },
+  "createRequest": {
+    "trademarkType": "Word",
+    "trademarkStatus": "Draft",
+    "markRepresentationReference": "mark:representation:synthetic-038",
+    "sourceReference": "source:synthetic:trademark-038",
+    "idempotencyKey": "idem:create:core-task-038"
+  },
+  "conflictingCreateRequest": {
+    "trademarkType": "Device"
+  },
+  "duplicateCreateRequest": {
+    "idempotencyKey": "idem:create:duplicate-trademark-038"
+  },
+  "statusTransitionRequest": {
+    "targetStatus": "Planned",
+    "reasonReference": null,
+    "idempotencyKey": "idem:status:core-task-038"
+  },
+  "statusConflictRequest": {
+    "targetStatus": "PendingFiling",
+    "reasonReference": null,
+    "idempotencyKey": "idem:status:core-task-038"
+  },
+  "invalidStatusTransitionRequest": {
+    "targetStatus": "Registered",
+    "idempotencyKey": "idem:status:invalid-core-task-038"
+  },
+  "expected": {
+    "recordCountAfterCreate": 1,
+    "eventTraceCountAfterCreate": 1,
+    "eventTraceCountAfterReplay": 1,
+    "eventTraceCountAfterStatusChange": 2,
+    "eventTraceCountAfterStatusReplay": 2,
+    "sameKeyConflictCode": "IdempotencyConflict",
+    "duplicateTrademarkCode": "TrademarkAlreadyExists",
+    "invalidTransitionCode": "InvalidTrademarkTransition",
+    "statusConflictCode": "IdempotencyConflict"
+  }
+}

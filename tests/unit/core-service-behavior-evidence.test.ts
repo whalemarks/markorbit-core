@@ -8,16 +8,22 @@ import {
   CORE_CUSTOMER_IMPLEMENTED_OPERATIONS,
   CORE_CUSTOMER_MINIMUM_CAPABILITIES,
   CORE_SERVICE_BEHAVIOR_EVIDENCE,
+  CORE_TRADEMARK_IMPLEMENTED_OPERATIONS,
+  CORE_TRADEMARK_MINIMUM_CAPABILITIES,
   validateCoreServiceBehaviorEvidence
 } from '../../src/index.ts';
 
 describe('Core Service behavior evidence', () => {
-  it('validates exact Customer and Brand Service evidence in canonical order', () => {
+  it('validates exact Customer, Brand, and Trademark Service evidence in canonical order', () => {
     assert.deepEqual(validateCoreServiceBehaviorEvidence(), []);
-    assert.equal(CORE_SERVICE_BEHAVIOR_EVIDENCE.length, 2);
+    assert.equal(CORE_SERVICE_BEHAVIOR_EVIDENCE.length, 3);
     assert.deepEqual(
       CORE_SERVICE_BEHAVIOR_EVIDENCE.map((entry) => entry.requirementId),
-      ['must-service-customer-service', 'must-service-brand-service']
+      [
+        'must-service-customer-service',
+        'must-service-brand-service',
+        'must-service-trademark-service'
+      ]
     );
     assert.deepEqual(
       CORE_SERVICE_BEHAVIOR_EVIDENCE[0]?.operations,
@@ -35,49 +41,66 @@ describe('Core Service behavior evidence', () => {
       CORE_SERVICE_BEHAVIOR_EVIDENCE[1]?.provenMinimumCapabilities,
       CORE_BRAND_MINIMUM_CAPABILITIES
     );
+    assert.deepEqual(
+      CORE_SERVICE_BEHAVIOR_EVIDENCE[2]?.operations,
+      CORE_TRADEMARK_IMPLEMENTED_OPERATIONS
+    );
+    assert.deepEqual(
+      CORE_SERVICE_BEHAVIOR_EVIDENCE[2]?.provenMinimumCapabilities,
+      CORE_TRADEMARK_MINIMUM_CAPABILITIES
+    );
   });
 
   it('rejects missing, duplicate, fake and cross-Service evidence', () => {
-    const [customer, brand] = CORE_SERVICE_BEHAVIOR_EVIDENCE;
+    const [customer, brand, trademark] = CORE_SERVICE_BEHAVIOR_EVIDENCE;
     assert.equal(
-      validateCoreServiceBehaviorEvidence({ evidence: [customer] }).some(
+      validateCoreServiceBehaviorEvidence({ evidence: [customer, brand] }).some(
         (issue) => issue.code === 'core.service.evidence_missing'
       ),
       true
     );
     assert.equal(
       validateCoreServiceBehaviorEvidence({
-        evidence: [customer, customer]
+        evidence: [customer, customer, trademark]
       }).some((issue) => issue.code === 'core.service.evidence_extra'),
       true
     );
     assert.equal(
       validateCoreServiceBehaviorEvidence({
-        evidence: [{ ...customer, contractId: 'fake-contract' }, brand]
+        evidence: [
+          { ...customer, contractId: 'fake-contract' },
+          brand,
+          trademark
+        ]
       }).some((issue) => issue.code === 'core.service.contract_mismatch'),
       true
     );
     assert.equal(
       validateCoreServiceBehaviorEvidence({
-        evidence: [customer, { ...brand, domainId: 'customer' }]
+        evidence: [customer, { ...brand, domainId: 'customer' }, trademark]
       }).some((issue) => issue.code === 'core.service.domain_mismatch'),
       true
     );
     assert.equal(
       validateCoreServiceBehaviorEvidence({
-        evidence: [customer, { ...brand, serviceType: 'customer-service' }]
+        evidence: [
+          customer,
+          { ...brand, serviceType: 'customer-service' },
+          trademark
+        ]
       }).some((issue) => issue.code === 'core.service.cross_service_evidence'),
       true
     );
   });
 
   it('rejects missing Brand operations and minimum capabilities', () => {
-    const [customer, brand] = CORE_SERVICE_BEHAVIOR_EVIDENCE;
+    const [customer, brand, trademark] = CORE_SERVICE_BEHAVIOR_EVIDENCE;
     assert.equal(
       validateCoreServiceBehaviorEvidence({
         evidence: [
           customer,
-          { ...brand, operations: brand.operations.slice(1) }
+          { ...brand, operations: brand.operations.slice(1) },
+          trademark
         ]
       }).some((issue) => issue.code === 'core.service.operation_missing'),
       true
@@ -89,14 +112,15 @@ describe('Core Service behavior evidence', () => {
           {
             ...brand,
             provenMinimumCapabilities: brand.provenMinimumCapabilities.slice(1)
-          }
+          },
+          trademark
         ]
       }).some((issue) => issue.code === 'core.service.capability_missing'),
       true
     );
   });
 
-  it('executes both fixtures and rejects corrupted lifecycle expectations', async () => {
+  it('executes all three fixtures and rejects corrupted lifecycle expectations', async () => {
     const customerFixture = JSON.parse(
       await readFile(
         'fixtures/services/core-customer-service-core-lifecycle.fixture.json',
@@ -120,6 +144,20 @@ describe('Core Service behavior evidence', () => {
     brandFixture.expected.eventTraceCountAfterStatusReplay = 999;
     assert.equal(
       validateCoreServiceBehaviorEvidence({ brandFixture }).some(
+        (issue) => issue.code === 'core.service.fixture_invalid'
+      ),
+      true
+    );
+
+    const trademarkFixture = JSON.parse(
+      await readFile(
+        'fixtures/services/core-trademark-service-core-lifecycle.fixture.json',
+        'utf8'
+      )
+    ) as { expected: Record<string, unknown> };
+    trademarkFixture.expected.eventTraceCountAfterStatusReplay = 999;
+    assert.equal(
+      validateCoreServiceBehaviorEvidence({ trademarkFixture }).some(
         (issue) => issue.code === 'core.service.fixture_invalid'
       ),
       true

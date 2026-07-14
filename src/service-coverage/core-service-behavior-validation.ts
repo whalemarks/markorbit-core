@@ -8,8 +8,13 @@ import {
   CORE_CUSTOMER_IMPLEMENTED_OPERATIONS,
   CORE_CUSTOMER_MINIMUM_CAPABILITIES
 } from '../services/customer/index.ts';
+import {
+  CORE_TRADEMARK_IMPLEMENTED_OPERATIONS,
+  CORE_TRADEMARK_MINIMUM_CAPABILITIES
+} from '../services/trademark/index.ts';
 import { validateCoreBrandServiceEvidenceFixture } from './core-brand-service-evidence-fixture.ts';
 import { validateCoreCustomerServiceEvidenceFixture } from './core-customer-service-evidence-fixture.ts';
+import { validateCoreTrademarkServiceEvidenceFixture } from './core-trademark-service-evidence-fixture.ts';
 import {
   CORE_SERVICE_BEHAVIOR_EVIDENCE,
   type CoreServiceBehaviorEvidence
@@ -25,18 +30,20 @@ export interface CoreServiceBehaviorValidationOptions {
   readonly evidence?: readonly CoreServiceBehaviorEvidence[];
   readonly customerFixture?: unknown;
   readonly brandFixture?: unknown;
+  readonly trademarkFixture?: unknown;
 }
 
 interface ExpectedServiceEvidence {
   readonly requirementId: string;
   readonly serviceType: string;
-  readonly domainId: 'customer' | 'brand';
+  readonly domainId: 'customer' | 'brand' | 'trademark';
   readonly contractId: string;
   readonly sourcePath: string;
   readonly operations: readonly string[];
   readonly capabilities: readonly string[];
   readonly unresolved: readonly string[];
-  readonly fixtureOverride: 'customerFixture' | 'brandFixture';
+  readonly fixtureOverride:
+    'customerFixture' | 'brandFixture' | 'trademarkFixture';
   readonly fixtureValidator: (
     fixture: unknown
   ) => readonly { readonly code: string }[];
@@ -85,6 +92,30 @@ const expectedEvidence = [
     ],
     fixtureOverride: 'brandFixture',
     fixtureValidator: validateCoreBrandServiceEvidenceFixture
+  },
+  {
+    requirementId: 'must-service-trademark-service',
+    serviceType: 'trademark-service',
+    domainId: 'trademark',
+    contractId: 'core-service-trademark-service-contract',
+    sourcePath:
+      'books/book-02-core-specification/core-specs/services/trademark-service.md',
+    operations: CORE_TRADEMARK_IMPLEMENTED_OPERATIONS,
+    capabilities: CORE_TRADEMARK_MINIMUM_CAPABILITIES,
+    unresolved: [
+      'updateTrademark',
+      'linkTrademarkBrand',
+      'unlinkTrademarkBrand',
+      'linkTrademarkJurisdiction',
+      'linkTrademarkClassification',
+      'unlinkTrademarkClassification',
+      'linkTrademarkDocument',
+      'linkTrademarkEvidence',
+      'updateOfficialReference',
+      'archiveTrademark'
+    ],
+    fixtureOverride: 'trademarkFixture',
+    fixtureValidator: validateCoreTrademarkServiceEvidenceFixture
   }
 ] as const satisfies readonly ExpectedServiceEvidence[];
 
@@ -134,7 +165,7 @@ export function validateCoreServiceBehaviorEvidence(
         evidence.length < expectedEvidence.length
           ? 'core.service.evidence_missing'
           : 'core.service.evidence_extra',
-        'Service behavior evidence must contain exactly Customer and Brand entries in canonical order.',
+        'Service behavior evidence must contain exactly Customer, Brand, and Trademark entries in canonical order.',
         'evidence'
       )
     );

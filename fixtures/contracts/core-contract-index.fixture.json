@@ -888,10 +888,10 @@
     "createdAt": "2026-07-09T00:00:00.000Z"
   },
   {
-    "id": "core-service-trademark-reference-service-contract",
+    "id": "core-service-trademark-service-contract",
     "type": "service",
-    "name": "Trademark Reference Service Contract Skeleton",
-    "description": "Skeleton contract boundary for trademark reference service responsibilities.",
+    "name": "Core Trademark Service Contract Skeleton",
+    "description": "Canonical metadata skeleton for the trademark Core Service boundary.",
     "status": "active",
     "scope": {
       "domainId": "trademark"
@@ -899,7 +899,7 @@
     "version": 1,
     "book": "Book 02 — MarkOrbit Core Specification",
     "source": "CORE_SERVICE_CONTRACT_SKELETONS",
-    "createdAt": "2026-07-09T00:00:00.000Z"
+    "createdAt": "2026-07-11T00:00:00.000Z"
   },
   {
     "id": "core-service-jurisdiction-reference-service-contract",

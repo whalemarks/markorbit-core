@@ -28,6 +28,21 @@ describe('CORE_SERVICE_CONTRACT_SKELETONS', () => {
     assert.deepEqual(additions.map((entry) => entry.sourcePath), targets.map((target) => target.sourcePath));
     assert.ok(additions.every((entry) => entry.metadata?.implementationTask === 'CORE-TASK-021'));
   });
+  it('promotes the legacy Trademark reference contract in place', () => {
+    const trademark = CORE_SERVICE_CONTRACT_SKELETONS[4];
+    assert.equal(trademark?.id, 'core-service-trademark-service-contract');
+    assert.equal(trademark?.serviceType, 'trademark-service');
+    assert.equal(trademark?.sourcePath, 'books/book-02-core-specification/core-specs/services/trademark-service.md');
+    assert.equal(trademark?.metadata?.implementationTask, 'CORE-TASK-038');
+    assert.equal(trademark?.metadata?.behaviorImplementationTask, 'CORE-TASK-038');
+    assert.deepEqual(trademark?.metadata?.implementedOperations, [
+      'createTrademark',
+      'getTrademark',
+      'listTrademarks',
+      'validateTrademarkReference',
+      'changeTrademarkStatus'
+    ]);
+  });
   it('adds exactly the 7 safe CORE-TASK-023 Service stubs', () => {
     const targets = CORE_DOMAIN_CONTRACT_TARGETS.filter((target) => target.implementationBatch === 'CORE-TASK-023' && target.layer === 'service');
     const additions = CORE_SERVICE_CONTRACT_SKELETONS.slice(19);

@@ -14,27 +14,29 @@ import {
   type CoreMvpObjectBaseRecord
 } from '../../src/objects/core-mvp-object-base-record.ts';
 import {
-  CORE_BRAND_STATUSES,
-  CORE_BRAND_TYPES,
-  CoreBrandService,
-  CoreInMemoryBrandServiceStore,
-  type CoreBrandGovernanceContext
-} from '../../src/services/brand/index.ts';
-import { validateCoreBrandServiceEvidenceFixture } from '../../src/service-coverage/core-brand-service-evidence-fixture.ts';
+  CORE_TRADEMARK_STATUSES,
+  CORE_TRADEMARK_TYPES,
+  CoreTrademarkService,
+  CoreInMemoryTrademarkServiceStore,
+  type CoreTrademarkGovernanceContext
+} from '../../src/services/trademark/index.ts';
+import { validateCoreTrademarkServiceEvidenceFixture } from '../../src/service-coverage/core-trademark-service-evidence-fixture.ts';
 
 const fixture = JSON.parse(
   readFileSync(
-    'fixtures/services/core-brand-service-core-lifecycle.fixture.json',
+    'fixtures/services/core-trademark-service-core-lifecycle.fixture.json',
     'utf8'
   )
 ) as Record<string, unknown>;
 
-const brandReference = fixture.publicReferenceRecord as CoreReferenceRecord;
-const customerReference =
-  fixture.customerReferenceRecord as CoreReferenceRecord;
+const trademarkReference = fixture.publicReferenceRecord as CoreReferenceRecord;
+const brandReference = fixture.brandReferenceRecord as CoreReferenceRecord;
+const jurisdictionReference =
+  fixture.jurisdictionReferenceRecord as CoreReferenceRecord;
 const objectRecord = fixture.objectRecord as unknown as CoreMvpObjectBaseRecord;
+const trademarkReferenceId = String(fixture.trademarkReferenceId);
 const brandReferenceId = String(fixture.brandReferenceId);
-const customerReferenceId = String(fixture.customerReferenceId);
+const jurisdictionReferenceId = String(fixture.jurisdictionReferenceId);
 const organizationScopeReferenceId = String(
   fixture.organizationScopeReferenceId
 );
@@ -45,7 +47,7 @@ function governance(
   policyScope: string,
   target: string,
   organizationReferenceId = organizationScopeReferenceId
-): CoreBrandGovernanceContext {
+): CoreTrademarkGovernanceContext {
   return {
     correlationId: 'corr:core-task-037',
     auditContextReferenceId: 'audit:ctx:core-task-037',
@@ -73,14 +75,14 @@ function governance(
       reviewScope: null,
       reviewDecision: null,
       reviewerUserReferenceId: null,
-      targetObjectType: 'brand-record',
+      targetObjectType: 'trademark-record',
       targetObjectReferenceId: target
     },
     audit: {
       operationName: operation,
       operationCategory: 'Service',
       actorReferenceId: 'user:ref:actor-0001',
-      targetObjectType: 'brand-record',
+      targetObjectType: 'trademark-record',
       targetObjectReferenceId: target,
       permissionDecisionReferenceId: 'permission:decision:allow-0001',
       policyDecisionReferenceId: 'policy:decision:allow-0001',
@@ -90,20 +92,21 @@ function governance(
   };
 }
 
-function setup(includeCustomer = true) {
+function setup(includeBrand = true, includeJurisdiction = true) {
   const traces = new CoreEventTraceRegistry();
-  const store = new CoreInMemoryBrandServiceStore();
+  const store = new CoreInMemoryTrademarkServiceStore();
   const references = [
     ...CORE_MVP_OBJECT_FIXTURE_RELATED_REFERENCE_RECORDS,
-    brandReference,
-    ...(includeCustomer ? [customerReference] : [])
+    trademarkReference,
+    ...(includeBrand ? [brandReference] : []),
+    ...(includeJurisdiction ? [jurisdictionReference] : [])
   ];
   const clocks = [
     String(fixture.fixedNow),
     String(fixture.updatedNow),
     String(fixture.updatedNow)
   ];
-  const service = new CoreBrandService({
+  const service = new CoreTrademarkService({
     store,
     idempotencyRegistry: new CoreIdempotencyRegistry(() => 1),
     eventTracePort: traces,
@@ -116,80 +119,94 @@ function setup(includeCustomer = true) {
       createCoreEventId(
         `event-test-${operation}-${referenceId.replaceAll(':', '-')}-${idempotencyKey}`
       ) as CoreEventId,
-    cursorSecret: 'brand-service-test-secret'
+    cursorSecret: 'trademark-service-test-secret'
   });
   return { service, store, traces };
 }
 
-function createBrand(service: CoreBrandService) {
-  return service.createBrand({
+function createTrademark(service: CoreTrademarkService) {
+  return service.createTrademark({
     objectRecord,
-    publicReferenceRecord: brandReference,
-    brandType: 'Word',
-    brandStatus: 'Active',
-    nameReference: 'name:synthetic:brand-037',
-    sourceReference: 'source:synthetic:brand-037',
-    customerReferenceId,
-    idempotencyKey: 'idem:create:brand-test-037',
+    publicReferenceRecord: trademarkReference,
+    trademarkType: 'Word',
+    trademarkStatus: 'Draft',
+    markRepresentationReference: 'name:synthetic:trademark-037',
+    sourceReference: 'source:synthetic:trademark-037',
+    jurisdictionReferenceId,
+    brandReferenceId,
+    idempotencyKey: 'idem:create:trademark-test-037',
     governance: governance(
-      'brand.create',
-      'brand:create',
-      'brand.write',
-      brandReferenceId
+      'trademark.create',
+      'trademark:create',
+      'trademark.write',
+      trademarkReferenceId
     )
   });
 }
 
-describe('Brand Service core lifecycle boundary', () => {
-  it('locks Brand Object controlled values and executes the canonical fixture', () => {
-    assert.deepEqual(CORE_BRAND_TYPES, [
+describe('Trademark Service core lifecycle boundary', () => {
+  it('locks Trademark Object controlled values and executes the canonical fixture', () => {
+    assert.deepEqual(CORE_TRADEMARK_TYPES, [
       'Word',
-      'Logo',
+      'Device',
       'Combined',
       'Slogan',
+      'Sound',
+      'Color',
+      'ThreeDimensional',
       'Series',
-      'TradeName',
-      'ProductLine',
       'Unknown'
     ]);
-    assert.deepEqual(CORE_BRAND_STATUSES, [
+    assert.deepEqual(CORE_TRADEMARK_STATUSES, [
       'Draft',
-      'Active',
+      'Planned',
+      'PendingFiling',
+      'Filed',
+      'UnderExamination',
+      'Published',
+      'Opposed',
+      'Registered',
+      'Refused',
+      'Abandoned',
+      'Cancelled',
+      'Expired',
+      'Invalidated',
+      'RenewalDue',
       'ReviewRequired',
       'Archived',
       'DeletedReferenceOnly'
     ]);
-    assert.deepEqual(validateCoreBrandServiceEvidenceFixture(fixture), []);
+    assert.deepEqual(validateCoreTrademarkServiceEvidenceFixture(fixture), []);
   });
 
-  it('creates and replays Brand state and status without duplicate Events', () => {
+  it('creates and replays Trademark state and status without duplicate Events', () => {
     const { service, store, traces } = setup();
-    const created = createBrand(service);
+    const created = createTrademark(service);
     assert.equal(created.ok, true);
-    const replayedCreate = createBrand(service);
+    const replayedCreate = createTrademark(service);
     assert.deepEqual(replayedCreate, created);
     assert.equal(store.list().length, 1);
     assert.equal(traces.visibleTo(['Internal']).length, 1);
 
     const statusRequest = {
-      brandReferenceId,
+      trademarkReferenceId,
       targetStatus: 'Archived' as const,
-      reasonReference: 'reason:synthetic:archive-brand',
-      idempotencyKey: 'idem:status:brand-test-037',
+      reasonReference: 'reason:synthetic:archive-trademark',
+      idempotencyKey: 'idem:status:trademark-test-037',
       governance: governance(
-        'brand.change_status',
-        'brand:change_status',
-        'brand.lifecycle',
-        brandReferenceId
+        'trademark.change_status',
+        'trademark:change_status',
+        'trademark.lifecycle',
+        trademarkReferenceId
       )
     };
-    const changed = service.changeBrandStatus(statusRequest);
+    const changed = service.changeTrademarkStatus(statusRequest);
     assert.equal(changed.ok, true);
-    const replayedStatus = service.changeBrandStatus(statusRequest);
+    const replayedStatus = service.changeTrademarkStatus(statusRequest);
     assert.deepEqual(replayedStatus, changed);
     assert.equal(traces.visibleTo(['Internal']).length, 2);
 
-    const conflict = service.changeBrandStatus({
+    const conflict = service.changeTrademarkStatus({
       ...statusRequest,
       targetStatus: 'ReviewRequired'
     });
@@ -203,14 +220,27 @@ describe('Brand Service core lifecycle boundary', () => {
     assert.equal(traces.visibleTo(['Internal']).length, 2);
   });
 
-  it('requires a registered active Customer reference', () => {
-    const { service, traces } = setup(false);
-    const result = createBrand(service);
+  it('requires a registered active Brand reference', () => {
+    const { service, traces } = setup(false, true);
+    const result = createTrademark(service);
     assert.equal(result.ok, false);
     if (!result.ok) {
       assert.deepEqual(
         [result.error.code, result.error.category],
-        ['InvalidBrandCustomerReference', 'Reference']
+        ['InvalidTrademarkBrandReference', 'Reference']
+      );
+    }
+    assert.equal(traces.visibleTo(['Internal']).length, 0);
+  });
+
+  it('requires a registered active Jurisdiction reference', () => {
+    const { service, traces } = setup(true, false);
+    const result = createTrademark(service);
+    assert.equal(result.ok, false);
+    if (!result.ok) {
+      assert.deepEqual(
+        [result.error.code, result.error.category],
+        ['InvalidTrademarkJurisdictionReference', 'Reference']
       );
     }
     assert.equal(traces.visibleTo(['Internal']).length, 0);
@@ -218,71 +248,76 @@ describe('Brand Service core lifecycle boundary', () => {
 
   it('returns safe list and reference-validation outputs', () => {
     const { service, traces } = setup();
-    assert.equal(createBrand(service).ok, true);
-    const listed = service.listBrands({
-      filters: { brandType: 'Word', brandStatus: 'Active' },
+    assert.equal(createTrademark(service).ok, true);
+    const listed = service.listTrademarks({
+      filters: { trademarkType: 'Word', trademarkStatus: 'Draft' },
       pagination: { limit: 10, sortField: 'publicReferenceId' },
       governance: governance(
-        'brand.list',
-        'brand:list',
-        'brand.list',
-        'brand:collection'
+        'trademark.list',
+        'trademark:list',
+        'trademark.list',
+        'trademark:collection'
       )
     });
     assert.equal(listed.ok, true);
     if (listed.ok) {
       assert.equal(listed.value.items.length, 1);
       const summary = listed.value.items[0];
-      assert.equal('nameReference' in summary, false);
+      assert.equal('markRepresentationReference' in summary, false);
       assert.equal('sourceReference' in summary, false);
-      assert.equal('customerReferenceId' in summary, false);
+      assert.equal('brandReferenceId' in summary, false);
+      assert.equal('jurisdictionReferenceId' in summary, false);
       assert.equal('visibility' in summary, false);
       assert.equal('metadata' in summary, false);
     }
-    const validation = service.validateBrandReference({
-      brandReferenceId,
-      requestingDomain: 'trademark',
-      requestingService: 'trademark-service',
+    const validation = service.validateTrademarkReference({
+      trademarkReferenceId,
+      requestingDomain: 'matter',
+      requestingService: 'matter-service',
       governance: governance(
-        'brand.validate_reference',
-        'brand:validate_reference',
-        'brand.reference',
-        brandReferenceId
+        'trademark.validate_reference',
+        'trademark:validate_reference',
+        'trademark.reference',
+        trademarkReferenceId
       )
     });
     assert.equal(validation.ok, true);
     if (validation.ok) {
       assert.equal(validation.value.isValid, true);
-      assert.equal('customerReferenceId' in validation.value, false);
+      assert.equal('brandReferenceId' in validation.value, false);
+      assert.equal('jurisdictionReferenceId' in validation.value, false);
     }
     assert.equal(traces.visibleTo(['Internal']).length, 1);
   });
 
   it('fails closed for missing archive reason and organization mismatch', () => {
     const { service } = setup();
-    assert.equal(createBrand(service).ok, true);
-    const missingReason = service.changeBrandStatus({
-      brandReferenceId,
+    assert.equal(createTrademark(service).ok, true);
+    const missingReason = service.changeTrademarkStatus({
+      trademarkReferenceId,
       targetStatus: 'Archived',
       idempotencyKey: 'idem:status:missing-reason-037',
       governance: governance(
-        'brand.change_status',
-        'brand:change_status',
-        'brand.lifecycle',
-        brandReferenceId
+        'trademark.change_status',
+        'trademark:change_status',
+        'trademark.lifecycle',
+        trademarkReferenceId
       )
     });
     assert.equal(missingReason.ok, false);
     if (!missingReason.ok) {
-      assert.equal(missingReason.error.code, 'BrandReasonReferenceRequired');
+      assert.equal(
+        missingReason.error.code,
+        'TrademarkReasonReferenceRequired'
+      );
     }
-    const wrongScope = service.getBrand({
-      brandReferenceId,
+    const wrongScope = service.getTrademark({
+      trademarkReferenceId,
       governance: governance(
-        'brand.read',
-        'brand:read',
-        'brand.read',
-        brandReferenceId,
+        'trademark.read',
+        'trademark:read',
+        'trademark.read',
+        trademarkReferenceId,
         'organization:ref:wrong-scope'
       )
     });

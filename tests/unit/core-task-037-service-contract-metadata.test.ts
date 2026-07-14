@@ -41,11 +41,14 @@ describe('CORE-TASK-037 Service contract behavior metadata', () => {
     ]);
   });
 
-  it('keeps behavior metadata absent from the remaining Service skeletons', () => {
+  it('keeps behavior metadata absent from Services without executable evidence', () => {
+    const evidenceBackedServiceTypes = new Set([
+      'customer-service',
+      'brand-service',
+      'trademark-service'
+    ]);
     const remaining = CORE_SERVICE_CONTRACT_SKELETONS.filter(
-      (contract) =>
-        contract.serviceType !== 'customer-service' &&
-        contract.serviceType !== 'brand-service'
+      (contract) => !evidenceBackedServiceTypes.has(contract.serviceType)
     );
     assert.ok(
       remaining.every(

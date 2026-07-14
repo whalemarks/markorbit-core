@@ -32,6 +32,7 @@ import {
   validateCoreCustomerServiceCoreLifecycleFixture
 } from '../src/validation/index.ts';
 import { validateCoreBrandServiceCoreLifecycleFixture } from '../src/validation/core-brand-service-fixture-validation.ts';
+import { validateCoreTrademarkServiceCoreLifecycleFixture } from '../src/validation/core-trademark-service-fixture-validation.ts';
 
 const validators = {
   domain_registry: validateCoreDomainRegistryFixture,
@@ -63,6 +64,8 @@ const validators = {
   core_mvp_object_public_reference_foundation: validateCoreMvpObjectPublicReferenceFoundationFixture,
   core_customer_service_core_lifecycle: validateCoreCustomerServiceCoreLifecycleFixture,
   core_brand_service_core_lifecycle: validateCoreBrandServiceCoreLifecycleFixture,
+  core_trademark_service_core_lifecycle:
+    validateCoreTrademarkServiceCoreLifecycleFixture,
   validateCoreMvpObjectPublicReferenceFoundationFixture
 };
 

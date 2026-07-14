@@ -41,7 +41,8 @@ const canonicalServiceSkeleton = (
   owns: readonly string[],
   consumes: readonly string[],
   produces: readonly string[],
-  specificNonGoals: readonly string[]
+  specificNonGoals: readonly string[],
+  implementationTask: 'CORE-TASK-021' | 'CORE-TASK-038' = 'CORE-TASK-021'
 ): CoreServiceContract => ({
   ...serviceSkeleton(
     serviceType,
@@ -61,7 +62,7 @@ const canonicalServiceSkeleton = (
     specificationRepository: 'whalemarks/markorbit-publication',
     specificationCommit: '3349ecb8955021a8714d023348f8b24f941eb98f',
     specificationPath,
-    implementationTask: 'CORE-TASK-021',
+    implementationTask,
     ...(serviceType === 'customer-service'
       ? {
           behaviorImplementationTask: 'CORE-TASK-036',
@@ -86,7 +87,19 @@ const canonicalServiceSkeleton = (
               'changeBrandStatus'
             ]
           }
-        : {})
+        : serviceType === 'trademark-service'
+          ? {
+              behaviorImplementationTask: 'CORE-TASK-038',
+              behaviorDepth: 'level_2_3',
+              implementedOperations: [
+                'createTrademark',
+                'getTrademark',
+                'listTrademarks',
+                'validateTrademarkReference',
+                'changeTrademarkStatus'
+              ]
+            }
+          : {})
   }
 });
 
@@ -135,7 +148,18 @@ export const CORE_SERVICE_CONTRACT_SKELETONS = [
   serviceSkeleton('permission-evaluation-service', 'permission', 'Permission Evaluation Service Contract Skeleton', 'Skeleton contract boundary for permission evaluation service responsibilities.', 'Establishes a service contract placeholder for permission ownership boundaries without implementing permission decisions.', ['Permission evaluation service contract boundary.'], ['permission domain references', 'identity boundary references'], ['permission evaluation references']),
   serviceSkeleton('policy-evaluation-service', 'policy', 'Policy Evaluation Service Contract Skeleton', 'Skeleton contract boundary for policy evaluation service responsibilities.', 'Establishes a service contract placeholder for policy ownership boundaries without implementing policy execution.', ['Policy evaluation service contract boundary.'], ['policy domain references'], ['policy evaluation references']),
   serviceSkeleton('knowledge-reference-service', 'knowledge', 'Knowledge Reference Service Contract Skeleton', 'Skeleton contract boundary for knowledge reference service responsibilities.', 'Establishes a service contract placeholder for knowledge reference boundaries without implementing retrieval behavior.', ['Knowledge reference service contract boundary.'], ['knowledge domain references'], ['knowledge reference outputs']),
-  serviceSkeleton('trademark-reference-service', 'trademark', 'Trademark Reference Service Contract Skeleton', 'Skeleton contract boundary for trademark reference service responsibilities.', 'Establishes a service contract placeholder for trademark references without trademark-specific service behavior.', ['Trademark reference service contract boundary.'], ['trademark domain references'], ['trademark reference outputs']),
+  canonicalServiceSkeleton(
+    'trademark-service',
+    'trademark',
+    'Core Trademark Service Contract Skeleton',
+    'trademark-service.md',
+    'Defines the Trademark service ownership boundary for legal and procedural protection records without implementing filing, prosecution, registry synchronization, deadline calculation, fee calculation, similarity scoring, or legal conclusions.',
+    ['Trademark service ownership, validation, lifecycle, relationship-reference, and reference boundary.'],
+    ['trademark, brand, jurisdiction, classification, document, evidence, and matter references'],
+    ['trademark boundary references'],
+    ['Official registry synchronization, filing execution, prosecution workflow, deadline engine, fee engine, registrability scoring, similarity search, or legal opinion automation.'],
+    'CORE-TASK-038'
+  ),
   serviceSkeleton('jurisdiction-reference-service', 'jurisdiction', 'Jurisdiction Reference Service Contract Skeleton', 'Skeleton contract boundary for jurisdiction reference service responsibilities.', 'Establishes a service contract placeholder for jurisdiction references without implementing legal lookup behavior.', ['Jurisdiction reference service contract boundary.'], ['jurisdiction domain references'], ['jurisdiction reference outputs']),
   serviceSkeleton('classification-reference-service', 'classification', 'Classification Reference Service Contract Skeleton', 'Skeleton contract boundary for classification reference service responsibilities.', 'Establishes a service contract placeholder for classification references without implementing classification behavior.', ['Classification reference service contract boundary.'], ['classification domain references'], ['classification reference outputs']),
   serviceSkeleton('document-reference-service', 'document', 'Document Reference Service Contract Skeleton', 'Skeleton contract boundary for document reference service responsibilities.', 'Establishes a service contract placeholder for document references without document storage or rendering behavior.', ['Document reference service contract boundary.'], ['document domain references'], ['document reference outputs']),

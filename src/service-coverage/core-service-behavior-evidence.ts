@@ -7,6 +7,10 @@ import {
   CORE_CUSTOMER_IMPLEMENTED_OPERATIONS,
   CORE_CUSTOMER_MINIMUM_CAPABILITIES
 } from '../services/customer/index.ts';
+import {
+  CORE_TRADEMARK_IMPLEMENTED_OPERATIONS,
+  CORE_TRADEMARK_MINIMUM_CAPABILITIES
+} from '../services/trademark/index.ts';
 
 export interface CoreServiceBehaviorEvidence {
   readonly requirementId: string;
@@ -79,6 +83,34 @@ export const CORE_SERVICE_BEHAVIOR_EVIDENCE = [
     testFiles: ['tests/unit/core-brand-service-core-lifecycle.test.ts'],
     fixtureFiles: [
       'fixtures/services/core-brand-service-core-lifecycle.fixture.json'
+    ]
+  },
+  {
+    requirementId: 'must-service-trademark-service',
+    serviceType: 'trademark-service',
+    domainId: 'trademark',
+    contractId: 'core-service-trademark-service-contract',
+    sourcePath:
+      'books/book-02-core-specification/core-specs/services/trademark-service.md',
+    currentDepth: 'level_2_3',
+    operations: CORE_TRADEMARK_IMPLEMENTED_OPERATIONS,
+    provenMinimumCapabilities: CORE_TRADEMARK_MINIMUM_CAPABILITIES,
+    unresolvedServiceOperations: [
+      'updateTrademark',
+      'linkTrademarkBrand',
+      'unlinkTrademarkBrand',
+      'linkTrademarkJurisdiction',
+      'linkTrademarkClassification',
+      'unlinkTrademarkClassification',
+      'linkTrademarkDocument',
+      'linkTrademarkEvidence',
+      'updateOfficialReference',
+      'archiveTrademark'
+    ],
+    implementationFiles: ['src/services/trademark/core-trademark-service.ts'],
+    testFiles: ['tests/unit/core-trademark-service-core-lifecycle.test.ts'],
+    fixtureFiles: [
+      'fixtures/services/core-trademark-service-core-lifecycle.fixture.json'
     ]
   }
 ] as const satisfies readonly CoreServiceBehaviorEvidence[];
