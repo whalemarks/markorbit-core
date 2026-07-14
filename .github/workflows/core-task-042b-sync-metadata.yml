@@ -1,0 +1,119 @@
+name: CORE-TASK-042B Sync Metadata
+
+on:
+  pull_request:
+
+permissions:
+  contents: write
+
+jobs:
+  sync-metadata:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout head branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+
+      - name: Synchronize Evidence metadata
+        shell: bash
+        run: |
+          python <<'PY'
+          from pathlib import Path
+          import json
+          import re
+
+          operations = [
+              'createEvidence',
+              'getEvidence',
+              'listEvidence',
+              'updateEvidence',
+              'validateEvidenceReference',
+              'linkEvidenceSource',
+              'linkEvidenceClaim',
+              'linkEvidenceDocument',
+              'linkEvidenceTrademark',
+              'linkEvidenceBrand',
+              'linkEvidenceClassification',
+              'requireEvidenceReview',
+              'reviewEvidence',
+              'changeEvidenceStatus',
+          ]
+
+          def array(values, indent):
+              lines = ['[']
+              for index, value in enumerate(values):
+                  suffix = ',' if index < len(values) - 1 else ''
+                  lines.append(' ' * indent + repr(value) + suffix)
+              lines.append(' ' * (indent - 2) + ']')
+              return '\n'.join(lines)
+
+          path = Path('src/contracts/service/core-service-contract-skeletons.ts')
+          text = path.read_text()
+          text = text.replace("behaviorImplementationTask: 'CORE-TASK-042',", "behaviorImplementationTask: 'CORE-TASK-042B',", 1)
+          pattern = r"(serviceType === 'evidence-service'[\s\S]*?implementedOperations: )\[[\s\S]*?\](\n\s*}\n\s*: \{\})"
+          match = re.search(pattern, text)
+          if not match:
+              raise RuntimeError('Evidence contract skeleton operations were not found.')
+          text = text[:match.start()] + match.group(1) + array(operations, 24) + match.group(2) + text[match.end():]
+          path.write_text(text)
+
+          path = Path('src/contracts/service/core-service-contract-validation.ts')
+          text = path.read_text()
+          text = text.replace("'evidence-service': {\n    task: 'CORE-TASK-042',", "'evidence-service': {\n    task: 'CORE-TASK-042B',", 1)
+          pattern = r"('evidence-service': \{\n\s*task: 'CORE-TASK-042B',\n\s*operations: )\[[\s\S]*?\](\n\s*}\n} as const;)"
+          match = re.search(pattern, text)
+          if not match:
+              raise RuntimeError('Evidence behavior lock operations were not found.')
+          text = text[:match.start()] + match.group(1) + array(operations, 6) + match.group(2) + text[match.end():]
+          path.write_text(text)
+
+          path = Path('fixtures/contracts/core-service-contract-skeletons.fixture.json')
+          fixture = json.loads(path.read_text())
+          entry = next(item for item in fixture if item.get('serviceType') == 'evidence-service')
+          entry['metadata']['behaviorImplementationTask'] = 'CORE-TASK-042B'
+          entry['metadata']['implementedOperations'] = operations
+          path.write_text(json.dumps(fixture, indent=2, ensure_ascii=False) + '\n')
+
+          path = Path('tests/unit/core-task-042-service-contract-metadata.test.ts')
+          text = path.read_text()
+          text = text.replace("describe('CORE-TASK-042 Evidence Service contract metadata'", "describe('CORE-TASK-042B Evidence Service contract metadata'")
+          text = text.replace("behaviorImplementationTask: 'CORE-TASK-042',", "behaviorImplementationTask: 'CORE-TASK-042B',")
+          pattern = r"(behaviorDepth: 'level_2_3',\n\s*implementedOperations: )\[[\s\S]*?\](\n\s*}\);)"
+          match = re.search(pattern, text)
+          if not match:
+              raise RuntimeError('Evidence metadata test operations were not found.')
+          text = text[:match.start()] + match.group(1) + array(operations, 8) + match.group(2) + text[match.end():]
+          path.write_text(text)
+
+          path = Path('src/service-coverage/core-service-behavior-evidence.ts')
+          text = path.read_text()
+          text = re.sub(r"    unresolvedServiceOperations: \[\n      'updateEvidence',[\s\S]*?      'archiveEvidence'\n    \],", "    unresolvedServiceOperations: [\n      'unlinkEvidenceSource',\n      'linkEvidenceMatter',\n      'linkEvidenceJurisdiction'\n    ],", text, count=1)
+          text = text.replace("implementationFiles: ['src/services/evidence/core-evidence-service.ts'],", "implementationFiles: [\n      'src/services/evidence/core-evidence-service.ts',\n      'src/services/evidence/core-evidence-service-complete.ts'\n    ],")
+          text = text.replace("'tests/unit/core-evidence-service-proof-layer-foundation.test.ts'\n    ],", "'tests/unit/core-evidence-service-proof-layer-foundation.test.ts',\n      'tests/unit/core-evidence-service-mvp-completion.test.ts'\n    ],", 1)
+          path.write_text(text)
+
+          path = Path('src/service-coverage/core-service-behavior-validation.ts')
+          text = path.read_text()
+          text = re.sub(r"    unresolved: \[\n      'updateEvidence',[\s\S]*?      'archiveEvidence'\n    \],", "    unresolved: [\n      'unlinkEvidenceSource',\n      'linkEvidenceMatter',\n      'linkEvidenceJurisdiction'\n    ],", text, count=1)
+          path.write_text(text)
+          PY
+
+      - name: Commit metadata synchronization
+        shell: bash
+        run: |
+          if git diff --quiet; then
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/contracts/service/core-service-contract-skeletons.ts \
+            src/contracts/service/core-service-contract-validation.ts \
+            fixtures/contracts/core-service-contract-skeletons.fixture.json \
+            tests/unit/core-task-042-service-contract-metadata.test.ts \
+            src/service-coverage/core-service-behavior-evidence.ts \
+            src/service-coverage/core-service-behavior-validation.ts
+          git commit -m "CORE-TASK-042B — synchronize Evidence metadata"
+          git push origin HEAD:${{ github.event.pull_request.head.ref }}
