@@ -638,13 +638,17 @@ function evidenceFor(identity: Book02MvpRequirementIdentity): CurrentEvidence {
       .replace(/^must-service-/, '')
       .replace(/^stub-service-/, '')
       .replace(/-service$/, '');
-    const found = CORE_SERVICE_CONTRACT_SKELETONS.find(
-      (entry) => entry.domainId === serviceId
-    );
-    if (!found) return emptyEvidence();
     const evidence = CORE_SERVICE_BEHAVIOR_EVIDENCE.find(
       (entry) => entry.requirementId === identity.id
     );
+    const found = evidence
+      ? CORE_SERVICE_CONTRACT_SKELETONS.find(
+          (entry) => entry.id === evidence.contractId
+        )
+      : CORE_SERVICE_CONTRACT_SKELETONS.find(
+          (entry) => entry.domainId === serviceId
+        );
+    if (!found) return emptyEvidence();
     if (evidence) {
       const validEvidence = validateCoreServiceBehaviorEvidence().length === 0;
       return {

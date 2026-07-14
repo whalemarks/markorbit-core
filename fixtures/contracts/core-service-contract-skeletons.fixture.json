@@ -671,6 +671,54 @@
     }
   },
   {
+    "id": "core-service-trademark-service-contract",
+    "serviceType": "trademark-service",
+    "domainId": "trademark",
+    "name": "Core Trademark Service Contract Skeleton",
+    "description": "Canonical metadata skeleton for the trademark Core Service boundary.",
+    "status": "active",
+    "book": "Book 02 — MarkOrbit Core Specification",
+    "purpose": "Defines the Trademark service ownership boundary for legal and procedural protection records without implementing filing, prosecution, registry synchronization, deadline calculation, fee calculation, similarity scoring, or legal conclusions.",
+    "owns": [
+      "Trademark service ownership, validation, lifecycle, relationship-reference, and reference boundary."
+    ],
+    "consumes": [
+      "trademark, brand, jurisdiction, classification, document, evidence, and matter references"
+    ],
+    "produces": [
+      "trademark boundary references"
+    ],
+    "allowedOperations": [
+      "reference lookup category",
+      "boundary evaluation category",
+      "contract-owned coordination category"
+    ],
+    "nonGoals": [
+      "Executable service method definitions or service implementations.",
+      "API routes, database access, workflow runtime, or Book 03 execution behavior.",
+      "Product UI behavior, concrete business logic, or AI agent authority.",
+      "Official registry synchronization, filing execution, prosecution workflow, deadline engine, fee engine, registrability scoring, similarity search, or legal opinion automation."
+    ],
+    "createdAt": "2026-07-11T00:00:00.000Z",
+    "sourcePath": "books/book-02-core-specification/core-specs/services/trademark-service.md",
+    "implementationDepth": "validated_skeleton",
+    "metadata": {
+      "specificationRepository": "whalemarks/markorbit-publication",
+      "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+      "specificationPath": "books/book-02-core-specification/",
+      "implementationTask": "CORE-TASK-021",
+      "behaviorImplementationTask": "CORE-TASK-038",
+      "behaviorDepth": "level_2_3",
+      "implementedOperations": [
+        "createTrademark",
+        "getTrademark",
+        "listTrademarks",
+        "validateTrademarkReference",
+        "changeTrademarkStatus"
+      ]
+    }
+  },
+  {
     "id": "core-service-opportunity-service-contract",
     "serviceType": "opportunity-service",
     "domainId": "opportunity",

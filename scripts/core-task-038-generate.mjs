@@ -92,7 +92,7 @@ service = replaceRequired(
 );
 service = replaceRequired(
   service,
-  `      !['Draft', 'ReviewRequired', 'Active'].includes(\n        String(input.trademarkStatus)\n      )`,
+  `      !['Draft', 'ReviewRequired', 'Active'].includes(String(input.trademarkStatus))`,
   `      !['Draft', 'Planned', 'PendingFiling', 'Filed', 'ReviewRequired'].includes(\n        String(input.trademarkStatus)\n      )`,
   'Trademark initial statuses'
 );
@@ -328,7 +328,7 @@ unitTest = unitTest
   .replaceAll(`assert.equal('brandReferenceId' in validation.value, false);`, `assert.equal('brandReferenceId' in validation.value, false);\n      assert.equal('jurisdictionReferenceId' in validation.value, false);`);
 unitTest = replaceRequired(
   unitTest,
-  `  it('requires a registered active Brand reference', () => {\n    const { service, traces } = setup(false);`,
+  `  it('requires a registered active Customer reference', () => {\n    const { service, traces } = setup(false);`,
   `  it('requires a registered active Brand reference', () => {\n    const { service, traces } = setup(false, true);`,
   'Trademark missing Brand setup'
 );

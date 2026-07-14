@@ -86,7 +86,19 @@ const canonicalServiceSkeleton = (
               'changeBrandStatus'
             ]
           }
-        : {})
+        : serviceType === 'trademark-service'
+          ? {
+              behaviorImplementationTask: 'CORE-TASK-038',
+              behaviorDepth: 'level_2_3',
+              implementedOperations: [
+                'createTrademark',
+                'getTrademark',
+                'listTrademarks',
+                'validateTrademarkReference',
+                'changeTrademarkStatus'
+              ]
+            }
+          : {})
   }
 });
 
@@ -239,6 +251,17 @@ export const CORE_SERVICE_CONTRACT_SKELETONS = [
     ['event, source-domain, source-object, actor, correlation, and causation references'],
     ['event boundary references'],
     ['Event recording, dispatch, bus, sourcing, subscription, persistence, trigger execution, audit logging, or product activity feeds.']
+  ),
+  canonicalServiceSkeleton(
+    'trademark-service',
+    'trademark',
+    'Core Trademark Service Contract Skeleton',
+    'trademark-service.md',
+    'Defines the Trademark service ownership boundary for legal and procedural protection records without implementing filing, prosecution, registry synchronization, deadline calculation, fee calculation, similarity scoring, or legal conclusions.',
+    ['Trademark service ownership, validation, lifecycle, relationship-reference, and reference boundary.'],
+    ['trademark, brand, jurisdiction, classification, document, evidence, and matter references'],
+    ['trademark boundary references'],
+    ['Official registry synchronization, filing execution, prosecution workflow, deadline engine, fee engine, registrability scoring, similarity search, or legal opinion automation.']
   ),
   ...stubServiceTargets.map(([domainId, domainName]) =>
     stubServiceSkeleton(domainId, domainName)
