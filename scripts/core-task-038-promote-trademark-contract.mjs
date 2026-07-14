@@ -13,25 +13,14 @@ let skeletons = read('src/contracts/service/core-service-contract-skeletons.ts')
 
 skeletons = replacePattern(
   skeletons,
-  /(\s+produces: readonly string\[\],\r?\n\s+specificNonGoals: readonly string\[\])(\r?\n\): CoreServiceContract => \(\{)/,
-  `$1,\n  implementationTask: 'CORE-TASK-021' | 'CORE-TASK-038' = 'CORE-TASK-021'$2`,
-  'canonical Service implementation task parameter'
-);
-skeletons = replacePattern(
-  skeletons,
-  /implementationTask: 'CORE-TASK-021',/,
-  'implementationTask,',
-  'canonical Service implementation task metadata'
-);
-
-skeletons = replacePattern(
-  skeletons,
   /\s{2}canonicalServiceSkeleton\(\r?\n\s{4}'trademark-service',[\s\S]*?\r?\n\s{2}\),\r?\n\s{2}\.\.\.stubServiceTargets/,
   '\n  ...stubServiceTargets',
   'duplicate Trademark Service contract'
 );
 
-const promotedTrademarkBlock = `  canonicalServiceSkeleton(
+const wrapper = `
+const trademarkServiceSkeleton = (): CoreServiceContract => {
+  const contract = canonicalServiceSkeleton(
     'trademark-service',
     'trademark',
     'Core Trademark Service Contract Skeleton',
@@ -40,13 +29,27 @@ const promotedTrademarkBlock = `  canonicalServiceSkeleton(
     ['Trademark service ownership, validation, lifecycle, relationship-reference, and reference boundary.'],
     ['trademark, brand, jurisdiction, classification, document, evidence, and matter references'],
     ['trademark boundary references'],
-    ['Official registry synchronization, filing execution, prosecution workflow, deadline engine, fee engine, registrability scoring, similarity search, or legal opinion automation.'],
-    'CORE-TASK-038'
-  ),`;
+    ['Official registry synchronization, filing execution, prosecution workflow, deadline engine, fee engine, registrability scoring, similarity search, or legal opinion automation.']
+  );
+  return {
+    ...contract,
+    metadata: {
+      ...contract.metadata,
+      implementationTask: 'CORE-TASK-038'
+    }
+  };
+};
+`;
+skeletons = replacePattern(
+  skeletons,
+  /\r?\nconst stubServiceTargets = \[/,
+  `${wrapper}\nconst stubServiceTargets = [`,
+  'Trademark Service wrapper insertion'
+);
 skeletons = replacePattern(
   skeletons,
   /^\s{2}serviceSkeleton\('trademark-reference-service',[\s\S]*?\),$/m,
-  promotedTrademarkBlock,
+  '  trademarkServiceSkeleton(),',
   'legacy Trademark reference Service promotion'
 );
 write('src/contracts/service/core-service-contract-skeletons.ts', skeletons);
