@@ -5,3 +5,4 @@ export * from './jurisdiction/index.ts';
 export * from './classification/index.ts';
 export * from './document/index.ts';
 export * from './evidence/index.ts';
+export { CoreEvidenceServiceComplete as CoreEvidenceService } from './evidence/index.ts';

@@ -7,7 +7,7 @@ import {
 
 const evidence = CORE_SERVICE_CONTRACT_SKELETONS[8];
 
-describe('CORE-TASK-042 Evidence Service contract metadata', () => {
+describe('CORE-TASK-042B Evidence Service contract metadata', () => {
   it('promotes the index-8 Evidence placeholder in place', () => {
     assert.equal(CORE_SERVICE_CONTRACT_SKELETONS.length, 26);
     assert.equal(evidence?.id, 'core-service-evidence-service-contract');
@@ -23,16 +23,20 @@ describe('CORE-TASK-042 Evidence Service contract metadata', () => {
       specificationCommit: '3349ecb8955021a8714d023348f8b24f941eb98f',
       specificationPath: 'books/book-02-core-specification/',
       implementationTask: 'CORE-TASK-042',
-      behaviorImplementationTask: 'CORE-TASK-042',
+      behaviorImplementationTask: 'CORE-TASK-042B',
       behaviorDepth: 'level_2_3',
       implementedOperations: [
         'createEvidence',
         'getEvidence',
         'listEvidence',
+        'updateEvidence',
         'validateEvidenceReference',
         'linkEvidenceSource',
         'linkEvidenceClaim',
         'linkEvidenceDocument',
+        'linkEvidenceTrademark',
+        'linkEvidenceBrand',
+        'linkEvidenceClassification',
         'requireEvidenceReview',
         'reviewEvidence',
         'changeEvidenceStatus'
