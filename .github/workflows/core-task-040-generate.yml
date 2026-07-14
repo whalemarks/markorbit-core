@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'scripts/core-task-040-repair.mjs'
+      - 'scripts/core-task-040-classification-caller-update.mjs'
       - '.github/workflows/core-task-040-generate.yml'
       - '.github/core-task-040-trigger'
 
@@ -26,6 +27,7 @@ jobs:
       - run: corepack enable
       - run: pnpm install --frozen-lockfile
       - run: node scripts/core-task-040-repair.mjs
+      - run: node scripts/core-task-040-classification-caller-update.mjs
       - run: pnpm format
       - name: Commit repaired changes
         run: |
@@ -36,5 +38,5 @@ jobs:
             echo 'No repaired changes.'
             exit 0
           fi
-          git commit -m 'CORE-TASK-040 — Repair Classification Service typing'
+          git commit -m 'CORE-TASK-040 — Repair Classification integration'
           git push
