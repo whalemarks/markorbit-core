@@ -1173,6 +1173,10 @@ export class CoreClassificationService {
       typeof input.filters?.classReference === 'string'
         ? input.filters.classReference
         : undefined;
+    const classReferenceFilter =
+      typeof input.filters?.classReference === 'string'
+        ? input.filters.classReference
+        : undefined;
     const items = this.deps.store
       .list()
       .filter(
@@ -1473,6 +1477,13 @@ export class CoreClassificationService {
           return safe(
             'ValidationFailed',
             'Clock value is invalid.',
+            input.governance.correlationId
+          );
+        }
+        if (current.objectRecord.version === undefined) {
+          return safe(
+            'ValidationFailed',
+            'Classification Object version is required.',
             input.governance.correlationId
           );
         }
