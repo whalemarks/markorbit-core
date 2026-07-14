@@ -31,6 +31,8 @@ The boundary reuses Object, Reference, Permission, Policy, Human Review, Audit, 
 
 Mutating operations use success-only idempotency. Event handoff failure rolls back the inserted Classification or restores the prior lifecycle state.
 
+Cross-organization reference validation returns a non-enumerating NotFound-style result and does not reveal whether another organization owns the Classification.
+
 ## Evidence
 
 Required fixture 32 executes create, replay, idempotency conflict, safe reads, structural validation, reference validation, review-required transition, governed approval, approval replay, approval conflict, record counts, Event counts, and payload safety.
