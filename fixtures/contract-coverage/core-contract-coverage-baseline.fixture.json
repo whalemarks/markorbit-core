@@ -466,7 +466,7 @@
         "service": {
           "status": "validated_skeleton",
           "contractIds": [
-            "core-service-trademark-reference-service-contract"
+            "core-service-trademark-service-contract"
           ]
         },
         "api": {

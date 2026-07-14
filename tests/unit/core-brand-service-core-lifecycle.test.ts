@@ -242,7 +242,7 @@ describe('Brand Service core lifecycle boundary', () => {
     const validation = service.validateBrandReference({
       brandReferenceId,
       requestingDomain: 'trademark',
-      requestingService: 'trademark-reference-service',
+      requestingService: 'trademark-service',
       governance: governance(
         'brand.validate_reference',
         'brand:validate_reference',

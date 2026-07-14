@@ -274,7 +274,7 @@ export function validateCoreBrandServiceEvidenceFixture(
     const validation = service.validateBrandReference({
       brandReferenceId: fixture.brandReferenceId,
       requestingDomain: 'trademark',
-      requestingService: 'trademark-reference-service',
+      requestingService: 'trademark-service',
       governance: governance(
         'brand.validate_reference',
         'brand:validate_reference',

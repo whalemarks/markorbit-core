@@ -16,7 +16,6 @@ const canonicalServiceEntries = [
   ['workflow-contract-service', 'workflow-contract', 'Core Workflow Contract Service Contract Skeleton', 'workflow-contract-service.md', 'CORE-TASK-021'],
   ['task-service', 'task', 'Core Task Service Contract Skeleton', 'task-service.md', 'CORE-TASK-021'],
   ['event-service', 'event', 'Core Event Service Contract Skeleton', 'event-service.md', 'CORE-TASK-021'],
-  ['trademark-service', 'trademark', 'Core Trademark Service Contract Skeleton', 'trademark-service.md', 'CORE-TASK-038'],
   ['opportunity-service', 'opportunity', 'Core Opportunity Service Contract Skeleton', 'opportunity-service.md', 'CORE-TASK-023'],
   ['notification-service', 'notification', 'Core Notification Service Contract Skeleton', 'notification-service.md', 'CORE-TASK-023'],
   ['partner-service', 'partner', 'Core Partner Service Contract Skeleton', 'partner-service.md', 'CORE-TASK-023'],
@@ -56,7 +55,7 @@ export function validateCoreServiceContractSkeletons(contracts: readonly CoreSer
   const ids = new Set<string>();
   const serviceTypes = new Set<string>();
 
-  if (contracts.length !== 27) errors.push('Core service contract skeletons must contain exactly 27 entries.');
+  if (contracts.length !== 26) errors.push('Core service contract skeletons must contain exactly 26 entries.');
 
   contracts.forEach((contract, index) => {
     const path = `contracts[${index}]`;
@@ -129,18 +128,7 @@ export function validateCoreServiceContractSkeletons(contracts: readonly CoreSer
                     'changeBrandStatus'
                   ]
                 }
-              : canonicalEntry[0] === 'trademark-service'
-                ? {
-                    task: 'CORE-TASK-038',
-                    operations: [
-                      'createTrademark',
-                      'getTrademark',
-                      'listTrademarks',
-                      'validateTrademarkReference',
-                      'changeTrademarkStatus'
-                    ]
-                  }
-                : undefined;
+              : undefined;
         if (behaviorLock) {
           if (contract.metadata.behaviorImplementationTask !== behaviorLock.task)
             errors.push(

@@ -306,11 +306,11 @@
       "requirement": "must_build_now",
       "layer": "service",
       "sourcePath": "books/book-02-core-specification/core-specs/services/trademark-service.md",
-      "targetContractId": "core-service-trademark-reference-service-contract",
+      "targetContractId": "core-service-trademark-service-contract",
       "targetName": "Core Trademark Service Contract Skeleton",
       "disposition": "map_existing_skeleton",
       "existingContractIds": [
-        "core-service-trademark-reference-service-contract"
+        "core-service-trademark-service-contract"
       ],
       "implementationBatch": null,
       "targetDepth": "validated_skeleton"
