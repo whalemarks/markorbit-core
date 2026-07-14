@@ -25,7 +25,7 @@ jobs:
           node-version: '22'
       - run: corepack enable
       - run: pnpm install --frozen-lockfile
-      - run: node scripts/core-task-040-generate.mjs
+      - run: pnpm exec tsx scripts/core-task-040-generate.mjs
       - run: pnpm format
       - name: Commit generated changes
         run: |
