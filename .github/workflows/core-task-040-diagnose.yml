@@ -1,4 +1,4 @@
-name: CORE-TASK-040 Diagnose
+name: CORE-TASK-040 Diagnose Current Head
 
 on:
   pull_request:
@@ -28,7 +28,7 @@ jobs:
           exit 0
       - uses: actions/upload-artifact@v4
         with:
-          name: core-task-040-tests
+          name: core-task-040-tests-current
           path: tests.log
       - name: Fail if tests failed
         run: test "$TEST_STATUS" = "0"
