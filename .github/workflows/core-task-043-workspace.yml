@@ -1,9 +1,7 @@
 name: CORE-TASK-043 Workspace
 
 on:
-  push:
-    branches:
-      - agent/core-task-043-matter-service-foundation
+  pull_request:
 
 jobs:
   snapshot:
