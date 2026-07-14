@@ -12,7 +12,7 @@ Document Service is the sixth dependency-first Service-owned behavior batch sele
 
 Document is the governed artifact layer between raw source files and professional execution. Evidence registers proof purpose after source artifacts exist, while Matter consumes Document and Evidence as business-execution context. The selected implementation sequence is therefore Classification, Document, Evidence, then Matter.
 
-## Planned foundation operations
+## Governed foundation operations
 
 - createDocument
 - getDocument
@@ -22,6 +22,14 @@ Document is the governed artifact layer between raw source files and professiona
 - requireDocumentReview
 - reviewDocument
 - changeDocumentStatus
+
+## Artifact and review invariants
+
+Creation starts as Draft and Unreviewed. A Document owns governed artifact metadata and a public reference; a file reference is linked explicitly and is not itself a Document. Professional approval requires completed human review. AI-reviewed drafts are never treated as approved-for-use artifacts. Document validation reports review, confidentiality, archive and rejection boundaries without converting the Document into Evidence.
+
+## Derived boundary
+
+The independently derived target is 38 Must Build requirements meeting required depth, 3 partial evidence, 51 validated skeleton only, 5 boundary scaffold only and 18 semantic overlap only. Acceptance remains 11 of 19 because 12 Must Build Services still lack executable owned behavior.
 
 ## Boundary
 
