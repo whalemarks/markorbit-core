@@ -1,6 +1,7 @@
 name: CORE-TASK-044 Workspace
 
 on:
+  pull_request:
   push:
     branches:
       - agent/core-task-044-order-service-foundation
