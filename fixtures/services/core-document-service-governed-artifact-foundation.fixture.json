@@ -1,0 +1,98 @@
+{
+  "fixtureType": "core_document_service_governed_artifact_foundation",
+  "authority": {
+    "repository": "whalemarks/markorbit-publication",
+    "commit": "3349ecb8955021a8714d023348f8b24f941eb98f"
+  },
+  "clocks": [
+    "2026-07-14T04:35:00.000Z",
+    "2026-07-14T04:40:00.000Z",
+    "2026-07-14T04:45:00.000Z",
+    "2026-07-14T04:50:00.000Z",
+    "2026-07-14T04:55:00.000Z"
+  ],
+  "documentReferenceId": "document:ref:core-task-041",
+  "organizationScopeReferenceId": "organization:ref:scope-0001",
+  "publicReferenceRecord": {
+    "referenceId": "document:ref:core-task-041",
+    "objectType": "document-record",
+    "referenceDomain": "document",
+    "status": "Active"
+  },
+  "objectRecord": {
+    "publicReferenceId": "document:ref:core-task-041",
+    "objectType": "document-record",
+    "domainId": "document",
+    "objectContractId": "core-object-document-record-contract",
+    "status": "draft",
+    "version": {
+      "version": 1,
+      "createdAt": "2026-07-14T04:35:00.000Z"
+    },
+    "metadata": {},
+    "auditMetadata": {
+      "createdAt": "2026-07-14T04:35:00.000Z",
+      "createdByReferenceId": "user:ref:actor-0001",
+      "correlationId": "corr:core-task-041"
+    },
+    "visibility": {
+      "permissionScopeReferenceId": "permission:ref:scope-0001",
+      "policyScopeReferenceId": "policy:ref:scope-0001",
+      "organizationScopeReferenceId": "organization:ref:scope-0001"
+    }
+  },
+  "createRequest": {
+    "documentType": "PowerOfAttorney",
+    "titleReference": "title:document:poa-041",
+    "documentStatus": "Draft",
+    "reviewStatus": "Unreviewed",
+    "confidentialityLevel": "Confidential",
+    "versionReference": "version:document:041:v1",
+    "sourceReference": "source:synthetic:document-041",
+    "idempotencyKey": "idem:create:document-041"
+  },
+  "conflictingCreateRequest": {
+    "documentType": "ApplicationForm"
+  },
+  "fileRequest": {
+    "fileReferenceId": "file:ref:document-041",
+    "fileSourceReference": "source:file:document-041",
+    "idempotencyKey": "idem:file:document-041"
+  },
+  "fileConflictRequest": {
+    "fileReferenceId": "file:ref:document-041-conflict"
+  },
+  "reviewRequiredRequest": {
+    "reviewNoteReference": "review-note:document-041",
+    "idempotencyKey": "idem:review-required:document-041"
+  },
+  "approvalRequest": {
+    "targetReviewStatus": "ApprovedForUse",
+    "reviewNoteReference": "review-note:document-041-approved",
+    "idempotencyKey": "idem:approve:document-041"
+  },
+  "approvalConflictRequest": {
+    "targetReviewStatus": "Rejected"
+  },
+  "archiveRequest": {
+    "targetStatus": "Archived",
+    "reasonReference": "reason:archive:document-041",
+    "idempotencyKey": "idem:archive:document-041"
+  },
+  "expected": {
+    "recordCountAfterCreate": 1,
+    "recordCountAfterArchive": 1,
+    "eventTraceCountAfterCreate": 1,
+    "eventTraceCountAfterCreateReplay": 1,
+    "eventTraceCountAfterFileReplay": 2,
+    "eventTraceCountAfterReviewRequired": 3,
+    "eventTraceCountAfterApprovalReplay": 4,
+    "eventTraceCountAfterArchiveReplay": 5,
+    "createConflictCode": "IdempotencyConflict",
+    "fileConflictCode": "IdempotencyConflict",
+    "approvalWithoutReviewCode": "HumanReviewRequired",
+    "approvalConflictCode": "IdempotencyConflict",
+    "draftValidationReason": "ReviewRequired",
+    "approvedValidationReason": "Valid"
+  }
+}
