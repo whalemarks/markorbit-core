@@ -32,20 +32,19 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Generate governed Jurisdiction Service batch
+      - name: Generate and repair governed Jurisdiction Service batch
         run: |
           set -o pipefail
-          if test -f src/services/jurisdiction/core-jurisdiction-service.ts; then
-            echo "CORE-TASK-039 implementation already generated." | tee core-task-039-generation.log
-            exit 0
-          fi
           {
-            node scripts/core-task-039-fix-generator.mjs
-            node scripts/core-task-039-generate-service.mjs
-            node scripts/core-task-039-generate-evidence.mjs
-            node scripts/core-task-039-generate-integration.mjs
-            node scripts/core-task-039-generate-tests.mjs
-            pnpm exec tsx scripts/core-task-039-generate-derived.mjs
+            if ! test -f src/services/jurisdiction/core-jurisdiction-service.ts; then
+              node scripts/core-task-039-fix-generator.mjs
+              node scripts/core-task-039-generate-service.mjs
+              node scripts/core-task-039-generate-evidence.mjs
+              node scripts/core-task-039-generate-integration.mjs
+              node scripts/core-task-039-generate-tests.mjs
+              pnpm exec tsx scripts/core-task-039-generate-derived.mjs
+            fi
+            node scripts/core-task-039-repair-generated.mjs
             pnpm exec prettier --write \
               src/services/jurisdiction src/services/index.ts \
               src/behaviors/core-safe-error.ts src/service-coverage src/validation \
@@ -91,7 +90,7 @@ jobs:
             src fixtures tests scripts/validate-core-fixtures.mjs \
             README.md CORE-MANIFEST.md CORE-ROADMAP.md CHANGELOG.md \
             docs/architecture/core-jurisdiction-service-lifecycle-resolution-boundary.md
-          git commit -m "CORE-TASK-039 — Implement Jurisdiction Service lifecycle and resolution"
+          git commit -m "CORE-TASK-039 — Repair Jurisdiction Service implementation"
           git push origin HEAD:codex/core-task-039-jurisdiction-service-core-lifecycle
 
   validation:
