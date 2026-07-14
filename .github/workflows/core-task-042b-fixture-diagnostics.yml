@@ -1,0 +1,28 @@
+name: CORE-TASK-042B Fixture Diagnostics
+
+on:
+  pull_request:
+
+jobs:
+  diagnostics:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: corepack enable
+      - run: pnpm install --frozen-lockfile
+      - name: Capture fixture validation
+        shell: bash
+        run: |
+          set +e
+          pnpm validate:fixtures > fixture-validation.log 2>&1
+          echo $? > fixture-validation.exit
+          exit 0
+      - uses: actions/upload-artifact@v4
+        with:
+          name: core-task-042b-fixture-diagnostics
+          path: |
+            fixture-validation.log
+            fixture-validation.exit
