@@ -31,7 +31,7 @@ jobs:
           echo '1104e0776859cfe8a893c25d9023473710278dfb5c30a1d7adf7c4585ace40fc  /tmp/part-00.bin' | sha256sum -c -
       - name: Verify payload part 01
         run: |
-          base64 -d .core-task-045-payload/part-01.b64 > /tmp/part-01.bin
+          cat .core-task-045-payload/part-01-{0,1}.bin > /tmp/part-01.bin
           echo 'd7816e4b47ca817a7103781fc03a53c2d8f2c75f2d3ae8ce4facfa8c63429953  /tmp/part-01.bin' | sha256sum -c -
       - name: Verify payload part 02
         run: |
