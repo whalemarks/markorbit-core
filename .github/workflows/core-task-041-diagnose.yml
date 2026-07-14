@@ -1,0 +1,33 @@
+name: CORE-TASK-041 Diagnose
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - '.github/workflows/core-task-041-diagnose.yml'
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: corepack enable
+      - run: pnpm install --frozen-lockfile
+      - name: Capture typecheck
+        shell: bash
+        run: |
+          set +e
+          pnpm typecheck > typecheck.log 2>&1
+          status=$?
+          cat typecheck.log
+          echo "TYPECHECK_STATUS=$status" >> "$GITHUB_ENV"
+          exit 0
+      - uses: actions/upload-artifact@v4
+        with:
+          name: core-task-041-typecheck
+          path: typecheck.log
+      - name: Fail if typecheck failed
+        run: test "$TYPECHECK_STATUS" = "0"
