@@ -243,17 +243,23 @@
     }
   },
   {
-    "id": "core-service-document-reference-service-contract",
-    "serviceType": "document-reference-service",
+    "id": "core-service-document-service-contract",
+    "serviceType": "document-service",
     "domainId": "document",
-    "name": "Document Reference Service Contract Skeleton",
-    "description": "Skeleton contract boundary for document reference service responsibilities.",
+    "name": "Core Document Service Contract Skeleton",
+    "description": "Canonical metadata skeleton for the document Core Service boundary.",
     "status": "active",
     "book": "Book 02 — MarkOrbit Core Specification",
-    "purpose": "Establishes a service contract placeholder for document references without document storage or rendering behavior.",
-    "owns": ["Document reference service contract boundary."],
-    "consumes": ["document domain references"],
-    "produces": ["document reference outputs"],
+    "purpose": "Defines the Document service ownership boundary for governed artifact records without implementing storage, rendering, OCR, e-signature, evidence conversion, or external delivery.",
+    "owns": [
+      "Document service ownership, artifact lifecycle, file-reference linkage, professional review gating, confidentiality, validation, and reference boundary."
+    ],
+    "consumes": [
+      "document, organization, trademark, matter, evidence, communication, user, permission, and policy references"
+    ],
+    "produces": [
+      "document boundary references, governed validation results, and Event trace handoff"
+    ],
     "allowedOperations": [
       "reference lookup category",
       "boundary evaluation category",
@@ -262,9 +268,30 @@
     "nonGoals": [
       "Executable service method definitions or service implementations.",
       "API routes, database access, workflow runtime, or Book 03 execution behavior.",
-      "Product UI behavior, concrete business logic, or AI agent authority."
+      "Product UI behavior, concrete business logic, or AI agent authority.",
+      "File storage, OCR, rendering, e-signature, template generation, automatic Evidence conversion, external delivery, or filing execution."
     ],
-    "createdAt": "2026-07-09T00:00:00.000Z"
+    "createdAt": "2026-07-11T00:00:00.000Z",
+    "sourcePath": "books/book-02-core-specification/core-specs/services/document-service.md",
+    "implementationDepth": "validated_skeleton",
+    "metadata": {
+      "specificationRepository": "whalemarks/markorbit-publication",
+      "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+      "specificationPath": "books/book-02-core-specification/",
+      "implementationTask": "CORE-TASK-041",
+      "behaviorImplementationTask": "CORE-TASK-041",
+      "behaviorDepth": "level_2_3",
+      "implementedOperations": [
+        "createDocument",
+        "getDocument",
+        "listDocuments",
+        "validateDocumentReference",
+        "linkDocumentFile",
+        "requireDocumentReview",
+        "reviewDocument",
+        "changeDocumentStatus"
+      ]
+    }
   },
   {
     "id": "core-service-evidence-reference-service-contract",

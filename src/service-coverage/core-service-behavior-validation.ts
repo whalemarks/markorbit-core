@@ -20,11 +20,16 @@ import {
   CORE_CLASSIFICATION_IMPLEMENTED_OPERATIONS,
   CORE_CLASSIFICATION_MINIMUM_CAPABILITIES
 } from '../services/classification/index.ts';
+import {
+  CORE_DOCUMENT_IMPLEMENTED_OPERATIONS,
+  CORE_DOCUMENT_MINIMUM_CAPABILITIES
+} from '../services/document/index.ts';
 import { validateCoreBrandServiceEvidenceFixture } from './core-brand-service-evidence-fixture.ts';
 import { validateCoreCustomerServiceEvidenceFixture } from './core-customer-service-evidence-fixture.ts';
 import { validateCoreTrademarkServiceEvidenceFixture } from './core-trademark-service-evidence-fixture.ts';
 import { validateCoreJurisdictionServiceEvidenceFixture } from './core-jurisdiction-service-evidence-fixture.ts';
 import { validateCoreClassificationServiceEvidenceFixture } from './core-classification-service-evidence-fixture.ts';
+import { validateCoreDocumentServiceEvidenceFixture } from './core-document-service-evidence-fixture.ts';
 import {
   CORE_SERVICE_BEHAVIOR_EVIDENCE,
   type CoreServiceBehaviorEvidence
@@ -43,13 +48,19 @@ export interface CoreServiceBehaviorValidationOptions {
   readonly trademarkFixture?: unknown;
   readonly jurisdictionFixture?: unknown;
   readonly classificationFixture?: unknown;
+  readonly documentFixture?: unknown;
 }
 
 interface ExpectedServiceEvidence {
   readonly requirementId: string;
   readonly serviceType: string;
   readonly domainId:
-    'customer' | 'brand' | 'trademark' | 'jurisdiction' | 'classification';
+    | 'customer'
+    | 'brand'
+    | 'trademark'
+    | 'jurisdiction'
+    | 'classification'
+    | 'document';
   readonly contractId: string;
   readonly sourcePath: string;
   readonly operations: readonly string[];
@@ -60,7 +71,8 @@ interface ExpectedServiceEvidence {
     | 'brandFixture'
     | 'trademarkFixture'
     | 'jurisdictionFixture'
-    | 'classificationFixture';
+    | 'classificationFixture'
+    | 'documentFixture';
   readonly fixtureValidator: (
     fixture: unknown
   ) => readonly { readonly code: string }[];
@@ -175,6 +187,28 @@ const expectedEvidence = [
     ],
     fixtureOverride: 'classificationFixture',
     fixtureValidator: validateCoreClassificationServiceEvidenceFixture
+  },
+  {
+    requirementId: 'must-service-document-service',
+    serviceType: 'document-service',
+    domainId: 'document',
+    contractId: 'core-service-document-service-contract',
+    sourcePath:
+      'books/book-02-core-specification/core-specs/services/document-service.md',
+    operations: CORE_DOCUMENT_IMPLEMENTED_OPERATIONS,
+    capabilities: CORE_DOCUMENT_MINIMUM_CAPABILITIES,
+    unresolved: [
+      'updateDocument',
+      'addDocumentVersion',
+      'linkDocumentVersion',
+      'linkDocumentTrademark',
+      'linkDocumentMatter',
+      'linkDocumentEvidence',
+      'linkDocumentCommunication',
+      'archiveDocument'
+    ],
+    fixtureOverride: 'documentFixture',
+    fixtureValidator: validateCoreDocumentServiceEvidenceFixture
   }
 ] as const satisfies readonly ExpectedServiceEvidence[];
 
@@ -224,7 +258,7 @@ export function validateCoreServiceBehaviorEvidence(
         evidence.length < expectedEvidence.length
           ? 'core.service.evidence_missing'
           : 'core.service.evidence_extra',
-        'Service behavior evidence must contain exactly Customer, Brand, Trademark, Jurisdiction, and Classification entries in canonical order.',
+        'Service behavior evidence must contain exactly Customer, Brand, Trademark, Jurisdiction, Classification, and Document entries in canonical order.',
         'evidence'
       )
     );

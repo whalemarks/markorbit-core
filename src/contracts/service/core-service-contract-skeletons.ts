@@ -59,7 +59,8 @@ const canonicalServiceSkeleton = (
     | 'CORE-TASK-021'
     | 'CORE-TASK-038'
     | 'CORE-TASK-039'
-    | 'CORE-TASK-040' = 'CORE-TASK-021'
+    | 'CORE-TASK-040'
+    | 'CORE-TASK-041' = 'CORE-TASK-021'
 ): CoreServiceContract => ({
   ...serviceSkeleton(
     serviceType,
@@ -142,7 +143,22 @@ const canonicalServiceSkeleton = (
                     'changeClassificationStatus'
                   ]
                 }
-              : {})
+              : serviceType === 'document-service'
+                ? {
+                    behaviorImplementationTask: 'CORE-TASK-041',
+                    behaviorDepth: 'level_2_3',
+                    implementedOperations: [
+                      'createDocument',
+                      'getDocument',
+                      'listDocuments',
+                      'validateDocumentReference',
+                      'linkDocumentFile',
+                      'requireDocumentReview',
+                      'reviewDocument',
+                      'changeDocumentStatus'
+                    ]
+                  }
+                : {})
   }
 });
 
@@ -281,15 +297,25 @@ export const CORE_SERVICE_CONTRACT_SKELETONS = [
     ],
     'CORE-TASK-040'
   ),
-  serviceSkeleton(
-    'document-reference-service',
+  canonicalServiceSkeleton(
+    'document-service',
     'document',
-    'Document Reference Service Contract Skeleton',
-    'Skeleton contract boundary for document reference service responsibilities.',
-    'Establishes a service contract placeholder for document references without document storage or rendering behavior.',
-    ['Document reference service contract boundary.'],
-    ['document domain references'],
-    ['document reference outputs']
+    'Core Document Service Contract Skeleton',
+    'document-service.md',
+    'Defines the Document service ownership boundary for governed artifact records without implementing storage, rendering, OCR, e-signature, evidence conversion, or external delivery.',
+    [
+      'Document service ownership, artifact lifecycle, file-reference linkage, professional review gating, confidentiality, validation, and reference boundary.'
+    ],
+    [
+      'document, organization, trademark, matter, evidence, communication, user, permission, and policy references'
+    ],
+    [
+      'document boundary references, governed validation results, and Event trace handoff'
+    ],
+    [
+      'File storage, OCR, rendering, e-signature, template generation, automatic Evidence conversion, external delivery, or filing execution.'
+    ],
+    'CORE-TASK-041'
   ),
   serviceSkeleton(
     'evidence-reference-service',

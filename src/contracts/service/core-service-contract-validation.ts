@@ -177,6 +177,19 @@ const behaviorLocks = {
       'validateClassificationReference',
       'changeClassificationStatus'
     ]
+  },
+  'document-service': {
+    task: 'CORE-TASK-041',
+    operations: [
+      'createDocument',
+      'getDocument',
+      'listDocuments',
+      'validateDocumentReference',
+      'linkDocumentFile',
+      'requireDocumentReview',
+      'reviewDocument',
+      'changeDocumentStatus'
+    ]
   }
 } as const;
 
@@ -204,6 +217,14 @@ const promotedContracts = {
     name: 'Core Classification Service Contract Skeleton',
     sourceFile: 'classification-service.md',
     task: 'CORE-TASK-040'
+  },
+  7: {
+    id: 'core-service-document-service-contract',
+    serviceType: 'document-service',
+    domainId: 'document',
+    name: 'Core Document Service Contract Skeleton',
+    sourceFile: 'document-service.md',
+    task: 'CORE-TASK-041'
   }
 } as const;
 

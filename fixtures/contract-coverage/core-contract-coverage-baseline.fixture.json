@@ -484,7 +484,7 @@
         },
         "service": {
           "status": "validated_skeleton",
-          "contractIds": ["core-service-document-reference-service-contract"]
+          "contractIds": ["core-service-document-service-contract"]
         },
         "api": {
           "status": "validated_skeleton",

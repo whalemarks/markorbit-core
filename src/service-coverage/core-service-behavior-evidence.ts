@@ -19,6 +19,10 @@ import {
   CORE_CLASSIFICATION_IMPLEMENTED_OPERATIONS,
   CORE_CLASSIFICATION_MINIMUM_CAPABILITIES
 } from '../services/classification/index.ts';
+import {
+  CORE_DOCUMENT_IMPLEMENTED_OPERATIONS,
+  CORE_DOCUMENT_MINIMUM_CAPABILITIES
+} from '../services/document/index.ts';
 
 export interface CoreServiceBehaviorEvidence {
   readonly requirementId: string;
@@ -175,6 +179,34 @@ export const CORE_SERVICE_BEHAVIOR_EVIDENCE = [
     ],
     fixtureFiles: [
       'fixtures/services/core-classification-service-core-scope-validation.fixture.json'
+    ]
+  },
+  {
+    requirementId: 'must-service-document-service',
+    serviceType: 'document-service',
+    domainId: 'document',
+    contractId: 'core-service-document-service-contract',
+    sourcePath:
+      'books/book-02-core-specification/core-specs/services/document-service.md',
+    currentDepth: 'level_2_3',
+    operations: CORE_DOCUMENT_IMPLEMENTED_OPERATIONS,
+    provenMinimumCapabilities: CORE_DOCUMENT_MINIMUM_CAPABILITIES,
+    unresolvedServiceOperations: [
+      'updateDocument',
+      'addDocumentVersion',
+      'linkDocumentVersion',
+      'linkDocumentTrademark',
+      'linkDocumentMatter',
+      'linkDocumentEvidence',
+      'linkDocumentCommunication',
+      'archiveDocument'
+    ],
+    implementationFiles: ['src/services/document/core-document-service.ts'],
+    testFiles: [
+      'tests/unit/core-document-service-governed-artifact-foundation.test.ts'
+    ],
+    fixtureFiles: [
+      'fixtures/services/core-document-service-governed-artifact-foundation.fixture.json'
     ]
   }
 ] as const satisfies readonly CoreServiceBehaviorEvidence[];
