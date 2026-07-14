@@ -451,9 +451,7 @@
         },
         "service": {
           "status": "validated_skeleton",
-          "contractIds": [
-            "core-service-classification-reference-service-contract"
-          ]
+          "contractIds": ["core-service-classification-service-contract"]
         },
         "api": {
           "status": "validated_skeleton",

@@ -363,12 +363,10 @@
       "requirement": "must_build_now",
       "layer": "service",
       "sourcePath": "books/book-02-core-specification/core-specs/services/classification-service.md",
-      "targetContractId": "core-service-classification-reference-service-contract",
+      "targetContractId": "core-service-classification-service-contract",
       "targetName": "Core Classification Service Contract Skeleton",
       "disposition": "map_existing_skeleton",
-      "existingContractIds": [
-        "core-service-classification-reference-service-contract"
-      ],
+      "existingContractIds": ["core-service-classification-service-contract"],
       "implementationBatch": null,
       "targetDepth": "validated_skeleton"
     },

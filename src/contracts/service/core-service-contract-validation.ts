@@ -166,6 +166,17 @@ const behaviorLocks = {
       'resolveJurisdictionByCode',
       'changeJurisdictionStatus'
     ]
+  },
+  'classification-service': {
+    task: 'CORE-TASK-040',
+    operations: [
+      'createClassification',
+      'getClassification',
+      'listClassifications',
+      'validateClassification',
+      'validateClassificationReference',
+      'changeClassificationStatus'
+    ]
   }
 } as const;
 
@@ -185,6 +196,14 @@ const promotedContracts = {
     name: 'Core Jurisdiction Service Contract Skeleton',
     sourceFile: 'jurisdiction-service.md',
     task: 'CORE-TASK-039'
+  },
+  6: {
+    id: 'core-service-classification-service-contract',
+    serviceType: 'classification-service',
+    domainId: 'classification',
+    name: 'Core Classification Service Contract Skeleton',
+    sourceFile: 'classification-service.md',
+    task: 'CORE-TASK-040'
   }
 } as const;
 

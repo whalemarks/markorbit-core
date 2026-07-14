@@ -194,17 +194,23 @@
     }
   },
   {
-    "id": "core-service-classification-reference-service-contract",
-    "serviceType": "classification-reference-service",
+    "id": "core-service-classification-service-contract",
+    "serviceType": "classification-service",
     "domainId": "classification",
-    "name": "Classification Reference Service Contract Skeleton",
-    "description": "Skeleton contract boundary for classification reference service responsibilities.",
+    "name": "Core Classification Service Contract Skeleton",
+    "description": "Canonical metadata skeleton for the classification Core Service boundary.",
     "status": "active",
     "book": "Book 02 — MarkOrbit Core Specification",
-    "purpose": "Establishes a service contract placeholder for classification references without implementing classification behavior.",
-    "owns": ["Classification reference service contract boundary."],
-    "consumes": ["classification domain references"],
-    "produces": ["classification reference outputs"],
+    "purpose": "Defines the Classification service ownership boundary for governed goods/services scope without implementing filing, official item synchronization, fee calculation, AI recommendation, or legal conclusions.",
+    "owns": [
+      "Classification service ownership, scope validation, lifecycle, review-gating, and reference boundary."
+    ],
+    "consumes": [
+      "classification, trademark, brand, jurisdiction, knowledge, document, evidence, matter, order, policy, and agent references"
+    ],
+    "produces": [
+      "classification boundary references and governed validation results"
+    ],
     "allowedOperations": [
       "reference lookup category",
       "boundary evaluation category",
@@ -213,9 +219,28 @@
     "nonGoals": [
       "Executable service method definitions or service implementations.",
       "API routes, database access, workflow runtime, or Book 03 execution behavior.",
-      "Product UI behavior, concrete business logic, or AI agent authority."
+      "Product UI behavior, concrete business logic, or AI agent authority.",
+      "Item mutation operations, AI classification engine, official wording certification, fee engine, filing execution, or automatic approval."
     ],
-    "createdAt": "2026-07-09T00:00:00.000Z"
+    "createdAt": "2026-07-11T00:00:00.000Z",
+    "sourcePath": "books/book-02-core-specification/core-specs/services/classification-service.md",
+    "implementationDepth": "validated_skeleton",
+    "metadata": {
+      "specificationRepository": "whalemarks/markorbit-publication",
+      "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+      "specificationPath": "books/book-02-core-specification/",
+      "implementationTask": "CORE-TASK-040",
+      "behaviorImplementationTask": "CORE-TASK-040",
+      "behaviorDepth": "level_2_3",
+      "implementedOperations": [
+        "createClassification",
+        "getClassification",
+        "listClassifications",
+        "validateClassification",
+        "validateClassificationReference",
+        "changeClassificationStatus"
+      ]
+    }
   },
   {
     "id": "core-service-document-reference-service-contract",

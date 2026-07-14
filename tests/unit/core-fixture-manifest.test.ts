@@ -4,8 +4,8 @@ import { describe, it } from 'node:test';
 import { CORE_FIXTURE_MANIFEST, CORE_FIXTURE_TYPES } from '../../src/index.ts';
 
 describe('CORE_FIXTURE_MANIFEST', () => {
-  it('has exactly 31 entries', () => {
-    assert.equal(CORE_FIXTURE_MANIFEST.length, 31);
+  it('has exactly 32 entries', () => {
+    assert.equal(CORE_FIXTURE_MANIFEST.length, 32);
   });
 
   it('includes permission_contract_skeletons type', () => {
@@ -108,6 +108,12 @@ describe('CORE_FIXTURE_MANIFEST', () => {
       CORE_FIXTURE_TYPES.includes('core_jurisdiction_service_core_lifecycle'),
       true
     );
+    assert.equal(
+      CORE_FIXTURE_TYPES.includes(
+        'core_classification_service_core_scope_validation'
+      ),
+      true
+    );
   });
 
   it('ids are unique', () => {
@@ -160,7 +166,8 @@ describe('CORE_FIXTURE_MANIFEST', () => {
       'core_customer_service_core_lifecycle',
       'core_brand_service_core_lifecycle',
       'core_trademark_service_core_lifecycle',
-      'core_jurisdiction_service_core_lifecycle'
+      'core_jurisdiction_service_core_lifecycle',
+      'core_classification_service_core_scope_validation'
     ]);
   });
 });

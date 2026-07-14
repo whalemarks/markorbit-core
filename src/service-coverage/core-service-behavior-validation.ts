@@ -16,10 +16,15 @@ import {
   CORE_JURISDICTION_IMPLEMENTED_OPERATIONS,
   CORE_JURISDICTION_MINIMUM_CAPABILITIES
 } from '../services/jurisdiction/index.ts';
+import {
+  CORE_CLASSIFICATION_IMPLEMENTED_OPERATIONS,
+  CORE_CLASSIFICATION_MINIMUM_CAPABILITIES
+} from '../services/classification/index.ts';
 import { validateCoreBrandServiceEvidenceFixture } from './core-brand-service-evidence-fixture.ts';
 import { validateCoreCustomerServiceEvidenceFixture } from './core-customer-service-evidence-fixture.ts';
 import { validateCoreTrademarkServiceEvidenceFixture } from './core-trademark-service-evidence-fixture.ts';
 import { validateCoreJurisdictionServiceEvidenceFixture } from './core-jurisdiction-service-evidence-fixture.ts';
+import { validateCoreClassificationServiceEvidenceFixture } from './core-classification-service-evidence-fixture.ts';
 import {
   CORE_SERVICE_BEHAVIOR_EVIDENCE,
   type CoreServiceBehaviorEvidence
@@ -37,12 +42,14 @@ export interface CoreServiceBehaviorValidationOptions {
   readonly brandFixture?: unknown;
   readonly trademarkFixture?: unknown;
   readonly jurisdictionFixture?: unknown;
+  readonly classificationFixture?: unknown;
 }
 
 interface ExpectedServiceEvidence {
   readonly requirementId: string;
   readonly serviceType: string;
-  readonly domainId: 'customer' | 'brand' | 'trademark' | 'jurisdiction';
+  readonly domainId:
+    'customer' | 'brand' | 'trademark' | 'jurisdiction' | 'classification';
   readonly contractId: string;
   readonly sourcePath: string;
   readonly operations: readonly string[];
@@ -52,7 +59,8 @@ interface ExpectedServiceEvidence {
     | 'customerFixture'
     | 'brandFixture'
     | 'trademarkFixture'
-    | 'jurisdictionFixture';
+    | 'jurisdictionFixture'
+    | 'classificationFixture';
   readonly fixtureValidator: (
     fixture: unknown
   ) => readonly { readonly code: string }[];
@@ -144,6 +152,29 @@ const expectedEvidence = [
     ],
     fixtureOverride: 'jurisdictionFixture',
     fixtureValidator: validateCoreJurisdictionServiceEvidenceFixture
+  },
+  {
+    requirementId: 'must-service-classification-service',
+    serviceType: 'classification-service',
+    domainId: 'classification',
+    contractId: 'core-service-classification-service-contract',
+    sourcePath:
+      'books/book-02-core-specification/core-specs/services/classification-service.md',
+    operations: CORE_CLASSIFICATION_IMPLEMENTED_OPERATIONS,
+    capabilities: CORE_CLASSIFICATION_MINIMUM_CAPABILITIES,
+    unresolved: [
+      'updateClassification',
+      'addClassificationItem',
+      'updateClassificationItem',
+      'removeClassificationItem',
+      'linkClassificationTrademark',
+      'linkClassificationJurisdiction',
+      'recommendClassification',
+      'reviewClassification',
+      'archiveClassification'
+    ],
+    fixtureOverride: 'classificationFixture',
+    fixtureValidator: validateCoreClassificationServiceEvidenceFixture
   }
 ] as const satisfies readonly ExpectedServiceEvidence[];
 
@@ -193,7 +224,7 @@ export function validateCoreServiceBehaviorEvidence(
         evidence.length < expectedEvidence.length
           ? 'core.service.evidence_missing'
           : 'core.service.evidence_extra',
-        'Service behavior evidence must contain exactly Customer, Brand, Trademark, and Jurisdiction entries in canonical order.',
+        'Service behavior evidence must contain exactly Customer, Brand, Trademark, Jurisdiction, and Classification entries in canonical order.',
         'evidence'
       )
     );

@@ -56,7 +56,10 @@ const canonicalServiceSkeleton = (
   produces: readonly string[],
   specificNonGoals: readonly string[],
   implementationTask:
-    'CORE-TASK-021' | 'CORE-TASK-038' | 'CORE-TASK-039' = 'CORE-TASK-021'
+    | 'CORE-TASK-021'
+    | 'CORE-TASK-038'
+    | 'CORE-TASK-039'
+    | 'CORE-TASK-040' = 'CORE-TASK-021'
 ): CoreServiceContract => ({
   ...serviceSkeleton(
     serviceType,
@@ -126,7 +129,20 @@ const canonicalServiceSkeleton = (
                   'changeJurisdictionStatus'
                 ]
               }
-            : {})
+            : serviceType === 'classification-service'
+              ? {
+                  behaviorImplementationTask: 'CORE-TASK-040',
+                  behaviorDepth: 'level_2_3',
+                  implementedOperations: [
+                    'createClassification',
+                    'getClassification',
+                    'listClassifications',
+                    'validateClassification',
+                    'validateClassificationReference',
+                    'changeClassificationStatus'
+                  ]
+                }
+              : {})
   }
 });
 
@@ -247,15 +263,23 @@ export const CORE_SERVICE_CONTRACT_SKELETONS = [
     ],
     'CORE-TASK-039'
   ),
-  serviceSkeleton(
-    'classification-reference-service',
+  canonicalServiceSkeleton(
+    'classification-service',
     'classification',
-    'Classification Reference Service Contract Skeleton',
-    'Skeleton contract boundary for classification reference service responsibilities.',
-    'Establishes a service contract placeholder for classification references without implementing classification behavior.',
-    ['Classification reference service contract boundary.'],
-    ['classification domain references'],
-    ['classification reference outputs']
+    'Core Classification Service Contract Skeleton',
+    'classification-service.md',
+    'Defines the Classification service ownership boundary for governed goods/services scope without implementing filing, official item synchronization, fee calculation, AI recommendation, or legal conclusions.',
+    [
+      'Classification service ownership, scope validation, lifecycle, review-gating, and reference boundary.'
+    ],
+    [
+      'classification, trademark, brand, jurisdiction, knowledge, document, evidence, matter, order, policy, and agent references'
+    ],
+    ['classification boundary references and governed validation results'],
+    [
+      'Item mutation operations, AI classification engine, official wording certification, fee engine, filing execution, or automatic approval.'
+    ],
+    'CORE-TASK-040'
   ),
   serviceSkeleton(
     'document-reference-service',

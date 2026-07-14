@@ -29,7 +29,8 @@ export const CORE_FIXTURE_TYPES = [
   'core_customer_service_core_lifecycle',
   'core_brand_service_core_lifecycle',
   'core_trademark_service_core_lifecycle',
-  'core_jurisdiction_service_core_lifecycle'
+  'core_jurisdiction_service_core_lifecycle',
+  'core_classification_service_core_scope_validation'
 ] as const;
 
 export type CoreFixtureType = (typeof CORE_FIXTURE_TYPES)[number];
@@ -221,6 +222,12 @@ export const CORE_FIXTURE_MANIFEST = [
     id: 'core-jurisdiction-service-core-lifecycle',
     type: 'core_jurisdiction_service_core_lifecycle',
     path: 'fixtures/services/core-jurisdiction-service-core-lifecycle.fixture.json',
+    required: true
+  },
+  {
+    id: 'core-classification-service-core-scope-validation',
+    type: 'core_classification_service_core_scope_validation',
+    path: 'fixtures/services/core-classification-service-core-scope-validation.fixture.json',
     required: true
   },
   {

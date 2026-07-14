@@ -916,10 +916,10 @@
     "createdAt": "2026-07-11T00:00:00.000Z"
   },
   {
-    "id": "core-service-classification-reference-service-contract",
+    "id": "core-service-classification-service-contract",
     "type": "service",
-    "name": "Classification Reference Service Contract Skeleton",
-    "description": "Skeleton contract boundary for classification reference service responsibilities.",
+    "name": "Core Classification Service Contract Skeleton",
+    "description": "Canonical metadata skeleton for the classification Core Service boundary.",
     "status": "active",
     "scope": {
       "domainId": "classification"
@@ -927,7 +927,7 @@
     "version": 1,
     "book": "Book 02 — MarkOrbit Core Specification",
     "source": "CORE_SERVICE_CONTRACT_SKELETONS",
-    "createdAt": "2026-07-09T00:00:00.000Z"
+    "createdAt": "2026-07-11T00:00:00.000Z"
   },
   {
     "id": "core-service-document-reference-service-contract",
