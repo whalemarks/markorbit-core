@@ -27,6 +27,8 @@ Document is the governed artifact layer between raw source files and professiona
 
 Creation starts as Draft and Unreviewed. A Document owns governed artifact metadata and a public reference; a file reference is linked explicitly and is not itself a Document. Professional approval requires completed human review. AI-reviewed drafts are never treated as approved-for-use artifacts. Document validation reports review, confidentiality, archive and rejection boundaries without converting the Document into Evidence.
 
+Mutations use success-only idempotency and Event trace handoff. A failed Event append restores the prior Document state so artifact metadata and trace history cannot diverge.
+
 ## Derived boundary
 
 The independently derived target is 38 Must Build requirements meeting required depth, 3 partial evidence, 51 validated skeleton only, 5 boundary scaffold only and 18 semantic overlap only. Acceptance remains 11 of 19 because 12 Must Build Services still lack executable owned behavior.
