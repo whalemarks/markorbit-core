@@ -1,0 +1,39 @@
+name: CORE-TASK-039 Test Diagnostics
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test-diagnostics:
+    if: github.head_ref == 'codex/core-task-039-jurisdiction-service-core-lifecycle'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Capture test diagnostics
+        run: |
+          set -o pipefail
+          pnpm test 2>&1 | tee core-task-039-test.log
+
+      - name: Upload test diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: core-task-039-test-log
+          path: core-task-039-test.log
+          if-no-files-found: ignore
