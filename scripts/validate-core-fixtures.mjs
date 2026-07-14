@@ -33,6 +33,7 @@ import {
 } from '../src/validation/index.ts';
 import { validateCoreBrandServiceCoreLifecycleFixture } from '../src/validation/core-brand-service-fixture-validation.ts';
 import { validateCoreTrademarkServiceCoreLifecycleFixture } from '../src/validation/core-trademark-service-fixture-validation.ts';
+import { validateCoreJurisdictionServiceCoreLifecycleFixture } from '../src/validation/core-jurisdiction-service-fixture-validation.ts';
 
 const validators = {
   domain_registry: validateCoreDomainRegistryFixture,
@@ -75,9 +76,7 @@ const validators = {
   core_trademark_service_core_lifecycle:
     validateCoreTrademarkServiceCoreLifecycleFixture,
   core_jurisdiction_service_core_lifecycle:
-    validateCoreJurisdictionServiceCoreLifecycleFixture,
-  validateCoreJurisdictionServiceCoreLifecycleFixture,
-  validateCoreMvpObjectPublicReferenceFoundationFixture
+    validateCoreJurisdictionServiceCoreLifecycleFixture
 };
 
 let hasErrors = false;
@@ -102,9 +101,4 @@ for (const entry of CORE_FIXTURE_MANIFEST) {
   }
 }
 
-if (hasErrors) {
-  console.error('Core fixture validation failed.');
-  process.exit(1);
-}
-
-console.log('All required Core fixtures passed validation.');
+if (hasErrors) process.exitCode = 1;
