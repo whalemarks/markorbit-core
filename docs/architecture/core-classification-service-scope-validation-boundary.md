@@ -33,6 +33,10 @@ Mutating operations use success-only idempotency. Event handoff failure rolls ba
 
 Cross-organization reference validation returns a non-enumerating NotFound-style result and does not reveal whether another organization owns the Classification.
 
+## Contract promotion
+
+The existing index-6 Classification reference placeholder is promoted in place to `classification-service`, preserving the 26-Service contract structure while locking CORE-TASK-040 behavior metadata.
+
 ## Evidence
 
 Required fixture 32 executes create, replay, idempotency conflict, safe reads, structural validation, reference validation, review-required transition, governed approval, approval replay, approval conflict, record counts, Event counts, and payload safety.
