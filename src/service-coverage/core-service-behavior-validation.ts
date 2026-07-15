@@ -41,6 +41,10 @@ import {
   CORE_OPPORTUNITY_MINIMUM_CAPABILITIES
 } from '../services/opportunity/index.ts';
 import {
+  CORE_WORKFLOW_CONTRACT_IMPLEMENTED_OPERATIONS,
+  CORE_WORKFLOW_CONTRACT_MINIMUM_CAPABILITIES
+} from '../services/workflow-contract/index.ts';
+import {
   CORE_TASK_IMPLEMENTED_OPERATIONS,
   CORE_TASK_MINIMUM_CAPABILITIES
 } from '../services/task/index.ts';
@@ -58,6 +62,7 @@ import { validateCoreEvidenceServiceEvidenceFixture } from './core-evidence-serv
 import { validateCoreMatterServiceExecutionContainerFoundationFixture } from '../validation/core-matter-service-fixture-validation.ts';
 import { validateCoreOrderServiceCommercialRequestFoundationFixture } from '../validation/core-order-service-fixture-validation.ts';
 import { validateCoreOpportunityServicePotentialDemandFoundationFixture } from '../validation/core-opportunity-service-fixture-validation.ts';
+import { validateCoreWorkflowContractServiceExecutionStructureFoundationFixture } from '../validation/core-workflow-contract-service-fixture-validation.ts';
 import { validateCoreTaskServiceActionableWorkFoundationFixture } from '../validation/core-task-service-fixture-validation.ts';
 import { validateCoreEventServiceGovernedOccurrenceFoundationFixture } from '../validation/core-event-service-fixture-validation.ts';
 import {
@@ -83,6 +88,7 @@ export interface CoreServiceBehaviorValidationOptions {
   readonly matterFixture?: unknown;
   readonly orderFixture?: unknown;
   readonly opportunityFixture?: unknown;
+  readonly workflowContractFixture?: unknown;
   readonly taskFixture?: unknown;
   readonly eventFixture?: unknown;
 }
@@ -101,6 +107,7 @@ interface ExpectedServiceEvidence {
     | 'matter'
     | 'order'
     | 'opportunity'
+    | 'workflow-contract'
     | 'task'
     | 'event';
   readonly contractId: string;
@@ -119,6 +126,7 @@ interface ExpectedServiceEvidence {
     | 'matterFixture'
     | 'orderFixture'
     | 'opportunityFixture'
+    | 'workflowContractFixture'
     | 'taskFixture'
     | 'eventFixture';
   readonly fixtureValidator: (
@@ -339,6 +347,22 @@ const expectedEvidence = [
         .issues
   },
   {
+    requirementId: 'must-service-workflow-contract-service',
+    serviceType: 'workflow-contract-service',
+    domainId: 'workflow-contract',
+    contractId: 'core-service-workflow-contract-service-contract',
+    sourcePath:
+      'books/book-02-core-specification/core-specs/services/workflow-contract-service.md',
+    operations: CORE_WORKFLOW_CONTRACT_IMPLEMENTED_OPERATIONS,
+    capabilities: CORE_WORKFLOW_CONTRACT_MINIMUM_CAPABILITIES,
+    unresolved: [],
+    fixtureOverride: 'workflowContractFixture',
+    fixtureValidator: (fixture) =>
+      validateCoreWorkflowContractServiceExecutionStructureFoundationFixture(
+        fixture
+      ).issues
+  },
+  {
     requirementId: 'must-service-task-service',
     serviceType: 'task-service',
     domainId: 'task',
@@ -415,7 +439,7 @@ export function validateCoreServiceBehaviorEvidence(
         evidence.length < expectedEvidence.length
           ? 'core.service.evidence_missing'
           : 'core.service.evidence_extra',
-        'Service behavior evidence must contain exactly Customer, Brand, Trademark, Jurisdiction, Classification, Document, Evidence, Matter, Order, Opportunity, Task, and Event entries in canonical order.',
+        'Service behavior evidence must contain exactly Customer, Brand, Trademark, Jurisdiction, Classification, Document, Evidence, Matter, Order, Opportunity, Workflow Contract, Task, and Event entries in canonical order.',
         'evidence'
       )
     );

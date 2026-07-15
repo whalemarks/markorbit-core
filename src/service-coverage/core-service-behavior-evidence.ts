@@ -40,6 +40,10 @@ import {
   CORE_OPPORTUNITY_MINIMUM_CAPABILITIES
 } from '../services/opportunity/index.ts';
 import {
+  CORE_WORKFLOW_CONTRACT_IMPLEMENTED_OPERATIONS,
+  CORE_WORKFLOW_CONTRACT_MINIMUM_CAPABILITIES
+} from '../services/workflow-contract/index.ts';
+import {
   CORE_TASK_IMPLEMENTED_OPERATIONS,
   CORE_TASK_MINIMUM_CAPABILITIES
 } from '../services/task/index.ts';
@@ -330,6 +334,27 @@ export const CORE_SERVICE_BEHAVIOR_EVIDENCE = [
     testFiles: ['tests/unit/core-opportunity-service-potential-demand.test.ts'],
     fixtureFiles: [
       'fixtures/services/core-opportunity-service-potential-demand-foundation.fixture.json'
+    ]
+  },
+  {
+    requirementId: 'must-service-workflow-contract-service',
+    serviceType: 'workflow-contract-service',
+    domainId: 'workflow-contract',
+    contractId: 'core-service-workflow-contract-service-contract',
+    sourcePath:
+      'books/book-02-core-specification/core-specs/services/workflow-contract-service.md',
+    currentDepth: 'level_2_3',
+    operations: CORE_WORKFLOW_CONTRACT_IMPLEMENTED_OPERATIONS,
+    provenMinimumCapabilities: CORE_WORKFLOW_CONTRACT_MINIMUM_CAPABILITIES,
+    unresolvedServiceOperations: [],
+    implementationFiles: [
+      'src/services/workflow-contract/core-workflow-contract-service.ts'
+    ],
+    testFiles: [
+      'tests/unit/core-workflow-contract-service-execution-structure.test.ts'
+    ],
+    fixtureFiles: [
+      'fixtures/services/core-workflow-contract-service-execution-structure-foundation.fixture.json'
     ]
   },
   {

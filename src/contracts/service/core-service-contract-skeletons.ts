@@ -66,7 +66,8 @@ const canonicalServiceSkeleton = (
     | 'CORE-TASK-044'
     | 'CORE-TASK-045'
     | 'CORE-TASK-046'
-    | 'CORE-TASK-047' = 'CORE-TASK-021'
+    | 'CORE-TASK-047'
+    | 'CORE-TASK-048' = 'CORE-TASK-021'
 ): CoreServiceContract => ({
   ...serviceSkeleton(
     serviceType,
@@ -248,46 +249,64 @@ const canonicalServiceSkeleton = (
                               'archiveOpportunity'
                             ]
                           }
-                        : serviceType === 'task-service'
+                        : serviceType === 'workflow-contract-service'
                           ? {
-                              behaviorImplementationTask: 'CORE-TASK-047',
+                              behaviorImplementationTask: 'CORE-TASK-048',
                               behaviorDepth: 'level_2_3',
                               implementedOperations: [
-                                'createTask',
-                                'getTask',
-                                'listTasks',
-                                'updateTask',
-                                'changeTaskStatus',
-                                'assignTask',
-                                'reassignTask',
-                                'unassignTask',
-                                'linkTaskMatter',
-                                'linkTaskWorkflowContract',
-                                'linkTaskDependency',
-                                'completeTask',
-                                'cancelTask',
-                                'reopenTask',
-                                'validateTaskReference',
-                                'archiveTask'
+                                'createWorkflowContract',
+                                'getWorkflowContract',
+                                'updateWorkflowContract',
+                                'changeWorkflowContractStatus',
+                                'defineWorkflowState',
+                                'defineWorkflowTransition',
+                                'defineWorkflowGuard',
+                                'validateWorkflowTransition',
+                                'validateWorkflowApplicability',
+                                'validateWorkflowContractReference',
+                                'archiveWorkflowContract'
                               ]
                             }
-                          : serviceType === 'event-service'
+                          : serviceType === 'task-service'
                             ? {
-                                behaviorImplementationTask: 'CORE-TASK-046',
+                                behaviorImplementationTask: 'CORE-TASK-047',
                                 behaviorDepth: 'level_2_3',
                                 implementedOperations: [
-                                  'recordEvent',
-                                  'getEvent',
-                                  'validateEventReference',
-                                  'validateEventPayload',
-                                  'updateEventStatus',
-                                  'markEventDispatched',
-                                  'markEventDispatchFailed',
-                                  'linkEventConsumer',
-                                  'archiveEvent'
+                                  'createTask',
+                                  'getTask',
+                                  'listTasks',
+                                  'updateTask',
+                                  'changeTaskStatus',
+                                  'assignTask',
+                                  'reassignTask',
+                                  'unassignTask',
+                                  'linkTaskMatter',
+                                  'linkTaskWorkflowContract',
+                                  'linkTaskDependency',
+                                  'completeTask',
+                                  'cancelTask',
+                                  'reopenTask',
+                                  'validateTaskReference',
+                                  'archiveTask'
                                 ]
                               }
-                            : {})
+                            : serviceType === 'event-service'
+                              ? {
+                                  behaviorImplementationTask: 'CORE-TASK-046',
+                                  behaviorDepth: 'level_2_3',
+                                  implementedOperations: [
+                                    'recordEvent',
+                                    'getEvent',
+                                    'validateEventReference',
+                                    'validateEventPayload',
+                                    'updateEventStatus',
+                                    'markEventDispatched',
+                                    'markEventDispatchFailed',
+                                    'linkEventConsumer',
+                                    'archiveEvent'
+                                  ]
+                                }
+                              : {})
   }
 });
 
@@ -600,7 +619,7 @@ export const CORE_SERVICE_CONTRACT_SKELETONS = [
     'workflow-contract',
     'Core Workflow Contract Service Contract Skeleton',
     'workflow-contract-service.md',
-    'Defines the Workflow Contract service ownership boundary for governed execution structures without implementing creation, transition validation, apply, task creation, event emission, or workflow runtime.',
+    'Defines the Workflow Contract service ownership and governed definition/validation boundary for allowed execution structures without implementing running instances, task creation, direct mutation, or workflow runtime.',
     [
       'Workflow Contract service ownership, definition validation, reference, and governance boundary.'
     ],
@@ -609,8 +628,9 @@ export const CORE_SERVICE_CONTRACT_SKELETONS = [
     ],
     ['workflow contract boundary references'],
     [
-      'Workflow engine, running instances, transition execution, direct mutation, task creation, event emission, or review decisions.'
-    ]
+      'Workflow engine, running instances, automatic transition execution, direct Matter or Task mutation, task creation, Event Service replacement, permission grant, policy override, or review decisions.'
+    ],
+    'CORE-TASK-048'
   ),
   canonicalServiceSkeleton(
     'task-service',

@@ -4,8 +4,8 @@ import { describe, it } from 'node:test';
 import { CORE_FIXTURE_MANIFEST, CORE_FIXTURE_TYPES } from '../../src/index.ts';
 
 describe('CORE_FIXTURE_MANIFEST', () => {
-  it('has exactly 39 entries', () => {
-    assert.equal(CORE_FIXTURE_MANIFEST.length, 39);
+  it('has exactly 40 entries', () => {
+    assert.equal(CORE_FIXTURE_MANIFEST.length, 40);
   });
 
   it('includes permission_contract_skeletons type', () => {
@@ -210,6 +210,7 @@ describe('CORE_FIXTURE_MANIFEST', () => {
       'core_order_service_commercial_request_foundation',
       'core_opportunity_service_potential_demand_foundation',
       'core_task_service_actionable_work_foundation',
+      'core_workflow_contract_service_execution_structure_foundation',
       'core_event_service_governed_occurrence_foundation'
     ]);
   });

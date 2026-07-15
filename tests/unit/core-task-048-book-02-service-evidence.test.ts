@@ -2,22 +2,23 @@ import assert from 'node:assert/strict';
 import { describe, it } from 'node:test';
 import { BOOK_02_MVP_GAP_BASELINE } from '../../src/index.ts';
 
-describe('CORE-TASK-046 Book 02 Event Service evidence', () => {
-  it('records Event Service as an owned Must Build behavior boundary', () => {
-    const event = BOOK_02_MVP_GAP_BASELINE.requirements.find(
-      (requirement) => requirement.id === 'must-service-event-service'
+describe('CORE-TASK-048 Book 02 Workflow Contract Service evidence', () => {
+  it('records Workflow Contract Service as the owned execution-structure authority', () => {
+    const workflow = BOOK_02_MVP_GAP_BASELINE.requirements.find(
+      (requirement) =>
+        requirement.id === 'must-service-workflow-contract-service'
     );
-    assert.equal(event?.currentDisposition, 'meets_required_depth');
-    assert.equal(event?.currentDepth, 'level_2_3');
-    assert.deepEqual(event?.implementationFiles, [
+    assert.equal(workflow?.currentDisposition, 'meets_required_depth');
+    assert.equal(workflow?.currentDepth, 'level_2_3');
+    assert.deepEqual(workflow?.implementationFiles, [
       'src/contracts/service/core-service-contract-skeletons.ts',
-      'src/services/event/core-event-service.ts'
+      'src/services/workflow-contract/core-workflow-contract-service.ts'
     ]);
-    assert.deepEqual(event?.testFiles, [
-      'tests/unit/core-event-service-governed-occurrence.test.ts'
+    assert.deepEqual(workflow?.testFiles, [
+      'tests/unit/core-workflow-contract-service-execution-structure.test.ts'
     ]);
-    assert.deepEqual(event?.fixtureFiles, [
-      'fixtures/services/core-event-service-governed-occurrence-foundation.fixture.json'
+    assert.deepEqual(workflow?.fixtureFiles, [
+      'fixtures/services/core-workflow-contract-service-execution-structure-foundation.fixture.json'
     ]);
   });
 

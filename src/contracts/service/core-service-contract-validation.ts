@@ -56,7 +56,7 @@ const canonicalServiceEntries = [
     'workflow-contract',
     'Core Workflow Contract Service Contract Skeleton',
     'workflow-contract-service.md',
-    'CORE-TASK-021'
+    'CORE-TASK-048'
   ],
   [
     'task-service',
@@ -248,6 +248,22 @@ const behaviorLocks = {
       'archiveOpportunity'
     ]
   },
+  'workflow-contract-service': {
+    task: 'CORE-TASK-048',
+    operations: [
+      'createWorkflowContract',
+      'getWorkflowContract',
+      'updateWorkflowContract',
+      'changeWorkflowContractStatus',
+      'defineWorkflowState',
+      'defineWorkflowTransition',
+      'defineWorkflowGuard',
+      'validateWorkflowTransition',
+      'validateWorkflowApplicability',
+      'validateWorkflowContractReference',
+      'archiveWorkflowContract'
+    ]
+  },
   'task-service': {
     task: 'CORE-TASK-047',
     operations: [
@@ -305,6 +321,14 @@ const behaviorLocks = {
 } as const;
 
 const promotedContracts = {
+  16: {
+    id: 'core-service-workflow-contract-service-contract',
+    serviceType: 'workflow-contract-service',
+    domainId: 'workflow-contract',
+    name: 'Core Workflow Contract Service Contract Skeleton',
+    sourceFile: 'workflow-contract-service.md',
+    task: 'CORE-TASK-048'
+  },
   18: {
     id: 'core-service-event-service-contract',
     serviceType: 'event-service',

@@ -21,12 +21,12 @@ describe('CORE-TASK-047 Book 02 Task Service evidence', () => {
     ]);
   });
 
-  it('derives 43 / 3 / 46 while leaving two execution Services unresolved', () => {
+  it('derives 44 / 3 / 45 while leaving Communication Service unresolved', () => {
     assert.deepEqual(BOOK_02_MVP_GAP_BASELINE.summary.mustBuildNow, {
       total: 115,
-      meets_required_depth: 43,
+      meets_required_depth: 44,
       partial_evidence: 3,
-      validated_skeleton_only: 46,
+      validated_skeleton_only: 45,
       boundary_scaffold_only: 5,
       semantic_overlap_only: 18,
       fixture_only: 0,
@@ -37,14 +37,10 @@ describe('CORE-TASK-047 Book 02 Task Service evidence', () => {
         (requirement) =>
           requirement.layer === 'service' &&
           requirement.currentDisposition === 'validated_skeleton_only' &&
-          [
-            'must-service-workflow-contract-service',
-            'must-service-communication-service'
-          ].includes(requirement.id)
+          requirement.id === 'must-service-communication-service'
       )
       .map((requirement) => requirement.id);
     assert.deepEqual(unresolvedServiceIds, [
-      'must-service-workflow-contract-service',
       'must-service-communication-service'
     ]);
   });

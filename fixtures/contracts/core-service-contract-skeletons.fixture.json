@@ -650,7 +650,7 @@
     "description": "Canonical metadata skeleton for the workflow-contract Core Service boundary.",
     "status": "active",
     "book": "Book 02 — MarkOrbit Core Specification",
-    "purpose": "Defines the Workflow Contract service ownership boundary for governed execution structures without implementing creation, transition validation, apply, task creation, event emission, or workflow runtime.",
+    "purpose": "Defines the Workflow Contract service ownership and governed definition/validation boundary for allowed execution structures without implementing running instances, task creation, direct mutation, or workflow runtime.",
     "owns": [
       "Workflow Contract service ownership, definition validation, reference, and governance boundary."
     ],
@@ -667,7 +667,7 @@
       "Executable service method definitions or service implementations.",
       "API routes, database access, workflow runtime, or Book 03 execution behavior.",
       "Product UI behavior, concrete business logic, or AI agent authority.",
-      "Workflow engine, running instances, transition execution, direct mutation, task creation, event emission, or review decisions."
+      "Workflow engine, running instances, automatic transition execution, direct Matter or Task mutation, task creation, Event Service replacement, permission grant, policy override, or review decisions."
     ],
     "createdAt": "2026-07-11T00:00:00.000Z",
     "sourcePath": "books/book-02-core-specification/core-specs/services/workflow-contract-service.md",
@@ -676,7 +676,22 @@
       "specificationRepository": "whalemarks/markorbit-publication",
       "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
       "specificationPath": "books/book-02-core-specification/",
-      "implementationTask": "CORE-TASK-021"
+      "implementationTask": "CORE-TASK-048",
+      "behaviorImplementationTask": "CORE-TASK-048",
+      "behaviorDepth": "level_2_3",
+      "implementedOperations": [
+        "createWorkflowContract",
+        "getWorkflowContract",
+        "updateWorkflowContract",
+        "changeWorkflowContractStatus",
+        "defineWorkflowState",
+        "defineWorkflowTransition",
+        "defineWorkflowGuard",
+        "validateWorkflowTransition",
+        "validateWorkflowApplicability",
+        "validateWorkflowContractReference",
+        "archiveWorkflowContract"
+      ]
     }
   },
   {
