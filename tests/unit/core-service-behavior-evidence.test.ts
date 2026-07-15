@@ -13,6 +13,8 @@ import {
   CORE_DOCUMENT_MINIMUM_CAPABILITIES,
   CORE_EVIDENCE_IMPLEMENTED_OPERATIONS,
   CORE_EVIDENCE_MINIMUM_CAPABILITIES,
+  CORE_EVENT_IMPLEMENTED_OPERATIONS,
+  CORE_EVENT_MINIMUM_CAPABILITIES,
   CORE_JURISDICTION_IMPLEMENTED_OPERATIONS,
   CORE_JURISDICTION_MINIMUM_CAPABILITIES,
   CORE_MATTER_IMPLEMENTED_OPERATIONS,
@@ -37,13 +39,14 @@ const expectedRequirements = [
   'must-service-evidence-service',
   'must-service-matter-service',
   'must-service-order-service',
-  'stub-service-opportunity-service'
+  'stub-service-opportunity-service',
+  'must-service-event-service'
 ];
 
 describe('Core Service behavior evidence', () => {
   it('validates exact dependency-first Service evidence in canonical order', () => {
     assert.deepEqual(validateCoreServiceBehaviorEvidence(), []);
-    assert.equal(CORE_SERVICE_BEHAVIOR_EVIDENCE.length, 10);
+    assert.equal(CORE_SERVICE_BEHAVIOR_EVIDENCE.length, 11);
     assert.deepEqual(
       CORE_SERVICE_BEHAVIOR_EVIDENCE.map((entry) => entry.requirementId),
       expectedRequirements
@@ -79,7 +82,8 @@ describe('Core Service behavior evidence', () => {
       [
         CORE_OPPORTUNITY_IMPLEMENTED_OPERATIONS,
         CORE_OPPORTUNITY_MINIMUM_CAPABILITIES
-      ]
+      ],
+      [CORE_EVENT_IMPLEMENTED_OPERATIONS, CORE_EVENT_MINIMUM_CAPABILITIES]
     ] as const;
     for (const [index, [operations, capabilities]] of expectations.entries()) {
       assert.deepEqual(
@@ -104,7 +108,8 @@ describe('Core Service behavior evidence', () => {
       evidence,
       matter,
       order,
-      opportunity
+      opportunity,
+      event
     ] = CORE_SERVICE_BEHAVIOR_EVIDENCE;
     assert.equal(
       validateCoreServiceBehaviorEvidence({
@@ -132,7 +137,8 @@ describe('Core Service behavior evidence', () => {
           evidence,
           matter,
           order,
-          opportunity
+          opportunity,
+          event
         ]
       }).some((entry) => entry.code === 'core.service.evidence_extra'),
       true
@@ -149,7 +155,8 @@ describe('Core Service behavior evidence', () => {
           evidence,
           matter,
           order,
-          opportunity
+          opportunity,
+          event
         ]
       }).some((entry) => entry.code === 'core.service.contract_mismatch'),
       true
@@ -166,7 +173,8 @@ describe('Core Service behavior evidence', () => {
           evidence,
           matter,
           order,
-          opportunity
+          opportunity,
+          event
         ]
       }).some((entry) => entry.code === 'core.service.domain_mismatch'),
       true
@@ -183,7 +191,8 @@ describe('Core Service behavior evidence', () => {
           evidence,
           matter,
           order,
-          opportunity
+          opportunity,
+          event
         ]
       }).some((entry) => entry.code === 'core.service.cross_service_evidence'),
       true
@@ -201,7 +210,8 @@ describe('Core Service behavior evidence', () => {
       evidence,
       matter,
       order,
-      opportunity
+      opportunity,
+      event
     ] = CORE_SERVICE_BEHAVIOR_EVIDENCE;
     assert.equal(
       validateCoreServiceBehaviorEvidence({
@@ -215,7 +225,8 @@ describe('Core Service behavior evidence', () => {
           { ...evidence, operations: evidence.operations.slice(1) },
           matter,
           order,
-          opportunity
+          opportunity,
+          event
         ]
       }).some((entry) => entry.code === 'core.service.operation_missing'),
       true
@@ -236,14 +247,15 @@ describe('Core Service behavior evidence', () => {
           },
           matter,
           order,
-          opportunity
+          opportunity,
+          event
         ]
       }).some((entry) => entry.code === 'core.service.capability_missing'),
       true
     );
   });
 
-  it('executes all ten fixtures and rejects corrupted expectations', async () => {
+  it('executes all eleven fixtures and rejects corrupted expectations', async () => {
     const fixtures = [
       [
         'customerFixture',
@@ -293,6 +305,11 @@ describe('Core Service behavior evidence', () => {
       [
         'opportunityFixture',
         'fixtures/services/core-opportunity-service-potential-demand-foundation.fixture.json',
+        'operationCount'
+      ],
+      [
+        'eventFixture',
+        'fixtures/services/core-event-service-governed-occurrence-foundation.fixture.json',
         'operationCount'
       ]
     ] as const;

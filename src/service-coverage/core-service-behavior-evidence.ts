@@ -39,6 +39,10 @@ import {
   CORE_OPPORTUNITY_IMPLEMENTED_OPERATIONS,
   CORE_OPPORTUNITY_MINIMUM_CAPABILITIES
 } from '../services/opportunity/index.ts';
+import {
+  CORE_EVENT_IMPLEMENTED_OPERATIONS,
+  CORE_EVENT_MINIMUM_CAPABILITIES
+} from '../services/event/index.ts';
 
 export interface CoreServiceBehaviorEvidence {
   readonly requirementId: string;
@@ -322,6 +326,23 @@ export const CORE_SERVICE_BEHAVIOR_EVIDENCE = [
     testFiles: ['tests/unit/core-opportunity-service-potential-demand.test.ts'],
     fixtureFiles: [
       'fixtures/services/core-opportunity-service-potential-demand-foundation.fixture.json'
+    ]
+  },
+  {
+    requirementId: 'must-service-event-service',
+    serviceType: 'event-service',
+    domainId: 'event',
+    contractId: 'core-service-event-service-contract',
+    sourcePath:
+      'books/book-02-core-specification/core-specs/services/event-service.md',
+    currentDepth: 'level_2_3',
+    operations: CORE_EVENT_IMPLEMENTED_OPERATIONS,
+    provenMinimumCapabilities: CORE_EVENT_MINIMUM_CAPABILITIES,
+    unresolvedServiceOperations: ['replayEventReference'],
+    implementationFiles: ['src/services/event/core-event-service.ts'],
+    testFiles: ['tests/unit/core-event-service-governed-occurrence.test.ts'],
+    fixtureFiles: [
+      'fixtures/services/core-event-service-governed-occurrence-foundation.fixture.json'
     ]
   }
 ] as const satisfies readonly CoreServiceBehaviorEvidence[];

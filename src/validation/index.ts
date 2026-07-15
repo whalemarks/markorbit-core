@@ -9,3 +9,4 @@ export * from './core-evidence-service-fixture-validation.ts';
 export * from './core-matter-service-fixture-validation.ts';
 export * from './core-order-service-fixture-validation.ts';
 export * from './core-opportunity-service-fixture-validation.ts';
+export * from './core-event-service-fixture-validation.ts';

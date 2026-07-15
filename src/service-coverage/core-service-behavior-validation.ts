@@ -40,6 +40,10 @@ import {
   CORE_OPPORTUNITY_IMPLEMENTED_OPERATIONS,
   CORE_OPPORTUNITY_MINIMUM_CAPABILITIES
 } from '../services/opportunity/index.ts';
+import {
+  CORE_EVENT_IMPLEMENTED_OPERATIONS,
+  CORE_EVENT_MINIMUM_CAPABILITIES
+} from '../services/event/index.ts';
 import { validateCoreBrandServiceEvidenceFixture } from './core-brand-service-evidence-fixture.ts';
 import { validateCoreCustomerServiceEvidenceFixture } from './core-customer-service-evidence-fixture.ts';
 import { validateCoreTrademarkServiceEvidenceFixture } from './core-trademark-service-evidence-fixture.ts';
@@ -50,6 +54,7 @@ import { validateCoreEvidenceServiceEvidenceFixture } from './core-evidence-serv
 import { validateCoreMatterServiceExecutionContainerFoundationFixture } from '../validation/core-matter-service-fixture-validation.ts';
 import { validateCoreOrderServiceCommercialRequestFoundationFixture } from '../validation/core-order-service-fixture-validation.ts';
 import { validateCoreOpportunityServicePotentialDemandFoundationFixture } from '../validation/core-opportunity-service-fixture-validation.ts';
+import { validateCoreEventServiceGovernedOccurrenceFoundationFixture } from '../validation/core-event-service-fixture-validation.ts';
 import {
   CORE_SERVICE_BEHAVIOR_EVIDENCE,
   type CoreServiceBehaviorEvidence
@@ -73,6 +78,7 @@ export interface CoreServiceBehaviorValidationOptions {
   readonly matterFixture?: unknown;
   readonly orderFixture?: unknown;
   readonly opportunityFixture?: unknown;
+  readonly eventFixture?: unknown;
 }
 
 interface ExpectedServiceEvidence {
@@ -88,7 +94,8 @@ interface ExpectedServiceEvidence {
     | 'evidence'
     | 'matter'
     | 'order'
-    | 'opportunity';
+    | 'opportunity'
+    | 'event';
   readonly contractId: string;
   readonly sourcePath: string;
   readonly operations: readonly string[];
@@ -104,7 +111,8 @@ interface ExpectedServiceEvidence {
     | 'evidenceFixture'
     | 'matterFixture'
     | 'orderFixture'
-    | 'opportunityFixture';
+    | 'opportunityFixture'
+    | 'eventFixture';
   readonly fixtureValidator: (
     fixture: unknown
   ) => readonly { readonly code: string }[];
@@ -321,6 +329,21 @@ const expectedEvidence = [
     fixtureValidator: (fixture) =>
       validateCoreOpportunityServicePotentialDemandFoundationFixture(fixture)
         .issues
+  },
+  {
+    requirementId: 'must-service-event-service',
+    serviceType: 'event-service',
+    domainId: 'event',
+    contractId: 'core-service-event-service-contract',
+    sourcePath:
+      'books/book-02-core-specification/core-specs/services/event-service.md',
+    operations: CORE_EVENT_IMPLEMENTED_OPERATIONS,
+    capabilities: CORE_EVENT_MINIMUM_CAPABILITIES,
+    unresolved: ['replayEventReference'],
+    fixtureOverride: 'eventFixture',
+    fixtureValidator: (fixture) =>
+      validateCoreEventServiceGovernedOccurrenceFoundationFixture(fixture)
+        .issues
   }
 ] as const satisfies readonly ExpectedServiceEvidence[];
 
@@ -370,7 +393,7 @@ export function validateCoreServiceBehaviorEvidence(
         evidence.length < expectedEvidence.length
           ? 'core.service.evidence_missing'
           : 'core.service.evidence_extra',
-        'Service behavior evidence must contain exactly Customer, Brand, Trademark, Jurisdiction, Classification, Document, Evidence, Matter, Order, and Opportunity entries in canonical order.',
+        'Service behavior evidence must contain exactly Customer, Brand, Trademark, Jurisdiction, Classification, Document, Evidence, Matter, Order, Opportunity, and Event entries in canonical order.',
         'evidence'
       )
     );
