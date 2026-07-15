@@ -41,6 +41,7 @@ import { validateCoreMatterServiceExecutionContainerFoundationFixture } from '..
 import { validateCoreOrderServiceCommercialRequestFoundationFixture } from '../src/validation/core-order-service-fixture-validation.ts';
 import { validateCoreOpportunityServicePotentialDemandFoundationFixture } from '../src/validation/core-opportunity-service-fixture-validation.ts';
 import { validateCoreTaskServiceActionableWorkFoundationFixture } from '../src/validation/core-task-service-fixture-validation.ts';
+import { validateCoreWorkflowContractServiceExecutionStructureFoundationFixture } from '../src/validation/core-workflow-contract-service-fixture-validation.ts';
 import { validateCoreEventServiceGovernedOccurrenceFoundationFixture } from '../src/validation/core-event-service-fixture-validation.ts';
 
 const validators = {
@@ -99,6 +100,8 @@ const validators = {
     validateCoreOpportunityServicePotentialDemandFoundationFixture,
   core_task_service_actionable_work_foundation:
     validateCoreTaskServiceActionableWorkFoundationFixture,
+  core_workflow_contract_service_execution_structure_foundation:
+    validateCoreWorkflowContractServiceExecutionStructureFoundationFixture,
   core_event_service_governed_occurrence_foundation:
     validateCoreEventServiceGovernedOccurrenceFoundationFixture
 };

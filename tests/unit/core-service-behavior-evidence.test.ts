@@ -26,6 +26,8 @@ import {
   CORE_SERVICE_BEHAVIOR_EVIDENCE,
   CORE_TASK_IMPLEMENTED_OPERATIONS,
   CORE_TASK_MINIMUM_CAPABILITIES,
+  CORE_WORKFLOW_CONTRACT_IMPLEMENTED_OPERATIONS,
+  CORE_WORKFLOW_CONTRACT_MINIMUM_CAPABILITIES,
   CORE_TRADEMARK_IMPLEMENTED_OPERATIONS,
   CORE_TRADEMARK_MINIMUM_CAPABILITIES,
   validateCoreServiceBehaviorEvidence
@@ -42,6 +44,7 @@ const expectedRequirements = [
   'must-service-matter-service',
   'must-service-order-service',
   'stub-service-opportunity-service',
+  'must-service-workflow-contract-service',
   'must-service-task-service',
   'must-service-event-service'
 ];
@@ -49,7 +52,7 @@ const expectedRequirements = [
 describe('Core Service behavior evidence', () => {
   it('validates exact dependency-first Service evidence in canonical order', () => {
     assert.deepEqual(validateCoreServiceBehaviorEvidence(), []);
-    assert.equal(CORE_SERVICE_BEHAVIOR_EVIDENCE.length, 12);
+    assert.equal(CORE_SERVICE_BEHAVIOR_EVIDENCE.length, 13);
     assert.deepEqual(
       CORE_SERVICE_BEHAVIOR_EVIDENCE.map((entry) => entry.requirementId),
       expectedRequirements
@@ -86,6 +89,10 @@ describe('Core Service behavior evidence', () => {
         CORE_OPPORTUNITY_IMPLEMENTED_OPERATIONS,
         CORE_OPPORTUNITY_MINIMUM_CAPABILITIES
       ],
+      [
+        CORE_WORKFLOW_CONTRACT_IMPLEMENTED_OPERATIONS,
+        CORE_WORKFLOW_CONTRACT_MINIMUM_CAPABILITIES
+      ],
       [CORE_TASK_IMPLEMENTED_OPERATIONS, CORE_TASK_MINIMUM_CAPABILITIES],
       [CORE_EVENT_IMPLEMENTED_OPERATIONS, CORE_EVENT_MINIMUM_CAPABILITIES]
     ] as const;
@@ -113,6 +120,7 @@ describe('Core Service behavior evidence', () => {
       matter,
       order,
       opportunity,
+      workflowContract,
       task,
       event
     ] = CORE_SERVICE_BEHAVIOR_EVIDENCE;
@@ -143,6 +151,7 @@ describe('Core Service behavior evidence', () => {
           matter,
           order,
           opportunity,
+          workflowContract,
           task,
           event
         ]
@@ -162,6 +171,7 @@ describe('Core Service behavior evidence', () => {
           matter,
           order,
           opportunity,
+          workflowContract,
           task,
           event
         ]
@@ -181,6 +191,7 @@ describe('Core Service behavior evidence', () => {
           matter,
           order,
           opportunity,
+          workflowContract,
           task,
           event
         ]
@@ -200,6 +211,7 @@ describe('Core Service behavior evidence', () => {
           matter,
           order,
           opportunity,
+          workflowContract,
           task,
           event
         ]
@@ -220,6 +232,7 @@ describe('Core Service behavior evidence', () => {
       matter,
       order,
       opportunity,
+      workflowContract,
       task,
       event
     ] = CORE_SERVICE_BEHAVIOR_EVIDENCE;
@@ -236,6 +249,7 @@ describe('Core Service behavior evidence', () => {
           matter,
           order,
           opportunity,
+          workflowContract,
           task,
           event
         ]
@@ -259,6 +273,7 @@ describe('Core Service behavior evidence', () => {
           matter,
           order,
           opportunity,
+          workflowContract,
           task,
           event
         ]
@@ -267,7 +282,7 @@ describe('Core Service behavior evidence', () => {
     );
   });
 
-  it('executes all twelve fixtures and rejects corrupted expectations', async () => {
+  it('executes all thirteen fixtures and rejects corrupted expectations', async () => {
     const fixtures = [
       [
         'customerFixture',

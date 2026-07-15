@@ -1,0 +1,36 @@
+{
+  "fixtureType": "core_workflow_contract_service_execution_structure_foundation",
+  "task": "CORE-TASK-048",
+  "authority": {
+    "repository": "whalemarks/markorbit-publication",
+    "commit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+    "sourcePath": "books/book-02-core-specification/core-specs/services/workflow-contract-service.md"
+  },
+  "implementedOperations": [
+    "createWorkflowContract",
+    "getWorkflowContract",
+    "updateWorkflowContract",
+    "changeWorkflowContractStatus",
+    "defineWorkflowState",
+    "defineWorkflowTransition",
+    "defineWorkflowGuard",
+    "validateWorkflowTransition",
+    "validateWorkflowApplicability",
+    "validateWorkflowContractReference",
+    "archiveWorkflowContract"
+  ],
+  "expected": {
+    "operationCount": 11,
+    "statesTransitionsAndGuardsOwned": true,
+    "transitionValidationDoesNotExecute": true,
+    "permissionPolicyReviewApprovalPreserved": true,
+    "applicabilityValidationRequired": true,
+    "referenceValidationRequired": true,
+    "eventTraceRequired": true,
+    "eventRollbackRequired": true,
+    "crossOrganizationNonEnumeration": true,
+    "aiProposalRequiresGovernedActivation": true,
+    "noTaskOrMatterExecution": true,
+    "noWorkflowRuntimeEngine": true
+  }
+}

@@ -24,9 +24,9 @@ describe('CORE-TASK-045 Book 02 Opportunity Service evidence', () => {
   it("preserves Opportunity's stub classification after Event Service promotion", () => {
     assert.deepEqual(BOOK_02_MVP_GAP_BASELINE.summary.mustBuildNow, {
       total: 115,
-      meets_required_depth: 43,
+      meets_required_depth: 44,
       partial_evidence: 3,
-      validated_skeleton_only: 46,
+      validated_skeleton_only: 45,
       boundary_scaffold_only: 5,
       semantic_overlap_only: 18,
       fixture_only: 0,
