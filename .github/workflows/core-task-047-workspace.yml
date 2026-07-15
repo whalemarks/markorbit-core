@@ -1,0 +1,29 @@
+name: CORE-TASK-047 Workspace
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/core-task-047-task-service-foundation
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: corepack enable
+      - run: pnpm install --frozen-lockfile
+      - name: Package workspace
+        run: tar --exclude=.git -czf /tmp/core-task-047-workspace.tgz .
+      - uses: actions/upload-artifact@v4
+        with:
+          name: core-task-047-workspace
+          path: /tmp/core-task-047-workspace.tgz
+          retention-days: 1
