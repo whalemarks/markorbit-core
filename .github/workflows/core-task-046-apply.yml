@@ -29,6 +29,7 @@ jobs:
           cat \
             .core-task-046-payload/part-00.bin \
             .core-task-046-payload/part-01.bin \
+            .core-task-046-payload/part-01b.bin \
             .core-task-046-payload/part-02.bin \
             .core-task-046-payload/part-03.bin \
             .core-task-046-payload/part-04.bin \
