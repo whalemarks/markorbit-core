@@ -1,0 +1,25 @@
+{
+  "fixtureType": "core_event_service_governed_occurrence_foundation",
+  "task": "CORE-TASK-046",
+  "serviceType": "event-service",
+  "implementedOperations": [
+    "recordEvent",
+    "getEvent",
+    "validateEventReference",
+    "validateEventPayload",
+    "updateEventStatus",
+    "markEventDispatched",
+    "markEventDispatchFailed",
+    "linkEventConsumer",
+    "archiveEvent"
+  ],
+  "expected": {
+    "operationCount": 9,
+    "payloadContractRequired": true,
+    "dispatchTraceRequired": true,
+    "consumerLinkageReferenceOnly": true,
+    "eventRollbackRequired": true,
+    "crossOrganizationNonEnumeration": true,
+    "noEventBusRuntime": true
+  }
+}

@@ -11,11 +11,12 @@ const implementedServiceIds = [
   'must-service-document-service',
   'must-service-evidence-service',
   'must-service-matter-service',
-  'must-service-order-service'
+  'must-service-order-service',
+  'must-service-event-service'
 ];
 
 describe('CORE-TASK-042 Book 02 Service evidence', () => {
-  it('promotes Customer through Order in dependency order', () => {
+  it('promotes Customer through Event in dependency order', () => {
     const services = BOOK_02_MVP_GAP_BASELINE.requirements.filter(
       (requirement) => requirement.layer === 'service'
     );
@@ -36,16 +37,16 @@ describe('CORE-TASK-042 Book 02 Service evidence', () => {
         (requirement) =>
           requirement.currentDisposition === 'validated_skeleton_only'
       ).length,
-      9
+      8
     );
   });
 
-  it('derives 41 / 3 / 48 and leaves global Service acceptance unresolved', () => {
+  it('derives 42 / 3 / 47 and leaves global Service acceptance unresolved', () => {
     assert.deepEqual(BOOK_02_MVP_GAP_BASELINE.summary.mustBuildNow, {
       total: 115,
-      meets_required_depth: 41,
+      meets_required_depth: 42,
       partial_evidence: 3,
-      validated_skeleton_only: 48,
+      validated_skeleton_only: 47,
       boundary_scaffold_only: 5,
       semantic_overlap_only: 18,
       fixture_only: 0,

@@ -40,6 +40,7 @@ import { validateCoreEvidenceServiceProofLayerFoundationFixture } from '../src/v
 import { validateCoreMatterServiceExecutionContainerFoundationFixture } from '../src/validation/core-matter-service-fixture-validation.ts';
 import { validateCoreOrderServiceCommercialRequestFoundationFixture } from '../src/validation/core-order-service-fixture-validation.ts';
 import { validateCoreOpportunityServicePotentialDemandFoundationFixture } from '../src/validation/core-opportunity-service-fixture-validation.ts';
+import { validateCoreEventServiceGovernedOccurrenceFoundationFixture } from '../src/validation/core-event-service-fixture-validation.ts';
 
 const validators = {
   domain_registry: validateCoreDomainRegistryFixture,
@@ -94,7 +95,9 @@ const validators = {
   core_order_service_commercial_request_foundation:
     validateCoreOrderServiceCommercialRequestFoundationFixture,
   core_opportunity_service_potential_demand_foundation:
-    validateCoreOpportunityServicePotentialDemandFoundationFixture
+    validateCoreOpportunityServicePotentialDemandFoundationFixture,
+  core_event_service_governed_occurrence_foundation:
+    validateCoreEventServiceGovernedOccurrenceFoundationFixture
 };
 
 let hasErrors = false;

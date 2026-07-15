@@ -64,7 +64,8 @@ const canonicalServiceSkeleton = (
     | 'CORE-TASK-042'
     | 'CORE-TASK-043'
     | 'CORE-TASK-044'
-    | 'CORE-TASK-045' = 'CORE-TASK-021'
+    | 'CORE-TASK-045'
+    | 'CORE-TASK-046' = 'CORE-TASK-021'
 ): CoreServiceContract => ({
   ...serviceSkeleton(
     serviceType,
@@ -246,7 +247,23 @@ const canonicalServiceSkeleton = (
                               'archiveOpportunity'
                             ]
                           }
-                        : {})
+                        : serviceType === 'event-service'
+                          ? {
+                              behaviorImplementationTask: 'CORE-TASK-046',
+                              behaviorDepth: 'level_2_3',
+                              implementedOperations: [
+                                'recordEvent',
+                                'getEvent',
+                                'validateEventReference',
+                                'validateEventPayload',
+                                'updateEventStatus',
+                                'markEventDispatched',
+                                'markEventDispatchFailed',
+                                'linkEventConsumer',
+                                'archiveEvent'
+                              ]
+                            }
+                          : {})
   }
 });
 
@@ -600,8 +617,9 @@ export const CORE_SERVICE_CONTRACT_SKELETONS = [
     ],
     ['event boundary references'],
     [
-      'Event recording, dispatch, bus, sourcing, subscription, persistence, trigger execution, audit logging, or product activity feeds.'
-    ]
+      'Event bus infrastructure, event sourcing, distributed queue runtime, replay engine, stream processing, subscription runtime, persistence, trigger execution, audit logging, or product activity feeds.'
+    ],
+    'CORE-TASK-046'
   ),
   ...stubServiceTargets.map(([domainId, domainName]) =>
     stubServiceSkeleton(domainId, domainName)

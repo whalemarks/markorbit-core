@@ -52,12 +52,13 @@ describe('CORE-TASK-037 Service contract behavior metadata', () => {
       'evidence-service',
       'matter-service',
       'order-service',
-      'opportunity-service'
+      'opportunity-service',
+      'event-service'
     ]);
     const remaining = CORE_SERVICE_CONTRACT_SKELETONS.filter(
       (contract) => !evidenceBackedServiceTypes.has(contract.serviceType)
     );
-    assert.equal(remaining.length, 16);
+    assert.equal(remaining.length, 15);
     assert.ok(
       remaining.every(
         (contract) =>

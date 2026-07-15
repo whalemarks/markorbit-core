@@ -70,7 +70,7 @@ const canonicalServiceEntries = [
     'event',
     'Core Event Service Contract Skeleton',
     'event-service.md',
-    'CORE-TASK-021'
+    'CORE-TASK-046'
   ],
   [
     'opportunity-service',
@@ -248,6 +248,20 @@ const behaviorLocks = {
       'archiveOpportunity'
     ]
   },
+  'event-service': {
+    task: 'CORE-TASK-046',
+    operations: [
+      'recordEvent',
+      'getEvent',
+      'validateEventReference',
+      'validateEventPayload',
+      'updateEventStatus',
+      'markEventDispatched',
+      'markEventDispatchFailed',
+      'linkEventConsumer',
+      'archiveEvent'
+    ]
+  },
   'evidence-service': {
     task: 'CORE-TASK-042B',
     operations: [
@@ -270,6 +284,14 @@ const behaviorLocks = {
 } as const;
 
 const promotedContracts = {
+  18: {
+    id: 'core-service-event-service-contract',
+    serviceType: 'event-service',
+    domainId: 'event',
+    name: 'Core Event Service Contract Skeleton',
+    sourceFile: 'event-service.md',
+    task: 'CORE-TASK-046'
+  },
   4: {
     id: 'core-service-trademark-service-contract',
     serviceType: 'trademark-service',
