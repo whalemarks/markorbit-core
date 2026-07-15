@@ -776,7 +776,8 @@
       "Executable service method definitions or service implementations.",
       "API routes, database access, workflow runtime, or Book 03 execution behavior.",
       "Product UI behavior, concrete business logic, or AI agent authority.",
-      "Operational availability, fake success, production readiness, or implemented service behavior."
+      "Operational availability, fake success, or production readiness.",
+      "Full CRM, marketing automation, lead scoring, sales forecasting, direct Matter creation, or automatic Order creation without approved review and Order Service delegation."
     ],
     "createdAt": "2026-07-11T00:00:00.000Z",
     "sourcePath": "books/book-02-core-specification/core-specs/services/opportunity-service.md",
@@ -786,7 +787,25 @@
       "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
       "specificationPath": "books/book-02-core-specification/",
       "implementationTask": "CORE-TASK-023",
-      "mvpRequirement": "stub_now"
+      "mvpRequirement": "stub_now",
+      "behaviorImplementationTask": "CORE-TASK-045",
+      "behaviorDepth": "level_2_3",
+      "implementedOperations": [
+        "createOpportunity",
+        "getOpportunity",
+        "listOpportunities",
+        "updateOpportunity",
+        "changeOpportunityStatus",
+        "qualifyOpportunity",
+        "disqualifyOpportunity",
+        "linkOpportunityCustomer",
+        "linkOpportunityBrand",
+        "linkOpportunityTrademark",
+        "linkOpportunityCommunication",
+        "convertOpportunityToOrder",
+        "validateOpportunityReference",
+        "archiveOpportunity"
+      ]
     }
   },
   {
@@ -812,7 +831,8 @@
       "Executable service method definitions or service implementations.",
       "API routes, database access, workflow runtime, or Book 03 execution behavior.",
       "Product UI behavior, concrete business logic, or AI agent authority.",
-      "Operational availability, fake success, production readiness, or implemented service behavior."
+      "Operational availability, fake success, or production readiness.",
+      "Implemented service behavior."
     ],
     "createdAt": "2026-07-11T00:00:00.000Z",
     "sourcePath": "books/book-02-core-specification/core-specs/services/notification-service.md",
@@ -846,7 +866,8 @@
       "Executable service method definitions or service implementations.",
       "API routes, database access, workflow runtime, or Book 03 execution behavior.",
       "Product UI behavior, concrete business logic, or AI agent authority.",
-      "Operational availability, fake success, production readiness, or implemented service behavior."
+      "Operational availability, fake success, or production readiness.",
+      "Implemented service behavior."
     ],
     "createdAt": "2026-07-11T00:00:00.000Z",
     "sourcePath": "books/book-02-core-specification/core-specs/services/partner-service.md",
@@ -880,7 +901,8 @@
       "Executable service method definitions or service implementations.",
       "API routes, database access, workflow runtime, or Book 03 execution behavior.",
       "Product UI behavior, concrete business logic, or AI agent authority.",
-      "Operational availability, fake success, production readiness, or implemented service behavior."
+      "Operational availability, fake success, or production readiness.",
+      "Implemented service behavior."
     ],
     "createdAt": "2026-07-11T00:00:00.000Z",
     "sourcePath": "books/book-02-core-specification/core-specs/services/agent-service.md",
@@ -916,7 +938,8 @@
       "Executable service method definitions or service implementations.",
       "API routes, database access, workflow runtime, or Book 03 execution behavior.",
       "Product UI behavior, concrete business logic, or AI agent authority.",
-      "Operational availability, fake success, production readiness, or implemented service behavior."
+      "Operational availability, fake success, or production readiness.",
+      "Implemented service behavior."
     ],
     "createdAt": "2026-07-11T00:00:00.000Z",
     "sourcePath": "books/book-02-core-specification/core-specs/services/service-provider-service.md",
@@ -952,7 +975,8 @@
       "Executable service method definitions or service implementations.",
       "API routes, database access, workflow runtime, or Book 03 execution behavior.",
       "Product UI behavior, concrete business logic, or AI agent authority.",
-      "Operational availability, fake success, production readiness, or implemented service behavior."
+      "Operational availability, fake success, or production readiness.",
+      "Implemented service behavior."
     ],
     "createdAt": "2026-07-11T00:00:00.000Z",
     "sourcePath": "books/book-02-core-specification/core-specs/services/service-network-service.md",
@@ -986,7 +1010,8 @@
       "Executable service method definitions or service implementations.",
       "API routes, database access, workflow runtime, or Book 03 execution behavior.",
       "Product UI behavior, concrete business logic, or AI agent authority.",
-      "Operational availability, fake success, production readiness, or implemented service behavior."
+      "Operational availability, fake success, or production readiness.",
+      "Implemented service behavior."
     ],
     "createdAt": "2026-07-11T00:00:00.000Z",
     "sourcePath": "books/book-02-core-specification/core-specs/services/routing-service.md",

@@ -63,7 +63,8 @@ const canonicalServiceSkeleton = (
     | 'CORE-TASK-041'
     | 'CORE-TASK-042'
     | 'CORE-TASK-043'
-    | 'CORE-TASK-044' = 'CORE-TASK-021'
+    | 'CORE-TASK-044'
+    | 'CORE-TASK-045' = 'CORE-TASK-021'
 ): CoreServiceContract => ({
   ...serviceSkeleton(
     serviceType,
@@ -224,7 +225,28 @@ const canonicalServiceSkeleton = (
                             'cancelOrder'
                           ]
                         }
-                      : {})
+                      : serviceType === 'opportunity-service'
+                        ? {
+                            behaviorImplementationTask: 'CORE-TASK-045',
+                            behaviorDepth: 'level_2_3',
+                            implementedOperations: [
+                              'createOpportunity',
+                              'getOpportunity',
+                              'listOpportunities',
+                              'updateOpportunity',
+                              'changeOpportunityStatus',
+                              'qualifyOpportunity',
+                              'disqualifyOpportunity',
+                              'linkOpportunityCustomer',
+                              'linkOpportunityBrand',
+                              'linkOpportunityTrademark',
+                              'linkOpportunityCommunication',
+                              'convertOpportunityToOrder',
+                              'validateOpportunityReference',
+                              'archiveOpportunity'
+                            ]
+                          }
+                        : {})
   }
 });
 
@@ -254,7 +276,12 @@ const stubServiceSkeleton = (
   ),
   nonGoals: [
     ...nonGoals,
-    'Operational availability, fake success, production readiness, or implemented service behavior.'
+    'Operational availability, fake success, or production readiness.',
+    ...(domainId === 'opportunity'
+      ? [
+          'Full CRM, marketing automation, lead scoring, sales forecasting, direct Matter creation, or automatic Order creation without approved review and Order Service delegation.'
+        ]
+      : ['Implemented service behavior.'])
   ],
   sourcePath: `${serviceSourceRoot}${domainId}-service.md`,
   implementationDepth: 'validated_skeleton',
@@ -264,7 +291,29 @@ const stubServiceSkeleton = (
     specificationCommit: '3349ecb8955021a8714d023348f8b24f941eb98f',
     specificationPath,
     implementationTask: 'CORE-TASK-023',
-    mvpRequirement: 'stub_now'
+    mvpRequirement: 'stub_now',
+    ...(domainId === 'opportunity'
+      ? {
+          behaviorImplementationTask: 'CORE-TASK-045',
+          behaviorDepth: 'level_2_3',
+          implementedOperations: [
+            'createOpportunity',
+            'getOpportunity',
+            'listOpportunities',
+            'updateOpportunity',
+            'changeOpportunityStatus',
+            'qualifyOpportunity',
+            'disqualifyOpportunity',
+            'linkOpportunityCustomer',
+            'linkOpportunityBrand',
+            'linkOpportunityTrademark',
+            'linkOpportunityCommunication',
+            'convertOpportunityToOrder',
+            'validateOpportunityReference',
+            'archiveOpportunity'
+          ]
+        }
+      : {})
   }
 });
 

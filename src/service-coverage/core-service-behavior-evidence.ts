@@ -35,6 +35,10 @@ import {
   CORE_ORDER_IMPLEMENTED_OPERATIONS,
   CORE_ORDER_MINIMUM_CAPABILITIES
 } from '../services/order/index.ts';
+import {
+  CORE_OPPORTUNITY_IMPLEMENTED_OPERATIONS,
+  CORE_OPPORTUNITY_MINIMUM_CAPABILITIES
+} from '../services/opportunity/index.ts';
 
 export interface CoreServiceBehaviorEvidence {
   readonly requirementId: string;
@@ -292,6 +296,32 @@ export const CORE_SERVICE_BEHAVIOR_EVIDENCE = [
     testFiles: ['tests/unit/core-order-service-commercial-request.test.ts'],
     fixtureFiles: [
       'fixtures/services/core-order-service-commercial-request-foundation.fixture.json'
+    ]
+  },
+  {
+    requirementId: 'stub-service-opportunity-service',
+    serviceType: 'opportunity-service',
+    domainId: 'opportunity',
+    contractId: 'core-service-opportunity-service-contract',
+    sourcePath:
+      'books/book-02-core-specification/core-specs/services/opportunity-service.md',
+    currentDepth: 'level_2_3',
+    operations: CORE_OPPORTUNITY_IMPLEMENTED_OPERATIONS,
+    provenMinimumCapabilities: CORE_OPPORTUNITY_MINIMUM_CAPABILITIES,
+    unresolvedServiceOperations: [
+      'linkOpportunityJurisdiction',
+      'linkOpportunityClassification',
+      'linkOpportunityKnowledge',
+      'linkOpportunityPartner',
+      'scoreOpportunity',
+      'forecastOpportunity'
+    ],
+    implementationFiles: [
+      'src/services/opportunity/core-opportunity-service.ts'
+    ],
+    testFiles: ['tests/unit/core-opportunity-service-potential-demand.test.ts'],
+    fixtureFiles: [
+      'fixtures/services/core-opportunity-service-potential-demand-foundation.fixture.json'
     ]
   }
 ] as const satisfies readonly CoreServiceBehaviorEvidence[];
