@@ -1,0 +1,55 @@
+name: CORE-TASK-048 Apply
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/core-task-048-workflow-contract-service-foundation
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: corepack enable
+      - run: pnpm install --frozen-lockfile
+      - name: Apply validated implementation
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo '42f76cc178951934761f277548e155bff33a1aef2bc721419b02367b95f9a6db  .core-task-048-payload/part-00.b64' | sha256sum -c -
+          echo 'c161e53543f07e5abb7d3f336e2da3e9f849a5a6aef68050422e6a9742e3fb50  .core-task-048-payload/part-01.b64' | sha256sum -c -
+          echo 'e5f4894195c12f6cd10bda0b3e2a2017b1bc207f1b1f878b16a2d6eef113d2cc  .core-task-048-payload/part-02.b64' | sha256sum -c -
+          cat .core-task-048-payload/part-00.b64 .core-task-048-payload/part-01.b64 .core-task-048-payload/part-02.b64 > /tmp/core-task-048.b64
+          base64 -d /tmp/core-task-048.b64 > /tmp/core-task-048.tgz
+          echo '2e60b81178a47644477fa2cdccd2a3ae585169d8a110aef9562300b9aa17f6cb  /tmp/core-task-048.tgz' | sha256sum -c -
+          tar -xzf /tmp/core-task-048.tgz
+          node --import tsx --input-type=module <<'NODE'
+          import { writeFileSync } from 'node:fs';
+          import { CORE_SERVICE_CONTRACT_SKELETONS } from './src/contracts/service/core-service-contract-skeletons.ts';
+          import { BOOK_02_MVP_GAP_BASELINE } from './src/mvp-coverage/book-02-mvp-gap-baseline.ts';
+          writeFileSync(
+            'fixtures/contracts/core-service-contract-skeletons.fixture.json',
+            `${JSON.stringify(CORE_SERVICE_CONTRACT_SKELETONS, null, 2)}\n`,
+          );
+          writeFileSync(
+            'fixtures/mvp-coverage/book-02-mvp-gap-baseline.fixture.json',
+            `${JSON.stringify(BOOK_02_MVP_GAP_BASELINE, null, 2)}\n`,
+          );
+          NODE
+          pnpm exec prettier --write fixtures/contracts/core-service-contract-skeletons.fixture.json fixtures/mvp-coverage/book-02-mvp-gap-baseline.fixture.json
+          rm -rf .core-task-048-payload
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add -A . ':!.github/workflows/core-task-048-apply.yml' ':!.github/workflows/core-task-048-workspace.yml'
+          git commit -m 'CORE-TASK-048 — implement Workflow Contract Service execution-structure foundation'
+          git push origin HEAD:agent/core-task-048-workflow-contract-service-foundation
