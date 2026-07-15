@@ -36,6 +36,7 @@ export const CORE_FIXTURE_TYPES = [
   'core_matter_service_execution_container_foundation',
   'core_order_service_commercial_request_foundation',
   'core_opportunity_service_potential_demand_foundation',
+  'core_task_service_actionable_work_foundation',
   'core_event_service_governed_occurrence_foundation'
 ] as const;
 
@@ -264,6 +265,12 @@ export const CORE_FIXTURE_MANIFEST = [
     id: 'core-opportunity-service-potential-demand-foundation',
     type: 'core_opportunity_service_potential_demand_foundation',
     path: 'fixtures/services/core-opportunity-service-potential-demand-foundation.fixture.json',
+    required: true
+  },
+  {
+    id: 'core-task-service-actionable-work-foundation',
+    type: 'core_task_service_actionable_work_foundation',
+    path: 'fixtures/services/core-task-service-actionable-work-foundation.fixture.json',
     required: true
   },
   {

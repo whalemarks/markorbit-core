@@ -65,7 +65,8 @@ const canonicalServiceSkeleton = (
     | 'CORE-TASK-043'
     | 'CORE-TASK-044'
     | 'CORE-TASK-045'
-    | 'CORE-TASK-046' = 'CORE-TASK-021'
+    | 'CORE-TASK-046'
+    | 'CORE-TASK-047' = 'CORE-TASK-021'
 ): CoreServiceContract => ({
   ...serviceSkeleton(
     serviceType,
@@ -247,23 +248,46 @@ const canonicalServiceSkeleton = (
                               'archiveOpportunity'
                             ]
                           }
-                        : serviceType === 'event-service'
+                        : serviceType === 'task-service'
                           ? {
-                              behaviorImplementationTask: 'CORE-TASK-046',
+                              behaviorImplementationTask: 'CORE-TASK-047',
                               behaviorDepth: 'level_2_3',
                               implementedOperations: [
-                                'recordEvent',
-                                'getEvent',
-                                'validateEventReference',
-                                'validateEventPayload',
-                                'updateEventStatus',
-                                'markEventDispatched',
-                                'markEventDispatchFailed',
-                                'linkEventConsumer',
-                                'archiveEvent'
+                                'createTask',
+                                'getTask',
+                                'listTasks',
+                                'updateTask',
+                                'changeTaskStatus',
+                                'assignTask',
+                                'reassignTask',
+                                'unassignTask',
+                                'linkTaskMatter',
+                                'linkTaskWorkflowContract',
+                                'linkTaskDependency',
+                                'completeTask',
+                                'cancelTask',
+                                'reopenTask',
+                                'validateTaskReference',
+                                'archiveTask'
                               ]
                             }
-                          : {})
+                          : serviceType === 'event-service'
+                            ? {
+                                behaviorImplementationTask: 'CORE-TASK-046',
+                                behaviorDepth: 'level_2_3',
+                                implementedOperations: [
+                                  'recordEvent',
+                                  'getEvent',
+                                  'validateEventReference',
+                                  'validateEventPayload',
+                                  'updateEventStatus',
+                                  'markEventDispatched',
+                                  'markEventDispatchFailed',
+                                  'linkEventConsumer',
+                                  'archiveEvent'
+                                ]
+                              }
+                            : {})
   }
 });
 
@@ -600,8 +624,9 @@ export const CORE_SERVICE_CONTRACT_SKELETONS = [
     ['task, matter, workflow, user, permission, policy, and event references'],
     ['task boundary references'],
     [
-      'Task execution, assignment automation, scheduling engine, completion, review approval, status mutation, notification, or event emission.'
-    ]
+      'Task execution outside governed operations, assignment automation, scheduling engine, time tracking, billing, notification delivery, or project-management analytics.'
+    ],
+    'CORE-TASK-047'
   ),
   canonicalServiceSkeleton(
     'event-service',

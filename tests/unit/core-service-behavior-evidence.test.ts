@@ -24,6 +24,8 @@ import {
   CORE_OPPORTUNITY_IMPLEMENTED_OPERATIONS,
   CORE_OPPORTUNITY_MINIMUM_CAPABILITIES,
   CORE_SERVICE_BEHAVIOR_EVIDENCE,
+  CORE_TASK_IMPLEMENTED_OPERATIONS,
+  CORE_TASK_MINIMUM_CAPABILITIES,
   CORE_TRADEMARK_IMPLEMENTED_OPERATIONS,
   CORE_TRADEMARK_MINIMUM_CAPABILITIES,
   validateCoreServiceBehaviorEvidence
@@ -40,13 +42,14 @@ const expectedRequirements = [
   'must-service-matter-service',
   'must-service-order-service',
   'stub-service-opportunity-service',
+  'must-service-task-service',
   'must-service-event-service'
 ];
 
 describe('Core Service behavior evidence', () => {
   it('validates exact dependency-first Service evidence in canonical order', () => {
     assert.deepEqual(validateCoreServiceBehaviorEvidence(), []);
-    assert.equal(CORE_SERVICE_BEHAVIOR_EVIDENCE.length, 11);
+    assert.equal(CORE_SERVICE_BEHAVIOR_EVIDENCE.length, 12);
     assert.deepEqual(
       CORE_SERVICE_BEHAVIOR_EVIDENCE.map((entry) => entry.requirementId),
       expectedRequirements
@@ -83,6 +86,7 @@ describe('Core Service behavior evidence', () => {
         CORE_OPPORTUNITY_IMPLEMENTED_OPERATIONS,
         CORE_OPPORTUNITY_MINIMUM_CAPABILITIES
       ],
+      [CORE_TASK_IMPLEMENTED_OPERATIONS, CORE_TASK_MINIMUM_CAPABILITIES],
       [CORE_EVENT_IMPLEMENTED_OPERATIONS, CORE_EVENT_MINIMUM_CAPABILITIES]
     ] as const;
     for (const [index, [operations, capabilities]] of expectations.entries()) {
@@ -109,6 +113,7 @@ describe('Core Service behavior evidence', () => {
       matter,
       order,
       opportunity,
+      task,
       event
     ] = CORE_SERVICE_BEHAVIOR_EVIDENCE;
     assert.equal(
@@ -138,6 +143,7 @@ describe('Core Service behavior evidence', () => {
           matter,
           order,
           opportunity,
+          task,
           event
         ]
       }).some((entry) => entry.code === 'core.service.evidence_extra'),
@@ -156,6 +162,7 @@ describe('Core Service behavior evidence', () => {
           matter,
           order,
           opportunity,
+          task,
           event
         ]
       }).some((entry) => entry.code === 'core.service.contract_mismatch'),
@@ -174,6 +181,7 @@ describe('Core Service behavior evidence', () => {
           matter,
           order,
           opportunity,
+          task,
           event
         ]
       }).some((entry) => entry.code === 'core.service.domain_mismatch'),
@@ -192,6 +200,7 @@ describe('Core Service behavior evidence', () => {
           matter,
           order,
           opportunity,
+          task,
           event
         ]
       }).some((entry) => entry.code === 'core.service.cross_service_evidence'),
@@ -211,6 +220,7 @@ describe('Core Service behavior evidence', () => {
       matter,
       order,
       opportunity,
+      task,
       event
     ] = CORE_SERVICE_BEHAVIOR_EVIDENCE;
     assert.equal(
@@ -226,6 +236,7 @@ describe('Core Service behavior evidence', () => {
           matter,
           order,
           opportunity,
+          task,
           event
         ]
       }).some((entry) => entry.code === 'core.service.operation_missing'),
@@ -248,6 +259,7 @@ describe('Core Service behavior evidence', () => {
           matter,
           order,
           opportunity,
+          task,
           event
         ]
       }).some((entry) => entry.code === 'core.service.capability_missing'),
@@ -255,7 +267,7 @@ describe('Core Service behavior evidence', () => {
     );
   });
 
-  it('executes all eleven fixtures and rejects corrupted expectations', async () => {
+  it('executes all twelve fixtures and rejects corrupted expectations', async () => {
     const fixtures = [
       [
         'customerFixture',

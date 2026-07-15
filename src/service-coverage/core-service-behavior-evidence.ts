@@ -40,6 +40,10 @@ import {
   CORE_OPPORTUNITY_MINIMUM_CAPABILITIES
 } from '../services/opportunity/index.ts';
 import {
+  CORE_TASK_IMPLEMENTED_OPERATIONS,
+  CORE_TASK_MINIMUM_CAPABILITIES
+} from '../services/task/index.ts';
+import {
   CORE_EVENT_IMPLEMENTED_OPERATIONS,
   CORE_EVENT_MINIMUM_CAPABILITIES
 } from '../services/event/index.ts';
@@ -326,6 +330,23 @@ export const CORE_SERVICE_BEHAVIOR_EVIDENCE = [
     testFiles: ['tests/unit/core-opportunity-service-potential-demand.test.ts'],
     fixtureFiles: [
       'fixtures/services/core-opportunity-service-potential-demand-foundation.fixture.json'
+    ]
+  },
+  {
+    requirementId: 'must-service-task-service',
+    serviceType: 'task-service',
+    domainId: 'task',
+    contractId: 'core-service-task-service-contract',
+    sourcePath:
+      'books/book-02-core-specification/core-specs/services/task-service.md',
+    currentDepth: 'level_2_3',
+    operations: CORE_TASK_IMPLEMENTED_OPERATIONS,
+    provenMinimumCapabilities: CORE_TASK_MINIMUM_CAPABILITIES,
+    unresolvedServiceOperations: [],
+    implementationFiles: ['src/services/task/core-task-service.ts'],
+    testFiles: ['tests/unit/core-task-service-actionable-work.test.ts'],
+    fixtureFiles: [
+      'fixtures/services/core-task-service-actionable-work-foundation.fixture.json'
     ]
   },
   {

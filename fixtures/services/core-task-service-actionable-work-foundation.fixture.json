@@ -1,0 +1,37 @@
+{
+  "fixtureType": "core_task_service_actionable_work_foundation",
+  "task": "CORE-TASK-047",
+  "authority": {
+    "repository": "whalemarks/markorbit-publication",
+    "commit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+    "sourcePath": "books/book-02-core-specification/core-specs/services/task-service.md"
+  },
+  "implementedOperations": [
+    "createTask",
+    "getTask",
+    "listTasks",
+    "updateTask",
+    "changeTaskStatus",
+    "assignTask",
+    "reassignTask",
+    "unassignTask",
+    "linkTaskMatter",
+    "linkTaskWorkflowContract",
+    "linkTaskDependency",
+    "completeTask",
+    "cancelTask",
+    "reopenTask",
+    "validateTaskReference",
+    "archiveTask"
+  ],
+  "expected": {
+    "operationCount": 16,
+    "assignmentDoesNotGrantPermission": true,
+    "aiSuggestionRequiresGovernedActivation": true,
+    "workflowCompletionGuardRequired": true,
+    "eventTraceRequired": true,
+    "eventRollbackRequired": true,
+    "crossOrganizationNonEnumeration": true,
+    "noProjectManagementRuntime": true
+  }
+}
