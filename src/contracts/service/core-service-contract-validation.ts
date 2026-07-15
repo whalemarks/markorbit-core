@@ -63,7 +63,7 @@ const canonicalServiceEntries = [
     'task',
     'Core Task Service Contract Skeleton',
     'task-service.md',
-    'CORE-TASK-021'
+    'CORE-TASK-047'
   ],
   [
     'event-service',
@@ -246,6 +246,27 @@ const behaviorLocks = {
       'convertOpportunityToOrder',
       'validateOpportunityReference',
       'archiveOpportunity'
+    ]
+  },
+  'task-service': {
+    task: 'CORE-TASK-047',
+    operations: [
+      'createTask',
+      'getTask',
+      'listTasks',
+      'updateTask',
+      'changeTaskStatus',
+      'assignTask',
+      'reassignTask',
+      'unassignTask',
+      'linkTaskMatter',
+      'linkTaskWorkflowContract',
+      'linkTaskDependency',
+      'completeTask',
+      'cancelTask',
+      'reopenTask',
+      'validateTaskReference',
+      'archiveTask'
     ]
   },
   'event-service': {

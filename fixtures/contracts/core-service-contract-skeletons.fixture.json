@@ -704,7 +704,7 @@
       "Executable service method definitions or service implementations.",
       "API routes, database access, workflow runtime, or Book 03 execution behavior.",
       "Product UI behavior, concrete business logic, or AI agent authority.",
-      "Task execution, assignment automation, scheduling engine, completion, review approval, status mutation, notification, or event emission."
+      "Task execution outside governed operations, assignment automation, scheduling engine, time tracking, billing, notification delivery, or project-management analytics."
     ],
     "createdAt": "2026-07-11T00:00:00.000Z",
     "sourcePath": "books/book-02-core-specification/core-specs/services/task-service.md",
@@ -713,7 +713,27 @@
       "specificationRepository": "whalemarks/markorbit-publication",
       "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
       "specificationPath": "books/book-02-core-specification/",
-      "implementationTask": "CORE-TASK-021"
+      "implementationTask": "CORE-TASK-047",
+      "behaviorImplementationTask": "CORE-TASK-047",
+      "behaviorDepth": "level_2_3",
+      "implementedOperations": [
+        "createTask",
+        "getTask",
+        "listTasks",
+        "updateTask",
+        "changeTaskStatus",
+        "assignTask",
+        "reassignTask",
+        "unassignTask",
+        "linkTaskMatter",
+        "linkTaskWorkflowContract",
+        "linkTaskDependency",
+        "completeTask",
+        "cancelTask",
+        "reopenTask",
+        "validateTaskReference",
+        "archiveTask"
+      ]
     }
   },
   {

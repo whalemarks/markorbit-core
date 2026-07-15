@@ -41,6 +41,10 @@ import {
   CORE_OPPORTUNITY_MINIMUM_CAPABILITIES
 } from '../services/opportunity/index.ts';
 import {
+  CORE_TASK_IMPLEMENTED_OPERATIONS,
+  CORE_TASK_MINIMUM_CAPABILITIES
+} from '../services/task/index.ts';
+import {
   CORE_EVENT_IMPLEMENTED_OPERATIONS,
   CORE_EVENT_MINIMUM_CAPABILITIES
 } from '../services/event/index.ts';
@@ -54,6 +58,7 @@ import { validateCoreEvidenceServiceEvidenceFixture } from './core-evidence-serv
 import { validateCoreMatterServiceExecutionContainerFoundationFixture } from '../validation/core-matter-service-fixture-validation.ts';
 import { validateCoreOrderServiceCommercialRequestFoundationFixture } from '../validation/core-order-service-fixture-validation.ts';
 import { validateCoreOpportunityServicePotentialDemandFoundationFixture } from '../validation/core-opportunity-service-fixture-validation.ts';
+import { validateCoreTaskServiceActionableWorkFoundationFixture } from '../validation/core-task-service-fixture-validation.ts';
 import { validateCoreEventServiceGovernedOccurrenceFoundationFixture } from '../validation/core-event-service-fixture-validation.ts';
 import {
   CORE_SERVICE_BEHAVIOR_EVIDENCE,
@@ -78,6 +83,7 @@ export interface CoreServiceBehaviorValidationOptions {
   readonly matterFixture?: unknown;
   readonly orderFixture?: unknown;
   readonly opportunityFixture?: unknown;
+  readonly taskFixture?: unknown;
   readonly eventFixture?: unknown;
 }
 
@@ -95,6 +101,7 @@ interface ExpectedServiceEvidence {
     | 'matter'
     | 'order'
     | 'opportunity'
+    | 'task'
     | 'event';
   readonly contractId: string;
   readonly sourcePath: string;
@@ -112,6 +119,7 @@ interface ExpectedServiceEvidence {
     | 'matterFixture'
     | 'orderFixture'
     | 'opportunityFixture'
+    | 'taskFixture'
     | 'eventFixture';
   readonly fixtureValidator: (
     fixture: unknown
@@ -331,6 +339,20 @@ const expectedEvidence = [
         .issues
   },
   {
+    requirementId: 'must-service-task-service',
+    serviceType: 'task-service',
+    domainId: 'task',
+    contractId: 'core-service-task-service-contract',
+    sourcePath:
+      'books/book-02-core-specification/core-specs/services/task-service.md',
+    operations: CORE_TASK_IMPLEMENTED_OPERATIONS,
+    capabilities: CORE_TASK_MINIMUM_CAPABILITIES,
+    unresolved: [],
+    fixtureOverride: 'taskFixture',
+    fixtureValidator: (fixture) =>
+      validateCoreTaskServiceActionableWorkFoundationFixture(fixture).issues
+  },
+  {
     requirementId: 'must-service-event-service',
     serviceType: 'event-service',
     domainId: 'event',
@@ -393,7 +415,7 @@ export function validateCoreServiceBehaviorEvidence(
         evidence.length < expectedEvidence.length
           ? 'core.service.evidence_missing'
           : 'core.service.evidence_extra',
-        'Service behavior evidence must contain exactly Customer, Brand, Trademark, Jurisdiction, Classification, Document, Evidence, Matter, Order, Opportunity, and Event entries in canonical order.',
+        'Service behavior evidence must contain exactly Customer, Brand, Trademark, Jurisdiction, Classification, Document, Evidence, Matter, Order, Opportunity, Task, and Event entries in canonical order.',
         'evidence'
       )
     );

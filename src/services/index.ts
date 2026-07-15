@@ -10,3 +10,4 @@ export * from './matter/index.ts';
 export * from './order/index.ts';
 export * from './opportunity/index.ts';
 export * from './event/index.ts';
+export * from './task/index.ts';
