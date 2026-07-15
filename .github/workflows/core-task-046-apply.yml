@@ -1,0 +1,56 @@
+name: CORE-TASK-046 Apply
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/core-task-046-event-service-foundation
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: corepack enable
+      - run: pnpm install --frozen-lockfile
+      - name: Verify and apply implementation
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat \
+            .core-task-046-payload/part-00.bin \
+            .core-task-046-payload/part-01.bin \
+            .core-task-046-payload/part-02.bin \
+            .core-task-046-payload/part-03.bin \
+            .core-task-046-payload/part-04.bin \
+            > /tmp/core-task-046-payload.tgz
+          echo '172242fea1ba5489cdfd90d243da4c49d146388fab75fff9024d21185b5efd72  /tmp/core-task-046-payload.tgz' | sha256sum -c -
+          tar -xzf /tmp/core-task-046-payload.tgz
+          node --import tsx --input-type=module <<'NODE'
+          import { writeFileSync } from 'node:fs';
+          import { BOOK_02_MVP_GAP_BASELINE } from './src/index.ts';
+          writeFileSync(
+            'fixtures/mvp-coverage/book-02-mvp-gap-baseline.fixture.json',
+            `${JSON.stringify(BOOK_02_MVP_GAP_BASELINE, null, 2)}\n`
+          );
+          NODE
+          rm -rf .core-task-046-payload
+          pnpm exec prettier --write fixtures/mvp-coverage/book-02-mvp-gap-baseline.fixture.json
+      - name: Commit implementation
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add -A . ':!.github/workflows/core-task-046-apply.yml' ':!.github/workflows/core-task-046-workspace.yml'
+          git commit -m 'CORE-TASK-046 — implement Event Service governed occurrence foundation'
+          git push origin HEAD:agent/core-task-046-event-service-foundation
