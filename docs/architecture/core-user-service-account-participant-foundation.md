@@ -13,3 +13,5 @@ The resulting Book 02 Must Build baseline is `48 / 3 / 41`, leaving Permission S
 ## Validation boundary
 
 The foundation is accepted only when type checking, linting, formatting, all required fixture validators, the complete repository test suite, contract acceptance, behavior acceptance, and the Book 02 MVP gap baseline pass together against the clean branch state.
+
+The service-contract and Book 02 baseline fixtures are derived evidence. They must be rebuilt deterministically from the checked-in TypeScript authorities before validation, rather than edited independently as alternative sources of truth.
