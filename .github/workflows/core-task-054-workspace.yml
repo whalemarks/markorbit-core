@@ -1,0 +1,37 @@
+name: CORE-TASK-054 Workspace
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  snapshot:
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Core branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          path: core
+          fetch-depth: 0
+
+      - name: Checkout locked Book 02 authority
+        uses: actions/checkout@v4
+        with:
+          repository: whalemarks/markorbit-publication
+          ref: 3349ecb8955021a8714d023348f8b24f941eb98f
+          path: publication
+
+      - name: Package workspaces
+        run: tar --exclude='*/.git' -czf /tmp/core-task-054-workspace.tgz core publication
+
+      - name: Upload workspace
+        uses: actions/upload-artifact@v4
+        with:
+          name: core-task-054-workspace
+          path: /tmp/core-task-054-workspace.tgz
+          retention-days: 1
