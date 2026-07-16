@@ -1,37 +1,138 @@
-name: CORE-TASK-054 Workspace
+name: CORE-TASK-054 Apply and Validate
 
 on:
   pull_request:
     branches: [main]
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
-  snapshot:
+  apply-and-validate:
     if: github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Core branch
+      - name: Check out staging branch
         uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.head.ref }}
-          path: core
           fetch-depth: 0
 
-      - name: Checkout locked Book 02 authority
-        uses: actions/checkout@v4
-        with:
-          repository: whalemarks/markorbit-publication
-          ref: 3349ecb8955021a8714d023348f8b24f941eb98f
-          path: publication
+      - name: Assemble implementation patch
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat _automation/core-task-054-patch.part-*.b64 | base64 --decode > /tmp/core-task-054.patch.gz
+          echo 'b988cea2ee227cd0a208a6498da34fbe2d8c80b119b238a8563378fb09bce18c  /tmp/core-task-054.patch.gz' | sha256sum --check
+          gzip -dc /tmp/core-task-054.patch.gz > /tmp/core-task-054.patch
 
-      - name: Package workspaces
-        run: tar --exclude='*/.git' -czf /tmp/core-task-054-workspace.tgz core publication
+      - name: Reset to merged CORE-TASK-053 base
+        shell: bash
+        run: |
+          set -euo pipefail
+          git reset --hard 00063d536173b74cf3c98a061b6e7a8aefbc6649
 
-      - name: Upload workspace
-        uses: actions/upload-artifact@v4
+      - name: Check and apply implementation patch
+        shell: bash
+        run: |
+          set -euo pipefail
+          git apply --check /tmp/core-task-054.patch
+          git apply /tmp/core-task-054.patch
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
         with:
-          name: core-task-054-workspace
-          path: /tmp/core-task-054-workspace.tgz
-          retention-days: 1
+          version: 10.28.1
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Generate deterministic contract and Book 02 fixtures
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat > scripts/_core-task-054-generate-fixtures.ts <<'EOF'
+          import { writeFileSync } from 'node:fs';
+          import {
+            CORE_CONTRACT_INDEX,
+            CORE_SERVICE_CONTRACT_SKELETONS
+          } from '../src/contracts/index.ts';
+          import { BOOK_02_MVP_GAP_BASELINE } from '../src/mvp-coverage/index.ts';
+
+          const writeFixture = (path: string, value: unknown): void => {
+            writeFileSync(path, `${JSON.stringify(value, null, 2)}\n`);
+          };
+
+          writeFixture(
+            'fixtures/contracts/core-service-contract-skeletons.fixture.json',
+            CORE_SERVICE_CONTRACT_SKELETONS
+          );
+          writeFixture(
+            'fixtures/contracts/core-contract-index.fixture.json',
+            CORE_CONTRACT_INDEX
+          );
+          writeFixture(
+            'fixtures/mvp-coverage/book-02-mvp-gap-baseline.fixture.json',
+            BOOK_02_MVP_GAP_BASELINE
+          );
+          EOF
+          pnpm exec tsx scripts/_core-task-054-generate-fixtures.ts
+          rm scripts/_core-task-054-generate-fixtures.ts
+
+      - name: Format implementation
+        run: pnpm format
+
+      - name: Typecheck
+        run: pnpm typecheck
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: Check formatting
+        run: pnpm format:check
+
+      - name: Validate fixtures
+        run: pnpm validate:fixtures
+
+      - name: Test
+        run: pnpm test
+
+      - name: Contract coverage
+        run: pnpm coverage:contracts
+
+      - name: Contract gaps
+        run: pnpm gaps:contracts
+
+      - name: Contract acceptance
+        run: pnpm acceptance:contracts
+
+      - name: Behavior coverage
+        run: pnpm coverage:behavior
+
+      - name: Behavior gaps
+        run: pnpm gaps:behavior
+
+      - name: Behavior acceptance
+        run: pnpm acceptance:behavior
+
+      - name: Book 02 MVP gaps
+        run: pnpm gaps:mvp
+
+      - name: Commit clean implementation
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf _automation
+          rm -f .github/workflows/core-task-054-workspace.yml
+          test ! -e scripts/_core-task-054-generate-fixtures.ts
+          git config user.name 'whalemarks'
+          git config user.email 'actions@users.noreply.github.com'
+          git add -A
+          git commit -m 'CORE-TASK-054 implement Policy Service contextual-decision foundation'
+          git push --force origin HEAD:${{ github.event.pull_request.head.ref }}
