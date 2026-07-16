@@ -367,3 +367,14 @@ CORE-TASK-040 note: Classification Service core scope and validation behavior is
 - Domain skeletons with executable tests satisfy the Book 02 Domain acceptance criterion; runtime Domain promotion is not an MVP requirement.
 - Book 02 MVP remains incomplete with 12 / 19 acceptance criteria satisfied.
 - Next governed task: CORE-TASK-056 — Exact MVP Event Contract and Alias Lock.
+
+## CORE-TASK-056 Current Status
+
+- All 18 Book 02 Must Build Event requirements have exact deterministic evidence.
+- Resolution: 15 canonical Event contracts and 3 validated aliases.
+- Event references remain trace-only and cannot trigger commands.
+- API, Workflow and Agent direct Domain Event emission remains forbidden and unaccepted.
+- Book 02 baseline: 68 meets depth, 3 partial, 39 validated skeleton, 5 boundary scaffold and 0 semantic overlap.
+- Unresolved Must Build requirements: 47, including 18 accepted Domain skeletons and 29 non-Domain completion blockers.
+- Acceptance remains 12 / 19; Book 02 MVP remains incomplete.
+- Next governed task: CORE-TASK-057A — Identity, Organization, User, Permission and Policy API validator and Service-delegation boundaries.

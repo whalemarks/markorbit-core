@@ -3,6 +3,7 @@ import { isAbsolute } from 'node:path';
 import { CORE_CONTRACT_BEHAVIOR_ACCEPTANCE_LOCK } from '../behavior-coverage/index.ts';
 import {
   CORE_CONTRACT_INDEX,
+  CORE_MVP_EVENT_CONTRACT_LOCKS,
   CORE_OBJECT_CONTRACT_SKELETONS
 } from '../contracts/index.ts';
 import {
@@ -51,9 +52,10 @@ const isRecord = (value: unknown): value is Record<string, unknown> =>
   typeof value === 'object' && value !== null && !Array.isArray(value);
 const isStringArray = (value: unknown): value is readonly string[] =>
   Array.isArray(value) && value.every((entry) => typeof entry === 'string');
-const actualContractIds = new Set(
-  CORE_CONTRACT_INDEX.map((entry) => String(entry.id))
-);
+const actualContractIds = new Set([
+  ...CORE_CONTRACT_INDEX.map((entry) => String(entry.id)),
+  ...CORE_MVP_EVENT_CONTRACT_LOCKS.map((entry) => String(entry.id))
+]);
 const acceptedBehaviorIds = new Set(
   CORE_CONTRACT_BEHAVIOR_ACCEPTANCE_LOCK.evidence.map((entry) =>
     String(entry.behaviorId)

@@ -1,0 +1,881 @@
+[
+  {
+    "id": "core-mvp-event-customer-created-contract",
+    "requirementId": "must-event-customer-created",
+    "eventType": "customer-created",
+    "domainId": "customer",
+    "name": "CustomerCreated Exact MVP Event Contract",
+    "action": "created",
+    "subjectObjectType": "customer-record",
+    "sourceServiceContractId": "core-service-customer-service-contract",
+    "sourceOperation": "createCustomer",
+    "sourceSpecPath": "books/book-02-core-specification/core-specs/events/customer-created.md",
+    "sourceSpecId": "B02-EVT-CUSTOMER-CREATED",
+    "payloadContractPath": "books/book-02-core-specification/core-specs/contracts/events/customer-created-payload.md",
+    "authorityKind": "event_spec",
+    "implementationEvidenceFiles": [],
+    "resolution": {
+      "kind": "canonical",
+      "aliasTargetEventType": null,
+      "aliasTargetContractId": null,
+      "compatibilityBasis": [
+        "Exact Book 02 Event specification is the canonical authority."
+      ]
+    },
+    "requiredTraceFields": [
+      "event_reference_id",
+      "event_type",
+      "source_service",
+      "subject_reference_id",
+      "correlation_id",
+      "causation_event_reference_id where applicable",
+      "created_at",
+      "visibility policy hook",
+      "safe payload",
+      "schema_version"
+    ],
+    "schemaVersion": "0.1.0",
+    "boundaries": {
+      "traceOnly": true,
+      "commandTriggerAllowed": false,
+      "directApiEmissionAllowed": false,
+      "directWorkflowEmissionAllowed": false,
+      "directAgentEmissionAllowed": false,
+      "owningServiceTraceHandoffRequired": true,
+      "eventBusImplemented": false
+    },
+    "implementationTask": "CORE-TASK-056",
+    "createdAt": "2026-07-16T00:00:00.000Z"
+  },
+  {
+    "id": "core-mvp-event-brand-created-contract",
+    "requirementId": "must-event-brand-created",
+    "eventType": "brand-created",
+    "domainId": "brand",
+    "name": "BrandCreated Exact MVP Event Contract",
+    "action": "created",
+    "subjectObjectType": "brand-record",
+    "sourceServiceContractId": "core-service-brand-service-contract",
+    "sourceOperation": "createBrand",
+    "sourceSpecPath": "books/book-02-core-specification/core-specs/events/brand-created.md",
+    "sourceSpecId": "B02-EVT-BRAND-CREATED",
+    "payloadContractPath": "books/book-02-core-specification/core-specs/contracts/events/brand-created-payload.md",
+    "authorityKind": "event_spec",
+    "implementationEvidenceFiles": [],
+    "resolution": {
+      "kind": "canonical",
+      "aliasTargetEventType": null,
+      "aliasTargetContractId": null,
+      "compatibilityBasis": [
+        "Exact Book 02 Event specification is the canonical authority."
+      ]
+    },
+    "requiredTraceFields": [
+      "event_reference_id",
+      "event_type",
+      "source_service",
+      "subject_reference_id",
+      "correlation_id",
+      "causation_event_reference_id where applicable",
+      "created_at",
+      "visibility policy hook",
+      "safe payload",
+      "schema_version"
+    ],
+    "schemaVersion": "0.1.0",
+    "boundaries": {
+      "traceOnly": true,
+      "commandTriggerAllowed": false,
+      "directApiEmissionAllowed": false,
+      "directWorkflowEmissionAllowed": false,
+      "directAgentEmissionAllowed": false,
+      "owningServiceTraceHandoffRequired": true,
+      "eventBusImplemented": false
+    },
+    "implementationTask": "CORE-TASK-056",
+    "createdAt": "2026-07-16T00:00:00.000Z"
+  },
+  {
+    "id": "core-mvp-event-trademark-created-contract",
+    "requirementId": "must-event-trademark-created",
+    "eventType": "trademark-created",
+    "domainId": "trademark",
+    "name": "TrademarkCreated Exact MVP Event Contract",
+    "action": "created",
+    "subjectObjectType": "trademark-record",
+    "sourceServiceContractId": "core-service-trademark-service-contract",
+    "sourceOperation": "createTrademark",
+    "sourceSpecPath": "books/book-02-core-specification/core-specs/events/trademark-created.md",
+    "sourceSpecId": "B02-EVT-TRADEMARK-CREATED",
+    "payloadContractPath": "books/book-02-core-specification/core-specs/contracts/events/trademark-created-payload.md",
+    "authorityKind": "event_spec",
+    "implementationEvidenceFiles": [],
+    "resolution": {
+      "kind": "canonical",
+      "aliasTargetEventType": null,
+      "aliasTargetContractId": null,
+      "compatibilityBasis": [
+        "Exact Book 02 Event specification is the canonical authority."
+      ]
+    },
+    "requiredTraceFields": [
+      "event_reference_id",
+      "event_type",
+      "source_service",
+      "subject_reference_id",
+      "correlation_id",
+      "causation_event_reference_id where applicable",
+      "created_at",
+      "visibility policy hook",
+      "safe payload",
+      "schema_version"
+    ],
+    "schemaVersion": "0.1.0",
+    "boundaries": {
+      "traceOnly": true,
+      "commandTriggerAllowed": false,
+      "directApiEmissionAllowed": false,
+      "directWorkflowEmissionAllowed": false,
+      "directAgentEmissionAllowed": false,
+      "owningServiceTraceHandoffRequired": true,
+      "eventBusImplemented": false
+    },
+    "implementationTask": "CORE-TASK-056",
+    "createdAt": "2026-07-16T00:00:00.000Z"
+  },
+  {
+    "id": "core-mvp-event-matter-created-contract",
+    "requirementId": "must-event-matter-created",
+    "eventType": "matter-created",
+    "domainId": "matter",
+    "name": "MatterCreated Exact MVP Event Contract",
+    "action": "created",
+    "subjectObjectType": "matter-record",
+    "sourceServiceContractId": "core-service-matter-service-contract",
+    "sourceOperation": "createMatter",
+    "sourceSpecPath": "books/book-02-core-specification/core-specs/events/matter-created.md",
+    "sourceSpecId": "B02-EVT-MATTER-CREATED",
+    "payloadContractPath": "books/book-02-core-specification/core-specs/contracts/events/matter-created-payload.md",
+    "authorityKind": "event_spec",
+    "implementationEvidenceFiles": [],
+    "resolution": {
+      "kind": "canonical",
+      "aliasTargetEventType": null,
+      "aliasTargetContractId": null,
+      "compatibilityBasis": [
+        "Exact Book 02 Event specification is the canonical authority."
+      ]
+    },
+    "requiredTraceFields": [
+      "event_reference_id",
+      "event_type",
+      "source_service",
+      "subject_reference_id",
+      "correlation_id",
+      "causation_event_reference_id where applicable",
+      "created_at",
+      "visibility policy hook",
+      "safe payload",
+      "schema_version"
+    ],
+    "schemaVersion": "0.1.0",
+    "boundaries": {
+      "traceOnly": true,
+      "commandTriggerAllowed": false,
+      "directApiEmissionAllowed": false,
+      "directWorkflowEmissionAllowed": false,
+      "directAgentEmissionAllowed": false,
+      "owningServiceTraceHandoffRequired": true,
+      "eventBusImplemented": false
+    },
+    "implementationTask": "CORE-TASK-056",
+    "createdAt": "2026-07-16T00:00:00.000Z"
+  },
+  {
+    "id": "core-mvp-event-order-created-contract",
+    "requirementId": "must-event-order-created",
+    "eventType": "order-created",
+    "domainId": "order",
+    "name": "OrderCreated Exact MVP Event Contract",
+    "action": "created",
+    "subjectObjectType": "order-record",
+    "sourceServiceContractId": "core-service-order-service-contract",
+    "sourceOperation": "createOrder",
+    "sourceSpecPath": "books/book-02-core-specification/core-specs/events/order-created.md",
+    "sourceSpecId": "B02-EVT-ORDER-CREATED",
+    "payloadContractPath": "books/book-02-core-specification/core-specs/contracts/events/order-created-payload.md",
+    "authorityKind": "event_spec",
+    "implementationEvidenceFiles": [],
+    "resolution": {
+      "kind": "canonical",
+      "aliasTargetEventType": null,
+      "aliasTargetContractId": null,
+      "compatibilityBasis": [
+        "Exact Book 02 Event specification is the canonical authority."
+      ]
+    },
+    "requiredTraceFields": [
+      "event_reference_id",
+      "event_type",
+      "source_service",
+      "subject_reference_id",
+      "correlation_id",
+      "causation_event_reference_id where applicable",
+      "created_at",
+      "visibility policy hook",
+      "safe payload",
+      "schema_version"
+    ],
+    "schemaVersion": "0.1.0",
+    "boundaries": {
+      "traceOnly": true,
+      "commandTriggerAllowed": false,
+      "directApiEmissionAllowed": false,
+      "directWorkflowEmissionAllowed": false,
+      "directAgentEmissionAllowed": false,
+      "owningServiceTraceHandoffRequired": true,
+      "eventBusImplemented": false
+    },
+    "implementationTask": "CORE-TASK-056",
+    "createdAt": "2026-07-16T00:00:00.000Z"
+  },
+  {
+    "id": "core-mvp-event-document-created-contract",
+    "requirementId": "must-event-document-created",
+    "eventType": "document-created",
+    "domainId": "document",
+    "name": "DocumentCreated Exact MVP Event Contract",
+    "action": "created",
+    "subjectObjectType": "document-record",
+    "sourceServiceContractId": "core-service-document-service-contract",
+    "sourceOperation": "createDocument",
+    "sourceSpecPath": "books/book-02-core-specification/core-specs/events/document-created.md",
+    "sourceSpecId": "B02-EVT-DOCUMENT-CREATED",
+    "payloadContractPath": "books/book-02-core-specification/core-specs/contracts/events/document-created-payload.md",
+    "authorityKind": "event_spec",
+    "implementationEvidenceFiles": [],
+    "resolution": {
+      "kind": "canonical",
+      "aliasTargetEventType": null,
+      "aliasTargetContractId": null,
+      "compatibilityBasis": [
+        "Exact Book 02 Event specification is the canonical authority."
+      ]
+    },
+    "requiredTraceFields": [
+      "event_reference_id",
+      "event_type",
+      "source_service",
+      "subject_reference_id",
+      "correlation_id",
+      "causation_event_reference_id where applicable",
+      "created_at",
+      "visibility policy hook",
+      "safe payload",
+      "schema_version"
+    ],
+    "schemaVersion": "0.1.0",
+    "boundaries": {
+      "traceOnly": true,
+      "commandTriggerAllowed": false,
+      "directApiEmissionAllowed": false,
+      "directWorkflowEmissionAllowed": false,
+      "directAgentEmissionAllowed": false,
+      "owningServiceTraceHandoffRequired": true,
+      "eventBusImplemented": false
+    },
+    "implementationTask": "CORE-TASK-056",
+    "createdAt": "2026-07-16T00:00:00.000Z"
+  },
+  {
+    "id": "core-mvp-event-document-attached-contract",
+    "requirementId": "must-event-document-attached",
+    "eventType": "document-attached",
+    "domainId": "document",
+    "name": "DocumentAttached Validated MVP Event Alias",
+    "action": "updated",
+    "subjectObjectType": "document-record",
+    "sourceServiceContractId": "core-service-document-service-contract",
+    "sourceOperation": "linkDocumentFile",
+    "sourceSpecPath": "books/book-02-core-specification/core-specs/events/document-attached.md",
+    "sourceSpecId": null,
+    "payloadContractPath": null,
+    "authorityKind": "validated_alias",
+    "implementationEvidenceFiles": [
+      "src/services/document/core-document-service.ts"
+    ],
+    "resolution": {
+      "kind": "validated_alias",
+      "aliasTargetEventType": "core-object-updated",
+      "aliasTargetContractId": "core-event-core-object-updated-contract",
+      "compatibilityBasis": [
+        "Book 02 MVP requires a deterministic DocumentAttached reference.",
+        "Document Service owns file-reference linkage and records the resulting governed object update.",
+        "The alias narrows the generic update to Document attachment trace only and cannot execute attachment behavior."
+      ]
+    },
+    "requiredTraceFields": [
+      "event_reference_id",
+      "event_type",
+      "source_service",
+      "subject_reference_id",
+      "correlation_id",
+      "causation_event_reference_id where applicable",
+      "created_at",
+      "visibility policy hook",
+      "safe payload",
+      "schema_version"
+    ],
+    "schemaVersion": "0.1.0",
+    "boundaries": {
+      "traceOnly": true,
+      "commandTriggerAllowed": false,
+      "directApiEmissionAllowed": false,
+      "directWorkflowEmissionAllowed": false,
+      "directAgentEmissionAllowed": false,
+      "owningServiceTraceHandoffRequired": true,
+      "eventBusImplemented": false
+    },
+    "implementationTask": "CORE-TASK-056",
+    "createdAt": "2026-07-16T00:00:00.000Z"
+  },
+  {
+    "id": "core-mvp-event-evidence-created-contract",
+    "requirementId": "must-event-evidence-created",
+    "eventType": "evidence-created",
+    "domainId": "evidence",
+    "name": "EvidenceCreated Exact MVP Event Contract",
+    "action": "created",
+    "subjectObjectType": "evidence-record",
+    "sourceServiceContractId": "core-service-evidence-service-contract",
+    "sourceOperation": "createEvidence",
+    "sourceSpecPath": "books/book-02-core-specification/core-specs/events/evidence-created.md",
+    "sourceSpecId": "B02-EVT-EVIDENCE-CREATED",
+    "payloadContractPath": "books/book-02-core-specification/core-specs/contracts/events/evidence-created-payload.md",
+    "authorityKind": "event_spec",
+    "implementationEvidenceFiles": [],
+    "resolution": {
+      "kind": "canonical",
+      "aliasTargetEventType": null,
+      "aliasTargetContractId": null,
+      "compatibilityBasis": [
+        "Exact Book 02 Event specification is the canonical authority."
+      ]
+    },
+    "requiredTraceFields": [
+      "event_reference_id",
+      "event_type",
+      "source_service",
+      "subject_reference_id",
+      "correlation_id",
+      "causation_event_reference_id where applicable",
+      "created_at",
+      "visibility policy hook",
+      "safe payload",
+      "schema_version"
+    ],
+    "schemaVersion": "0.1.0",
+    "boundaries": {
+      "traceOnly": true,
+      "commandTriggerAllowed": false,
+      "directApiEmissionAllowed": false,
+      "directWorkflowEmissionAllowed": false,
+      "directAgentEmissionAllowed": false,
+      "owningServiceTraceHandoffRequired": true,
+      "eventBusImplemented": false
+    },
+    "implementationTask": "CORE-TASK-056",
+    "createdAt": "2026-07-16T00:00:00.000Z"
+  },
+  {
+    "id": "core-mvp-event-task-created-contract",
+    "requirementId": "must-event-task-created",
+    "eventType": "task-created",
+    "domainId": "task",
+    "name": "TaskCreated Exact MVP Event Contract",
+    "action": "created",
+    "subjectObjectType": "task-record",
+    "sourceServiceContractId": "core-service-task-service-contract",
+    "sourceOperation": "createTask",
+    "sourceSpecPath": "books/book-02-core-specification/core-specs/events/task-created.md",
+    "sourceSpecId": "B02-EVT-TASK-CREATED",
+    "payloadContractPath": "books/book-02-core-specification/core-specs/contracts/events/task-created-payload.md",
+    "authorityKind": "event_spec",
+    "implementationEvidenceFiles": [],
+    "resolution": {
+      "kind": "canonical",
+      "aliasTargetEventType": null,
+      "aliasTargetContractId": null,
+      "compatibilityBasis": [
+        "Exact Book 02 Event specification is the canonical authority."
+      ]
+    },
+    "requiredTraceFields": [
+      "event_reference_id",
+      "event_type",
+      "source_service",
+      "subject_reference_id",
+      "correlation_id",
+      "causation_event_reference_id where applicable",
+      "created_at",
+      "visibility policy hook",
+      "safe payload",
+      "schema_version"
+    ],
+    "schemaVersion": "0.1.0",
+    "boundaries": {
+      "traceOnly": true,
+      "commandTriggerAllowed": false,
+      "directApiEmissionAllowed": false,
+      "directWorkflowEmissionAllowed": false,
+      "directAgentEmissionAllowed": false,
+      "owningServiceTraceHandoffRequired": true,
+      "eventBusImplemented": false
+    },
+    "implementationTask": "CORE-TASK-056",
+    "createdAt": "2026-07-16T00:00:00.000Z"
+  },
+  {
+    "id": "core-mvp-event-task-updated-contract",
+    "requirementId": "must-event-task-updated",
+    "eventType": "task-updated",
+    "domainId": "task",
+    "name": "TaskUpdated Exact MVP Event Contract",
+    "action": "updated",
+    "subjectObjectType": "task-record",
+    "sourceServiceContractId": "core-service-task-service-contract",
+    "sourceOperation": "updateTask",
+    "sourceSpecPath": "books/book-02-core-specification/core-specs/events/task-updated.md",
+    "sourceSpecId": null,
+    "payloadContractPath": null,
+    "authorityKind": "mvp_requirement_and_service_trace",
+    "implementationEvidenceFiles": ["src/services/task/core-task-service.ts"],
+    "resolution": {
+      "kind": "canonical",
+      "aliasTargetEventType": null,
+      "aliasTargetContractId": null,
+      "compatibilityBasis": [
+        "The locked MVP cut requires TaskUpdated.",
+        "Task Service emits the exact task-updated trace through the governed trace port."
+      ]
+    },
+    "requiredTraceFields": [
+      "event_reference_id",
+      "event_type",
+      "source_service",
+      "subject_reference_id",
+      "correlation_id",
+      "causation_event_reference_id where applicable",
+      "created_at",
+      "visibility policy hook",
+      "safe payload",
+      "schema_version"
+    ],
+    "schemaVersion": "0.1.0",
+    "boundaries": {
+      "traceOnly": true,
+      "commandTriggerAllowed": false,
+      "directApiEmissionAllowed": false,
+      "directWorkflowEmissionAllowed": false,
+      "directAgentEmissionAllowed": false,
+      "owningServiceTraceHandoffRequired": true,
+      "eventBusImplemented": false
+    },
+    "implementationTask": "CORE-TASK-056",
+    "createdAt": "2026-07-16T00:00:00.000Z"
+  },
+  {
+    "id": "core-mvp-event-task-completed-contract",
+    "requirementId": "must-event-task-completed",
+    "eventType": "task-completed",
+    "domainId": "task",
+    "name": "TaskCompleted Exact MVP Event Contract",
+    "action": "completed",
+    "subjectObjectType": "task-record",
+    "sourceServiceContractId": "core-service-task-service-contract",
+    "sourceOperation": "completeTask",
+    "sourceSpecPath": "books/book-02-core-specification/core-specs/events/task-completed.md",
+    "sourceSpecId": null,
+    "payloadContractPath": null,
+    "authorityKind": "mvp_requirement_and_service_trace",
+    "implementationEvidenceFiles": ["src/services/task/core-task-service.ts"],
+    "resolution": {
+      "kind": "canonical",
+      "aliasTargetEventType": null,
+      "aliasTargetContractId": null,
+      "compatibilityBasis": [
+        "The locked MVP cut requires TaskCompleted.",
+        "Task Service emits the exact task-completed trace only after governed completion validation."
+      ]
+    },
+    "requiredTraceFields": [
+      "event_reference_id",
+      "event_type",
+      "source_service",
+      "subject_reference_id",
+      "correlation_id",
+      "causation_event_reference_id where applicable",
+      "created_at",
+      "visibility policy hook",
+      "safe payload",
+      "schema_version"
+    ],
+    "schemaVersion": "0.1.0",
+    "boundaries": {
+      "traceOnly": true,
+      "commandTriggerAllowed": false,
+      "directApiEmissionAllowed": false,
+      "directWorkflowEmissionAllowed": false,
+      "directAgentEmissionAllowed": false,
+      "owningServiceTraceHandoffRequired": true,
+      "eventBusImplemented": false
+    },
+    "implementationTask": "CORE-TASK-056",
+    "createdAt": "2026-07-16T00:00:00.000Z"
+  },
+  {
+    "id": "core-mvp-event-communication-created-contract",
+    "requirementId": "must-event-communication-created",
+    "eventType": "communication-created",
+    "domainId": "communication",
+    "name": "CommunicationCreated Exact MVP Event Contract",
+    "action": "created",
+    "subjectObjectType": "communication-record",
+    "sourceServiceContractId": "core-service-communication-reference-service-contract",
+    "sourceOperation": "createCommunication",
+    "sourceSpecPath": "books/book-02-core-specification/core-specs/events/communication-created.md",
+    "sourceSpecId": "B02-EVT-COMMUNICATION-CREATED",
+    "payloadContractPath": "books/book-02-core-specification/core-specs/contracts/events/communication-created-payload.md",
+    "authorityKind": "event_spec",
+    "implementationEvidenceFiles": [],
+    "resolution": {
+      "kind": "canonical",
+      "aliasTargetEventType": null,
+      "aliasTargetContractId": null,
+      "compatibilityBasis": [
+        "Exact Book 02 Event specification is the canonical authority."
+      ]
+    },
+    "requiredTraceFields": [
+      "event_reference_id",
+      "event_type",
+      "source_service",
+      "subject_reference_id",
+      "correlation_id",
+      "causation_event_reference_id where applicable",
+      "created_at",
+      "visibility policy hook",
+      "safe payload",
+      "schema_version"
+    ],
+    "schemaVersion": "0.1.0",
+    "boundaries": {
+      "traceOnly": true,
+      "commandTriggerAllowed": false,
+      "directApiEmissionAllowed": false,
+      "directWorkflowEmissionAllowed": false,
+      "directAgentEmissionAllowed": false,
+      "owningServiceTraceHandoffRequired": true,
+      "eventBusImplemented": false
+    },
+    "implementationTask": "CORE-TASK-056",
+    "createdAt": "2026-07-16T00:00:00.000Z"
+  },
+  {
+    "id": "core-mvp-event-communication-reviewed-contract",
+    "requirementId": "must-event-communication-reviewed",
+    "eventType": "communication-reviewed",
+    "domainId": "communication",
+    "name": "CommunicationReviewed Validated MVP Event Alias",
+    "action": "reviewed",
+    "subjectObjectType": "communication-record",
+    "sourceServiceContractId": "core-service-communication-reference-service-contract",
+    "sourceOperation": "changeCommunicationStatus",
+    "sourceSpecPath": "books/book-02-core-specification/core-specs/events/communication-reviewed.md",
+    "sourceSpecId": null,
+    "payloadContractPath": null,
+    "authorityKind": "validated_alias",
+    "implementationEvidenceFiles": [
+      "src/services/communication/core-communication-service.ts"
+    ],
+    "resolution": {
+      "kind": "validated_alias",
+      "aliasTargetEventType": "core-communication-approved",
+      "aliasTargetContractId": "core-event-core-communication-approved-contract",
+      "compatibilityBasis": [
+        "Book 02 MVP requires an explicit CommunicationReviewed reference.",
+        "The existing catalog approval event is the closest governed review-completion boundary.",
+        "The alias preserves reviewed semantics and does not imply delivery, execution or autonomous approval."
+      ]
+    },
+    "requiredTraceFields": [
+      "event_reference_id",
+      "event_type",
+      "source_service",
+      "subject_reference_id",
+      "correlation_id",
+      "causation_event_reference_id where applicable",
+      "created_at",
+      "visibility policy hook",
+      "safe payload",
+      "schema_version"
+    ],
+    "schemaVersion": "0.1.0",
+    "boundaries": {
+      "traceOnly": true,
+      "commandTriggerAllowed": false,
+      "directApiEmissionAllowed": false,
+      "directWorkflowEmissionAllowed": false,
+      "directAgentEmissionAllowed": false,
+      "owningServiceTraceHandoffRequired": true,
+      "eventBusImplemented": false
+    },
+    "implementationTask": "CORE-TASK-056",
+    "createdAt": "2026-07-16T00:00:00.000Z"
+  },
+  {
+    "id": "core-mvp-event-communication-sent-contract",
+    "requirementId": "must-event-communication-sent",
+    "eventType": "communication-sent",
+    "domainId": "communication",
+    "name": "CommunicationSent Exact MVP Event Contract",
+    "action": "emitted",
+    "subjectObjectType": "communication-record",
+    "sourceServiceContractId": "core-service-communication-reference-service-contract",
+    "sourceOperation": "recordCommunicationSent",
+    "sourceSpecPath": "books/book-02-core-specification/core-specs/events/communication-sent.md",
+    "sourceSpecId": null,
+    "payloadContractPath": null,
+    "authorityKind": "mvp_requirement_and_service_trace",
+    "implementationEvidenceFiles": [
+      "src/services/communication/core-communication-service.ts"
+    ],
+    "resolution": {
+      "kind": "canonical",
+      "aliasTargetEventType": null,
+      "aliasTargetContractId": null,
+      "compatibilityBasis": [
+        "The locked MVP cut requires CommunicationSent.",
+        "Communication Service records the exact communication-sent trace without performing external gateway delivery."
+      ]
+    },
+    "requiredTraceFields": [
+      "event_reference_id",
+      "event_type",
+      "source_service",
+      "subject_reference_id",
+      "correlation_id",
+      "causation_event_reference_id where applicable",
+      "created_at",
+      "visibility policy hook",
+      "safe payload",
+      "schema_version"
+    ],
+    "schemaVersion": "0.1.0",
+    "boundaries": {
+      "traceOnly": true,
+      "commandTriggerAllowed": false,
+      "directApiEmissionAllowed": false,
+      "directWorkflowEmissionAllowed": false,
+      "directAgentEmissionAllowed": false,
+      "owningServiceTraceHandoffRequired": true,
+      "eventBusImplemented": false
+    },
+    "implementationTask": "CORE-TASK-056",
+    "createdAt": "2026-07-16T00:00:00.000Z"
+  },
+  {
+    "id": "core-mvp-event-workflow-contract-previewed-contract",
+    "requirementId": "must-event-workflow-contract-previewed",
+    "eventType": "workflow-contract-previewed",
+    "domainId": "workflow-contract",
+    "name": "WorkflowContractPreviewed Validated MVP Event Alias",
+    "action": "emitted",
+    "subjectObjectType": "workflow-contract-record",
+    "sourceServiceContractId": "core-service-workflow-contract-service-contract",
+    "sourceOperation": "previewWorkflowContract",
+    "sourceSpecPath": "books/book-02-core-specification/core-specs/events/workflow-contract-previewed.md",
+    "sourceSpecId": null,
+    "payloadContractPath": null,
+    "authorityKind": "validated_alias",
+    "implementationEvidenceFiles": [],
+    "resolution": {
+      "kind": "validated_alias",
+      "aliasTargetEventType": "core-workflow-contract-registered",
+      "aliasTargetContractId": "core-event-core-workflow-contract-registered-contract",
+      "compatibilityBasis": [
+        "Book 02 MVP requires a deterministic preview reference before bounded Workflow implementation.",
+        "The generic registered-contract catalog entry supplies the stable Workflow Contract subject boundary.",
+        "The alias is trace-only and does not claim preview/apply runtime completion."
+      ]
+    },
+    "requiredTraceFields": [
+      "event_reference_id",
+      "event_type",
+      "source_service",
+      "subject_reference_id",
+      "correlation_id",
+      "causation_event_reference_id where applicable",
+      "created_at",
+      "visibility policy hook",
+      "safe payload",
+      "schema_version"
+    ],
+    "schemaVersion": "0.1.0",
+    "boundaries": {
+      "traceOnly": true,
+      "commandTriggerAllowed": false,
+      "directApiEmissionAllowed": false,
+      "directWorkflowEmissionAllowed": false,
+      "directAgentEmissionAllowed": false,
+      "owningServiceTraceHandoffRequired": true,
+      "eventBusImplemented": false
+    },
+    "implementationTask": "CORE-TASK-056",
+    "createdAt": "2026-07-16T00:00:00.000Z"
+  },
+  {
+    "id": "core-mvp-event-workflow-contract-applied-contract",
+    "requirementId": "must-event-workflow-contract-applied",
+    "eventType": "workflow-contract-applied",
+    "domainId": "workflow-contract",
+    "name": "WorkflowContractApplied Exact MVP Event Contract",
+    "action": "completed",
+    "subjectObjectType": "workflow-contract-application",
+    "sourceServiceContractId": "core-service-workflow-contract-service-contract",
+    "sourceOperation": "applyWorkflowContract",
+    "sourceSpecPath": "books/book-02-core-specification/core-specs/events/workflow-contract-applied.md",
+    "sourceSpecId": "B02-EVT-WORKFLOW-CONTRACT-APPLIED",
+    "payloadContractPath": "books/book-02-core-specification/core-specs/contracts/events/workflow-contract-applied-payload.md",
+    "authorityKind": "event_spec",
+    "implementationEvidenceFiles": [],
+    "resolution": {
+      "kind": "canonical",
+      "aliasTargetEventType": null,
+      "aliasTargetContractId": null,
+      "compatibilityBasis": [
+        "Exact Book 02 Event specification is the canonical authority."
+      ]
+    },
+    "requiredTraceFields": [
+      "event_reference_id",
+      "event_type",
+      "source_service",
+      "subject_reference_id",
+      "correlation_id",
+      "causation_event_reference_id where applicable",
+      "created_at",
+      "visibility policy hook",
+      "safe payload",
+      "schema_version"
+    ],
+    "schemaVersion": "0.1.0",
+    "boundaries": {
+      "traceOnly": true,
+      "commandTriggerAllowed": false,
+      "directApiEmissionAllowed": false,
+      "directWorkflowEmissionAllowed": false,
+      "directAgentEmissionAllowed": false,
+      "owningServiceTraceHandoffRequired": true,
+      "eventBusImplemented": false
+    },
+    "implementationTask": "CORE-TASK-056",
+    "createdAt": "2026-07-16T00:00:00.000Z"
+  },
+  {
+    "id": "core-mvp-event-permission-evaluated-contract",
+    "requirementId": "must-event-permission-evaluated",
+    "eventType": "permission-evaluated",
+    "domainId": "permission",
+    "name": "PermissionEvaluated Exact MVP Event Contract",
+    "action": "emitted",
+    "subjectObjectType": "permission-evaluation",
+    "sourceServiceContractId": "core-service-permission-evaluation-service-contract",
+    "sourceOperation": "evaluatePermission",
+    "sourceSpecPath": "books/book-02-core-specification/core-specs/events/permission-evaluated.md",
+    "sourceSpecId": "B02-EVT-PERMISSION-EVALUATED",
+    "payloadContractPath": "books/book-02-core-specification/core-specs/contracts/events/permission-evaluated-payload.md",
+    "authorityKind": "event_spec",
+    "implementationEvidenceFiles": [],
+    "resolution": {
+      "kind": "canonical",
+      "aliasTargetEventType": null,
+      "aliasTargetContractId": null,
+      "compatibilityBasis": [
+        "Exact Book 02 Event specification is the canonical authority."
+      ]
+    },
+    "requiredTraceFields": [
+      "event_reference_id",
+      "event_type",
+      "source_service",
+      "subject_reference_id",
+      "correlation_id",
+      "causation_event_reference_id where applicable",
+      "created_at",
+      "visibility policy hook",
+      "safe payload",
+      "schema_version"
+    ],
+    "schemaVersion": "0.1.0",
+    "boundaries": {
+      "traceOnly": true,
+      "commandTriggerAllowed": false,
+      "directApiEmissionAllowed": false,
+      "directWorkflowEmissionAllowed": false,
+      "directAgentEmissionAllowed": false,
+      "owningServiceTraceHandoffRequired": true,
+      "eventBusImplemented": false
+    },
+    "implementationTask": "CORE-TASK-056",
+    "createdAt": "2026-07-16T00:00:00.000Z"
+  },
+  {
+    "id": "core-mvp-event-policy-evaluated-contract",
+    "requirementId": "must-event-policy-evaluated",
+    "eventType": "policy-evaluated",
+    "domainId": "policy",
+    "name": "PolicyEvaluated Exact MVP Event Contract",
+    "action": "emitted",
+    "subjectObjectType": "policy-evaluation",
+    "sourceServiceContractId": "core-service-policy-evaluation-service-contract",
+    "sourceOperation": "evaluatePolicy",
+    "sourceSpecPath": "books/book-02-core-specification/core-specs/events/policy-evaluated.md",
+    "sourceSpecId": "B02-EVT-POLICY-EVALUATED",
+    "payloadContractPath": "books/book-02-core-specification/core-specs/contracts/events/policy-evaluated-payload.md",
+    "authorityKind": "event_spec",
+    "implementationEvidenceFiles": [],
+    "resolution": {
+      "kind": "canonical",
+      "aliasTargetEventType": null,
+      "aliasTargetContractId": null,
+      "compatibilityBasis": [
+        "Exact Book 02 Event specification is the canonical authority."
+      ]
+    },
+    "requiredTraceFields": [
+      "event_reference_id",
+      "event_type",
+      "source_service",
+      "subject_reference_id",
+      "correlation_id",
+      "causation_event_reference_id where applicable",
+      "created_at",
+      "visibility policy hook",
+      "safe payload",
+      "schema_version"
+    ],
+    "schemaVersion": "0.1.0",
+    "boundaries": {
+      "traceOnly": true,
+      "commandTriggerAllowed": false,
+      "directApiEmissionAllowed": false,
+      "directWorkflowEmissionAllowed": false,
+      "directAgentEmissionAllowed": false,
+      "owningServiceTraceHandoffRequired": true,
+      "eventBusImplemented": false
+    },
+    "implementationTask": "CORE-TASK-056",
+    "createdAt": "2026-07-16T00:00:00.000Z"
+  }
+]

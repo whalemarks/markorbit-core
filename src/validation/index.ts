@@ -23,3 +23,4 @@ export * from './core-user-service-fixture-validation.ts';
 export * from './core-permission-service-fixture-validation.ts';
 export * from './core-policy-service-fixture-validation.ts';
 export * from './core-book-02-post-service-completion-audit-fixture-validation.ts';
+export * from './core-mvp-event-contract-lock-fixture-validation.ts';
