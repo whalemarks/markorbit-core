@@ -14,4 +14,4 @@ The resulting Book 02 Must Build baseline is `49 / 3 / 40`, leaving Policy Servi
 
 ## Validation boundary
 
-The foundation is accepted only when type checking, linting, formatting, all required fixture validators, the complete repository test suite, contract acceptance, behavior acceptance, and the Book 02 MVP gap baseline pass together against the clean branch state. Derived contract and Book 02 fixtures must be regenerated deterministically from the authoritative source code before acceptance.
+The foundation is accepted only when type checking, linting, formatting, all required fixture validators, the complete repository test suite, contract acceptance, behavior acceptance, and the Book 02 MVP gap baseline pass together against the clean branch state. Derived contract and Book 02 fixtures must be regenerated deterministically from the authoritative source code before acceptance. A `PolicyRequired` Permission result must remain an explicit non-final handoff and must never be represented as a completed Policy decision.
