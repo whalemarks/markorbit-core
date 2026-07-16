@@ -1,5 +1,9 @@
 import type { CoreDomainId } from '../domains/index.ts';
 import {
+  CORE_IDENTITY_IMPLEMENTED_OPERATIONS,
+  CORE_IDENTITY_MINIMUM_CAPABILITIES
+} from '../services/identity/index.ts';
+import {
   CORE_BRAND_IMPLEMENTED_OPERATIONS,
   CORE_BRAND_MINIMUM_CAPABILITIES
 } from '../services/brand/index.ts';
@@ -72,6 +76,25 @@ export interface CoreServiceBehaviorEvidence {
 }
 
 export const CORE_SERVICE_BEHAVIOR_EVIDENCE = [
+  {
+    requirementId: 'must-service-identity-service',
+    serviceType: 'identity-resolution-service',
+    domainId: 'identity',
+    contractId: 'core-service-identity-resolution-service-contract',
+    sourcePath:
+      'books/book-02-core-specification/core-specs/services/identity-service.md',
+    currentDepth: 'level_2_3',
+    operations: CORE_IDENTITY_IMPLEMENTED_OPERATIONS,
+    provenMinimumCapabilities: CORE_IDENTITY_MINIMUM_CAPABILITIES,
+    unresolvedServiceOperations: ['unlinkIdentity'],
+    implementationFiles: ['src/services/identity/core-identity-service.ts'],
+    testFiles: [
+      'tests/unit/core-identity-service-authority-foundation.test.ts'
+    ],
+    fixtureFiles: [
+      'fixtures/services/core-identity-service-authority-foundation.fixture.json'
+    ]
+  },
   {
     requirementId: 'must-service-customer-service',
     serviceType: 'customer-service',

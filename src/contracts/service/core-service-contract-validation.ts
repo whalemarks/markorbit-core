@@ -126,6 +126,19 @@ const canonicalServiceSourceRoot =
   'books/book-02-core-specification/core-specs/services/';
 
 const behaviorLocks = {
+  'identity-resolution-service': {
+    task: 'CORE-TASK-050',
+    operations: [
+      'createIdentity',
+      'getIdentity',
+      'updateIdentity',
+      'changeIdentityStatus',
+      'linkIdentity',
+      'validateIdentityReference',
+      'resolveIdentity',
+      'archiveIdentity'
+    ]
+  },
   'customer-service': {
     task: 'CORE-TASK-036',
     operations: [
@@ -341,6 +354,14 @@ const behaviorLocks = {
 } as const;
 
 const promotedContracts = {
+  0: {
+    id: 'core-service-identity-resolution-service-contract',
+    serviceType: 'identity-resolution-service',
+    domainId: 'identity',
+    name: 'Identity Resolution Service Contract Skeleton',
+    sourceFile: 'identity-service.md',
+    task: 'CORE-TASK-050'
+  },
   16: {
     id: 'core-service-workflow-contract-service-contract',
     serviceType: 'workflow-contract-service',

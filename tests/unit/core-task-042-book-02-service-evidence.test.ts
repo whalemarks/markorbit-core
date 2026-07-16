@@ -3,6 +3,7 @@ import { describe, it } from 'node:test';
 import { BOOK_02_MVP_GAP_BASELINE } from '../../src/index.ts';
 
 const implementedServiceIds = [
+  'must-service-identity-service',
   'must-service-customer-service',
   'must-service-brand-service',
   'must-service-trademark-service',
@@ -40,16 +41,16 @@ describe('CORE-TASK-042 Book 02 Service evidence', () => {
         (requirement) =>
           requirement.currentDisposition === 'validated_skeleton_only'
       ).length,
-      5
+      4
     );
   });
 
-  it('derives 45 / 3 / 44 and leaves global Service acceptance unresolved', () => {
+  it('derives 46 / 3 / 43 and leaves global Service acceptance unresolved', () => {
     assert.deepEqual(BOOK_02_MVP_GAP_BASELINE.summary.mustBuildNow, {
       total: 115,
-      meets_required_depth: 45,
+      meets_required_depth: 46,
       partial_evidence: 3,
-      validated_skeleton_only: 44,
+      validated_skeleton_only: 43,
       boundary_scaffold_only: 5,
       semantic_overlap_only: 18,
       fixture_only: 0,

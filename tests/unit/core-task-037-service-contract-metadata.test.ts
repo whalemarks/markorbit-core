@@ -43,6 +43,7 @@ describe('CORE-TASK-037 Service contract behavior metadata', () => {
 
   it('keeps behavior metadata absent from Services without executable evidence', () => {
     const evidenceBackedServiceTypes = new Set([
+      'identity-resolution-service',
       'customer-service',
       'brand-service',
       'trademark-service',
@@ -61,7 +62,7 @@ describe('CORE-TASK-037 Service contract behavior metadata', () => {
     const remaining = CORE_SERVICE_CONTRACT_SKELETONS.filter(
       (contract) => !evidenceBackedServiceTypes.has(contract.serviceType)
     );
-    assert.equal(remaining.length, 12);
+    assert.equal(remaining.length, 11);
     assert.ok(
       remaining.every(
         (contract) =>

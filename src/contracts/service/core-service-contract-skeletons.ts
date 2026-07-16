@@ -68,7 +68,8 @@ const canonicalServiceSkeleton = (
     | 'CORE-TASK-046'
     | 'CORE-TASK-047'
     | 'CORE-TASK-048'
-    | 'CORE-TASK-049' = 'CORE-TASK-021'
+    | 'CORE-TASK-049'
+    | 'CORE-TASK-050' = 'CORE-TASK-021'
 ): CoreServiceContract => ({
   ...serviceSkeleton(
     serviceType,
@@ -89,247 +90,263 @@ const canonicalServiceSkeleton = (
     specificationCommit: '3349ecb8955021a8714d023348f8b24f941eb98f',
     specificationPath,
     implementationTask,
-    ...(serviceType === 'customer-service'
+    ...(serviceType === 'identity-resolution-service'
       ? {
-          behaviorImplementationTask: 'CORE-TASK-036',
+          behaviorImplementationTask: 'CORE-TASK-050',
           behaviorDepth: 'level_2_3',
           implementedOperations: [
-            'createCustomer',
-            'getCustomer',
-            'listCustomers',
-            'validateCustomerReference',
-            'changeCustomerStatus'
+            'createIdentity',
+            'getIdentity',
+            'updateIdentity',
+            'changeIdentityStatus',
+            'linkIdentity',
+            'validateIdentityReference',
+            'resolveIdentity',
+            'archiveIdentity'
           ]
         }
-      : serviceType === 'brand-service'
+      : serviceType === 'customer-service'
         ? {
-            behaviorImplementationTask: 'CORE-TASK-037',
+            behaviorImplementationTask: 'CORE-TASK-036',
             behaviorDepth: 'level_2_3',
             implementedOperations: [
-              'createBrand',
-              'getBrand',
-              'listBrands',
-              'validateBrandReference',
-              'changeBrandStatus'
+              'createCustomer',
+              'getCustomer',
+              'listCustomers',
+              'validateCustomerReference',
+              'changeCustomerStatus'
             ]
           }
-        : serviceType === 'trademark-service'
+        : serviceType === 'brand-service'
           ? {
-              behaviorImplementationTask: 'CORE-TASK-038',
+              behaviorImplementationTask: 'CORE-TASK-037',
               behaviorDepth: 'level_2_3',
               implementedOperations: [
-                'createTrademark',
-                'getTrademark',
-                'listTrademarks',
-                'validateTrademarkReference',
-                'changeTrademarkStatus'
+                'createBrand',
+                'getBrand',
+                'listBrands',
+                'validateBrandReference',
+                'changeBrandStatus'
               ]
             }
-          : serviceType === 'jurisdiction-service'
+          : serviceType === 'trademark-service'
             ? {
-                behaviorImplementationTask: 'CORE-TASK-039',
+                behaviorImplementationTask: 'CORE-TASK-038',
                 behaviorDepth: 'level_2_3',
                 implementedOperations: [
-                  'createJurisdiction',
-                  'getJurisdiction',
-                  'listJurisdictions',
-                  'validateJurisdictionReference',
-                  'resolveJurisdictionByCode',
-                  'changeJurisdictionStatus'
+                  'createTrademark',
+                  'getTrademark',
+                  'listTrademarks',
+                  'validateTrademarkReference',
+                  'changeTrademarkStatus'
                 ]
               }
-            : serviceType === 'classification-service'
+            : serviceType === 'jurisdiction-service'
               ? {
-                  behaviorImplementationTask: 'CORE-TASK-040',
+                  behaviorImplementationTask: 'CORE-TASK-039',
                   behaviorDepth: 'level_2_3',
                   implementedOperations: [
-                    'createClassification',
-                    'getClassification',
-                    'listClassifications',
-                    'validateClassification',
-                    'validateClassificationReference',
-                    'changeClassificationStatus'
+                    'createJurisdiction',
+                    'getJurisdiction',
+                    'listJurisdictions',
+                    'validateJurisdictionReference',
+                    'resolveJurisdictionByCode',
+                    'changeJurisdictionStatus'
                   ]
                 }
-              : serviceType === 'document-service'
+              : serviceType === 'classification-service'
                 ? {
-                    behaviorImplementationTask: 'CORE-TASK-041',
+                    behaviorImplementationTask: 'CORE-TASK-040',
                     behaviorDepth: 'level_2_3',
                     implementedOperations: [
-                      'createDocument',
-                      'getDocument',
-                      'listDocuments',
-                      'validateDocumentReference',
-                      'linkDocumentFile',
-                      'requireDocumentReview',
-                      'reviewDocument',
-                      'changeDocumentStatus'
+                      'createClassification',
+                      'getClassification',
+                      'listClassifications',
+                      'validateClassification',
+                      'validateClassificationReference',
+                      'changeClassificationStatus'
                     ]
                   }
-                : serviceType === 'evidence-service'
+                : serviceType === 'document-service'
                   ? {
-                      behaviorImplementationTask: 'CORE-TASK-042B',
+                      behaviorImplementationTask: 'CORE-TASK-041',
                       behaviorDepth: 'level_2_3',
                       implementedOperations: [
-                        'createEvidence',
-                        'getEvidence',
-                        'listEvidence',
-                        'updateEvidence',
-                        'validateEvidenceReference',
-                        'linkEvidenceSource',
-                        'linkEvidenceClaim',
-                        'linkEvidenceDocument',
-                        'linkEvidenceTrademark',
-                        'linkEvidenceBrand',
-                        'linkEvidenceClassification',
-                        'requireEvidenceReview',
-                        'reviewEvidence',
-                        'changeEvidenceStatus'
+                        'createDocument',
+                        'getDocument',
+                        'listDocuments',
+                        'validateDocumentReference',
+                        'linkDocumentFile',
+                        'requireDocumentReview',
+                        'reviewDocument',
+                        'changeDocumentStatus'
                       ]
                     }
-                  : serviceType === 'matter-service'
+                  : serviceType === 'evidence-service'
                     ? {
-                        behaviorImplementationTask: 'CORE-TASK-043B',
+                        behaviorImplementationTask: 'CORE-TASK-042B',
                         behaviorDepth: 'level_2_3',
                         implementedOperations: [
-                          'createMatter',
-                          'getMatter',
-                          'listMatters',
-                          'updateMatter',
-                          'changeMatterStatus',
-                          'linkMatterOrder',
-                          'linkMatterCustomer',
-                          'linkMatterBrand',
-                          'linkMatterTrademark',
-                          'linkMatterWorkflowContract',
-                          'linkMatterTask',
-                          'linkMatterDocument',
-                          'linkMatterEvidence',
-                          'validateMatterReference'
+                          'createEvidence',
+                          'getEvidence',
+                          'listEvidence',
+                          'updateEvidence',
+                          'validateEvidenceReference',
+                          'linkEvidenceSource',
+                          'linkEvidenceClaim',
+                          'linkEvidenceDocument',
+                          'linkEvidenceTrademark',
+                          'linkEvidenceBrand',
+                          'linkEvidenceClassification',
+                          'requireEvidenceReview',
+                          'reviewEvidence',
+                          'changeEvidenceStatus'
                         ]
                       }
-                    : serviceType === 'order-service'
+                    : serviceType === 'matter-service'
                       ? {
-                          behaviorImplementationTask: 'CORE-TASK-044',
+                          behaviorImplementationTask: 'CORE-TASK-043B',
                           behaviorDepth: 'level_2_3',
                           implementedOperations: [
-                            'createOrder',
-                            'getOrder',
-                            'listOrders',
-                            'updateOrder',
-                            'changeOrderStatus',
-                            'linkOrderCustomer',
-                            'linkOrderOpportunity',
-                            'linkOrderBrand',
-                            'linkOrderTrademark',
-                            'linkOrderMatter',
-                            'validateOrderReference',
-                            'validateOrderReadiness',
-                            'acceptOrder',
-                            'cancelOrder'
+                            'createMatter',
+                            'getMatter',
+                            'listMatters',
+                            'updateMatter',
+                            'changeMatterStatus',
+                            'linkMatterOrder',
+                            'linkMatterCustomer',
+                            'linkMatterBrand',
+                            'linkMatterTrademark',
+                            'linkMatterWorkflowContract',
+                            'linkMatterTask',
+                            'linkMatterDocument',
+                            'linkMatterEvidence',
+                            'validateMatterReference'
                           ]
                         }
-                      : serviceType === 'opportunity-service'
+                      : serviceType === 'order-service'
                         ? {
-                            behaviorImplementationTask: 'CORE-TASK-045',
+                            behaviorImplementationTask: 'CORE-TASK-044',
                             behaviorDepth: 'level_2_3',
                             implementedOperations: [
-                              'createOpportunity',
-                              'getOpportunity',
-                              'listOpportunities',
-                              'updateOpportunity',
-                              'changeOpportunityStatus',
-                              'qualifyOpportunity',
-                              'disqualifyOpportunity',
-                              'linkOpportunityCustomer',
-                              'linkOpportunityBrand',
-                              'linkOpportunityTrademark',
-                              'linkOpportunityCommunication',
-                              'convertOpportunityToOrder',
-                              'validateOpportunityReference',
-                              'archiveOpportunity'
+                              'createOrder',
+                              'getOrder',
+                              'listOrders',
+                              'updateOrder',
+                              'changeOrderStatus',
+                              'linkOrderCustomer',
+                              'linkOrderOpportunity',
+                              'linkOrderBrand',
+                              'linkOrderTrademark',
+                              'linkOrderMatter',
+                              'validateOrderReference',
+                              'validateOrderReadiness',
+                              'acceptOrder',
+                              'cancelOrder'
                             ]
                           }
-                        : serviceType === 'workflow-contract-service'
+                        : serviceType === 'opportunity-service'
                           ? {
-                              behaviorImplementationTask: 'CORE-TASK-048',
+                              behaviorImplementationTask: 'CORE-TASK-045',
                               behaviorDepth: 'level_2_3',
                               implementedOperations: [
-                                'createWorkflowContract',
-                                'getWorkflowContract',
-                                'updateWorkflowContract',
-                                'changeWorkflowContractStatus',
-                                'defineWorkflowState',
-                                'defineWorkflowTransition',
-                                'defineWorkflowGuard',
-                                'validateWorkflowTransition',
-                                'validateWorkflowApplicability',
-                                'validateWorkflowContractReference',
-                                'archiveWorkflowContract'
+                                'createOpportunity',
+                                'getOpportunity',
+                                'listOpportunities',
+                                'updateOpportunity',
+                                'changeOpportunityStatus',
+                                'qualifyOpportunity',
+                                'disqualifyOpportunity',
+                                'linkOpportunityCustomer',
+                                'linkOpportunityBrand',
+                                'linkOpportunityTrademark',
+                                'linkOpportunityCommunication',
+                                'convertOpportunityToOrder',
+                                'validateOpportunityReference',
+                                'archiveOpportunity'
                               ]
                             }
-                          : serviceType === 'communication-reference-service'
+                          : serviceType === 'workflow-contract-service'
                             ? {
-                                behaviorImplementationTask: 'CORE-TASK-049',
+                                behaviorImplementationTask: 'CORE-TASK-048',
                                 behaviorDepth: 'level_2_3',
                                 implementedOperations: [
-                                  'createCommunication',
-                                  'getCommunication',
-                                  'listCommunications',
-                                  'updateCommunication',
-                                  'changeCommunicationStatus',
-                                  'linkCommunicationParticipant',
-                                  'linkCommunicationMatter',
-                                  'linkCommunicationCustomer',
-                                  'linkCommunicationAgent',
-                                  'linkCommunicationAttachment',
-                                  'linkCommunicationDocument',
-                                  'recordCommunicationSent',
-                                  'recordCommunicationReceived',
-                                  'validateCommunicationReference',
-                                  'archiveCommunication'
+                                  'createWorkflowContract',
+                                  'getWorkflowContract',
+                                  'updateWorkflowContract',
+                                  'changeWorkflowContractStatus',
+                                  'defineWorkflowState',
+                                  'defineWorkflowTransition',
+                                  'defineWorkflowGuard',
+                                  'validateWorkflowTransition',
+                                  'validateWorkflowApplicability',
+                                  'validateWorkflowContractReference',
+                                  'archiveWorkflowContract'
                                 ]
                               }
-                            : serviceType === 'task-service'
+                            : serviceType === 'communication-reference-service'
                               ? {
-                                  behaviorImplementationTask: 'CORE-TASK-047',
+                                  behaviorImplementationTask: 'CORE-TASK-049',
                                   behaviorDepth: 'level_2_3',
                                   implementedOperations: [
-                                    'createTask',
-                                    'getTask',
-                                    'listTasks',
-                                    'updateTask',
-                                    'changeTaskStatus',
-                                    'assignTask',
-                                    'reassignTask',
-                                    'unassignTask',
-                                    'linkTaskMatter',
-                                    'linkTaskWorkflowContract',
-                                    'linkTaskDependency',
-                                    'completeTask',
-                                    'cancelTask',
-                                    'reopenTask',
-                                    'validateTaskReference',
-                                    'archiveTask'
+                                    'createCommunication',
+                                    'getCommunication',
+                                    'listCommunications',
+                                    'updateCommunication',
+                                    'changeCommunicationStatus',
+                                    'linkCommunicationParticipant',
+                                    'linkCommunicationMatter',
+                                    'linkCommunicationCustomer',
+                                    'linkCommunicationAgent',
+                                    'linkCommunicationAttachment',
+                                    'linkCommunicationDocument',
+                                    'recordCommunicationSent',
+                                    'recordCommunicationReceived',
+                                    'validateCommunicationReference',
+                                    'archiveCommunication'
                                   ]
                                 }
-                              : serviceType === 'event-service'
+                              : serviceType === 'task-service'
                                 ? {
-                                    behaviorImplementationTask: 'CORE-TASK-046',
+                                    behaviorImplementationTask: 'CORE-TASK-047',
                                     behaviorDepth: 'level_2_3',
                                     implementedOperations: [
-                                      'recordEvent',
-                                      'getEvent',
-                                      'validateEventReference',
-                                      'validateEventPayload',
-                                      'updateEventStatus',
-                                      'markEventDispatched',
-                                      'markEventDispatchFailed',
-                                      'linkEventConsumer',
-                                      'archiveEvent'
+                                      'createTask',
+                                      'getTask',
+                                      'listTasks',
+                                      'updateTask',
+                                      'changeTaskStatus',
+                                      'assignTask',
+                                      'reassignTask',
+                                      'unassignTask',
+                                      'linkTaskMatter',
+                                      'linkTaskWorkflowContract',
+                                      'linkTaskDependency',
+                                      'completeTask',
+                                      'cancelTask',
+                                      'reopenTask',
+                                      'validateTaskReference',
+                                      'archiveTask'
                                     ]
                                   }
-                                : {})
+                                : serviceType === 'event-service'
+                                  ? {
+                                      behaviorImplementationTask:
+                                        'CORE-TASK-046',
+                                      behaviorDepth: 'level_2_3',
+                                      implementedOperations: [
+                                        'recordEvent',
+                                        'getEvent',
+                                        'validateEventReference',
+                                        'validateEventPayload',
+                                        'updateEventStatus',
+                                        'markEventDispatched',
+                                        'markEventDispatchFailed',
+                                        'linkEventConsumer',
+                                        'archiveEvent'
+                                      ]
+                                    }
+                                  : {})
   }
 });
 
@@ -401,15 +418,25 @@ const stubServiceSkeleton = (
 });
 
 export const CORE_SERVICE_CONTRACT_SKELETONS = [
-  serviceSkeleton(
+  canonicalServiceSkeleton(
     'identity-resolution-service',
     'identity',
     'Identity Resolution Service Contract Skeleton',
-    'Skeleton contract boundary for identity resolution service responsibilities.',
-    'Establishes a service contract placeholder for identity ownership boundaries without resolving identities in executable form.',
-    ['Identity resolution service contract boundary.'],
-    ['identity domain references'],
-    ['identity boundary references']
+    'identity-service.md',
+    'Defines the Identity service ownership boundary for stable actor recognition, lifecycle, governed linkage, validation, resolution, and audit trace without implementing authentication, credential storage, User profiles, Organization membership, Permission grants, or Policy decisions.',
+    [
+      'Identity service ownership, stable actor reference, lifecycle, governed link, reference validation, resolution, and audit trace boundary.'
+    ],
+    [
+      'identity, user, organization, system actor, AI agent, service account, external actor, permission, policy, review, and audit references'
+    ],
+    [
+      'identity boundary references, governed safe views, validation results, deterministic resolution results, and Event trace handoff'
+    ],
+    [
+      'Authentication provider, password or credential storage, OAuth or SAML implementation, User profile creation, Organization membership assignment, role engine, Permission grant, Policy decision, or AI capability authorization.'
+    ],
+    'CORE-TASK-050'
   ),
   serviceSkeleton(
     'permission-evaluation-service',

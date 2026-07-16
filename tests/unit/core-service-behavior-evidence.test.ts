@@ -17,6 +17,8 @@ import {
   CORE_EVIDENCE_MINIMUM_CAPABILITIES,
   CORE_EVENT_IMPLEMENTED_OPERATIONS,
   CORE_EVENT_MINIMUM_CAPABILITIES,
+  CORE_IDENTITY_IMPLEMENTED_OPERATIONS,
+  CORE_IDENTITY_MINIMUM_CAPABILITIES,
   CORE_JURISDICTION_IMPLEMENTED_OPERATIONS,
   CORE_JURISDICTION_MINIMUM_CAPABILITIES,
   CORE_MATTER_IMPLEMENTED_OPERATIONS,
@@ -36,6 +38,7 @@ import {
 } from '../../src/index.ts';
 
 const expectedRequirements = [
+  'must-service-identity-service',
   'must-service-customer-service',
   'must-service-brand-service',
   'must-service-trademark-service',
@@ -55,12 +58,16 @@ const expectedRequirements = [
 describe('Core Service behavior evidence', () => {
   it('validates exact dependency-first Service evidence in canonical order', () => {
     assert.deepEqual(validateCoreServiceBehaviorEvidence(), []);
-    assert.equal(CORE_SERVICE_BEHAVIOR_EVIDENCE.length, 14);
+    assert.equal(CORE_SERVICE_BEHAVIOR_EVIDENCE.length, 15);
     assert.deepEqual(
       CORE_SERVICE_BEHAVIOR_EVIDENCE.map((entry) => entry.requirementId),
       expectedRequirements
     );
     const expectations = [
+      [
+        CORE_IDENTITY_IMPLEMENTED_OPERATIONS,
+        CORE_IDENTITY_MINIMUM_CAPABILITIES
+      ],
       [
         CORE_CUSTOMER_IMPLEMENTED_OPERATIONS,
         CORE_CUSTOMER_MINIMUM_CAPABILITIES
@@ -117,6 +124,7 @@ describe('Core Service behavior evidence', () => {
 
   it('rejects missing, duplicate, fake and cross-Service evidence', () => {
     const [
+      identity,
       customer,
       brand,
       trademark,
@@ -135,6 +143,7 @@ describe('Core Service behavior evidence', () => {
     assert.equal(
       validateCoreServiceBehaviorEvidence({
         evidence: [
+          identity,
           customer,
           brand,
           trademark,
@@ -149,6 +158,7 @@ describe('Core Service behavior evidence', () => {
     assert.equal(
       validateCoreServiceBehaviorEvidence({
         evidence: [
+          identity,
           customer,
           customer,
           trademark,
@@ -191,6 +201,7 @@ describe('Core Service behavior evidence', () => {
     assert.equal(
       validateCoreServiceBehaviorEvidence({
         evidence: [
+          identity,
           customer,
           { ...brand, domainId: 'customer' },
           trademark,
@@ -212,6 +223,7 @@ describe('Core Service behavior evidence', () => {
     assert.equal(
       validateCoreServiceBehaviorEvidence({
         evidence: [
+          identity,
           customer,
           { ...brand, serviceType: 'customer-service' },
           trademark,
@@ -234,6 +246,7 @@ describe('Core Service behavior evidence', () => {
 
   it('rejects missing operations and minimum capabilities', () => {
     const [
+      identity,
       customer,
       brand,
       trademark,
@@ -252,6 +265,7 @@ describe('Core Service behavior evidence', () => {
     assert.equal(
       validateCoreServiceBehaviorEvidence({
         evidence: [
+          identity,
           customer,
           brand,
           trademark,
@@ -273,6 +287,7 @@ describe('Core Service behavior evidence', () => {
     assert.equal(
       validateCoreServiceBehaviorEvidence({
         evidence: [
+          identity,
           customer,
           brand,
           trademark,
@@ -297,8 +312,13 @@ describe('Core Service behavior evidence', () => {
     );
   });
 
-  it('executes all fourteen fixtures and rejects corrupted expectations', async () => {
+  it('executes all fifteen fixtures and rejects corrupted expectations', async () => {
     const fixtures = [
+      [
+        'identityFixture',
+        'fixtures/services/core-identity-service-authority-foundation.fixture.json',
+        'operationCount'
+      ],
       [
         'customerFixture',
         'fixtures/services/core-customer-service-core-lifecycle.fixture.json',

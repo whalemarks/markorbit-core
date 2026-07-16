@@ -1,0 +1,31 @@
+{
+  "fixtureType": "core_identity_service_authority_foundation",
+  "task": "CORE-TASK-050",
+  "authority": {
+    "repository": "whalemarks/markorbit-publication",
+    "commit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+    "sourcePath": "books/book-02-core-specification/core-specs/services/identity-service.md"
+  },
+  "implementedOperations": [
+    "createIdentity",
+    "getIdentity",
+    "updateIdentity",
+    "changeIdentityStatus",
+    "linkIdentity",
+    "validateIdentityReference",
+    "resolveIdentity",
+    "archiveIdentity"
+  ],
+  "expected": {
+    "operationCount": 8,
+    "identityIsRecognitionNotAuthorization": true,
+    "userAndOrganizationBoundariesPreserved": true,
+    "authenticationAndCredentialStorageExcluded": true,
+    "suspendedAndArchivedReferencesRejected": true,
+    "stableImmutableIdentityId": true,
+    "permissionPolicyAndReviewPreserved": true,
+    "eventTraceRequired": true,
+    "eventRollbackRequired": true,
+    "crossOrganizationNonEnumeration": true
+  }
+}

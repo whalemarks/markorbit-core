@@ -4,13 +4,19 @@
     "serviceType": "identity-resolution-service",
     "domainId": "identity",
     "name": "Identity Resolution Service Contract Skeleton",
-    "description": "Skeleton contract boundary for identity resolution service responsibilities.",
+    "description": "Canonical metadata skeleton for the identity Core Service boundary.",
     "status": "active",
     "book": "Book 02 — MarkOrbit Core Specification",
-    "purpose": "Establishes a service contract placeholder for identity ownership boundaries without resolving identities in executable form.",
-    "owns": ["Identity resolution service contract boundary."],
-    "consumes": ["identity domain references"],
-    "produces": ["identity boundary references"],
+    "purpose": "Defines the Identity service ownership boundary for stable actor recognition, lifecycle, governed linkage, validation, resolution, and audit trace without implementing authentication, credential storage, User profiles, Organization membership, Permission grants, or Policy decisions.",
+    "owns": [
+      "Identity service ownership, stable actor reference, lifecycle, governed link, reference validation, resolution, and audit trace boundary."
+    ],
+    "consumes": [
+      "identity, user, organization, system actor, AI agent, service account, external actor, permission, policy, review, and audit references"
+    ],
+    "produces": [
+      "identity boundary references, governed safe views, validation results, deterministic resolution results, and Event trace handoff"
+    ],
     "allowedOperations": [
       "reference lookup category",
       "boundary evaluation category",
@@ -19,9 +25,30 @@
     "nonGoals": [
       "Executable service method definitions or service implementations.",
       "API routes, database access, workflow runtime, or Book 03 execution behavior.",
-      "Product UI behavior, concrete business logic, or AI agent authority."
+      "Product UI behavior, concrete business logic, or AI agent authority.",
+      "Authentication provider, password or credential storage, OAuth or SAML implementation, User profile creation, Organization membership assignment, role engine, Permission grant, Policy decision, or AI capability authorization."
     ],
-    "createdAt": "2026-07-09T00:00:00.000Z"
+    "createdAt": "2026-07-11T00:00:00.000Z",
+    "sourcePath": "books/book-02-core-specification/core-specs/services/identity-service.md",
+    "implementationDepth": "validated_skeleton",
+    "metadata": {
+      "specificationRepository": "whalemarks/markorbit-publication",
+      "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+      "specificationPath": "books/book-02-core-specification/",
+      "implementationTask": "CORE-TASK-050",
+      "behaviorImplementationTask": "CORE-TASK-050",
+      "behaviorDepth": "level_2_3",
+      "implementedOperations": [
+        "createIdentity",
+        "getIdentity",
+        "updateIdentity",
+        "changeIdentityStatus",
+        "linkIdentity",
+        "validateIdentityReference",
+        "resolveIdentity",
+        "archiveIdentity"
+      ]
+    }
   },
   {
     "id": "core-service-permission-evaluation-service-contract",

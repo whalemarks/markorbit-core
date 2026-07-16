@@ -2,26 +2,26 @@ import assert from 'node:assert/strict';
 import { describe, it } from 'node:test';
 import { BOOK_02_MVP_GAP_BASELINE } from '../../src/index.ts';
 
-describe('CORE-TASK-047 Book 02 Task Service evidence', () => {
-  it('records Task Service as an owned Must Build behavior boundary', () => {
-    const task = BOOK_02_MVP_GAP_BASELINE.requirements.find(
-      (requirement) => requirement.id === 'must-service-task-service'
+describe('CORE-TASK-050 Book 02 Identity Service evidence', () => {
+  it('records Identity Service as the owned stable actor-recognition authority', () => {
+    const identity = BOOK_02_MVP_GAP_BASELINE.requirements.find(
+      (requirement) => requirement.id === 'must-service-identity-service'
     );
-    assert.equal(task?.currentDisposition, 'meets_required_depth');
-    assert.equal(task?.currentDepth, 'level_2_3');
-    assert.deepEqual(task?.implementationFiles, [
+    assert.equal(identity?.currentDisposition, 'meets_required_depth');
+    assert.equal(identity?.currentDepth, 'level_2_3');
+    assert.deepEqual(identity?.implementationFiles, [
       'src/contracts/service/core-service-contract-skeletons.ts',
-      'src/services/task/core-task-service.ts'
+      'src/services/identity/core-identity-service.ts'
     ]);
-    assert.deepEqual(task?.testFiles, [
-      'tests/unit/core-task-service-actionable-work.test.ts'
+    assert.deepEqual(identity?.testFiles, [
+      'tests/unit/core-identity-service-authority-foundation.test.ts'
     ]);
-    assert.deepEqual(task?.fixtureFiles, [
-      'fixtures/services/core-task-service-actionable-work-foundation.fixture.json'
+    assert.deepEqual(identity?.fixtureFiles, [
+      'fixtures/services/core-identity-service-authority-foundation.fixture.json'
     ]);
   });
 
-  it('derives 46 / 3 / 43 while leaving four foundational authority Services unresolved', () => {
+  it('derives 46 / 3 / 43 and leaves four foundational authority Services unresolved', () => {
     assert.deepEqual(BOOK_02_MVP_GAP_BASELINE.summary.mustBuildNow, {
       total: 115,
       meets_required_depth: 46,
