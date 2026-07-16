@@ -57,6 +57,10 @@ The post-Service unresolved inventory falls from 65 to 47. Because 18 accepted D
 
 Acceptance remains 12 / 19 and `book02MvpComplete` remains false. CORE-TASK-056 does not complete API validation/delegation, preview/apply Workflows or API/Workflow/Agent no-direct-Event tests.
 
+## Validation lock
+
+The final clean branch must pass the canonical Node.js 20 and 22 matrix with TypeScript, ESLint, Prettier, all 48 fixture validators, the complete test suite, contract and behavior coverage/gaps/acceptance, Book 02 MVP gap validation, and the exact Event positive and negative tests. Temporary workflows, payload fragments and diagnostic artifacts are not part of the accepted diff.
+
 ## Next task
 
 `CORE-TASK-057A` — Identity, Organization, User, Permission and Policy API validators and Service delegation.
