@@ -264,6 +264,26 @@ const behaviorLocks = {
       'archiveWorkflowContract'
     ]
   },
+  'communication-reference-service': {
+    task: 'CORE-TASK-049',
+    operations: [
+      'createCommunication',
+      'getCommunication',
+      'listCommunications',
+      'updateCommunication',
+      'changeCommunicationStatus',
+      'linkCommunicationParticipant',
+      'linkCommunicationMatter',
+      'linkCommunicationCustomer',
+      'linkCommunicationAgent',
+      'linkCommunicationAttachment',
+      'linkCommunicationDocument',
+      'recordCommunicationSent',
+      'recordCommunicationReceived',
+      'validateCommunicationReference',
+      'archiveCommunication'
+    ]
+  },
   'task-service': {
     task: 'CORE-TASK-047',
     operations: [
@@ -392,6 +412,14 @@ const promotedContracts = {
     name: 'Core Evidence Service Contract Skeleton',
     sourceFile: 'evidence-service.md',
     task: 'CORE-TASK-042'
+  },
+  9: {
+    id: 'core-service-communication-reference-service-contract',
+    serviceType: 'communication-reference-service',
+    domainId: 'communication',
+    name: 'Communication Reference Service Contract Skeleton',
+    sourceFile: 'communication-service.md',
+    task: 'CORE-TASK-049'
   }
 } as const;
 

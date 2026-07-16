@@ -51,6 +51,10 @@ import {
   CORE_EVENT_IMPLEMENTED_OPERATIONS,
   CORE_EVENT_MINIMUM_CAPABILITIES
 } from '../services/event/index.ts';
+import {
+  CORE_COMMUNICATION_IMPLEMENTED_OPERATIONS,
+  CORE_COMMUNICATION_MINIMUM_CAPABILITIES
+} from '../services/communication/index.ts';
 
 export interface CoreServiceBehaviorEvidence {
   readonly requirementId: string;
@@ -389,6 +393,31 @@ export const CORE_SERVICE_BEHAVIOR_EVIDENCE = [
     testFiles: ['tests/unit/core-event-service-governed-occurrence.test.ts'],
     fixtureFiles: [
       'fixtures/services/core-event-service-governed-occurrence-foundation.fixture.json'
+    ]
+  },
+  {
+    requirementId: 'must-service-communication-service',
+    serviceType: 'communication-reference-service',
+    domainId: 'communication',
+    contractId: 'core-service-communication-reference-service-contract',
+    sourcePath:
+      'books/book-02-core-specification/core-specs/services/communication-service.md',
+    currentDepth: 'level_2_3',
+    operations: CORE_COMMUNICATION_IMPLEMENTED_OPERATIONS,
+    provenMinimumCapabilities: CORE_COMMUNICATION_MINIMUM_CAPABILITIES,
+    unresolvedServiceOperations: [
+      'unlinkCommunicationParticipant',
+      'linkCommunicationTask',
+      'linkCommunicationEvidence'
+    ],
+    implementationFiles: [
+      'src/services/communication/core-communication-service.ts'
+    ],
+    testFiles: [
+      'tests/unit/core-communication-service-governed-communication.test.ts'
+    ],
+    fixtureFiles: [
+      'fixtures/services/core-communication-service-governed-communication-foundation.fixture.json'
     ]
   }
 ] as const satisfies readonly CoreServiceBehaviorEvidence[];

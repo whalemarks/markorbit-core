@@ -1,0 +1,38 @@
+{
+  "fixtureType": "core_communication_service_governed_communication_foundation",
+  "task": "CORE-TASK-049",
+  "authority": {
+    "repository": "whalemarks/markorbit-publication",
+    "commit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+    "sourcePath": "books/book-02-core-specification/core-specs/services/communication-service.md"
+  },
+  "implementedOperations": [
+    "createCommunication",
+    "getCommunication",
+    "listCommunications",
+    "updateCommunication",
+    "changeCommunicationStatus",
+    "linkCommunicationParticipant",
+    "linkCommunicationMatter",
+    "linkCommunicationCustomer",
+    "linkCommunicationAgent",
+    "linkCommunicationAttachment",
+    "linkCommunicationDocument",
+    "recordCommunicationSent",
+    "recordCommunicationReceived",
+    "validateCommunicationReference",
+    "archiveCommunication"
+  ],
+  "expected": {
+    "operationCount": 15,
+    "communicationIsNotNotificationOrEvent": true,
+    "attachmentDoesNotBecomeDocumentAutomatically": true,
+    "messageDoesNotBecomeEvidenceAutomatically": true,
+    "externalGatewayDeliveryExcluded": true,
+    "aiDraftRequiresGovernedReview": true,
+    "permissionPolicyAndReviewPreserved": true,
+    "eventTraceRequired": true,
+    "eventRollbackRequired": true,
+    "crossOrganizationNonEnumeration": true
+  }
+}
