@@ -104,3 +104,5 @@ jobs:
           git add -A
           git commit -m "CORE-TASK-050 — finalize Identity Service evidence assertions"
           git push origin HEAD:agent/core-task-050-identity-service-authority-foundation
+
+# Triggered after workflow registration.
