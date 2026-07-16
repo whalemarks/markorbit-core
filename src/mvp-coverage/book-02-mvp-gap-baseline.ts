@@ -1414,6 +1414,36 @@ export function deriveBook02MvpAcceptanceCriteria(
     };
   });
 }
+
+export function isBook02MvpCompletionReady(
+  requirements: readonly Book02MvpRequirement[],
+  acceptanceCriteria: readonly Book02MvpAcceptanceCriterion[]
+): boolean {
+  const allAcceptanceCriteriaSatisfied = acceptanceCriteria.every(
+    (criterion) => criterion.satisfied
+  );
+  const domainCriterionSatisfied = acceptanceCriteria.some(
+    (criterion) =>
+      criterion.id ===
+        'must-build-domains-implemented-or-scaffolded-with-tests' &&
+      criterion.satisfied
+  );
+  const nonDomainMustBuildRequirementsMeetDepth = requirements
+    .filter(
+      (requirement) =>
+        requirement.category === 'must_build_now' &&
+        requirement.layer !== 'domain'
+    )
+    .every(
+      (requirement) => requirement.currentDisposition === 'meets_required_depth'
+    );
+  return (
+    allAcceptanceCriteriaSatisfied &&
+    domainCriterionSatisfied &&
+    nonDomainMustBuildRequirementsMeetDepth
+  );
+}
+
 export function deriveBook02MvpGapSummary(
   requirements: readonly Book02MvpRequirement[],
   acceptanceCriteria: readonly Book02MvpAcceptanceCriterion[]
@@ -1496,9 +1526,10 @@ export function deriveBook02MvpGapSummary(
       ).length,
       acceptanceCriteriaTotal: BOOK_02_EXPECTED_COUNTS.acceptanceCriteria,
       unresolvedCriteria,
-      book02MvpComplete:
-        unresolvedCriteria.length === 0 &&
-        must.every((r) => r.currentDisposition === 'meets_required_depth')
+      book02MvpComplete: isBook02MvpCompletionReady(
+        requirements,
+        acceptanceCriteria
+      )
     },
     knownExecutionSpineGaps: [
       'API validator/service delegation',

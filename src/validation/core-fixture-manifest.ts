@@ -25,6 +25,7 @@ export const CORE_FIXTURE_TYPES = [
   'safety_boundary_foundations',
   'idempotency_enforcement',
   'book_02_mvp_gap_baseline',
+  'book_02_post_service_completion_audit',
   'core_mvp_object_public_reference_foundation',
   'core_identity_service_authority_foundation',
   'core_organization_service_operating_context_foundation',
@@ -326,6 +327,12 @@ export const CORE_FIXTURE_MANIFEST = [
     id: 'core-event-service-governed-occurrence-foundation',
     type: 'core_event_service_governed_occurrence_foundation',
     path: 'fixtures/services/core-event-service-governed-occurrence-foundation.fixture.json',
+    required: true
+  },
+  {
+    id: 'book-02-post-service-completion-audit',
+    type: 'book_02_post_service_completion_audit',
+    path: 'fixtures/mvp-coverage/book-02-post-service-completion-audit.fixture.json',
     required: true
   },
   {
