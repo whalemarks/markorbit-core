@@ -28,6 +28,7 @@ import {
   validateCoreSafetyBoundaryFoundationsFixture,
   validateCoreIdempotencyEnforcementFixture,
   validateBook02MvpGapBaselineFixture,
+  validateCoreBook02PostServiceCompletionAuditFixture,
   validateCoreMvpObjectPublicReferenceFoundationFixture,
   validateCoreCustomerServiceCoreLifecycleFixture
 } from '../src/validation/index.ts';
@@ -82,6 +83,8 @@ const validators = {
   safety_boundary_foundations: validateCoreSafetyBoundaryFoundationsFixture,
   idempotency_enforcement: validateCoreIdempotencyEnforcementFixture,
   book_02_mvp_gap_baseline: validateBook02MvpGapBaselineFixture,
+  book_02_post_service_completion_audit:
+    validateCoreBook02PostServiceCompletionAuditFixture,
   core_mvp_object_public_reference_foundation:
     validateCoreMvpObjectPublicReferenceFoundationFixture,
   core_identity_service_authority_foundation:

@@ -358,3 +358,12 @@ CORE-TASK-038 note: Trademark Service core lifecycle behavior is implemented at 
 CORE-TASK-039 note: Jurisdiction Service core lifecycle and code-resolution behavior is implemented at the governed MVP boundary with create, read, list, reference validation, code resolution, and status transition operations. Customer, Brand, Trademark, and Jurisdiction are the four Must Build Services with executable owned behavior; the remaining 14 Services remain incomplete. Jurisdiction metadata update, office/rule/service-scope linkage, API validators, workflows, Book 02 MVP completion, and production readiness remain unaccepted. The derived Must Build distribution is 36 meets_required_depth, 3 partial_evidence, 53 validated_skeleton_only, 5 boundary_scaffold_only, and 18 semantic_overlap_only; acceptance remains 11/19. Next governed task: CORE-TASK-040 — select the next dependency-first Service-owned behavior batch from the updated Book 02 MVP gap baseline.
 
 CORE-TASK-040 note: Classification Service core scope and validation behavior is implemented at the governed MVP boundary with create, read, list, structural validation, reference validation, and controlled status transition operations. Customer, Brand, Trademark, Jurisdiction, and Classification are the five Must Build Services with executable owned behavior; the remaining 13 Services remain incomplete. Item mutation, AI recommendation, official wording synchronization, API validators, workflows, Book 02 MVP completion, and production readiness remain unaccepted. The derived Must Build distribution is 37 meets_required_depth, 3 partial_evidence, 52 validated_skeleton_only, 5 boundary_scaffold_only, and 18 semantic_overlap_only; acceptance remains 11/19. Next governed task: CORE-TASK-041 — select the next dependency-first Service-owned behavior batch from the updated Book 02 MVP gap baseline.
+
+## CORE-TASK-055 Current Status
+
+- The 18 Must Build Service foundations are complete at the locked MVP behavior depth.
+- The post-Service audit distinguishes 39 structural skeleton gaps from 65 total unresolved Must Build requirements.
+- The remaining 47 non-Domain blockers comprise 18 APIs, 3 Workflows, 18 exact Event requirements, 5 named Agent boundaries and 3 executable test families.
+- Domain skeletons with executable tests satisfy the Book 02 Domain acceptance criterion; runtime Domain promotion is not an MVP requirement.
+- Book 02 MVP remains incomplete with 12 / 19 acceptance criteria satisfied.
+- Next governed task: CORE-TASK-056 — Exact MVP Event Contract and Alias Lock.

@@ -4,8 +4,8 @@ import { describe, it } from 'node:test';
 import { CORE_FIXTURE_MANIFEST, CORE_FIXTURE_TYPES } from '../../src/index.ts';
 
 describe('CORE_FIXTURE_MANIFEST', () => {
-  it('has exactly 46 entries', () => {
-    assert.equal(CORE_FIXTURE_MANIFEST.length, 46);
+  it('has exactly 47 entries', () => {
+    assert.equal(CORE_FIXTURE_MANIFEST.length, 47);
   });
 
   it('includes permission_contract_skeletons type', () => {
@@ -86,6 +86,10 @@ describe('CORE_FIXTURE_MANIFEST', () => {
     );
     assert.equal(CORE_FIXTURE_TYPES.includes('test_contract_skeletons'), true);
     assert.equal(CORE_FIXTURE_TYPES.includes('book_02_mvp_gap_baseline'), true);
+    assert.equal(
+      CORE_FIXTURE_TYPES.includes('book_02_post_service_completion_audit'),
+      true
+    );
     assert.equal(
       CORE_FIXTURE_TYPES.includes(
         'core_mvp_object_public_reference_foundation'
@@ -232,6 +236,7 @@ describe('CORE_FIXTURE_MANIFEST', () => {
       'safety_boundary_foundations',
       'idempotency_enforcement',
       'book_02_mvp_gap_baseline',
+      'book_02_post_service_completion_audit',
       'core_mvp_object_public_reference_foundation',
       'core_identity_service_authority_foundation',
       'core_organization_service_operating_context_foundation',
