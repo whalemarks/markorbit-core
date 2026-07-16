@@ -88,3 +88,7 @@ Regenerate all deterministic fixtures, prove all non-Domain Must Build requireme
 The audit is derived by `src/mvp-coverage/book-02-post-service-completion-audit.ts`, locked by `fixtures/mvp-coverage/book-02-post-service-completion-audit.fixture.json`, validated by the fixture system and covered by positive and negative tests.
 
 No runtime API, Workflow, Event emitter, Agent runtime, production integration or full engine is implemented by CORE-TASK-055.
+
+## Validation boundary
+
+The final clean branch must independently reproduce this audit in the canonical Node.js 20 and 22 Validation matrix. Acceptance requires typecheck, lint, format check, all 47 fixture validators, the complete test suite, contract and behavior acceptance, Book 02 gap validation, and the post-service audit report to pass together without any temporary workflow or payload files.
