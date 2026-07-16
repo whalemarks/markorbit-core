@@ -28,6 +28,7 @@ export const CORE_FIXTURE_TYPES = [
   'core_mvp_object_public_reference_foundation',
   'core_identity_service_authority_foundation',
   'core_organization_service_operating_context_foundation',
+  'core_user_service_account_participant_foundation',
   'core_customer_service_core_lifecycle',
   'core_brand_service_core_lifecycle',
   'core_trademark_service_core_lifecycle',
@@ -221,6 +222,12 @@ export const CORE_FIXTURE_MANIFEST = [
     id: 'core-organization-service-operating-context-foundation',
     type: 'core_organization_service_operating_context_foundation',
     path: 'fixtures/services/core-organization-service-operating-context-foundation.fixture.json',
+    required: true
+  },
+  {
+    id: 'core-user-service-account-participant-foundation',
+    type: 'core_user_service_account_participant_foundation',
+    path: 'fixtures/services/core-user-service-account-participant-foundation.fixture.json',
     required: true
   },
   {

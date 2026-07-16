@@ -17,3 +17,5 @@ export * from './core-communication-service-fixture-validation.ts';
 export * from './core-identity-service-fixture-validation.ts';
 
 export * from './core-organization-service-fixture-validation.ts';
+
+export * from './core-user-service-fixture-validation.ts';

@@ -7,6 +7,10 @@ import {
   CORE_ORGANIZATION_IMPLEMENTED_OPERATIONS,
   CORE_ORGANIZATION_MINIMUM_CAPABILITIES
 } from '../services/organization/index.ts';
+import {
+  CORE_USER_IMPLEMENTED_OPERATIONS,
+  CORE_USER_MINIMUM_CAPABILITIES
+} from '../services/user/index.ts';
 import { CORE_SERVICE_CONTRACT_SKELETONS } from '../contracts/index.ts';
 import {
   CORE_BRAND_IMPLEMENTED_OPERATIONS,
@@ -80,6 +84,7 @@ import { validateCoreEventServiceGovernedOccurrenceFoundationFixture } from '../
 import { validateCoreCommunicationServiceGovernedCommunicationFoundationFixture } from '../validation/core-communication-service-fixture-validation.ts';
 import { validateCoreIdentityServiceAuthorityFoundationFixture } from '../validation/core-identity-service-fixture-validation.ts';
 import { validateCoreOrganizationServiceOperatingContextFoundationFixture } from '../validation/core-organization-service-fixture-validation.ts';
+import { validateCoreUserServiceAccountParticipantFoundationFixture } from '../validation/core-user-service-fixture-validation.ts';
 import {
   CORE_SERVICE_BEHAVIOR_EVIDENCE,
   type CoreServiceBehaviorEvidence
@@ -95,6 +100,7 @@ export interface CoreServiceBehaviorValidationOptions {
   readonly evidence?: readonly CoreServiceBehaviorEvidence[];
   readonly identityFixture?: unknown;
   readonly organizationFixture?: unknown;
+  readonly userFixture?: unknown;
   readonly customerFixture?: unknown;
   readonly brandFixture?: unknown;
   readonly trademarkFixture?: unknown;
@@ -117,6 +123,7 @@ interface ExpectedServiceEvidence {
   readonly domainId:
     | 'identity'
     | 'organization'
+    | 'user'
     | 'customer'
     | 'brand'
     | 'trademark'
@@ -139,6 +146,7 @@ interface ExpectedServiceEvidence {
   readonly fixtureOverride:
     | 'identityFixture'
     | 'organizationFixture'
+    | 'userFixture'
     | 'customerFixture'
     | 'brandFixture'
     | 'trademarkFixture'
@@ -187,6 +195,20 @@ const expectedEvidence = [
     fixtureValidator: (fixture) =>
       validateCoreOrganizationServiceOperatingContextFoundationFixture(fixture)
         .issues
+  },
+  {
+    requirementId: 'must-service-user-service',
+    serviceType: 'user-service',
+    domainId: 'user',
+    contractId: 'core-service-user-service-contract',
+    sourcePath:
+      'books/book-02-core-specification/core-specs/services/user-service.md',
+    operations: CORE_USER_IMPLEMENTED_OPERATIONS,
+    capabilities: CORE_USER_MINIMUM_CAPABILITIES,
+    unresolved: ['unlinkUserIdentity'],
+    fixtureOverride: 'userFixture',
+    fixtureValidator: (fixture) =>
+      validateCoreUserServiceAccountParticipantFoundationFixture(fixture).issues
   },
   {
     requirementId: 'must-service-customer-service',
@@ -512,7 +534,7 @@ export function validateCoreServiceBehaviorEvidence(
         evidence.length < expectedEvidence.length
           ? 'core.service.evidence_missing'
           : 'core.service.evidence_extra',
-        'Service behavior evidence must contain exactly Identity, Customer, Brand, Trademark, Jurisdiction, Classification, Document, Evidence, Matter, Order, Opportunity, Workflow Contract, Task, Event, and Communication entries in canonical order.',
+        'Service behavior evidence must contain exactly Identity, Organization, User, Customer, Brand, Trademark, Jurisdiction, Classification, Document, Evidence, Matter, Order, Opportunity, Workflow Contract, Task, Event, and Communication entries in canonical order.',
         'evidence'
       )
     );

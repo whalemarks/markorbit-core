@@ -8,6 +8,10 @@ import {
   CORE_ORGANIZATION_MINIMUM_CAPABILITIES
 } from '../services/organization/index.ts';
 import {
+  CORE_USER_IMPLEMENTED_OPERATIONS,
+  CORE_USER_MINIMUM_CAPABILITIES
+} from '../services/user/index.ts';
+import {
   CORE_BRAND_IMPLEMENTED_OPERATIONS,
   CORE_BRAND_MINIMUM_CAPABILITIES
 } from '../services/brand/index.ts';
@@ -118,6 +122,25 @@ export const CORE_SERVICE_BEHAVIOR_EVIDENCE = [
     ],
     fixtureFiles: [
       'fixtures/services/core-organization-service-operating-context-foundation.fixture.json'
+    ]
+  },
+  {
+    requirementId: 'must-service-user-service',
+    serviceType: 'user-service',
+    domainId: 'user',
+    contractId: 'core-service-user-service-contract',
+    sourcePath:
+      'books/book-02-core-specification/core-specs/services/user-service.md',
+    currentDepth: 'level_2_3',
+    operations: CORE_USER_IMPLEMENTED_OPERATIONS,
+    provenMinimumCapabilities: CORE_USER_MINIMUM_CAPABILITIES,
+    unresolvedServiceOperations: ['unlinkUserIdentity'],
+    implementationFiles: ['src/services/user/core-user-service.ts'],
+    testFiles: [
+      'tests/unit/core-user-service-account-participant-foundation.test.ts'
+    ],
+    fixtureFiles: [
+      'fixtures/services/core-user-service-account-participant-foundation.fixture.json'
     ]
   },
   {
