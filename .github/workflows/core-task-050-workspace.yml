@@ -1,0 +1,21 @@
+name: CORE-TASK-050 Workspace
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Package workspace
+        run: tar --exclude=.git -czf /tmp/core-task-050-workspace.tgz .
+      - uses: actions/upload-artifact@v4
+        with:
+          name: core-task-050-workspace
+          path: /tmp/core-task-050-workspace.tgz
+          retention-days: 1
