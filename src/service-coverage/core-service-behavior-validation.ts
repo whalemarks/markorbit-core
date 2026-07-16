@@ -52,6 +52,10 @@ import {
   CORE_EVENT_IMPLEMENTED_OPERATIONS,
   CORE_EVENT_MINIMUM_CAPABILITIES
 } from '../services/event/index.ts';
+import {
+  CORE_COMMUNICATION_IMPLEMENTED_OPERATIONS,
+  CORE_COMMUNICATION_MINIMUM_CAPABILITIES
+} from '../services/communication/index.ts';
 import { validateCoreBrandServiceEvidenceFixture } from './core-brand-service-evidence-fixture.ts';
 import { validateCoreCustomerServiceEvidenceFixture } from './core-customer-service-evidence-fixture.ts';
 import { validateCoreTrademarkServiceEvidenceFixture } from './core-trademark-service-evidence-fixture.ts';
@@ -65,6 +69,7 @@ import { validateCoreOpportunityServicePotentialDemandFoundationFixture } from '
 import { validateCoreWorkflowContractServiceExecutionStructureFoundationFixture } from '../validation/core-workflow-contract-service-fixture-validation.ts';
 import { validateCoreTaskServiceActionableWorkFoundationFixture } from '../validation/core-task-service-fixture-validation.ts';
 import { validateCoreEventServiceGovernedOccurrenceFoundationFixture } from '../validation/core-event-service-fixture-validation.ts';
+import { validateCoreCommunicationServiceGovernedCommunicationFoundationFixture } from '../validation/core-communication-service-fixture-validation.ts';
 import {
   CORE_SERVICE_BEHAVIOR_EVIDENCE,
   type CoreServiceBehaviorEvidence
@@ -91,6 +96,7 @@ export interface CoreServiceBehaviorValidationOptions {
   readonly workflowContractFixture?: unknown;
   readonly taskFixture?: unknown;
   readonly eventFixture?: unknown;
+  readonly communicationFixture?: unknown;
 }
 
 interface ExpectedServiceEvidence {
@@ -109,7 +115,8 @@ interface ExpectedServiceEvidence {
     | 'opportunity'
     | 'workflow-contract'
     | 'task'
-    | 'event';
+    | 'event'
+    | 'communication';
   readonly contractId: string;
   readonly sourcePath: string;
   readonly operations: readonly string[];
@@ -128,7 +135,8 @@ interface ExpectedServiceEvidence {
     | 'opportunityFixture'
     | 'workflowContractFixture'
     | 'taskFixture'
-    | 'eventFixture';
+    | 'eventFixture'
+    | 'communicationFixture';
   readonly fixtureValidator: (
     fixture: unknown
   ) => readonly { readonly code: string }[];
@@ -390,6 +398,26 @@ const expectedEvidence = [
     fixtureValidator: (fixture) =>
       validateCoreEventServiceGovernedOccurrenceFoundationFixture(fixture)
         .issues
+  },
+  {
+    requirementId: 'must-service-communication-service',
+    serviceType: 'communication-reference-service',
+    domainId: 'communication',
+    contractId: 'core-service-communication-reference-service-contract',
+    sourcePath:
+      'books/book-02-core-specification/core-specs/services/communication-service.md',
+    operations: CORE_COMMUNICATION_IMPLEMENTED_OPERATIONS,
+    capabilities: CORE_COMMUNICATION_MINIMUM_CAPABILITIES,
+    unresolved: [
+      'unlinkCommunicationParticipant',
+      'linkCommunicationTask',
+      'linkCommunicationEvidence'
+    ],
+    fixtureOverride: 'communicationFixture',
+    fixtureValidator: (fixture) =>
+      validateCoreCommunicationServiceGovernedCommunicationFoundationFixture(
+        fixture
+      ).issues
   }
 ] as const satisfies readonly ExpectedServiceEvidence[];
 
@@ -439,7 +467,7 @@ export function validateCoreServiceBehaviorEvidence(
         evidence.length < expectedEvidence.length
           ? 'core.service.evidence_missing'
           : 'core.service.evidence_extra',
-        'Service behavior evidence must contain exactly Customer, Brand, Trademark, Jurisdiction, Classification, Document, Evidence, Matter, Order, Opportunity, Workflow Contract, Task, and Event entries in canonical order.',
+        'Service behavior evidence must contain exactly Customer, Brand, Trademark, Jurisdiction, Classification, Document, Evidence, Matter, Order, Opportunity, Workflow Contract, Task, Event, and Communication entries in canonical order.',
         'evidence'
       )
     );

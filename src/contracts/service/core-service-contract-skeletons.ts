@@ -67,7 +67,8 @@ const canonicalServiceSkeleton = (
     | 'CORE-TASK-045'
     | 'CORE-TASK-046'
     | 'CORE-TASK-047'
-    | 'CORE-TASK-048' = 'CORE-TASK-021'
+    | 'CORE-TASK-048'
+    | 'CORE-TASK-049' = 'CORE-TASK-021'
 ): CoreServiceContract => ({
   ...serviceSkeleton(
     serviceType,
@@ -267,46 +268,68 @@ const canonicalServiceSkeleton = (
                                 'archiveWorkflowContract'
                               ]
                             }
-                          : serviceType === 'task-service'
+                          : serviceType === 'communication-reference-service'
                             ? {
-                                behaviorImplementationTask: 'CORE-TASK-047',
+                                behaviorImplementationTask: 'CORE-TASK-049',
                                 behaviorDepth: 'level_2_3',
                                 implementedOperations: [
-                                  'createTask',
-                                  'getTask',
-                                  'listTasks',
-                                  'updateTask',
-                                  'changeTaskStatus',
-                                  'assignTask',
-                                  'reassignTask',
-                                  'unassignTask',
-                                  'linkTaskMatter',
-                                  'linkTaskWorkflowContract',
-                                  'linkTaskDependency',
-                                  'completeTask',
-                                  'cancelTask',
-                                  'reopenTask',
-                                  'validateTaskReference',
-                                  'archiveTask'
+                                  'createCommunication',
+                                  'getCommunication',
+                                  'listCommunications',
+                                  'updateCommunication',
+                                  'changeCommunicationStatus',
+                                  'linkCommunicationParticipant',
+                                  'linkCommunicationMatter',
+                                  'linkCommunicationCustomer',
+                                  'linkCommunicationAgent',
+                                  'linkCommunicationAttachment',
+                                  'linkCommunicationDocument',
+                                  'recordCommunicationSent',
+                                  'recordCommunicationReceived',
+                                  'validateCommunicationReference',
+                                  'archiveCommunication'
                                 ]
                               }
-                            : serviceType === 'event-service'
+                            : serviceType === 'task-service'
                               ? {
-                                  behaviorImplementationTask: 'CORE-TASK-046',
+                                  behaviorImplementationTask: 'CORE-TASK-047',
                                   behaviorDepth: 'level_2_3',
                                   implementedOperations: [
-                                    'recordEvent',
-                                    'getEvent',
-                                    'validateEventReference',
-                                    'validateEventPayload',
-                                    'updateEventStatus',
-                                    'markEventDispatched',
-                                    'markEventDispatchFailed',
-                                    'linkEventConsumer',
-                                    'archiveEvent'
+                                    'createTask',
+                                    'getTask',
+                                    'listTasks',
+                                    'updateTask',
+                                    'changeTaskStatus',
+                                    'assignTask',
+                                    'reassignTask',
+                                    'unassignTask',
+                                    'linkTaskMatter',
+                                    'linkTaskWorkflowContract',
+                                    'linkTaskDependency',
+                                    'completeTask',
+                                    'cancelTask',
+                                    'reopenTask',
+                                    'validateTaskReference',
+                                    'archiveTask'
                                   ]
                                 }
-                              : {})
+                              : serviceType === 'event-service'
+                                ? {
+                                    behaviorImplementationTask: 'CORE-TASK-046',
+                                    behaviorDepth: 'level_2_3',
+                                    implementedOperations: [
+                                      'recordEvent',
+                                      'getEvent',
+                                      'validateEventReference',
+                                      'validateEventPayload',
+                                      'updateEventStatus',
+                                      'markEventDispatched',
+                                      'markEventDispatchFailed',
+                                      'linkEventConsumer',
+                                      'archiveEvent'
+                                    ]
+                                  }
+                                : {})
   }
 });
 
@@ -512,15 +535,25 @@ export const CORE_SERVICE_CONTRACT_SKELETONS = [
     ],
     'CORE-TASK-042'
   ),
-  serviceSkeleton(
+  canonicalServiceSkeleton(
     'communication-reference-service',
     'communication',
     'Communication Reference Service Contract Skeleton',
-    'Skeleton contract boundary for communication reference service responsibilities.',
-    'Establishes a service contract placeholder for communication references without communication runtime behavior.',
-    ['Communication reference service contract boundary.'],
-    ['communication domain references'],
-    ['communication reference outputs']
+    'communication-service.md',
+    'Defines the Communication service ownership boundary for governed message and conversation lifecycle records without implementing external gateway delivery, full email or chat clients, marketing automation, or automatic Document or Evidence conversion.',
+    [
+      'Communication service ownership, lifecycle, participant linkage, related-reference linkage, delivery-status recording, validation, and audit trace boundary.'
+    ],
+    [
+      'communication, matter, task, customer, agent, service-provider, notification, event, attachment, document, evidence, permission, policy, and review references'
+    ],
+    [
+      'communication boundary references, governed safe views, delivery-status records, validation results, and Event trace handoff'
+    ],
+    [
+      'External email or chat gateway delivery, full messaging client, marketing automation, mass mailing, automatic Document conversion, automatic Evidence conversion, official submission, or autonomous AI sending.'
+    ],
+    'CORE-TASK-049'
   ),
   canonicalServiceSkeleton(
     'organization-service',

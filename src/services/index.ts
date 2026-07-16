@@ -13,3 +13,4 @@ export * from './event/index.ts';
 export * from './task/index.ts';
 
 export * from './workflow-contract/index.ts';
+export * from './communication/index.ts';

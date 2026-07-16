@@ -2,26 +2,26 @@ import assert from 'node:assert/strict';
 import { describe, it } from 'node:test';
 import { BOOK_02_MVP_GAP_BASELINE } from '../../src/index.ts';
 
-describe('CORE-TASK-046 Book 02 Event Service evidence', () => {
-  it('records Event Service as an owned Must Build behavior boundary', () => {
-    const event = BOOK_02_MVP_GAP_BASELINE.requirements.find(
-      (requirement) => requirement.id === 'must-service-event-service'
+describe('CORE-TASK-049 Book 02 Communication Service evidence', () => {
+  it('records Communication Service as governed message and conversation lifecycle authority', () => {
+    const communication = BOOK_02_MVP_GAP_BASELINE.requirements.find(
+      (requirement) => requirement.id === 'must-service-communication-service'
     );
-    assert.equal(event?.currentDisposition, 'meets_required_depth');
-    assert.equal(event?.currentDepth, 'level_2_3');
-    assert.deepEqual(event?.implementationFiles, [
+    assert.equal(communication?.currentDisposition, 'meets_required_depth');
+    assert.equal(communication?.currentDepth, 'level_2_3');
+    assert.deepEqual(communication?.implementationFiles, [
       'src/contracts/service/core-service-contract-skeletons.ts',
-      'src/services/event/core-event-service.ts'
+      'src/services/communication/core-communication-service.ts'
     ]);
-    assert.deepEqual(event?.testFiles, [
-      'tests/unit/core-event-service-governed-occurrence.test.ts'
+    assert.deepEqual(communication?.testFiles, [
+      'tests/unit/core-communication-service-governed-communication.test.ts'
     ]);
-    assert.deepEqual(event?.fixtureFiles, [
-      'fixtures/services/core-event-service-governed-occurrence-foundation.fixture.json'
+    assert.deepEqual(communication?.fixtureFiles, [
+      'fixtures/services/core-communication-service-governed-communication-foundation.fixture.json'
     ]);
   });
 
-  it('derives 45 / 3 / 44 while leaving five foundational authority Services unresolved', () => {
+  it('derives 45 / 3 / 44 and leaves five foundational authority Services unresolved', () => {
     assert.deepEqual(BOOK_02_MVP_GAP_BASELINE.summary.mustBuildNow, {
       total: 115,
       meets_required_depth: 45,

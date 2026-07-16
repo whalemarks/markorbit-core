@@ -355,13 +355,19 @@
     "serviceType": "communication-reference-service",
     "domainId": "communication",
     "name": "Communication Reference Service Contract Skeleton",
-    "description": "Skeleton contract boundary for communication reference service responsibilities.",
+    "description": "Canonical metadata skeleton for the communication Core Service boundary.",
     "status": "active",
     "book": "Book 02 — MarkOrbit Core Specification",
-    "purpose": "Establishes a service contract placeholder for communication references without communication runtime behavior.",
-    "owns": ["Communication reference service contract boundary."],
-    "consumes": ["communication domain references"],
-    "produces": ["communication reference outputs"],
+    "purpose": "Defines the Communication service ownership boundary for governed message and conversation lifecycle records without implementing external gateway delivery, full email or chat clients, marketing automation, or automatic Document or Evidence conversion.",
+    "owns": [
+      "Communication service ownership, lifecycle, participant linkage, related-reference linkage, delivery-status recording, validation, and audit trace boundary."
+    ],
+    "consumes": [
+      "communication, matter, task, customer, agent, service-provider, notification, event, attachment, document, evidence, permission, policy, and review references"
+    ],
+    "produces": [
+      "communication boundary references, governed safe views, delivery-status records, validation results, and Event trace handoff"
+    ],
     "allowedOperations": [
       "reference lookup category",
       "boundary evaluation category",
@@ -370,9 +376,37 @@
     "nonGoals": [
       "Executable service method definitions or service implementations.",
       "API routes, database access, workflow runtime, or Book 03 execution behavior.",
-      "Product UI behavior, concrete business logic, or AI agent authority."
+      "Product UI behavior, concrete business logic, or AI agent authority.",
+      "External email or chat gateway delivery, full messaging client, marketing automation, mass mailing, automatic Document conversion, automatic Evidence conversion, official submission, or autonomous AI sending."
     ],
-    "createdAt": "2026-07-09T00:00:00.000Z"
+    "createdAt": "2026-07-11T00:00:00.000Z",
+    "sourcePath": "books/book-02-core-specification/core-specs/services/communication-service.md",
+    "implementationDepth": "validated_skeleton",
+    "metadata": {
+      "specificationRepository": "whalemarks/markorbit-publication",
+      "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+      "specificationPath": "books/book-02-core-specification/",
+      "implementationTask": "CORE-TASK-049",
+      "behaviorImplementationTask": "CORE-TASK-049",
+      "behaviorDepth": "level_2_3",
+      "implementedOperations": [
+        "createCommunication",
+        "getCommunication",
+        "listCommunications",
+        "updateCommunication",
+        "changeCommunicationStatus",
+        "linkCommunicationParticipant",
+        "linkCommunicationMatter",
+        "linkCommunicationCustomer",
+        "linkCommunicationAgent",
+        "linkCommunicationAttachment",
+        "linkCommunicationDocument",
+        "recordCommunicationSent",
+        "recordCommunicationReceived",
+        "validateCommunicationReference",
+        "archiveCommunication"
+      ]
+    }
   },
   {
     "id": "core-service-organization-service-contract",

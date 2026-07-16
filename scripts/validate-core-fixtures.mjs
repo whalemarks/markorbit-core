@@ -43,6 +43,7 @@ import { validateCoreOpportunityServicePotentialDemandFoundationFixture } from '
 import { validateCoreTaskServiceActionableWorkFoundationFixture } from '../src/validation/core-task-service-fixture-validation.ts';
 import { validateCoreWorkflowContractServiceExecutionStructureFoundationFixture } from '../src/validation/core-workflow-contract-service-fixture-validation.ts';
 import { validateCoreEventServiceGovernedOccurrenceFoundationFixture } from '../src/validation/core-event-service-fixture-validation.ts';
+import { validateCoreCommunicationServiceGovernedCommunicationFoundationFixture } from '../src/validation/core-communication-service-fixture-validation.ts';
 
 const validators = {
   domain_registry: validateCoreDomainRegistryFixture,
@@ -102,6 +103,8 @@ const validators = {
     validateCoreTaskServiceActionableWorkFoundationFixture,
   core_workflow_contract_service_execution_structure_foundation:
     validateCoreWorkflowContractServiceExecutionStructureFoundationFixture,
+  core_communication_service_governed_communication_foundation:
+    validateCoreCommunicationServiceGovernedCommunicationFoundationFixture,
   core_event_service_governed_occurrence_foundation:
     validateCoreEventServiceGovernedOccurrenceFoundationFixture
 };

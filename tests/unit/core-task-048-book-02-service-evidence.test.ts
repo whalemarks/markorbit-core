@@ -22,12 +22,12 @@ describe('CORE-TASK-048 Book 02 Workflow Contract Service evidence', () => {
     ]);
   });
 
-  it('derives 44 / 3 / 45 while leaving Communication Service unresolved', () => {
+  it('derives 45 / 3 / 44 while leaving five foundational authority Services unresolved', () => {
     assert.deepEqual(BOOK_02_MVP_GAP_BASELINE.summary.mustBuildNow, {
       total: 115,
-      meets_required_depth: 44,
+      meets_required_depth: 45,
       partial_evidence: 3,
-      validated_skeleton_only: 45,
+      validated_skeleton_only: 44,
       boundary_scaffold_only: 5,
       semantic_overlap_only: 18,
       fixture_only: 0,
@@ -37,12 +37,15 @@ describe('CORE-TASK-048 Book 02 Workflow Contract Service evidence', () => {
       .filter(
         (requirement) =>
           requirement.layer === 'service' &&
-          requirement.currentDisposition === 'validated_skeleton_only' &&
-          requirement.id === 'must-service-communication-service'
+          requirement.currentDisposition === 'validated_skeleton_only'
       )
       .map((requirement) => requirement.id);
     assert.deepEqual(unresolvedServiceIds, [
-      'must-service-communication-service'
+      'must-service-identity-service',
+      'must-service-organization-service',
+      'must-service-user-service',
+      'must-service-permission-service',
+      'must-service-policy-service'
     ]);
   });
 });

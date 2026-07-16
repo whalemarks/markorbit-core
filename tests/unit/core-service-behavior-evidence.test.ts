@@ -7,6 +7,8 @@ import {
   CORE_BRAND_MINIMUM_CAPABILITIES,
   CORE_CLASSIFICATION_IMPLEMENTED_OPERATIONS,
   CORE_CLASSIFICATION_MINIMUM_CAPABILITIES,
+  CORE_COMMUNICATION_IMPLEMENTED_OPERATIONS,
+  CORE_COMMUNICATION_MINIMUM_CAPABILITIES,
   CORE_CUSTOMER_IMPLEMENTED_OPERATIONS,
   CORE_CUSTOMER_MINIMUM_CAPABILITIES,
   CORE_DOCUMENT_IMPLEMENTED_OPERATIONS,
@@ -46,13 +48,14 @@ const expectedRequirements = [
   'stub-service-opportunity-service',
   'must-service-workflow-contract-service',
   'must-service-task-service',
-  'must-service-event-service'
+  'must-service-event-service',
+  'must-service-communication-service'
 ];
 
 describe('Core Service behavior evidence', () => {
   it('validates exact dependency-first Service evidence in canonical order', () => {
     assert.deepEqual(validateCoreServiceBehaviorEvidence(), []);
-    assert.equal(CORE_SERVICE_BEHAVIOR_EVIDENCE.length, 13);
+    assert.equal(CORE_SERVICE_BEHAVIOR_EVIDENCE.length, 14);
     assert.deepEqual(
       CORE_SERVICE_BEHAVIOR_EVIDENCE.map((entry) => entry.requirementId),
       expectedRequirements
@@ -94,7 +97,11 @@ describe('Core Service behavior evidence', () => {
         CORE_WORKFLOW_CONTRACT_MINIMUM_CAPABILITIES
       ],
       [CORE_TASK_IMPLEMENTED_OPERATIONS, CORE_TASK_MINIMUM_CAPABILITIES],
-      [CORE_EVENT_IMPLEMENTED_OPERATIONS, CORE_EVENT_MINIMUM_CAPABILITIES]
+      [CORE_EVENT_IMPLEMENTED_OPERATIONS, CORE_EVENT_MINIMUM_CAPABILITIES],
+      [
+        CORE_COMMUNICATION_IMPLEMENTED_OPERATIONS,
+        CORE_COMMUNICATION_MINIMUM_CAPABILITIES
+      ]
     ] as const;
     for (const [index, [operations, capabilities]] of expectations.entries()) {
       assert.deepEqual(
@@ -122,7 +129,8 @@ describe('Core Service behavior evidence', () => {
       opportunity,
       workflowContract,
       task,
-      event
+      event,
+      communication
     ] = CORE_SERVICE_BEHAVIOR_EVIDENCE;
     assert.equal(
       validateCoreServiceBehaviorEvidence({
@@ -153,7 +161,8 @@ describe('Core Service behavior evidence', () => {
           opportunity,
           workflowContract,
           task,
-          event
+          event,
+          communication
         ]
       }).some((entry) => entry.code === 'core.service.evidence_extra'),
       true
@@ -173,7 +182,8 @@ describe('Core Service behavior evidence', () => {
           opportunity,
           workflowContract,
           task,
-          event
+          event,
+          communication
         ]
       }).some((entry) => entry.code === 'core.service.contract_mismatch'),
       true
@@ -193,7 +203,8 @@ describe('Core Service behavior evidence', () => {
           opportunity,
           workflowContract,
           task,
-          event
+          event,
+          communication
         ]
       }).some((entry) => entry.code === 'core.service.domain_mismatch'),
       true
@@ -213,7 +224,8 @@ describe('Core Service behavior evidence', () => {
           opportunity,
           workflowContract,
           task,
-          event
+          event,
+          communication
         ]
       }).some((entry) => entry.code === 'core.service.cross_service_evidence'),
       true
@@ -234,7 +246,8 @@ describe('Core Service behavior evidence', () => {
       opportunity,
       workflowContract,
       task,
-      event
+      event,
+      communication
     ] = CORE_SERVICE_BEHAVIOR_EVIDENCE;
     assert.equal(
       validateCoreServiceBehaviorEvidence({
@@ -251,7 +264,8 @@ describe('Core Service behavior evidence', () => {
           opportunity,
           workflowContract,
           task,
-          event
+          event,
+          communication
         ]
       }).some((entry) => entry.code === 'core.service.operation_missing'),
       true
@@ -275,14 +289,15 @@ describe('Core Service behavior evidence', () => {
           opportunity,
           workflowContract,
           task,
-          event
+          event,
+          communication
         ]
       }).some((entry) => entry.code === 'core.service.capability_missing'),
       true
     );
   });
 
-  it('executes all thirteen fixtures and rejects corrupted expectations', async () => {
+  it('executes all fourteen fixtures and rejects corrupted expectations', async () => {
     const fixtures = [
       [
         'customerFixture',
@@ -335,8 +350,23 @@ describe('Core Service behavior evidence', () => {
         'operationCount'
       ],
       [
+        'workflowContractFixture',
+        'fixtures/services/core-workflow-contract-service-execution-structure-foundation.fixture.json',
+        'operationCount'
+      ],
+      [
+        'taskFixture',
+        'fixtures/services/core-task-service-actionable-work-foundation.fixture.json',
+        'operationCount'
+      ],
+      [
         'eventFixture',
         'fixtures/services/core-event-service-governed-occurrence-foundation.fixture.json',
+        'operationCount'
+      ],
+      [
+        'communicationFixture',
+        'fixtures/services/core-communication-service-governed-communication-foundation.fixture.json',
         'operationCount'
       ]
     ] as const;
