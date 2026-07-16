@@ -18,13 +18,16 @@ jobs:
           ref: ${{ github.event.pull_request.head.ref }}
           fetch-depth: 0
 
-      - name: Assemble implementation patch
+      - name: Assemble implementation patches
         shell: bash
         run: |
           set -euo pipefail
           cat _automation/core-task-054-patch.part-*.b64 | base64 --decode > /tmp/core-task-054.patch.gz
           echo 'b988cea2ee227cd0a208a6498da34fbe2d8c80b119b238a8563378fb09bce18c  /tmp/core-task-054.patch.gz' | sha256sum --check
           gzip -dc /tmp/core-task-054.patch.gz > /tmp/core-task-054.patch
+          cat _automation/core-task-054-fix.part-*.b64 | base64 --decode > /tmp/core-task-054-fix.patch.gz
+          echo '8de574b881c29e3e182a1f8b59cb294caa75f006c61c87c8880c9515a9ec0f97  /tmp/core-task-054-fix.patch.gz' | sha256sum --check
+          gzip -dc /tmp/core-task-054-fix.patch.gz > /tmp/core-task-054-fix.patch
 
       - name: Reset to merged CORE-TASK-053 base
         shell: bash
@@ -32,12 +35,14 @@ jobs:
           set -euo pipefail
           git reset --hard 00063d536173b74cf3c98a061b6e7a8aefbc6649
 
-      - name: Check and apply implementation patch
+      - name: Check and apply implementation patches
         shell: bash
         run: |
           set -euo pipefail
           git apply --check /tmp/core-task-054.patch
           git apply /tmp/core-task-054.patch
+          git apply --check /tmp/core-task-054-fix.patch
+          git apply /tmp/core-task-054-fix.patch
 
       - name: Set up pnpm
         uses: pnpm/action-setup@v4
@@ -101,18 +106,7 @@ jobs:
         run: pnpm validate:fixtures
 
       - name: Test
-        shell: bash
-        run: |
-          set -o pipefail
-          pnpm test 2>&1 | tee /tmp/core-task-054-test.log
-
-      - name: Upload failing test log
-        if: failure()
-        uses: actions/upload-artifact@v4
-        with:
-          name: core-task-054-test-log
-          path: /tmp/core-task-054-test.log
-          retention-days: 1
+        run: pnpm test
 
       - name: Contract coverage
         run: pnpm coverage:contracts
