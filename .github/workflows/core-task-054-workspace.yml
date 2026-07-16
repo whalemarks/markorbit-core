@@ -101,7 +101,18 @@ jobs:
         run: pnpm validate:fixtures
 
       - name: Test
-        run: pnpm test
+        shell: bash
+        run: |
+          set -o pipefail
+          pnpm test 2>&1 | tee /tmp/core-task-054-test.log
+
+      - name: Upload failing test log
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: core-task-054-test-log
+          path: /tmp/core-task-054-test.log
+          retention-days: 1
 
       - name: Contract coverage
         run: pnpm coverage:contracts
