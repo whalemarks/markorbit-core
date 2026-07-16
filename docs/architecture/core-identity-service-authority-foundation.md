@@ -8,6 +8,8 @@ The Identity Object and Identity Service specifications use slightly different t
 
 Mutations are organization-scoped, idempotent, immutable at the public boundary, and roll back when Event trace handoff fails. Suspended, review-required, archived, and deleted-reference identities cannot be treated as active actor references. AI-initiated human identity creation and sensitive User linkage preserve Human Review.
 
+Historical Book 02 evidence tests validate target service subsequences rather than assuming no foundational service can precede Customer, and generic skeleton-depth tests select services that remain at `validated_skeleton_only`.
+
 ## Validation boundary
 
 The foundation is accepted only when type checking, linting, formatting, all required fixture validators, the complete repository test suite, contract acceptance, behavior acceptance, and the Book 02 MVP gap baseline pass together against the clean branch state.
