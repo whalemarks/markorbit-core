@@ -495,12 +495,16 @@
     "description": "Canonical metadata skeleton for the user Core Service boundary.",
     "status": "active",
     "book": "Book 02 — MarkOrbit Core Specification",
-    "purpose": "Defines the User service ownership boundary for account-participant records without implementing accounts, authentication, lifecycle mutation, identity resolution, or membership behavior.",
+    "purpose": "Defines the User service ownership boundary for stable account-participant records, lifecycle, governed Identity linkage, explicit Organization-context linkage, safe validation, deterministic Identity resolution, archival, and audit trace without absorbing Identity, Organization, Permission, Policy, authentication, or business-contact ownership.",
     "owns": [
-      "User service ownership, validation, identity-linkage, organization-linkage, and reference boundary."
+      "User service ownership, stable account-participant reference, lifecycle, required Identity linkage, explicit Organization-context linkage, reference validation, deterministic Identity resolution, archival, and audit trace boundary."
     ],
-    "consumes": ["user, identity, and organization references"],
-    "produces": ["user boundary references"],
+    "consumes": [
+      "user, identity, organization, permission, policy, review, audit, task, communication, customer, agent, partner, service-provider, and authentication references"
+    ],
+    "produces": [
+      "user boundary references, governed safe views, Identity and Organization link results, validation results, deterministic participant resolution results, and Event trace handoff"
+    ],
     "allowedOperations": [
       "reference lookup category",
       "boundary evaluation category",
@@ -510,7 +514,7 @@
       "Executable service method definitions or service implementations.",
       "API routes, database access, workflow runtime, or Book 03 execution behavior.",
       "Product UI behavior, concrete business logic, or AI agent authority.",
-      "Account runtime, authentication, credential handling, user mutation, membership administration, or permission grants."
+      "Authentication, password or credential storage, OAuth or SAML, session or token issuance, Identity ownership, Organization ownership or implicit membership, Permission grant, Policy decision, Customer record, Agent record, Partner record, Service Provider record, product profile, or AI User impersonation."
     ],
     "createdAt": "2026-07-11T00:00:00.000Z",
     "sourcePath": "books/book-02-core-specification/core-specs/services/user-service.md",
@@ -519,7 +523,21 @@
       "specificationRepository": "whalemarks/markorbit-publication",
       "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
       "specificationPath": "books/book-02-core-specification/",
-      "implementationTask": "CORE-TASK-021"
+      "implementationTask": "CORE-TASK-052",
+      "behaviorImplementationTask": "CORE-TASK-052",
+      "behaviorDepth": "level_2_3",
+      "implementedOperations": [
+        "createUser",
+        "getUser",
+        "updateUser",
+        "changeUserStatus",
+        "linkUserIdentity",
+        "linkUserOrganization",
+        "unlinkUserOrganization",
+        "validateUserReference",
+        "resolveUserByIdentity",
+        "archiveUser"
+      ]
     }
   },
   {

@@ -4,8 +4,8 @@ import { describe, it } from 'node:test';
 import { CORE_FIXTURE_MANIFEST, CORE_FIXTURE_TYPES } from '../../src/index.ts';
 
 describe('CORE_FIXTURE_MANIFEST', () => {
-  it('has exactly 43 entries', () => {
-    assert.equal(CORE_FIXTURE_MANIFEST.length, 43);
+  it('has exactly 44 entries', () => {
+    assert.equal(CORE_FIXTURE_MANIFEST.length, 44);
   });
 
   it('includes permission_contract_skeletons type', () => {
@@ -99,6 +99,12 @@ describe('CORE_FIXTURE_MANIFEST', () => {
     assert.equal(
       CORE_FIXTURE_TYPES.includes(
         'core_organization_service_operating_context_foundation'
+      ),
+      true
+    );
+    assert.equal(
+      CORE_FIXTURE_TYPES.includes(
+        'core_user_service_account_participant_foundation'
       ),
       true
     );
@@ -217,6 +223,7 @@ describe('CORE_FIXTURE_MANIFEST', () => {
       'core_mvp_object_public_reference_foundation',
       'core_identity_service_authority_foundation',
       'core_organization_service_operating_context_foundation',
+      'core_user_service_account_participant_foundation',
       'core_customer_service_core_lifecycle',
       'core_brand_service_core_lifecycle',
       'core_trademark_service_core_lifecycle',

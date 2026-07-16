@@ -21,7 +21,7 @@ const canonicalServiceEntries = [
     'user',
     'Core User Service Contract Skeleton',
     'user-service.md',
-    'CORE-TASK-021'
+    'CORE-TASK-052'
   ],
   [
     'brand-service',
@@ -126,6 +126,21 @@ const canonicalServiceSourceRoot =
   'books/book-02-core-specification/core-specs/services/';
 
 const behaviorLocks = {
+  'user-service': {
+    task: 'CORE-TASK-052',
+    operations: [
+      'createUser',
+      'getUser',
+      'updateUser',
+      'changeUserStatus',
+      'linkUserIdentity',
+      'linkUserOrganization',
+      'unlinkUserOrganization',
+      'validateUserReference',
+      'resolveUserByIdentity',
+      'archiveUser'
+    ]
+  },
   'organization-service': {
     task: 'CORE-TASK-051',
     operations: [
@@ -368,6 +383,14 @@ const behaviorLocks = {
 } as const;
 
 const promotedContracts = {
+  11: {
+    id: 'core-service-user-service-contract',
+    serviceType: 'user-service',
+    domainId: 'user',
+    name: 'Core User Service Contract Skeleton',
+    sourceFile: 'user-service.md',
+    task: 'CORE-TASK-052'
+  },
   10: {
     id: 'core-service-organization-service-contract',
     serviceType: 'organization-service',

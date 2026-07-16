@@ -1,5 +1,6 @@
 export * from './identity/index.ts';
 export * from './organization/index.ts';
+export * from './user/index.ts';
 export * from './customer/index.ts';
 export * from './brand/index.ts';
 export * from './trademark/index.ts';

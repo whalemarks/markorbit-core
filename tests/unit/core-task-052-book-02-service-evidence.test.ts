@@ -2,26 +2,26 @@ import assert from 'node:assert/strict';
 import { describe, it } from 'node:test';
 import { BOOK_02_MVP_GAP_BASELINE } from '../../src/index.ts';
 
-describe('CORE-TASK-049 Book 02 Communication Service evidence', () => {
-  it('records Communication Service as governed message and conversation lifecycle authority', () => {
-    const communication = BOOK_02_MVP_GAP_BASELINE.requirements.find(
-      (requirement) => requirement.id === 'must-service-communication-service'
+describe('CORE-TASK-052 Book 02 User Service evidence', () => {
+  it('records User Service as the owned account-participant authority', () => {
+    const user = BOOK_02_MVP_GAP_BASELINE.requirements.find(
+      (requirement) => requirement.id === 'must-service-user-service'
     );
-    assert.equal(communication?.currentDisposition, 'meets_required_depth');
-    assert.equal(communication?.currentDepth, 'level_2_3');
-    assert.deepEqual(communication?.implementationFiles, [
+    assert.equal(user?.currentDisposition, 'meets_required_depth');
+    assert.equal(user?.currentDepth, 'level_2_3');
+    assert.deepEqual(user?.implementationFiles, [
       'src/contracts/service/core-service-contract-skeletons.ts',
-      'src/services/communication/core-communication-service.ts'
+      'src/services/user/core-user-service.ts'
     ]);
-    assert.deepEqual(communication?.testFiles, [
-      'tests/unit/core-communication-service-governed-communication.test.ts'
+    assert.deepEqual(user?.testFiles, [
+      'tests/unit/core-user-service-account-participant-foundation.test.ts'
     ]);
-    assert.deepEqual(communication?.fixtureFiles, [
-      'fixtures/services/core-communication-service-governed-communication-foundation.fixture.json'
+    assert.deepEqual(user?.fixtureFiles, [
+      'fixtures/services/core-user-service-account-participant-foundation.fixture.json'
     ]);
   });
 
-  it('derives 48 / 3 / 41 and leaves two foundational authority Services unresolved', () => {
+  it('derives 48 / 3 / 41 and leaves Permission and Policy unresolved', () => {
     assert.deepEqual(BOOK_02_MVP_GAP_BASELINE.summary.mustBuildNow, {
       total: 115,
       meets_required_depth: 48,

@@ -5,6 +5,7 @@ import { BOOK_02_MVP_GAP_BASELINE } from '../../src/index.ts';
 const implementedServiceIds = [
   'must-service-identity-service',
   'must-service-organization-service',
+  'must-service-user-service',
   'must-service-customer-service',
   'must-service-brand-service',
   'must-service-trademark-service',
@@ -42,16 +43,16 @@ describe('CORE-TASK-042 Book 02 Service evidence', () => {
         (requirement) =>
           requirement.currentDisposition === 'validated_skeleton_only'
       ).length,
-      3
+      2
     );
   });
 
-  it('derives 47 / 3 / 42 and leaves global Service acceptance unresolved', () => {
+  it('derives 48 / 3 / 41 and leaves global Service acceptance unresolved', () => {
     assert.deepEqual(BOOK_02_MVP_GAP_BASELINE.summary.mustBuildNow, {
       total: 115,
-      meets_required_depth: 47,
+      meets_required_depth: 48,
       partial_evidence: 3,
-      validated_skeleton_only: 42,
+      validated_skeleton_only: 41,
       boundary_scaffold_only: 5,
       semantic_overlap_only: 18,
       fixture_only: 0,
