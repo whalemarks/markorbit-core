@@ -26,6 +26,7 @@ export const CORE_FIXTURE_TYPES = [
   'idempotency_enforcement',
   'book_02_mvp_gap_baseline',
   'core_mvp_object_public_reference_foundation',
+  'core_identity_service_authority_foundation',
   'core_customer_service_core_lifecycle',
   'core_brand_service_core_lifecycle',
   'core_trademark_service_core_lifecycle',
@@ -207,6 +208,12 @@ export const CORE_FIXTURE_MANIFEST = [
     id: 'core-mvp-object-public-reference-foundation',
     type: 'core_mvp_object_public_reference_foundation',
     path: 'fixtures/objects/core-mvp-object-public-reference-foundation.fixture.json',
+    required: true
+  },
+  {
+    id: 'core-identity-service-authority-foundation',
+    type: 'core_identity_service_authority_foundation',
+    path: 'fixtures/services/core-identity-service-authority-foundation.fixture.json',
     required: true
   },
   {

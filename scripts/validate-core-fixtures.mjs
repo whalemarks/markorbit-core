@@ -44,6 +44,7 @@ import { validateCoreTaskServiceActionableWorkFoundationFixture } from '../src/v
 import { validateCoreWorkflowContractServiceExecutionStructureFoundationFixture } from '../src/validation/core-workflow-contract-service-fixture-validation.ts';
 import { validateCoreEventServiceGovernedOccurrenceFoundationFixture } from '../src/validation/core-event-service-fixture-validation.ts';
 import { validateCoreCommunicationServiceGovernedCommunicationFoundationFixture } from '../src/validation/core-communication-service-fixture-validation.ts';
+import { validateCoreIdentityServiceAuthorityFoundationFixture } from '../src/validation/core-identity-service-fixture-validation.ts';
 
 const validators = {
   domain_registry: validateCoreDomainRegistryFixture,
@@ -79,6 +80,8 @@ const validators = {
   book_02_mvp_gap_baseline: validateBook02MvpGapBaselineFixture,
   core_mvp_object_public_reference_foundation:
     validateCoreMvpObjectPublicReferenceFoundationFixture,
+  core_identity_service_authority_foundation:
+    validateCoreIdentityServiceAuthorityFoundationFixture,
   core_customer_service_core_lifecycle:
     validateCoreCustomerServiceCoreLifecycleFixture,
   core_brand_service_core_lifecycle:

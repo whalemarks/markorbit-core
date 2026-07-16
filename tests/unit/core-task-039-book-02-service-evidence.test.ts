@@ -21,7 +21,9 @@ describe('CORE-TASK-039 Book 02 Service evidence', () => {
       assert.equal(requirement?.currentDepth, 'level_2_3');
     }
     assert.deepEqual(
-      implemented.slice(0, task039ServiceIds.length).map((entry) => entry.id),
+      implemented
+        .map((entry) => entry.id)
+        .filter((id) => task039ServiceIds.includes(id)),
       task039ServiceIds
     );
   });

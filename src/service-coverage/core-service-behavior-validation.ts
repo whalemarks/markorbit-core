@@ -1,4 +1,8 @@
 import { existsSync, readFileSync } from 'node:fs';
+import {
+  CORE_IDENTITY_IMPLEMENTED_OPERATIONS,
+  CORE_IDENTITY_MINIMUM_CAPABILITIES
+} from '../services/identity/index.ts';
 import { CORE_SERVICE_CONTRACT_SKELETONS } from '../contracts/index.ts';
 import {
   CORE_BRAND_IMPLEMENTED_OPERATIONS,
@@ -70,6 +74,7 @@ import { validateCoreWorkflowContractServiceExecutionStructureFoundationFixture 
 import { validateCoreTaskServiceActionableWorkFoundationFixture } from '../validation/core-task-service-fixture-validation.ts';
 import { validateCoreEventServiceGovernedOccurrenceFoundationFixture } from '../validation/core-event-service-fixture-validation.ts';
 import { validateCoreCommunicationServiceGovernedCommunicationFoundationFixture } from '../validation/core-communication-service-fixture-validation.ts';
+import { validateCoreIdentityServiceAuthorityFoundationFixture } from '../validation/core-identity-service-fixture-validation.ts';
 import {
   CORE_SERVICE_BEHAVIOR_EVIDENCE,
   type CoreServiceBehaviorEvidence
@@ -83,6 +88,7 @@ export interface CoreServiceBehaviorValidationIssue {
 
 export interface CoreServiceBehaviorValidationOptions {
   readonly evidence?: readonly CoreServiceBehaviorEvidence[];
+  readonly identityFixture?: unknown;
   readonly customerFixture?: unknown;
   readonly brandFixture?: unknown;
   readonly trademarkFixture?: unknown;
@@ -103,6 +109,7 @@ interface ExpectedServiceEvidence {
   readonly requirementId: string;
   readonly serviceType: string;
   readonly domainId:
+    | 'identity'
     | 'customer'
     | 'brand'
     | 'trademark'
@@ -123,6 +130,7 @@ interface ExpectedServiceEvidence {
   readonly capabilities: readonly string[];
   readonly unresolved: readonly string[];
   readonly fixtureOverride:
+    | 'identityFixture'
     | 'customerFixture'
     | 'brandFixture'
     | 'trademarkFixture'
@@ -143,6 +151,20 @@ interface ExpectedServiceEvidence {
 }
 
 const expectedEvidence = [
+  {
+    requirementId: 'must-service-identity-service',
+    serviceType: 'identity-resolution-service',
+    domainId: 'identity',
+    contractId: 'core-service-identity-resolution-service-contract',
+    sourcePath:
+      'books/book-02-core-specification/core-specs/services/identity-service.md',
+    operations: CORE_IDENTITY_IMPLEMENTED_OPERATIONS,
+    capabilities: CORE_IDENTITY_MINIMUM_CAPABILITIES,
+    unresolved: ['unlinkIdentity'],
+    fixtureOverride: 'identityFixture',
+    fixtureValidator: (fixture) =>
+      validateCoreIdentityServiceAuthorityFoundationFixture(fixture).issues
+  },
   {
     requirementId: 'must-service-customer-service',
     serviceType: 'customer-service',
@@ -467,7 +489,7 @@ export function validateCoreServiceBehaviorEvidence(
         evidence.length < expectedEvidence.length
           ? 'core.service.evidence_missing'
           : 'core.service.evidence_extra',
-        'Service behavior evidence must contain exactly Customer, Brand, Trademark, Jurisdiction, Classification, Document, Evidence, Matter, Order, Opportunity, Workflow Contract, Task, Event, and Communication entries in canonical order.',
+        'Service behavior evidence must contain exactly Identity, Customer, Brand, Trademark, Jurisdiction, Classification, Document, Evidence, Matter, Order, Opportunity, Workflow Contract, Task, Event, and Communication entries in canonical order.',
         'evidence'
       )
     );

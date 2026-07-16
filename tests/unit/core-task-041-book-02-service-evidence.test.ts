@@ -21,8 +21,8 @@ describe('CORE-TASK-041 Book 02 Service evidence', () => {
     );
     assert.deepEqual(
       implemented
-        .slice(0, implementedServiceIds.length)
-        .map((requirement) => requirement.id),
+        .map((requirement) => requirement.id)
+        .filter((id) => implementedServiceIds.includes(id)),
       implementedServiceIds
     );
     assert.ok(
