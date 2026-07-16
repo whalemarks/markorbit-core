@@ -1,0 +1,105 @@
+name: CORE-TASK-050 Fix Historical Assertions
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  fix-and-validate:
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout implementation branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+
+      - name: Finalize Identity evidence assertion
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          path = Path('tests/unit/book-02-mvp-gap-baseline.test.ts')
+          text = path.read_text()
+          old = """assert.deepEqual(service?.implementationFiles, [
+      'src/contracts/service/core-service-contract-skeletons.ts'
+    ]);"""
+          new = """assert.deepEqual(service?.implementationFiles, [
+      'src/contracts/service/core-service-contract-skeletons.ts',
+      'src/services/identity/core-identity-service.ts'
+    ]);"""
+          if old not in text:
+              raise SystemExit('Expected Identity implementation evidence assertion not found.')
+          path.write_text(text.replace(old, new, 1))
+          PY
+          rm -f CORE-TASK-050-TEST-DIAGNOSTICS.md
+          rm -f .github/core-task-050-finalize.trigger
+          rm -f .github/core-task-050-fix.trigger
+          rm -f .github/workflows/core-task-050-final-fix.yml
+          rm -f .github/workflows/core-task-050-fix.yml
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.28.1
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Format implementation
+        run: pnpm format
+
+      - name: Typecheck
+        run: pnpm typecheck
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: Check formatting
+        run: pnpm format:check
+
+      - name: Validate fixtures
+        run: pnpm validate:fixtures
+
+      - name: Test
+        run: pnpm test
+
+      - name: Contract coverage
+        run: pnpm coverage:contracts
+
+      - name: Contract gaps
+        run: pnpm gaps:contracts
+
+      - name: Contract acceptance
+        run: pnpm acceptance:contracts
+
+      - name: Behavior coverage
+        run: pnpm coverage:behavior
+
+      - name: Behavior gaps
+        run: pnpm gaps:behavior
+
+      - name: Behavior acceptance
+        run: pnpm acceptance:behavior
+
+      - name: Book 02 MVP gaps
+        run: pnpm gaps:mvp
+
+      - name: Commit validated final fix
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "CORE-TASK-050 — finalize Identity Service evidence assertions"
+          git push origin HEAD:agent/core-task-050-identity-service-authority-foundation
