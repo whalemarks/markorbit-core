@@ -1,1 +1,1 @@
-Trigger the registered Validation finalizer for CORE-TASK-050.
+Trigger the registered CORE-TASK-050 historical assertion fix.
