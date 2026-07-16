@@ -33,6 +33,8 @@ import {
   CORE_USER_MINIMUM_CAPABILITIES,
   CORE_PERMISSION_IMPLEMENTED_OPERATIONS,
   CORE_PERMISSION_MINIMUM_CAPABILITIES,
+  CORE_POLICY_IMPLEMENTED_OPERATIONS,
+  CORE_POLICY_MINIMUM_CAPABILITIES,
   CORE_SERVICE_BEHAVIOR_EVIDENCE,
   CORE_TASK_IMPLEMENTED_OPERATIONS,
   CORE_TASK_MINIMUM_CAPABILITIES,
@@ -48,6 +50,7 @@ const expectedRequirements = [
   'must-service-organization-service',
   'must-service-user-service',
   'must-service-permission-service',
+  'must-service-policy-service',
   'must-service-customer-service',
   'must-service-brand-service',
   'must-service-trademark-service',
@@ -67,7 +70,7 @@ const expectedRequirements = [
 describe('Core Service behavior evidence', () => {
   it('validates exact dependency-first Service evidence in canonical order', () => {
     assert.deepEqual(validateCoreServiceBehaviorEvidence(), []);
-    assert.equal(CORE_SERVICE_BEHAVIOR_EVIDENCE.length, 18);
+    assert.equal(CORE_SERVICE_BEHAVIOR_EVIDENCE.length, 19);
     assert.deepEqual(
       CORE_SERVICE_BEHAVIOR_EVIDENCE.map((entry) => entry.requirementId),
       expectedRequirements
@@ -86,6 +89,7 @@ describe('Core Service behavior evidence', () => {
         CORE_PERMISSION_IMPLEMENTED_OPERATIONS,
         CORE_PERMISSION_MINIMUM_CAPABILITIES
       ],
+      [CORE_POLICY_IMPLEMENTED_OPERATIONS, CORE_POLICY_MINIMUM_CAPABILITIES],
       [
         CORE_CUSTOMER_IMPLEMENTED_OPERATIONS,
         CORE_CUSTOMER_MINIMUM_CAPABILITIES
@@ -146,6 +150,7 @@ describe('Core Service behavior evidence', () => {
       organization,
       user,
       permission,
+      policy,
       customer,
       brand,
       trademark,
@@ -168,6 +173,7 @@ describe('Core Service behavior evidence', () => {
           organization,
           user,
           permission,
+          policy,
           customer,
           brand,
           trademark,
@@ -186,6 +192,7 @@ describe('Core Service behavior evidence', () => {
           organization,
           user,
           permission,
+          policy,
           customer,
           customer,
           trademark,
@@ -207,7 +214,11 @@ describe('Core Service behavior evidence', () => {
     assert.equal(
       validateCoreServiceBehaviorEvidence({
         evidence: [
-          { ...customer, contractId: 'fake-contract' },
+          identity,
+          organization,
+          user,
+          permission,
+          { ...policy, contractId: 'fake-contract' },
           brand,
           trademark,
           jurisdiction,
@@ -232,6 +243,7 @@ describe('Core Service behavior evidence', () => {
           organization,
           user,
           permission,
+          policy,
           customer,
           { ...brand, domainId: 'customer' },
           trademark,
@@ -257,6 +269,7 @@ describe('Core Service behavior evidence', () => {
           organization,
           user,
           permission,
+          policy,
           customer,
           { ...brand, serviceType: 'customer-service' },
           trademark,
@@ -283,6 +296,7 @@ describe('Core Service behavior evidence', () => {
       organization,
       user,
       permission,
+      policy,
       customer,
       brand,
       trademark,
@@ -305,6 +319,7 @@ describe('Core Service behavior evidence', () => {
           organization,
           user,
           permission,
+          policy,
           customer,
           brand,
           trademark,
@@ -330,6 +345,7 @@ describe('Core Service behavior evidence', () => {
           organization,
           user,
           permission,
+          policy,
           customer,
           brand,
           trademark,
@@ -354,7 +370,7 @@ describe('Core Service behavior evidence', () => {
     );
   });
 
-  it('executes all eighteen fixtures and rejects corrupted expectations', async () => {
+  it('executes all nineteen fixtures and rejects corrupted expectations', async () => {
     const fixtures = [
       [
         'identityFixture',
@@ -374,6 +390,11 @@ describe('Core Service behavior evidence', () => {
       [
         'permissionFixture',
         'fixtures/services/core-permission-service-governed-grant-foundation.fixture.json',
+        'operationCount'
+      ],
+      [
+        'policyFixture',
+        'fixtures/services/core-policy-service-contextual-decision-foundation.fixture.json',
         'operationCount'
       ],
       [

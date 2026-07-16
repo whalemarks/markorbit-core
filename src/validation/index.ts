@@ -21,3 +21,4 @@ export * from './core-organization-service-fixture-validation.ts';
 export * from './core-user-service-fixture-validation.ts';
 
 export * from './core-permission-service-fixture-validation.ts';
+export * from './core-policy-service-fixture-validation.ts';

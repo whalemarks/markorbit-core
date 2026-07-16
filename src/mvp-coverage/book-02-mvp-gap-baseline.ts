@@ -1501,12 +1501,9 @@ export function deriveBook02MvpGapSummary(
         must.every((r) => r.currentDisposition === 'meets_required_depth')
     },
     knownExecutionSpineGaps: [
-      'Service behavior',
       'API validator/service delegation',
-      'exact MVP Events',
       'three preview/apply Workflows',
-      'five named Agent scaffolds',
-      'executable test families'
+      'API, Workflow, and Agent Event emission separation'
     ]
   };
 }

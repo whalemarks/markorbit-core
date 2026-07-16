@@ -106,13 +106,19 @@
     "serviceType": "policy-evaluation-service",
     "domainId": "policy",
     "name": "Policy Evaluation Service Contract Skeleton",
-    "description": "Skeleton contract boundary for policy evaluation service responsibilities.",
+    "description": "Canonical metadata skeleton for the policy Core Service boundary.",
     "status": "active",
     "book": "Book 02 — MarkOrbit Core Specification",
-    "purpose": "Establishes a service contract placeholder for policy ownership boundaries without implementing policy execution.",
-    "owns": ["Policy evaluation service contract boundary."],
-    "consumes": ["policy domain references"],
-    "produces": ["policy evaluation references"],
+    "purpose": "Defines the Policy service ownership boundary for contextual rule lifecycle, Permission-aware evaluation, restriction, review, approval, redaction, non-disclosure guidance, safe reference validation, applicable-policy listing, archival and audit trace without granting Permission, executing approval, replacing Workflow or professional judgment, or embedding jurisdiction-specific legal rule engines.",
+    "owns": [
+      "Policy service ownership, contextual rule lifecycle, Permission-aware evaluation, restriction and safe-output guidance, reference validation, applicable-policy listing, archival, and audit trace boundary."
+    ],
+    "consumes": [
+      "policy, permission decision, identity, user, organization, AI agent, system actor, action, resource, jurisdiction, confidentiality, workflow state, context, review, approval, audit, and event references"
+    ],
+    "produces": [
+      "Policy boundary references, governed safe views, deterministic contextual decisions, review and approval requirements, redaction and non-disclosure guidance, validation results, and Event trace handoff"
+    ],
     "allowedOperations": [
       "reference lookup category",
       "boundary evaluation category",
@@ -121,9 +127,30 @@
     "nonGoals": [
       "Executable service method definitions or service implementations.",
       "API routes, database access, workflow runtime, or Book 03 execution behavior.",
-      "Product UI behavior, concrete business logic, or AI agent authority."
+      "Product UI behavior, concrete business logic, or AI agent authority.",
+      "Permission grant ownership; authentication; workflow or professional approval execution; professional judgment; jurisdiction-specific legal rule engine; protected condition or resource disclosure; product-specific policy logic; autonomous AI policy override or bypass."
     ],
-    "createdAt": "2026-07-09T00:00:00.000Z"
+    "createdAt": "2026-07-11T00:00:00.000Z",
+    "sourcePath": "books/book-02-core-specification/core-specs/services/policy-service.md",
+    "implementationDepth": "validated_skeleton",
+    "metadata": {
+      "specificationRepository": "whalemarks/markorbit-publication",
+      "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+      "specificationPath": "books/book-02-core-specification/",
+      "implementationTask": "CORE-TASK-054",
+      "behaviorImplementationTask": "CORE-TASK-054",
+      "behaviorDepth": "level_2_3",
+      "implementedOperations": [
+        "createPolicy",
+        "getPolicy",
+        "updatePolicy",
+        "changePolicyStatus",
+        "evaluatePolicy",
+        "validatePolicyReference",
+        "listApplicablePolicies",
+        "archivePolicy"
+      ]
+    }
   },
   {
     "id": "core-service-knowledge-reference-service-contract",

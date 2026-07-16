@@ -15,6 +15,10 @@ import {
   CORE_PERMISSION_IMPLEMENTED_OPERATIONS,
   CORE_PERMISSION_MINIMUM_CAPABILITIES
 } from '../services/permission/index.ts';
+import {
+  CORE_POLICY_IMPLEMENTED_OPERATIONS,
+  CORE_POLICY_MINIMUM_CAPABILITIES
+} from '../services/policy/index.ts';
 import { CORE_SERVICE_CONTRACT_SKELETONS } from '../contracts/index.ts';
 import {
   CORE_BRAND_IMPLEMENTED_OPERATIONS,
@@ -90,6 +94,7 @@ import { validateCoreIdentityServiceAuthorityFoundationFixture } from '../valida
 import { validateCoreOrganizationServiceOperatingContextFoundationFixture } from '../validation/core-organization-service-fixture-validation.ts';
 import { validateCoreUserServiceAccountParticipantFoundationFixture } from '../validation/core-user-service-fixture-validation.ts';
 import { validateCorePermissionServiceGovernedGrantFoundationFixture } from '../validation/core-permission-service-fixture-validation.ts';
+import { validateCorePolicyServiceContextualDecisionFoundationFixture } from '../validation/core-policy-service-fixture-validation.ts';
 import {
   CORE_SERVICE_BEHAVIOR_EVIDENCE,
   type CoreServiceBehaviorEvidence
@@ -107,6 +112,7 @@ export interface CoreServiceBehaviorValidationOptions {
   readonly organizationFixture?: unknown;
   readonly userFixture?: unknown;
   readonly permissionFixture?: unknown;
+  readonly policyFixture?: unknown;
   readonly customerFixture?: unknown;
   readonly brandFixture?: unknown;
   readonly trademarkFixture?: unknown;
@@ -131,6 +137,7 @@ interface ExpectedServiceEvidence {
     | 'organization'
     | 'user'
     | 'permission'
+    | 'policy'
     | 'customer'
     | 'brand'
     | 'trademark'
@@ -155,6 +162,7 @@ interface ExpectedServiceEvidence {
     | 'organizationFixture'
     | 'userFixture'
     | 'permissionFixture'
+    | 'policyFixture'
     | 'customerFixture'
     | 'brandFixture'
     | 'trademarkFixture'
@@ -235,6 +243,29 @@ const expectedEvidence = [
     fixtureOverride: 'permissionFixture',
     fixtureValidator: (fixture) =>
       validateCorePermissionServiceGovernedGrantFoundationFixture(fixture)
+        .issues
+  },
+  {
+    requirementId: 'must-service-policy-service',
+    serviceType: 'policy-evaluation-service',
+    domainId: 'policy',
+    contractId: 'core-service-policy-evaluation-service-contract',
+    sourcePath:
+      'books/book-02-core-specification/core-specs/services/policy-service.md',
+    operations: CORE_POLICY_IMPLEMENTED_OPERATIONS,
+    capabilities: CORE_POLICY_MINIMUM_CAPABILITIES,
+    unresolved: [
+      'fullPolicyLanguageEngine',
+      'complexPolicyComposition',
+      'externalComplianceEngineIntegration',
+      'jurisdictionSpecificLegalRuleEngine',
+      'advancedDataLossPrevention',
+      'dynamicRiskScoring',
+      'policySimulationUi'
+    ],
+    fixtureOverride: 'policyFixture',
+    fixtureValidator: (fixture) =>
+      validateCorePolicyServiceContextualDecisionFoundationFixture(fixture)
         .issues
   },
   {
@@ -561,7 +592,7 @@ export function validateCoreServiceBehaviorEvidence(
         evidence.length < expectedEvidence.length
           ? 'core.service.evidence_missing'
           : 'core.service.evidence_extra',
-        'Service behavior evidence must contain exactly Identity, Organization, User, Permission, Customer, Brand, Trademark, Jurisdiction, Classification, Document, Evidence, Matter, Order, Opportunity, Workflow Contract, Task, Event, and Communication entries in canonical order.',
+        'Service behavior evidence must contain exactly Identity, Organization, User, Permission, Policy, Customer, Brand, Trademark, Jurisdiction, Classification, Document, Evidence, Matter, Order, Opportunity, Workflow Contract, Task, Event, and Communication entries in canonical order.',
         'evidence'
       )
     );

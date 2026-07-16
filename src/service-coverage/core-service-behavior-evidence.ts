@@ -16,6 +16,10 @@ import {
   CORE_PERMISSION_MINIMUM_CAPABILITIES
 } from '../services/permission/index.ts';
 import {
+  CORE_POLICY_IMPLEMENTED_OPERATIONS,
+  CORE_POLICY_MINIMUM_CAPABILITIES
+} from '../services/policy/index.ts';
+import {
   CORE_BRAND_IMPLEMENTED_OPERATIONS,
   CORE_BRAND_MINIMUM_CAPABILITIES
 } from '../services/brand/index.ts';
@@ -168,6 +172,33 @@ export const CORE_SERVICE_BEHAVIOR_EVIDENCE = [
     ],
     fixtureFiles: [
       'fixtures/services/core-permission-service-governed-grant-foundation.fixture.json'
+    ]
+  },
+  {
+    requirementId: 'must-service-policy-service',
+    serviceType: 'policy-evaluation-service',
+    domainId: 'policy',
+    contractId: 'core-service-policy-evaluation-service-contract',
+    sourcePath:
+      'books/book-02-core-specification/core-specs/services/policy-service.md',
+    currentDepth: 'level_2_3',
+    operations: CORE_POLICY_IMPLEMENTED_OPERATIONS,
+    provenMinimumCapabilities: CORE_POLICY_MINIMUM_CAPABILITIES,
+    unresolvedServiceOperations: [
+      'fullPolicyLanguageEngine',
+      'complexPolicyComposition',
+      'externalComplianceEngineIntegration',
+      'jurisdictionSpecificLegalRuleEngine',
+      'advancedDataLossPrevention',
+      'dynamicRiskScoring',
+      'policySimulationUi'
+    ],
+    implementationFiles: ['src/services/policy/core-policy-service.ts'],
+    testFiles: [
+      'tests/unit/core-policy-service-contextual-decision-foundation.test.ts'
+    ],
+    fixtureFiles: [
+      'fixtures/services/core-policy-service-contextual-decision-foundation.fixture.json'
     ]
   },
   {

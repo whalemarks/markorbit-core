@@ -28,14 +28,14 @@ describe('CORE-TASK-039 Book 02 Service evidence', () => {
     );
   });
 
-  it('keeps global Service acceptance unresolved until every Must Build Service owns behavior', () => {
+  it('reflects final Service acceptance after every Must Build Service owns behavior', () => {
     const criterion = BOOK_02_MVP_GAP_BASELINE.acceptanceCriteria.find(
       (entry) => entry.id === 'must-build-services-own-behavior'
     );
-    assert.equal(criterion?.satisfied, false);
+    assert.equal(criterion?.satisfied, true);
     assert.equal(
       BOOK_02_MVP_GAP_BASELINE.summary.acceptance.acceptanceCriteriaSatisfied,
-      11
+      12
     );
     assert.equal(
       BOOK_02_MVP_GAP_BASELINE.summary.acceptance.book02MvpComplete,
