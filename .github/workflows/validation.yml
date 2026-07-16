@@ -41,6 +41,7 @@ jobs:
           PY
           rm -f CORE-TASK-050-TEST-DIAGNOSTICS.md
           rm -f .github/workflows/core-task-050-final-fix.yml
+          rm -f .github/core-task-050-finalize.trigger
           git fetch origin main
           git checkout origin/main -- .github/workflows/validation.yml
           git config user.name "github-actions[bot]"
