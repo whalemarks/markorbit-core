@@ -102,6 +102,14 @@ export function validateBook02PostServiceCompletionAudit(
         'executionWorkstreams'
       )
     );
+  if (actual.nextTask !== expected.nextTask)
+    issues.push(
+      issue(
+        'book02.post_service_audit.next_task_drift',
+        'Post-Service next task drifted.',
+        'nextTask'
+      )
+    );
   if (actual.serviceClosure.zeroServiceGap !== true)
     issues.push(
       issue(

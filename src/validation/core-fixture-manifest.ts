@@ -10,6 +10,7 @@ export const CORE_FIXTURE_TYPES = [
   'service_contract_skeletons',
   'api_contract_skeletons',
   'event_catalog_skeletons',
+  'core_mvp_event_contract_lock',
   'workflow_catalog_skeletons',
   'permission_contract_skeletons',
   'policy_contract_skeletons',
@@ -123,6 +124,12 @@ export const CORE_FIXTURE_MANIFEST = [
     id: 'core-event-catalog-skeletons',
     type: 'event_catalog_skeletons',
     path: 'fixtures/contracts/core-event-catalog-skeletons.fixture.json',
+    required: true
+  },
+  {
+    id: 'core-mvp-event-contract-lock',
+    type: 'core_mvp_event_contract_lock',
+    path: 'fixtures/contracts/core-mvp-event-contract-lock.fixture.json',
     required: true
   },
   {

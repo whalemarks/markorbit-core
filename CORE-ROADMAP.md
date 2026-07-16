@@ -260,3 +260,13 @@ CORE-TASK-040 note: Classification Service core scope and validation behavior is
 - Domain skeletons with executable tests are accepted for MVP and do not require artificial runtime promotion.
 - Completion still requires all non-Domain Must Build requirements and all 19 acceptance criteria.
 - Next: CORE-TASK-056 — Exact MVP Event Contract and Alias Lock.
+
+## CORE-TASK-056 — Exact MVP Event Contract and Alias Lock
+
+- Completed all 18 exact Must Build Event records.
+- Locked 15 canonical contracts and 3 validated aliases: document-attached, communication-reviewed and workflow-contract-previewed.
+- Added deterministic lock, validator, fixture, manifest validation and positive/negative tests.
+- Event semantic-overlap requirements reduced from 18 to 0.
+- Remaining non-Domain completion blockers: 29.
+- Acceptance remains 12 / 19; no API, Workflow or Agent completion is claimed.
+- Next: CORE-TASK-057A — first API validator and Service-delegation batch.

@@ -506,11 +506,18 @@ describe('Book 02 MVP gap baseline validation', () => {
       )
     );
     const event = cloneRecord();
-    const er = requirementsOf(event).find(
-      (r) => r.currentDisposition === 'semantic_overlap_only'
-    );
-    if (!er) throw new Error('Expected semantic overlap event.');
+    const er = requirementsOf(event).find((r) => r.layer === 'event');
+    if (!er) throw new Error('Expected MVP Event requirement.');
     er.currentDisposition = 'meets_required_depth';
+    er.currentDepth = 'level_0';
+    er.implementationFiles = [
+      'src/contracts/event/core-event-catalog-skeletons.ts'
+    ];
+    er.testFiles = [];
+    er.fixtureFiles = [];
+    er.gapReasons = [
+      'Generic catalog semantics overlap, but no explicit validated canonical alias mapping exists.'
+    ];
     assert.ok(
       codes(validateBook02MvpGapBaseline(event)).includes(
         'book02.depth.generic_event_overlap'

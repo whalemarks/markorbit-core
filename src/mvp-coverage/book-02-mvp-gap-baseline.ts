@@ -10,6 +10,8 @@ import {
   CORE_COMMON_CONTRACT_SKELETONS,
   CORE_DOMAIN_CONTRACT_SKELETONS,
   CORE_EVENT_CATALOG_SKELETONS,
+  CORE_MVP_EVENT_CONTRACT_LOCKS,
+  validateCoreMvpEventContractLocks,
   CORE_OBJECT_CONTRACT_SKELETONS,
   CORE_SERVICE_CONTRACT_SKELETONS,
   CORE_TEST_CONTRACT_SKELETONS,
@@ -729,6 +731,28 @@ function evidenceFor(identity: Book02MvpRequirementIdentity): CurrentEvidence {
   }
   if (identity.layer === 'event') {
     const eventType = identity.id.replace('must-event-', '');
+    const locked = CORE_MVP_EVENT_CONTRACT_LOCKS.find(
+      (entry) => entry.requirementId === identity.id
+    );
+    if (locked && validateCoreMvpEventContractLocks().length === 0) {
+      return {
+        contractIds: [
+          String(locked.id),
+          ...(locked.resolution.aliasTargetContractId
+            ? [String(locked.resolution.aliasTargetContractId)]
+            : [])
+        ],
+        implementationFiles: [
+          'src/contracts/event/core-mvp-event-contract-lock.ts',
+          'src/contracts/event/core-mvp-event-contract-validation.ts'
+        ],
+        testFiles: ['tests/unit/core-mvp-event-contract-lock.test.ts'],
+        fixtureFiles: [
+          'fixtures/contracts/core-mvp-event-contract-lock.fixture.json'
+        ],
+        currentDepth: 'level_1'
+      };
+    }
     const exact = CORE_EVENT_CATALOG_SKELETONS.find(
       (entry) => entry.eventType === eventType
     );
@@ -884,6 +908,13 @@ function disposition(
         : 'missing';
   }
   if (identity.layer === 'event') {
+    if (
+      ev.currentDepth === 'level_1' &&
+      ev.implementationFiles.length > 1 &&
+      ev.testFiles.length > 0 &&
+      ev.fixtureFiles.length > 0
+    )
+      return 'meets_required_depth';
     return ev.contractIds.length > 0 ? 'semantic_overlap_only' : 'missing';
   }
   if (identity.layer === 'agent')

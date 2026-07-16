@@ -2451,18 +2451,19 @@
         "schema_version"
       ],
       "dependencies": [],
-      "currentDisposition": "semantic_overlap_only",
-      "currentDepth": "level_0",
-      "contractIds": ["core-event-core-object-created-contract"],
+      "currentDisposition": "meets_required_depth",
+      "currentDepth": "level_1",
+      "contractIds": ["core-mvp-event-customer-created-contract"],
       "implementationFiles": [
-        "src/contracts/event/core-event-catalog-skeletons.ts"
+        "src/contracts/event/core-mvp-event-contract-lock.ts",
+        "src/contracts/event/core-mvp-event-contract-validation.ts"
       ],
-      "testFiles": [],
-      "fixtureFiles": [],
+      "testFiles": ["tests/unit/core-mvp-event-contract-lock.test.ts"],
+      "fixtureFiles": [
+        "fixtures/contracts/core-mvp-event-contract-lock.fixture.json"
+      ],
       "violationReasons": [],
-      "gapReasons": [
-        "Generic catalog semantics overlap, but no explicit validated canonical alias mapping exists."
-      ]
+      "gapReasons": []
     },
     {
       "id": "must-event-brand-created",
@@ -2485,18 +2486,19 @@
         "schema_version"
       ],
       "dependencies": [],
-      "currentDisposition": "semantic_overlap_only",
-      "currentDepth": "level_0",
-      "contractIds": ["core-event-core-object-created-contract"],
+      "currentDisposition": "meets_required_depth",
+      "currentDepth": "level_1",
+      "contractIds": ["core-mvp-event-brand-created-contract"],
       "implementationFiles": [
-        "src/contracts/event/core-event-catalog-skeletons.ts"
+        "src/contracts/event/core-mvp-event-contract-lock.ts",
+        "src/contracts/event/core-mvp-event-contract-validation.ts"
       ],
-      "testFiles": [],
-      "fixtureFiles": [],
+      "testFiles": ["tests/unit/core-mvp-event-contract-lock.test.ts"],
+      "fixtureFiles": [
+        "fixtures/contracts/core-mvp-event-contract-lock.fixture.json"
+      ],
       "violationReasons": [],
-      "gapReasons": [
-        "Generic catalog semantics overlap, but no explicit validated canonical alias mapping exists."
-      ]
+      "gapReasons": []
     },
     {
       "id": "must-event-trademark-created",
@@ -2519,18 +2521,19 @@
         "schema_version"
       ],
       "dependencies": [],
-      "currentDisposition": "semantic_overlap_only",
-      "currentDepth": "level_0",
-      "contractIds": ["core-event-core-object-created-contract"],
+      "currentDisposition": "meets_required_depth",
+      "currentDepth": "level_1",
+      "contractIds": ["core-mvp-event-trademark-created-contract"],
       "implementationFiles": [
-        "src/contracts/event/core-event-catalog-skeletons.ts"
+        "src/contracts/event/core-mvp-event-contract-lock.ts",
+        "src/contracts/event/core-mvp-event-contract-validation.ts"
       ],
-      "testFiles": [],
-      "fixtureFiles": [],
+      "testFiles": ["tests/unit/core-mvp-event-contract-lock.test.ts"],
+      "fixtureFiles": [
+        "fixtures/contracts/core-mvp-event-contract-lock.fixture.json"
+      ],
       "violationReasons": [],
-      "gapReasons": [
-        "Generic catalog semantics overlap, but no explicit validated canonical alias mapping exists."
-      ]
+      "gapReasons": []
     },
     {
       "id": "must-event-matter-created",
@@ -2553,18 +2556,19 @@
         "schema_version"
       ],
       "dependencies": [],
-      "currentDisposition": "semantic_overlap_only",
-      "currentDepth": "level_0",
-      "contractIds": ["core-event-core-object-created-contract"],
+      "currentDisposition": "meets_required_depth",
+      "currentDepth": "level_1",
+      "contractIds": ["core-mvp-event-matter-created-contract"],
       "implementationFiles": [
-        "src/contracts/event/core-event-catalog-skeletons.ts"
+        "src/contracts/event/core-mvp-event-contract-lock.ts",
+        "src/contracts/event/core-mvp-event-contract-validation.ts"
       ],
-      "testFiles": [],
-      "fixtureFiles": [],
+      "testFiles": ["tests/unit/core-mvp-event-contract-lock.test.ts"],
+      "fixtureFiles": [
+        "fixtures/contracts/core-mvp-event-contract-lock.fixture.json"
+      ],
       "violationReasons": [],
-      "gapReasons": [
-        "Generic catalog semantics overlap, but no explicit validated canonical alias mapping exists."
-      ]
+      "gapReasons": []
     },
     {
       "id": "must-event-order-created",
@@ -2587,18 +2591,19 @@
         "schema_version"
       ],
       "dependencies": [],
-      "currentDisposition": "semantic_overlap_only",
-      "currentDepth": "level_0",
-      "contractIds": ["core-event-core-object-created-contract"],
+      "currentDisposition": "meets_required_depth",
+      "currentDepth": "level_1",
+      "contractIds": ["core-mvp-event-order-created-contract"],
       "implementationFiles": [
-        "src/contracts/event/core-event-catalog-skeletons.ts"
+        "src/contracts/event/core-mvp-event-contract-lock.ts",
+        "src/contracts/event/core-mvp-event-contract-validation.ts"
       ],
-      "testFiles": [],
-      "fixtureFiles": [],
+      "testFiles": ["tests/unit/core-mvp-event-contract-lock.test.ts"],
+      "fixtureFiles": [
+        "fixtures/contracts/core-mvp-event-contract-lock.fixture.json"
+      ],
       "violationReasons": [],
-      "gapReasons": [
-        "Generic catalog semantics overlap, but no explicit validated canonical alias mapping exists."
-      ]
+      "gapReasons": []
     },
     {
       "id": "must-event-document-created",
@@ -2621,18 +2626,19 @@
         "schema_version"
       ],
       "dependencies": [],
-      "currentDisposition": "semantic_overlap_only",
-      "currentDepth": "level_0",
-      "contractIds": ["core-event-core-object-created-contract"],
+      "currentDisposition": "meets_required_depth",
+      "currentDepth": "level_1",
+      "contractIds": ["core-mvp-event-document-created-contract"],
       "implementationFiles": [
-        "src/contracts/event/core-event-catalog-skeletons.ts"
+        "src/contracts/event/core-mvp-event-contract-lock.ts",
+        "src/contracts/event/core-mvp-event-contract-validation.ts"
       ],
-      "testFiles": [],
-      "fixtureFiles": [],
+      "testFiles": ["tests/unit/core-mvp-event-contract-lock.test.ts"],
+      "fixtureFiles": [
+        "fixtures/contracts/core-mvp-event-contract-lock.fixture.json"
+      ],
       "violationReasons": [],
-      "gapReasons": [
-        "Generic catalog semantics overlap, but no explicit validated canonical alias mapping exists."
-      ]
+      "gapReasons": []
     },
     {
       "id": "must-event-document-attached",
@@ -2655,18 +2661,22 @@
         "schema_version"
       ],
       "dependencies": [],
-      "currentDisposition": "semantic_overlap_only",
-      "currentDepth": "level_0",
-      "contractIds": ["core-event-core-object-updated-contract"],
-      "implementationFiles": [
-        "src/contracts/event/core-event-catalog-skeletons.ts"
+      "currentDisposition": "meets_required_depth",
+      "currentDepth": "level_1",
+      "contractIds": [
+        "core-mvp-event-document-attached-contract",
+        "core-event-core-object-updated-contract"
       ],
-      "testFiles": [],
-      "fixtureFiles": [],
+      "implementationFiles": [
+        "src/contracts/event/core-mvp-event-contract-lock.ts",
+        "src/contracts/event/core-mvp-event-contract-validation.ts"
+      ],
+      "testFiles": ["tests/unit/core-mvp-event-contract-lock.test.ts"],
+      "fixtureFiles": [
+        "fixtures/contracts/core-mvp-event-contract-lock.fixture.json"
+      ],
       "violationReasons": [],
-      "gapReasons": [
-        "Generic catalog semantics overlap, but no explicit validated canonical alias mapping exists."
-      ]
+      "gapReasons": []
     },
     {
       "id": "must-event-evidence-created",
@@ -2689,18 +2699,19 @@
         "schema_version"
       ],
       "dependencies": [],
-      "currentDisposition": "semantic_overlap_only",
-      "currentDepth": "level_0",
-      "contractIds": ["core-event-core-object-created-contract"],
+      "currentDisposition": "meets_required_depth",
+      "currentDepth": "level_1",
+      "contractIds": ["core-mvp-event-evidence-created-contract"],
       "implementationFiles": [
-        "src/contracts/event/core-event-catalog-skeletons.ts"
+        "src/contracts/event/core-mvp-event-contract-lock.ts",
+        "src/contracts/event/core-mvp-event-contract-validation.ts"
       ],
-      "testFiles": [],
-      "fixtureFiles": [],
+      "testFiles": ["tests/unit/core-mvp-event-contract-lock.test.ts"],
+      "fixtureFiles": [
+        "fixtures/contracts/core-mvp-event-contract-lock.fixture.json"
+      ],
       "violationReasons": [],
-      "gapReasons": [
-        "Generic catalog semantics overlap, but no explicit validated canonical alias mapping exists."
-      ]
+      "gapReasons": []
     },
     {
       "id": "must-event-task-created",
@@ -2723,18 +2734,19 @@
         "schema_version"
       ],
       "dependencies": [],
-      "currentDisposition": "semantic_overlap_only",
-      "currentDepth": "level_0",
-      "contractIds": ["core-event-core-task-created-contract"],
+      "currentDisposition": "meets_required_depth",
+      "currentDepth": "level_1",
+      "contractIds": ["core-mvp-event-task-created-contract"],
       "implementationFiles": [
-        "src/contracts/event/core-event-catalog-skeletons.ts"
+        "src/contracts/event/core-mvp-event-contract-lock.ts",
+        "src/contracts/event/core-mvp-event-contract-validation.ts"
       ],
-      "testFiles": [],
-      "fixtureFiles": [],
+      "testFiles": ["tests/unit/core-mvp-event-contract-lock.test.ts"],
+      "fixtureFiles": [
+        "fixtures/contracts/core-mvp-event-contract-lock.fixture.json"
+      ],
       "violationReasons": [],
-      "gapReasons": [
-        "Generic catalog semantics overlap, but no explicit validated canonical alias mapping exists."
-      ]
+      "gapReasons": []
     },
     {
       "id": "must-event-task-updated",
@@ -2757,18 +2769,19 @@
         "schema_version"
       ],
       "dependencies": [],
-      "currentDisposition": "semantic_overlap_only",
-      "currentDepth": "level_0",
-      "contractIds": ["core-event-core-task-status-changed-contract"],
+      "currentDisposition": "meets_required_depth",
+      "currentDepth": "level_1",
+      "contractIds": ["core-mvp-event-task-updated-contract"],
       "implementationFiles": [
-        "src/contracts/event/core-event-catalog-skeletons.ts"
+        "src/contracts/event/core-mvp-event-contract-lock.ts",
+        "src/contracts/event/core-mvp-event-contract-validation.ts"
       ],
-      "testFiles": [],
-      "fixtureFiles": [],
+      "testFiles": ["tests/unit/core-mvp-event-contract-lock.test.ts"],
+      "fixtureFiles": [
+        "fixtures/contracts/core-mvp-event-contract-lock.fixture.json"
+      ],
       "violationReasons": [],
-      "gapReasons": [
-        "Generic catalog semantics overlap, but no explicit validated canonical alias mapping exists."
-      ]
+      "gapReasons": []
     },
     {
       "id": "must-event-task-completed",
@@ -2791,18 +2804,19 @@
         "schema_version"
       ],
       "dependencies": [],
-      "currentDisposition": "semantic_overlap_only",
-      "currentDepth": "level_0",
-      "contractIds": ["core-event-core-task-status-changed-contract"],
+      "currentDisposition": "meets_required_depth",
+      "currentDepth": "level_1",
+      "contractIds": ["core-mvp-event-task-completed-contract"],
       "implementationFiles": [
-        "src/contracts/event/core-event-catalog-skeletons.ts"
+        "src/contracts/event/core-mvp-event-contract-lock.ts",
+        "src/contracts/event/core-mvp-event-contract-validation.ts"
       ],
-      "testFiles": [],
-      "fixtureFiles": [],
+      "testFiles": ["tests/unit/core-mvp-event-contract-lock.test.ts"],
+      "fixtureFiles": [
+        "fixtures/contracts/core-mvp-event-contract-lock.fixture.json"
+      ],
       "violationReasons": [],
-      "gapReasons": [
-        "Generic catalog semantics overlap, but no explicit validated canonical alias mapping exists."
-      ]
+      "gapReasons": []
     },
     {
       "id": "must-event-communication-created",
@@ -2825,18 +2839,19 @@
         "schema_version"
       ],
       "dependencies": [],
-      "currentDisposition": "semantic_overlap_only",
-      "currentDepth": "level_0",
-      "contractIds": ["core-event-core-communication-draft-created-contract"],
+      "currentDisposition": "meets_required_depth",
+      "currentDepth": "level_1",
+      "contractIds": ["core-mvp-event-communication-created-contract"],
       "implementationFiles": [
-        "src/contracts/event/core-event-catalog-skeletons.ts"
+        "src/contracts/event/core-mvp-event-contract-lock.ts",
+        "src/contracts/event/core-mvp-event-contract-validation.ts"
       ],
-      "testFiles": [],
-      "fixtureFiles": [],
+      "testFiles": ["tests/unit/core-mvp-event-contract-lock.test.ts"],
+      "fixtureFiles": [
+        "fixtures/contracts/core-mvp-event-contract-lock.fixture.json"
+      ],
       "violationReasons": [],
-      "gapReasons": [
-        "Generic catalog semantics overlap, but no explicit validated canonical alias mapping exists."
-      ]
+      "gapReasons": []
     },
     {
       "id": "must-event-communication-reviewed",
@@ -2859,18 +2874,22 @@
         "schema_version"
       ],
       "dependencies": [],
-      "currentDisposition": "semantic_overlap_only",
-      "currentDepth": "level_0",
-      "contractIds": ["core-event-core-communication-approved-contract"],
-      "implementationFiles": [
-        "src/contracts/event/core-event-catalog-skeletons.ts"
+      "currentDisposition": "meets_required_depth",
+      "currentDepth": "level_1",
+      "contractIds": [
+        "core-mvp-event-communication-reviewed-contract",
+        "core-event-core-communication-approved-contract"
       ],
-      "testFiles": [],
-      "fixtureFiles": [],
+      "implementationFiles": [
+        "src/contracts/event/core-mvp-event-contract-lock.ts",
+        "src/contracts/event/core-mvp-event-contract-validation.ts"
+      ],
+      "testFiles": ["tests/unit/core-mvp-event-contract-lock.test.ts"],
+      "fixtureFiles": [
+        "fixtures/contracts/core-mvp-event-contract-lock.fixture.json"
+      ],
       "violationReasons": [],
-      "gapReasons": [
-        "Generic catalog semantics overlap, but no explicit validated canonical alias mapping exists."
-      ]
+      "gapReasons": []
     },
     {
       "id": "must-event-communication-sent",
@@ -2893,18 +2912,19 @@
         "schema_version"
       ],
       "dependencies": [],
-      "currentDisposition": "semantic_overlap_only",
-      "currentDepth": "level_0",
-      "contractIds": ["core-event-core-communication-approved-contract"],
+      "currentDisposition": "meets_required_depth",
+      "currentDepth": "level_1",
+      "contractIds": ["core-mvp-event-communication-sent-contract"],
       "implementationFiles": [
-        "src/contracts/event/core-event-catalog-skeletons.ts"
+        "src/contracts/event/core-mvp-event-contract-lock.ts",
+        "src/contracts/event/core-mvp-event-contract-validation.ts"
       ],
-      "testFiles": [],
-      "fixtureFiles": [],
+      "testFiles": ["tests/unit/core-mvp-event-contract-lock.test.ts"],
+      "fixtureFiles": [
+        "fixtures/contracts/core-mvp-event-contract-lock.fixture.json"
+      ],
       "violationReasons": [],
-      "gapReasons": [
-        "Generic catalog semantics overlap, but no explicit validated canonical alias mapping exists."
-      ]
+      "gapReasons": []
     },
     {
       "id": "must-event-workflow-contract-previewed",
@@ -2927,18 +2947,22 @@
         "schema_version"
       ],
       "dependencies": [],
-      "currentDisposition": "semantic_overlap_only",
-      "currentDepth": "level_0",
-      "contractIds": ["core-event-core-workflow-contract-registered-contract"],
-      "implementationFiles": [
-        "src/contracts/event/core-event-catalog-skeletons.ts"
+      "currentDisposition": "meets_required_depth",
+      "currentDepth": "level_1",
+      "contractIds": [
+        "core-mvp-event-workflow-contract-previewed-contract",
+        "core-event-core-workflow-contract-registered-contract"
       ],
-      "testFiles": [],
-      "fixtureFiles": [],
+      "implementationFiles": [
+        "src/contracts/event/core-mvp-event-contract-lock.ts",
+        "src/contracts/event/core-mvp-event-contract-validation.ts"
+      ],
+      "testFiles": ["tests/unit/core-mvp-event-contract-lock.test.ts"],
+      "fixtureFiles": [
+        "fixtures/contracts/core-mvp-event-contract-lock.fixture.json"
+      ],
       "violationReasons": [],
-      "gapReasons": [
-        "Generic catalog semantics overlap, but no explicit validated canonical alias mapping exists."
-      ]
+      "gapReasons": []
     },
     {
       "id": "must-event-workflow-contract-applied",
@@ -2961,18 +2985,19 @@
         "schema_version"
       ],
       "dependencies": [],
-      "currentDisposition": "semantic_overlap_only",
-      "currentDepth": "level_0",
-      "contractIds": ["core-event-core-workflow-contract-registered-contract"],
+      "currentDisposition": "meets_required_depth",
+      "currentDepth": "level_1",
+      "contractIds": ["core-mvp-event-workflow-contract-applied-contract"],
       "implementationFiles": [
-        "src/contracts/event/core-event-catalog-skeletons.ts"
+        "src/contracts/event/core-mvp-event-contract-lock.ts",
+        "src/contracts/event/core-mvp-event-contract-validation.ts"
       ],
-      "testFiles": [],
-      "fixtureFiles": [],
+      "testFiles": ["tests/unit/core-mvp-event-contract-lock.test.ts"],
+      "fixtureFiles": [
+        "fixtures/contracts/core-mvp-event-contract-lock.fixture.json"
+      ],
       "violationReasons": [],
-      "gapReasons": [
-        "Generic catalog semantics overlap, but no explicit validated canonical alias mapping exists."
-      ]
+      "gapReasons": []
     },
     {
       "id": "must-event-permission-evaluated",
@@ -2995,18 +3020,19 @@
         "schema_version"
       ],
       "dependencies": [],
-      "currentDisposition": "semantic_overlap_only",
-      "currentDepth": "level_0",
-      "contractIds": ["core-event-core-review-completed-contract"],
+      "currentDisposition": "meets_required_depth",
+      "currentDepth": "level_1",
+      "contractIds": ["core-mvp-event-permission-evaluated-contract"],
       "implementationFiles": [
-        "src/contracts/event/core-event-catalog-skeletons.ts"
+        "src/contracts/event/core-mvp-event-contract-lock.ts",
+        "src/contracts/event/core-mvp-event-contract-validation.ts"
       ],
-      "testFiles": [],
-      "fixtureFiles": [],
+      "testFiles": ["tests/unit/core-mvp-event-contract-lock.test.ts"],
+      "fixtureFiles": [
+        "fixtures/contracts/core-mvp-event-contract-lock.fixture.json"
+      ],
       "violationReasons": [],
-      "gapReasons": [
-        "Generic catalog semantics overlap, but no explicit validated canonical alias mapping exists."
-      ]
+      "gapReasons": []
     },
     {
       "id": "must-event-policy-evaluated",
@@ -3029,18 +3055,19 @@
         "schema_version"
       ],
       "dependencies": [],
-      "currentDisposition": "semantic_overlap_only",
-      "currentDepth": "level_0",
-      "contractIds": ["core-event-core-review-completed-contract"],
+      "currentDisposition": "meets_required_depth",
+      "currentDepth": "level_1",
+      "contractIds": ["core-mvp-event-policy-evaluated-contract"],
       "implementationFiles": [
-        "src/contracts/event/core-event-catalog-skeletons.ts"
+        "src/contracts/event/core-mvp-event-contract-lock.ts",
+        "src/contracts/event/core-mvp-event-contract-validation.ts"
       ],
-      "testFiles": [],
-      "fixtureFiles": [],
+      "testFiles": ["tests/unit/core-mvp-event-contract-lock.test.ts"],
+      "fixtureFiles": [
+        "fixtures/contracts/core-mvp-event-contract-lock.fixture.json"
+      ],
       "violationReasons": [],
-      "gapReasons": [
-        "Generic catalog semantics overlap, but no explicit validated canonical alias mapping exists."
-      ]
+      "gapReasons": []
     },
     {
       "id": "must-agent-knowledge-agent",
@@ -4225,6 +4252,7 @@
         "fixtures/contracts/core-contract-index.fixture.json",
         "fixtures/contracts/core-domain-contract-skeletons.fixture.json",
         "fixtures/contracts/core-event-catalog-skeletons.fixture.json",
+        "fixtures/contracts/core-mvp-event-contract-lock.fixture.json",
         "fixtures/contracts/core-object-contract-skeletons.fixture.json",
         "fixtures/contracts/core-permission-contract-skeletons.fixture.json",
         "fixtures/contracts/core-policy-contract-skeletons.fixture.json",
@@ -4308,6 +4336,8 @@
         "src/contracts/event/core-event-catalog-entry.ts",
         "src/contracts/event/core-event-catalog-skeletons.ts",
         "src/contracts/event/core-event-catalog-validation.ts",
+        "src/contracts/event/core-mvp-event-contract-lock.ts",
+        "src/contracts/event/core-mvp-event-contract-validation.ts",
         "src/contracts/event/index.ts",
         "src/contracts/index.ts",
         "src/contracts/object/core-object-contract-skeletons.ts",
@@ -4429,6 +4459,7 @@
         "src/validation/core-identity-service-fixture-validation.ts",
         "src/validation/core-jurisdiction-service-fixture-validation.ts",
         "src/validation/core-matter-service-fixture-validation.ts",
+        "src/validation/core-mvp-event-contract-lock-fixture-validation.ts",
         "src/validation/core-opportunity-service-fixture-validation.ts",
         "src/validation/core-order-service-fixture-validation.ts",
         "src/validation/core-organization-service-fixture-validation.ts",
@@ -4504,6 +4535,7 @@
         "fixtures/contracts/core-contract-index.fixture.json",
         "fixtures/contracts/core-domain-contract-skeletons.fixture.json",
         "fixtures/contracts/core-event-catalog-skeletons.fixture.json",
+        "fixtures/contracts/core-mvp-event-contract-lock.fixture.json",
         "fixtures/contracts/core-object-contract-skeletons.fixture.json",
         "fixtures/contracts/core-permission-contract-skeletons.fixture.json",
         "fixtures/contracts/core-policy-contract-skeletons.fixture.json",
@@ -4587,6 +4619,8 @@
         "src/contracts/event/core-event-catalog-entry.ts",
         "src/contracts/event/core-event-catalog-skeletons.ts",
         "src/contracts/event/core-event-catalog-validation.ts",
+        "src/contracts/event/core-mvp-event-contract-lock.ts",
+        "src/contracts/event/core-mvp-event-contract-validation.ts",
         "src/contracts/event/index.ts",
         "src/contracts/index.ts",
         "src/contracts/object/core-object-contract-skeletons.ts",
@@ -4708,6 +4742,7 @@
         "src/validation/core-identity-service-fixture-validation.ts",
         "src/validation/core-jurisdiction-service-fixture-validation.ts",
         "src/validation/core-matter-service-fixture-validation.ts",
+        "src/validation/core-mvp-event-contract-lock-fixture-validation.ts",
         "src/validation/core-opportunity-service-fixture-validation.ts",
         "src/validation/core-order-service-fixture-validation.ts",
         "src/validation/core-organization-service-fixture-validation.ts",
@@ -4778,6 +4813,7 @@
         "fixtures/contracts/core-contract-index.fixture.json",
         "fixtures/contracts/core-domain-contract-skeletons.fixture.json",
         "fixtures/contracts/core-event-catalog-skeletons.fixture.json",
+        "fixtures/contracts/core-mvp-event-contract-lock.fixture.json",
         "fixtures/contracts/core-object-contract-skeletons.fixture.json",
         "fixtures/contracts/core-permission-contract-skeletons.fixture.json",
         "fixtures/contracts/core-policy-contract-skeletons.fixture.json",
@@ -4861,6 +4897,8 @@
         "src/contracts/event/core-event-catalog-entry.ts",
         "src/contracts/event/core-event-catalog-skeletons.ts",
         "src/contracts/event/core-event-catalog-validation.ts",
+        "src/contracts/event/core-mvp-event-contract-lock.ts",
+        "src/contracts/event/core-mvp-event-contract-validation.ts",
         "src/contracts/event/index.ts",
         "src/contracts/index.ts",
         "src/contracts/object/core-object-contract-skeletons.ts",
@@ -4982,6 +5020,7 @@
         "src/validation/core-identity-service-fixture-validation.ts",
         "src/validation/core-jurisdiction-service-fixture-validation.ts",
         "src/validation/core-matter-service-fixture-validation.ts",
+        "src/validation/core-mvp-event-contract-lock-fixture-validation.ts",
         "src/validation/core-opportunity-service-fixture-validation.ts",
         "src/validation/core-order-service-fixture-validation.ts",
         "src/validation/core-organization-service-fixture-validation.ts",
@@ -5055,6 +5094,7 @@
         "fixtures/contracts/core-contract-index.fixture.json",
         "fixtures/contracts/core-domain-contract-skeletons.fixture.json",
         "fixtures/contracts/core-event-catalog-skeletons.fixture.json",
+        "fixtures/contracts/core-mvp-event-contract-lock.fixture.json",
         "fixtures/contracts/core-object-contract-skeletons.fixture.json",
         "fixtures/contracts/core-permission-contract-skeletons.fixture.json",
         "fixtures/contracts/core-policy-contract-skeletons.fixture.json",
@@ -5138,6 +5178,8 @@
         "src/contracts/event/core-event-catalog-entry.ts",
         "src/contracts/event/core-event-catalog-skeletons.ts",
         "src/contracts/event/core-event-catalog-validation.ts",
+        "src/contracts/event/core-mvp-event-contract-lock.ts",
+        "src/contracts/event/core-mvp-event-contract-validation.ts",
         "src/contracts/event/index.ts",
         "src/contracts/index.ts",
         "src/contracts/object/core-object-contract-skeletons.ts",
@@ -5259,6 +5301,7 @@
         "src/validation/core-identity-service-fixture-validation.ts",
         "src/validation/core-jurisdiction-service-fixture-validation.ts",
         "src/validation/core-matter-service-fixture-validation.ts",
+        "src/validation/core-mvp-event-contract-lock-fixture-validation.ts",
         "src/validation/core-opportunity-service-fixture-validation.ts",
         "src/validation/core-order-service-fixture-validation.ts",
         "src/validation/core-organization-service-fixture-validation.ts",
@@ -5332,6 +5375,7 @@
         "fixtures/contracts/core-contract-index.fixture.json",
         "fixtures/contracts/core-domain-contract-skeletons.fixture.json",
         "fixtures/contracts/core-event-catalog-skeletons.fixture.json",
+        "fixtures/contracts/core-mvp-event-contract-lock.fixture.json",
         "fixtures/contracts/core-object-contract-skeletons.fixture.json",
         "fixtures/contracts/core-permission-contract-skeletons.fixture.json",
         "fixtures/contracts/core-policy-contract-skeletons.fixture.json",
@@ -5415,6 +5459,8 @@
         "src/contracts/event/core-event-catalog-entry.ts",
         "src/contracts/event/core-event-catalog-skeletons.ts",
         "src/contracts/event/core-event-catalog-validation.ts",
+        "src/contracts/event/core-mvp-event-contract-lock.ts",
+        "src/contracts/event/core-mvp-event-contract-validation.ts",
         "src/contracts/event/index.ts",
         "src/contracts/index.ts",
         "src/contracts/object/core-object-contract-skeletons.ts",
@@ -5536,6 +5582,7 @@
         "src/validation/core-identity-service-fixture-validation.ts",
         "src/validation/core-jurisdiction-service-fixture-validation.ts",
         "src/validation/core-matter-service-fixture-validation.ts",
+        "src/validation/core-mvp-event-contract-lock-fixture-validation.ts",
         "src/validation/core-opportunity-service-fixture-validation.ts",
         "src/validation/core-order-service-fixture-validation.ts",
         "src/validation/core-organization-service-fixture-validation.ts",
@@ -5606,6 +5653,7 @@
         "fixtures/contracts/core-contract-index.fixture.json",
         "fixtures/contracts/core-domain-contract-skeletons.fixture.json",
         "fixtures/contracts/core-event-catalog-skeletons.fixture.json",
+        "fixtures/contracts/core-mvp-event-contract-lock.fixture.json",
         "fixtures/contracts/core-object-contract-skeletons.fixture.json",
         "fixtures/contracts/core-permission-contract-skeletons.fixture.json",
         "fixtures/contracts/core-policy-contract-skeletons.fixture.json",
@@ -5689,6 +5737,8 @@
         "src/contracts/event/core-event-catalog-entry.ts",
         "src/contracts/event/core-event-catalog-skeletons.ts",
         "src/contracts/event/core-event-catalog-validation.ts",
+        "src/contracts/event/core-mvp-event-contract-lock.ts",
+        "src/contracts/event/core-mvp-event-contract-validation.ts",
         "src/contracts/event/index.ts",
         "src/contracts/index.ts",
         "src/contracts/object/core-object-contract-skeletons.ts",
@@ -5810,6 +5860,7 @@
         "src/validation/core-identity-service-fixture-validation.ts",
         "src/validation/core-jurisdiction-service-fixture-validation.ts",
         "src/validation/core-matter-service-fixture-validation.ts",
+        "src/validation/core-mvp-event-contract-lock-fixture-validation.ts",
         "src/validation/core-opportunity-service-fixture-validation.ts",
         "src/validation/core-order-service-fixture-validation.ts",
         "src/validation/core-organization-service-fixture-validation.ts",
@@ -5883,6 +5934,7 @@
         "fixtures/contracts/core-contract-index.fixture.json",
         "fixtures/contracts/core-domain-contract-skeletons.fixture.json",
         "fixtures/contracts/core-event-catalog-skeletons.fixture.json",
+        "fixtures/contracts/core-mvp-event-contract-lock.fixture.json",
         "fixtures/contracts/core-object-contract-skeletons.fixture.json",
         "fixtures/contracts/core-permission-contract-skeletons.fixture.json",
         "fixtures/contracts/core-policy-contract-skeletons.fixture.json",
@@ -5966,6 +6018,8 @@
         "src/contracts/event/core-event-catalog-entry.ts",
         "src/contracts/event/core-event-catalog-skeletons.ts",
         "src/contracts/event/core-event-catalog-validation.ts",
+        "src/contracts/event/core-mvp-event-contract-lock.ts",
+        "src/contracts/event/core-mvp-event-contract-validation.ts",
         "src/contracts/event/index.ts",
         "src/contracts/index.ts",
         "src/contracts/object/core-object-contract-skeletons.ts",
@@ -6087,6 +6141,7 @@
         "src/validation/core-identity-service-fixture-validation.ts",
         "src/validation/core-jurisdiction-service-fixture-validation.ts",
         "src/validation/core-matter-service-fixture-validation.ts",
+        "src/validation/core-mvp-event-contract-lock-fixture-validation.ts",
         "src/validation/core-opportunity-service-fixture-validation.ts",
         "src/validation/core-order-service-fixture-validation.ts",
         "src/validation/core-organization-service-fixture-validation.ts",
@@ -6160,6 +6215,7 @@
         "fixtures/contracts/core-contract-index.fixture.json",
         "fixtures/contracts/core-domain-contract-skeletons.fixture.json",
         "fixtures/contracts/core-event-catalog-skeletons.fixture.json",
+        "fixtures/contracts/core-mvp-event-contract-lock.fixture.json",
         "fixtures/contracts/core-object-contract-skeletons.fixture.json",
         "fixtures/contracts/core-permission-contract-skeletons.fixture.json",
         "fixtures/contracts/core-policy-contract-skeletons.fixture.json",
@@ -6243,6 +6299,8 @@
         "src/contracts/event/core-event-catalog-entry.ts",
         "src/contracts/event/core-event-catalog-skeletons.ts",
         "src/contracts/event/core-event-catalog-validation.ts",
+        "src/contracts/event/core-mvp-event-contract-lock.ts",
+        "src/contracts/event/core-mvp-event-contract-validation.ts",
         "src/contracts/event/index.ts",
         "src/contracts/index.ts",
         "src/contracts/object/core-object-contract-skeletons.ts",
@@ -6364,6 +6422,7 @@
         "src/validation/core-identity-service-fixture-validation.ts",
         "src/validation/core-jurisdiction-service-fixture-validation.ts",
         "src/validation/core-matter-service-fixture-validation.ts",
+        "src/validation/core-mvp-event-contract-lock-fixture-validation.ts",
         "src/validation/core-opportunity-service-fixture-validation.ts",
         "src/validation/core-order-service-fixture-validation.ts",
         "src/validation/core-organization-service-fixture-validation.ts",
@@ -6437,6 +6496,7 @@
         "fixtures/contracts/core-contract-index.fixture.json",
         "fixtures/contracts/core-domain-contract-skeletons.fixture.json",
         "fixtures/contracts/core-event-catalog-skeletons.fixture.json",
+        "fixtures/contracts/core-mvp-event-contract-lock.fixture.json",
         "fixtures/contracts/core-object-contract-skeletons.fixture.json",
         "fixtures/contracts/core-permission-contract-skeletons.fixture.json",
         "fixtures/contracts/core-policy-contract-skeletons.fixture.json",
@@ -6520,6 +6580,8 @@
         "src/contracts/event/core-event-catalog-entry.ts",
         "src/contracts/event/core-event-catalog-skeletons.ts",
         "src/contracts/event/core-event-catalog-validation.ts",
+        "src/contracts/event/core-mvp-event-contract-lock.ts",
+        "src/contracts/event/core-mvp-event-contract-validation.ts",
         "src/contracts/event/index.ts",
         "src/contracts/index.ts",
         "src/contracts/object/core-object-contract-skeletons.ts",
@@ -6641,6 +6703,7 @@
         "src/validation/core-identity-service-fixture-validation.ts",
         "src/validation/core-jurisdiction-service-fixture-validation.ts",
         "src/validation/core-matter-service-fixture-validation.ts",
+        "src/validation/core-mvp-event-contract-lock-fixture-validation.ts",
         "src/validation/core-opportunity-service-fixture-validation.ts",
         "src/validation/core-order-service-fixture-validation.ts",
         "src/validation/core-organization-service-fixture-validation.ts",
@@ -6714,6 +6777,7 @@
         "fixtures/contracts/core-contract-index.fixture.json",
         "fixtures/contracts/core-domain-contract-skeletons.fixture.json",
         "fixtures/contracts/core-event-catalog-skeletons.fixture.json",
+        "fixtures/contracts/core-mvp-event-contract-lock.fixture.json",
         "fixtures/contracts/core-object-contract-skeletons.fixture.json",
         "fixtures/contracts/core-permission-contract-skeletons.fixture.json",
         "fixtures/contracts/core-policy-contract-skeletons.fixture.json",
@@ -6797,6 +6861,8 @@
         "src/contracts/event/core-event-catalog-entry.ts",
         "src/contracts/event/core-event-catalog-skeletons.ts",
         "src/contracts/event/core-event-catalog-validation.ts",
+        "src/contracts/event/core-mvp-event-contract-lock.ts",
+        "src/contracts/event/core-mvp-event-contract-validation.ts",
         "src/contracts/event/index.ts",
         "src/contracts/index.ts",
         "src/contracts/object/core-object-contract-skeletons.ts",
@@ -6918,6 +6984,7 @@
         "src/validation/core-identity-service-fixture-validation.ts",
         "src/validation/core-jurisdiction-service-fixture-validation.ts",
         "src/validation/core-matter-service-fixture-validation.ts",
+        "src/validation/core-mvp-event-contract-lock-fixture-validation.ts",
         "src/validation/core-opportunity-service-fixture-validation.ts",
         "src/validation/core-order-service-fixture-validation.ts",
         "src/validation/core-organization-service-fixture-validation.ts",
@@ -6991,6 +7058,7 @@
         "fixtures/contracts/core-contract-index.fixture.json",
         "fixtures/contracts/core-domain-contract-skeletons.fixture.json",
         "fixtures/contracts/core-event-catalog-skeletons.fixture.json",
+        "fixtures/contracts/core-mvp-event-contract-lock.fixture.json",
         "fixtures/contracts/core-object-contract-skeletons.fixture.json",
         "fixtures/contracts/core-permission-contract-skeletons.fixture.json",
         "fixtures/contracts/core-policy-contract-skeletons.fixture.json",
@@ -7074,6 +7142,8 @@
         "src/contracts/event/core-event-catalog-entry.ts",
         "src/contracts/event/core-event-catalog-skeletons.ts",
         "src/contracts/event/core-event-catalog-validation.ts",
+        "src/contracts/event/core-mvp-event-contract-lock.ts",
+        "src/contracts/event/core-mvp-event-contract-validation.ts",
         "src/contracts/event/index.ts",
         "src/contracts/index.ts",
         "src/contracts/object/core-object-contract-skeletons.ts",
@@ -7195,6 +7265,7 @@
         "src/validation/core-identity-service-fixture-validation.ts",
         "src/validation/core-jurisdiction-service-fixture-validation.ts",
         "src/validation/core-matter-service-fixture-validation.ts",
+        "src/validation/core-mvp-event-contract-lock-fixture-validation.ts",
         "src/validation/core-opportunity-service-fixture-validation.ts",
         "src/validation/core-order-service-fixture-validation.ts",
         "src/validation/core-organization-service-fixture-validation.ts",
@@ -7268,6 +7339,7 @@
         "fixtures/contracts/core-contract-index.fixture.json",
         "fixtures/contracts/core-domain-contract-skeletons.fixture.json",
         "fixtures/contracts/core-event-catalog-skeletons.fixture.json",
+        "fixtures/contracts/core-mvp-event-contract-lock.fixture.json",
         "fixtures/contracts/core-object-contract-skeletons.fixture.json",
         "fixtures/contracts/core-permission-contract-skeletons.fixture.json",
         "fixtures/contracts/core-policy-contract-skeletons.fixture.json",
@@ -7351,6 +7423,8 @@
         "src/contracts/event/core-event-catalog-entry.ts",
         "src/contracts/event/core-event-catalog-skeletons.ts",
         "src/contracts/event/core-event-catalog-validation.ts",
+        "src/contracts/event/core-mvp-event-contract-lock.ts",
+        "src/contracts/event/core-mvp-event-contract-validation.ts",
         "src/contracts/event/index.ts",
         "src/contracts/index.ts",
         "src/contracts/object/core-object-contract-skeletons.ts",
@@ -7472,6 +7546,7 @@
         "src/validation/core-identity-service-fixture-validation.ts",
         "src/validation/core-jurisdiction-service-fixture-validation.ts",
         "src/validation/core-matter-service-fixture-validation.ts",
+        "src/validation/core-mvp-event-contract-lock-fixture-validation.ts",
         "src/validation/core-opportunity-service-fixture-validation.ts",
         "src/validation/core-order-service-fixture-validation.ts",
         "src/validation/core-organization-service-fixture-validation.ts",
@@ -7545,6 +7620,7 @@
         "fixtures/contracts/core-contract-index.fixture.json",
         "fixtures/contracts/core-domain-contract-skeletons.fixture.json",
         "fixtures/contracts/core-event-catalog-skeletons.fixture.json",
+        "fixtures/contracts/core-mvp-event-contract-lock.fixture.json",
         "fixtures/contracts/core-object-contract-skeletons.fixture.json",
         "fixtures/contracts/core-permission-contract-skeletons.fixture.json",
         "fixtures/contracts/core-policy-contract-skeletons.fixture.json",
@@ -7628,6 +7704,8 @@
         "src/contracts/event/core-event-catalog-entry.ts",
         "src/contracts/event/core-event-catalog-skeletons.ts",
         "src/contracts/event/core-event-catalog-validation.ts",
+        "src/contracts/event/core-mvp-event-contract-lock.ts",
+        "src/contracts/event/core-mvp-event-contract-validation.ts",
         "src/contracts/event/index.ts",
         "src/contracts/index.ts",
         "src/contracts/object/core-object-contract-skeletons.ts",
@@ -7749,6 +7827,7 @@
         "src/validation/core-identity-service-fixture-validation.ts",
         "src/validation/core-jurisdiction-service-fixture-validation.ts",
         "src/validation/core-matter-service-fixture-validation.ts",
+        "src/validation/core-mvp-event-contract-lock-fixture-validation.ts",
         "src/validation/core-opportunity-service-fixture-validation.ts",
         "src/validation/core-order-service-fixture-validation.ts",
         "src/validation/core-organization-service-fixture-validation.ts",
@@ -7822,6 +7901,7 @@
         "fixtures/contracts/core-contract-index.fixture.json",
         "fixtures/contracts/core-domain-contract-skeletons.fixture.json",
         "fixtures/contracts/core-event-catalog-skeletons.fixture.json",
+        "fixtures/contracts/core-mvp-event-contract-lock.fixture.json",
         "fixtures/contracts/core-object-contract-skeletons.fixture.json",
         "fixtures/contracts/core-permission-contract-skeletons.fixture.json",
         "fixtures/contracts/core-policy-contract-skeletons.fixture.json",
@@ -7905,6 +7985,8 @@
         "src/contracts/event/core-event-catalog-entry.ts",
         "src/contracts/event/core-event-catalog-skeletons.ts",
         "src/contracts/event/core-event-catalog-validation.ts",
+        "src/contracts/event/core-mvp-event-contract-lock.ts",
+        "src/contracts/event/core-mvp-event-contract-validation.ts",
         "src/contracts/event/index.ts",
         "src/contracts/index.ts",
         "src/contracts/object/core-object-contract-skeletons.ts",
@@ -8026,6 +8108,7 @@
         "src/validation/core-identity-service-fixture-validation.ts",
         "src/validation/core-jurisdiction-service-fixture-validation.ts",
         "src/validation/core-matter-service-fixture-validation.ts",
+        "src/validation/core-mvp-event-contract-lock-fixture-validation.ts",
         "src/validation/core-opportunity-service-fixture-validation.ts",
         "src/validation/core-order-service-fixture-validation.ts",
         "src/validation/core-organization-service-fixture-validation.ts",
@@ -8099,6 +8182,7 @@
         "fixtures/contracts/core-contract-index.fixture.json",
         "fixtures/contracts/core-domain-contract-skeletons.fixture.json",
         "fixtures/contracts/core-event-catalog-skeletons.fixture.json",
+        "fixtures/contracts/core-mvp-event-contract-lock.fixture.json",
         "fixtures/contracts/core-object-contract-skeletons.fixture.json",
         "fixtures/contracts/core-permission-contract-skeletons.fixture.json",
         "fixtures/contracts/core-policy-contract-skeletons.fixture.json",
@@ -8182,6 +8266,8 @@
         "src/contracts/event/core-event-catalog-entry.ts",
         "src/contracts/event/core-event-catalog-skeletons.ts",
         "src/contracts/event/core-event-catalog-validation.ts",
+        "src/contracts/event/core-mvp-event-contract-lock.ts",
+        "src/contracts/event/core-mvp-event-contract-validation.ts",
         "src/contracts/event/index.ts",
         "src/contracts/index.ts",
         "src/contracts/object/core-object-contract-skeletons.ts",
@@ -8303,6 +8389,7 @@
         "src/validation/core-identity-service-fixture-validation.ts",
         "src/validation/core-jurisdiction-service-fixture-validation.ts",
         "src/validation/core-matter-service-fixture-validation.ts",
+        "src/validation/core-mvp-event-contract-lock-fixture-validation.ts",
         "src/validation/core-opportunity-service-fixture-validation.ts",
         "src/validation/core-order-service-fixture-validation.ts",
         "src/validation/core-organization-service-fixture-validation.ts",
@@ -8378,6 +8465,7 @@
         "fixtures/contracts/core-contract-index.fixture.json",
         "fixtures/contracts/core-domain-contract-skeletons.fixture.json",
         "fixtures/contracts/core-event-catalog-skeletons.fixture.json",
+        "fixtures/contracts/core-mvp-event-contract-lock.fixture.json",
         "fixtures/contracts/core-object-contract-skeletons.fixture.json",
         "fixtures/contracts/core-permission-contract-skeletons.fixture.json",
         "fixtures/contracts/core-policy-contract-skeletons.fixture.json",
@@ -8461,6 +8549,8 @@
         "src/contracts/event/core-event-catalog-entry.ts",
         "src/contracts/event/core-event-catalog-skeletons.ts",
         "src/contracts/event/core-event-catalog-validation.ts",
+        "src/contracts/event/core-mvp-event-contract-lock.ts",
+        "src/contracts/event/core-mvp-event-contract-validation.ts",
         "src/contracts/event/index.ts",
         "src/contracts/index.ts",
         "src/contracts/object/core-object-contract-skeletons.ts",
@@ -8582,6 +8672,7 @@
         "src/validation/core-identity-service-fixture-validation.ts",
         "src/validation/core-jurisdiction-service-fixture-validation.ts",
         "src/validation/core-matter-service-fixture-validation.ts",
+        "src/validation/core-mvp-event-contract-lock-fixture-validation.ts",
         "src/validation/core-opportunity-service-fixture-validation.ts",
         "src/validation/core-order-service-fixture-validation.ts",
         "src/validation/core-organization-service-fixture-validation.ts",
@@ -8659,6 +8750,7 @@
         "fixtures/contracts/core-contract-index.fixture.json",
         "fixtures/contracts/core-domain-contract-skeletons.fixture.json",
         "fixtures/contracts/core-event-catalog-skeletons.fixture.json",
+        "fixtures/contracts/core-mvp-event-contract-lock.fixture.json",
         "fixtures/contracts/core-object-contract-skeletons.fixture.json",
         "fixtures/contracts/core-permission-contract-skeletons.fixture.json",
         "fixtures/contracts/core-policy-contract-skeletons.fixture.json",
@@ -8742,6 +8834,8 @@
         "src/contracts/event/core-event-catalog-entry.ts",
         "src/contracts/event/core-event-catalog-skeletons.ts",
         "src/contracts/event/core-event-catalog-validation.ts",
+        "src/contracts/event/core-mvp-event-contract-lock.ts",
+        "src/contracts/event/core-mvp-event-contract-validation.ts",
         "src/contracts/event/index.ts",
         "src/contracts/index.ts",
         "src/contracts/object/core-object-contract-skeletons.ts",
@@ -8863,6 +8957,7 @@
         "src/validation/core-identity-service-fixture-validation.ts",
         "src/validation/core-jurisdiction-service-fixture-validation.ts",
         "src/validation/core-matter-service-fixture-validation.ts",
+        "src/validation/core-mvp-event-contract-lock-fixture-validation.ts",
         "src/validation/core-opportunity-service-fixture-validation.ts",
         "src/validation/core-order-service-fixture-validation.ts",
         "src/validation/core-organization-service-fixture-validation.ts",
@@ -8938,6 +9033,7 @@
         "fixtures/contracts/core-contract-index.fixture.json",
         "fixtures/contracts/core-domain-contract-skeletons.fixture.json",
         "fixtures/contracts/core-event-catalog-skeletons.fixture.json",
+        "fixtures/contracts/core-mvp-event-contract-lock.fixture.json",
         "fixtures/contracts/core-object-contract-skeletons.fixture.json",
         "fixtures/contracts/core-permission-contract-skeletons.fixture.json",
         "fixtures/contracts/core-policy-contract-skeletons.fixture.json",
@@ -9021,6 +9117,8 @@
         "src/contracts/event/core-event-catalog-entry.ts",
         "src/contracts/event/core-event-catalog-skeletons.ts",
         "src/contracts/event/core-event-catalog-validation.ts",
+        "src/contracts/event/core-mvp-event-contract-lock.ts",
+        "src/contracts/event/core-mvp-event-contract-validation.ts",
         "src/contracts/event/index.ts",
         "src/contracts/index.ts",
         "src/contracts/object/core-object-contract-skeletons.ts",
@@ -9142,6 +9240,7 @@
         "src/validation/core-identity-service-fixture-validation.ts",
         "src/validation/core-jurisdiction-service-fixture-validation.ts",
         "src/validation/core-matter-service-fixture-validation.ts",
+        "src/validation/core-mvp-event-contract-lock-fixture-validation.ts",
         "src/validation/core-opportunity-service-fixture-validation.ts",
         "src/validation/core-order-service-fixture-validation.ts",
         "src/validation/core-organization-service-fixture-validation.ts",
@@ -9217,6 +9316,7 @@
         "fixtures/contracts/core-contract-index.fixture.json",
         "fixtures/contracts/core-domain-contract-skeletons.fixture.json",
         "fixtures/contracts/core-event-catalog-skeletons.fixture.json",
+        "fixtures/contracts/core-mvp-event-contract-lock.fixture.json",
         "fixtures/contracts/core-object-contract-skeletons.fixture.json",
         "fixtures/contracts/core-permission-contract-skeletons.fixture.json",
         "fixtures/contracts/core-policy-contract-skeletons.fixture.json",
@@ -9300,6 +9400,8 @@
         "src/contracts/event/core-event-catalog-entry.ts",
         "src/contracts/event/core-event-catalog-skeletons.ts",
         "src/contracts/event/core-event-catalog-validation.ts",
+        "src/contracts/event/core-mvp-event-contract-lock.ts",
+        "src/contracts/event/core-mvp-event-contract-validation.ts",
         "src/contracts/event/index.ts",
         "src/contracts/index.ts",
         "src/contracts/object/core-object-contract-skeletons.ts",
@@ -9421,6 +9523,7 @@
         "src/validation/core-identity-service-fixture-validation.ts",
         "src/validation/core-jurisdiction-service-fixture-validation.ts",
         "src/validation/core-matter-service-fixture-validation.ts",
+        "src/validation/core-mvp-event-contract-lock-fixture-validation.ts",
         "src/validation/core-opportunity-service-fixture-validation.ts",
         "src/validation/core-order-service-fixture-validation.ts",
         "src/validation/core-organization-service-fixture-validation.ts",
@@ -9494,6 +9597,7 @@
         "fixtures/contracts/core-contract-index.fixture.json",
         "fixtures/contracts/core-domain-contract-skeletons.fixture.json",
         "fixtures/contracts/core-event-catalog-skeletons.fixture.json",
+        "fixtures/contracts/core-mvp-event-contract-lock.fixture.json",
         "fixtures/contracts/core-object-contract-skeletons.fixture.json",
         "fixtures/contracts/core-permission-contract-skeletons.fixture.json",
         "fixtures/contracts/core-policy-contract-skeletons.fixture.json",
@@ -9577,6 +9681,8 @@
         "src/contracts/event/core-event-catalog-entry.ts",
         "src/contracts/event/core-event-catalog-skeletons.ts",
         "src/contracts/event/core-event-catalog-validation.ts",
+        "src/contracts/event/core-mvp-event-contract-lock.ts",
+        "src/contracts/event/core-mvp-event-contract-validation.ts",
         "src/contracts/event/index.ts",
         "src/contracts/index.ts",
         "src/contracts/object/core-object-contract-skeletons.ts",
@@ -9698,6 +9804,7 @@
         "src/validation/core-identity-service-fixture-validation.ts",
         "src/validation/core-jurisdiction-service-fixture-validation.ts",
         "src/validation/core-matter-service-fixture-validation.ts",
+        "src/validation/core-mvp-event-contract-lock-fixture-validation.ts",
         "src/validation/core-opportunity-service-fixture-validation.ts",
         "src/validation/core-order-service-fixture-validation.ts",
         "src/validation/core-organization-service-fixture-validation.ts",
@@ -9771,6 +9878,7 @@
         "fixtures/contracts/core-contract-index.fixture.json",
         "fixtures/contracts/core-domain-contract-skeletons.fixture.json",
         "fixtures/contracts/core-event-catalog-skeletons.fixture.json",
+        "fixtures/contracts/core-mvp-event-contract-lock.fixture.json",
         "fixtures/contracts/core-object-contract-skeletons.fixture.json",
         "fixtures/contracts/core-permission-contract-skeletons.fixture.json",
         "fixtures/contracts/core-policy-contract-skeletons.fixture.json",
@@ -9854,6 +9962,8 @@
         "src/contracts/event/core-event-catalog-entry.ts",
         "src/contracts/event/core-event-catalog-skeletons.ts",
         "src/contracts/event/core-event-catalog-validation.ts",
+        "src/contracts/event/core-mvp-event-contract-lock.ts",
+        "src/contracts/event/core-mvp-event-contract-validation.ts",
         "src/contracts/event/index.ts",
         "src/contracts/index.ts",
         "src/contracts/object/core-object-contract-skeletons.ts",
@@ -9975,6 +10085,7 @@
         "src/validation/core-identity-service-fixture-validation.ts",
         "src/validation/core-jurisdiction-service-fixture-validation.ts",
         "src/validation/core-matter-service-fixture-validation.ts",
+        "src/validation/core-mvp-event-contract-lock-fixture-validation.ts",
         "src/validation/core-opportunity-service-fixture-validation.ts",
         "src/validation/core-order-service-fixture-validation.ts",
         "src/validation/core-organization-service-fixture-validation.ts",
@@ -10048,6 +10159,7 @@
         "fixtures/contracts/core-contract-index.fixture.json",
         "fixtures/contracts/core-domain-contract-skeletons.fixture.json",
         "fixtures/contracts/core-event-catalog-skeletons.fixture.json",
+        "fixtures/contracts/core-mvp-event-contract-lock.fixture.json",
         "fixtures/contracts/core-object-contract-skeletons.fixture.json",
         "fixtures/contracts/core-permission-contract-skeletons.fixture.json",
         "fixtures/contracts/core-policy-contract-skeletons.fixture.json",
@@ -10131,6 +10243,8 @@
         "src/contracts/event/core-event-catalog-entry.ts",
         "src/contracts/event/core-event-catalog-skeletons.ts",
         "src/contracts/event/core-event-catalog-validation.ts",
+        "src/contracts/event/core-mvp-event-contract-lock.ts",
+        "src/contracts/event/core-mvp-event-contract-validation.ts",
         "src/contracts/event/index.ts",
         "src/contracts/index.ts",
         "src/contracts/object/core-object-contract-skeletons.ts",
@@ -10252,6 +10366,7 @@
         "src/validation/core-identity-service-fixture-validation.ts",
         "src/validation/core-jurisdiction-service-fixture-validation.ts",
         "src/validation/core-matter-service-fixture-validation.ts",
+        "src/validation/core-mvp-event-contract-lock-fixture-validation.ts",
         "src/validation/core-opportunity-service-fixture-validation.ts",
         "src/validation/core-order-service-fixture-validation.ts",
         "src/validation/core-organization-service-fixture-validation.ts",
@@ -10325,6 +10440,7 @@
         "fixtures/contracts/core-contract-index.fixture.json",
         "fixtures/contracts/core-domain-contract-skeletons.fixture.json",
         "fixtures/contracts/core-event-catalog-skeletons.fixture.json",
+        "fixtures/contracts/core-mvp-event-contract-lock.fixture.json",
         "fixtures/contracts/core-object-contract-skeletons.fixture.json",
         "fixtures/contracts/core-permission-contract-skeletons.fixture.json",
         "fixtures/contracts/core-policy-contract-skeletons.fixture.json",
@@ -10408,6 +10524,8 @@
         "src/contracts/event/core-event-catalog-entry.ts",
         "src/contracts/event/core-event-catalog-skeletons.ts",
         "src/contracts/event/core-event-catalog-validation.ts",
+        "src/contracts/event/core-mvp-event-contract-lock.ts",
+        "src/contracts/event/core-mvp-event-contract-validation.ts",
         "src/contracts/event/index.ts",
         "src/contracts/index.ts",
         "src/contracts/object/core-object-contract-skeletons.ts",
@@ -10529,6 +10647,7 @@
         "src/validation/core-identity-service-fixture-validation.ts",
         "src/validation/core-jurisdiction-service-fixture-validation.ts",
         "src/validation/core-matter-service-fixture-validation.ts",
+        "src/validation/core-mvp-event-contract-lock-fixture-validation.ts",
         "src/validation/core-opportunity-service-fixture-validation.ts",
         "src/validation/core-order-service-fixture-validation.ts",
         "src/validation/core-organization-service-fixture-validation.ts",
@@ -10602,6 +10721,7 @@
         "fixtures/contracts/core-contract-index.fixture.json",
         "fixtures/contracts/core-domain-contract-skeletons.fixture.json",
         "fixtures/contracts/core-event-catalog-skeletons.fixture.json",
+        "fixtures/contracts/core-mvp-event-contract-lock.fixture.json",
         "fixtures/contracts/core-object-contract-skeletons.fixture.json",
         "fixtures/contracts/core-permission-contract-skeletons.fixture.json",
         "fixtures/contracts/core-policy-contract-skeletons.fixture.json",
@@ -10685,6 +10805,8 @@
         "src/contracts/event/core-event-catalog-entry.ts",
         "src/contracts/event/core-event-catalog-skeletons.ts",
         "src/contracts/event/core-event-catalog-validation.ts",
+        "src/contracts/event/core-mvp-event-contract-lock.ts",
+        "src/contracts/event/core-mvp-event-contract-validation.ts",
         "src/contracts/event/index.ts",
         "src/contracts/index.ts",
         "src/contracts/object/core-object-contract-skeletons.ts",
@@ -10806,6 +10928,7 @@
         "src/validation/core-identity-service-fixture-validation.ts",
         "src/validation/core-jurisdiction-service-fixture-validation.ts",
         "src/validation/core-matter-service-fixture-validation.ts",
+        "src/validation/core-mvp-event-contract-lock-fixture-validation.ts",
         "src/validation/core-opportunity-service-fixture-validation.ts",
         "src/validation/core-order-service-fixture-validation.ts",
         "src/validation/core-organization-service-fixture-validation.ts",
@@ -10879,6 +11002,7 @@
         "fixtures/contracts/core-contract-index.fixture.json",
         "fixtures/contracts/core-domain-contract-skeletons.fixture.json",
         "fixtures/contracts/core-event-catalog-skeletons.fixture.json",
+        "fixtures/contracts/core-mvp-event-contract-lock.fixture.json",
         "fixtures/contracts/core-object-contract-skeletons.fixture.json",
         "fixtures/contracts/core-permission-contract-skeletons.fixture.json",
         "fixtures/contracts/core-policy-contract-skeletons.fixture.json",
@@ -10962,6 +11086,8 @@
         "src/contracts/event/core-event-catalog-entry.ts",
         "src/contracts/event/core-event-catalog-skeletons.ts",
         "src/contracts/event/core-event-catalog-validation.ts",
+        "src/contracts/event/core-mvp-event-contract-lock.ts",
+        "src/contracts/event/core-mvp-event-contract-validation.ts",
         "src/contracts/event/index.ts",
         "src/contracts/index.ts",
         "src/contracts/object/core-object-contract-skeletons.ts",
@@ -11083,6 +11209,7 @@
         "src/validation/core-identity-service-fixture-validation.ts",
         "src/validation/core-jurisdiction-service-fixture-validation.ts",
         "src/validation/core-matter-service-fixture-validation.ts",
+        "src/validation/core-mvp-event-contract-lock-fixture-validation.ts",
         "src/validation/core-opportunity-service-fixture-validation.ts",
         "src/validation/core-order-service-fixture-validation.ts",
         "src/validation/core-organization-service-fixture-validation.ts",
@@ -11156,6 +11283,7 @@
         "fixtures/contracts/core-contract-index.fixture.json",
         "fixtures/contracts/core-domain-contract-skeletons.fixture.json",
         "fixtures/contracts/core-event-catalog-skeletons.fixture.json",
+        "fixtures/contracts/core-mvp-event-contract-lock.fixture.json",
         "fixtures/contracts/core-object-contract-skeletons.fixture.json",
         "fixtures/contracts/core-permission-contract-skeletons.fixture.json",
         "fixtures/contracts/core-policy-contract-skeletons.fixture.json",
@@ -11239,6 +11367,8 @@
         "src/contracts/event/core-event-catalog-entry.ts",
         "src/contracts/event/core-event-catalog-skeletons.ts",
         "src/contracts/event/core-event-catalog-validation.ts",
+        "src/contracts/event/core-mvp-event-contract-lock.ts",
+        "src/contracts/event/core-mvp-event-contract-validation.ts",
         "src/contracts/event/index.ts",
         "src/contracts/index.ts",
         "src/contracts/object/core-object-contract-skeletons.ts",
@@ -11360,6 +11490,7 @@
         "src/validation/core-identity-service-fixture-validation.ts",
         "src/validation/core-jurisdiction-service-fixture-validation.ts",
         "src/validation/core-matter-service-fixture-validation.ts",
+        "src/validation/core-mvp-event-contract-lock-fixture-validation.ts",
         "src/validation/core-opportunity-service-fixture-validation.ts",
         "src/validation/core-order-service-fixture-validation.ts",
         "src/validation/core-organization-service-fixture-validation.ts",
@@ -11433,6 +11564,7 @@
         "fixtures/contracts/core-contract-index.fixture.json",
         "fixtures/contracts/core-domain-contract-skeletons.fixture.json",
         "fixtures/contracts/core-event-catalog-skeletons.fixture.json",
+        "fixtures/contracts/core-mvp-event-contract-lock.fixture.json",
         "fixtures/contracts/core-object-contract-skeletons.fixture.json",
         "fixtures/contracts/core-permission-contract-skeletons.fixture.json",
         "fixtures/contracts/core-policy-contract-skeletons.fixture.json",
@@ -11516,6 +11648,8 @@
         "src/contracts/event/core-event-catalog-entry.ts",
         "src/contracts/event/core-event-catalog-skeletons.ts",
         "src/contracts/event/core-event-catalog-validation.ts",
+        "src/contracts/event/core-mvp-event-contract-lock.ts",
+        "src/contracts/event/core-mvp-event-contract-validation.ts",
         "src/contracts/event/index.ts",
         "src/contracts/index.ts",
         "src/contracts/object/core-object-contract-skeletons.ts",
@@ -11637,6 +11771,7 @@
         "src/validation/core-identity-service-fixture-validation.ts",
         "src/validation/core-jurisdiction-service-fixture-validation.ts",
         "src/validation/core-matter-service-fixture-validation.ts",
+        "src/validation/core-mvp-event-contract-lock-fixture-validation.ts",
         "src/validation/core-opportunity-service-fixture-validation.ts",
         "src/validation/core-order-service-fixture-validation.ts",
         "src/validation/core-organization-service-fixture-validation.ts",
@@ -11710,6 +11845,7 @@
         "fixtures/contracts/core-contract-index.fixture.json",
         "fixtures/contracts/core-domain-contract-skeletons.fixture.json",
         "fixtures/contracts/core-event-catalog-skeletons.fixture.json",
+        "fixtures/contracts/core-mvp-event-contract-lock.fixture.json",
         "fixtures/contracts/core-object-contract-skeletons.fixture.json",
         "fixtures/contracts/core-permission-contract-skeletons.fixture.json",
         "fixtures/contracts/core-policy-contract-skeletons.fixture.json",
@@ -11793,6 +11929,8 @@
         "src/contracts/event/core-event-catalog-entry.ts",
         "src/contracts/event/core-event-catalog-skeletons.ts",
         "src/contracts/event/core-event-catalog-validation.ts",
+        "src/contracts/event/core-mvp-event-contract-lock.ts",
+        "src/contracts/event/core-mvp-event-contract-validation.ts",
         "src/contracts/event/index.ts",
         "src/contracts/index.ts",
         "src/contracts/object/core-object-contract-skeletons.ts",
@@ -11914,6 +12052,7 @@
         "src/validation/core-identity-service-fixture-validation.ts",
         "src/validation/core-jurisdiction-service-fixture-validation.ts",
         "src/validation/core-matter-service-fixture-validation.ts",
+        "src/validation/core-mvp-event-contract-lock-fixture-validation.ts",
         "src/validation/core-opportunity-service-fixture-validation.ts",
         "src/validation/core-order-service-fixture-validation.ts",
         "src/validation/core-organization-service-fixture-validation.ts",
@@ -11987,6 +12126,7 @@
         "fixtures/contracts/core-contract-index.fixture.json",
         "fixtures/contracts/core-domain-contract-skeletons.fixture.json",
         "fixtures/contracts/core-event-catalog-skeletons.fixture.json",
+        "fixtures/contracts/core-mvp-event-contract-lock.fixture.json",
         "fixtures/contracts/core-object-contract-skeletons.fixture.json",
         "fixtures/contracts/core-permission-contract-skeletons.fixture.json",
         "fixtures/contracts/core-policy-contract-skeletons.fixture.json",
@@ -12070,6 +12210,8 @@
         "src/contracts/event/core-event-catalog-entry.ts",
         "src/contracts/event/core-event-catalog-skeletons.ts",
         "src/contracts/event/core-event-catalog-validation.ts",
+        "src/contracts/event/core-mvp-event-contract-lock.ts",
+        "src/contracts/event/core-mvp-event-contract-validation.ts",
         "src/contracts/event/index.ts",
         "src/contracts/index.ts",
         "src/contracts/object/core-object-contract-skeletons.ts",
@@ -12191,6 +12333,7 @@
         "src/validation/core-identity-service-fixture-validation.ts",
         "src/validation/core-jurisdiction-service-fixture-validation.ts",
         "src/validation/core-matter-service-fixture-validation.ts",
+        "src/validation/core-mvp-event-contract-lock-fixture-validation.ts",
         "src/validation/core-opportunity-service-fixture-validation.ts",
         "src/validation/core-order-service-fixture-validation.ts",
         "src/validation/core-organization-service-fixture-validation.ts",
@@ -12264,6 +12407,7 @@
         "fixtures/contracts/core-contract-index.fixture.json",
         "fixtures/contracts/core-domain-contract-skeletons.fixture.json",
         "fixtures/contracts/core-event-catalog-skeletons.fixture.json",
+        "fixtures/contracts/core-mvp-event-contract-lock.fixture.json",
         "fixtures/contracts/core-object-contract-skeletons.fixture.json",
         "fixtures/contracts/core-permission-contract-skeletons.fixture.json",
         "fixtures/contracts/core-policy-contract-skeletons.fixture.json",
@@ -12347,6 +12491,8 @@
         "src/contracts/event/core-event-catalog-entry.ts",
         "src/contracts/event/core-event-catalog-skeletons.ts",
         "src/contracts/event/core-event-catalog-validation.ts",
+        "src/contracts/event/core-mvp-event-contract-lock.ts",
+        "src/contracts/event/core-mvp-event-contract-validation.ts",
         "src/contracts/event/index.ts",
         "src/contracts/index.ts",
         "src/contracts/object/core-object-contract-skeletons.ts",
@@ -12468,6 +12614,7 @@
         "src/validation/core-identity-service-fixture-validation.ts",
         "src/validation/core-jurisdiction-service-fixture-validation.ts",
         "src/validation/core-matter-service-fixture-validation.ts",
+        "src/validation/core-mvp-event-contract-lock-fixture-validation.ts",
         "src/validation/core-opportunity-service-fixture-validation.ts",
         "src/validation/core-order-service-fixture-validation.ts",
         "src/validation/core-organization-service-fixture-validation.ts",
@@ -12541,6 +12688,7 @@
         "fixtures/contracts/core-contract-index.fixture.json",
         "fixtures/contracts/core-domain-contract-skeletons.fixture.json",
         "fixtures/contracts/core-event-catalog-skeletons.fixture.json",
+        "fixtures/contracts/core-mvp-event-contract-lock.fixture.json",
         "fixtures/contracts/core-object-contract-skeletons.fixture.json",
         "fixtures/contracts/core-permission-contract-skeletons.fixture.json",
         "fixtures/contracts/core-policy-contract-skeletons.fixture.json",
@@ -12624,6 +12772,8 @@
         "src/contracts/event/core-event-catalog-entry.ts",
         "src/contracts/event/core-event-catalog-skeletons.ts",
         "src/contracts/event/core-event-catalog-validation.ts",
+        "src/contracts/event/core-mvp-event-contract-lock.ts",
+        "src/contracts/event/core-mvp-event-contract-validation.ts",
         "src/contracts/event/index.ts",
         "src/contracts/index.ts",
         "src/contracts/object/core-object-contract-skeletons.ts",
@@ -12745,6 +12895,7 @@
         "src/validation/core-identity-service-fixture-validation.ts",
         "src/validation/core-jurisdiction-service-fixture-validation.ts",
         "src/validation/core-matter-service-fixture-validation.ts",
+        "src/validation/core-mvp-event-contract-lock-fixture-validation.ts",
         "src/validation/core-opportunity-service-fixture-validation.ts",
         "src/validation/core-order-service-fixture-validation.ts",
         "src/validation/core-organization-service-fixture-validation.ts",
@@ -12819,6 +12970,7 @@
         "fixtures/contracts/core-contract-index.fixture.json",
         "fixtures/contracts/core-domain-contract-skeletons.fixture.json",
         "fixtures/contracts/core-event-catalog-skeletons.fixture.json",
+        "fixtures/contracts/core-mvp-event-contract-lock.fixture.json",
         "fixtures/contracts/core-object-contract-skeletons.fixture.json",
         "fixtures/contracts/core-permission-contract-skeletons.fixture.json",
         "fixtures/contracts/core-policy-contract-skeletons.fixture.json",
@@ -12902,6 +13054,8 @@
         "src/contracts/event/core-event-catalog-entry.ts",
         "src/contracts/event/core-event-catalog-skeletons.ts",
         "src/contracts/event/core-event-catalog-validation.ts",
+        "src/contracts/event/core-mvp-event-contract-lock.ts",
+        "src/contracts/event/core-mvp-event-contract-validation.ts",
         "src/contracts/event/index.ts",
         "src/contracts/index.ts",
         "src/contracts/object/core-object-contract-skeletons.ts",
@@ -13023,6 +13177,7 @@
         "src/validation/core-identity-service-fixture-validation.ts",
         "src/validation/core-jurisdiction-service-fixture-validation.ts",
         "src/validation/core-matter-service-fixture-validation.ts",
+        "src/validation/core-mvp-event-contract-lock-fixture-validation.ts",
         "src/validation/core-opportunity-service-fixture-validation.ts",
         "src/validation/core-order-service-fixture-validation.ts",
         "src/validation/core-organization-service-fixture-validation.ts",
@@ -13097,6 +13252,7 @@
         "fixtures/contracts/core-contract-index.fixture.json",
         "fixtures/contracts/core-domain-contract-skeletons.fixture.json",
         "fixtures/contracts/core-event-catalog-skeletons.fixture.json",
+        "fixtures/contracts/core-mvp-event-contract-lock.fixture.json",
         "fixtures/contracts/core-object-contract-skeletons.fixture.json",
         "fixtures/contracts/core-permission-contract-skeletons.fixture.json",
         "fixtures/contracts/core-policy-contract-skeletons.fixture.json",
@@ -13180,6 +13336,8 @@
         "src/contracts/event/core-event-catalog-entry.ts",
         "src/contracts/event/core-event-catalog-skeletons.ts",
         "src/contracts/event/core-event-catalog-validation.ts",
+        "src/contracts/event/core-mvp-event-contract-lock.ts",
+        "src/contracts/event/core-mvp-event-contract-validation.ts",
         "src/contracts/event/index.ts",
         "src/contracts/index.ts",
         "src/contracts/object/core-object-contract-skeletons.ts",
@@ -13301,6 +13459,7 @@
         "src/validation/core-identity-service-fixture-validation.ts",
         "src/validation/core-jurisdiction-service-fixture-validation.ts",
         "src/validation/core-matter-service-fixture-validation.ts",
+        "src/validation/core-mvp-event-contract-lock-fixture-validation.ts",
         "src/validation/core-opportunity-service-fixture-validation.ts",
         "src/validation/core-order-service-fixture-validation.ts",
         "src/validation/core-organization-service-fixture-validation.ts",
@@ -13375,6 +13534,7 @@
         "fixtures/contracts/core-contract-index.fixture.json",
         "fixtures/contracts/core-domain-contract-skeletons.fixture.json",
         "fixtures/contracts/core-event-catalog-skeletons.fixture.json",
+        "fixtures/contracts/core-mvp-event-contract-lock.fixture.json",
         "fixtures/contracts/core-object-contract-skeletons.fixture.json",
         "fixtures/contracts/core-permission-contract-skeletons.fixture.json",
         "fixtures/contracts/core-policy-contract-skeletons.fixture.json",
@@ -13458,6 +13618,8 @@
         "src/contracts/event/core-event-catalog-entry.ts",
         "src/contracts/event/core-event-catalog-skeletons.ts",
         "src/contracts/event/core-event-catalog-validation.ts",
+        "src/contracts/event/core-mvp-event-contract-lock.ts",
+        "src/contracts/event/core-mvp-event-contract-validation.ts",
         "src/contracts/event/index.ts",
         "src/contracts/index.ts",
         "src/contracts/object/core-object-contract-skeletons.ts",
@@ -13579,6 +13741,7 @@
         "src/validation/core-identity-service-fixture-validation.ts",
         "src/validation/core-jurisdiction-service-fixture-validation.ts",
         "src/validation/core-matter-service-fixture-validation.ts",
+        "src/validation/core-mvp-event-contract-lock-fixture-validation.ts",
         "src/validation/core-opportunity-service-fixture-validation.ts",
         "src/validation/core-order-service-fixture-validation.ts",
         "src/validation/core-organization-service-fixture-validation.ts",
@@ -13653,6 +13816,7 @@
         "fixtures/contracts/core-contract-index.fixture.json",
         "fixtures/contracts/core-domain-contract-skeletons.fixture.json",
         "fixtures/contracts/core-event-catalog-skeletons.fixture.json",
+        "fixtures/contracts/core-mvp-event-contract-lock.fixture.json",
         "fixtures/contracts/core-object-contract-skeletons.fixture.json",
         "fixtures/contracts/core-permission-contract-skeletons.fixture.json",
         "fixtures/contracts/core-policy-contract-skeletons.fixture.json",
@@ -13736,6 +13900,8 @@
         "src/contracts/event/core-event-catalog-entry.ts",
         "src/contracts/event/core-event-catalog-skeletons.ts",
         "src/contracts/event/core-event-catalog-validation.ts",
+        "src/contracts/event/core-mvp-event-contract-lock.ts",
+        "src/contracts/event/core-mvp-event-contract-validation.ts",
         "src/contracts/event/index.ts",
         "src/contracts/index.ts",
         "src/contracts/object/core-object-contract-skeletons.ts",
@@ -13857,6 +14023,7 @@
         "src/validation/core-identity-service-fixture-validation.ts",
         "src/validation/core-jurisdiction-service-fixture-validation.ts",
         "src/validation/core-matter-service-fixture-validation.ts",
+        "src/validation/core-mvp-event-contract-lock-fixture-validation.ts",
         "src/validation/core-opportunity-service-fixture-validation.ts",
         "src/validation/core-order-service-fixture-validation.ts",
         "src/validation/core-organization-service-fixture-validation.ts",
@@ -13931,6 +14098,7 @@
         "fixtures/contracts/core-contract-index.fixture.json",
         "fixtures/contracts/core-domain-contract-skeletons.fixture.json",
         "fixtures/contracts/core-event-catalog-skeletons.fixture.json",
+        "fixtures/contracts/core-mvp-event-contract-lock.fixture.json",
         "fixtures/contracts/core-object-contract-skeletons.fixture.json",
         "fixtures/contracts/core-permission-contract-skeletons.fixture.json",
         "fixtures/contracts/core-policy-contract-skeletons.fixture.json",
@@ -14014,6 +14182,8 @@
         "src/contracts/event/core-event-catalog-entry.ts",
         "src/contracts/event/core-event-catalog-skeletons.ts",
         "src/contracts/event/core-event-catalog-validation.ts",
+        "src/contracts/event/core-mvp-event-contract-lock.ts",
+        "src/contracts/event/core-mvp-event-contract-validation.ts",
         "src/contracts/event/index.ts",
         "src/contracts/index.ts",
         "src/contracts/object/core-object-contract-skeletons.ts",
@@ -14135,6 +14305,7 @@
         "src/validation/core-identity-service-fixture-validation.ts",
         "src/validation/core-jurisdiction-service-fixture-validation.ts",
         "src/validation/core-matter-service-fixture-validation.ts",
+        "src/validation/core-mvp-event-contract-lock-fixture-validation.ts",
         "src/validation/core-opportunity-service-fixture-validation.ts",
         "src/validation/core-order-service-fixture-validation.ts",
         "src/validation/core-organization-service-fixture-validation.ts",
@@ -14211,6 +14382,7 @@
         "fixtures/contracts/core-contract-index.fixture.json",
         "fixtures/contracts/core-domain-contract-skeletons.fixture.json",
         "fixtures/contracts/core-event-catalog-skeletons.fixture.json",
+        "fixtures/contracts/core-mvp-event-contract-lock.fixture.json",
         "fixtures/contracts/core-object-contract-skeletons.fixture.json",
         "fixtures/contracts/core-permission-contract-skeletons.fixture.json",
         "fixtures/contracts/core-policy-contract-skeletons.fixture.json",
@@ -14294,6 +14466,8 @@
         "src/contracts/event/core-event-catalog-entry.ts",
         "src/contracts/event/core-event-catalog-skeletons.ts",
         "src/contracts/event/core-event-catalog-validation.ts",
+        "src/contracts/event/core-mvp-event-contract-lock.ts",
+        "src/contracts/event/core-mvp-event-contract-validation.ts",
         "src/contracts/event/index.ts",
         "src/contracts/index.ts",
         "src/contracts/object/core-object-contract-skeletons.ts",
@@ -14415,6 +14589,7 @@
         "src/validation/core-identity-service-fixture-validation.ts",
         "src/validation/core-jurisdiction-service-fixture-validation.ts",
         "src/validation/core-matter-service-fixture-validation.ts",
+        "src/validation/core-mvp-event-contract-lock-fixture-validation.ts",
         "src/validation/core-opportunity-service-fixture-validation.ts",
         "src/validation/core-order-service-fixture-validation.ts",
         "src/validation/core-organization-service-fixture-validation.ts",
@@ -14489,6 +14664,7 @@
         "fixtures/contracts/core-contract-index.fixture.json",
         "fixtures/contracts/core-domain-contract-skeletons.fixture.json",
         "fixtures/contracts/core-event-catalog-skeletons.fixture.json",
+        "fixtures/contracts/core-mvp-event-contract-lock.fixture.json",
         "fixtures/contracts/core-object-contract-skeletons.fixture.json",
         "fixtures/contracts/core-permission-contract-skeletons.fixture.json",
         "fixtures/contracts/core-policy-contract-skeletons.fixture.json",
@@ -14572,6 +14748,8 @@
         "src/contracts/event/core-event-catalog-entry.ts",
         "src/contracts/event/core-event-catalog-skeletons.ts",
         "src/contracts/event/core-event-catalog-validation.ts",
+        "src/contracts/event/core-mvp-event-contract-lock.ts",
+        "src/contracts/event/core-mvp-event-contract-validation.ts",
         "src/contracts/event/index.ts",
         "src/contracts/index.ts",
         "src/contracts/object/core-object-contract-skeletons.ts",
@@ -14693,6 +14871,7 @@
         "src/validation/core-identity-service-fixture-validation.ts",
         "src/validation/core-jurisdiction-service-fixture-validation.ts",
         "src/validation/core-matter-service-fixture-validation.ts",
+        "src/validation/core-mvp-event-contract-lock-fixture-validation.ts",
         "src/validation/core-opportunity-service-fixture-validation.ts",
         "src/validation/core-order-service-fixture-validation.ts",
         "src/validation/core-organization-service-fixture-validation.ts",
@@ -14767,6 +14946,7 @@
         "fixtures/contracts/core-contract-index.fixture.json",
         "fixtures/contracts/core-domain-contract-skeletons.fixture.json",
         "fixtures/contracts/core-event-catalog-skeletons.fixture.json",
+        "fixtures/contracts/core-mvp-event-contract-lock.fixture.json",
         "fixtures/contracts/core-object-contract-skeletons.fixture.json",
         "fixtures/contracts/core-permission-contract-skeletons.fixture.json",
         "fixtures/contracts/core-policy-contract-skeletons.fixture.json",
@@ -14850,6 +15030,8 @@
         "src/contracts/event/core-event-catalog-entry.ts",
         "src/contracts/event/core-event-catalog-skeletons.ts",
         "src/contracts/event/core-event-catalog-validation.ts",
+        "src/contracts/event/core-mvp-event-contract-lock.ts",
+        "src/contracts/event/core-mvp-event-contract-validation.ts",
         "src/contracts/event/index.ts",
         "src/contracts/index.ts",
         "src/contracts/object/core-object-contract-skeletons.ts",
@@ -14971,6 +15153,7 @@
         "src/validation/core-identity-service-fixture-validation.ts",
         "src/validation/core-jurisdiction-service-fixture-validation.ts",
         "src/validation/core-matter-service-fixture-validation.ts",
+        "src/validation/core-mvp-event-contract-lock-fixture-validation.ts",
         "src/validation/core-opportunity-service-fixture-validation.ts",
         "src/validation/core-order-service-fixture-validation.ts",
         "src/validation/core-organization-service-fixture-validation.ts",
@@ -15045,6 +15228,7 @@
         "fixtures/contracts/core-contract-index.fixture.json",
         "fixtures/contracts/core-domain-contract-skeletons.fixture.json",
         "fixtures/contracts/core-event-catalog-skeletons.fixture.json",
+        "fixtures/contracts/core-mvp-event-contract-lock.fixture.json",
         "fixtures/contracts/core-object-contract-skeletons.fixture.json",
         "fixtures/contracts/core-permission-contract-skeletons.fixture.json",
         "fixtures/contracts/core-policy-contract-skeletons.fixture.json",
@@ -15128,6 +15312,8 @@
         "src/contracts/event/core-event-catalog-entry.ts",
         "src/contracts/event/core-event-catalog-skeletons.ts",
         "src/contracts/event/core-event-catalog-validation.ts",
+        "src/contracts/event/core-mvp-event-contract-lock.ts",
+        "src/contracts/event/core-mvp-event-contract-validation.ts",
         "src/contracts/event/index.ts",
         "src/contracts/index.ts",
         "src/contracts/object/core-object-contract-skeletons.ts",
@@ -15249,6 +15435,7 @@
         "src/validation/core-identity-service-fixture-validation.ts",
         "src/validation/core-jurisdiction-service-fixture-validation.ts",
         "src/validation/core-matter-service-fixture-validation.ts",
+        "src/validation/core-mvp-event-contract-lock-fixture-validation.ts",
         "src/validation/core-opportunity-service-fixture-validation.ts",
         "src/validation/core-order-service-fixture-validation.ts",
         "src/validation/core-organization-service-fixture-validation.ts",
@@ -15323,6 +15510,7 @@
         "fixtures/contracts/core-contract-index.fixture.json",
         "fixtures/contracts/core-domain-contract-skeletons.fixture.json",
         "fixtures/contracts/core-event-catalog-skeletons.fixture.json",
+        "fixtures/contracts/core-mvp-event-contract-lock.fixture.json",
         "fixtures/contracts/core-object-contract-skeletons.fixture.json",
         "fixtures/contracts/core-permission-contract-skeletons.fixture.json",
         "fixtures/contracts/core-policy-contract-skeletons.fixture.json",
@@ -15406,6 +15594,8 @@
         "src/contracts/event/core-event-catalog-entry.ts",
         "src/contracts/event/core-event-catalog-skeletons.ts",
         "src/contracts/event/core-event-catalog-validation.ts",
+        "src/contracts/event/core-mvp-event-contract-lock.ts",
+        "src/contracts/event/core-mvp-event-contract-validation.ts",
         "src/contracts/event/index.ts",
         "src/contracts/index.ts",
         "src/contracts/object/core-object-contract-skeletons.ts",
@@ -15527,6 +15717,7 @@
         "src/validation/core-identity-service-fixture-validation.ts",
         "src/validation/core-jurisdiction-service-fixture-validation.ts",
         "src/validation/core-matter-service-fixture-validation.ts",
+        "src/validation/core-mvp-event-contract-lock-fixture-validation.ts",
         "src/validation/core-opportunity-service-fixture-validation.ts",
         "src/validation/core-order-service-fixture-validation.ts",
         "src/validation/core-organization-service-fixture-validation.ts",
@@ -15601,6 +15792,7 @@
         "fixtures/contracts/core-contract-index.fixture.json",
         "fixtures/contracts/core-domain-contract-skeletons.fixture.json",
         "fixtures/contracts/core-event-catalog-skeletons.fixture.json",
+        "fixtures/contracts/core-mvp-event-contract-lock.fixture.json",
         "fixtures/contracts/core-object-contract-skeletons.fixture.json",
         "fixtures/contracts/core-permission-contract-skeletons.fixture.json",
         "fixtures/contracts/core-policy-contract-skeletons.fixture.json",
@@ -15684,6 +15876,8 @@
         "src/contracts/event/core-event-catalog-entry.ts",
         "src/contracts/event/core-event-catalog-skeletons.ts",
         "src/contracts/event/core-event-catalog-validation.ts",
+        "src/contracts/event/core-mvp-event-contract-lock.ts",
+        "src/contracts/event/core-mvp-event-contract-validation.ts",
         "src/contracts/event/index.ts",
         "src/contracts/index.ts",
         "src/contracts/object/core-object-contract-skeletons.ts",
@@ -15805,6 +15999,7 @@
         "src/validation/core-identity-service-fixture-validation.ts",
         "src/validation/core-jurisdiction-service-fixture-validation.ts",
         "src/validation/core-matter-service-fixture-validation.ts",
+        "src/validation/core-mvp-event-contract-lock-fixture-validation.ts",
         "src/validation/core-opportunity-service-fixture-validation.ts",
         "src/validation/core-order-service-fixture-validation.ts",
         "src/validation/core-organization-service-fixture-validation.ts",
@@ -15879,6 +16074,7 @@
         "fixtures/contracts/core-contract-index.fixture.json",
         "fixtures/contracts/core-domain-contract-skeletons.fixture.json",
         "fixtures/contracts/core-event-catalog-skeletons.fixture.json",
+        "fixtures/contracts/core-mvp-event-contract-lock.fixture.json",
         "fixtures/contracts/core-object-contract-skeletons.fixture.json",
         "fixtures/contracts/core-permission-contract-skeletons.fixture.json",
         "fixtures/contracts/core-policy-contract-skeletons.fixture.json",
@@ -15962,6 +16158,8 @@
         "src/contracts/event/core-event-catalog-entry.ts",
         "src/contracts/event/core-event-catalog-skeletons.ts",
         "src/contracts/event/core-event-catalog-validation.ts",
+        "src/contracts/event/core-mvp-event-contract-lock.ts",
+        "src/contracts/event/core-mvp-event-contract-validation.ts",
         "src/contracts/event/index.ts",
         "src/contracts/index.ts",
         "src/contracts/object/core-object-contract-skeletons.ts",
@@ -16083,6 +16281,7 @@
         "src/validation/core-identity-service-fixture-validation.ts",
         "src/validation/core-jurisdiction-service-fixture-validation.ts",
         "src/validation/core-matter-service-fixture-validation.ts",
+        "src/validation/core-mvp-event-contract-lock-fixture-validation.ts",
         "src/validation/core-opportunity-service-fixture-validation.ts",
         "src/validation/core-order-service-fixture-validation.ts",
         "src/validation/core-organization-service-fixture-validation.ts",
@@ -16157,6 +16356,7 @@
         "fixtures/contracts/core-contract-index.fixture.json",
         "fixtures/contracts/core-domain-contract-skeletons.fixture.json",
         "fixtures/contracts/core-event-catalog-skeletons.fixture.json",
+        "fixtures/contracts/core-mvp-event-contract-lock.fixture.json",
         "fixtures/contracts/core-object-contract-skeletons.fixture.json",
         "fixtures/contracts/core-permission-contract-skeletons.fixture.json",
         "fixtures/contracts/core-policy-contract-skeletons.fixture.json",
@@ -16240,6 +16440,8 @@
         "src/contracts/event/core-event-catalog-entry.ts",
         "src/contracts/event/core-event-catalog-skeletons.ts",
         "src/contracts/event/core-event-catalog-validation.ts",
+        "src/contracts/event/core-mvp-event-contract-lock.ts",
+        "src/contracts/event/core-mvp-event-contract-validation.ts",
         "src/contracts/event/index.ts",
         "src/contracts/index.ts",
         "src/contracts/object/core-object-contract-skeletons.ts",
@@ -16361,6 +16563,7 @@
         "src/validation/core-identity-service-fixture-validation.ts",
         "src/validation/core-jurisdiction-service-fixture-validation.ts",
         "src/validation/core-matter-service-fixture-validation.ts",
+        "src/validation/core-mvp-event-contract-lock-fixture-validation.ts",
         "src/validation/core-opportunity-service-fixture-validation.ts",
         "src/validation/core-order-service-fixture-validation.ts",
         "src/validation/core-organization-service-fixture-validation.ts",
@@ -16432,6 +16635,7 @@
         "fixtures/contracts/core-contract-index.fixture.json",
         "fixtures/contracts/core-domain-contract-skeletons.fixture.json",
         "fixtures/contracts/core-event-catalog-skeletons.fixture.json",
+        "fixtures/contracts/core-mvp-event-contract-lock.fixture.json",
         "fixtures/contracts/core-object-contract-skeletons.fixture.json",
         "fixtures/contracts/core-permission-contract-skeletons.fixture.json",
         "fixtures/contracts/core-policy-contract-skeletons.fixture.json",
@@ -16515,6 +16719,8 @@
         "src/contracts/event/core-event-catalog-entry.ts",
         "src/contracts/event/core-event-catalog-skeletons.ts",
         "src/contracts/event/core-event-catalog-validation.ts",
+        "src/contracts/event/core-mvp-event-contract-lock.ts",
+        "src/contracts/event/core-mvp-event-contract-validation.ts",
         "src/contracts/event/index.ts",
         "src/contracts/index.ts",
         "src/contracts/object/core-object-contract-skeletons.ts",
@@ -16636,6 +16842,7 @@
         "src/validation/core-identity-service-fixture-validation.ts",
         "src/validation/core-jurisdiction-service-fixture-validation.ts",
         "src/validation/core-matter-service-fixture-validation.ts",
+        "src/validation/core-mvp-event-contract-lock-fixture-validation.ts",
         "src/validation/core-opportunity-service-fixture-validation.ts",
         "src/validation/core-order-service-fixture-validation.ts",
         "src/validation/core-organization-service-fixture-validation.ts",
@@ -16707,6 +16914,7 @@
         "fixtures/contracts/core-contract-index.fixture.json",
         "fixtures/contracts/core-domain-contract-skeletons.fixture.json",
         "fixtures/contracts/core-event-catalog-skeletons.fixture.json",
+        "fixtures/contracts/core-mvp-event-contract-lock.fixture.json",
         "fixtures/contracts/core-object-contract-skeletons.fixture.json",
         "fixtures/contracts/core-permission-contract-skeletons.fixture.json",
         "fixtures/contracts/core-policy-contract-skeletons.fixture.json",
@@ -16790,6 +16998,8 @@
         "src/contracts/event/core-event-catalog-entry.ts",
         "src/contracts/event/core-event-catalog-skeletons.ts",
         "src/contracts/event/core-event-catalog-validation.ts",
+        "src/contracts/event/core-mvp-event-contract-lock.ts",
+        "src/contracts/event/core-mvp-event-contract-validation.ts",
         "src/contracts/event/index.ts",
         "src/contracts/index.ts",
         "src/contracts/object/core-object-contract-skeletons.ts",
@@ -16911,6 +17121,7 @@
         "src/validation/core-identity-service-fixture-validation.ts",
         "src/validation/core-jurisdiction-service-fixture-validation.ts",
         "src/validation/core-matter-service-fixture-validation.ts",
+        "src/validation/core-mvp-event-contract-lock-fixture-validation.ts",
         "src/validation/core-opportunity-service-fixture-validation.ts",
         "src/validation/core-order-service-fixture-validation.ts",
         "src/validation/core-organization-service-fixture-validation.ts",
@@ -16985,6 +17196,7 @@
         "fixtures/contracts/core-contract-index.fixture.json",
         "fixtures/contracts/core-domain-contract-skeletons.fixture.json",
         "fixtures/contracts/core-event-catalog-skeletons.fixture.json",
+        "fixtures/contracts/core-mvp-event-contract-lock.fixture.json",
         "fixtures/contracts/core-object-contract-skeletons.fixture.json",
         "fixtures/contracts/core-permission-contract-skeletons.fixture.json",
         "fixtures/contracts/core-policy-contract-skeletons.fixture.json",
@@ -17068,6 +17280,8 @@
         "src/contracts/event/core-event-catalog-entry.ts",
         "src/contracts/event/core-event-catalog-skeletons.ts",
         "src/contracts/event/core-event-catalog-validation.ts",
+        "src/contracts/event/core-mvp-event-contract-lock.ts",
+        "src/contracts/event/core-mvp-event-contract-validation.ts",
         "src/contracts/event/index.ts",
         "src/contracts/index.ts",
         "src/contracts/object/core-object-contract-skeletons.ts",
@@ -17189,6 +17403,7 @@
         "src/validation/core-identity-service-fixture-validation.ts",
         "src/validation/core-jurisdiction-service-fixture-validation.ts",
         "src/validation/core-matter-service-fixture-validation.ts",
+        "src/validation/core-mvp-event-contract-lock-fixture-validation.ts",
         "src/validation/core-opportunity-service-fixture-validation.ts",
         "src/validation/core-order-service-fixture-validation.ts",
         "src/validation/core-organization-service-fixture-validation.ts",
@@ -17265,6 +17480,7 @@
         "fixtures/contracts/core-contract-index.fixture.json",
         "fixtures/contracts/core-domain-contract-skeletons.fixture.json",
         "fixtures/contracts/core-event-catalog-skeletons.fixture.json",
+        "fixtures/contracts/core-mvp-event-contract-lock.fixture.json",
         "fixtures/contracts/core-object-contract-skeletons.fixture.json",
         "fixtures/contracts/core-permission-contract-skeletons.fixture.json",
         "fixtures/contracts/core-policy-contract-skeletons.fixture.json",
@@ -17348,6 +17564,8 @@
         "src/contracts/event/core-event-catalog-entry.ts",
         "src/contracts/event/core-event-catalog-skeletons.ts",
         "src/contracts/event/core-event-catalog-validation.ts",
+        "src/contracts/event/core-mvp-event-contract-lock.ts",
+        "src/contracts/event/core-mvp-event-contract-validation.ts",
         "src/contracts/event/index.ts",
         "src/contracts/index.ts",
         "src/contracts/object/core-object-contract-skeletons.ts",
@@ -17469,6 +17687,7 @@
         "src/validation/core-identity-service-fixture-validation.ts",
         "src/validation/core-jurisdiction-service-fixture-validation.ts",
         "src/validation/core-matter-service-fixture-validation.ts",
+        "src/validation/core-mvp-event-contract-lock-fixture-validation.ts",
         "src/validation/core-opportunity-service-fixture-validation.ts",
         "src/validation/core-order-service-fixture-validation.ts",
         "src/validation/core-organization-service-fixture-validation.ts",
@@ -17543,6 +17762,7 @@
         "fixtures/contracts/core-contract-index.fixture.json",
         "fixtures/contracts/core-domain-contract-skeletons.fixture.json",
         "fixtures/contracts/core-event-catalog-skeletons.fixture.json",
+        "fixtures/contracts/core-mvp-event-contract-lock.fixture.json",
         "fixtures/contracts/core-object-contract-skeletons.fixture.json",
         "fixtures/contracts/core-permission-contract-skeletons.fixture.json",
         "fixtures/contracts/core-policy-contract-skeletons.fixture.json",
@@ -17626,6 +17846,8 @@
         "src/contracts/event/core-event-catalog-entry.ts",
         "src/contracts/event/core-event-catalog-skeletons.ts",
         "src/contracts/event/core-event-catalog-validation.ts",
+        "src/contracts/event/core-mvp-event-contract-lock.ts",
+        "src/contracts/event/core-mvp-event-contract-validation.ts",
         "src/contracts/event/index.ts",
         "src/contracts/index.ts",
         "src/contracts/object/core-object-contract-skeletons.ts",
@@ -17747,6 +17969,7 @@
         "src/validation/core-identity-service-fixture-validation.ts",
         "src/validation/core-jurisdiction-service-fixture-validation.ts",
         "src/validation/core-matter-service-fixture-validation.ts",
+        "src/validation/core-mvp-event-contract-lock-fixture-validation.ts",
         "src/validation/core-opportunity-service-fixture-validation.ts",
         "src/validation/core-order-service-fixture-validation.ts",
         "src/validation/core-organization-service-fixture-validation.ts",
@@ -18462,11 +18685,11 @@
   "summary": {
     "mustBuildNow": {
       "total": 115,
-      "meets_required_depth": 50,
+      "meets_required_depth": 68,
       "partial_evidence": 3,
       "validated_skeleton_only": 39,
       "boundary_scaffold_only": 5,
-      "semantic_overlap_only": 18,
+      "semantic_overlap_only": 0,
       "fixture_only": 0,
       "missing": 0
     },
