@@ -8,6 +8,8 @@ The Organization Object and Organization Service specifications use different or
 
 Mutations are organization-scoped, idempotent, immutable at the public boundary, and roll back when Event trace handoff fails. Suspended, inactive, review-required, archived, and deleted-reference organizations cannot resolve as active operating contexts. AI-initiated creation and privileged Owner/Admin membership changes preserve Agent Contract and Human Review requirements.
 
+The resulting Book 02 Must Build baseline is `47 / 3 / 42`, leaving User Service, Permission Service, and Policy Service as the remaining foundational Service gaps.
+
 ## Validation boundary
 
 The foundation is accepted only when type checking, linting, formatting, all required fixture validators, the complete repository test suite, contract acceptance, behavior acceptance, and the Book 02 MVP gap baseline pass together against the clean branch state.
