@@ -22,12 +22,12 @@ describe('CORE-TASK-048 Book 02 Workflow Contract Service evidence', () => {
     ]);
   });
 
-  it('derives 46 / 3 / 43 while leaving four foundational authority Services unresolved', () => {
+  it('derives 47 / 3 / 42 while leaving three foundational authority Services unresolved', () => {
     assert.deepEqual(BOOK_02_MVP_GAP_BASELINE.summary.mustBuildNow, {
       total: 115,
-      meets_required_depth: 46,
+      meets_required_depth: 47,
       partial_evidence: 3,
-      validated_skeleton_only: 43,
+      validated_skeleton_only: 42,
       boundary_scaffold_only: 5,
       semantic_overlap_only: 18,
       fixture_only: 0,
@@ -41,7 +41,6 @@ describe('CORE-TASK-048 Book 02 Workflow Contract Service evidence', () => {
       )
       .map((requirement) => requirement.id);
     assert.deepEqual(unresolvedServiceIds, [
-      'must-service-organization-service',
       'must-service-user-service',
       'must-service-permission-service',
       'must-service-policy-service'

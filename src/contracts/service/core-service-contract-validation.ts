@@ -14,7 +14,7 @@ const canonicalServiceEntries = [
     'organization',
     'Core Organization Service Contract Skeleton',
     'organization-service.md',
-    'CORE-TASK-021'
+    'CORE-TASK-051'
   ],
   [
     'user-service',
@@ -126,6 +126,20 @@ const canonicalServiceSourceRoot =
   'books/book-02-core-specification/core-specs/services/';
 
 const behaviorLocks = {
+  'organization-service': {
+    task: 'CORE-TASK-051',
+    operations: [
+      'createOrganization',
+      'getOrganization',
+      'updateOrganization',
+      'changeOrganizationStatus',
+      'linkOrganizationUser',
+      'unlinkOrganizationUser',
+      'validateOrganizationReference',
+      'resolveOrganizationContext',
+      'archiveOrganization'
+    ]
+  },
   'identity-resolution-service': {
     task: 'CORE-TASK-050',
     operations: [
@@ -354,6 +368,14 @@ const behaviorLocks = {
 } as const;
 
 const promotedContracts = {
+  10: {
+    id: 'core-service-organization-service-contract',
+    serviceType: 'organization-service',
+    domainId: 'organization',
+    name: 'Core Organization Service Contract Skeleton',
+    sourceFile: 'organization-service.md',
+    task: 'CORE-TASK-051'
+  },
   0: {
     id: 'core-service-identity-resolution-service-contract',
     serviceType: 'identity-resolution-service',

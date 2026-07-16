@@ -443,12 +443,16 @@
     "description": "Canonical metadata skeleton for the organization Core Service boundary.",
     "status": "active",
     "book": "Book 02 — MarkOrbit Core Specification",
-    "purpose": "Defines the Organization service ownership boundary for governed operating-context records without implementing creation, mutation, linkage, membership, permission, policy, or tenant behavior.",
+    "purpose": "Defines the Organization service ownership boundary for stable operating-context records, lifecycle, explicit User linkage, hierarchy, safe validation, deterministic context resolution, and audit trace without absorbing Identity, User, Permission, Policy, billing, authentication, Customer, Partner, Agent, or Service Provider ownership.",
     "owns": [
-      "Organization service ownership, validation, linkage, and reference boundary."
+      "Organization service ownership, stable operating-context reference, lifecycle, explicit User linkage, hierarchy, reference validation, deterministic context resolution, archival, and audit trace boundary."
     ],
-    "consumes": ["organization references", "identity and user references"],
-    "produces": ["organization boundary references"],
+    "consumes": [
+      "organization, parent organization, identity, user, permission, policy, review, audit, customer, partner, agent, service-provider, billing, and authentication references"
+    ],
+    "produces": [
+      "organization boundary references, governed safe views, membership-reference results, validation results, deterministic operating-context resolution results, and Event trace handoff"
+    ],
     "allowedOperations": [
       "reference lookup category",
       "boundary evaluation category",
@@ -458,7 +462,7 @@
       "Executable service method definitions or service implementations.",
       "API routes, database access, workflow runtime, or Book 03 execution behavior.",
       "Product UI behavior, concrete business logic, or AI agent authority.",
-      "Organization mutation, tenant runtime, membership administration, permission evaluation, policy enforcement, or billing accounts."
+      "Identity or User ownership, implicit email-domain membership, Permission grant, Policy decision, billing account, authentication or credential system, Customer record, Partner record, Agent record, Service Provider record, full CRM/company profile, or autonomous AI organization administration."
     ],
     "createdAt": "2026-07-11T00:00:00.000Z",
     "sourcePath": "books/book-02-core-specification/core-specs/services/organization-service.md",
@@ -467,7 +471,20 @@
       "specificationRepository": "whalemarks/markorbit-publication",
       "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
       "specificationPath": "books/book-02-core-specification/",
-      "implementationTask": "CORE-TASK-021"
+      "implementationTask": "CORE-TASK-051",
+      "behaviorImplementationTask": "CORE-TASK-051",
+      "behaviorDepth": "level_2_3",
+      "implementedOperations": [
+        "createOrganization",
+        "getOrganization",
+        "updateOrganization",
+        "changeOrganizationStatus",
+        "linkOrganizationUser",
+        "unlinkOrganizationUser",
+        "validateOrganizationReference",
+        "resolveOrganizationContext",
+        "archiveOrganization"
+      ]
     }
   },
   {

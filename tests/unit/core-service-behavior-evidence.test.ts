@@ -27,6 +27,8 @@ import {
   CORE_ORDER_MINIMUM_CAPABILITIES,
   CORE_OPPORTUNITY_IMPLEMENTED_OPERATIONS,
   CORE_OPPORTUNITY_MINIMUM_CAPABILITIES,
+  CORE_ORGANIZATION_IMPLEMENTED_OPERATIONS,
+  CORE_ORGANIZATION_MINIMUM_CAPABILITIES,
   CORE_SERVICE_BEHAVIOR_EVIDENCE,
   CORE_TASK_IMPLEMENTED_OPERATIONS,
   CORE_TASK_MINIMUM_CAPABILITIES,
@@ -39,6 +41,7 @@ import {
 
 const expectedRequirements = [
   'must-service-identity-service',
+  'must-service-organization-service',
   'must-service-customer-service',
   'must-service-brand-service',
   'must-service-trademark-service',
@@ -58,7 +61,7 @@ const expectedRequirements = [
 describe('Core Service behavior evidence', () => {
   it('validates exact dependency-first Service evidence in canonical order', () => {
     assert.deepEqual(validateCoreServiceBehaviorEvidence(), []);
-    assert.equal(CORE_SERVICE_BEHAVIOR_EVIDENCE.length, 15);
+    assert.equal(CORE_SERVICE_BEHAVIOR_EVIDENCE.length, 16);
     assert.deepEqual(
       CORE_SERVICE_BEHAVIOR_EVIDENCE.map((entry) => entry.requirementId),
       expectedRequirements
@@ -67,6 +70,10 @@ describe('Core Service behavior evidence', () => {
       [
         CORE_IDENTITY_IMPLEMENTED_OPERATIONS,
         CORE_IDENTITY_MINIMUM_CAPABILITIES
+      ],
+      [
+        CORE_ORGANIZATION_IMPLEMENTED_OPERATIONS,
+        CORE_ORGANIZATION_MINIMUM_CAPABILITIES
       ],
       [
         CORE_CUSTOMER_IMPLEMENTED_OPERATIONS,
@@ -125,6 +132,7 @@ describe('Core Service behavior evidence', () => {
   it('rejects missing, duplicate, fake and cross-Service evidence', () => {
     const [
       identity,
+      organization,
       customer,
       brand,
       trademark,
@@ -144,6 +152,7 @@ describe('Core Service behavior evidence', () => {
       validateCoreServiceBehaviorEvidence({
         evidence: [
           identity,
+          organization,
           customer,
           brand,
           trademark,
@@ -159,6 +168,7 @@ describe('Core Service behavior evidence', () => {
       validateCoreServiceBehaviorEvidence({
         evidence: [
           identity,
+          organization,
           customer,
           customer,
           trademark,
@@ -202,6 +212,7 @@ describe('Core Service behavior evidence', () => {
       validateCoreServiceBehaviorEvidence({
         evidence: [
           identity,
+          organization,
           customer,
           { ...brand, domainId: 'customer' },
           trademark,
@@ -224,6 +235,7 @@ describe('Core Service behavior evidence', () => {
       validateCoreServiceBehaviorEvidence({
         evidence: [
           identity,
+          organization,
           customer,
           { ...brand, serviceType: 'customer-service' },
           trademark,
@@ -247,6 +259,7 @@ describe('Core Service behavior evidence', () => {
   it('rejects missing operations and minimum capabilities', () => {
     const [
       identity,
+      organization,
       customer,
       brand,
       trademark,
@@ -266,6 +279,7 @@ describe('Core Service behavior evidence', () => {
       validateCoreServiceBehaviorEvidence({
         evidence: [
           identity,
+          organization,
           customer,
           brand,
           trademark,
@@ -288,6 +302,7 @@ describe('Core Service behavior evidence', () => {
       validateCoreServiceBehaviorEvidence({
         evidence: [
           identity,
+          organization,
           customer,
           brand,
           trademark,
@@ -312,11 +327,16 @@ describe('Core Service behavior evidence', () => {
     );
   });
 
-  it('executes all fifteen fixtures and rejects corrupted expectations', async () => {
+  it('executes all sixteen fixtures and rejects corrupted expectations', async () => {
     const fixtures = [
       [
         'identityFixture',
         'fixtures/services/core-identity-service-authority-foundation.fixture.json',
+        'operationCount'
+      ],
+      [
+        'organizationFixture',
+        'fixtures/services/core-organization-service-operating-context-foundation.fixture.json',
         'operationCount'
       ],
       [

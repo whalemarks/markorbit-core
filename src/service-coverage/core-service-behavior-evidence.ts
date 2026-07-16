@@ -4,6 +4,10 @@ import {
   CORE_IDENTITY_MINIMUM_CAPABILITIES
 } from '../services/identity/index.ts';
 import {
+  CORE_ORGANIZATION_IMPLEMENTED_OPERATIONS,
+  CORE_ORGANIZATION_MINIMUM_CAPABILITIES
+} from '../services/organization/index.ts';
+import {
   CORE_BRAND_IMPLEMENTED_OPERATIONS,
   CORE_BRAND_MINIMUM_CAPABILITIES
 } from '../services/brand/index.ts';
@@ -93,6 +97,27 @@ export const CORE_SERVICE_BEHAVIOR_EVIDENCE = [
     ],
     fixtureFiles: [
       'fixtures/services/core-identity-service-authority-foundation.fixture.json'
+    ]
+  },
+  {
+    requirementId: 'must-service-organization-service',
+    serviceType: 'organization-service',
+    domainId: 'organization',
+    contractId: 'core-service-organization-service-contract',
+    sourcePath:
+      'books/book-02-core-specification/core-specs/services/organization-service.md',
+    currentDepth: 'level_2_3',
+    operations: CORE_ORGANIZATION_IMPLEMENTED_OPERATIONS,
+    provenMinimumCapabilities: CORE_ORGANIZATION_MINIMUM_CAPABILITIES,
+    unresolvedServiceOperations: [],
+    implementationFiles: [
+      'src/services/organization/core-organization-service.ts'
+    ],
+    testFiles: [
+      'tests/unit/core-organization-service-operating-context-foundation.test.ts'
+    ],
+    fixtureFiles: [
+      'fixtures/services/core-organization-service-operating-context-foundation.fixture.json'
     ]
   },
   {

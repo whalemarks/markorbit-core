@@ -2,26 +2,26 @@ import assert from 'node:assert/strict';
 import { describe, it } from 'node:test';
 import { BOOK_02_MVP_GAP_BASELINE } from '../../src/index.ts';
 
-describe('CORE-TASK-050 Book 02 Identity Service evidence', () => {
-  it('records Identity Service as the owned stable actor-recognition authority', () => {
-    const identity = BOOK_02_MVP_GAP_BASELINE.requirements.find(
-      (requirement) => requirement.id === 'must-service-identity-service'
+describe('CORE-TASK-051 Book 02 Organization Service evidence', () => {
+  it('records Organization Service as the owned operating-context authority', () => {
+    const organization = BOOK_02_MVP_GAP_BASELINE.requirements.find(
+      (requirement) => requirement.id === 'must-service-organization-service'
     );
-    assert.equal(identity?.currentDisposition, 'meets_required_depth');
-    assert.equal(identity?.currentDepth, 'level_2_3');
-    assert.deepEqual(identity?.implementationFiles, [
+    assert.equal(organization?.currentDisposition, 'meets_required_depth');
+    assert.equal(organization?.currentDepth, 'level_2_3');
+    assert.deepEqual(organization?.implementationFiles, [
       'src/contracts/service/core-service-contract-skeletons.ts',
-      'src/services/identity/core-identity-service.ts'
+      'src/services/organization/core-organization-service.ts'
     ]);
-    assert.deepEqual(identity?.testFiles, [
-      'tests/unit/core-identity-service-authority-foundation.test.ts'
+    assert.deepEqual(organization?.testFiles, [
+      'tests/unit/core-organization-service-operating-context-foundation.test.ts'
     ]);
-    assert.deepEqual(identity?.fixtureFiles, [
-      'fixtures/services/core-identity-service-authority-foundation.fixture.json'
+    assert.deepEqual(organization?.fixtureFiles, [
+      'fixtures/services/core-organization-service-operating-context-foundation.fixture.json'
     ]);
   });
 
-  it('derives 47 / 3 / 42 and leaves three foundational authority Services unresolved', () => {
+  it('derives 47 / 3 / 42 and leaves User, Permission, and Policy unresolved', () => {
     assert.deepEqual(BOOK_02_MVP_GAP_BASELINE.summary.mustBuildNow, {
       total: 115,
       meets_required_depth: 47,

@@ -27,6 +27,7 @@ export const CORE_FIXTURE_TYPES = [
   'book_02_mvp_gap_baseline',
   'core_mvp_object_public_reference_foundation',
   'core_identity_service_authority_foundation',
+  'core_organization_service_operating_context_foundation',
   'core_customer_service_core_lifecycle',
   'core_brand_service_core_lifecycle',
   'core_trademark_service_core_lifecycle',
@@ -214,6 +215,12 @@ export const CORE_FIXTURE_MANIFEST = [
     id: 'core-identity-service-authority-foundation',
     type: 'core_identity_service_authority_foundation',
     path: 'fixtures/services/core-identity-service-authority-foundation.fixture.json',
+    required: true
+  },
+  {
+    id: 'core-organization-service-operating-context-foundation',
+    type: 'core_organization_service_operating_context_foundation',
+    path: 'fixtures/services/core-organization-service-operating-context-foundation.fixture.json',
     required: true
   },
   {
