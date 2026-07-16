@@ -3,6 +3,10 @@ import {
   CORE_IDENTITY_IMPLEMENTED_OPERATIONS,
   CORE_IDENTITY_MINIMUM_CAPABILITIES
 } from '../services/identity/index.ts';
+import {
+  CORE_ORGANIZATION_IMPLEMENTED_OPERATIONS,
+  CORE_ORGANIZATION_MINIMUM_CAPABILITIES
+} from '../services/organization/index.ts';
 import { CORE_SERVICE_CONTRACT_SKELETONS } from '../contracts/index.ts';
 import {
   CORE_BRAND_IMPLEMENTED_OPERATIONS,
@@ -75,6 +79,7 @@ import { validateCoreTaskServiceActionableWorkFoundationFixture } from '../valid
 import { validateCoreEventServiceGovernedOccurrenceFoundationFixture } from '../validation/core-event-service-fixture-validation.ts';
 import { validateCoreCommunicationServiceGovernedCommunicationFoundationFixture } from '../validation/core-communication-service-fixture-validation.ts';
 import { validateCoreIdentityServiceAuthorityFoundationFixture } from '../validation/core-identity-service-fixture-validation.ts';
+import { validateCoreOrganizationServiceOperatingContextFoundationFixture } from '../validation/core-organization-service-fixture-validation.ts';
 import {
   CORE_SERVICE_BEHAVIOR_EVIDENCE,
   type CoreServiceBehaviorEvidence
@@ -89,6 +94,7 @@ export interface CoreServiceBehaviorValidationIssue {
 export interface CoreServiceBehaviorValidationOptions {
   readonly evidence?: readonly CoreServiceBehaviorEvidence[];
   readonly identityFixture?: unknown;
+  readonly organizationFixture?: unknown;
   readonly customerFixture?: unknown;
   readonly brandFixture?: unknown;
   readonly trademarkFixture?: unknown;
@@ -110,6 +116,7 @@ interface ExpectedServiceEvidence {
   readonly serviceType: string;
   readonly domainId:
     | 'identity'
+    | 'organization'
     | 'customer'
     | 'brand'
     | 'trademark'
@@ -131,6 +138,7 @@ interface ExpectedServiceEvidence {
   readonly unresolved: readonly string[];
   readonly fixtureOverride:
     | 'identityFixture'
+    | 'organizationFixture'
     | 'customerFixture'
     | 'brandFixture'
     | 'trademarkFixture'
@@ -164,6 +172,21 @@ const expectedEvidence = [
     fixtureOverride: 'identityFixture',
     fixtureValidator: (fixture) =>
       validateCoreIdentityServiceAuthorityFoundationFixture(fixture).issues
+  },
+  {
+    requirementId: 'must-service-organization-service',
+    serviceType: 'organization-service',
+    domainId: 'organization',
+    contractId: 'core-service-organization-service-contract',
+    sourcePath:
+      'books/book-02-core-specification/core-specs/services/organization-service.md',
+    operations: CORE_ORGANIZATION_IMPLEMENTED_OPERATIONS,
+    capabilities: CORE_ORGANIZATION_MINIMUM_CAPABILITIES,
+    unresolved: [],
+    fixtureOverride: 'organizationFixture',
+    fixtureValidator: (fixture) =>
+      validateCoreOrganizationServiceOperatingContextFoundationFixture(fixture)
+        .issues
   },
   {
     requirementId: 'must-service-customer-service',

@@ -45,6 +45,7 @@ import { validateCoreWorkflowContractServiceExecutionStructureFoundationFixture 
 import { validateCoreEventServiceGovernedOccurrenceFoundationFixture } from '../src/validation/core-event-service-fixture-validation.ts';
 import { validateCoreCommunicationServiceGovernedCommunicationFoundationFixture } from '../src/validation/core-communication-service-fixture-validation.ts';
 import { validateCoreIdentityServiceAuthorityFoundationFixture } from '../src/validation/core-identity-service-fixture-validation.ts';
+import { validateCoreOrganizationServiceOperatingContextFoundationFixture } from '../src/validation/core-organization-service-fixture-validation.ts';
 
 const validators = {
   domain_registry: validateCoreDomainRegistryFixture,
@@ -82,6 +83,8 @@ const validators = {
     validateCoreMvpObjectPublicReferenceFoundationFixture,
   core_identity_service_authority_foundation:
     validateCoreIdentityServiceAuthorityFoundationFixture,
+  core_organization_service_operating_context_foundation:
+    validateCoreOrganizationServiceOperatingContextFoundationFixture,
   core_customer_service_core_lifecycle:
     validateCoreCustomerServiceCoreLifecycleFixture,
   core_brand_service_core_lifecycle:

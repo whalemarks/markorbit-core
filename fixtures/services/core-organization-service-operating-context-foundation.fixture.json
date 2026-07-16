@@ -1,0 +1,33 @@
+{
+  "fixtureType": "core_organization_service_operating_context_foundation",
+  "task": "CORE-TASK-051",
+  "authority": {
+    "repository": "whalemarks/markorbit-publication",
+    "commit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+    "sourcePath": "books/book-02-core-specification/core-specs/services/organization-service.md"
+  },
+  "implementedOperations": [
+    "createOrganization",
+    "getOrganization",
+    "updateOrganization",
+    "changeOrganizationStatus",
+    "linkOrganizationUser",
+    "unlinkOrganizationUser",
+    "validateOrganizationReference",
+    "resolveOrganizationContext",
+    "archiveOrganization"
+  ],
+  "expected": {
+    "operationCount": 9,
+    "organizationIsOperatingContextNotAuthorization": true,
+    "customerPartnerAgentProviderBoundariesPreserved": true,
+    "billingAndAuthenticationExcluded": true,
+    "inactiveAndArchivedReferencesRejected": true,
+    "stableImmutableOrganizationId": true,
+    "explicitUserLinkage": true,
+    "permissionPolicyAndReviewPreserved": true,
+    "eventTraceRequired": true,
+    "eventRollbackRequired": true,
+    "crossOrganizationNonEnumeration": true
+  }
+}
