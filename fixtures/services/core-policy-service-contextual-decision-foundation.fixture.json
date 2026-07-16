@@ -1,0 +1,37 @@
+{
+  "fixtureType": "core_policy_service_contextual_decision_foundation",
+  "task": "CORE-TASK-054",
+  "authority": {
+    "repository": "whalemarks/markorbit-publication",
+    "commit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+    "sourcePath": "books/book-02-core-specification/core-specs/services/policy-service.md"
+  },
+  "implementedOperations": [
+    "createPolicy",
+    "getPolicy",
+    "updatePolicy",
+    "changePolicyStatus",
+    "evaluatePolicy",
+    "validatePolicyReference",
+    "listApplicablePolicies",
+    "archivePolicy"
+  ],
+  "expected": {
+    "operationCount": 8,
+    "policyIsContextualConstraintNotPermission": true,
+    "permissionDecisionRequired": true,
+    "permissionDenialFailsClosed": true,
+    "deterministicDecisionPrecedence": true,
+    "missingPolicyFailsClosedForControlledBehavior": true,
+    "redactionGuidanceSupported": true,
+    "nonDisclosureGuidanceSupported": true,
+    "reviewAndApprovalAreRequirementsNotExecution": true,
+    "protectedAiActionsRequirePolicy": true,
+    "professionalJudgmentExcluded": true,
+    "legalRuleEngineExcluded": true,
+    "stableImmutablePolicyId": true,
+    "eventTraceRequired": true,
+    "eventRollbackRequired": true,
+    "crossOrganizationNonEnumeration": true
+  }
+}

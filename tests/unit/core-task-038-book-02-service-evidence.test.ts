@@ -24,7 +24,7 @@ describe('CORE-TASK-038 Book 02 Service evidence', () => {
     );
   });
 
-  it('preserves the CORE-TASK-038 acceptance boundary', () => {
+  it('preserves the historical Service evidence while reflecting final acceptance', () => {
     assert.ok(
       BOOK_02_MVP_GAP_BASELINE.summary.mustBuildNow.meets_required_depth >= 35
     );
@@ -35,10 +35,10 @@ describe('CORE-TASK-038 Book 02 Service evidence', () => {
     const criterion = BOOK_02_MVP_GAP_BASELINE.acceptanceCriteria.find(
       (entry) => entry.id === 'must-build-services-own-behavior'
     );
-    assert.equal(criterion?.satisfied, false);
+    assert.equal(criterion?.satisfied, true);
     assert.equal(
       BOOK_02_MVP_GAP_BASELINE.summary.acceptance.acceptanceCriteriaSatisfied,
-      11
+      12
     );
     assert.equal(
       BOOK_02_MVP_GAP_BASELINE.summary.acceptance.book02MvpComplete,

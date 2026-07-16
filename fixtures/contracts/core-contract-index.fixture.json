@@ -835,7 +835,7 @@
     "id": "core-service-identity-resolution-service-contract",
     "type": "service",
     "name": "Identity Resolution Service Contract Skeleton",
-    "description": "Skeleton contract boundary for identity resolution service responsibilities.",
+    "description": "Canonical metadata skeleton for the identity Core Service boundary.",
     "status": "active",
     "scope": {
       "domainId": "identity"
@@ -843,7 +843,7 @@
     "version": 1,
     "book": "Book 02 — MarkOrbit Core Specification",
     "source": "CORE_SERVICE_CONTRACT_SKELETONS",
-    "createdAt": "2026-07-09T00:00:00.000Z"
+    "createdAt": "2026-07-11T00:00:00.000Z"
   },
   {
     "id": "core-service-permission-evaluation-service-contract",
@@ -863,7 +863,7 @@
     "id": "core-service-policy-evaluation-service-contract",
     "type": "service",
     "name": "Policy Evaluation Service Contract Skeleton",
-    "description": "Skeleton contract boundary for policy evaluation service responsibilities.",
+    "description": "Canonical metadata skeleton for the policy Core Service boundary.",
     "status": "active",
     "scope": {
       "domainId": "policy"
@@ -871,7 +871,7 @@
     "version": 1,
     "book": "Book 02 — MarkOrbit Core Specification",
     "source": "CORE_SERVICE_CONTRACT_SKELETONS",
-    "createdAt": "2026-07-09T00:00:00.000Z"
+    "createdAt": "2026-07-11T00:00:00.000Z"
   },
   {
     "id": "core-service-knowledge-reference-service-contract",
@@ -961,7 +961,7 @@
     "id": "core-service-communication-reference-service-contract",
     "type": "service",
     "name": "Communication Reference Service Contract Skeleton",
-    "description": "Skeleton contract boundary for communication reference service responsibilities.",
+    "description": "Canonical metadata skeleton for the communication Core Service boundary.",
     "status": "active",
     "scope": {
       "domainId": "communication"
@@ -969,7 +969,7 @@
     "version": 1,
     "book": "Book 02 — MarkOrbit Core Specification",
     "source": "CORE_SERVICE_CONTRACT_SKELETONS",
-    "createdAt": "2026-07-09T00:00:00.000Z"
+    "createdAt": "2026-07-11T00:00:00.000Z"
   },
   {
     "id": "core-service-organization-service-contract",

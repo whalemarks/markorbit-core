@@ -17,14 +17,14 @@ describe('CORE-TASK-037 Book 02 Service evidence', () => {
     }
   });
 
-  it('keeps global Service acceptance unresolved until every required Service owns behavior', () => {
+  it('reflects final Service acceptance after all required Services own behavior', () => {
     const serviceCriterion = BOOK_02_MVP_GAP_BASELINE.acceptanceCriteria.find(
       (criterion) => criterion.id === 'must-build-services-own-behavior'
     );
-    assert.equal(serviceCriterion?.satisfied, false);
+    assert.equal(serviceCriterion?.satisfied, true);
     assert.equal(
       BOOK_02_MVP_GAP_BASELINE.summary.acceptance.acceptanceCriteriaSatisfied,
-      11
+      12
     );
     assert.equal(
       BOOK_02_MVP_GAP_BASELINE.summary.acceptance.book02MvpComplete,

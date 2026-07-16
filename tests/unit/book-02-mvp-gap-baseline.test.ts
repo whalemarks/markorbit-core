@@ -466,9 +466,7 @@ describe('Book 02 MVP gap baseline validation', () => {
   it('preserves depth distinctions and scope guards', () => {
     for (const [predicate, code] of [
       [
-        (r: Record<string, unknown>) =>
-          r.layer === 'service' &&
-          r.currentDisposition === 'validated_skeleton_only',
+        (r: Record<string, unknown>) => r.id === 'must-service-policy-service',
         'book02.depth.service_contract_index_only'
       ],
       [
@@ -488,6 +486,11 @@ describe('Book 02 MVP gap baseline validation', () => {
       const req = requirementsOf(baseline).find(predicate);
       if (!req) throw new Error('Expected mutated requirement.');
       req.currentDisposition = 'meets_required_depth';
+      if (req.layer === 'service') {
+        req.implementationFiles = [
+          'src/contracts/service/core-service-contract-skeletons.ts'
+        ];
+      }
       assert.ok(codes(validateBook02MvpGapBaseline(baseline)).includes(code));
     }
     const testDepth = cloneRecord();
@@ -590,6 +593,7 @@ describe('Book 02 MVP gap baseline validation', () => {
     assert.deepEqual(satisfiedIds, [
       'must-build-domains-implemented-or-scaffolded-with-tests',
       'must-build-objects-have-public-reference-ids',
+      'must-build-services-own-behavior',
       'permission-and-policy-fail-closed',
       'ai-forbidden-actions-are-blocked',
       'human-review-gates-protected-actions',

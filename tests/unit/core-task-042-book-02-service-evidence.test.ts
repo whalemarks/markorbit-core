@@ -7,6 +7,7 @@ const implementedServiceIds = [
   'must-service-organization-service',
   'must-service-user-service',
   'must-service-permission-service',
+  'must-service-policy-service',
   'must-service-customer-service',
   'must-service-brand-service',
   'must-service-trademark-service',
@@ -23,7 +24,7 @@ const implementedServiceIds = [
 ];
 
 describe('CORE-TASK-042 Book 02 Service evidence', () => {
-  it('promotes implemented Services through Permission in dependency order', () => {
+  it('promotes all Must Build Services through Policy in dependency order', () => {
     const services = BOOK_02_MVP_GAP_BASELINE.requirements.filter(
       (requirement) => requirement.layer === 'service'
     );
@@ -44,16 +45,16 @@ describe('CORE-TASK-042 Book 02 Service evidence', () => {
         (requirement) =>
           requirement.currentDisposition === 'validated_skeleton_only'
       ).length,
-      1
+      0
     );
   });
 
-  it('derives 49 / 3 / 40 and leaves global Service acceptance unresolved', () => {
+  it('derives 50 / 3 / 39 and satisfies global Service behavior acceptance', () => {
     assert.deepEqual(BOOK_02_MVP_GAP_BASELINE.summary.mustBuildNow, {
       total: 115,
-      meets_required_depth: 49,
+      meets_required_depth: 50,
       partial_evidence: 3,
-      validated_skeleton_only: 40,
+      validated_skeleton_only: 39,
       boundary_scaffold_only: 5,
       semantic_overlap_only: 18,
       fixture_only: 0,
@@ -62,10 +63,10 @@ describe('CORE-TASK-042 Book 02 Service evidence', () => {
     const criterion = BOOK_02_MVP_GAP_BASELINE.acceptanceCriteria.find(
       (entry) => entry.id === 'must-build-services-own-behavior'
     );
-    assert.equal(criterion?.satisfied, false);
+    assert.equal(criterion?.satisfied, true);
     assert.equal(
       BOOK_02_MVP_GAP_BASELINE.summary.acceptance.acceptanceCriteriaSatisfied,
-      11
+      12
     );
     assert.equal(
       BOOK_02_MVP_GAP_BASELINE.summary.acceptance.book02MvpComplete,
