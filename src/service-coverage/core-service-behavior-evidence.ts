@@ -12,6 +12,10 @@ import {
   CORE_USER_MINIMUM_CAPABILITIES
 } from '../services/user/index.ts';
 import {
+  CORE_PERMISSION_IMPLEMENTED_OPERATIONS,
+  CORE_PERMISSION_MINIMUM_CAPABILITIES
+} from '../services/permission/index.ts';
+import {
   CORE_BRAND_IMPLEMENTED_OPERATIONS,
   CORE_BRAND_MINIMUM_CAPABILITIES
 } from '../services/brand/index.ts';
@@ -141,6 +145,29 @@ export const CORE_SERVICE_BEHAVIOR_EVIDENCE = [
     ],
     fixtureFiles: [
       'fixtures/services/core-user-service-account-participant-foundation.fixture.json'
+    ]
+  },
+  {
+    requirementId: 'must-service-permission-service',
+    serviceType: 'permission-evaluation-service',
+    domainId: 'permission',
+    contractId: 'core-service-permission-evaluation-service-contract',
+    sourcePath:
+      'books/book-02-core-specification/core-specs/services/permission-service.md',
+    currentDepth: 'level_2_3',
+    operations: CORE_PERMISSION_IMPLEMENTED_OPERATIONS,
+    provenMinimumCapabilities: CORE_PERMISSION_MINIMUM_CAPABILITIES,
+    unresolvedServiceOperations: [
+      'actorGroupPermission',
+      'fullRoleInheritance',
+      'externalIamIntegration'
+    ],
+    implementationFiles: ['src/services/permission/core-permission-service.ts'],
+    testFiles: [
+      'tests/unit/core-permission-service-governed-grant-foundation.test.ts'
+    ],
+    fixtureFiles: [
+      'fixtures/services/core-permission-service-governed-grant-foundation.fixture.json'
     ]
   },
   {

@@ -1,0 +1,35 @@
+{
+  "fixtureType": "core_permission_service_governed_grant_foundation",
+  "task": "CORE-TASK-053",
+  "authority": {
+    "repository": "whalemarks/markorbit-publication",
+    "commit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+    "sourcePath": "books/book-02-core-specification/core-specs/services/permission-service.md"
+  },
+  "implementedOperations": [
+    "createPermission",
+    "getPermission",
+    "updatePermission",
+    "changePermissionStatus",
+    "evaluatePermission",
+    "validatePermissionReference",
+    "listActorPermissions",
+    "archivePermission"
+  ],
+  "expected": {
+    "operationCount": 8,
+    "permissionIsAuthorizationNotIdentityOrPolicy": true,
+    "recognizedActorRequired": true,
+    "explicitActorActionResourceScopeRequired": true,
+    "deterministicDecisionPrecedence": true,
+    "taskAssignmentDoesNotGrantPermission": true,
+    "organizationMembershipDoesNotGrantPermission": true,
+    "policyEvaluationExcludedWithHandoff": true,
+    "aiSelfGrantProhibited": true,
+    "highRiskHumanReviewRequired": true,
+    "stableImmutablePermissionId": true,
+    "eventTraceRequired": true,
+    "eventRollbackRequired": true,
+    "crossOrganizationNonEnumeration": true
+  }
+}

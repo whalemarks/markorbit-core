@@ -849,7 +849,7 @@
     "id": "core-service-permission-evaluation-service-contract",
     "type": "service",
     "name": "Permission Evaluation Service Contract Skeleton",
-    "description": "Skeleton contract boundary for permission evaluation service responsibilities.",
+    "description": "Canonical metadata skeleton for the permission Core Service boundary.",
     "status": "active",
     "scope": {
       "domainId": "permission"
@@ -857,7 +857,7 @@
     "version": 1,
     "book": "Book 02 — MarkOrbit Core Specification",
     "source": "CORE_SERVICE_CONTRACT_SKELETONS",
-    "createdAt": "2026-07-09T00:00:00.000Z"
+    "createdAt": "2026-07-11T00:00:00.000Z"
   },
   {
     "id": "core-service-policy-evaluation-service-contract",

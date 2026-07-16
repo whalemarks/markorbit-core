@@ -2,26 +2,26 @@ import assert from 'node:assert/strict';
 import { describe, it } from 'node:test';
 import { BOOK_02_MVP_GAP_BASELINE } from '../../src/index.ts';
 
-describe('CORE-TASK-050 Book 02 Identity Service evidence', () => {
-  it('records Identity Service as the owned stable actor-recognition authority', () => {
-    const identity = BOOK_02_MVP_GAP_BASELINE.requirements.find(
-      (requirement) => requirement.id === 'must-service-identity-service'
+describe('CORE-TASK-053 Book 02 Permission Service evidence', () => {
+  it('records Permission Service as the owned explicit authorization authority', () => {
+    const permission = BOOK_02_MVP_GAP_BASELINE.requirements.find(
+      (requirement) => requirement.id === 'must-service-permission-service'
     );
-    assert.equal(identity?.currentDisposition, 'meets_required_depth');
-    assert.equal(identity?.currentDepth, 'level_2_3');
-    assert.deepEqual(identity?.implementationFiles, [
+    assert.equal(permission?.currentDisposition, 'meets_required_depth');
+    assert.equal(permission?.currentDepth, 'level_2_3');
+    assert.deepEqual(permission?.implementationFiles, [
       'src/contracts/service/core-service-contract-skeletons.ts',
-      'src/services/identity/core-identity-service.ts'
+      'src/services/permission/core-permission-service.ts'
     ]);
-    assert.deepEqual(identity?.testFiles, [
-      'tests/unit/core-identity-service-authority-foundation.test.ts'
+    assert.deepEqual(permission?.testFiles, [
+      'tests/unit/core-permission-service-governed-grant-foundation.test.ts'
     ]);
-    assert.deepEqual(identity?.fixtureFiles, [
-      'fixtures/services/core-identity-service-authority-foundation.fixture.json'
+    assert.deepEqual(permission?.fixtureFiles, [
+      'fixtures/services/core-permission-service-governed-grant-foundation.fixture.json'
     ]);
   });
 
-  it('derives 49 / 3 / 40 and leaves the final foundational authority Service unresolved', () => {
+  it('derives 49 / 3 / 40 and leaves only Policy unresolved', () => {
     assert.deepEqual(BOOK_02_MVP_GAP_BASELINE.summary.mustBuildNow, {
       total: 115,
       meets_required_depth: 49,

@@ -126,6 +126,19 @@ const canonicalServiceSourceRoot =
   'books/book-02-core-specification/core-specs/services/';
 
 const behaviorLocks = {
+  'permission-evaluation-service': {
+    task: 'CORE-TASK-053',
+    operations: [
+      'createPermission',
+      'getPermission',
+      'updatePermission',
+      'changePermissionStatus',
+      'evaluatePermission',
+      'validatePermissionReference',
+      'listActorPermissions',
+      'archivePermission'
+    ]
+  },
   'user-service': {
     task: 'CORE-TASK-052',
     operations: [
@@ -383,6 +396,14 @@ const behaviorLocks = {
 } as const;
 
 const promotedContracts = {
+  1: {
+    id: 'core-service-permission-evaluation-service-contract',
+    serviceType: 'permission-evaluation-service',
+    domainId: 'permission',
+    name: 'Permission Evaluation Service Contract Skeleton',
+    sourceFile: 'permission-service.md',
+    task: 'CORE-TASK-053'
+  },
   11: {
     id: 'core-service-user-service-contract',
     serviceType: 'user-service',
