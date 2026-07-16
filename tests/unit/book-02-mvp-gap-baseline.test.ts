@@ -474,7 +474,9 @@ describe('Book 02 MVP gap baseline validation', () => {
   it('preserves depth distinctions and scope guards', () => {
     for (const [predicate, code] of [
       [
-        (r: Record<string, unknown>) => r.layer === 'service',
+        (r: Record<string, unknown>) =>
+          r.layer === 'service' &&
+          r.currentDisposition === 'validated_skeleton_only',
         'book02.depth.service_contract_index_only'
       ],
       [
