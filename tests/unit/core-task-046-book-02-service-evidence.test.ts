@@ -21,12 +21,12 @@ describe('CORE-TASK-046 Book 02 Event Service evidence', () => {
     ]);
   });
 
-  it('derives 48 / 3 / 41 while leaving two foundational authority Services unresolved', () => {
+  it('derives 49 / 3 / 40 while leaving the final foundational authority Service unresolved', () => {
     assert.deepEqual(BOOK_02_MVP_GAP_BASELINE.summary.mustBuildNow, {
       total: 115,
-      meets_required_depth: 48,
+      meets_required_depth: 49,
       partial_evidence: 3,
-      validated_skeleton_only: 41,
+      validated_skeleton_only: 40,
       boundary_scaffold_only: 5,
       semantic_overlap_only: 18,
       fixture_only: 0,
@@ -39,9 +39,6 @@ describe('CORE-TASK-046 Book 02 Event Service evidence', () => {
           requirement.currentDisposition === 'validated_skeleton_only'
       )
       .map((requirement) => requirement.id);
-    assert.deepEqual(unresolvedServiceIds, [
-      'must-service-permission-service',
-      'must-service-policy-service'
-    ]);
+    assert.deepEqual(unresolvedServiceIds, ['must-service-policy-service']);
   });
 });

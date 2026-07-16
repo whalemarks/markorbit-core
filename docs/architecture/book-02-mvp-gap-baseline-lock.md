@@ -19,4 +19,4 @@ Workflow skeletons do not equal preview/apply. The workflow catalog skeletons ar
 
 Never in MVP violations are detected by the gap validator and report summary. A violation such as a full workflow engine, full policy engine, direct API Domain mutation, direct workflow Event emission, direct agent Event emission, production fixtures, raw database IDs in public responses, unsafe stack traces, or silent unsupported-version acceptance must produce `violation_present` and fail `pnpm gaps:mvp`.
 
-Future implementation batches must consume this locked baseline by selecting unresolved dependency-ordered areas from the derived gaps. CORE-TASK-052 promotes User Service to owned Level 2–3 account-participant behavior after Organization Service. The remaining Service gaps are the two foundational authority Services: Permission and Policy.
+Future implementation batches must consume this locked baseline by selecting unresolved dependency-ordered areas from the derived gaps. CORE-TASK-053 promotes Permission Service to owned Level 2–3 explicit authorization behavior after User Service. The remaining foundational Service gap is Policy Service.

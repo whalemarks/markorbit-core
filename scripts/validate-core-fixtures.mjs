@@ -47,6 +47,7 @@ import { validateCoreCommunicationServiceGovernedCommunicationFoundationFixture 
 import { validateCoreIdentityServiceAuthorityFoundationFixture } from '../src/validation/core-identity-service-fixture-validation.ts';
 import { validateCoreOrganizationServiceOperatingContextFoundationFixture } from '../src/validation/core-organization-service-fixture-validation.ts';
 import { validateCoreUserServiceAccountParticipantFoundationFixture } from '../src/validation/core-user-service-fixture-validation.ts';
+import { validateCorePermissionServiceGovernedGrantFoundationFixture } from '../src/validation/core-permission-service-fixture-validation.ts';
 
 const validators = {
   domain_registry: validateCoreDomainRegistryFixture,
@@ -88,6 +89,8 @@ const validators = {
     validateCoreOrganizationServiceOperatingContextFoundationFixture,
   core_user_service_account_participant_foundation:
     validateCoreUserServiceAccountParticipantFoundationFixture,
+  core_permission_service_governed_grant_foundation:
+    validateCorePermissionServiceGovernedGrantFoundationFixture,
   core_customer_service_core_lifecycle:
     validateCoreCustomerServiceCoreLifecycleFixture,
   core_brand_service_core_lifecycle:

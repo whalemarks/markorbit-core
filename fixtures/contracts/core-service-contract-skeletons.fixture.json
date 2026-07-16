@@ -55,16 +55,19 @@
     "serviceType": "permission-evaluation-service",
     "domainId": "permission",
     "name": "Permission Evaluation Service Contract Skeleton",
-    "description": "Skeleton contract boundary for permission evaluation service responsibilities.",
+    "description": "Canonical metadata skeleton for the permission Core Service boundary.",
     "status": "active",
     "book": "Book 02 — MarkOrbit Core Specification",
-    "purpose": "Establishes a service contract placeholder for permission ownership boundaries without implementing permission decisions.",
-    "owns": ["Permission evaluation service contract boundary."],
-    "consumes": [
-      "permission domain references",
-      "identity boundary references"
+    "purpose": "Defines the Permission service ownership boundary for explicit authorization rules, lifecycle, recognized actor-action-resource evaluation, safe reference validation, actor-scoped listing, archival, audit trace, and Policy handoff without absorbing Identity, User, Organization, authentication, Policy evaluation, approval, workflow, or professional judgment.",
+    "owns": [
+      "Permission service ownership, explicit authorization rule, lifecycle, actor-action-resource evaluation, reference validation, actor-scoped listing, archival, and audit trace boundary."
     ],
-    "produces": ["permission evaluation references"],
+    "consumes": [
+      "permission, identity, user, organization, AI agent, system actor, resource, scope, policy, review, audit, task, workflow, and event references"
+    ],
+    "produces": [
+      "Permission boundary references, governed safe views, deterministic evaluation results, validation results, Policy-required handoff, and Event trace handoff"
+    ],
     "allowedOperations": [
       "reference lookup category",
       "boundary evaluation category",
@@ -73,9 +76,30 @@
     "nonGoals": [
       "Executable service method definitions or service implementations.",
       "API routes, database access, workflow runtime, or Book 03 execution behavior.",
-      "Product UI behavior, concrete business logic, or AI agent authority."
+      "Product UI behavior, concrete business logic, or AI agent authority.",
+      "Identity, User, or Organization ownership; credential authentication; implicit grant from task assignment, role label, or organization membership; final Policy evaluation; workflow or professional approval; full RBAC or ABAC engine; external IAM integration; or autonomous AI permission grant or escalation."
     ],
-    "createdAt": "2026-07-09T00:00:00.000Z"
+    "createdAt": "2026-07-11T00:00:00.000Z",
+    "sourcePath": "books/book-02-core-specification/core-specs/services/permission-service.md",
+    "implementationDepth": "validated_skeleton",
+    "metadata": {
+      "specificationRepository": "whalemarks/markorbit-publication",
+      "specificationCommit": "3349ecb8955021a8714d023348f8b24f941eb98f",
+      "specificationPath": "books/book-02-core-specification/",
+      "implementationTask": "CORE-TASK-053",
+      "behaviorImplementationTask": "CORE-TASK-053",
+      "behaviorDepth": "level_2_3",
+      "implementedOperations": [
+        "createPermission",
+        "getPermission",
+        "updatePermission",
+        "changePermissionStatus",
+        "evaluatePermission",
+        "validatePermissionReference",
+        "listActorPermissions",
+        "archivePermission"
+      ]
+    }
   },
   {
     "id": "core-service-policy-evaluation-service-contract",

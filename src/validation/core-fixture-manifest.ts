@@ -29,6 +29,7 @@ export const CORE_FIXTURE_TYPES = [
   'core_identity_service_authority_foundation',
   'core_organization_service_operating_context_foundation',
   'core_user_service_account_participant_foundation',
+  'core_permission_service_governed_grant_foundation',
   'core_customer_service_core_lifecycle',
   'core_brand_service_core_lifecycle',
   'core_trademark_service_core_lifecycle',
@@ -228,6 +229,12 @@ export const CORE_FIXTURE_MANIFEST = [
     id: 'core-user-service-account-participant-foundation',
     type: 'core_user_service_account_participant_foundation',
     path: 'fixtures/services/core-user-service-account-participant-foundation.fixture.json',
+    required: true
+  },
+  {
+    id: 'core-permission-service-governed-grant-foundation',
+    type: 'core_permission_service_governed_grant_foundation',
+    path: 'fixtures/services/core-permission-service-governed-grant-foundation.fixture.json',
     required: true
   },
   {

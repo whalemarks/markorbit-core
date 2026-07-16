@@ -31,6 +31,8 @@ import {
   CORE_ORGANIZATION_MINIMUM_CAPABILITIES,
   CORE_USER_IMPLEMENTED_OPERATIONS,
   CORE_USER_MINIMUM_CAPABILITIES,
+  CORE_PERMISSION_IMPLEMENTED_OPERATIONS,
+  CORE_PERMISSION_MINIMUM_CAPABILITIES,
   CORE_SERVICE_BEHAVIOR_EVIDENCE,
   CORE_TASK_IMPLEMENTED_OPERATIONS,
   CORE_TASK_MINIMUM_CAPABILITIES,
@@ -45,6 +47,7 @@ const expectedRequirements = [
   'must-service-identity-service',
   'must-service-organization-service',
   'must-service-user-service',
+  'must-service-permission-service',
   'must-service-customer-service',
   'must-service-brand-service',
   'must-service-trademark-service',
@@ -64,7 +67,7 @@ const expectedRequirements = [
 describe('Core Service behavior evidence', () => {
   it('validates exact dependency-first Service evidence in canonical order', () => {
     assert.deepEqual(validateCoreServiceBehaviorEvidence(), []);
-    assert.equal(CORE_SERVICE_BEHAVIOR_EVIDENCE.length, 17);
+    assert.equal(CORE_SERVICE_BEHAVIOR_EVIDENCE.length, 18);
     assert.deepEqual(
       CORE_SERVICE_BEHAVIOR_EVIDENCE.map((entry) => entry.requirementId),
       expectedRequirements
@@ -79,6 +82,10 @@ describe('Core Service behavior evidence', () => {
         CORE_ORGANIZATION_MINIMUM_CAPABILITIES
       ],
       [CORE_USER_IMPLEMENTED_OPERATIONS, CORE_USER_MINIMUM_CAPABILITIES],
+      [
+        CORE_PERMISSION_IMPLEMENTED_OPERATIONS,
+        CORE_PERMISSION_MINIMUM_CAPABILITIES
+      ],
       [
         CORE_CUSTOMER_IMPLEMENTED_OPERATIONS,
         CORE_CUSTOMER_MINIMUM_CAPABILITIES
@@ -138,6 +145,7 @@ describe('Core Service behavior evidence', () => {
       identity,
       organization,
       user,
+      permission,
       customer,
       brand,
       trademark,
@@ -159,6 +167,7 @@ describe('Core Service behavior evidence', () => {
           identity,
           organization,
           user,
+          permission,
           customer,
           brand,
           trademark,
@@ -176,6 +185,7 @@ describe('Core Service behavior evidence', () => {
           identity,
           organization,
           user,
+          permission,
           customer,
           customer,
           trademark,
@@ -221,6 +231,7 @@ describe('Core Service behavior evidence', () => {
           identity,
           organization,
           user,
+          permission,
           customer,
           { ...brand, domainId: 'customer' },
           trademark,
@@ -245,6 +256,7 @@ describe('Core Service behavior evidence', () => {
           identity,
           organization,
           user,
+          permission,
           customer,
           { ...brand, serviceType: 'customer-service' },
           trademark,
@@ -270,6 +282,7 @@ describe('Core Service behavior evidence', () => {
       identity,
       organization,
       user,
+      permission,
       customer,
       brand,
       trademark,
@@ -291,6 +304,7 @@ describe('Core Service behavior evidence', () => {
           identity,
           organization,
           user,
+          permission,
           customer,
           brand,
           trademark,
@@ -315,6 +329,7 @@ describe('Core Service behavior evidence', () => {
           identity,
           organization,
           user,
+          permission,
           customer,
           brand,
           trademark,
@@ -339,7 +354,7 @@ describe('Core Service behavior evidence', () => {
     );
   });
 
-  it('executes all seventeen fixtures and rejects corrupted expectations', async () => {
+  it('executes all eighteen fixtures and rejects corrupted expectations', async () => {
     const fixtures = [
       [
         'identityFixture',
@@ -354,6 +369,11 @@ describe('Core Service behavior evidence', () => {
       [
         'userFixture',
         'fixtures/services/core-user-service-account-participant-foundation.fixture.json',
+        'operationCount'
+      ],
+      [
+        'permissionFixture',
+        'fixtures/services/core-permission-service-governed-grant-foundation.fixture.json',
         'operationCount'
       ],
       [

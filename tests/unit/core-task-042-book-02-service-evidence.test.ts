@@ -6,6 +6,7 @@ const implementedServiceIds = [
   'must-service-identity-service',
   'must-service-organization-service',
   'must-service-user-service',
+  'must-service-permission-service',
   'must-service-customer-service',
   'must-service-brand-service',
   'must-service-trademark-service',
@@ -22,7 +23,7 @@ const implementedServiceIds = [
 ];
 
 describe('CORE-TASK-042 Book 02 Service evidence', () => {
-  it('promotes Customer through Event in dependency order', () => {
+  it('promotes implemented Services through Permission in dependency order', () => {
     const services = BOOK_02_MVP_GAP_BASELINE.requirements.filter(
       (requirement) => requirement.layer === 'service'
     );
@@ -43,16 +44,16 @@ describe('CORE-TASK-042 Book 02 Service evidence', () => {
         (requirement) =>
           requirement.currentDisposition === 'validated_skeleton_only'
       ).length,
-      2
+      1
     );
   });
 
-  it('derives 48 / 3 / 41 and leaves global Service acceptance unresolved', () => {
+  it('derives 49 / 3 / 40 and leaves global Service acceptance unresolved', () => {
     assert.deepEqual(BOOK_02_MVP_GAP_BASELINE.summary.mustBuildNow, {
       total: 115,
-      meets_required_depth: 48,
+      meets_required_depth: 49,
       partial_evidence: 3,
-      validated_skeleton_only: 41,
+      validated_skeleton_only: 40,
       boundary_scaffold_only: 5,
       semantic_overlap_only: 18,
       fixture_only: 0,
