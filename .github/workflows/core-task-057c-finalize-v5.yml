@@ -100,6 +100,12 @@ jobs:
         run: /tmp/057c-fixtures.sh
       - name: Format
         run: pnpm format
+      - name: Upload generated audit test
+        uses: actions/upload-artifact@v4
+        with:
+          name: core-task-057c-generated-055-test
+          path: tests/unit/core-task-055-post-service-completion-audit.test.ts
+          retention-days: 1
       - name: Upload formatted evidence source
         uses: actions/upload-artifact@v4
         with:
