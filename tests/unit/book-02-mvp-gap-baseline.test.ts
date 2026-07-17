@@ -470,10 +470,6 @@ describe('Book 02 MVP gap baseline validation', () => {
         'book02.depth.service_contract_index_only'
       ],
       [
-        (r: Record<string, unknown>) => r.id === 'must-api-matter-api-contract',
-        'book02.depth.api_skeleton_only'
-      ],
-      [
         (r: Record<string, unknown>) => r.layer === 'workflow',
         'book02.depth.workflow_skeleton_only'
       ],
@@ -601,11 +597,13 @@ describe('Book 02 MVP gap baseline validation', () => {
       'must-build-domains-implemented-or-scaffolded-with-tests',
       'must-build-objects-have-public-reference-ids',
       'must-build-services-own-behavior',
+      'must-build-api-validators-exist',
       'permission-and-policy-fail-closed',
       'ai-forbidden-actions-are-blocked',
       'human-review-gates-protected-actions',
       'idempotency-replay-and-conflict-are-tested',
       'event-trace-exists-and-is-not-command',
+      'api-layer-does-not-emit-events-directly',
       'errors-are-safe',
       'unsupported-versions-fail-closed',
       'deferred-items-do-not-block-mvp',
@@ -628,7 +626,7 @@ describe('Book 02 MVP gap baseline validation', () => {
         (criterion) =>
           criterion.id === 'api-layer-does-not-emit-events-directly'
       )?.satisfied,
-      false
+      true
     );
     assert.deepEqual(criteria, BOOK_02_MVP_GAP_BASELINE.acceptanceCriteria);
     assert.deepEqual(

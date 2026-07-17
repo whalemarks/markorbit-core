@@ -1,6 +1,7 @@
 import {
   CORE_GOVERNED_API_REQUIRED_CAPABILITIES,
   CORE_GOVERNED_API_BOUNDARY_SPECS,
+  CORE_TASK_057C_API_BOUNDARY_SPECS,
   validateCoreGovernedApiBoundarySpecs
 } from '../api/index.ts';
 import {
@@ -20,7 +21,13 @@ const expectedDomains = [
   'jurisdiction',
   'classification',
   'document',
-  'evidence'
+  'evidence',
+  'matter',
+  'order',
+  'workflow-contract',
+  'task',
+  'event',
+  'communication'
 ] as const;
 
 export function validateCoreApiBoundaryEvidence(
@@ -29,18 +36,22 @@ export function validateCoreApiBoundaryEvidence(
   if (!Array.isArray(evidence))
     return ['Core API boundary evidence must be an array.'];
   const errors = [
-    ...validateCoreGovernedApiBoundarySpecs(CORE_GOVERNED_API_BOUNDARY_SPECS)
+    ...validateCoreGovernedApiBoundarySpecs([
+      ...CORE_GOVERNED_API_BOUNDARY_SPECS,
+      ...CORE_TASK_057C_API_BOUNDARY_SPECS
+    ])
   ];
   const requireCompleteInventory = evidence === CORE_API_BOUNDARY_EVIDENCE;
   if (requireCompleteInventory && evidence.length !== expectedDomains.length)
     errors.push(
-      'CORE API evidence must contain exactly twelve completed API entries.'
+      'CORE API evidence must contain exactly eighteen completed API entries.'
     );
   const domains = new Set<string>();
   evidence.forEach((entry, index) => {
-    const spec = CORE_GOVERNED_API_BOUNDARY_SPECS.find(
-      (candidate) => candidate.domainId === entry.domainId
-    );
+    const spec = [
+      ...CORE_GOVERNED_API_BOUNDARY_SPECS,
+      ...CORE_TASK_057C_API_BOUNDARY_SPECS
+    ].find((candidate) => candidate.domainId === entry.domainId);
     if (!spec) {
       errors.push(
         `evidence[${index}].domainId is not in the completed API boundary inventory.`

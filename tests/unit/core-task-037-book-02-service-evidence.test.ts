@@ -24,7 +24,7 @@ describe('CORE-TASK-037 Book 02 Service evidence', () => {
     assert.equal(serviceCriterion?.satisfied, true);
     assert.equal(
       BOOK_02_MVP_GAP_BASELINE.summary.acceptance.acceptanceCriteriaSatisfied,
-      12
+      14
     );
     assert.equal(
       BOOK_02_MVP_GAP_BASELINE.summary.acceptance.book02MvpComplete,

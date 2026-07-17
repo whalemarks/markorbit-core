@@ -2185,18 +2185,23 @@
         "no direct Event emission"
       ],
       "dependencies": [],
-      "currentDisposition": "validated_skeleton_only",
-      "currentDepth": "level_0",
+      "currentDisposition": "meets_required_depth",
+      "currentDepth": "level_2",
       "contractIds": ["core-api-matter-api-contract"],
       "implementationFiles": [
-        "src/contracts/api/core-api-contract-skeletons.ts"
+        "src/api/core-governed-api-boundary.ts",
+        "src/api/core-governed-api-specs.ts",
+        "src/api/index.ts",
+        "src/api/core-governed-api-specs-057c.ts"
       ],
-      "testFiles": [],
-      "fixtureFiles": [],
+      "testFiles": [
+        "tests/unit/core-task-057c-api-boundary-foundation.test.ts"
+      ],
+      "fixtureFiles": [
+        "fixtures/api/core-task-057c-api-boundaries.fixture.json"
+      ],
       "violationReasons": [],
-      "gapReasons": [
-        "api has structural contract evidence only; required MVP behavior depth is not proven."
-      ]
+      "gapReasons": []
     },
     {
       "id": "must-api-order-api-contract",
@@ -2220,18 +2225,23 @@
         "no direct Event emission"
       ],
       "dependencies": [],
-      "currentDisposition": "validated_skeleton_only",
-      "currentDepth": "level_0",
+      "currentDisposition": "meets_required_depth",
+      "currentDepth": "level_2",
       "contractIds": ["core-api-order-api-contract"],
       "implementationFiles": [
-        "src/contracts/api/core-api-contract-skeletons.ts"
+        "src/api/core-governed-api-boundary.ts",
+        "src/api/core-governed-api-specs.ts",
+        "src/api/index.ts",
+        "src/api/core-governed-api-specs-057c.ts"
       ],
-      "testFiles": [],
-      "fixtureFiles": [],
+      "testFiles": [
+        "tests/unit/core-task-057c-api-boundary-foundation.test.ts"
+      ],
+      "fixtureFiles": [
+        "fixtures/api/core-task-057c-api-boundaries.fixture.json"
+      ],
       "violationReasons": [],
-      "gapReasons": [
-        "api has structural contract evidence only; required MVP behavior depth is not proven."
-      ]
+      "gapReasons": []
     },
     {
       "id": "must-api-workflow-contract-api-contract",
@@ -2255,18 +2265,23 @@
         "no direct Event emission"
       ],
       "dependencies": [],
-      "currentDisposition": "validated_skeleton_only",
-      "currentDepth": "level_0",
-      "contractIds": ["core-api-core-workflow-contract-reference-api-contract"],
+      "currentDisposition": "meets_required_depth",
+      "currentDepth": "level_2",
+      "contractIds": ["core-api-workflow-contract-api-contract"],
       "implementationFiles": [
-        "src/contracts/api/core-api-contract-skeletons.ts"
+        "src/api/core-governed-api-boundary.ts",
+        "src/api/core-governed-api-specs.ts",
+        "src/api/index.ts",
+        "src/api/core-governed-api-specs-057c.ts"
       ],
-      "testFiles": [],
-      "fixtureFiles": [],
+      "testFiles": [
+        "tests/unit/core-task-057c-api-boundary-foundation.test.ts"
+      ],
+      "fixtureFiles": [
+        "fixtures/api/core-task-057c-api-boundaries.fixture.json"
+      ],
       "violationReasons": [],
-      "gapReasons": [
-        "api has structural contract evidence only; required MVP behavior depth is not proven."
-      ]
+      "gapReasons": []
     },
     {
       "id": "must-api-task-api-contract",
@@ -2290,18 +2305,23 @@
         "no direct Event emission"
       ],
       "dependencies": [],
-      "currentDisposition": "validated_skeleton_only",
-      "currentDepth": "level_0",
-      "contractIds": ["core-api-core-task-reference-api-contract"],
+      "currentDisposition": "meets_required_depth",
+      "currentDepth": "level_2",
+      "contractIds": ["core-api-task-api-contract"],
       "implementationFiles": [
-        "src/contracts/api/core-api-contract-skeletons.ts"
+        "src/api/core-governed-api-boundary.ts",
+        "src/api/core-governed-api-specs.ts",
+        "src/api/index.ts",
+        "src/api/core-governed-api-specs-057c.ts"
       ],
-      "testFiles": [],
-      "fixtureFiles": [],
+      "testFiles": [
+        "tests/unit/core-task-057c-api-boundary-foundation.test.ts"
+      ],
+      "fixtureFiles": [
+        "fixtures/api/core-task-057c-api-boundaries.fixture.json"
+      ],
       "violationReasons": [],
-      "gapReasons": [
-        "api has structural contract evidence only; required MVP behavior depth is not proven."
-      ]
+      "gapReasons": []
     },
     {
       "id": "must-api-event-api-contract",
@@ -2325,18 +2345,23 @@
         "no direct Event emission"
       ],
       "dependencies": [],
-      "currentDisposition": "validated_skeleton_only",
-      "currentDepth": "level_0",
-      "contractIds": ["core-api-core-event-reference-api-contract"],
+      "currentDisposition": "meets_required_depth",
+      "currentDepth": "level_2",
+      "contractIds": ["core-api-event-api-contract"],
       "implementationFiles": [
-        "src/contracts/api/core-api-contract-skeletons.ts"
+        "src/api/core-governed-api-boundary.ts",
+        "src/api/core-governed-api-specs.ts",
+        "src/api/index.ts",
+        "src/api/core-governed-api-specs-057c.ts"
       ],
-      "testFiles": [],
-      "fixtureFiles": [],
+      "testFiles": [
+        "tests/unit/core-task-057c-api-boundary-foundation.test.ts"
+      ],
+      "fixtureFiles": [
+        "fixtures/api/core-task-057c-api-boundaries.fixture.json"
+      ],
       "violationReasons": [],
-      "gapReasons": [
-        "api has structural contract evidence only; required MVP behavior depth is not proven."
-      ]
+      "gapReasons": []
     },
     {
       "id": "must-api-communication-api-contract",
@@ -2360,18 +2385,23 @@
         "no direct Event emission"
       ],
       "dependencies": [],
-      "currentDisposition": "validated_skeleton_only",
-      "currentDepth": "level_0",
+      "currentDisposition": "meets_required_depth",
+      "currentDepth": "level_2",
       "contractIds": ["core-api-communication-api-contract"],
       "implementationFiles": [
-        "src/contracts/api/core-api-contract-skeletons.ts"
+        "src/api/core-governed-api-boundary.ts",
+        "src/api/core-governed-api-specs.ts",
+        "src/api/index.ts",
+        "src/api/core-governed-api-specs-057c.ts"
       ],
-      "testFiles": [],
-      "fixtureFiles": [],
+      "testFiles": [
+        "tests/unit/core-task-057c-api-boundary-foundation.test.ts"
+      ],
+      "fixtureFiles": [
+        "fixtures/api/core-task-057c-api-boundaries.fixture.json"
+      ],
       "violationReasons": [],
-      "gapReasons": [
-        "api has structural contract evidence only; required MVP behavior depth is not proven."
-      ]
+      "gapReasons": []
     },
     {
       "id": "must-workflow-customer-intake-workflow",
@@ -4293,6 +4323,7 @@
       "inspectedFiles": [
         "fixtures/api/core-task-057a-api-boundaries.fixture.json",
         "fixtures/api/core-task-057b-api-boundaries.fixture.json",
+        "fixtures/api/core-task-057c-api-boundaries.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-acceptance-lock.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-coverage-baseline.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-gap-inventory.fixture.json",
@@ -4344,6 +4375,7 @@
         "src/api-coverage/core-api-boundary-validation.ts",
         "src/api-coverage/index.ts",
         "src/api/core-governed-api-boundary.ts",
+        "src/api/core-governed-api-specs-057c.ts",
         "src/api/core-governed-api-specs.ts",
         "src/api/index.ts",
         "src/behavior-coverage/core-contract-behavior-acceptance-lock.ts",
@@ -4585,6 +4617,7 @@
       "inspectedFiles": [
         "fixtures/api/core-task-057a-api-boundaries.fixture.json",
         "fixtures/api/core-task-057b-api-boundaries.fixture.json",
+        "fixtures/api/core-task-057c-api-boundaries.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-acceptance-lock.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-coverage-baseline.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-gap-inventory.fixture.json",
@@ -4636,6 +4669,7 @@
         "src/api-coverage/core-api-boundary-validation.ts",
         "src/api-coverage/index.ts",
         "src/api/core-governed-api-boundary.ts",
+        "src/api/core-governed-api-specs-057c.ts",
         "src/api/core-governed-api-specs.ts",
         "src/api/index.ts",
         "src/behavior-coverage/core-contract-behavior-acceptance-lock.ts",
@@ -4872,6 +4906,7 @@
       "inspectedFiles": [
         "fixtures/api/core-task-057a-api-boundaries.fixture.json",
         "fixtures/api/core-task-057b-api-boundaries.fixture.json",
+        "fixtures/api/core-task-057c-api-boundaries.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-acceptance-lock.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-coverage-baseline.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-gap-inventory.fixture.json",
@@ -4923,6 +4958,7 @@
         "src/api-coverage/core-api-boundary-validation.ts",
         "src/api-coverage/index.ts",
         "src/api/core-governed-api-boundary.ts",
+        "src/api/core-governed-api-specs-057c.ts",
         "src/api/core-governed-api-specs.ts",
         "src/api/index.ts",
         "src/behavior-coverage/core-contract-behavior-acceptance-lock.ts",
@@ -5162,6 +5198,7 @@
       "inspectedFiles": [
         "fixtures/api/core-task-057a-api-boundaries.fixture.json",
         "fixtures/api/core-task-057b-api-boundaries.fixture.json",
+        "fixtures/api/core-task-057c-api-boundaries.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-acceptance-lock.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-coverage-baseline.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-gap-inventory.fixture.json",
@@ -5213,6 +5250,7 @@
         "src/api-coverage/core-api-boundary-validation.ts",
         "src/api-coverage/index.ts",
         "src/api/core-governed-api-boundary.ts",
+        "src/api/core-governed-api-specs-057c.ts",
         "src/api/core-governed-api-specs.ts",
         "src/api/index.ts",
         "src/behavior-coverage/core-contract-behavior-acceptance-lock.ts",
@@ -5452,6 +5490,7 @@
       "inspectedFiles": [
         "fixtures/api/core-task-057a-api-boundaries.fixture.json",
         "fixtures/api/core-task-057b-api-boundaries.fixture.json",
+        "fixtures/api/core-task-057c-api-boundaries.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-acceptance-lock.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-coverage-baseline.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-gap-inventory.fixture.json",
@@ -5503,6 +5542,7 @@
         "src/api-coverage/core-api-boundary-validation.ts",
         "src/api-coverage/index.ts",
         "src/api/core-governed-api-boundary.ts",
+        "src/api/core-governed-api-specs-057c.ts",
         "src/api/core-governed-api-specs.ts",
         "src/api/index.ts",
         "src/behavior-coverage/core-contract-behavior-acceptance-lock.ts",
@@ -5739,6 +5779,7 @@
       "inspectedFiles": [
         "fixtures/api/core-task-057a-api-boundaries.fixture.json",
         "fixtures/api/core-task-057b-api-boundaries.fixture.json",
+        "fixtures/api/core-task-057c-api-boundaries.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-acceptance-lock.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-coverage-baseline.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-gap-inventory.fixture.json",
@@ -5790,6 +5831,7 @@
         "src/api-coverage/core-api-boundary-validation.ts",
         "src/api-coverage/index.ts",
         "src/api/core-governed-api-boundary.ts",
+        "src/api/core-governed-api-specs-057c.ts",
         "src/api/core-governed-api-specs.ts",
         "src/api/index.ts",
         "src/behavior-coverage/core-contract-behavior-acceptance-lock.ts",
@@ -6029,6 +6071,7 @@
       "inspectedFiles": [
         "fixtures/api/core-task-057a-api-boundaries.fixture.json",
         "fixtures/api/core-task-057b-api-boundaries.fixture.json",
+        "fixtures/api/core-task-057c-api-boundaries.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-acceptance-lock.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-coverage-baseline.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-gap-inventory.fixture.json",
@@ -6080,6 +6123,7 @@
         "src/api-coverage/core-api-boundary-validation.ts",
         "src/api-coverage/index.ts",
         "src/api/core-governed-api-boundary.ts",
+        "src/api/core-governed-api-specs-057c.ts",
         "src/api/core-governed-api-specs.ts",
         "src/api/index.ts",
         "src/behavior-coverage/core-contract-behavior-acceptance-lock.ts",
@@ -6319,6 +6363,7 @@
       "inspectedFiles": [
         "fixtures/api/core-task-057a-api-boundaries.fixture.json",
         "fixtures/api/core-task-057b-api-boundaries.fixture.json",
+        "fixtures/api/core-task-057c-api-boundaries.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-acceptance-lock.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-coverage-baseline.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-gap-inventory.fixture.json",
@@ -6370,6 +6415,7 @@
         "src/api-coverage/core-api-boundary-validation.ts",
         "src/api-coverage/index.ts",
         "src/api/core-governed-api-boundary.ts",
+        "src/api/core-governed-api-specs-057c.ts",
         "src/api/core-governed-api-specs.ts",
         "src/api/index.ts",
         "src/behavior-coverage/core-contract-behavior-acceptance-lock.ts",
@@ -6609,6 +6655,7 @@
       "inspectedFiles": [
         "fixtures/api/core-task-057a-api-boundaries.fixture.json",
         "fixtures/api/core-task-057b-api-boundaries.fixture.json",
+        "fixtures/api/core-task-057c-api-boundaries.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-acceptance-lock.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-coverage-baseline.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-gap-inventory.fixture.json",
@@ -6660,6 +6707,7 @@
         "src/api-coverage/core-api-boundary-validation.ts",
         "src/api-coverage/index.ts",
         "src/api/core-governed-api-boundary.ts",
+        "src/api/core-governed-api-specs-057c.ts",
         "src/api/core-governed-api-specs.ts",
         "src/api/index.ts",
         "src/behavior-coverage/core-contract-behavior-acceptance-lock.ts",
@@ -6899,6 +6947,7 @@
       "inspectedFiles": [
         "fixtures/api/core-task-057a-api-boundaries.fixture.json",
         "fixtures/api/core-task-057b-api-boundaries.fixture.json",
+        "fixtures/api/core-task-057c-api-boundaries.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-acceptance-lock.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-coverage-baseline.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-gap-inventory.fixture.json",
@@ -6950,6 +6999,7 @@
         "src/api-coverage/core-api-boundary-validation.ts",
         "src/api-coverage/index.ts",
         "src/api/core-governed-api-boundary.ts",
+        "src/api/core-governed-api-specs-057c.ts",
         "src/api/core-governed-api-specs.ts",
         "src/api/index.ts",
         "src/behavior-coverage/core-contract-behavior-acceptance-lock.ts",
@@ -7189,6 +7239,7 @@
       "inspectedFiles": [
         "fixtures/api/core-task-057a-api-boundaries.fixture.json",
         "fixtures/api/core-task-057b-api-boundaries.fixture.json",
+        "fixtures/api/core-task-057c-api-boundaries.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-acceptance-lock.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-coverage-baseline.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-gap-inventory.fixture.json",
@@ -7240,6 +7291,7 @@
         "src/api-coverage/core-api-boundary-validation.ts",
         "src/api-coverage/index.ts",
         "src/api/core-governed-api-boundary.ts",
+        "src/api/core-governed-api-specs-057c.ts",
         "src/api/core-governed-api-specs.ts",
         "src/api/index.ts",
         "src/behavior-coverage/core-contract-behavior-acceptance-lock.ts",
@@ -7479,6 +7531,7 @@
       "inspectedFiles": [
         "fixtures/api/core-task-057a-api-boundaries.fixture.json",
         "fixtures/api/core-task-057b-api-boundaries.fixture.json",
+        "fixtures/api/core-task-057c-api-boundaries.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-acceptance-lock.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-coverage-baseline.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-gap-inventory.fixture.json",
@@ -7530,6 +7583,7 @@
         "src/api-coverage/core-api-boundary-validation.ts",
         "src/api-coverage/index.ts",
         "src/api/core-governed-api-boundary.ts",
+        "src/api/core-governed-api-specs-057c.ts",
         "src/api/core-governed-api-specs.ts",
         "src/api/index.ts",
         "src/behavior-coverage/core-contract-behavior-acceptance-lock.ts",
@@ -7769,6 +7823,7 @@
       "inspectedFiles": [
         "fixtures/api/core-task-057a-api-boundaries.fixture.json",
         "fixtures/api/core-task-057b-api-boundaries.fixture.json",
+        "fixtures/api/core-task-057c-api-boundaries.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-acceptance-lock.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-coverage-baseline.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-gap-inventory.fixture.json",
@@ -7820,6 +7875,7 @@
         "src/api-coverage/core-api-boundary-validation.ts",
         "src/api-coverage/index.ts",
         "src/api/core-governed-api-boundary.ts",
+        "src/api/core-governed-api-specs-057c.ts",
         "src/api/core-governed-api-specs.ts",
         "src/api/index.ts",
         "src/behavior-coverage/core-contract-behavior-acceptance-lock.ts",
@@ -8059,6 +8115,7 @@
       "inspectedFiles": [
         "fixtures/api/core-task-057a-api-boundaries.fixture.json",
         "fixtures/api/core-task-057b-api-boundaries.fixture.json",
+        "fixtures/api/core-task-057c-api-boundaries.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-acceptance-lock.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-coverage-baseline.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-gap-inventory.fixture.json",
@@ -8110,6 +8167,7 @@
         "src/api-coverage/core-api-boundary-validation.ts",
         "src/api-coverage/index.ts",
         "src/api/core-governed-api-boundary.ts",
+        "src/api/core-governed-api-specs-057c.ts",
         "src/api/core-governed-api-specs.ts",
         "src/api/index.ts",
         "src/behavior-coverage/core-contract-behavior-acceptance-lock.ts",
@@ -8349,6 +8407,7 @@
       "inspectedFiles": [
         "fixtures/api/core-task-057a-api-boundaries.fixture.json",
         "fixtures/api/core-task-057b-api-boundaries.fixture.json",
+        "fixtures/api/core-task-057c-api-boundaries.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-acceptance-lock.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-coverage-baseline.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-gap-inventory.fixture.json",
@@ -8400,6 +8459,7 @@
         "src/api-coverage/core-api-boundary-validation.ts",
         "src/api-coverage/index.ts",
         "src/api/core-governed-api-boundary.ts",
+        "src/api/core-governed-api-specs-057c.ts",
         "src/api/core-governed-api-specs.ts",
         "src/api/index.ts",
         "src/behavior-coverage/core-contract-behavior-acceptance-lock.ts",
@@ -8641,6 +8701,7 @@
       "inspectedFiles": [
         "fixtures/api/core-task-057a-api-boundaries.fixture.json",
         "fixtures/api/core-task-057b-api-boundaries.fixture.json",
+        "fixtures/api/core-task-057c-api-boundaries.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-acceptance-lock.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-coverage-baseline.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-gap-inventory.fixture.json",
@@ -8692,6 +8753,7 @@
         "src/api-coverage/core-api-boundary-validation.ts",
         "src/api-coverage/index.ts",
         "src/api/core-governed-api-boundary.ts",
+        "src/api/core-governed-api-specs-057c.ts",
         "src/api/core-governed-api-specs.ts",
         "src/api/index.ts",
         "src/behavior-coverage/core-contract-behavior-acceptance-lock.ts",
@@ -8935,6 +8997,7 @@
       "inspectedFiles": [
         "fixtures/api/core-task-057a-api-boundaries.fixture.json",
         "fixtures/api/core-task-057b-api-boundaries.fixture.json",
+        "fixtures/api/core-task-057c-api-boundaries.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-acceptance-lock.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-coverage-baseline.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-gap-inventory.fixture.json",
@@ -8986,6 +9049,7 @@
         "src/api-coverage/core-api-boundary-validation.ts",
         "src/api-coverage/index.ts",
         "src/api/core-governed-api-boundary.ts",
+        "src/api/core-governed-api-specs-057c.ts",
         "src/api/core-governed-api-specs.ts",
         "src/api/index.ts",
         "src/behavior-coverage/core-contract-behavior-acceptance-lock.ts",
@@ -9227,6 +9291,7 @@
       "inspectedFiles": [
         "fixtures/api/core-task-057a-api-boundaries.fixture.json",
         "fixtures/api/core-task-057b-api-boundaries.fixture.json",
+        "fixtures/api/core-task-057c-api-boundaries.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-acceptance-lock.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-coverage-baseline.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-gap-inventory.fixture.json",
@@ -9278,6 +9343,7 @@
         "src/api-coverage/core-api-boundary-validation.ts",
         "src/api-coverage/index.ts",
         "src/api/core-governed-api-boundary.ts",
+        "src/api/core-governed-api-specs-057c.ts",
         "src/api/core-governed-api-specs.ts",
         "src/api/index.ts",
         "src/behavior-coverage/core-contract-behavior-acceptance-lock.ts",
@@ -9519,6 +9585,7 @@
       "inspectedFiles": [
         "fixtures/api/core-task-057a-api-boundaries.fixture.json",
         "fixtures/api/core-task-057b-api-boundaries.fixture.json",
+        "fixtures/api/core-task-057c-api-boundaries.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-acceptance-lock.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-coverage-baseline.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-gap-inventory.fixture.json",
@@ -9570,6 +9637,7 @@
         "src/api-coverage/core-api-boundary-validation.ts",
         "src/api-coverage/index.ts",
         "src/api/core-governed-api-boundary.ts",
+        "src/api/core-governed-api-specs-057c.ts",
         "src/api/core-governed-api-specs.ts",
         "src/api/index.ts",
         "src/behavior-coverage/core-contract-behavior-acceptance-lock.ts",
@@ -9809,6 +9877,7 @@
       "inspectedFiles": [
         "fixtures/api/core-task-057a-api-boundaries.fixture.json",
         "fixtures/api/core-task-057b-api-boundaries.fixture.json",
+        "fixtures/api/core-task-057c-api-boundaries.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-acceptance-lock.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-coverage-baseline.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-gap-inventory.fixture.json",
@@ -9860,6 +9929,7 @@
         "src/api-coverage/core-api-boundary-validation.ts",
         "src/api-coverage/index.ts",
         "src/api/core-governed-api-boundary.ts",
+        "src/api/core-governed-api-specs-057c.ts",
         "src/api/core-governed-api-specs.ts",
         "src/api/index.ts",
         "src/behavior-coverage/core-contract-behavior-acceptance-lock.ts",
@@ -10099,6 +10169,7 @@
       "inspectedFiles": [
         "fixtures/api/core-task-057a-api-boundaries.fixture.json",
         "fixtures/api/core-task-057b-api-boundaries.fixture.json",
+        "fixtures/api/core-task-057c-api-boundaries.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-acceptance-lock.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-coverage-baseline.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-gap-inventory.fixture.json",
@@ -10150,6 +10221,7 @@
         "src/api-coverage/core-api-boundary-validation.ts",
         "src/api-coverage/index.ts",
         "src/api/core-governed-api-boundary.ts",
+        "src/api/core-governed-api-specs-057c.ts",
         "src/api/core-governed-api-specs.ts",
         "src/api/index.ts",
         "src/behavior-coverage/core-contract-behavior-acceptance-lock.ts",
@@ -10389,6 +10461,7 @@
       "inspectedFiles": [
         "fixtures/api/core-task-057a-api-boundaries.fixture.json",
         "fixtures/api/core-task-057b-api-boundaries.fixture.json",
+        "fixtures/api/core-task-057c-api-boundaries.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-acceptance-lock.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-coverage-baseline.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-gap-inventory.fixture.json",
@@ -10440,6 +10513,7 @@
         "src/api-coverage/core-api-boundary-validation.ts",
         "src/api-coverage/index.ts",
         "src/api/core-governed-api-boundary.ts",
+        "src/api/core-governed-api-specs-057c.ts",
         "src/api/core-governed-api-specs.ts",
         "src/api/index.ts",
         "src/behavior-coverage/core-contract-behavior-acceptance-lock.ts",
@@ -10679,6 +10753,7 @@
       "inspectedFiles": [
         "fixtures/api/core-task-057a-api-boundaries.fixture.json",
         "fixtures/api/core-task-057b-api-boundaries.fixture.json",
+        "fixtures/api/core-task-057c-api-boundaries.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-acceptance-lock.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-coverage-baseline.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-gap-inventory.fixture.json",
@@ -10730,6 +10805,7 @@
         "src/api-coverage/core-api-boundary-validation.ts",
         "src/api-coverage/index.ts",
         "src/api/core-governed-api-boundary.ts",
+        "src/api/core-governed-api-specs-057c.ts",
         "src/api/core-governed-api-specs.ts",
         "src/api/index.ts",
         "src/behavior-coverage/core-contract-behavior-acceptance-lock.ts",
@@ -10969,6 +11045,7 @@
       "inspectedFiles": [
         "fixtures/api/core-task-057a-api-boundaries.fixture.json",
         "fixtures/api/core-task-057b-api-boundaries.fixture.json",
+        "fixtures/api/core-task-057c-api-boundaries.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-acceptance-lock.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-coverage-baseline.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-gap-inventory.fixture.json",
@@ -11020,6 +11097,7 @@
         "src/api-coverage/core-api-boundary-validation.ts",
         "src/api-coverage/index.ts",
         "src/api/core-governed-api-boundary.ts",
+        "src/api/core-governed-api-specs-057c.ts",
         "src/api/core-governed-api-specs.ts",
         "src/api/index.ts",
         "src/behavior-coverage/core-contract-behavior-acceptance-lock.ts",
@@ -11259,6 +11337,7 @@
       "inspectedFiles": [
         "fixtures/api/core-task-057a-api-boundaries.fixture.json",
         "fixtures/api/core-task-057b-api-boundaries.fixture.json",
+        "fixtures/api/core-task-057c-api-boundaries.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-acceptance-lock.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-coverage-baseline.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-gap-inventory.fixture.json",
@@ -11310,6 +11389,7 @@
         "src/api-coverage/core-api-boundary-validation.ts",
         "src/api-coverage/index.ts",
         "src/api/core-governed-api-boundary.ts",
+        "src/api/core-governed-api-specs-057c.ts",
         "src/api/core-governed-api-specs.ts",
         "src/api/index.ts",
         "src/behavior-coverage/core-contract-behavior-acceptance-lock.ts",
@@ -11549,6 +11629,7 @@
       "inspectedFiles": [
         "fixtures/api/core-task-057a-api-boundaries.fixture.json",
         "fixtures/api/core-task-057b-api-boundaries.fixture.json",
+        "fixtures/api/core-task-057c-api-boundaries.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-acceptance-lock.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-coverage-baseline.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-gap-inventory.fixture.json",
@@ -11600,6 +11681,7 @@
         "src/api-coverage/core-api-boundary-validation.ts",
         "src/api-coverage/index.ts",
         "src/api/core-governed-api-boundary.ts",
+        "src/api/core-governed-api-specs-057c.ts",
         "src/api/core-governed-api-specs.ts",
         "src/api/index.ts",
         "src/behavior-coverage/core-contract-behavior-acceptance-lock.ts",
@@ -11839,6 +11921,7 @@
       "inspectedFiles": [
         "fixtures/api/core-task-057a-api-boundaries.fixture.json",
         "fixtures/api/core-task-057b-api-boundaries.fixture.json",
+        "fixtures/api/core-task-057c-api-boundaries.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-acceptance-lock.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-coverage-baseline.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-gap-inventory.fixture.json",
@@ -11890,6 +11973,7 @@
         "src/api-coverage/core-api-boundary-validation.ts",
         "src/api-coverage/index.ts",
         "src/api/core-governed-api-boundary.ts",
+        "src/api/core-governed-api-specs-057c.ts",
         "src/api/core-governed-api-specs.ts",
         "src/api/index.ts",
         "src/behavior-coverage/core-contract-behavior-acceptance-lock.ts",
@@ -12129,6 +12213,7 @@
       "inspectedFiles": [
         "fixtures/api/core-task-057a-api-boundaries.fixture.json",
         "fixtures/api/core-task-057b-api-boundaries.fixture.json",
+        "fixtures/api/core-task-057c-api-boundaries.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-acceptance-lock.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-coverage-baseline.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-gap-inventory.fixture.json",
@@ -12180,6 +12265,7 @@
         "src/api-coverage/core-api-boundary-validation.ts",
         "src/api-coverage/index.ts",
         "src/api/core-governed-api-boundary.ts",
+        "src/api/core-governed-api-specs-057c.ts",
         "src/api/core-governed-api-specs.ts",
         "src/api/index.ts",
         "src/behavior-coverage/core-contract-behavior-acceptance-lock.ts",
@@ -12419,6 +12505,7 @@
       "inspectedFiles": [
         "fixtures/api/core-task-057a-api-boundaries.fixture.json",
         "fixtures/api/core-task-057b-api-boundaries.fixture.json",
+        "fixtures/api/core-task-057c-api-boundaries.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-acceptance-lock.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-coverage-baseline.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-gap-inventory.fixture.json",
@@ -12470,6 +12557,7 @@
         "src/api-coverage/core-api-boundary-validation.ts",
         "src/api-coverage/index.ts",
         "src/api/core-governed-api-boundary.ts",
+        "src/api/core-governed-api-specs-057c.ts",
         "src/api/core-governed-api-specs.ts",
         "src/api/index.ts",
         "src/behavior-coverage/core-contract-behavior-acceptance-lock.ts",
@@ -12709,6 +12797,7 @@
       "inspectedFiles": [
         "fixtures/api/core-task-057a-api-boundaries.fixture.json",
         "fixtures/api/core-task-057b-api-boundaries.fixture.json",
+        "fixtures/api/core-task-057c-api-boundaries.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-acceptance-lock.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-coverage-baseline.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-gap-inventory.fixture.json",
@@ -12760,6 +12849,7 @@
         "src/api-coverage/core-api-boundary-validation.ts",
         "src/api-coverage/index.ts",
         "src/api/core-governed-api-boundary.ts",
+        "src/api/core-governed-api-specs-057c.ts",
         "src/api/core-governed-api-specs.ts",
         "src/api/index.ts",
         "src/behavior-coverage/core-contract-behavior-acceptance-lock.ts",
@@ -12999,6 +13089,7 @@
       "inspectedFiles": [
         "fixtures/api/core-task-057a-api-boundaries.fixture.json",
         "fixtures/api/core-task-057b-api-boundaries.fixture.json",
+        "fixtures/api/core-task-057c-api-boundaries.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-acceptance-lock.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-coverage-baseline.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-gap-inventory.fixture.json",
@@ -13050,6 +13141,7 @@
         "src/api-coverage/core-api-boundary-validation.ts",
         "src/api-coverage/index.ts",
         "src/api/core-governed-api-boundary.ts",
+        "src/api/core-governed-api-specs-057c.ts",
         "src/api/core-governed-api-specs.ts",
         "src/api/index.ts",
         "src/behavior-coverage/core-contract-behavior-acceptance-lock.ts",
@@ -13290,6 +13382,7 @@
       "inspectedFiles": [
         "fixtures/api/core-task-057a-api-boundaries.fixture.json",
         "fixtures/api/core-task-057b-api-boundaries.fixture.json",
+        "fixtures/api/core-task-057c-api-boundaries.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-acceptance-lock.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-coverage-baseline.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-gap-inventory.fixture.json",
@@ -13341,6 +13434,7 @@
         "src/api-coverage/core-api-boundary-validation.ts",
         "src/api-coverage/index.ts",
         "src/api/core-governed-api-boundary.ts",
+        "src/api/core-governed-api-specs-057c.ts",
         "src/api/core-governed-api-specs.ts",
         "src/api/index.ts",
         "src/behavior-coverage/core-contract-behavior-acceptance-lock.ts",
@@ -13581,6 +13675,7 @@
       "inspectedFiles": [
         "fixtures/api/core-task-057a-api-boundaries.fixture.json",
         "fixtures/api/core-task-057b-api-boundaries.fixture.json",
+        "fixtures/api/core-task-057c-api-boundaries.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-acceptance-lock.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-coverage-baseline.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-gap-inventory.fixture.json",
@@ -13632,6 +13727,7 @@
         "src/api-coverage/core-api-boundary-validation.ts",
         "src/api-coverage/index.ts",
         "src/api/core-governed-api-boundary.ts",
+        "src/api/core-governed-api-specs-057c.ts",
         "src/api/core-governed-api-specs.ts",
         "src/api/index.ts",
         "src/behavior-coverage/core-contract-behavior-acceptance-lock.ts",
@@ -13872,6 +13968,7 @@
       "inspectedFiles": [
         "fixtures/api/core-task-057a-api-boundaries.fixture.json",
         "fixtures/api/core-task-057b-api-boundaries.fixture.json",
+        "fixtures/api/core-task-057c-api-boundaries.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-acceptance-lock.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-coverage-baseline.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-gap-inventory.fixture.json",
@@ -13923,6 +14020,7 @@
         "src/api-coverage/core-api-boundary-validation.ts",
         "src/api-coverage/index.ts",
         "src/api/core-governed-api-boundary.ts",
+        "src/api/core-governed-api-specs-057c.ts",
         "src/api/core-governed-api-specs.ts",
         "src/api/index.ts",
         "src/behavior-coverage/core-contract-behavior-acceptance-lock.ts",
@@ -14163,6 +14261,7 @@
       "inspectedFiles": [
         "fixtures/api/core-task-057a-api-boundaries.fixture.json",
         "fixtures/api/core-task-057b-api-boundaries.fixture.json",
+        "fixtures/api/core-task-057c-api-boundaries.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-acceptance-lock.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-coverage-baseline.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-gap-inventory.fixture.json",
@@ -14214,6 +14313,7 @@
         "src/api-coverage/core-api-boundary-validation.ts",
         "src/api-coverage/index.ts",
         "src/api/core-governed-api-boundary.ts",
+        "src/api/core-governed-api-specs-057c.ts",
         "src/api/core-governed-api-specs.ts",
         "src/api/index.ts",
         "src/behavior-coverage/core-contract-behavior-acceptance-lock.ts",
@@ -14454,6 +14554,7 @@
       "inspectedFiles": [
         "fixtures/api/core-task-057a-api-boundaries.fixture.json",
         "fixtures/api/core-task-057b-api-boundaries.fixture.json",
+        "fixtures/api/core-task-057c-api-boundaries.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-acceptance-lock.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-coverage-baseline.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-gap-inventory.fixture.json",
@@ -14505,6 +14606,7 @@
         "src/api-coverage/core-api-boundary-validation.ts",
         "src/api-coverage/index.ts",
         "src/api/core-governed-api-boundary.ts",
+        "src/api/core-governed-api-specs-057c.ts",
         "src/api/core-governed-api-specs.ts",
         "src/api/index.ts",
         "src/behavior-coverage/core-contract-behavior-acceptance-lock.ts",
@@ -14747,6 +14849,7 @@
       "inspectedFiles": [
         "fixtures/api/core-task-057a-api-boundaries.fixture.json",
         "fixtures/api/core-task-057b-api-boundaries.fixture.json",
+        "fixtures/api/core-task-057c-api-boundaries.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-acceptance-lock.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-coverage-baseline.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-gap-inventory.fixture.json",
@@ -14798,6 +14901,7 @@
         "src/api-coverage/core-api-boundary-validation.ts",
         "src/api-coverage/index.ts",
         "src/api/core-governed-api-boundary.ts",
+        "src/api/core-governed-api-specs-057c.ts",
         "src/api/core-governed-api-specs.ts",
         "src/api/index.ts",
         "src/behavior-coverage/core-contract-behavior-acceptance-lock.ts",
@@ -15038,6 +15142,7 @@
       "inspectedFiles": [
         "fixtures/api/core-task-057a-api-boundaries.fixture.json",
         "fixtures/api/core-task-057b-api-boundaries.fixture.json",
+        "fixtures/api/core-task-057c-api-boundaries.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-acceptance-lock.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-coverage-baseline.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-gap-inventory.fixture.json",
@@ -15089,6 +15194,7 @@
         "src/api-coverage/core-api-boundary-validation.ts",
         "src/api-coverage/index.ts",
         "src/api/core-governed-api-boundary.ts",
+        "src/api/core-governed-api-specs-057c.ts",
         "src/api/core-governed-api-specs.ts",
         "src/api/index.ts",
         "src/behavior-coverage/core-contract-behavior-acceptance-lock.ts",
@@ -15329,6 +15435,7 @@
       "inspectedFiles": [
         "fixtures/api/core-task-057a-api-boundaries.fixture.json",
         "fixtures/api/core-task-057b-api-boundaries.fixture.json",
+        "fixtures/api/core-task-057c-api-boundaries.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-acceptance-lock.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-coverage-baseline.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-gap-inventory.fixture.json",
@@ -15380,6 +15487,7 @@
         "src/api-coverage/core-api-boundary-validation.ts",
         "src/api-coverage/index.ts",
         "src/api/core-governed-api-boundary.ts",
+        "src/api/core-governed-api-specs-057c.ts",
         "src/api/core-governed-api-specs.ts",
         "src/api/index.ts",
         "src/behavior-coverage/core-contract-behavior-acceptance-lock.ts",
@@ -15620,6 +15728,7 @@
       "inspectedFiles": [
         "fixtures/api/core-task-057a-api-boundaries.fixture.json",
         "fixtures/api/core-task-057b-api-boundaries.fixture.json",
+        "fixtures/api/core-task-057c-api-boundaries.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-acceptance-lock.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-coverage-baseline.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-gap-inventory.fixture.json",
@@ -15671,6 +15780,7 @@
         "src/api-coverage/core-api-boundary-validation.ts",
         "src/api-coverage/index.ts",
         "src/api/core-governed-api-boundary.ts",
+        "src/api/core-governed-api-specs-057c.ts",
         "src/api/core-governed-api-specs.ts",
         "src/api/index.ts",
         "src/behavior-coverage/core-contract-behavior-acceptance-lock.ts",
@@ -15911,6 +16021,7 @@
       "inspectedFiles": [
         "fixtures/api/core-task-057a-api-boundaries.fixture.json",
         "fixtures/api/core-task-057b-api-boundaries.fixture.json",
+        "fixtures/api/core-task-057c-api-boundaries.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-acceptance-lock.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-coverage-baseline.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-gap-inventory.fixture.json",
@@ -15962,6 +16073,7 @@
         "src/api-coverage/core-api-boundary-validation.ts",
         "src/api-coverage/index.ts",
         "src/api/core-governed-api-boundary.ts",
+        "src/api/core-governed-api-specs-057c.ts",
         "src/api/core-governed-api-specs.ts",
         "src/api/index.ts",
         "src/behavior-coverage/core-contract-behavior-acceptance-lock.ts",
@@ -16202,6 +16314,7 @@
       "inspectedFiles": [
         "fixtures/api/core-task-057a-api-boundaries.fixture.json",
         "fixtures/api/core-task-057b-api-boundaries.fixture.json",
+        "fixtures/api/core-task-057c-api-boundaries.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-acceptance-lock.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-coverage-baseline.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-gap-inventory.fixture.json",
@@ -16253,6 +16366,7 @@
         "src/api-coverage/core-api-boundary-validation.ts",
         "src/api-coverage/index.ts",
         "src/api/core-governed-api-boundary.ts",
+        "src/api/core-governed-api-specs-057c.ts",
         "src/api/core-governed-api-specs.ts",
         "src/api/index.ts",
         "src/behavior-coverage/core-contract-behavior-acceptance-lock.ts",
@@ -16493,6 +16607,7 @@
       "inspectedFiles": [
         "fixtures/api/core-task-057a-api-boundaries.fixture.json",
         "fixtures/api/core-task-057b-api-boundaries.fixture.json",
+        "fixtures/api/core-task-057c-api-boundaries.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-acceptance-lock.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-coverage-baseline.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-gap-inventory.fixture.json",
@@ -16544,6 +16659,7 @@
         "src/api-coverage/core-api-boundary-validation.ts",
         "src/api-coverage/index.ts",
         "src/api/core-governed-api-boundary.ts",
+        "src/api/core-governed-api-specs-057c.ts",
         "src/api/core-governed-api-specs.ts",
         "src/api/index.ts",
         "src/behavior-coverage/core-contract-behavior-acceptance-lock.ts",
@@ -16784,6 +16900,7 @@
       "inspectedFiles": [
         "fixtures/api/core-task-057a-api-boundaries.fixture.json",
         "fixtures/api/core-task-057b-api-boundaries.fixture.json",
+        "fixtures/api/core-task-057c-api-boundaries.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-acceptance-lock.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-coverage-baseline.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-gap-inventory.fixture.json",
@@ -16835,6 +16952,7 @@
         "src/api-coverage/core-api-boundary-validation.ts",
         "src/api-coverage/index.ts",
         "src/api/core-governed-api-boundary.ts",
+        "src/api/core-governed-api-specs-057c.ts",
         "src/api/core-governed-api-specs.ts",
         "src/api/index.ts",
         "src/behavior-coverage/core-contract-behavior-acceptance-lock.ts",
@@ -17072,6 +17190,7 @@
       "inspectedFiles": [
         "fixtures/api/core-task-057a-api-boundaries.fixture.json",
         "fixtures/api/core-task-057b-api-boundaries.fixture.json",
+        "fixtures/api/core-task-057c-api-boundaries.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-acceptance-lock.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-coverage-baseline.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-gap-inventory.fixture.json",
@@ -17123,6 +17242,7 @@
         "src/api-coverage/core-api-boundary-validation.ts",
         "src/api-coverage/index.ts",
         "src/api/core-governed-api-boundary.ts",
+        "src/api/core-governed-api-specs-057c.ts",
         "src/api/core-governed-api-specs.ts",
         "src/api/index.ts",
         "src/behavior-coverage/core-contract-behavior-acceptance-lock.ts",
@@ -17360,6 +17480,7 @@
       "inspectedFiles": [
         "fixtures/api/core-task-057a-api-boundaries.fixture.json",
         "fixtures/api/core-task-057b-api-boundaries.fixture.json",
+        "fixtures/api/core-task-057c-api-boundaries.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-acceptance-lock.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-coverage-baseline.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-gap-inventory.fixture.json",
@@ -17411,6 +17532,7 @@
         "src/api-coverage/core-api-boundary-validation.ts",
         "src/api-coverage/index.ts",
         "src/api/core-governed-api-boundary.ts",
+        "src/api/core-governed-api-specs-057c.ts",
         "src/api/core-governed-api-specs.ts",
         "src/api/index.ts",
         "src/behavior-coverage/core-contract-behavior-acceptance-lock.ts",
@@ -17651,6 +17773,7 @@
       "inspectedFiles": [
         "fixtures/api/core-task-057a-api-boundaries.fixture.json",
         "fixtures/api/core-task-057b-api-boundaries.fixture.json",
+        "fixtures/api/core-task-057c-api-boundaries.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-acceptance-lock.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-coverage-baseline.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-gap-inventory.fixture.json",
@@ -17702,6 +17825,7 @@
         "src/api-coverage/core-api-boundary-validation.ts",
         "src/api-coverage/index.ts",
         "src/api/core-governed-api-boundary.ts",
+        "src/api/core-governed-api-specs-057c.ts",
         "src/api/core-governed-api-specs.ts",
         "src/api/index.ts",
         "src/behavior-coverage/core-contract-behavior-acceptance-lock.ts",
@@ -17944,6 +18068,7 @@
       "inspectedFiles": [
         "fixtures/api/core-task-057a-api-boundaries.fixture.json",
         "fixtures/api/core-task-057b-api-boundaries.fixture.json",
+        "fixtures/api/core-task-057c-api-boundaries.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-acceptance-lock.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-coverage-baseline.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-gap-inventory.fixture.json",
@@ -17995,6 +18120,7 @@
         "src/api-coverage/core-api-boundary-validation.ts",
         "src/api-coverage/index.ts",
         "src/api/core-governed-api-boundary.ts",
+        "src/api/core-governed-api-specs-057c.ts",
         "src/api/core-governed-api-specs.ts",
         "src/api/index.ts",
         "src/behavior-coverage/core-contract-behavior-acceptance-lock.ts",
@@ -18235,6 +18361,7 @@
       "inspectedFiles": [
         "fixtures/api/core-task-057a-api-boundaries.fixture.json",
         "fixtures/api/core-task-057b-api-boundaries.fixture.json",
+        "fixtures/api/core-task-057c-api-boundaries.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-acceptance-lock.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-coverage-baseline.fixture.json",
         "fixtures/behavior-coverage/core-contract-behavior-gap-inventory.fixture.json",
@@ -18286,6 +18413,7 @@
         "src/api-coverage/core-api-boundary-validation.ts",
         "src/api-coverage/index.ts",
         "src/api/core-governed-api-boundary.ts",
+        "src/api/core-governed-api-specs-057c.ts",
         "src/api/core-governed-api-specs.ts",
         "src/api/index.ts",
         "src/behavior-coverage/core-contract-behavior-acceptance-lock.ts",
@@ -18737,7 +18865,7 @@
         "must-api-event-api-contract",
         "must-api-communication-api-contract"
       ],
-      "satisfied": false,
+      "satisfied": true,
       "evidenceRequirementIds": [
         "must-api-identity-api-contract",
         "must-api-organization-api-contract",
@@ -18762,16 +18890,16 @@
       "evidenceFiles": [
         "fixtures/api/core-task-057a-api-boundaries.fixture.json",
         "fixtures/api/core-task-057b-api-boundaries.fixture.json",
+        "fixtures/api/core-task-057c-api-boundaries.fixture.json",
         "src/api/core-governed-api-boundary.ts",
+        "src/api/core-governed-api-specs-057c.ts",
         "src/api/core-governed-api-specs.ts",
         "src/api/index.ts",
-        "src/contracts/api/core-api-contract-skeletons.ts",
         "tests/unit/core-task-057a-api-boundary-foundation.test.ts",
-        "tests/unit/core-task-057b-api-boundary-foundation.test.ts"
+        "tests/unit/core-task-057b-api-boundary-foundation.test.ts",
+        "tests/unit/core-task-057c-api-boundary-foundation.test.ts"
       ],
-      "unresolvedReasons": [
-        "All 18 API requirements must prove validators, delegation, and no direct mutation/emission tests."
-      ]
+      "unresolvedReasons": []
     },
     {
       "id": "customer-intake-workflow-supports-preview-apply",
@@ -18958,21 +19086,61 @@
       "name": "Api Layer Does Not Emit Events Directly",
       "sourcePath": "books/book-02-core-specification/core-specs/implementation/mvp-cut-v0.1.md",
       "sourceSection": "Section 14",
-      "dependencies": ["must-test-api-contract-tests"],
-      "satisfied": false,
-      "evidenceRequirementIds": ["must-test-api-contract-tests"],
+      "dependencies": [
+        "must-api-identity-api-contract",
+        "must-api-organization-api-contract",
+        "must-api-user-api-contract",
+        "must-api-permission-api-contract",
+        "must-api-policy-api-contract",
+        "must-api-customer-api-contract",
+        "must-api-brand-api-contract",
+        "must-api-trademark-api-contract",
+        "must-api-jurisdiction-api-contract",
+        "must-api-classification-api-contract",
+        "must-api-document-api-contract",
+        "must-api-evidence-api-contract",
+        "must-api-matter-api-contract",
+        "must-api-order-api-contract",
+        "must-api-workflow-contract-api-contract",
+        "must-api-task-api-contract",
+        "must-api-event-api-contract",
+        "must-api-communication-api-contract"
+      ],
+      "satisfied": true,
+      "evidenceRequirementIds": [
+        "must-api-identity-api-contract",
+        "must-api-organization-api-contract",
+        "must-api-user-api-contract",
+        "must-api-permission-api-contract",
+        "must-api-policy-api-contract",
+        "must-api-customer-api-contract",
+        "must-api-brand-api-contract",
+        "must-api-trademark-api-contract",
+        "must-api-jurisdiction-api-contract",
+        "must-api-classification-api-contract",
+        "must-api-document-api-contract",
+        "must-api-evidence-api-contract",
+        "must-api-matter-api-contract",
+        "must-api-order-api-contract",
+        "must-api-workflow-contract-api-contract",
+        "must-api-task-api-contract",
+        "must-api-event-api-contract",
+        "must-api-communication-api-contract"
+      ],
       "behaviorIds": [],
       "evidenceFiles": [
+        "fixtures/api/core-task-057a-api-boundaries.fixture.json",
+        "fixtures/api/core-task-057b-api-boundaries.fixture.json",
+        "fixtures/api/core-task-057c-api-boundaries.fixture.json",
         "src/api/core-governed-api-boundary.ts",
+        "src/api/core-governed-api-specs-057c.ts",
         "src/api/core-governed-api-specs.ts",
-        "src/contracts/api/core-api-contract-skeletons.ts",
-        "src/contracts/test/core-test-contract-skeletons.ts",
-        "tests/unit/core-api-contract-skeletons.test.ts",
-        "tests/unit/core-task-057a-api-boundary-foundation.test.ts"
+        "src/api/index.ts",
+        "tests/unit/core-task-057a-api-boundary-foundation.test.ts",
+        "tests/unit/core-task-057b-api-boundary-foundation.test.ts",
+        "tests/unit/core-task-057c-api-boundary-foundation.test.ts"
       ],
-      "unresolvedReasons": [
-        "Executable API negative tests must prove no direct Event emission."
-      ]
+      "unresolvedReasons": []
     },
     {
       "id": "workflow-layer-does-not-emit-events-directly",
@@ -19191,9 +19359,9 @@
   "summary": {
     "mustBuildNow": {
       "total": 115,
-      "meets_required_depth": 80,
+      "meets_required_depth": 86,
       "partial_evidence": 3,
-      "validated_skeleton_only": 27,
+      "validated_skeleton_only": 21,
       "boundary_scaffold_only": 5,
       "semantic_overlap_only": 0,
       "fixture_only": 0,
@@ -19223,14 +19391,12 @@
       "violationCount": 0
     },
     "acceptance": {
-      "acceptanceCriteriaSatisfied": 12,
+      "acceptanceCriteriaSatisfied": 14,
       "acceptanceCriteriaTotal": 19,
       "unresolvedCriteria": [
-        "must-build-api-validators-exist",
         "customer-intake-workflow-supports-preview-apply",
         "trademark-application-workflow-supports-preview-apply",
         "communication-review-workflow-supports-preview-apply",
-        "api-layer-does-not-emit-events-directly",
         "workflow-layer-does-not-emit-events-directly",
         "agent-layer-does-not-emit-events-directly"
       ],

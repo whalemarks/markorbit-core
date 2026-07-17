@@ -739,7 +739,9 @@ export const MVP_ACCEPTANCE_CRITERION_DEPENDENCIES = {
     'must-test-idempotency-event-tests',
     'never-event-references-triggering-commands'
   ],
-  'api-layer-does-not-emit-events-directly': ['must-test-api-contract-tests'],
+  'api-layer-does-not-emit-events-directly': MUST_BUILD_DOMAINS.map(
+    (domain) => `must-api-${domain}-api-contract`
+  ),
   'workflow-layer-does-not-emit-events-directly': [
     'must-test-workflow-contract-tests'
   ],

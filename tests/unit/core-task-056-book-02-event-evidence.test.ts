@@ -60,9 +60,9 @@ describe('CORE-TASK-056 Book 02 exact Event evidence', () => {
   it('updates the baseline without claiming execution-spine completion', () => {
     assert.deepEqual(BOOK_02_MVP_GAP_BASELINE.summary.mustBuildNow, {
       total: 115,
-      meets_required_depth: 80,
+      meets_required_depth: 86,
       partial_evidence: 3,
-      validated_skeleton_only: 27,
+      validated_skeleton_only: 21,
       boundary_scaffold_only: 5,
       semantic_overlap_only: 0,
       fixture_only: 0,
@@ -70,7 +70,7 @@ describe('CORE-TASK-056 Book 02 exact Event evidence', () => {
     });
     assert.equal(
       BOOK_02_MVP_GAP_BASELINE.summary.acceptance.acceptanceCriteriaSatisfied,
-      12
+      14
     );
     assert.equal(
       BOOK_02_MVP_GAP_BASELINE.summary.acceptance.book02MvpComplete,
@@ -81,7 +81,7 @@ describe('CORE-TASK-056 Book 02 exact Event evidence', () => {
   it('keeps Event blockers closed after CORE-TASK-057A', () => {
     assert.equal(
       BOOK_02_POST_SERVICE_COMPLETION_AUDIT.unresolvedInventory.total,
-      35
+      29
     );
     assert.equal(
       'event' in
@@ -91,11 +91,11 @@ describe('CORE-TASK-056 Book 02 exact Event evidence', () => {
     assert.equal(
       BOOK_02_POST_SERVICE_COMPLETION_AUDIT.completionSemantics
         .completionBlockingNonDomainRequirementIds.length,
-      17
+      11
     );
     assert.equal(
       BOOK_02_POST_SERVICE_COMPLETION_AUDIT.nextTask,
-      'CORE-TASK-057C'
+      'CORE-TASK-058A'
     );
   });
 });

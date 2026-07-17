@@ -18,41 +18,38 @@ describe('CORE-TASK-055 post-service completion audit', () => {
       zeroServiceGap: true
     });
     assert.equal(audit.sourceBaseline.book02MvpComplete, false);
-    assert.equal(audit.nextTask, 'CORE-TASK-057C');
+    assert.equal(audit.nextTask, 'CORE-TASK-058A');
   });
 
-  it('records Event closure and the remaining 35 unresolved Must Build requirements', () => {
+  it('records Event closure and the remaining 29 unresolved Must Build requirements', () => {
     const audit = BOOK_02_POST_SERVICE_COMPLETION_AUDIT;
-    assert.equal(audit.unresolvedInventory.total, 35);
+    assert.equal(audit.unresolvedInventory.total, 29);
     assert.deepEqual(audit.unresolvedInventory.byLayer, {
       domain: 18,
-      api: 6,
       workflow: 3,
       agent: 5,
       test: 3
     });
     assert.deepEqual(audit.unresolvedInventory.byDisposition, {
-      validated_skeleton_only: 27,
+      validated_skeleton_only: 21,
       boundary_scaffold_only: 5,
       partial_evidence: 3
     });
     assert.equal(
       audit.completionSemantics.completionBlockingNonDomainRequirementIds
         .length,
-      17
+      11
     );
   });
 
-  it('locks the seven unresolved acceptance criteria exactly', () => {
+  it('locks the five unresolved acceptance criteria exactly', () => {
     assert.deepEqual(
       BOOK_02_POST_SERVICE_COMPLETION_AUDIT.unresolvedInventory
         .unresolvedAcceptanceCriterionIds,
       [
-        'must-build-api-validators-exist',
         'customer-intake-workflow-supports-preview-apply',
         'trademark-application-workflow-supports-preview-apply',
         'communication-review-workflow-supports-preview-apply',
-        'api-layer-does-not-emit-events-directly',
         'workflow-layer-does-not-emit-events-directly',
         'agent-layer-does-not-emit-events-directly'
       ]
@@ -82,10 +79,13 @@ describe('CORE-TASK-055 post-service completion audit', () => {
         ['CORE-TASK-060']
       ]
     );
-    assert.deepEqual(
-      workstreams.map((entry) => entry.requirementIds.length),
-      [0, 7, 4, 6, 0]
-    );
+    assert.deepEqual(workstreams[0]?.requirementIds, []);
+    assert.deepEqual(workstreams[1]?.requirementIds, [
+      'must-test-api-contract-tests'
+    ]);
+    assert.equal(workstreams[2]?.requirementIds.length, 4);
+    assert.equal(workstreams[3]?.requirementIds.length, 6);
+    assert.deepEqual(workstreams[4]?.requirementIds, []);
   });
 
   it('accepts Domain scaffolds for MVP completion semantics without weakening non-Domain depth', () => {

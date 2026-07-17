@@ -11,7 +11,7 @@ const ids = [
   'must-api-evidence-api-contract'
 ];
 describe('CORE-TASK-057B Book 02 API evidence', () => {
-  it('promotes seven APIs without claiming all-API completion', () => {
+  it('promotes seven APIs as part of completed all-API coverage', () => {
     const requirements = ids.map((id) =>
       BOOK_02_MVP_GAP_BASELINE.requirements.find((entry) => entry.id === id)
     );
@@ -23,11 +23,11 @@ describe('CORE-TASK-057B Book 02 API evidence', () => {
     );
     assert.equal(
       BOOK_02_MVP_GAP_BASELINE.summary.mustBuildNow.meets_required_depth,
-      80
+      86
     );
     assert.equal(
       BOOK_02_MVP_GAP_BASELINE.summary.mustBuildNow.validated_skeleton_only,
-      27
+      21
     );
     assert.equal(
       BOOK_02_MVP_GAP_BASELINE.summary.acceptance.book02MvpComplete,
