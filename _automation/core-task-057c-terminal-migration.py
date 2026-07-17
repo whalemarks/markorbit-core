@@ -25,14 +25,38 @@ for path in Path('tests/unit').glob('*.test.ts'):
         text = text.replace("        'must-build-api-validators-exist',\n", '')
         text = text.replace("        'api-layer-does-not-emit-events-directly',\n", '')
         text = re.sub(
-            r"    assert\.deepEqual\(\n      workstreams\.map\(\(entry\) => entry\.requirementIds\.length\),\n      \[[^\n]+\]\n    \);(?:\n    assert\.deepEqual\(workstreams\[1\]\?\.requirementIds, \[[\s\S]*?\n    \]\);)?",
-            """    assert.deepEqual(
-      workstreams.map((entry) => entry.requirementIds.length),
-      [0, 1, 4, 6, 0]
+            r"  it\('locks dependency-ordered workstreams through final completion audit', \(\) => \{[\s\S]*?\n  \}\);",
+            """  it('locks dependency-ordered workstreams through final completion audit', () => {
+    const workstreams =
+      BOOK_02_POST_SERVICE_COMPLETION_AUDIT.executionWorkstreams;
+    assert.deepEqual(
+      workstreams.map((entry) => entry.id),
+      [
+        'exact-event-contracts',
+        'api-validator-delegation',
+        'workflow-preview-apply',
+        'named-agent-boundaries',
+        'final-completion-audit'
+      ]
     );
+    assert.deepEqual(
+      workstreams.map((entry) => entry.taskIds),
+      [
+        ['CORE-TASK-056'],
+        ['CORE-TASK-057A', 'CORE-TASK-057B', 'CORE-TASK-057C'],
+        ['CORE-TASK-058A', 'CORE-TASK-058B', 'CORE-TASK-058C'],
+        ['CORE-TASK-059'],
+        ['CORE-TASK-060']
+      ]
+    );
+    assert.deepEqual(workstreams[0]?.requirementIds, []);
     assert.deepEqual(workstreams[1]?.requirementIds, [
       'must-test-api-contract-tests'
-    ]);""",
+    ]);
+    assert.equal(workstreams[2]?.requirementIds.length, 4);
+    assert.equal(workstreams[3]?.requirementIds.length, 6);
+    assert.deepEqual(workstreams[4]?.requirementIds, []);
+  });""",
             text,
             count=1,
         )
