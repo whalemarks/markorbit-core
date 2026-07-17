@@ -12,6 +12,7 @@ export const CORE_FIXTURE_TYPES = [
   'event_catalog_skeletons',
   'core_mvp_event_contract_lock',
   'core_task_057a_api_boundaries',
+  'core_task_057b_api_boundaries',
   'workflow_catalog_skeletons',
   'permission_contract_skeletons',
   'policy_contract_skeletons',
@@ -137,6 +138,12 @@ export const CORE_FIXTURE_MANIFEST = [
     id: 'core-task-057a-api-boundaries',
     type: 'core_task_057a_api_boundaries',
     path: 'fixtures/api/core-task-057a-api-boundaries.fixture.json',
+    required: true
+  },
+  {
+    id: 'core-task-057b-api-boundaries',
+    type: 'core_task_057b_api_boundaries',
+    path: 'fixtures/api/core-task-057b-api-boundaries.fixture.json',
     required: true
   },
   {

@@ -828,6 +828,467 @@ const policyOperations = [
   )
 ] as const;
 
+const domainCrudOperations = (
+  domain: string,
+  servicePrefix: string,
+  extraOperations: readonly CoreGovernedApiOperationSpec[]
+) =>
+  [
+    operation(
+      'create',
+      `create${servicePrefix}`,
+      `${domain}.create`,
+      'Create',
+      true,
+      `${domain}:create`,
+      `${domain}.write`,
+      ['objectRecord', 'publicReferenceRecord', 'sourceReference'],
+      [
+        'objectRecord',
+        'publicReferenceRecord',
+        'sourceReference',
+        'metadata',
+        'aiInitiated',
+        'agentContractReferenceId'
+      ],
+      ['sourceReference', 'agentContractReferenceId'],
+      ['objectRecord', 'publicReferenceRecord', 'metadata'],
+      [],
+      ['aiInitiated']
+    ),
+    operation(
+      'get',
+      `get${servicePrefix}`,
+      `${domain}.read`,
+      'Read',
+      false,
+      `${domain}:read`,
+      `${domain}.read`,
+      [`${domain}ReferenceId`],
+      [`${domain}ReferenceId`],
+      [`${domain}ReferenceId`]
+    ),
+    operation(
+      'update',
+      `update${servicePrefix}`,
+      `${domain}.update`,
+      'Update',
+      true,
+      `${domain}:update`,
+      `${domain}.write`,
+      [`${domain}ReferenceId`],
+      [`${domain}ReferenceId`, 'metadata', 'reasonReference'],
+      [`${domain}ReferenceId`, 'reasonReference'],
+      ['metadata']
+    ),
+    operation(
+      'list',
+      `list${servicePrefix}s`,
+      `${domain}.list`,
+      'Read',
+      false,
+      `${domain}:read`,
+      `${domain}.read`,
+      [],
+      ['organizationReferenceId', 'status', 'limit', 'cursor'],
+      ['organizationReferenceId', 'cursor']
+    ),
+    operation(
+      'validate-reference',
+      `validate${servicePrefix}Reference`,
+      `${domain}.validate_reference`,
+      'Validate',
+      false,
+      `${domain}:read`,
+      `${domain}.reference`,
+      [`${domain}ReferenceId`, 'requestingDomain', 'requestingService'],
+      [`${domain}ReferenceId`, 'requestingDomain', 'requestingService'],
+      [`${domain}ReferenceId`]
+    ),
+    ...extraOperations
+  ] as const;
+
+const customerOperations = domainCrudOperations('customer', 'Customer', [
+  operation(
+    'link-contacts',
+    'linkCustomerContacts',
+    'customer.link_contacts',
+    'Link',
+    true,
+    'customer:update',
+    'customer.relationship',
+    ['customerReferenceId', 'contactReferenceIds'],
+    ['customerReferenceId', 'contactReferenceIds'],
+    ['customerReferenceId'],
+    [],
+    ['contactReferenceIds']
+  ),
+  operation(
+    'link-business-objects',
+    'linkCustomerBusinessObjects',
+    'customer.link_business_objects',
+    'Link',
+    true,
+    'customer:update',
+    'customer.relationship',
+    ['customerReferenceId', 'targetReferences'],
+    ['customerReferenceId', 'targetReferences'],
+    ['customerReferenceId'],
+    [],
+    ['targetReferences']
+  ),
+  operation(
+    'prepare-profile-summary',
+    'prepareCustomerProfileSummary',
+    'customer.prepare_profile_summary',
+    'Read',
+    true,
+    'customer:read',
+    'customer.summary',
+    ['customerReferenceId'],
+    ['customerReferenceId', 'aiContext'],
+    ['customerReferenceId'],
+    ['aiContext']
+  )
+]);
+
+const brandOperations = domainCrudOperations('brand', 'Brand', [
+  operation(
+    'link-trademarks',
+    'linkBrandTrademarks',
+    'brand.link_trademarks',
+    'Link',
+    true,
+    'brand:update',
+    'brand.relationship',
+    ['brandReferenceId', 'trademarkReferenceIds'],
+    ['brandReferenceId', 'trademarkReferenceIds'],
+    ['brandReferenceId'],
+    [],
+    ['trademarkReferenceIds']
+  ),
+  operation(
+    'link-documents',
+    'linkBrandDocuments',
+    'brand.link_documents',
+    'Link',
+    true,
+    'brand:update',
+    'brand.relationship',
+    ['brandReferenceId', 'documentReferenceIds'],
+    ['brandReferenceId', 'documentReferenceIds'],
+    ['brandReferenceId'],
+    [],
+    ['documentReferenceIds']
+  ),
+  operation(
+    'link-evidence',
+    'linkBrandEvidence',
+    'brand.link_evidence',
+    'Link',
+    true,
+    'brand:update',
+    'brand.relationship',
+    ['brandReferenceId', 'evidenceReferenceIds'],
+    ['brandReferenceId', 'evidenceReferenceIds'],
+    ['brandReferenceId'],
+    [],
+    ['evidenceReferenceIds']
+  )
+]);
+
+const trademarkOperations = domainCrudOperations('trademark', 'Trademark', [
+  operation(
+    'link-classifications',
+    'linkTrademarkClassifications',
+    'trademark.link_classifications',
+    'Link',
+    true,
+    'trademark:update',
+    'trademark.relationship',
+    ['trademarkReferenceId', 'classificationReferenceIds'],
+    ['trademarkReferenceId', 'classificationReferenceIds'],
+    ['trademarkReferenceId'],
+    [],
+    ['classificationReferenceIds']
+  ),
+  operation(
+    'link-documents',
+    'linkTrademarkDocuments',
+    'trademark.link_documents',
+    'Link',
+    true,
+    'trademark:update',
+    'trademark.relationship',
+    ['trademarkReferenceId', 'documentReferenceIds'],
+    ['trademarkReferenceId', 'documentReferenceIds'],
+    ['trademarkReferenceId'],
+    [],
+    ['documentReferenceIds']
+  ),
+  operation(
+    'link-evidence',
+    'linkTrademarkEvidence',
+    'trademark.link_evidence',
+    'Link',
+    true,
+    'trademark:update',
+    'trademark.relationship',
+    ['trademarkReferenceId', 'evidenceReferenceIds'],
+    ['trademarkReferenceId', 'evidenceReferenceIds'],
+    ['trademarkReferenceId'],
+    [],
+    ['evidenceReferenceIds']
+  ),
+  operation(
+    'link-matter',
+    'linkTrademarkMatter',
+    'trademark.link_matter',
+    'Link',
+    true,
+    'trademark:update',
+    'trademark.relationship',
+    ['trademarkReferenceId', 'matterReferenceId'],
+    ['trademarkReferenceId', 'matterReferenceId'],
+    ['trademarkReferenceId', 'matterReferenceId']
+  )
+]);
+
+const jurisdictionOperations = domainCrudOperations(
+  'jurisdiction',
+  'Jurisdiction',
+  [
+    operation(
+      'rule-context',
+      'resolveJurisdictionRuleContext',
+      'jurisdiction.rule_context',
+      'Read',
+      false,
+      'jurisdiction:read',
+      'jurisdiction.rule_context',
+      ['jurisdictionReferenceId'],
+      [
+        'jurisdictionReferenceId',
+        'trademarkReferenceId',
+        'classificationReferenceId'
+      ],
+      [
+        'jurisdictionReferenceId',
+        'trademarkReferenceId',
+        'classificationReferenceId'
+      ]
+    ),
+    operation(
+      'link-knowledge',
+      'linkJurisdictionKnowledge',
+      'jurisdiction.link_knowledge',
+      'Link',
+      true,
+      'jurisdiction:update',
+      'jurisdiction.relationship',
+      ['jurisdictionReferenceId', 'knowledgeReferenceIds'],
+      ['jurisdictionReferenceId', 'knowledgeReferenceIds'],
+      ['jurisdictionReferenceId'],
+      [],
+      ['knowledgeReferenceIds']
+    ),
+    operation(
+      'link-documents',
+      'linkJurisdictionDocuments',
+      'jurisdiction.link_documents',
+      'Link',
+      true,
+      'jurisdiction:update',
+      'jurisdiction.relationship',
+      ['jurisdictionReferenceId', 'documentReferenceIds'],
+      ['jurisdictionReferenceId', 'documentReferenceIds'],
+      ['jurisdictionReferenceId'],
+      [],
+      ['documentReferenceIds']
+    )
+  ]
+);
+
+const classificationOperations = domainCrudOperations(
+  'classification',
+  'Classification',
+  [
+    operation(
+      'validate-items',
+      'validateClassificationItems',
+      'classification.validate_items',
+      'Validate',
+      false,
+      'classification:read',
+      'classification.validation',
+      ['jurisdictionReferenceId', 'items'],
+      ['jurisdictionReferenceId', 'items'],
+      ['jurisdictionReferenceId'],
+      [],
+      ['items']
+    ),
+    operation(
+      'suggest',
+      'suggestClassifications',
+      'classification.suggest',
+      'Read',
+      true,
+      'classification:read',
+      'classification.suggestion',
+      ['jurisdictionReferenceId', 'goodsServices'],
+      ['jurisdictionReferenceId', 'goodsServices', 'aiContext'],
+      ['jurisdictionReferenceId'],
+      ['aiContext'],
+      ['goodsServices']
+    ),
+    operation(
+      'link-trademark',
+      'linkClassificationTrademark',
+      'classification.link_trademark',
+      'Link',
+      true,
+      'classification:update',
+      'classification.relationship',
+      ['classificationReferenceId', 'trademarkReferenceId'],
+      ['classificationReferenceId', 'trademarkReferenceId'],
+      ['classificationReferenceId', 'trademarkReferenceId']
+    ),
+    operation(
+      'link-knowledge',
+      'linkClassificationKnowledge',
+      'classification.link_knowledge',
+      'Link',
+      true,
+      'classification:update',
+      'classification.relationship',
+      ['classificationReferenceId', 'knowledgeReferenceIds'],
+      ['classificationReferenceId', 'knowledgeReferenceIds'],
+      ['classificationReferenceId'],
+      [],
+      ['knowledgeReferenceIds']
+    ),
+    operation(
+      'link-documents',
+      'linkClassificationDocuments',
+      'classification.link_documents',
+      'Link',
+      true,
+      'classification:update',
+      'classification.relationship',
+      ['classificationReferenceId', 'documentReferenceIds'],
+      ['classificationReferenceId', 'documentReferenceIds'],
+      ['classificationReferenceId'],
+      [],
+      ['documentReferenceIds']
+    )
+  ]
+);
+
+const documentOperations = domainCrudOperations('document', 'Document', [
+  operation(
+    'content-access',
+    'authorizeDocumentContentAccess',
+    'document.content_access',
+    'Read',
+    false,
+    'document:read',
+    'document.content',
+    ['documentReferenceId'],
+    ['documentReferenceId', 'requestedDataAccessScope'],
+    ['documentReferenceId']
+  ),
+  operation(
+    'link-targets',
+    'linkDocumentTargets',
+    'document.link_targets',
+    'Link',
+    true,
+    'document:update',
+    'document.relationship',
+    ['documentReferenceId', 'targetReferences'],
+    ['documentReferenceId', 'targetReferences'],
+    ['documentReferenceId'],
+    [],
+    ['targetReferences']
+  ),
+  operation(
+    'prepare-summary',
+    'prepareDocumentSummary',
+    'document.prepare_summary',
+    'Read',
+    true,
+    'document:read',
+    'document.summary',
+    ['documentReferenceId'],
+    ['documentReferenceId', 'aiContext'],
+    ['documentReferenceId'],
+    ['aiContext']
+  )
+]);
+
+const evidenceOperations = domainCrudOperations('evidence', 'Evidence', [
+  operation(
+    'link-documents',
+    'linkEvidenceDocuments',
+    'evidence.link_documents',
+    'Link',
+    true,
+    'evidence:update',
+    'evidence.relationship',
+    ['evidenceReferenceId', 'documentReferenceIds'],
+    ['evidenceReferenceId', 'documentReferenceIds'],
+    ['evidenceReferenceId'],
+    [],
+    ['documentReferenceIds']
+  ),
+  operation(
+    'link-targets',
+    'linkEvidenceTargets',
+    'evidence.link_targets',
+    'Link',
+    true,
+    'evidence:update',
+    'evidence.relationship',
+    ['evidenceReferenceId', 'targetReferences'],
+    ['evidenceReferenceId', 'targetReferences'],
+    ['evidenceReferenceId'],
+    [],
+    ['targetReferences']
+  ),
+  operation(
+    'prepare-use-summary',
+    'prepareEvidenceUseSummary',
+    'evidence.prepare_use_summary',
+    'Read',
+    true,
+    'evidence:read',
+    'evidence.summary',
+    ['evidenceReferenceId'],
+    ['evidenceReferenceId', 'aiContext'],
+    ['evidenceReferenceId'],
+    ['aiContext']
+  ),
+  operation(
+    'evaluate-sufficiency-preview',
+    'evaluateEvidenceSufficiencyPreview',
+    'evidence.evaluate_sufficiency_preview',
+    'Evaluate',
+    true,
+    'evidence:read',
+    'evidence.preview',
+    ['evidenceReferenceIds', 'targetReferenceId'],
+    [
+      'evidenceReferenceIds',
+      'targetReferenceId',
+      'jurisdictionReferenceId',
+      'aiContext'
+    ],
+    ['targetReferenceId', 'jurisdictionReferenceId'],
+    ['aiContext'],
+    ['evidenceReferenceIds']
+  )
+]);
+
 export const CORE_TASK_057A_API_BOUNDARY_SPECS = [
   {
     domainId: 'identity',
@@ -889,4 +1350,37 @@ export const CORE_TASK_057A_API_BOUNDARY_SPECS = [
     directEventEmission: false,
     operations: policyOperations
   }
+] as const satisfies readonly CoreGovernedApiBoundarySpec[];
+
+export const CORE_TASK_057B_API_BOUNDARY_SPECS = [
+  ['customer', 'core-service-customer-service-contract', customerOperations],
+  ['brand', 'core-service-brand-service-contract', brandOperations],
+  ['trademark', 'core-service-trademark-service-contract', trademarkOperations],
+  [
+    'jurisdiction',
+    'core-service-jurisdiction-service-contract',
+    jurisdictionOperations
+  ],
+  [
+    'classification',
+    'core-service-classification-service-contract',
+    classificationOperations
+  ],
+  ['document', 'core-service-document-service-contract', documentOperations],
+  ['evidence', 'core-service-evidence-service-contract', evidenceOperations]
+].map(([domainId, serviceContractId, operations]) => ({
+  domainId,
+  apiType: `${domainId}-api`,
+  apiContractId: `core-api-${domainId}-api-contract`,
+  serviceContractId,
+  sourcePath: `books/book-02-core-specification/core-specs/contracts/api/${domainId}-api-contract.md`,
+  implementationTask: 'CORE-TASK-057B',
+  directDomainMutation: false,
+  directEventEmission: false,
+  operations
+})) as readonly CoreGovernedApiBoundarySpec[];
+
+export const CORE_GOVERNED_API_BOUNDARY_SPECS = [
+  ...CORE_TASK_057A_API_BOUNDARY_SPECS,
+  ...CORE_TASK_057B_API_BOUNDARY_SPECS
 ] as const satisfies readonly CoreGovernedApiBoundarySpec[];

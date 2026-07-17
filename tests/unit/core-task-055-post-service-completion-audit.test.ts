@@ -18,28 +18,28 @@ describe('CORE-TASK-055 post-service completion audit', () => {
       zeroServiceGap: true
     });
     assert.equal(audit.sourceBaseline.book02MvpComplete, false);
-    assert.equal(audit.nextTask, 'CORE-TASK-057B');
+    assert.equal(audit.nextTask, 'CORE-TASK-057C');
   });
 
-  it('records Event closure and the remaining 42 unresolved Must Build requirements', () => {
+  it('records Event closure and the remaining 35 unresolved Must Build requirements', () => {
     const audit = BOOK_02_POST_SERVICE_COMPLETION_AUDIT;
-    assert.equal(audit.unresolvedInventory.total, 42);
+    assert.equal(audit.unresolvedInventory.total, 35);
     assert.deepEqual(audit.unresolvedInventory.byLayer, {
       domain: 18,
-      api: 13,
+      api: 6,
       workflow: 3,
       agent: 5,
       test: 3
     });
     assert.deepEqual(audit.unresolvedInventory.byDisposition, {
-      validated_skeleton_only: 34,
+      validated_skeleton_only: 27,
       boundary_scaffold_only: 5,
       partial_evidence: 3
     });
     assert.equal(
       audit.completionSemantics.completionBlockingNonDomainRequirementIds
         .length,
-      24
+      17
     );
   });
 
@@ -84,7 +84,7 @@ describe('CORE-TASK-055 post-service completion audit', () => {
     );
     assert.deepEqual(
       workstreams.map((entry) => entry.requirementIds.length),
-      [0, 14, 4, 6, 0]
+      [0, 7, 4, 6, 0]
     );
   });
 

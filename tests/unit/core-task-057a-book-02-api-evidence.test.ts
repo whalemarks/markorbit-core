@@ -35,14 +35,14 @@ describe('CORE-TASK-057A Book 02 API evidence', () => {
     }
   });
 
-  it('leaves the remaining thirteen API requirements structural and fail-closed', () => {
+  it('leaves the remaining six API requirements structural and fail-closed', () => {
     const incomplete = BOOK_02_MVP_GAP_BASELINE.requirements.filter(
       (entry) =>
         entry.layer === 'api' &&
         entry.category === 'must_build_now' &&
         entry.currentDisposition !== 'meets_required_depth'
     );
-    assert.equal(incomplete.length, 13);
+    assert.equal(incomplete.length, 6);
     assert.ok(
       incomplete.every(
         (entry) => entry.currentDisposition === 'validated_skeleton_only'
@@ -53,9 +53,9 @@ describe('CORE-TASK-057A Book 02 API evidence', () => {
   it('advances the baseline without falsely completing the API acceptance criterion', () => {
     assert.deepEqual(BOOK_02_MVP_GAP_BASELINE.summary.mustBuildNow, {
       total: 115,
-      meets_required_depth: 73,
+      meets_required_depth: 80,
       partial_evidence: 3,
-      validated_skeleton_only: 34,
+      validated_skeleton_only: 27,
       boundary_scaffold_only: 5,
       semantic_overlap_only: 0,
       fixture_only: 0,
@@ -71,23 +71,23 @@ describe('CORE-TASK-057A Book 02 API evidence', () => {
     );
   });
 
-  it('reduces unresolved API blockers to thirteen and selects CORE-TASK-057B', () => {
+  it('retains six unresolved API blockers and selects CORE-TASK-057C', () => {
     assert.equal(
       BOOK_02_POST_SERVICE_COMPLETION_AUDIT.unresolvedInventory.total,
-      42
+      35
     );
     assert.equal(
       BOOK_02_POST_SERVICE_COMPLETION_AUDIT.unresolvedInventory.byLayer.api,
-      13
+      6
     );
     assert.equal(
       BOOK_02_POST_SERVICE_COMPLETION_AUDIT.completionSemantics
         .completionBlockingNonDomainRequirementIds.length,
-      24
+      17
     );
     assert.equal(
       BOOK_02_POST_SERVICE_COMPLETION_AUDIT.nextTask,
-      'CORE-TASK-057B'
+      'CORE-TASK-057C'
     );
   });
 });

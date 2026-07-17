@@ -166,8 +166,13 @@ describe('CORE-TASK-057A governed API boundaries', () => {
     );
     assert.deepEqual(validateCoreApiBoundaryEvidence(), []);
     assert.equal(CORE_TASK_057A_API_BOUNDARY_SPECS.length, 5);
-    assert.equal(CORE_API_BOUNDARY_EVIDENCE.length, 5);
-    for (const evidence of CORE_API_BOUNDARY_EVIDENCE) {
+    const evidence057a = CORE_API_BOUNDARY_EVIDENCE.filter((entry) =>
+      CORE_TASK_057A_API_BOUNDARY_SPECS.some(
+        (spec) => spec.domainId === entry.domainId
+      )
+    );
+    assert.equal(evidence057a.length, 5);
+    for (const evidence of evidence057a) {
       assert.deepEqual(
         evidence.provenCapabilities,
         CORE_GOVERNED_API_REQUIRED_CAPABILITIES

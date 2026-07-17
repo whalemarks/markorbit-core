@@ -75,7 +75,7 @@ export interface CoreGovernedApiBoundarySpec {
   readonly apiContractId: string;
   readonly serviceContractId: string;
   readonly sourcePath: string;
-  readonly implementationTask: 'CORE-TASK-057A';
+  readonly implementationTask: 'CORE-TASK-057A' | 'CORE-TASK-057B';
   readonly directDomainMutation: false;
   readonly directEventEmission: false;
   readonly operations: readonly CoreGovernedApiOperationSpec[];

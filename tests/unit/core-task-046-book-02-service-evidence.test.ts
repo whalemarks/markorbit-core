@@ -21,12 +21,12 @@ describe('CORE-TASK-046 Book 02 Event Service evidence', () => {
     ]);
   });
 
-  it('derives 73 / 3 / 34 and closes the final foundational authority Service gap', () => {
+  it('derives 80 / 3 / 27 and closes the final foundational authority Service gap', () => {
     assert.deepEqual(BOOK_02_MVP_GAP_BASELINE.summary.mustBuildNow, {
       total: 115,
-      meets_required_depth: 73,
+      meets_required_depth: 80,
       partial_evidence: 3,
-      validated_skeleton_only: 34,
+      validated_skeleton_only: 27,
       boundary_scaffold_only: 5,
       semantic_overlap_only: 0,
       fixture_only: 0,
