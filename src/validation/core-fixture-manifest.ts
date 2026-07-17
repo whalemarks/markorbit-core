@@ -11,6 +11,7 @@ export const CORE_FIXTURE_TYPES = [
   'api_contract_skeletons',
   'event_catalog_skeletons',
   'core_mvp_event_contract_lock',
+  'core_task_057a_api_boundaries',
   'workflow_catalog_skeletons',
   'permission_contract_skeletons',
   'policy_contract_skeletons',
@@ -130,6 +131,12 @@ export const CORE_FIXTURE_MANIFEST = [
     id: 'core-mvp-event-contract-lock',
     type: 'core_mvp_event_contract_lock',
     path: 'fixtures/contracts/core-mvp-event-contract-lock.fixture.json',
+    required: true
+  },
+  {
+    id: 'core-task-057a-api-boundaries',
+    type: 'core_task_057a_api_boundaries',
+    path: 'fixtures/api/core-task-057a-api-boundaries.fixture.json',
     required: true
   },
   {

@@ -4,8 +4,8 @@ import { describe, it } from 'node:test';
 import { CORE_FIXTURE_MANIFEST, CORE_FIXTURE_TYPES } from '../../src/index.ts';
 
 describe('CORE_FIXTURE_MANIFEST', () => {
-  it('has exactly 48 entries', () => {
-    assert.equal(CORE_FIXTURE_MANIFEST.length, 48);
+  it('has exactly 49 entries', () => {
+    assert.equal(CORE_FIXTURE_MANIFEST.length, 49);
   });
 
   it('includes permission_contract_skeletons type', () => {
@@ -222,6 +222,7 @@ describe('CORE_FIXTURE_MANIFEST', () => {
       'api_contract_skeletons',
       'event_catalog_skeletons',
       'core_mvp_event_contract_lock',
+      'core_task_057a_api_boundaries',
       'workflow_catalog_skeletons',
       'permission_contract_skeletons',
       'policy_contract_skeletons',

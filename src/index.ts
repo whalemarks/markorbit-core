@@ -22,3 +22,6 @@ export * from './mvp-coverage/index.ts';
 
 export * from './services/index.ts';
 export * from './service-coverage/index.ts';
+
+export * from './api/index.ts';
+export * from './api-coverage/index.ts';

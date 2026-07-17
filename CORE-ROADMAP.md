@@ -270,3 +270,12 @@ CORE-TASK-040 note: Classification Service core scope and validation behavior is
 - Remaining non-Domain completion blockers: 29.
 - Acceptance remains 12 / 19; no API, Workflow or Agent completion is claimed.
 - Next: CORE-TASK-057A — first API validator and Service-delegation batch.
+
+## CORE-TASK-057A API boundary completion
+
+- Identity, Organization, User, Permission and Policy APIs meet validator and owning-Service delegation depth.
+- Five API requirements are complete; thirteen API requirements remain.
+- Current Must Build disposition: `73 / 3 / 34`, plus 5 boundary scaffolds and zero semantic overlaps.
+- Current unresolved inventory: 42; non-Domain completion blockers: 24.
+- API all-family acceptance remains open until CORE-TASK-057B and CORE-TASK-057C complete the remaining APIs and full no-direct-Event proof.
+- Next task: `CORE-TASK-057B`.

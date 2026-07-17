@@ -470,7 +470,8 @@ describe('Book 02 MVP gap baseline validation', () => {
         'book02.depth.service_contract_index_only'
       ],
       [
-        (r: Record<string, unknown>) => r.layer === 'api',
+        (r: Record<string, unknown>) =>
+          r.id === 'must-api-customer-api-contract',
         'book02.depth.api_skeleton_only'
       ],
       [

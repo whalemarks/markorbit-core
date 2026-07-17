@@ -21,12 +21,12 @@ describe('CORE-TASK-054 Book 02 Policy Service evidence', () => {
     ]);
   });
 
-  it('derives 68 / 3 / 39, closes all Must Build Service gaps, and keeps Book 02 incomplete', () => {
+  it('derives 73 / 3 / 34, closes all Must Build Service gaps, and keeps Book 02 incomplete', () => {
     assert.deepEqual(BOOK_02_MVP_GAP_BASELINE.summary.mustBuildNow, {
       total: 115,
-      meets_required_depth: 68,
+      meets_required_depth: 73,
       partial_evidence: 3,
-      validated_skeleton_only: 39,
+      validated_skeleton_only: 34,
       boundary_scaffold_only: 5,
       semantic_overlap_only: 0,
       fixture_only: 0,

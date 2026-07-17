@@ -15,9 +15,9 @@
     "mustBuildTotal": 115,
     "dispositionCounts": {
       "total": 115,
-      "meets_required_depth": 68,
+      "meets_required_depth": 73,
       "partial_evidence": 3,
-      "validated_skeleton_only": 39,
+      "validated_skeleton_only": 34,
       "boundary_scaffold_only": 5,
       "semantic_overlap_only": 0,
       "fixture_only": 0,
@@ -34,16 +34,16 @@
     "zeroServiceGap": true
   },
   "unresolvedInventory": {
-    "total": 47,
+    "total": 42,
     "byLayer": {
       "domain": 18,
-      "api": 18,
+      "api": 13,
       "workflow": 3,
       "agent": 5,
       "test": 3
     },
     "byDisposition": {
-      "validated_skeleton_only": 39,
+      "validated_skeleton_only": 34,
       "boundary_scaffold_only": 5,
       "partial_evidence": 3
     },
@@ -76,16 +76,11 @@
         "must-api-document-api-contract",
         "must-api-event-api-contract",
         "must-api-evidence-api-contract",
-        "must-api-identity-api-contract",
         "must-api-jurisdiction-api-contract",
         "must-api-matter-api-contract",
         "must-api-order-api-contract",
-        "must-api-organization-api-contract",
-        "must-api-permission-api-contract",
-        "must-api-policy-api-contract",
         "must-api-task-api-contract",
         "must-api-trademark-api-contract",
-        "must-api-user-api-contract",
         "must-api-workflow-contract-api-contract"
       ],
       "workflow": [
@@ -154,16 +149,11 @@
       "must-api-document-api-contract",
       "must-api-event-api-contract",
       "must-api-evidence-api-contract",
-      "must-api-identity-api-contract",
       "must-api-jurisdiction-api-contract",
       "must-api-matter-api-contract",
       "must-api-order-api-contract",
-      "must-api-organization-api-contract",
-      "must-api-permission-api-contract",
-      "must-api-policy-api-contract",
       "must-api-task-api-contract",
       "must-api-trademark-api-contract",
-      "must-api-user-api-contract",
       "must-api-workflow-contract-api-contract",
       "must-test-agent-boundary-tests",
       "must-test-api-contract-tests",
@@ -200,16 +190,11 @@
         "must-api-document-api-contract",
         "must-api-event-api-contract",
         "must-api-evidence-api-contract",
-        "must-api-identity-api-contract",
         "must-api-jurisdiction-api-contract",
         "must-api-matter-api-contract",
         "must-api-order-api-contract",
-        "must-api-organization-api-contract",
-        "must-api-permission-api-contract",
-        "must-api-policy-api-contract",
         "must-api-task-api-contract",
         "must-api-trademark-api-contract",
-        "must-api-user-api-contract",
         "must-api-workflow-contract-api-contract",
         "must-test-api-contract-tests"
       ],
@@ -270,5 +255,5 @@
       "completionEffect": "Regenerate all fixtures, prove every non-Domain Must Build requirement reaches its locked depth, prove all 19 acceptance criteria pass, and set Book 02 MVP complete without deepening deferred or forbidden capabilities."
     }
   ],
-  "nextTask": "CORE-TASK-057A"
+  "nextTask": "CORE-TASK-057B"
 }
