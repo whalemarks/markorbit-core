@@ -78,6 +78,7 @@ export type TrademarkApplicationStepOperation =
   | 'evidence.validate-reference'
   | 'matter.validate-reference'
   | 'order.validate-reference'
+  | 'trademark.validate-reference'
   | 'trademark.create'
   | 'trademark.link-classifications'
   | 'trademark.link-documents'
@@ -125,6 +126,8 @@ export interface TrademarkApplicationPreview {
   readonly validUntil: string;
   readonly requiredHumanReviewCheckpoints: readonly string[];
   readonly orderedExecutionPlan: readonly TrademarkApplicationPlanStep[];
+  readonly orderedValidationPlan: readonly TrademarkApplicationPlanStep[];
+  readonly orderedMutationPlan: readonly TrademarkApplicationPlanStep[];
   readonly owningApiOperations: readonly string[];
   readonly validationOnlyOperations: readonly string[];
   readonly mutationOperations: readonly string[];
@@ -214,6 +217,7 @@ const svc: Record<TrademarkApplicationStepOperation, string> = {
   'evidence.validate-reference': 'validateEvidenceReference',
   'matter.validate-reference': 'validateMatterReference',
   'order.validate-reference': 'validateOrderReference',
+  'trademark.validate-reference': 'validateTrademarkReference',
   'trademark.create': 'createTrademark',
   'trademark.link-classifications': 'linkTrademarkClassifications',
   'trademark.link-documents': 'linkTrademarkDocuments',
@@ -360,7 +364,7 @@ function plan(
     )
   ];
   if (input.existingTrademarkReferenceId)
-    ops.push('trademark.link-classifications');
+    ops.push('trademark.validate-reference', 'trademark.link-classifications');
   else ops.push('trademark.create', 'trademark.link-classifications');
   if (input.documentReferenceIds.length) ops.push('trademark.link-documents');
   if (input.evidenceReferenceIds.length) ops.push('trademark.link-evidence');
@@ -417,6 +421,60 @@ function extractEventTraceReferences(result: unknown): readonly string[] {
       refs.push(...values.filter((v): v is string => typeof v === 'string'));
   }
   return [...new Set(refs)];
+}
+
+function splitValidationPlan(steps: readonly TrademarkApplicationPlanStep[]) {
+  return steps.filter((step) => !step.requiresMutation);
+}
+function splitMutationPlan(steps: readonly TrademarkApplicationPlanStep[]) {
+  return steps.filter((step) => step.requiresMutation);
+}
+function normalizedTrademarkCreatePayload(
+  input: TrademarkApplicationInput
+): Readonly<Record<string, unknown>> {
+  const candidate = isRecord(input.trademark) ? input.trademark : {};
+  const metadata = isRecord(candidate.metadata) ? candidate.metadata : {};
+  return {
+    objectRecord: candidate.objectRecord,
+    publicReferenceRecord: candidate.publicReferenceRecord,
+    sourceReference:
+      readString(candidate, 'sourceReference') ??
+      'trademark-application-workflow',
+    metadata: {
+      ...metadata,
+      customerReferenceId: input.customerReferenceId,
+      brandReferenceId: input.brandReferenceId,
+      jurisdictionReferenceId: input.jurisdictionReferenceId,
+      organizationReferenceId: input.organizationReferenceId,
+      classificationItems: input.classificationItems,
+      documentReferenceIds: input.documentReferenceIds,
+      evidenceReferenceIds: input.evidenceReferenceIds,
+      orderReferenceId: input.orderReferenceId ?? null
+    }
+  };
+}
+function partialFailure<T>(
+  code: CoreErrorCode,
+  message: string,
+  correlationId: string,
+  completedDelegationTrace: readonly string[],
+  failedOperation: string
+): CoreBehaviorResult<T> {
+  return {
+    ok: false,
+    error: createCoreSafeError({
+      code,
+      category: code.includes('Reference') ? 'Reference' : 'Workflow',
+      message,
+      safeDetail: canonical({
+        partialFailure: true,
+        completedDelegationTrace,
+        failedOperation,
+        rollbackClaimed: false
+      }),
+      correlationId
+    })
+  };
 }
 export class CoreInMemoryTrademarkApplicationPlanRegistry implements TrademarkApplicationPlanRegistry {
   readonly #records = new Map<string, TrademarkApplicationPreviewRecord>();
@@ -502,6 +560,60 @@ export class TrademarkApplicationWorkflow {
         this.#apis.set(domain, new CoreGovernedApiBoundary(spec, port));
       }
   }
+
+  #callGoverned(
+    op: TrademarkApplicationStepOperation,
+    payload: Readonly<Record<string, unknown>>,
+    governanceContext: TrademarkApplicationGovernanceContext,
+    idempotencyKey: string | null
+  ) {
+    const domain = op.split('.')[0]!;
+    const api = this.#apis.get(domain)!;
+    const apiOp = op.split('.')[1]!;
+    const spec = [
+      ...CORE_GOVERNED_API_BOUNDARY_SPECS,
+      ...CORE_TASK_057C_API_BOUNDARY_SPECS
+    ].find((entry) => entry.domainId === domain)!;
+    const opSpec = spec.operations.find(
+      (entry) => entry.apiOperation === apiOp
+    )!;
+    const target =
+      (Object.values(payload).find((v) => typeof v === 'string') as
+        string | undefined) ?? `${domain}:pending`;
+    return api.handle({
+      apiVersion: CORE_API_VERSION,
+      contractVersion: CORE_API_CONTRACT_VERSION,
+      correlationId: governanceContext.correlationId,
+      operation: apiOp,
+      idempotencyKey,
+      payload,
+      governance: {
+        ...governanceContext,
+        permission: {
+          ...governanceContext.permission,
+          intendedOperation: opSpec.governanceOperation,
+          requiredPermissionKeys: [opSpec.requiredPermissionKey]
+        },
+        policy: {
+          ...governanceContext.policy,
+          intendedOperation: opSpec.governanceOperation,
+          requiredPolicyScopes: [opSpec.requiredPolicyScope]
+        },
+        review: {
+          ...governanceContext.review,
+          targetObjectType: `${domain}-record`,
+          targetObjectReferenceId: target
+        },
+        audit: {
+          ...governanceContext.audit,
+          operationName: opSpec.governanceOperation,
+          operationCategory: opSpec.operationCategory,
+          targetObjectType: `${domain}-record`,
+          targetObjectReferenceId: target
+        }
+      }
+    });
+  }
   previewTrademarkApplication(
     request: TrademarkApplicationPreviewRequest
   ): CoreBehaviorResult<TrademarkApplicationPreview> {
@@ -527,6 +639,103 @@ export class TrademarkApplicationWorkflow {
           `Required ${domain} API boundary is unavailable.`,
           request.governance.correlationId
         );
+    }
+    const validationPlan = splitValidationPlan(steps);
+    const mutationPlan = splitMutationPlan(steps);
+    let documentIndex = 0;
+    let evidenceIndex = 0;
+    for (const step of validationPlan) {
+      let payload: Record<string, unknown>;
+      switch (step.owningApiOperation) {
+        case 'customer.validate-reference':
+          payload = {
+            customerReferenceId: request.input.customerReferenceId,
+            requestingDomain: 'workflow',
+            requestingService: 'trademark-application'
+          };
+          break;
+        case 'brand.validate-reference':
+          payload = {
+            brandReferenceId: request.input.brandReferenceId,
+            requestingDomain: 'workflow',
+            requestingService: 'trademark-application'
+          };
+          break;
+        case 'jurisdiction.validate-reference':
+          payload = {
+            jurisdictionReferenceId: request.input.jurisdictionReferenceId,
+            requestingDomain: 'workflow',
+            requestingService: 'trademark-application'
+          };
+          break;
+        case 'classification.validate-items':
+          payload = {
+            jurisdictionReferenceId: request.input.jurisdictionReferenceId,
+            items: request.input.classificationItems
+          };
+          break;
+        case 'document.validate-reference':
+          payload = {
+            documentReferenceId:
+              request.input.documentReferenceIds[documentIndex++],
+            requestingDomain: 'workflow',
+            requestingService: 'trademark-application'
+          };
+          break;
+        case 'evidence.validate-reference':
+          payload = {
+            evidenceReferenceId:
+              request.input.evidenceReferenceIds[evidenceIndex++],
+            requestingDomain: 'workflow',
+            requestingService: 'trademark-application'
+          };
+          break;
+        case 'trademark.validate-reference':
+          payload = {
+            trademarkReferenceId: request.input.existingTrademarkReferenceId!,
+            requestingDomain: 'workflow',
+            requestingService: 'trademark-application'
+          };
+          break;
+        case 'matter.validate-reference':
+          payload = {
+            matterReferenceId: request.input.existingMatterReferenceId!,
+            requestingDomain: 'workflow',
+            requestingService: 'trademark-application'
+          };
+          break;
+        case 'order.validate-reference':
+          payload = {
+            orderReferenceId: request.input.orderReferenceId!,
+            requestingDomain: 'workflow',
+            requestingService: 'trademark-application'
+          };
+          break;
+        default:
+          continue;
+      }
+      const validated = this.#callGoverned(
+        step.owningApiOperation,
+        payload,
+        request.governance,
+        null
+      );
+      if (!validated.ok) return validated;
+      if (step.owningApiOperation === 'brand.validate-reference') {
+        const brandCustomer = readString(
+          validated.value.result,
+          'customerReferenceId'
+        );
+        if (
+          brandCustomer &&
+          brandCustomer !== request.input.customerReferenceId
+        )
+          return safe(
+            'InvalidBrandCustomerReference',
+            'Brand API validation returned a Customer relationship that conflicts with the applicant Customer reference.',
+            request.governance.correlationId
+          );
+      }
     }
     const expires = Date.parse(request.validUntil);
     if (!Number.isFinite(expires) || expires <= Date.parse(this.deps.now()))
@@ -555,6 +764,8 @@ export class TrademarkApplicationWorkflow {
       validUntil: request.validUntil,
       requiredHumanReviewCheckpoints: ['trademark-application.apply'],
       orderedExecutionPlan: steps,
+      orderedValidationPlan: validationPlan,
+      orderedMutationPlan: mutationPlan,
       owningApiOperations: steps.map((s) => s.owningApiOperation),
       validationOnlyOperations: steps
         .filter((s) => !s.requiresMutation)
@@ -735,67 +946,7 @@ export class TrademarkApplicationWorkflow {
     let trademarkResult: unknown;
     let matterResult: unknown;
     let taskPlanResult: unknown;
-    const call = (
-      op: TrademarkApplicationStepOperation,
-      payload: Readonly<Record<string, unknown>>
-    ) => {
-      const domain = op.split('.')[0]!;
-      const api = this.#apis.get(domain)!;
-      const apiOp = op.split('.')[1]!;
-      const spec = [
-        ...CORE_GOVERNED_API_BOUNDARY_SPECS,
-        ...CORE_TASK_057C_API_BOUNDARY_SPECS
-      ].find((entry) => entry.domainId === domain)!;
-      const opSpec = spec.operations.find(
-        (entry) => entry.apiOperation === apiOp
-      )!;
-      const governance = {
-        ...request.governance,
-        permission: {
-          ...request.governance.permission,
-          intendedOperation: opSpec.governanceOperation,
-          requiredPermissionKeys: [opSpec.requiredPermissionKey]
-        },
-        policy: {
-          ...request.governance.policy,
-          intendedOperation: opSpec.governanceOperation,
-          requiredPolicyScopes: [opSpec.requiredPolicyScope]
-        },
-        review: {
-          ...request.governance.review,
-          targetObjectType: `${domain}-record`,
-          targetObjectReferenceId:
-            (Object.values(payload).find(
-              (v) => typeof v === 'string'
-            ) as string) ?? `${domain}:pending`
-        },
-        audit: {
-          ...request.governance.audit,
-          operationName: opSpec.governanceOperation,
-          operationCategory:
-            apiOp.startsWith('validate') || apiOp === 'validate-items'
-              ? 'Validate'
-              : apiOp === 'create'
-                ? 'Create'
-                : 'Link',
-          targetObjectType: `${domain}-record`,
-          targetObjectReferenceId:
-            (Object.values(payload).find(
-              (v) => typeof v === 'string'
-            ) as string) ?? `${domain}:pending`
-        }
-      };
-      return api.handle({
-        apiVersion: CORE_API_VERSION,
-        contractVersion: CORE_API_CONTRACT_VERSION,
-        correlationId: request.governance.correlationId,
-        operation: apiOp,
-        idempotencyKey: `${request.idempotencyKey}:${op}:${delegationOrder.length}`,
-        payload,
-        governance
-      });
-    };
-    for (const step of record.orderedExecutionPlan) {
+    for (const step of record.orderedMutationPlan) {
       let payload: Record<string, unknown>;
       const i = record.input;
       switch (step.owningApiOperation) {
@@ -865,10 +1016,10 @@ export class TrademarkApplicationWorkflow {
           };
           break;
         case 'trademark.create':
-          payload = {
-            ...i.trademark,
-            sourceReference: 'trademark-application-workflow'
-          } as Record<string, unknown>;
+          payload = normalizedTrademarkCreatePayload(i) as Record<
+            string,
+            unknown
+          >;
           break;
         case 'trademark.link-classifications':
           payload = {
@@ -930,25 +1081,32 @@ export class TrademarkApplicationWorkflow {
           'Planned linkage is missing an authoritative public reference.',
           request.governance.correlationId
         );
-      const res = call(step.owningApiOperation, payload!);
+      const res = this.#callGoverned(
+        step.owningApiOperation,
+        payload!,
+        request.governance,
+        `${request.idempotencyKey}:${step.owningApiOperation}:${delegationOrder.length}`
+      );
       if (!res.ok)
-        return {
-          ...res,
-          error: {
-            ...res.error,
-            message: `${res.error.message} Completed delegation trace: ${delegationOrder.join(' > ') || 'none'}. Production compensation is out of scope.`
-          }
-        };
+        return partialFailure(
+          res.error.code,
+          res.error.message,
+          request.governance.correlationId,
+          delegationOrder,
+          step.owningApiOperation
+        );
       delegationOrder.push(step.owningApiOperation);
       events.push(...extractEventTraceReferences(res.value.result));
       if (step.owningApiOperation === 'trademark.create') {
         trademarkResult = res.value.result;
         const got = extractPublicReference(res.value.result, 'trademark');
         if (!got)
-          return safe(
+          return partialFailure(
             'ReferenceInvalid',
             'Trademark API did not return an authoritative public reference.',
-            request.governance.correlationId
+            request.governance.correlationId,
+            delegationOrder,
+            step.owningApiOperation
           );
         if (
           i.existingTrademarkReferenceId &&
@@ -965,10 +1123,12 @@ export class TrademarkApplicationWorkflow {
         matterResult = res.value.result;
         const got = extractPublicReference(res.value.result, 'matter');
         if (!got)
-          return safe(
+          return partialFailure(
             'ReferenceInvalid',
             'Matter API did not return an authoritative public reference.',
-            request.governance.correlationId
+            request.governance.correlationId,
+            delegationOrder,
+            step.owningApiOperation
           );
         matterReferenceId = got;
       }
@@ -977,7 +1137,7 @@ export class TrademarkApplicationWorkflow {
     }
     if (
       canonical(delegationOrder) !==
-      canonical(record.orderedExecutionPlan.map((s) => s.owningApiOperation))
+      canonical(record.orderedMutationPlan.map((s) => s.owningApiOperation))
     )
       return safe(
         'ValidationFailed',

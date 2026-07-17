@@ -109,7 +109,8 @@ class Port implements CoreGovernedApiServicePort {
   constructor(
     readonly serviceContractId: string,
     readonly failOn?: string,
-    readonly omitEvents = false
+    readonly omitEvents = false,
+    readonly brandCustomerReferenceId = 'customer:ref:058b'
   ) {}
   invoke(
     invocation: CoreGovernedApiServiceInvocation
@@ -139,6 +140,9 @@ class Port implements CoreGovernedApiServicePort {
     return {
       ok: true,
       value: {
+        ...(invocation.serviceOperation === 'validateBrandReference'
+          ? { customerReferenceId: this.brandCustomerReferenceId }
+          : {}),
         [`${d}ReferenceId`]: refs[d] ?? `${d}:ref:validated-058b`,
         publicReferenceId: refs[d] ?? `${d}:ref:validated-058b`,
         eventReferences: this.omitEvents
@@ -155,6 +159,7 @@ function harness(
     matter?: boolean;
     failOn?: string;
     omitEvents?: boolean;
+    brandCustomerReferenceId?: string;
   } = {}
 ) {
   const ports = {
@@ -166,7 +171,8 @@ function harness(
     brand: new Port(
       'core-service-brand-service-contract',
       opts.failOn,
-      opts.omitEvents
+      opts.omitEvents,
+      opts.brandCustomerReferenceId
     ),
     jurisdiction: new Port(
       'core-service-jurisdiction-service-contract',
@@ -273,10 +279,26 @@ describe('CORE-TASK-058B Trademark Application Workflow', () => {
       })
     );
     assert.equal(c.ok, true);
+    assert.equal(
+      h.ports.customer.calls.some(
+        (call) => call.serviceOperation === 'validateCustomerReference'
+      ),
+      true
+    );
+    assert.equal(
+      h.ports.brand.calls.some(
+        (call) => call.serviceOperation === 'validateBrandReference'
+      ),
+      true
+    );
     if (a.ok && c.ok)
       assert.notEqual(a.value.previewDigest, c.value.previewDigest);
   });
   it('validates references, customer/brand relationship, and classification shape', () => {
+    assert.equal(
+      preview(harness({ brandCustomerReferenceId: 'customer:ref:other' })).ok,
+      false
+    );
     for (const [caseId, patch] of [
       ['customer', { customerReferenceId: 'db-1' }],
       ['brand', { brandReferenceId: 'raw' }],
@@ -344,6 +366,26 @@ describe('CORE-TASK-058B Trademark Application Workflow', () => {
       true
     );
     assert.equal(preview(harness({ task: true })).ok, true);
+    const existing = preview(
+      harness(),
+      input({
+        existingTrademarkReferenceId: 'trademark:ref:existing-058b',
+        trademark: null
+      })
+    );
+    assert.equal(existing.ok, true);
+    if (existing.ok) {
+      assert.equal(
+        existing.value.validationOnlyOperations.includes(
+          'trademark.validate-reference'
+        ),
+        true
+      );
+      assert.equal(
+        existing.value.mutationOperations.includes('trademark.create'),
+        false
+      );
+    }
     assert.equal(preview(harness({ task: false })).ok, false);
   });
   it('applies through owning APIs in order and propagates authoritative references', () => {
@@ -369,9 +411,35 @@ describe('CORE-TASK-058B Trademark Application Workflow', () => {
       applied.value.matterReferenceId,
       'matter:ref:authoritative-058b'
     );
+    assert.deepEqual(applied.value.delegationOrder, p.value.mutationOperations);
     assert.deepEqual(
-      applied.value.delegationOrder,
-      p.value.owningApiOperations
+      p.value.orderedValidationPlan.map((step) => step.owningApiOperation),
+      p.value.validationOnlyOperations
+    );
+    assert.deepEqual(
+      p.value.orderedMutationPlan.map((step) => step.owningApiOperation),
+      p.value.mutationOperations
+    );
+    const trademarkCreate = h.ports.trademark.calls.find(
+      (c) => c.serviceOperation === 'createTrademark'
+    );
+    assert.equal(
+      JSON.stringify(trademarkCreate?.payload).includes('customer:ref:058b'),
+      true
+    );
+    assert.equal(
+      JSON.stringify(trademarkCreate?.payload).includes('brand:ref:058b'),
+      true
+    );
+    assert.equal(
+      JSON.stringify(trademarkCreate?.payload).includes('jurisdiction:ref:us'),
+      true
+    );
+    assert.equal(
+      JSON.stringify(trademarkCreate?.payload).includes(
+        'classification:ref:025'
+      ),
+      true
     );
     assert.equal(
       h.ports.matter?.calls.some((c) =>
@@ -509,7 +577,8 @@ describe('CORE-TASK-058B Trademark Application Workflow', () => {
       idempotencyKey: 'idem:058b:partial'
     });
     assert.equal(a.ok, false);
-    if (!a.ok) assert.match(a.error.message, /Completed delegation trace/);
+    if (!a.ok)
+      assert.match(a.error.safeDetail ?? '', /completedDelegationTrace/);
     const no = harness({ omitEvents: true });
     const pp = preview(no);
     assert.equal(pp.ok, true);

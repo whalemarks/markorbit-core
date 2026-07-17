@@ -54,7 +54,14 @@ const requiredScenarioIds = [
   'no-direct-domain-mutation',
   'no-direct-event-emission',
   'no-external-filing-connector',
-  'event-references-remain-trace-only'
+  'event-references-remain-trace-only',
+  'preview-governed-reference-validation',
+  'existing-trademark-reference-validation',
+  'brand-customer-api-relationship-validation',
+  'normalized-trademark-mutation-payload',
+  'missing-authoritative-reference-partial-failure',
+  'separate-validation-and-mutation-plans',
+  'structured-partial-failure-result-evidence'
 ] as const;
 
 const validOutcomes = new Set([

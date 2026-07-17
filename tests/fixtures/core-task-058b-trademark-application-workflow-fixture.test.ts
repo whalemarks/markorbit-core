@@ -15,7 +15,7 @@ describe('CORE-TASK-058B Trademark Application Workflow fixture', () => {
       validateCoreTrademarkApplicationWorkflowFixture(fixture).ok,
       true
     );
-    assert.equal(fixture.declaredScenarios.length, 50);
-    assert.equal(fixture.executedScenarioEvidence.length, 50);
+    assert.equal(fixture.declaredScenarios.length, 57);
+    assert.equal(fixture.executedScenarioEvidence.length, 57);
   });
 });

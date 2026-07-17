@@ -247,6 +247,37 @@
     {
       "scenarioId": "event-references-remain-trace-only",
       "expectedOutcome": "success"
+    },
+    {
+      "scenarioId": "preview-governed-reference-validation",
+      "expectedOutcome": "success"
+    },
+    {
+      "scenarioId": "existing-trademark-reference-validation",
+      "expectedOutcome": "success"
+    },
+    {
+      "scenarioId": "brand-customer-api-relationship-validation",
+      "expectedOutcome": "safe_error",
+      "safeErrorCode": "ValidationFailed"
+    },
+    {
+      "scenarioId": "normalized-trademark-mutation-payload",
+      "expectedOutcome": "success"
+    },
+    {
+      "scenarioId": "missing-authoritative-reference-partial-failure",
+      "expectedOutcome": "safe_error",
+      "safeErrorCode": "ValidationFailed"
+    },
+    {
+      "scenarioId": "separate-validation-and-mutation-plans",
+      "expectedOutcome": "success"
+    },
+    {
+      "scenarioId": "structured-partial-failure-result-evidence",
+      "expectedOutcome": "safe_error",
+      "safeErrorCode": "ValidationFailed"
     }
   ],
   "executedScenarioEvidence": [
@@ -623,6 +654,58 @@
       "testFile": "tests/unit/core-task-058b-trademark-application-workflow.test.ts",
       "testName": "CORE-TASK-058B Trademark Application Workflow",
       "caseId": "event-references-remain-trace-only"
+    },
+    {
+      "scenarioId": "preview-governed-reference-validation",
+      "expectedOutcome": "success",
+      "testFile": "tests/unit/core-task-058b-trademark-application-workflow.test.ts",
+      "testName": "CORE-TASK-058B Trademark Application Workflow",
+      "caseId": "preview-governed-reference-validation"
+    },
+    {
+      "scenarioId": "existing-trademark-reference-validation",
+      "expectedOutcome": "success",
+      "testFile": "tests/unit/core-task-058b-trademark-application-workflow.test.ts",
+      "testName": "CORE-TASK-058B Trademark Application Workflow",
+      "caseId": "existing-trademark-reference-validation"
+    },
+    {
+      "scenarioId": "brand-customer-api-relationship-validation",
+      "expectedOutcome": "safe_error",
+      "safeErrorCode": "ValidationFailed",
+      "testFile": "tests/unit/core-task-058b-trademark-application-workflow.test.ts",
+      "testName": "CORE-TASK-058B Trademark Application Workflow",
+      "caseId": "brand-customer-api-relationship-validation"
+    },
+    {
+      "scenarioId": "normalized-trademark-mutation-payload",
+      "expectedOutcome": "success",
+      "testFile": "tests/unit/core-task-058b-trademark-application-workflow.test.ts",
+      "testName": "CORE-TASK-058B Trademark Application Workflow",
+      "caseId": "normalized-trademark-mutation-payload"
+    },
+    {
+      "scenarioId": "missing-authoritative-reference-partial-failure",
+      "expectedOutcome": "safe_error",
+      "safeErrorCode": "ValidationFailed",
+      "testFile": "tests/unit/core-task-058b-trademark-application-workflow.test.ts",
+      "testName": "CORE-TASK-058B Trademark Application Workflow",
+      "caseId": "missing-authoritative-reference-partial-failure"
+    },
+    {
+      "scenarioId": "separate-validation-and-mutation-plans",
+      "expectedOutcome": "success",
+      "testFile": "tests/unit/core-task-058b-trademark-application-workflow.test.ts",
+      "testName": "CORE-TASK-058B Trademark Application Workflow",
+      "caseId": "separate-validation-and-mutation-plans"
+    },
+    {
+      "scenarioId": "structured-partial-failure-result-evidence",
+      "expectedOutcome": "safe_error",
+      "safeErrorCode": "ValidationFailed",
+      "testFile": "tests/unit/core-task-058b-trademark-application-workflow.test.ts",
+      "testName": "CORE-TASK-058B Trademark Application Workflow",
+      "caseId": "structured-partial-failure-result-evidence"
     }
   ]
 }
