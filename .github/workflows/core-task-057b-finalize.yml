@@ -74,20 +74,41 @@ jobs:
                   )
               if text != original:
                   path.write_text(text)
-
-          fixture_test = Path('tests/fixtures/core-task-057a-api-boundaries-fixture.test.ts')
-          text = fixture_test.read_text()
-          if 'const domainIds = new Set' not in text:
-              text = text.replace(
-                  "} from '../../src/index.ts';\n",
-                  "} from '../../src/index.ts';\n\nconst domainIds = new Set(['identity', 'organization', 'user', 'permission', 'policy']);\n"
-              )
-              text = text.replace(
-                  '    assert.deepEqual(fixture, CORE_API_BOUNDARY_EVIDENCE);',
-                  '    assert.deepEqual(\n      fixture,\n      CORE_API_BOUNDARY_EVIDENCE.filter((entry) => domainIds.has(entry.domainId))\n    );'
-              )
-              fixture_test.write_text(text)
           PY
+
+          cat > tests/fixtures/core-task-057a-api-boundaries-fixture.test.ts <<'EOF'
+          import assert from 'node:assert/strict';
+          import { readFile } from 'node:fs/promises';
+          import { describe, it } from 'node:test';
+          import {
+            CORE_API_BOUNDARY_EVIDENCE,
+            validateCoreApiBoundaryFixture
+          } from '../../src/index.ts';
+
+          const domainIds = new Set([
+            'identity',
+            'organization',
+            'user',
+            'permission',
+            'policy'
+          ]);
+
+          describe('CORE-TASK-057A API boundary fixture', () => {
+            it('matches deterministic source evidence and validates cleanly', async () => {
+              const fixture = JSON.parse(
+                await readFile(
+                  'fixtures/api/core-task-057a-api-boundaries.fixture.json',
+                  'utf8'
+                )
+              );
+              assert.deepEqual(
+                fixture,
+                CORE_API_BOUNDARY_EVIDENCE.filter((entry) => domainIds.has(entry.domainId))
+              );
+              assert.equal(validateCoreApiBoundaryFixture(fixture).ok, true);
+            });
+          });
+          EOF
 
       - name: Add CORE-TASK-057B evidence tests
         shell: bash
@@ -179,29 +200,8 @@ jobs:
 
       - name: Format
         run: pnpm format
-
       - name: Typecheck
-        id: typecheck
-        continue-on-error: true
-        shell: bash
-        run: |
-          set +e
-          pnpm typecheck 2>&1 | tee /tmp/core-task-057b-typecheck.txt
-          exit ${PIPESTATUS[0]}
-
-      - name: Upload typecheck failure
-        if: steps.typecheck.outcome == 'failure'
-        uses: actions/upload-artifact@v4
-        with:
-          name: core-task-057b-typecheck-failure
-          path: /tmp/core-task-057b-typecheck.txt
-          if-no-files-found: error
-          retention-days: 1
-
-      - name: Enforce typecheck success
-        if: steps.typecheck.outcome == 'failure'
-        run: exit 1
-
+        run: pnpm typecheck
       - name: Lint
         run: pnpm lint
       - name: Format check
