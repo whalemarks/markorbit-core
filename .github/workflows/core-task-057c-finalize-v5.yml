@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - '.github/workflows/core-task-057c-finalize-v5.yml'
+      - '_automation/core-task-057c-terminal-migration.py'
   workflow_dispatch:
 
 permissions:
@@ -47,7 +48,8 @@ jobs:
               'rm -f .github/workflows/core-task-057c-finalize-v5.yml',
               'rm -f .github/workflows/core-task-057c-finalizer-fix.yml',
               'rm -f .github/workflows/core-task-057c-typecheck-diagnostic.yml',
-              'rm -f .github/workflows/core-task-057c-fixture-diagnostic.yml']
+              'rm -f .github/workflows/core-task-057c-fixture-diagnostic.yml',
+              'rm -f _automation/core-task-057c-terminal-migration.py']
           publish=[]
           for l in scripts['publish']:
               publish.append(l)
@@ -58,7 +60,7 @@ jobs:
           PY
       - name: Generate implementation
         run: /tmp/057c-generate.sh
-      - name: Correct terminal evidence and acceptance mapping
+      - name: Correct terminal evidence
         shell: bash
         run: |
           python - <<'PY'
@@ -74,69 +76,14 @@ jobs:
               "    implementationFiles: implementationTask === 'CORE-TASK-057C'\n      ? [...implementationFiles, 'src/api/core-governed-api-specs-057c.ts']\n      : implementationFiles,\n"
           )
           p.write_text(s)
-
-          p=Path('src/mvp-coverage/book-02-mvp-requirements.ts')
-          s=p.read_text().replace(
-              "  'api-layer-does-not-emit-events-directly': ['must-test-api-contract-tests'],",
-              "  'api-layer-does-not-emit-events-directly': MUST_BUILD_DOMAINS.map(\n    (domain) => `must-api-${domain}-api-contract`\n  ),"
-          )
-          p.write_text(s)
           PY
+          python _automation/core-task-057c-terminal-migration.py
       - name: Install dependencies
         run: |
           npm install --global pnpm@10
           pnpm install --frozen-lockfile
       - name: Generate fixtures
         run: /tmp/057c-fixtures.sh
-      - name: Migrate terminal Book 02 assertions
-        shell: bash
-        run: |
-          python - <<'PY'
-          from pathlib import Path
-          for p in Path('tests/unit').glob('*.test.ts'):
-              s=p.read_text(); o=s
-              s=s.replace('meets_required_depth: 80','meets_required_depth: 86')
-              s=s.replace('validated_skeleton_only: 27','validated_skeleton_only: 21')
-              s=s.replace('acceptanceCriteriaSatisfied,\n      12','acceptanceCriteriaSatisfied,\n      14')
-              if p.name == 'core-task-055-post-service-completion-audit.test.ts':
-                  s=s.replace("assert.equal(audit.nextTask, 'CORE-TASK-057C');", "assert.equal(audit.nextTask, 'CORE-TASK-058A');")
-                  s=s.replace('remaining 35 unresolved Must Build requirements','remaining 29 unresolved Must Build requirements')
-                  s=s.replace('audit.unresolvedInventory.total, 35','audit.unresolvedInventory.total, 29')
-                  s=s.replace("      api: 6,\n", '')
-                  s=s.replace('validated_skeleton_only: 27','validated_skeleton_only: 21')
-                  s=s.replace('        17\n','        11\n')
-                  s=s.replace('locks the seven unresolved acceptance criteria exactly','locks the five unresolved acceptance criteria exactly')
-                  s=s.replace("        'must-build-api-validators-exist',\n", '')
-                  s=s.replace("        'api-layer-does-not-emit-events-directly',\n", '')
-                  s=s.replace('[0, 7, 4, 6, 0]','[0, 1, 4, 6, 0]')
-              if p.name == 'core-task-056-book-02-event-evidence.test.ts':
-                  s=s.replace('unresolvedInventory.total,\n      35','unresolvedInventory.total,\n      29')
-                  s=s.replace('completionBlockingNonDomainRequirementIds.length,\n      17','completionBlockingNonDomainRequirementIds.length,\n      11')
-                  s=s.replace("      'CORE-TASK-057C'", "      'CORE-TASK-058A'")
-              if p.name == 'core-task-057a-book-02-api-evidence.test.ts':
-                  s=s.replace('leaves the remaining six API requirements structural and fail-closed','confirms no Must Build API requirements remain structural')
-                  s=s.replace('assert.equal(incomplete.length, 6);','assert.equal(incomplete.length, 0);')
-                  s=s.replace('without falsely completing the API acceptance criterion','and completes the API acceptance criterion')
-                  s=s.replace('assert.equal(apiCriterion?.satisfied, false);','assert.equal(apiCriterion?.satisfied, true);')
-                  s=s.replace('retains six unresolved API blockers and selects CORE-TASK-057C','closes API blockers and selects CORE-TASK-058A')
-                  s=s.replace('unresolvedInventory.total,\n      35','unresolvedInventory.total,\n      29')
-                  old="""assert.equal(
-      BOOK_02_POST_SERVICE_COMPLETION_AUDIT.unresolvedInventory.byLayer.api,
-      6
-    );"""
-                  new="""assert.equal(
-      'api' in BOOK_02_POST_SERVICE_COMPLETION_AUDIT.unresolvedInventory.byLayer,
-      false
-    );"""
-                  s=s.replace(old,new)
-                  s=s.replace('completionBlockingNonDomainRequirementIds.length,\n      17','completionBlockingNonDomainRequirementIds.length,\n      11')
-                  s=s.replace("      'CORE-TASK-057C'", "      'CORE-TASK-058A'")
-              if p.name == 'core-task-057b-book-02-api-evidence.test.ts':
-                  s=s.replace('without claiming all-API completion','as part of completed all-API coverage')
-                  s=s.replace('summary.mustBuildNow.meets_required_depth,\n      80','summary.mustBuildNow.meets_required_depth,\n      86')
-                  s=s.replace('summary.mustBuildNow.validated_skeleton_only,\n      27','summary.mustBuildNow.validated_skeleton_only,\n      21')
-              if s!=o: p.write_text(s)
-          PY
       - name: Format
         run: pnpm format
       - name: Typecheck
