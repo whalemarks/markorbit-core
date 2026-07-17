@@ -1,0 +1,268 @@
+[
+  {
+    "requirementId": "must-api-customer-api-contract",
+    "domainId": "customer",
+    "apiType": "customer-api",
+    "apiContractId": "core-api-customer-api-contract",
+    "owningServiceContractId": "core-service-customer-service-contract",
+    "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/customer-api-contract.md",
+    "implementationTask": "CORE-TASK-057B",
+    "currentDepth": "level_2",
+    "operationCount": 8,
+    "provenCapabilities": [
+      "request validation",
+      "response validation",
+      "reference validation",
+      "permission context validation",
+      "policy context validation",
+      "idempotency validation where duplicate-sensitive",
+      "safe error behavior",
+      "version validation",
+      "owning Service delegation",
+      "no direct Domain mutation",
+      "no direct Event emission"
+    ],
+    "unresolvedCapabilities": [],
+    "implementationFiles": [
+      "src/api/core-governed-api-boundary.ts",
+      "src/api/core-governed-api-specs.ts",
+      "src/api/index.ts"
+    ],
+    "testFiles": [
+      "tests/unit/core-task-057b-api-boundary-foundation.test.ts"
+    ],
+    "fixtureFiles": [
+      "fixtures/api/core-task-057b-api-boundaries.fixture.json"
+    ],
+    "directDomainMutation": false,
+    "directEventEmission": false
+  },
+  {
+    "requirementId": "must-api-brand-api-contract",
+    "domainId": "brand",
+    "apiType": "brand-api",
+    "apiContractId": "core-api-brand-api-contract",
+    "owningServiceContractId": "core-service-brand-service-contract",
+    "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/brand-api-contract.md",
+    "implementationTask": "CORE-TASK-057B",
+    "currentDepth": "level_2",
+    "operationCount": 8,
+    "provenCapabilities": [
+      "request validation",
+      "response validation",
+      "reference validation",
+      "permission context validation",
+      "policy context validation",
+      "idempotency validation where duplicate-sensitive",
+      "safe error behavior",
+      "version validation",
+      "owning Service delegation",
+      "no direct Domain mutation",
+      "no direct Event emission"
+    ],
+    "unresolvedCapabilities": [],
+    "implementationFiles": [
+      "src/api/core-governed-api-boundary.ts",
+      "src/api/core-governed-api-specs.ts",
+      "src/api/index.ts"
+    ],
+    "testFiles": [
+      "tests/unit/core-task-057b-api-boundary-foundation.test.ts"
+    ],
+    "fixtureFiles": [
+      "fixtures/api/core-task-057b-api-boundaries.fixture.json"
+    ],
+    "directDomainMutation": false,
+    "directEventEmission": false
+  },
+  {
+    "requirementId": "must-api-trademark-api-contract",
+    "domainId": "trademark",
+    "apiType": "trademark-api",
+    "apiContractId": "core-api-trademark-api-contract",
+    "owningServiceContractId": "core-service-trademark-service-contract",
+    "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/trademark-api-contract.md",
+    "implementationTask": "CORE-TASK-057B",
+    "currentDepth": "level_2",
+    "operationCount": 9,
+    "provenCapabilities": [
+      "request validation",
+      "response validation",
+      "reference validation",
+      "permission context validation",
+      "policy context validation",
+      "idempotency validation where duplicate-sensitive",
+      "safe error behavior",
+      "version validation",
+      "owning Service delegation",
+      "no direct Domain mutation",
+      "no direct Event emission"
+    ],
+    "unresolvedCapabilities": [],
+    "implementationFiles": [
+      "src/api/core-governed-api-boundary.ts",
+      "src/api/core-governed-api-specs.ts",
+      "src/api/index.ts"
+    ],
+    "testFiles": [
+      "tests/unit/core-task-057b-api-boundary-foundation.test.ts"
+    ],
+    "fixtureFiles": [
+      "fixtures/api/core-task-057b-api-boundaries.fixture.json"
+    ],
+    "directDomainMutation": false,
+    "directEventEmission": false
+  },
+  {
+    "requirementId": "must-api-jurisdiction-api-contract",
+    "domainId": "jurisdiction",
+    "apiType": "jurisdiction-api",
+    "apiContractId": "core-api-jurisdiction-api-contract",
+    "owningServiceContractId": "core-service-jurisdiction-service-contract",
+    "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/jurisdiction-api-contract.md",
+    "implementationTask": "CORE-TASK-057B",
+    "currentDepth": "level_2",
+    "operationCount": 8,
+    "provenCapabilities": [
+      "request validation",
+      "response validation",
+      "reference validation",
+      "permission context validation",
+      "policy context validation",
+      "idempotency validation where duplicate-sensitive",
+      "safe error behavior",
+      "version validation",
+      "owning Service delegation",
+      "no direct Domain mutation",
+      "no direct Event emission"
+    ],
+    "unresolvedCapabilities": [],
+    "implementationFiles": [
+      "src/api/core-governed-api-boundary.ts",
+      "src/api/core-governed-api-specs.ts",
+      "src/api/index.ts"
+    ],
+    "testFiles": [
+      "tests/unit/core-task-057b-api-boundary-foundation.test.ts"
+    ],
+    "fixtureFiles": [
+      "fixtures/api/core-task-057b-api-boundaries.fixture.json"
+    ],
+    "directDomainMutation": false,
+    "directEventEmission": false
+  },
+  {
+    "requirementId": "must-api-classification-api-contract",
+    "domainId": "classification",
+    "apiType": "classification-api",
+    "apiContractId": "core-api-classification-api-contract",
+    "owningServiceContractId": "core-service-classification-service-contract",
+    "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/classification-api-contract.md",
+    "implementationTask": "CORE-TASK-057B",
+    "currentDepth": "level_2",
+    "operationCount": 10,
+    "provenCapabilities": [
+      "request validation",
+      "response validation",
+      "reference validation",
+      "permission context validation",
+      "policy context validation",
+      "idempotency validation where duplicate-sensitive",
+      "safe error behavior",
+      "version validation",
+      "owning Service delegation",
+      "no direct Domain mutation",
+      "no direct Event emission"
+    ],
+    "unresolvedCapabilities": [],
+    "implementationFiles": [
+      "src/api/core-governed-api-boundary.ts",
+      "src/api/core-governed-api-specs.ts",
+      "src/api/index.ts"
+    ],
+    "testFiles": [
+      "tests/unit/core-task-057b-api-boundary-foundation.test.ts"
+    ],
+    "fixtureFiles": [
+      "fixtures/api/core-task-057b-api-boundaries.fixture.json"
+    ],
+    "directDomainMutation": false,
+    "directEventEmission": false
+  },
+  {
+    "requirementId": "must-api-document-api-contract",
+    "domainId": "document",
+    "apiType": "document-api",
+    "apiContractId": "core-api-document-api-contract",
+    "owningServiceContractId": "core-service-document-service-contract",
+    "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/document-api-contract.md",
+    "implementationTask": "CORE-TASK-057B",
+    "currentDepth": "level_2",
+    "operationCount": 8,
+    "provenCapabilities": [
+      "request validation",
+      "response validation",
+      "reference validation",
+      "permission context validation",
+      "policy context validation",
+      "idempotency validation where duplicate-sensitive",
+      "safe error behavior",
+      "version validation",
+      "owning Service delegation",
+      "no direct Domain mutation",
+      "no direct Event emission"
+    ],
+    "unresolvedCapabilities": [],
+    "implementationFiles": [
+      "src/api/core-governed-api-boundary.ts",
+      "src/api/core-governed-api-specs.ts",
+      "src/api/index.ts"
+    ],
+    "testFiles": [
+      "tests/unit/core-task-057b-api-boundary-foundation.test.ts"
+    ],
+    "fixtureFiles": [
+      "fixtures/api/core-task-057b-api-boundaries.fixture.json"
+    ],
+    "directDomainMutation": false,
+    "directEventEmission": false
+  },
+  {
+    "requirementId": "must-api-evidence-api-contract",
+    "domainId": "evidence",
+    "apiType": "evidence-api",
+    "apiContractId": "core-api-evidence-api-contract",
+    "owningServiceContractId": "core-service-evidence-service-contract",
+    "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/evidence-api-contract.md",
+    "implementationTask": "CORE-TASK-057B",
+    "currentDepth": "level_2",
+    "operationCount": 9,
+    "provenCapabilities": [
+      "request validation",
+      "response validation",
+      "reference validation",
+      "permission context validation",
+      "policy context validation",
+      "idempotency validation where duplicate-sensitive",
+      "safe error behavior",
+      "version validation",
+      "owning Service delegation",
+      "no direct Domain mutation",
+      "no direct Event emission"
+    ],
+    "unresolvedCapabilities": [],
+    "implementationFiles": [
+      "src/api/core-governed-api-boundary.ts",
+      "src/api/core-governed-api-specs.ts",
+      "src/api/index.ts"
+    ],
+    "testFiles": [
+      "tests/unit/core-task-057b-api-boundary-foundation.test.ts"
+    ],
+    "fixtureFiles": [
+      "fixtures/api/core-task-057b-api-boundaries.fixture.json"
+    ],
+    "directDomainMutation": false,
+    "directEventEmission": false
+  }
+]
