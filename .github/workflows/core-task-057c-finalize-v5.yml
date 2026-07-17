@@ -100,6 +100,12 @@ jobs:
         run: /tmp/057c-fixtures.sh
       - name: Format
         run: pnpm format
+      - name: Upload formatted evidence source
+        uses: actions/upload-artifact@v4
+        with:
+          name: core-task-057c-formatted-evidence-source
+          path: src/api-coverage/core-api-boundary-evidence.ts
+          retention-days: 1
       - name: Typecheck
         run: pnpm typecheck
       - name: Lint
