@@ -90,6 +90,14 @@ jobs:
           pnpm exec tsx .core-task-057b-generate.mjs
           rm .core-task-057b-generate.mjs
 
+      - name: Upload generated CORE-TASK-057B fixture
+        uses: actions/upload-artifact@v4
+        with:
+          name: core-task-057b-generated-fixture
+          path: fixtures/api/core-task-057b-api-boundaries.fixture.json
+          if-no-files-found: error
+          retention-days: 1
+
       - name: Capture fixture validation
         id: fixtures
         continue-on-error: true
