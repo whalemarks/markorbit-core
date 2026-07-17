@@ -92,7 +92,29 @@ jobs:
       - name: Validate fixtures
         run: pnpm validate:fixtures
       - name: Test
-        run: pnpm test
+        id: test
+        continue-on-error: true
+        shell: bash
+        run: |
+          set +e
+          pnpm test 2>&1 | tee /tmp/core-task-057c-test.log
+          status=${PIPESTATUS[0]}
+          {
+            grep -nE 'not ok|AssertionError|ERR_|Expected|actual|expected' /tmp/core-task-057c-test.log | tail -n 260 || true
+            echo '--- tail ---'
+            tail -n 360 /tmp/core-task-057c-test.log
+          } > /tmp/core-task-057c-test-failure.txt
+          exit "$status"
+      - name: Upload test failure
+        if: steps.test.outcome == 'failure'
+        uses: actions/upload-artifact@v4
+        with:
+          name: core-task-057c-test-failure
+          path: /tmp/core-task-057c-test-failure.txt
+          retention-days: 1
+      - name: Enforce test success
+        if: steps.test.outcome == 'failure'
+        run: exit 1
       - name: Contract coverage
         run: pnpm coverage:contracts
       - name: Contract gaps
