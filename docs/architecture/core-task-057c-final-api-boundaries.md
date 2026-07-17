@@ -29,3 +29,7 @@ Each API must provide request and response validation, reference validation, Per
 - `must-build-api-validators-exist` becomes satisfied.
 - `api-layer-does-not-emit-events-directly` becomes satisfied.
 - Book 02 remains incomplete until Workflow and Agent execution-spine work is complete.
+
+## Validation closure
+
+The clean implementation branch passes formatting, type checking, linting, all 51 fixture validations, the complete test suite, contract coverage and acceptance, behavior coverage and acceptance, and the Book 02 MVP gap check before canonical matrix validation.
