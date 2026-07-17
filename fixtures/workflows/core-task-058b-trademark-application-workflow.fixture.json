@@ -1,0 +1,628 @@
+{
+  "fixtureType": "core_task_058b_trademark_application_workflow",
+  "requirementId": "trademark-application-workflow-supports-preview-apply",
+  "workflowId": "must-workflow-trademark-application-workflow",
+  "workflowType": "bounded-trademark-application-workflow",
+  "workflowContractId": "core-workflow-trademark-application-workflow-contract",
+  "implementationTask": "CORE-TASK-058B",
+  "currentDepth": "meets_required_depth",
+  "previewSupported": true,
+  "applySupported": true,
+  "deterministicPreview": true,
+  "previewDigestRequired": true,
+  "previewVersionRequired": true,
+  "humanReviewRequired": true,
+  "permissionPolicyPreserved": true,
+  "idempotencyRequired": true,
+  "planExecutionInvariant": true,
+  "classificationValidationDelegation": true,
+  "referenceValidationDelegation": true,
+  "authoritativeReferencePropagation": true,
+  "owningApiDelegation": true,
+  "genuineEventReferenceAggregation": true,
+  "fixtureScenarioTraceability": true,
+  "directDomainMutation": false,
+  "directEventEmission": false,
+  "declaredScenarios": [
+    {
+      "scenarioId": "deterministic-preview",
+      "expectedOutcome": "success"
+    },
+    {
+      "scenarioId": "canonical-change-changes-digest",
+      "expectedOutcome": "success"
+    },
+    {
+      "scenarioId": "customer-reference-validation",
+      "expectedOutcome": "success"
+    },
+    {
+      "scenarioId": "brand-reference-validation",
+      "expectedOutcome": "success"
+    },
+    {
+      "scenarioId": "customer-brand-relationship-mismatch",
+      "expectedOutcome": "safe_error",
+      "safeErrorCode": "ValidationFailed"
+    },
+    {
+      "scenarioId": "jurisdiction-reference-validation",
+      "expectedOutcome": "success"
+    },
+    {
+      "scenarioId": "valid-single-class-application-preview",
+      "expectedOutcome": "success"
+    },
+    {
+      "scenarioId": "valid-multi-class-application-preview",
+      "expectedOutcome": "success"
+    },
+    {
+      "scenarioId": "duplicate-class-rejection",
+      "expectedOutcome": "safe_error",
+      "safeErrorCode": "ValidationFailed"
+    },
+    {
+      "scenarioId": "empty-classification-scope-rejection",
+      "expectedOutcome": "safe_error",
+      "safeErrorCode": "ValidationFailed"
+    },
+    {
+      "scenarioId": "malformed-goods-services-scope-rejection",
+      "expectedOutcome": "safe_error",
+      "safeErrorCode": "ValidationFailed"
+    },
+    {
+      "scenarioId": "document-reference-validation",
+      "expectedOutcome": "success"
+    },
+    {
+      "scenarioId": "evidence-reference-validation",
+      "expectedOutcome": "success"
+    },
+    {
+      "scenarioId": "optional-matter-reference-validation",
+      "expectedOutcome": "success"
+    },
+    {
+      "scenarioId": "optional-order-reference-validation",
+      "expectedOutcome": "success"
+    },
+    {
+      "scenarioId": "preview-without-task-plan",
+      "expectedOutcome": "success"
+    },
+    {
+      "scenarioId": "task-plan-with-configured-task-api",
+      "expectedOutcome": "success"
+    },
+    {
+      "scenarioId": "task-plan-without-task-api-rejection",
+      "expectedOutcome": "safe_error",
+      "safeErrorCode": "ValidationFailed"
+    },
+    {
+      "scenarioId": "successful-apply",
+      "expectedOutcome": "success"
+    },
+    {
+      "scenarioId": "correct-owning-api-order",
+      "expectedOutcome": "success"
+    },
+    {
+      "scenarioId": "authoritative-trademark-reference-propagation",
+      "expectedOutcome": "success"
+    },
+    {
+      "scenarioId": "authoritative-matter-reference-propagation",
+      "expectedOutcome": "success"
+    },
+    {
+      "scenarioId": "conflicting-propagated-reference-rejection",
+      "expectedOutcome": "safe_error",
+      "safeErrorCode": "ValidationFailed"
+    },
+    {
+      "scenarioId": "idempotent-replay",
+      "expectedOutcome": "success"
+    },
+    {
+      "scenarioId": "replay-makes-no-second-mutation",
+      "expectedOutcome": "success"
+    },
+    {
+      "scenarioId": "conflicting-idempotency-replay",
+      "expectedOutcome": "safe_error",
+      "safeErrorCode": "ValidationFailed"
+    },
+    {
+      "scenarioId": "altered-digest-rejection",
+      "expectedOutcome": "safe_error",
+      "safeErrorCode": "ValidationFailed"
+    },
+    {
+      "scenarioId": "stale-version-rejection",
+      "expectedOutcome": "safe_error",
+      "safeErrorCode": "ValidationFailed"
+    },
+    {
+      "scenarioId": "unsupported-workflow-version-rejection",
+      "expectedOutcome": "safe_error",
+      "safeErrorCode": "ValidationFailed"
+    },
+    {
+      "scenarioId": "expired-preview-rejection",
+      "expectedOutcome": "safe_error",
+      "safeErrorCode": "ValidationFailed"
+    },
+    {
+      "scenarioId": "organization-mismatch",
+      "expectedOutcome": "safe_error",
+      "safeErrorCode": "ValidationFailed"
+    },
+    {
+      "scenarioId": "actor-mismatch",
+      "expectedOutcome": "safe_error",
+      "safeErrorCode": "ValidationFailed"
+    },
+    {
+      "scenarioId": "permission-rejection",
+      "expectedOutcome": "safe_error",
+      "safeErrorCode": "ValidationFailed"
+    },
+    {
+      "scenarioId": "policy-rejection",
+      "expectedOutcome": "safe_error",
+      "safeErrorCode": "ValidationFailed"
+    },
+    {
+      "scenarioId": "missing-human-review",
+      "expectedOutcome": "safe_error",
+      "safeErrorCode": "ValidationFailed"
+    },
+    {
+      "scenarioId": "rejected-human-review",
+      "expectedOutcome": "safe_error",
+      "safeErrorCode": "ValidationFailed"
+    },
+    {
+      "scenarioId": "consumed-preview-rejection",
+      "expectedOutcome": "safe_error",
+      "safeErrorCode": "ValidationFailed"
+    },
+    {
+      "scenarioId": "malformed-plan-rejection",
+      "expectedOutcome": "safe_error",
+      "safeErrorCode": "ValidationFailed"
+    },
+    {
+      "scenarioId": "duplicate-plan-step-rejection",
+      "expectedOutcome": "safe_error",
+      "safeErrorCode": "ValidationFailed"
+    },
+    {
+      "scenarioId": "unavailable-owning-api-rejection",
+      "expectedOutcome": "safe_error",
+      "safeErrorCode": "ValidationFailed"
+    },
+    {
+      "scenarioId": "plan-input-mismatch-rejection",
+      "expectedOutcome": "safe_error",
+      "safeErrorCode": "ValidationFailed"
+    },
+    {
+      "scenarioId": "downstream-api-failure-after-earlier-success",
+      "expectedOutcome": "safe_error",
+      "safeErrorCode": "ValidationFailed"
+    },
+    {
+      "scenarioId": "safe-partial-execution-evidence",
+      "expectedOutcome": "success"
+    },
+    {
+      "scenarioId": "genuine-event-reference-aggregation",
+      "expectedOutcome": "success"
+    },
+    {
+      "scenarioId": "absent-event-references-produce-empty-list",
+      "expectedOutcome": "safe_error",
+      "safeErrorCode": "ValidationFailed"
+    },
+    {
+      "scenarioId": "audit-context-excluded-from-event-references",
+      "expectedOutcome": "success"
+    },
+    {
+      "scenarioId": "no-direct-domain-mutation",
+      "expectedOutcome": "success"
+    },
+    {
+      "scenarioId": "no-direct-event-emission",
+      "expectedOutcome": "success"
+    },
+    {
+      "scenarioId": "no-external-filing-connector",
+      "expectedOutcome": "success"
+    },
+    {
+      "scenarioId": "event-references-remain-trace-only",
+      "expectedOutcome": "success"
+    }
+  ],
+  "executedScenarioEvidence": [
+    {
+      "scenarioId": "deterministic-preview",
+      "expectedOutcome": "success",
+      "testFile": "tests/unit/core-task-058b-trademark-application-workflow.test.ts",
+      "testName": "CORE-TASK-058B Trademark Application Workflow",
+      "caseId": "deterministic-preview"
+    },
+    {
+      "scenarioId": "canonical-change-changes-digest",
+      "expectedOutcome": "success",
+      "testFile": "tests/unit/core-task-058b-trademark-application-workflow.test.ts",
+      "testName": "CORE-TASK-058B Trademark Application Workflow",
+      "caseId": "canonical-change-changes-digest"
+    },
+    {
+      "scenarioId": "customer-reference-validation",
+      "expectedOutcome": "success",
+      "testFile": "tests/unit/core-task-058b-trademark-application-workflow.test.ts",
+      "testName": "CORE-TASK-058B Trademark Application Workflow",
+      "caseId": "customer-reference-validation"
+    },
+    {
+      "scenarioId": "brand-reference-validation",
+      "expectedOutcome": "success",
+      "testFile": "tests/unit/core-task-058b-trademark-application-workflow.test.ts",
+      "testName": "CORE-TASK-058B Trademark Application Workflow",
+      "caseId": "brand-reference-validation"
+    },
+    {
+      "scenarioId": "customer-brand-relationship-mismatch",
+      "expectedOutcome": "safe_error",
+      "safeErrorCode": "ValidationFailed",
+      "testFile": "tests/unit/core-task-058b-trademark-application-workflow.test.ts",
+      "testName": "CORE-TASK-058B Trademark Application Workflow",
+      "caseId": "customer-brand-relationship-mismatch"
+    },
+    {
+      "scenarioId": "jurisdiction-reference-validation",
+      "expectedOutcome": "success",
+      "testFile": "tests/unit/core-task-058b-trademark-application-workflow.test.ts",
+      "testName": "CORE-TASK-058B Trademark Application Workflow",
+      "caseId": "jurisdiction-reference-validation"
+    },
+    {
+      "scenarioId": "valid-single-class-application-preview",
+      "expectedOutcome": "success",
+      "testFile": "tests/unit/core-task-058b-trademark-application-workflow.test.ts",
+      "testName": "CORE-TASK-058B Trademark Application Workflow",
+      "caseId": "valid-single-class-application-preview"
+    },
+    {
+      "scenarioId": "valid-multi-class-application-preview",
+      "expectedOutcome": "success",
+      "testFile": "tests/unit/core-task-058b-trademark-application-workflow.test.ts",
+      "testName": "CORE-TASK-058B Trademark Application Workflow",
+      "caseId": "valid-multi-class-application-preview"
+    },
+    {
+      "scenarioId": "duplicate-class-rejection",
+      "expectedOutcome": "safe_error",
+      "safeErrorCode": "ValidationFailed",
+      "testFile": "tests/unit/core-task-058b-trademark-application-workflow.test.ts",
+      "testName": "CORE-TASK-058B Trademark Application Workflow",
+      "caseId": "duplicate-class-rejection"
+    },
+    {
+      "scenarioId": "empty-classification-scope-rejection",
+      "expectedOutcome": "safe_error",
+      "safeErrorCode": "ValidationFailed",
+      "testFile": "tests/unit/core-task-058b-trademark-application-workflow.test.ts",
+      "testName": "CORE-TASK-058B Trademark Application Workflow",
+      "caseId": "empty-classification-scope-rejection"
+    },
+    {
+      "scenarioId": "malformed-goods-services-scope-rejection",
+      "expectedOutcome": "safe_error",
+      "safeErrorCode": "ValidationFailed",
+      "testFile": "tests/unit/core-task-058b-trademark-application-workflow.test.ts",
+      "testName": "CORE-TASK-058B Trademark Application Workflow",
+      "caseId": "malformed-goods-services-scope-rejection"
+    },
+    {
+      "scenarioId": "document-reference-validation",
+      "expectedOutcome": "success",
+      "testFile": "tests/unit/core-task-058b-trademark-application-workflow.test.ts",
+      "testName": "CORE-TASK-058B Trademark Application Workflow",
+      "caseId": "document-reference-validation"
+    },
+    {
+      "scenarioId": "evidence-reference-validation",
+      "expectedOutcome": "success",
+      "testFile": "tests/unit/core-task-058b-trademark-application-workflow.test.ts",
+      "testName": "CORE-TASK-058B Trademark Application Workflow",
+      "caseId": "evidence-reference-validation"
+    },
+    {
+      "scenarioId": "optional-matter-reference-validation",
+      "expectedOutcome": "success",
+      "testFile": "tests/unit/core-task-058b-trademark-application-workflow.test.ts",
+      "testName": "CORE-TASK-058B Trademark Application Workflow",
+      "caseId": "optional-matter-reference-validation"
+    },
+    {
+      "scenarioId": "optional-order-reference-validation",
+      "expectedOutcome": "success",
+      "testFile": "tests/unit/core-task-058b-trademark-application-workflow.test.ts",
+      "testName": "CORE-TASK-058B Trademark Application Workflow",
+      "caseId": "optional-order-reference-validation"
+    },
+    {
+      "scenarioId": "preview-without-task-plan",
+      "expectedOutcome": "success",
+      "testFile": "tests/unit/core-task-058b-trademark-application-workflow.test.ts",
+      "testName": "CORE-TASK-058B Trademark Application Workflow",
+      "caseId": "preview-without-task-plan"
+    },
+    {
+      "scenarioId": "task-plan-with-configured-task-api",
+      "expectedOutcome": "success",
+      "testFile": "tests/unit/core-task-058b-trademark-application-workflow.test.ts",
+      "testName": "CORE-TASK-058B Trademark Application Workflow",
+      "caseId": "task-plan-with-configured-task-api"
+    },
+    {
+      "scenarioId": "task-plan-without-task-api-rejection",
+      "expectedOutcome": "safe_error",
+      "safeErrorCode": "ValidationFailed",
+      "testFile": "tests/unit/core-task-058b-trademark-application-workflow.test.ts",
+      "testName": "CORE-TASK-058B Trademark Application Workflow",
+      "caseId": "task-plan-without-task-api-rejection"
+    },
+    {
+      "scenarioId": "successful-apply",
+      "expectedOutcome": "success",
+      "testFile": "tests/unit/core-task-058b-trademark-application-workflow.test.ts",
+      "testName": "CORE-TASK-058B Trademark Application Workflow",
+      "caseId": "successful-apply"
+    },
+    {
+      "scenarioId": "correct-owning-api-order",
+      "expectedOutcome": "success",
+      "testFile": "tests/unit/core-task-058b-trademark-application-workflow.test.ts",
+      "testName": "CORE-TASK-058B Trademark Application Workflow",
+      "caseId": "correct-owning-api-order"
+    },
+    {
+      "scenarioId": "authoritative-trademark-reference-propagation",
+      "expectedOutcome": "success",
+      "testFile": "tests/unit/core-task-058b-trademark-application-workflow.test.ts",
+      "testName": "CORE-TASK-058B Trademark Application Workflow",
+      "caseId": "authoritative-trademark-reference-propagation"
+    },
+    {
+      "scenarioId": "authoritative-matter-reference-propagation",
+      "expectedOutcome": "success",
+      "testFile": "tests/unit/core-task-058b-trademark-application-workflow.test.ts",
+      "testName": "CORE-TASK-058B Trademark Application Workflow",
+      "caseId": "authoritative-matter-reference-propagation"
+    },
+    {
+      "scenarioId": "conflicting-propagated-reference-rejection",
+      "expectedOutcome": "safe_error",
+      "safeErrorCode": "ValidationFailed",
+      "testFile": "tests/unit/core-task-058b-trademark-application-workflow.test.ts",
+      "testName": "CORE-TASK-058B Trademark Application Workflow",
+      "caseId": "conflicting-propagated-reference-rejection"
+    },
+    {
+      "scenarioId": "idempotent-replay",
+      "expectedOutcome": "success",
+      "testFile": "tests/unit/core-task-058b-trademark-application-workflow.test.ts",
+      "testName": "CORE-TASK-058B Trademark Application Workflow",
+      "caseId": "idempotent-replay"
+    },
+    {
+      "scenarioId": "replay-makes-no-second-mutation",
+      "expectedOutcome": "success",
+      "testFile": "tests/unit/core-task-058b-trademark-application-workflow.test.ts",
+      "testName": "CORE-TASK-058B Trademark Application Workflow",
+      "caseId": "replay-makes-no-second-mutation"
+    },
+    {
+      "scenarioId": "conflicting-idempotency-replay",
+      "expectedOutcome": "safe_error",
+      "safeErrorCode": "ValidationFailed",
+      "testFile": "tests/unit/core-task-058b-trademark-application-workflow.test.ts",
+      "testName": "CORE-TASK-058B Trademark Application Workflow",
+      "caseId": "conflicting-idempotency-replay"
+    },
+    {
+      "scenarioId": "altered-digest-rejection",
+      "expectedOutcome": "safe_error",
+      "safeErrorCode": "ValidationFailed",
+      "testFile": "tests/unit/core-task-058b-trademark-application-workflow.test.ts",
+      "testName": "CORE-TASK-058B Trademark Application Workflow",
+      "caseId": "altered-digest-rejection"
+    },
+    {
+      "scenarioId": "stale-version-rejection",
+      "expectedOutcome": "safe_error",
+      "safeErrorCode": "ValidationFailed",
+      "testFile": "tests/unit/core-task-058b-trademark-application-workflow.test.ts",
+      "testName": "CORE-TASK-058B Trademark Application Workflow",
+      "caseId": "stale-version-rejection"
+    },
+    {
+      "scenarioId": "unsupported-workflow-version-rejection",
+      "expectedOutcome": "safe_error",
+      "safeErrorCode": "ValidationFailed",
+      "testFile": "tests/unit/core-task-058b-trademark-application-workflow.test.ts",
+      "testName": "CORE-TASK-058B Trademark Application Workflow",
+      "caseId": "unsupported-workflow-version-rejection"
+    },
+    {
+      "scenarioId": "expired-preview-rejection",
+      "expectedOutcome": "safe_error",
+      "safeErrorCode": "ValidationFailed",
+      "testFile": "tests/unit/core-task-058b-trademark-application-workflow.test.ts",
+      "testName": "CORE-TASK-058B Trademark Application Workflow",
+      "caseId": "expired-preview-rejection"
+    },
+    {
+      "scenarioId": "organization-mismatch",
+      "expectedOutcome": "safe_error",
+      "safeErrorCode": "ValidationFailed",
+      "testFile": "tests/unit/core-task-058b-trademark-application-workflow.test.ts",
+      "testName": "CORE-TASK-058B Trademark Application Workflow",
+      "caseId": "organization-mismatch"
+    },
+    {
+      "scenarioId": "actor-mismatch",
+      "expectedOutcome": "safe_error",
+      "safeErrorCode": "ValidationFailed",
+      "testFile": "tests/unit/core-task-058b-trademark-application-workflow.test.ts",
+      "testName": "CORE-TASK-058B Trademark Application Workflow",
+      "caseId": "actor-mismatch"
+    },
+    {
+      "scenarioId": "permission-rejection",
+      "expectedOutcome": "safe_error",
+      "safeErrorCode": "ValidationFailed",
+      "testFile": "tests/unit/core-task-058b-trademark-application-workflow.test.ts",
+      "testName": "CORE-TASK-058B Trademark Application Workflow",
+      "caseId": "permission-rejection"
+    },
+    {
+      "scenarioId": "policy-rejection",
+      "expectedOutcome": "safe_error",
+      "safeErrorCode": "ValidationFailed",
+      "testFile": "tests/unit/core-task-058b-trademark-application-workflow.test.ts",
+      "testName": "CORE-TASK-058B Trademark Application Workflow",
+      "caseId": "policy-rejection"
+    },
+    {
+      "scenarioId": "missing-human-review",
+      "expectedOutcome": "safe_error",
+      "safeErrorCode": "ValidationFailed",
+      "testFile": "tests/unit/core-task-058b-trademark-application-workflow.test.ts",
+      "testName": "CORE-TASK-058B Trademark Application Workflow",
+      "caseId": "missing-human-review"
+    },
+    {
+      "scenarioId": "rejected-human-review",
+      "expectedOutcome": "safe_error",
+      "safeErrorCode": "ValidationFailed",
+      "testFile": "tests/unit/core-task-058b-trademark-application-workflow.test.ts",
+      "testName": "CORE-TASK-058B Trademark Application Workflow",
+      "caseId": "rejected-human-review"
+    },
+    {
+      "scenarioId": "consumed-preview-rejection",
+      "expectedOutcome": "safe_error",
+      "safeErrorCode": "ValidationFailed",
+      "testFile": "tests/unit/core-task-058b-trademark-application-workflow.test.ts",
+      "testName": "CORE-TASK-058B Trademark Application Workflow",
+      "caseId": "consumed-preview-rejection"
+    },
+    {
+      "scenarioId": "malformed-plan-rejection",
+      "expectedOutcome": "safe_error",
+      "safeErrorCode": "ValidationFailed",
+      "testFile": "tests/unit/core-task-058b-trademark-application-workflow.test.ts",
+      "testName": "CORE-TASK-058B Trademark Application Workflow",
+      "caseId": "malformed-plan-rejection"
+    },
+    {
+      "scenarioId": "duplicate-plan-step-rejection",
+      "expectedOutcome": "safe_error",
+      "safeErrorCode": "ValidationFailed",
+      "testFile": "tests/unit/core-task-058b-trademark-application-workflow.test.ts",
+      "testName": "CORE-TASK-058B Trademark Application Workflow",
+      "caseId": "duplicate-plan-step-rejection"
+    },
+    {
+      "scenarioId": "unavailable-owning-api-rejection",
+      "expectedOutcome": "safe_error",
+      "safeErrorCode": "ValidationFailed",
+      "testFile": "tests/unit/core-task-058b-trademark-application-workflow.test.ts",
+      "testName": "CORE-TASK-058B Trademark Application Workflow",
+      "caseId": "unavailable-owning-api-rejection"
+    },
+    {
+      "scenarioId": "plan-input-mismatch-rejection",
+      "expectedOutcome": "safe_error",
+      "safeErrorCode": "ValidationFailed",
+      "testFile": "tests/unit/core-task-058b-trademark-application-workflow.test.ts",
+      "testName": "CORE-TASK-058B Trademark Application Workflow",
+      "caseId": "plan-input-mismatch-rejection"
+    },
+    {
+      "scenarioId": "downstream-api-failure-after-earlier-success",
+      "expectedOutcome": "safe_error",
+      "safeErrorCode": "ValidationFailed",
+      "testFile": "tests/unit/core-task-058b-trademark-application-workflow.test.ts",
+      "testName": "CORE-TASK-058B Trademark Application Workflow",
+      "caseId": "downstream-api-failure-after-earlier-success"
+    },
+    {
+      "scenarioId": "safe-partial-execution-evidence",
+      "expectedOutcome": "success",
+      "testFile": "tests/unit/core-task-058b-trademark-application-workflow.test.ts",
+      "testName": "CORE-TASK-058B Trademark Application Workflow",
+      "caseId": "safe-partial-execution-evidence"
+    },
+    {
+      "scenarioId": "genuine-event-reference-aggregation",
+      "expectedOutcome": "success",
+      "testFile": "tests/unit/core-task-058b-trademark-application-workflow.test.ts",
+      "testName": "CORE-TASK-058B Trademark Application Workflow",
+      "caseId": "genuine-event-reference-aggregation"
+    },
+    {
+      "scenarioId": "absent-event-references-produce-empty-list",
+      "expectedOutcome": "safe_error",
+      "safeErrorCode": "ValidationFailed",
+      "testFile": "tests/unit/core-task-058b-trademark-application-workflow.test.ts",
+      "testName": "CORE-TASK-058B Trademark Application Workflow",
+      "caseId": "absent-event-references-produce-empty-list"
+    },
+    {
+      "scenarioId": "audit-context-excluded-from-event-references",
+      "expectedOutcome": "success",
+      "testFile": "tests/unit/core-task-058b-trademark-application-workflow.test.ts",
+      "testName": "CORE-TASK-058B Trademark Application Workflow",
+      "caseId": "audit-context-excluded-from-event-references"
+    },
+    {
+      "scenarioId": "no-direct-domain-mutation",
+      "expectedOutcome": "success",
+      "testFile": "tests/unit/core-task-058b-trademark-application-workflow.test.ts",
+      "testName": "CORE-TASK-058B Trademark Application Workflow",
+      "caseId": "no-direct-domain-mutation"
+    },
+    {
+      "scenarioId": "no-direct-event-emission",
+      "expectedOutcome": "success",
+      "testFile": "tests/unit/core-task-058b-trademark-application-workflow.test.ts",
+      "testName": "CORE-TASK-058B Trademark Application Workflow",
+      "caseId": "no-direct-event-emission"
+    },
+    {
+      "scenarioId": "no-external-filing-connector",
+      "expectedOutcome": "success",
+      "testFile": "tests/unit/core-task-058b-trademark-application-workflow.test.ts",
+      "testName": "CORE-TASK-058B Trademark Application Workflow",
+      "caseId": "no-external-filing-connector"
+    },
+    {
+      "scenarioId": "event-references-remain-trace-only",
+      "expectedOutcome": "success",
+      "testFile": "tests/unit/core-task-058b-trademark-application-workflow.test.ts",
+      "testName": "CORE-TASK-058B Trademark Application Workflow",
+      "caseId": "event-references-remain-trace-only"
+    }
+  ]
+}

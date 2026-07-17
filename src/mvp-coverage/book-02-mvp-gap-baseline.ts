@@ -26,7 +26,15 @@ import {
   CORE_SERVICE_BEHAVIOR_EVIDENCE,
   validateCoreServiceBehaviorEvidence
 } from '../service-coverage/index.ts';
-import { CORE_TASK_058A_CUSTOMER_INTAKE_WORKFLOW_EVIDENCE } from '../workflows/index.ts';
+import {
+  CORE_TASK_058A_CUSTOMER_INTAKE_WORKFLOW_EVIDENCE,
+  CORE_TASK_058B_TRADEMARK_APPLICATION_WORKFLOW_EVIDENCE
+} from '../workflows/index.ts';
+
+const CORE_WORKFLOW_PREVIEW_APPLY_EVIDENCE = [
+  CORE_TASK_058A_CUSTOMER_INTAKE_WORKFLOW_EVIDENCE,
+  CORE_TASK_058B_TRADEMARK_APPLICATION_WORKFLOW_EVIDENCE
+] as const;
 import {
   CORE_MVP_OBJECT_FIXTURE_PUBLIC_REFERENCE_RECORDS,
   coreMvpObjectFixtureValidationContextFor
@@ -737,23 +745,15 @@ function evidenceFor(identity: Book02MvpRequirementIdentity): CurrentEvidence {
       : emptyEvidence();
   }
   if (identity.layer === 'workflow') {
-    if (
-      identity.id ===
-      CORE_TASK_058A_CUSTOMER_INTAKE_WORKFLOW_EVIDENCE.workflowId
-    )
+    const evidence = CORE_WORKFLOW_PREVIEW_APPLY_EVIDENCE.find(
+      (entry) => entry.workflowId === identity.id
+    );
+    if (evidence)
       return {
-        contractIds: [
-          CORE_TASK_058A_CUSTOMER_INTAKE_WORKFLOW_EVIDENCE.workflowContractId
-        ],
-        implementationFiles: existing(
-          CORE_TASK_058A_CUSTOMER_INTAKE_WORKFLOW_EVIDENCE.implementationFiles
-        ),
-        testFiles: existing(
-          CORE_TASK_058A_CUSTOMER_INTAKE_WORKFLOW_EVIDENCE.testFiles
-        ),
-        fixtureFiles: existing(
-          CORE_TASK_058A_CUSTOMER_INTAKE_WORKFLOW_EVIDENCE.fixtureFiles
-        ),
+        contractIds: [evidence.workflowContractId],
+        implementationFiles: existing(evidence.implementationFiles),
+        testFiles: existing(evidence.testFiles),
+        fixtureFiles: existing(evidence.fixtureFiles),
         currentDepth: 'level_2'
       };
     const workflowType = identity.id
@@ -977,19 +977,19 @@ function disposition(
         : 'missing';
   }
   if (identity.layer === 'workflow') {
+    const evidence = CORE_WORKFLOW_PREVIEW_APPLY_EVIDENCE.find(
+      (entry) => entry.workflowId === identity.id
+    );
     if (
-      identity.id ===
-        CORE_TASK_058A_CUSTOMER_INTAKE_WORKFLOW_EVIDENCE.workflowId &&
+      evidence &&
       ev.currentDepth === 'level_2' &&
       ev.implementationFiles.length > 0 &&
       ev.testFiles.length > 0 &&
       ev.fixtureFiles.length > 0 &&
-      CORE_TASK_058A_CUSTOMER_INTAKE_WORKFLOW_EVIDENCE.previewSupported &&
-      CORE_TASK_058A_CUSTOMER_INTAKE_WORKFLOW_EVIDENCE.applySupported &&
-      CORE_TASK_058A_CUSTOMER_INTAKE_WORKFLOW_EVIDENCE.directDomainMutation ===
-        false &&
-      CORE_TASK_058A_CUSTOMER_INTAKE_WORKFLOW_EVIDENCE.directEventEmission ===
-        false
+      evidence.previewSupported &&
+      evidence.applySupported &&
+      evidence.directDomainMutation === false &&
+      evidence.directEventEmission === false
     )
       return 'meets_required_depth';
     return ev.testFiles.length > 0

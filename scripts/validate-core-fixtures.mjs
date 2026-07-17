@@ -53,6 +53,7 @@ import { validateCoreUserServiceAccountParticipantFoundationFixture } from '../s
 import { validateCorePermissionServiceGovernedGrantFoundationFixture } from '../src/validation/core-permission-service-fixture-validation.ts';
 import { validateCorePolicyServiceContextualDecisionFoundationFixture } from '../src/validation/core-policy-service-fixture-validation.ts';
 import { validateCoreCustomerIntakeWorkflowFixture } from '../src/validation/core-customer-intake-workflow-fixture-validation.ts';
+import { validateCoreTrademarkApplicationWorkflowFixture } from '../src/validation/core-trademark-application-workflow-fixture-validation.ts';
 
 const validators = {
   domain_registry: validateCoreDomainRegistryFixture,
@@ -133,7 +134,9 @@ const validators = {
   core_event_service_governed_occurrence_foundation:
     validateCoreEventServiceGovernedOccurrenceFoundationFixture,
   core_task_058a_customer_intake_workflow:
-    validateCoreCustomerIntakeWorkflowFixture
+    validateCoreCustomerIntakeWorkflowFixture,
+  core_task_058b_trademark_application_workflow:
+    validateCoreTrademarkApplicationWorkflowFixture
 };
 
 let hasErrors = false;

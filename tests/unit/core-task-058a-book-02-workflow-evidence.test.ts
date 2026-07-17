@@ -33,11 +33,11 @@ describe('CORE-TASK-058A Book 02 Workflow evidence', () => {
       (entry) => entry.id === 'must-workflow-communication-review-workflow'
     );
     assert.equal(customer?.currentDisposition, 'meets_required_depth');
-    assert.notEqual(trademark?.currentDisposition, 'meets_required_depth');
+    assert.equal(trademark?.currentDisposition, 'meets_required_depth');
     assert.notEqual(communication?.currentDisposition, 'meets_required_depth');
     assert.equal(
       BOOK_02_MVP_GAP_BASELINE.summary.acceptance.unresolvedCriteria.includes(
-        'trademark-application-workflow-supports-preview-apply'
+        'communication-review-workflow-supports-preview-apply'
       ),
       true
     );

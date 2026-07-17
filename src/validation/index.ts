@@ -27,3 +27,4 @@ export * from './core-mvp-event-contract-lock-fixture-validation.ts';
 
 export * from './core-api-boundary-fixture-validation.ts';
 export * from './core-customer-intake-workflow-fixture-validation.ts';
+export * from './core-trademark-application-workflow-fixture-validation.ts';

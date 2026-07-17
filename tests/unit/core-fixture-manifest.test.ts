@@ -4,8 +4,8 @@ import { describe, it } from 'node:test';
 import { CORE_FIXTURE_MANIFEST, CORE_FIXTURE_TYPES } from '../../src/index.ts';
 
 describe('CORE_FIXTURE_MANIFEST', () => {
-  it('has exactly 52 entries', () => {
-    assert.equal(CORE_FIXTURE_MANIFEST.length, 52);
+  it('has exactly 53 entries', () => {
+    assert.equal(CORE_FIXTURE_MANIFEST.length, 53);
   });
 
   it('includes permission_contract_skeletons type', () => {
@@ -192,6 +192,12 @@ describe('CORE_FIXTURE_MANIFEST', () => {
       CORE_FIXTURE_TYPES.includes('core_task_058a_customer_intake_workflow'),
       true
     );
+    assert.equal(
+      CORE_FIXTURE_TYPES.includes(
+        'core_task_058b_trademark_application_workflow'
+      ),
+      true
+    );
   });
 
   it('ids are unique', () => {
@@ -265,7 +271,8 @@ describe('CORE_FIXTURE_MANIFEST', () => {
       'core_workflow_contract_service_execution_structure_foundation',
       'core_communication_service_governed_communication_foundation',
       'core_event_service_governed_occurrence_foundation',
-      'core_task_058a_customer_intake_workflow'
+      'core_task_058a_customer_intake_workflow',
+      'core_task_058b_trademark_application_workflow'
     ]);
   });
 });
