@@ -21,7 +21,7 @@ jobs:
           ref: agent/core-task-057b-domain-api-boundaries-v2
           fetch-depth: 0
 
-      - name: Apply implementation and migrations
+      - name: Apply implementation and final migrations
         shell: bash
         run: |
           base64 --decode _automation/core-task-057b/implementation.patch.gz.b64 > /tmp/core-task-057b.patch.gz
@@ -31,30 +31,59 @@ jobs:
           git apply /tmp/core-task-057b.patch
           python - <<'PY'
           from pathlib import Path
-          path = Path('scripts/validate-core-fixtures.mjs')
-          text = path.read_text()
+
+          validator = Path('scripts/validate-core-fixtures.mjs')
+          text = validator.read_text()
           marker = '  core_task_057a_api_boundaries: validateCoreApiBoundaryFixture,\n'
           if 'core_task_057b_api_boundaries' not in text:
               text = text.replace(marker, marker + '  core_task_057b_api_boundaries: validateCoreApiBoundaryFixture,\n')
-              path.write_text(text)
+              validator.write_text(text)
+
           for path in Path('tests/unit').glob('*.test.ts'):
               text = path.read_text()
               original = text
               text = text.replace('73 / 3 / 34', '80 / 3 / 27')
               text = text.replace('meets_required_depth: 73', 'meets_required_depth: 80')
               text = text.replace('validated_skeleton_only: 34', 'validated_skeleton_only: 27')
-              if path.name in {'core-task-055-post-service-completion-audit.test.ts','core-task-056-book-02-event-evidence.test.ts'}:
+              if path.name == 'core-task-055-post-service-completion-audit.test.ts':
+                  text = text.replace("assert.equal(audit.nextTask, 'CORE-TASK-057B');", "assert.equal(audit.nextTask, 'CORE-TASK-057C');")
                   text = text.replace('remaining 42 unresolved', 'remaining 35 unresolved')
                   text = text.replace('audit.unresolvedInventory.total, 42', 'audit.unresolvedInventory.total, 35')
                   text = text.replace('api: 13', 'api: 6')
-                  text = text.replace("audit.nextTask, 'CORE-TASK-057B'", "audit.nextTask, 'CORE-TASK-057C'")
+                  text = text.replace('\n      24\n', '\n      17\n')
                   text = text.replace('[0, 14, 4, 6, 0]', '[0, 7, 4, 6, 0]')
-                  text = text.replace('        24\n', '        17\n')
-                  text = text.replace(', 42);', ', 35);')
+              if path.name == 'core-task-056-book-02-event-evidence.test.ts':
+                  text = text.replace('\n      42\n', '\n      35\n')
+                  text = text.replace('\n      24\n', '\n      17\n')
+                  text = text.replace("'CORE-TASK-057B'", "'CORE-TASK-057C'")
               if path.name == 'book-02-mvp-gap-baseline.test.ts':
                   text = text.replace('must-api-customer-api-contract', 'must-api-agent-api-contract')
+              if path.name == 'core-fixture-manifest.test.ts':
+                  text = text.replace("it('has exactly 49 entries'", "it('has exactly 50 entries'")
+                  text = text.replace('CORE_FIXTURE_MANIFEST.length, 49', 'CORE_FIXTURE_MANIFEST.length, 50')
+                  marker = "      'core_task_057a_api_boundaries',\n"
+                  if "'core_task_057b_api_boundaries'" not in text:
+                      text = text.replace(marker, marker + "      'core_task_057b_api_boundaries',\n")
+              if path.name == 'core-task-057a-api-boundary-foundation.test.ts':
+                  text = text.replace(
+                      '    assert.equal(CORE_API_BOUNDARY_EVIDENCE.length, 5);\n    for (const evidence of CORE_API_BOUNDARY_EVIDENCE) {',
+                      "    const evidence057a = CORE_API_BOUNDARY_EVIDENCE.filter((entry) =>\n      CORE_TASK_057A_API_BOUNDARY_SPECS.some((spec) => spec.domainId === entry.domainId)\n    );\n    assert.equal(evidence057a.length, 5);\n    for (const evidence of evidence057a) {"
+                  )
               if text != original:
                   path.write_text(text)
+
+          fixture_test = Path('tests/fixtures/core-task-057a-api-boundaries-fixture.test.ts')
+          text = fixture_test.read_text()
+          if 'const domainIds = new Set' not in text:
+              text = text.replace(
+                  "} from '../../src/index.ts';\n",
+                  "} from '../../src/index.ts';\n\nconst domainIds = new Set(['identity', 'organization', 'user', 'permission', 'policy']);\n"
+              )
+              text = text.replace(
+                  '    assert.deepEqual(fixture, CORE_API_BOUNDARY_EVIDENCE);',
+                  '    assert.deepEqual(\n      fixture,\n      CORE_API_BOUNDARY_EVIDENCE.filter((entry) => domainIds.has(entry.domainId))\n    );'
+              )
+              fixture_test.write_text(text)
           PY
 
       - name: Add formal evidence tests
@@ -125,17 +154,24 @@ jobs:
       - name: Regenerate canonical fixtures
         shell: bash
         run: |
-          cat > .core-task-057b-generate.mjs <<'EOF'
+          cat > .core-task-057b-api-fixtures.mjs <<'EOF'
           import { writeFileSync } from 'node:fs';
-          import { CORE_API_BOUNDARY_EVIDENCE, BOOK_02_MVP_GAP_BASELINE, BOOK_02_POST_SERVICE_COMPLETION_AUDIT } from './src/index.ts';
-          const domainIds = new Set(['customer','brand','trademark','jurisdiction','classification','document','evidence']);
-          writeFileSync('fixtures/api/core-task-057a-api-boundaries.fixture.json', JSON.stringify(CORE_API_BOUNDARY_EVIDENCE, null, 2) + '\n');
-          writeFileSync('fixtures/api/core-task-057b-api-boundaries.fixture.json', JSON.stringify(CORE_API_BOUNDARY_EVIDENCE.filter((entry) => domainIds.has(entry.domainId)), null, 2) + '\n');
+          import { CORE_API_BOUNDARY_EVIDENCE } from './src/index.ts';
+          const domainIds057a = new Set(['identity','organization','user','permission','policy']);
+          const domainIds057b = new Set(['customer','brand','trademark','jurisdiction','classification','document','evidence']);
+          writeFileSync('fixtures/api/core-task-057a-api-boundaries.fixture.json', JSON.stringify(CORE_API_BOUNDARY_EVIDENCE.filter((entry) => domainIds057a.has(entry.domainId)), null, 2) + '\n');
+          writeFileSync('fixtures/api/core-task-057b-api-boundaries.fixture.json', JSON.stringify(CORE_API_BOUNDARY_EVIDENCE.filter((entry) => domainIds057b.has(entry.domainId)), null, 2) + '\n');
+          EOF
+          pnpm exec tsx .core-task-057b-api-fixtures.mjs
+          rm .core-task-057b-api-fixtures.mjs
+          cat > .core-task-057b-baselines.mjs <<'EOF'
+          import { writeFileSync } from 'node:fs';
+          import { BOOK_02_MVP_GAP_BASELINE, BOOK_02_POST_SERVICE_COMPLETION_AUDIT } from './src/index.ts';
           writeFileSync('fixtures/mvp-coverage/book-02-mvp-gap-baseline.fixture.json', JSON.stringify(BOOK_02_MVP_GAP_BASELINE, null, 2) + '\n');
           writeFileSync('fixtures/mvp-coverage/book-02-post-service-completion-audit.fixture.json', JSON.stringify(BOOK_02_POST_SERVICE_COMPLETION_AUDIT, null, 2) + '\n');
           EOF
-          pnpm exec tsx .core-task-057b-generate.mjs
-          rm .core-task-057b-generate.mjs
+          pnpm exec tsx .core-task-057b-baselines.mjs
+          rm .core-task-057b-baselines.mjs
 
       - name: Format
         run: pnpm format
