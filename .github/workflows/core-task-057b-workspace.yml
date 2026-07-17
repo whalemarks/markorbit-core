@@ -53,7 +53,6 @@ jobs:
                   'core-task-056-book-02-event-evidence.test.ts'
               }:
                   text = text.replace('remaining 42 unresolved', 'remaining 35 unresolved')
-                  text = text.replace('unresolved Must Build requirements', 'unresolved Must Build requirements')
                   text = text.replace('audit.unresolvedInventory.total, 42', 'audit.unresolvedInventory.total, 35')
                   text = text.replace('api: 13', 'api: 6')
                   text = text.replace("audit.nextTask, 'CORE-TASK-057B'", "audit.nextTask, 'CORE-TASK-057C'")
@@ -112,8 +111,36 @@ jobs:
         run: pnpm format:check
       - name: Validate fixtures
         run: pnpm validate:fixtures
+
       - name: Test
-        run: pnpm test
+        id: test
+        continue-on-error: true
+        shell: bash
+        run: |
+          set +e
+          pnpm test 2>&1 | tee /tmp/core-task-057b-test.log
+          status=${PIPESTATUS[0]}
+          {
+            echo '--- focused test failure summary ---'
+            grep -nE 'not ok|FAIL|AssertionError|ERR_|error:|Expected|actual|expected' /tmp/core-task-057b-test.log | tail -n 260 || true
+            echo '--- final test log tail ---'
+            tail -n 360 /tmp/core-task-057b-test.log
+          } > /tmp/core-task-057b-test-failure.txt
+          exit "$status"
+
+      - name: Upload test failure summary
+        if: steps.test.outcome == 'failure'
+        uses: actions/upload-artifact@v4
+        with:
+          name: core-task-057b-test-failure
+          path: /tmp/core-task-057b-test-failure.txt
+          if-no-files-found: error
+          retention-days: 1
+
+      - name: Enforce test success
+        if: steps.test.outcome == 'failure'
+        run: exit 1
+
       - name: Contract coverage
         run: pnpm coverage:contracts
       - name: Contract gaps
