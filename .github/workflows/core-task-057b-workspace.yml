@@ -29,6 +29,18 @@ jobs:
           gzip --decompress --stdout /tmp/core-task-057b.patch.gz > /tmp/core-task-057b.patch
           git apply --check /tmp/core-task-057b.patch
           git apply /tmp/core-task-057b.patch
+          python - <<'PY'
+          from pathlib import Path
+          path = Path('scripts/validate-core-fixtures.mjs')
+          text = path.read_text()
+          marker = '  core_task_057a_api_boundaries: validateCoreApiBoundaryFixture,\n'
+          registration = marker + '  core_task_057b_api_boundaries: validateCoreApiBoundaryFixture,\n'
+          if 'core_task_057b_api_boundaries' not in text:
+              if marker not in text:
+                  raise SystemExit('CORE-TASK-057A validator marker not found')
+              text = text.replace(marker, registration)
+              path.write_text(text)
+          PY
 
       - name: Migrate historical Book 02 assertions
         shell: bash
