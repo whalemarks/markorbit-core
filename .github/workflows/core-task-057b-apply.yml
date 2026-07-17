@@ -1,0 +1,103 @@
+name: CORE-TASK-057B Apply and Validate
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - '.github/workflows/core-task-057b-apply.yml'
+      - '_automation/core-task-057b/**'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  apply-validate-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout task branch
+        uses: actions/checkout@v4
+        with:
+          ref: agent/core-task-057b-domain-api-boundaries
+          fetch-depth: 0
+
+      - name: Verify and apply implementation patch
+        shell: bash
+        run: |
+          base64 --decode _automation/core-task-057b/implementation.patch.gz.b64 > /tmp/core-task-057b.patch.gz
+          echo '1adcb64335099cc5e638563dfa223530e0cf0ba8efa080adcb59d09a903c6108  /tmp/core-task-057b.patch.gz' | sha256sum --check
+          gzip --test /tmp/core-task-057b.patch.gz
+          gzip --decompress --stdout /tmp/core-task-057b.patch.gz > /tmp/core-task-057b.patch
+          echo '13237f72153c459d18c2e9785540f201554e964797f8464fc7cef9622c083cb4  /tmp/core-task-057b.patch' | sha256sum --check
+          git apply --check /tmp/core-task-057b.patch
+          git apply /tmp/core-task-057b.patch
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: |
+          npm install --global pnpm@10
+          pnpm install --frozen-lockfile
+
+      - name: Regenerate deterministic Book 02 fixtures
+        shell: bash
+        run: |
+          cat > .core-task-057b-generate.mjs <<'JS'
+          import { writeFileSync } from 'node:fs';
+          import {
+            BOOK_02_MVP_GAP_BASELINE,
+            BOOK_02_POST_SERVICE_COMPLETION_AUDIT
+          } from './src/index.ts';
+          writeFileSync(
+            'fixtures/mvp-coverage/book-02-mvp-gap-baseline.fixture.json',
+            JSON.stringify(BOOK_02_MVP_GAP_BASELINE, null, 2) + '\n'
+          );
+          writeFileSync(
+            'fixtures/mvp-coverage/book-02-post-service-completion-audit.fixture.json',
+            JSON.stringify(BOOK_02_POST_SERVICE_COMPLETION_AUDIT, null, 2) + '\n'
+          );
+          JS
+          pnpm exec tsx .core-task-057b-generate.mjs
+          rm .core-task-057b-generate.mjs
+
+      - name: Format
+        run: pnpm format
+      - name: Typecheck
+        run: pnpm typecheck
+      - name: Lint
+        run: pnpm lint
+      - name: Format check
+        run: pnpm format:check
+      - name: Validate fixtures
+        run: pnpm validate:fixtures
+      - name: Test
+        run: pnpm test
+      - name: Contract coverage
+        run: pnpm coverage:contracts
+      - name: Contract gaps
+        run: pnpm gaps:contracts
+      - name: Contract acceptance
+        run: pnpm acceptance:contracts
+      - name: Behavior coverage
+        run: pnpm coverage:behavior
+      - name: Behavior gaps
+        run: pnpm gaps:behavior
+      - name: Behavior acceptance
+        run: pnpm acceptance:behavior
+      - name: Book 02 MVP gaps
+        run: pnpm gaps:mvp
+
+      - name: Publish clean implementation commit
+        shell: bash
+        run: |
+          rm -f .github/workflows/core-task-057b-workspace.yml
+          rm -f .github/workflows/core-task-057b-apply.yml
+          rm -rf _automation/core-task-057b
+          git config user.name 'MarkOrbit Automation'
+          git config user.email 'automation@markorbit.local'
+          git add -A
+          git commit -m 'feat(core): implement CORE-TASK-057B API boundaries'
+          git push --force origin HEAD:agent/core-task-057b-domain-api-boundaries
