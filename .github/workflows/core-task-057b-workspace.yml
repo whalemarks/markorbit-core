@@ -1,4 +1,4 @@
-name: CORE-TASK-057B Apply and Validate
+name: CORE-TASK-057B Format Diagnostic
 
 on:
   pull_request:
@@ -9,10 +9,10 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  apply-validate-publish:
+  diagnose-format:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout task branch
@@ -21,16 +21,12 @@ jobs:
           ref: agent/core-task-057b-domain-api-boundaries-v2
           fetch-depth: 0
 
-      - name: Decode and verify implementation patch
+      - name: Decode and apply implementation patch
         shell: bash
         run: |
           base64 --decode _automation/core-task-057b/implementation.patch.gz.b64 > /tmp/core-task-057b.patch.gz
           gzip --test /tmp/core-task-057b.patch.gz
           gzip --decompress --stdout /tmp/core-task-057b.patch.gz > /tmp/core-task-057b.patch
-
-      - name: Apply formal implementation patch
-        shell: bash
-        run: |
           git apply --check /tmp/core-task-057b.patch
           git apply /tmp/core-task-057b.patch
 
@@ -39,17 +35,13 @@ jobs:
         run: |
           python - <<'PY'
           from pathlib import Path
-
           for path in Path('tests/unit').glob('*.test.ts'):
               text = path.read_text()
               original = text
               text = text.replace('73 / 3 / 34', '80 / 3 / 27')
               text = text.replace('meets_required_depth: 73', 'meets_required_depth: 80')
               text = text.replace('validated_skeleton_only: 34', 'validated_skeleton_only: 27')
-              if path.name in {
-                  'core-task-055-post-service-completion-audit.test.ts',
-                  'core-task-056-book-02-event-evidence.test.ts'
-              }:
+              if path.name in {'core-task-055-post-service-completion-audit.test.ts','core-task-056-book-02-event-evidence.test.ts'}:
                   text = text.replace('remaining 42 unresolved', 'remaining 35 unresolved')
                   text = text.replace('audit.unresolvedInventory.total, 42', 'audit.unresolvedInventory.total, 35')
                   text = text.replace('api: 13', 'api: 6')
@@ -78,90 +70,33 @@ jobs:
         run: |
           cat > .core-task-057b-generate.mjs <<'EOF'
           import { writeFileSync } from 'node:fs';
-          import {
-            CORE_API_BOUNDARY_EVIDENCE,
-            BOOK_02_MVP_GAP_BASELINE,
-            BOOK_02_POST_SERVICE_COMPLETION_AUDIT
-          } from './src/index.ts';
-          writeFileSync(
-            'fixtures/api/core-task-057a-api-boundaries.fixture.json',
-            JSON.stringify(CORE_API_BOUNDARY_EVIDENCE, null, 2) + '\n'
-          );
-          writeFileSync(
-            'fixtures/mvp-coverage/book-02-mvp-gap-baseline.fixture.json',
-            JSON.stringify(BOOK_02_MVP_GAP_BASELINE, null, 2) + '\n'
-          );
-          writeFileSync(
-            'fixtures/mvp-coverage/book-02-post-service-completion-audit.fixture.json',
-            JSON.stringify(BOOK_02_POST_SERVICE_COMPLETION_AUDIT, null, 2) + '\n'
-          );
+          import { CORE_API_BOUNDARY_EVIDENCE, BOOK_02_MVP_GAP_BASELINE, BOOK_02_POST_SERVICE_COMPLETION_AUDIT } from './src/index.ts';
+          writeFileSync('fixtures/api/core-task-057a-api-boundaries.fixture.json', JSON.stringify(CORE_API_BOUNDARY_EVIDENCE, null, 2) + '\n');
+          writeFileSync('fixtures/mvp-coverage/book-02-mvp-gap-baseline.fixture.json', JSON.stringify(BOOK_02_MVP_GAP_BASELINE, null, 2) + '\n');
+          writeFileSync('fixtures/mvp-coverage/book-02-post-service-completion-audit.fixture.json', JSON.stringify(BOOK_02_POST_SERVICE_COMPLETION_AUDIT, null, 2) + '\n');
           EOF
           pnpm exec tsx .core-task-057b-generate.mjs
           rm .core-task-057b-generate.mjs
 
-      - name: Format
-        run: pnpm format
-      - name: Typecheck
-        run: pnpm typecheck
-      - name: Lint
-        run: pnpm lint
-      - name: Format check
-        run: pnpm format:check
-      - name: Validate fixtures
-        run: pnpm validate:fixtures
-
-      - name: Test
-        id: test
+      - name: Capture format failure
+        id: format
         continue-on-error: true
         shell: bash
         run: |
           set +e
-          pnpm test 2>&1 | tee /tmp/core-task-057b-test.log
-          status=${PIPESTATUS[0]}
-          {
-            echo '--- focused test failure summary ---'
-            grep -nE 'not ok|FAIL|AssertionError|ERR_|error:|Expected|actual|expected' /tmp/core-task-057b-test.log | tail -n 260 || true
-            echo '--- final test log tail ---'
-            tail -n 360 /tmp/core-task-057b-test.log
-          } > /tmp/core-task-057b-test-failure.txt
+          pnpm format > /tmp/core-task-057b-format.txt 2>&1
+          status=$?
+          cat /tmp/core-task-057b-format.txt
           exit "$status"
 
-      - name: Upload test failure summary
-        if: steps.test.outcome == 'failure'
+      - name: Upload format failure
         uses: actions/upload-artifact@v4
         with:
-          name: core-task-057b-test-failure
-          path: /tmp/core-task-057b-test-failure.txt
+          name: core-task-057b-format-failure
+          path: /tmp/core-task-057b-format.txt
           if-no-files-found: error
           retention-days: 1
 
-      - name: Enforce test success
-        if: steps.test.outcome == 'failure'
+      - name: Enforce diagnostic result
+        if: steps.format.outcome == 'failure'
         run: exit 1
-
-      - name: Contract coverage
-        run: pnpm coverage:contracts
-      - name: Contract gaps
-        run: pnpm gaps:contracts
-      - name: Contract acceptance
-        run: pnpm acceptance:contracts
-      - name: Behavior coverage
-        run: pnpm coverage:behavior
-      - name: Behavior gaps
-        run: pnpm gaps:behavior
-      - name: Behavior acceptance
-        run: pnpm acceptance:behavior
-      - name: Book 02 MVP gaps
-        run: pnpm gaps:mvp
-
-      - name: Publish clean implementation commit
-        shell: bash
-        run: |
-          rm -f .github/workflows/core-task-057b-workspace.yml
-          rm -rf _automation/core-task-057b
-          rm -f docs/architecture/core-task-057b-domain-api-boundary-foundation.md
-          git config user.name 'MarkOrbit Automation'
-          git config user.email 'automation@markorbit.local'
-          git add -A
-          git commit -m 'feat(core): implement CORE-TASK-057B domain API boundaries'
-          git push --force origin HEAD:agent/core-task-057b-domain-api-boundaries-v2
