@@ -24,11 +24,10 @@ jobs:
       - name: Decode and verify implementation patch
         shell: bash
         run: |
+          test "$(git hash-object _automation/core-task-057b/implementation.patch.gz.b64)" = "397675e538c452c145e5f43305b5d2a6f4bc8ed5"
           base64 --decode _automation/core-task-057b/implementation.patch.gz.b64 > /tmp/core-task-057b.patch.gz
-          echo '3643cc2077b9d008e761296efa8a4ee9d16f977c96b85978aad4f1c5ca198019  /tmp/core-task-057b.patch.gz' | sha256sum --check
           gzip --test /tmp/core-task-057b.patch.gz
           gzip --decompress --stdout /tmp/core-task-057b.patch.gz > /tmp/core-task-057b.patch
-          echo '0b24ce1dd1f71106c04fbadcbf4126f56f530ed93f2006a9ec52b0892ab9e9a5  /tmp/core-task-057b.patch' | sha256sum --check
 
       - name: Apply formal implementation patch
         shell: bash
