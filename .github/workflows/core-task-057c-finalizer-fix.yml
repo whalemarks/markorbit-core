@@ -33,5 +33,7 @@ jobs:
           git config user.name 'MarkOrbit Automation'
           git config user.email 'automation@markorbit.local'
           git add -A
+          git diff --cached --quiet && exit 0
           git commit -m 'fix(ci): keep CORE-TASK-057C baseline generator for second pass'
+          git pull --rebase origin agent/core-task-057c-final-api-boundaries
           git push origin HEAD:agent/core-task-057c-final-api-boundaries
