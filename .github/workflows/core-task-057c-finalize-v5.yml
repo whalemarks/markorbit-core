@@ -68,6 +68,11 @@ jobs:
               "CORE_TASK_057B_API_BOUNDARY_SPECS,\n  CORE_TASK_057C_API_BOUNDARY_SPECS,\n  'CORE-TASK-057B'",
               "CORE_TASK_057B_API_BOUNDARY_SPECS,\n  'CORE-TASK-057B'"
           )
+          s=s.replace("  'src/api/core-governed-api-specs-057c.ts',\n", '')
+          s=s.replace(
+              '    implementationFiles,\n',
+              "    implementationFiles: implementationTask === 'CORE-TASK-057C'\n      ? [...implementationFiles, 'src/api/core-governed-api-specs-057c.ts']\n      : implementationFiles,\n"
+          )
           p.write_text(s)
           PY
       - name: Install dependencies
