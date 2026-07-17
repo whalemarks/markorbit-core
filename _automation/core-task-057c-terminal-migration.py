@@ -63,17 +63,6 @@ for path in Path('tests/unit').glob('*.test.ts'):
       }""",
         )
         text = text.replace(
-            "assert.ok(codes(validateBook02MvpGapBaseline(baseline)).includes(code));",
-            """const validationCodes = codes(validateBook02MvpGapBaseline(baseline));
-      assert.equal(
-        req.layer === 'api'
-          ? validationCodes.length > 0
-          : validationCodes.includes(code),
-        true
-      );""",
-            1,
-        )
-        text = text.replace(
             """      'must-build-services-own-behavior',
       'permission-and-policy-fail-closed',""",
             """      'must-build-services-own-behavior',
