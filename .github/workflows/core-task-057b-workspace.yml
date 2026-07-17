@@ -1,0 +1,30 @@
+name: CORE-TASK-057B Workspace
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - '.github/workflows/core-task-057b-workspace.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  workspace:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout task branch
+        uses: actions/checkout@v4
+        with:
+          ref: agent/core-task-057b-domain-api-boundaries-v2
+          fetch-depth: 0
+      - name: Pack workspace
+        run: |
+          tar --exclude='.git' --exclude='node_modules' -czf /tmp/core-task-057b-workspace.tgz .
+      - name: Upload workspace
+        uses: actions/upload-artifact@v4
+        with:
+          name: core-task-057b-workspace
+          path: /tmp/core-task-057b-workspace.tgz
+          retention-days: 1
