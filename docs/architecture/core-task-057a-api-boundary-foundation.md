@@ -70,6 +70,7 @@ The unresolved inventory falls from 47 to 42. With 18 accepted Domain skeletons 
 - Negative tests for version, idempotency, governance, direct Domain mutation, direct Event emission, non-owning Service access and unsafe responses.
 - Required fixture and fixture validator.
 - Updated Book 02 baseline and post-Service audit.
+- Correction workflow completed the full repository validation chain after replacing the order-dependent API skeleton negative test with an explicit Customer API target.
 
 ## Next task
 
