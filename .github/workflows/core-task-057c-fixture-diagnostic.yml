@@ -1,0 +1,66 @@
+name: CORE-TASK-057C Fixture Diagnostic
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - '.github/workflows/core-task-057c-fixture-diagnostic.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/core-task-057c-final-api-boundaries
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Prepare generated implementation
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          source=Path('.github/workflows/core-task-057c-finalize.yml').read_text().splitlines()
+          def extract(name):
+              start=next(i for i,l in enumerate(source) if l==f'      - name: {name}')
+              run=next(i for i in range(start+1,len(source)) if source[i]=='        run: |')
+              out=[]
+              for l in source[run+1:]:
+                  if l.startswith('      - name: ') or l.startswith('      - uses: '): break
+                  out.append(l[10:] if l.startswith('          ') else l)
+              return out
+          for name,label in {'generate':'Generate final API boundary implementation','fixtures':'Generate fixtures and migrate baselines'}.items():
+              lines=extract(label)
+              if name=='fixtures':
+                  lines=[l for l in lines if l.strip()!='rm .generate-057c-baseline.mjs']
+                  idx=[i for i,l in enumerate(lines) if l.strip()=='pnpm exec tsx .generate-057c-baseline.mjs']
+                  lines.insert(idx[-1]+1,'rm .generate-057c-baseline.mjs')
+              p=Path(f'/tmp/057c-{name}.sh'); p.write_text('#!/usr/bin/env bash\nset -euo pipefail\n'+'\n'.join(lines)+'\n'); p.chmod(0o755)
+          PY
+          /tmp/057c-generate.sh
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('src/api-coverage/core-api-boundary-evidence.ts'); s=p.read_text(); s=s.replace("CORE_TASK_057B_API_BOUNDARY_SPECS,\n  CORE_TASK_057C_API_BOUNDARY_SPECS,\n  'CORE-TASK-057B'","CORE_TASK_057B_API_BOUNDARY_SPECS,\n  'CORE-TASK-057B'"); p.write_text(s)
+          PY
+          npm install --global pnpm@10
+          pnpm install --frozen-lockfile
+          /tmp/057c-fixtures.sh
+          pnpm format
+      - name: Capture fixture validation
+        id: fixtures
+        continue-on-error: true
+        shell: bash
+        run: pnpm validate:fixtures 2>&1 | tee /tmp/core-task-057c-fixture.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: core-task-057c-fixture
+          path: /tmp/core-task-057c-fixture.txt
+          retention-days: 1
+      - if: steps.fixtures.outcome == 'failure'
+        run: exit 1
