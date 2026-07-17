@@ -67,15 +67,17 @@ jobs:
           from pathlib import Path
           p=Path('src/api-coverage/core-api-boundary-evidence.ts')
           lines=p.read_text().splitlines()
-          start=next(i for i,line in enumerate(lines) if line.startswith('export const CORE_TASK_057B_API_BOUNDARY_EVIDENCE'))
-          end=next(i for i in range(start,len(lines)) if lines[i].strip()==');')
-          replacement=[
-              'export const CORE_TASK_057B_API_BOUNDARY_EVIDENCE = evidenceFor(',
-              '  CORE_TASK_057B_API_BOUNDARY_SPECS,',
-              "  'CORE-TASK-057B'",
-              ');'
-          ]
-          lines=lines[:start]+replacement+lines[end+1:]
+          for suffix in ('057A','057B','057C'):
+              declaration=f'export const CORE_TASK_{suffix}_API_BOUNDARY_EVIDENCE = evidenceFor('
+              start=next(i for i,line in enumerate(lines) if line.startswith(declaration))
+              end=next(i for i in range(start,len(lines)) if lines[i].strip()==');')
+              replacement=[
+                  declaration,
+                  f'  CORE_TASK_{suffix}_API_BOUNDARY_SPECS,',
+                  f"  'CORE-TASK-{suffix}'",
+                  ');'
+              ]
+              lines=lines[:start]+replacement+lines[end+1:]
           s='\n'.join(lines)+'\n'
           s=s.replace("  'src/api/core-governed-api-specs-057c.ts',\n", '')
           if "implementationTask === 'CORE-TASK-057C'" not in s:
@@ -83,6 +85,10 @@ jobs:
                   '    implementationFiles,\n',
                   "    implementationFiles: implementationTask === 'CORE-TASK-057C'\n      ? [...implementationFiles, 'src/api/core-governed-api-specs-057c.ts']\n      : implementationFiles,\n"
               )
+          for suffix in ('057A','057B','057C'):
+              block=f"CORE_TASK_{suffix}_API_BOUNDARY_SPECS,\n  'CORE-TASK-{suffix}'"
+              if s.count(block) != 1:
+                  raise SystemExit(f'Invalid evidence call for {suffix}')
           p.write_text(s)
           PY
           python _automation/core-task-057c-terminal-migration.py
