@@ -23,7 +23,7 @@ for path in Path('tests/unit').glob('*.test.ts'):
         text = text.replace('locks the seven unresolved acceptance criteria exactly', 'locks the five unresolved acceptance criteria exactly')
         text = text.replace("        'must-build-api-validators-exist',\n", '')
         text = text.replace("        'api-layer-does-not-emit-events-directly',\n", '')
-        text = text.replace('[0, 7, 4, 6, 0]', '[0, 1, 4, 6, 0]')
+        text = text.replace('[0, 7, 4, 6, 0]', '[0, 0, 4, 6, 0]')
     elif path.name == 'core-task-056-book-02-event-evidence.test.ts':
         text = text.replace('unresolvedInventory.total,\n      35', 'unresolvedInventory.total,\n      29')
         text = text.replace('completionBlockingNonDomainRequirementIds.length,\n      17', 'completionBlockingNonDomainRequirementIds.length,\n      11')
@@ -42,5 +42,48 @@ for path in Path('tests/unit').glob('*.test.ts'):
         text = text.replace('without claiming all-API completion', 'as part of completed all-API coverage')
         text = text.replace('summary.mustBuildNow.meets_required_depth,\n      80', 'summary.mustBuildNow.meets_required_depth,\n      86')
         text = text.replace('summary.mustBuildNow.validated_skeleton_only,\n      27', 'summary.mustBuildNow.validated_skeleton_only,\n      21')
+    elif path.name == 'book-02-mvp-gap-baseline.test.ts':
+        text = text.replace(
+            """      if (req.layer === 'service') {
+        req.implementationFiles = [
+          'src/contracts/service/core-service-contract-skeletons.ts'
+        ];
+      }""",
+            """      if (req.layer === 'service') {
+        req.implementationFiles = [
+          'src/contracts/service/core-service-contract-skeletons.ts'
+        ];
+      }
+      if (req.layer === 'api') {
+        req.implementationFiles = [
+          'src/contracts/api/core-api-contract-skeletons.ts'
+        ];
+        req.testFiles = [];
+        req.fixtureFiles = [];
+      }""",
+        )
+        text = text.replace(
+            """      'must-build-services-own-behavior',
+      'permission-and-policy-fail-closed',""",
+            """      'must-build-services-own-behavior',
+      'must-build-api-validators-exist',
+      'permission-and-policy-fail-closed',""",
+        )
+        text = text.replace(
+            """      'event-trace-exists-and-is-not-command',
+      'errors-are-safe',""",
+            """      'event-trace-exists-and-is-not-command',
+      'api-layer-does-not-emit-events-directly',
+      'errors-are-safe',""",
+        )
+        text = text.replace(
+            """      )?.satisfied,
+      false
+    );""",
+            """      )?.satisfied,
+      true
+    );""",
+            1,
+        )
     if text != original:
         path.write_text(text)
