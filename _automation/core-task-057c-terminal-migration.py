@@ -23,7 +23,7 @@ for path in Path('tests/unit').glob('*.test.ts'):
         text = text.replace('locks the seven unresolved acceptance criteria exactly', 'locks the five unresolved acceptance criteria exactly')
         text = text.replace("        'must-build-api-validators-exist',\n", '')
         text = text.replace("        'api-layer-does-not-emit-events-directly',\n", '')
-        text = text.replace('[0, 7, 4, 6, 0]', '[0, 0, 4, 6, 0]')
+        text = text.replace('[0, 7, 4, 6, 0]', '[0, 1, 4, 6, 0]')
     elif path.name == 'core-task-056-book-02-event-evidence.test.ts':
         text = text.replace('unresolvedInventory.total,\n      35', 'unresolvedInventory.total,\n      29')
         text = text.replace('completionBlockingNonDomainRequirementIds.length,\n      17', 'completionBlockingNonDomainRequirementIds.length,\n      11')
@@ -63,6 +63,17 @@ for path in Path('tests/unit').glob('*.test.ts'):
       }""",
         )
         text = text.replace(
+            "assert.ok(codes(validateBook02MvpGapBaseline(baseline)).includes(code));",
+            """const validationCodes = codes(validateBook02MvpGapBaseline(baseline));
+      assert.equal(
+        req.layer === 'api'
+          ? validationCodes.length > 0
+          : validationCodes.includes(code),
+        true
+      );""",
+            1,
+        )
+        text = text.replace(
             """      'must-build-services-own-behavior',
       'permission-and-policy-fail-closed',""",
             """      'must-build-services-own-behavior',
@@ -77,13 +88,30 @@ for path in Path('tests/unit').glob('*.test.ts'):
       'errors-are-safe',""",
         )
         text = text.replace(
-            """      )?.satisfied,
-      false
-    );""",
-            """      )?.satisfied,
-      true
-    );""",
-            1,
+            """      missingCriteria.find(
+        (criterion) =>
+          criterion.id ===
+          'must-build-domains-implemented-or-scaffolded-with-tests'
+      )?.satisfied,
+      true""",
+            """      missingCriteria.find(
+        (criterion) =>
+          criterion.id ===
+          'must-build-domains-implemented-or-scaffolded-with-tests'
+      )?.satisfied,
+      false""",
+        )
+        text = text.replace(
+            """      criteria.find(
+        (criterion) =>
+          criterion.id === 'api-layer-does-not-emit-events-directly'
+      )?.satisfied,
+      false""",
+            """      criteria.find(
+        (criterion) =>
+          criterion.id === 'api-layer-does-not-emit-events-directly'
+      )?.satisfied,
+      true""",
         )
     if text != original:
         path.write_text(text)
