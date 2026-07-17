@@ -48,7 +48,6 @@ jobs:
               text = text.replace('73 / 3 / 34', '80 / 3 / 27')
               text = text.replace('meets_required_depth: 73', 'meets_required_depth: 80')
               text = text.replace('validated_skeleton_only: 34', 'validated_skeleton_only: 27')
-
               if path.name == 'core-task-055-post-service-completion-audit.test.ts':
                   text = text.replace("assert.equal(audit.nextTask, 'CORE-TASK-057B');", "assert.equal(audit.nextTask, 'CORE-TASK-057C');")
                   text = text.replace('remaining 42 unresolved', 'remaining 35 unresolved')
@@ -56,28 +55,23 @@ jobs:
                   text = text.replace('api: 13', 'api: 6')
                   text = text.replace('\n      24\n', '\n      17\n')
                   text = text.replace('[0, 14, 4, 6, 0]', '[0, 7, 4, 6, 0]')
-
               if path.name == 'core-task-056-book-02-event-evidence.test.ts':
                   text = text.replace('\n      42\n', '\n      35\n')
                   text = text.replace('\n      24\n', '\n      17\n')
                   text = text.replace("'CORE-TASK-057B'", "'CORE-TASK-057C'")
-
               if path.name == 'book-02-mvp-gap-baseline.test.ts':
                   text = text.replace('must-api-customer-api-contract', 'must-api-matter-api-contract')
-
               if path.name == 'core-fixture-manifest.test.ts':
                   text = text.replace("it('has exactly 49 entries'", "it('has exactly 50 entries'")
                   text = text.replace('CORE_FIXTURE_MANIFEST.length, 49', 'CORE_FIXTURE_MANIFEST.length, 50')
                   marker = "      'core_task_057a_api_boundaries',\n"
                   if "'core_task_057b_api_boundaries'" not in text:
                       text = text.replace(marker, marker + "      'core_task_057b_api_boundaries',\n")
-
               if path.name == 'core-task-057a-api-boundary-foundation.test.ts':
                   text = text.replace(
                       '    assert.equal(CORE_API_BOUNDARY_EVIDENCE.length, 5);\n    for (const evidence of CORE_API_BOUNDARY_EVIDENCE) {',
                       "    const evidence057a = CORE_API_BOUNDARY_EVIDENCE.filter((entry) =>\n      CORE_TASK_057A_API_BOUNDARY_SPECS.some((spec) => spec.domainId === entry.domainId)\n    );\n    assert.equal(evidence057a.length, 5);\n    for (const evidence of evidence057a) {"
                   )
-
               if text != original:
                   path.write_text(text)
 
@@ -183,21 +177,32 @@ jobs:
           pnpm exec tsx .core-task-057b-baselines.mjs
           rm .core-task-057b-baselines.mjs
 
-      - name: Validate repository
-        run: |
-          pnpm format
-          pnpm typecheck
-          pnpm lint
-          pnpm format:check
-          pnpm validate:fixtures
-          pnpm test
-          pnpm coverage:contracts
-          pnpm gaps:contracts
-          pnpm acceptance:contracts
-          pnpm coverage:behavior
-          pnpm gaps:behavior
-          pnpm acceptance:behavior
-          pnpm gaps:mvp
+      - name: Format
+        run: pnpm format
+      - name: Typecheck
+        run: pnpm typecheck
+      - name: Lint
+        run: pnpm lint
+      - name: Format check
+        run: pnpm format:check
+      - name: Validate fixtures
+        run: pnpm validate:fixtures
+      - name: Test
+        run: pnpm test
+      - name: Contract coverage
+        run: pnpm coverage:contracts
+      - name: Contract gaps
+        run: pnpm gaps:contracts
+      - name: Contract acceptance
+        run: pnpm acceptance:contracts
+      - name: Behavior coverage
+        run: pnpm coverage:behavior
+      - name: Behavior gaps
+        run: pnpm gaps:behavior
+      - name: Behavior acceptance
+        run: pnpm acceptance:behavior
+      - name: Book 02 MVP gaps
+        run: pnpm gaps:mvp
 
       - name: Publish clean implementation commit
         shell: bash
