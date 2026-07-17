@@ -68,7 +68,7 @@ export interface Book02PostServiceCompletionAudit {
     readonly resolvedFormula: 'acceptance_plus_non_domain_depth';
   };
   readonly executionWorkstreams: readonly Book02ExecutionWorkstream[];
-  readonly nextTask: 'CORE-TASK-057B';
+  readonly nextTask: 'CORE-TASK-057B' | 'CORE-TASK-057C' | 'CORE-TASK-058A';
 }
 
 const sortedIds = (requirements: readonly Book02MvpRequirement[]) =>
@@ -250,7 +250,12 @@ export function deriveBook02PostServiceCompletionAudit(
           'Regenerate all fixtures, prove every non-Domain Must Build requirement reaches its locked depth, prove all 19 acceptance criteria pass, and set Book 02 MVP complete without deepening deferred or forbidden capabilities.'
       }
     ],
-    nextTask: 'CORE-TASK-057B'
+    nextTask:
+      apiIds.length > 6
+        ? 'CORE-TASK-057B'
+        : apiIds.length > 0
+          ? 'CORE-TASK-057C'
+          : 'CORE-TASK-058A'
   };
 }
 

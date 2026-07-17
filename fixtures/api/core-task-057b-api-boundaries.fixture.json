@@ -28,12 +28,8 @@
       "src/api/core-governed-api-specs.ts",
       "src/api/index.ts"
     ],
-    "testFiles": [
-      "tests/unit/core-task-057b-api-boundary-foundation.test.ts"
-    ],
-    "fixtureFiles": [
-      "fixtures/api/core-task-057b-api-boundaries.fixture.json"
-    ],
+    "testFiles": ["tests/unit/core-task-057b-api-boundary-foundation.test.ts"],
+    "fixtureFiles": ["fixtures/api/core-task-057b-api-boundaries.fixture.json"],
     "directDomainMutation": false,
     "directEventEmission": false
   },
@@ -66,12 +62,8 @@
       "src/api/core-governed-api-specs.ts",
       "src/api/index.ts"
     ],
-    "testFiles": [
-      "tests/unit/core-task-057b-api-boundary-foundation.test.ts"
-    ],
-    "fixtureFiles": [
-      "fixtures/api/core-task-057b-api-boundaries.fixture.json"
-    ],
+    "testFiles": ["tests/unit/core-task-057b-api-boundary-foundation.test.ts"],
+    "fixtureFiles": ["fixtures/api/core-task-057b-api-boundaries.fixture.json"],
     "directDomainMutation": false,
     "directEventEmission": false
   },
@@ -104,12 +96,8 @@
       "src/api/core-governed-api-specs.ts",
       "src/api/index.ts"
     ],
-    "testFiles": [
-      "tests/unit/core-task-057b-api-boundary-foundation.test.ts"
-    ],
-    "fixtureFiles": [
-      "fixtures/api/core-task-057b-api-boundaries.fixture.json"
-    ],
+    "testFiles": ["tests/unit/core-task-057b-api-boundary-foundation.test.ts"],
+    "fixtureFiles": ["fixtures/api/core-task-057b-api-boundaries.fixture.json"],
     "directDomainMutation": false,
     "directEventEmission": false
   },
@@ -142,12 +130,8 @@
       "src/api/core-governed-api-specs.ts",
       "src/api/index.ts"
     ],
-    "testFiles": [
-      "tests/unit/core-task-057b-api-boundary-foundation.test.ts"
-    ],
-    "fixtureFiles": [
-      "fixtures/api/core-task-057b-api-boundaries.fixture.json"
-    ],
+    "testFiles": ["tests/unit/core-task-057b-api-boundary-foundation.test.ts"],
+    "fixtureFiles": ["fixtures/api/core-task-057b-api-boundaries.fixture.json"],
     "directDomainMutation": false,
     "directEventEmission": false
   },
@@ -180,12 +164,8 @@
       "src/api/core-governed-api-specs.ts",
       "src/api/index.ts"
     ],
-    "testFiles": [
-      "tests/unit/core-task-057b-api-boundary-foundation.test.ts"
-    ],
-    "fixtureFiles": [
-      "fixtures/api/core-task-057b-api-boundaries.fixture.json"
-    ],
+    "testFiles": ["tests/unit/core-task-057b-api-boundary-foundation.test.ts"],
+    "fixtureFiles": ["fixtures/api/core-task-057b-api-boundaries.fixture.json"],
     "directDomainMutation": false,
     "directEventEmission": false
   },
@@ -218,12 +198,8 @@
       "src/api/core-governed-api-specs.ts",
       "src/api/index.ts"
     ],
-    "testFiles": [
-      "tests/unit/core-task-057b-api-boundary-foundation.test.ts"
-    ],
-    "fixtureFiles": [
-      "fixtures/api/core-task-057b-api-boundaries.fixture.json"
-    ],
+    "testFiles": ["tests/unit/core-task-057b-api-boundary-foundation.test.ts"],
+    "fixtureFiles": ["fixtures/api/core-task-057b-api-boundaries.fixture.json"],
     "directDomainMutation": false,
     "directEventEmission": false
   },
@@ -256,12 +232,8 @@
       "src/api/core-governed-api-specs.ts",
       "src/api/index.ts"
     ],
-    "testFiles": [
-      "tests/unit/core-task-057b-api-boundary-foundation.test.ts"
-    ],
-    "fixtureFiles": [
-      "fixtures/api/core-task-057b-api-boundaries.fixture.json"
-    ],
+    "testFiles": ["tests/unit/core-task-057b-api-boundary-foundation.test.ts"],
+    "fixtureFiles": ["fixtures/api/core-task-057b-api-boundaries.fixture.json"],
     "directDomainMutation": false,
     "directEventEmission": false
   }

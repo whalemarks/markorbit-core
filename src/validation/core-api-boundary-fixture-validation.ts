@@ -1,5 +1,7 @@
 import {
   CORE_API_BOUNDARY_EVIDENCE,
+  CORE_TASK_057A_API_BOUNDARY_EVIDENCE,
+  CORE_TASK_057B_API_BOUNDARY_EVIDENCE,
   validateCoreApiBoundaryEvidence,
   type CoreApiBoundaryEvidence
 } from '../api-coverage/index.ts';
@@ -16,24 +18,29 @@ export function validateCoreApiBoundaryFixture(fixture: unknown) {
     issues.push({
       code: 'core.api_boundary.fixture_invalid',
       severity: 'error',
-      message: 'CORE-TASK-057A API boundary fixture must be an array.'
+      message: 'Core API boundary fixture must be an array.'
     });
     return createCoreValidationResult(issues);
   }
-  for (const message of validateCoreApiBoundaryEvidence(
-    fixture as readonly CoreApiBoundaryEvidence[]
-  ))
+  const typed = fixture as readonly CoreApiBoundaryEvidence[];
+  const expected = typed.every(
+    (entry) => entry?.implementationTask === 'CORE-TASK-057A'
+  )
+    ? CORE_TASK_057A_API_BOUNDARY_EVIDENCE
+    : typed.every((entry) => entry?.implementationTask === 'CORE-TASK-057B')
+      ? CORE_TASK_057B_API_BOUNDARY_EVIDENCE
+      : CORE_API_BOUNDARY_EVIDENCE;
+  for (const message of validateCoreApiBoundaryEvidence(typed))
     issues.push({
       code: 'core.api_boundary.validation',
       severity: 'error',
       message
     });
-  if (JSON.stringify(fixture) !== JSON.stringify(CORE_API_BOUNDARY_EVIDENCE))
+  if (JSON.stringify(fixture) !== JSON.stringify(expected))
     issues.push({
       code: 'core.api_boundary.fixture_drift',
       severity: 'error',
-      message:
-        'CORE-TASK-057A API boundary fixture must match deterministic source evidence.'
+      message: 'API boundary fixture must match deterministic source evidence.'
     });
   return createCoreValidationResult(issues);
 }

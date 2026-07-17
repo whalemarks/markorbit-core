@@ -279,3 +279,11 @@ CORE-TASK-040 note: Classification Service core scope and validation behavior is
 - Current unresolved inventory: 42; non-Domain completion blockers: 24.
 - API all-family acceptance remains open until CORE-TASK-057B and CORE-TASK-057C complete the remaining APIs and full no-direct-Event proof.
 - Next task: `CORE-TASK-057B`.
+
+## CORE-TASK-057B domain API boundary completion
+
+- Customer, Brand, Trademark, Jurisdiction, Classification, Document and Evidence APIs meet validator and owning-Service delegation depth.
+- Twelve of eighteen MVP APIs are complete; six APIs remain.
+- Current Must Build disposition: `80 / 3 / 27`, plus 5 boundary scaffolds and zero semantic overlaps.
+- Current unresolved inventory: 35; non-Domain completion blockers: 17.
+- Next governed task: `CORE-TASK-057C`.
