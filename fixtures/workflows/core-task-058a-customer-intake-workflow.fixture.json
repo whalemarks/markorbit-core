@@ -17,28 +17,297 @@
   "owningApiDelegation": ["customer.create", "brand.create", "task.create"],
   "directDomainMutation": false,
   "directEventEmission": false,
-  "scenarios": [
-    "deterministic preview",
-    "preview without Brand",
-    "preview with Brand",
-    "successful Customer-only apply",
-    "successful Customer-and-Brand apply",
-    "correct ordered delegation",
-    "valid idempotent replay",
-    "conflicting idempotency replay",
-    "altered digest rejection",
-    "stale version rejection",
-    "expired plan rejection",
-    "missing approval rejection",
-    "rejected approval",
-    "consumed preview rejection",
-    "organization mismatch",
-    "Permission rejection",
-    "Policy rejection",
-    "Customer reference rejection",
-    "Brand reference rejection",
-    "no direct Domain mutation",
-    "no direct Event emission",
-    "Event references remain trace-only"
+  "declaredScenarios": [
+    { "scenarioId": "deterministic-preview", "expectedOutcome": "success" },
+    { "scenarioId": "preview-without-brand", "expectedOutcome": "success" },
+    { "scenarioId": "preview-with-brand", "expectedOutcome": "success" },
+    { "scenarioId": "customer-only-apply", "expectedOutcome": "success" },
+    { "scenarioId": "customer-and-brand-apply", "expectedOutcome": "success" },
+    { "scenarioId": "ordered-delegation", "expectedOutcome": "success" },
+    {
+      "scenarioId": "task-plan-with-configured-task-api",
+      "expectedOutcome": "success"
+    },
+    {
+      "scenarioId": "task-plan-without-task-api-rejection",
+      "expectedOutcome": "safe_error"
+    },
+    { "scenarioId": "idempotent-replay", "expectedOutcome": "success" },
+    {
+      "scenarioId": "conflicting-idempotency-replay",
+      "expectedOutcome": "safe_error"
+    },
+    {
+      "scenarioId": "altered-digest-rejection",
+      "expectedOutcome": "safe_error"
+    },
+    {
+      "scenarioId": "stale-version-rejection",
+      "expectedOutcome": "safe_error"
+    },
+    { "scenarioId": "expired-plan-rejection", "expectedOutcome": "safe_error" },
+    {
+      "scenarioId": "missing-approval-rejection",
+      "expectedOutcome": "safe_error"
+    },
+    { "scenarioId": "rejected-approval", "expectedOutcome": "safe_error" },
+    {
+      "scenarioId": "consumed-preview-rejection",
+      "expectedOutcome": "safe_error"
+    },
+    { "scenarioId": "organization-mismatch", "expectedOutcome": "safe_error" },
+    {
+      "scenarioId": "actor-permission-mismatch",
+      "expectedOutcome": "safe_error"
+    },
+    { "scenarioId": "policy-rejection", "expectedOutcome": "safe_error" },
+    {
+      "scenarioId": "customer-reference-rejection",
+      "expectedOutcome": "safe_error"
+    },
+    {
+      "scenarioId": "brand-reference-rejection",
+      "expectedOutcome": "safe_error"
+    },
+    {
+      "scenarioId": "customer-reference-propagation-into-brand",
+      "expectedOutcome": "success"
+    },
+    {
+      "scenarioId": "conflicting-brand-customer-reference-rejection",
+      "expectedOutcome": "safe_error"
+    },
+    {
+      "scenarioId": "no-direct-domain-mutation",
+      "expectedOutcome": "boundary_assertion"
+    },
+    {
+      "scenarioId": "no-direct-event-emission",
+      "expectedOutcome": "boundary_assertion"
+    },
+    {
+      "scenarioId": "real-event-references-remain-trace-only",
+      "expectedOutcome": "trace_only"
+    },
+    {
+      "scenarioId": "audit-context-is-not-event-reference",
+      "expectedOutcome": "trace_only"
+    },
+    {
+      "scenarioId": "changed-canonical-input-changes-digest",
+      "expectedOutcome": "success"
+    }
+  ],
+  "executedScenarioEvidence": [
+    {
+      "scenarioId": "deterministic-preview",
+      "testFile": "tests/unit/core-task-058a-customer-intake-workflow.test.ts",
+      "testName": "deterministic-preview and changed-canonical-input-changes-digest",
+      "caseId": "same-canonical-request",
+      "expectedOutcome": "success"
+    },
+    {
+      "scenarioId": "changed-canonical-input-changes-digest",
+      "testFile": "tests/unit/core-task-058a-customer-intake-workflow.test.ts",
+      "testName": "deterministic-preview and changed-canonical-input-changes-digest",
+      "caseId": "changed-brand-expiry-governance",
+      "expectedOutcome": "success"
+    },
+    {
+      "scenarioId": "preview-without-brand",
+      "testFile": "tests/unit/core-task-058a-customer-intake-workflow.test.ts",
+      "testName": "preview-without-brand, preview-with-brand, and Task plan configured/missing-port behavior",
+      "caseId": "customer-only-plan",
+      "expectedOutcome": "success"
+    },
+    {
+      "scenarioId": "preview-with-brand",
+      "testFile": "tests/unit/core-task-058a-customer-intake-workflow.test.ts",
+      "testName": "preview-without-brand, preview-with-brand, and Task plan configured/missing-port behavior",
+      "caseId": "customer-brand-plan",
+      "expectedOutcome": "success"
+    },
+    {
+      "scenarioId": "task-plan-without-task-api-rejection",
+      "testFile": "tests/unit/core-task-058a-customer-intake-workflow.test.ts",
+      "testName": "preview-without-brand, preview-with-brand, and Task plan configured/missing-port behavior",
+      "caseId": "missing-task-api",
+      "expectedOutcome": "safe_error",
+      "safeErrorCode": "DownstreamServiceRequired"
+    },
+    {
+      "scenarioId": "task-plan-with-configured-task-api",
+      "testFile": "tests/unit/core-task-058a-customer-intake-workflow.test.ts",
+      "testName": "preview-without-brand, preview-with-brand, and Task plan configured/missing-port behavior",
+      "caseId": "configured-task-api",
+      "expectedOutcome": "success"
+    },
+    {
+      "scenarioId": "customer-only-apply",
+      "testFile": "tests/unit/core-task-058a-customer-intake-workflow.test.ts",
+      "testName": "Customer-only apply, Customer-and-Brand apply, ordered delegation, reference propagation, task execution, and idempotent replay",
+      "caseId": "customer-only-apply",
+      "expectedOutcome": "success"
+    },
+    {
+      "scenarioId": "customer-and-brand-apply",
+      "testFile": "tests/unit/core-task-058a-customer-intake-workflow.test.ts",
+      "testName": "Customer-only apply, Customer-and-Brand apply, ordered delegation, reference propagation, task execution, and idempotent replay",
+      "caseId": "customer-brand-apply",
+      "expectedOutcome": "success"
+    },
+    {
+      "scenarioId": "ordered-delegation",
+      "testFile": "tests/unit/core-task-058a-customer-intake-workflow.test.ts",
+      "testName": "Customer-only apply, Customer-and-Brand apply, ordered delegation, reference propagation, task execution, and idempotent replay",
+      "caseId": "delegation-order",
+      "expectedOutcome": "success"
+    },
+    {
+      "scenarioId": "customer-reference-propagation-into-brand",
+      "testFile": "tests/unit/core-task-058a-customer-intake-workflow.test.ts",
+      "testName": "Customer-only apply, Customer-and-Brand apply, ordered delegation, reference propagation, task execution, and idempotent replay",
+      "caseId": "brand-payload-customer-reference",
+      "expectedOutcome": "success"
+    },
+    {
+      "scenarioId": "idempotent-replay",
+      "testFile": "tests/unit/core-task-058a-customer-intake-workflow.test.ts",
+      "testName": "Customer-only apply, Customer-and-Brand apply, ordered delegation, reference propagation, task execution, and idempotent replay",
+      "caseId": "replay-call-count",
+      "expectedOutcome": "success"
+    },
+    {
+      "scenarioId": "altered-digest-rejection",
+      "testFile": "tests/unit/core-task-058a-customer-intake-workflow.test.ts",
+      "testName": "rejects altered digest, stale version, expired plan, missing/rejected approval, consumed preview, governance mismatch, and conflicting idempotency",
+      "caseId": "altered-digest",
+      "expectedOutcome": "safe_error",
+      "safeErrorCode": "ValidationFailed"
+    },
+    {
+      "scenarioId": "stale-version-rejection",
+      "testFile": "tests/unit/core-task-058a-customer-intake-workflow.test.ts",
+      "testName": "rejects altered digest, stale version, expired plan, missing/rejected approval, consumed preview, governance mismatch, and conflicting idempotency",
+      "caseId": "stale-version",
+      "expectedOutcome": "safe_error",
+      "safeErrorCode": "VersionUnsupported"
+    },
+    {
+      "scenarioId": "expired-plan-rejection",
+      "testFile": "tests/unit/core-task-058a-customer-intake-workflow.test.ts",
+      "testName": "rejects altered digest, stale version, expired plan, missing/rejected approval, consumed preview, governance mismatch, and conflicting idempotency",
+      "caseId": "expired-plan",
+      "expectedOutcome": "safe_error",
+      "safeErrorCode": "ValidationFailed"
+    },
+    {
+      "scenarioId": "missing-approval-rejection",
+      "testFile": "tests/unit/core-task-058a-customer-intake-workflow.test.ts",
+      "testName": "rejects altered digest, stale version, expired plan, missing/rejected approval, consumed preview, governance mismatch, and conflicting idempotency",
+      "caseId": "missing-approval",
+      "expectedOutcome": "safe_error",
+      "safeErrorCode": "HumanReviewRequired"
+    },
+    {
+      "scenarioId": "rejected-approval",
+      "testFile": "tests/unit/core-task-058a-customer-intake-workflow.test.ts",
+      "testName": "rejects altered digest, stale version, expired plan, missing/rejected approval, consumed preview, governance mismatch, and conflicting idempotency",
+      "caseId": "rejected-approval",
+      "expectedOutcome": "safe_error",
+      "safeErrorCode": "HumanReviewRequired"
+    },
+    {
+      "scenarioId": "consumed-preview-rejection",
+      "testFile": "tests/unit/core-task-058a-customer-intake-workflow.test.ts",
+      "testName": "rejects altered digest, stale version, expired plan, missing/rejected approval, consumed preview, governance mismatch, and conflicting idempotency",
+      "caseId": "consumed-preview",
+      "expectedOutcome": "safe_error",
+      "safeErrorCode": "IdempotencyConflict"
+    },
+    {
+      "scenarioId": "organization-mismatch",
+      "testFile": "tests/unit/core-task-058a-customer-intake-workflow.test.ts",
+      "testName": "rejects altered digest, stale version, expired plan, missing/rejected approval, consumed preview, governance mismatch, and conflicting idempotency",
+      "caseId": "organization-mismatch",
+      "expectedOutcome": "safe_error",
+      "safeErrorCode": "PolicyRestricted"
+    },
+    {
+      "scenarioId": "actor-permission-mismatch",
+      "testFile": "tests/unit/core-task-058a-customer-intake-workflow.test.ts",
+      "testName": "rejects altered digest, stale version, expired plan, missing/rejected approval, consumed preview, governance mismatch, and conflicting idempotency",
+      "caseId": "actor-permission-mismatch",
+      "expectedOutcome": "safe_error",
+      "safeErrorCode": "PermissionDenied"
+    },
+    {
+      "scenarioId": "policy-rejection",
+      "testFile": "tests/unit/core-task-058a-customer-intake-workflow.test.ts",
+      "testName": "rejects altered digest, stale version, expired plan, missing/rejected approval, consumed preview, governance mismatch, and conflicting idempotency",
+      "caseId": "policy-rejection",
+      "expectedOutcome": "safe_error",
+      "safeErrorCode": "PolicyRestricted"
+    },
+    {
+      "scenarioId": "conflicting-idempotency-replay",
+      "testFile": "tests/unit/core-task-058a-customer-intake-workflow.test.ts",
+      "testName": "rejects altered digest, stale version, expired plan, missing/rejected approval, consumed preview, governance mismatch, and conflicting idempotency",
+      "caseId": "conflicting-idempotency",
+      "expectedOutcome": "safe_error",
+      "safeErrorCode": "IdempotencyConflict"
+    },
+    {
+      "scenarioId": "customer-reference-rejection",
+      "testFile": "tests/unit/core-task-058a-customer-intake-workflow.test.ts",
+      "testName": "fails closed for Customer/Brand references and conflicting Brand Customer reference",
+      "caseId": "missing-customer-reference",
+      "expectedOutcome": "safe_error",
+      "safeErrorCode": "InvalidCustomerReference"
+    },
+    {
+      "scenarioId": "brand-reference-rejection",
+      "testFile": "tests/unit/core-task-058a-customer-intake-workflow.test.ts",
+      "testName": "fails closed for Customer/Brand references and conflicting Brand Customer reference",
+      "caseId": "invalid-brand-reference",
+      "expectedOutcome": "safe_error",
+      "safeErrorCode": "InvalidBrandReference"
+    },
+    {
+      "scenarioId": "conflicting-brand-customer-reference-rejection",
+      "testFile": "tests/unit/core-task-058a-customer-intake-workflow.test.ts",
+      "testName": "fails closed for Customer/Brand references and conflicting Brand Customer reference",
+      "caseId": "conflicting-brand-customer-reference",
+      "expectedOutcome": "safe_error",
+      "safeErrorCode": "InvalidBrandCustomerReference"
+    },
+    {
+      "scenarioId": "real-event-references-remain-trace-only",
+      "testFile": "tests/unit/core-task-058a-customer-intake-workflow.test.ts",
+      "testName": "surfaces real Event references only, excludes audit context, and remains trace-only with no direct emission",
+      "caseId": "real-event-reference-surface",
+      "expectedOutcome": "trace_only"
+    },
+    {
+      "scenarioId": "audit-context-is-not-event-reference",
+      "testFile": "tests/unit/core-task-058a-customer-intake-workflow.test.ts",
+      "testName": "surfaces real Event references only, excludes audit context, and remains trace-only with no direct emission",
+      "caseId": "audit-context-excluded",
+      "expectedOutcome": "trace_only"
+    },
+    {
+      "scenarioId": "no-direct-domain-mutation",
+      "testFile": "tests/unit/core-task-058a-customer-intake-workflow.test.ts",
+      "testName": "surfaces real Event references only, excludes audit context, and remains trace-only with no direct emission",
+      "caseId": "source-boundary-domain",
+      "expectedOutcome": "boundary_assertion"
+    },
+    {
+      "scenarioId": "no-direct-event-emission",
+      "testFile": "tests/unit/core-task-058a-customer-intake-workflow.test.ts",
+      "testName": "surfaces real Event references only, excludes audit context, and remains trace-only with no direct emission",
+      "caseId": "source-boundary-event",
+      "expectedOutcome": "boundary_assertion"
+    }
   ]
 }

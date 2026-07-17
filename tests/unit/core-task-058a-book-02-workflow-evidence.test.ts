@@ -13,6 +13,16 @@ describe('CORE-TASK-058A Book 02 Workflow evidence', () => {
     assert.equal(evidence.applySupported, true);
     assert.equal(evidence.directDomainMutation, false);
     assert.equal(evidence.directEventEmission, false);
+    assert.deepEqual(
+      [
+        'plan/execution consistency',
+        'Customer-reference propagation',
+        'configured Task-step enforcement',
+        'genuine Event-reference aggregation',
+        'executable fixture scenario traceability'
+      ].every((capability) => evidence.provenCapabilities.includes(capability)),
+      true
+    );
     const customer = BOOK_02_MVP_GAP_BASELINE.requirements.find(
       (entry) => entry.id === 'must-workflow-customer-intake-workflow'
     );

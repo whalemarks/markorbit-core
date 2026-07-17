@@ -73,7 +73,7 @@ export interface CustomerIntakeApplyResult {
   readonly replayed: boolean;
   readonly consumed: boolean;
   readonly delegationOrder: readonly string[];
-  readonly eventTraceReferences: readonly unknown[];
+  readonly eventTraceReferences: readonly string[];
   readonly customerResult: unknown;
   readonly brandResult?: unknown;
   readonly taskPlanResult?: unknown;
@@ -242,6 +242,44 @@ function plan(input: CustomerIntakeInput): readonly CustomerIntakePlanStep[] {
   return Object.freeze(steps);
 }
 
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === 'object' && value !== null && !Array.isArray(value);
+}
+
+function readString(value: unknown, field: string): string | null {
+  return isRecord(value) && typeof value[field] === 'string'
+    ? value[field]
+    : null;
+}
+
+function extractCustomerPublicReference(result: unknown): string | null {
+  if (!isRecord(result)) return null;
+  return (
+    readString(result, 'customerReferenceId') ??
+    readString(result, 'publicReferenceId') ??
+    readString(result.objectRecord, 'publicReferenceId') ??
+    readString(
+      isRecord(result.record) ? result.record.objectRecord : null,
+      'publicReferenceId'
+    )
+  );
+}
+
+function extractEventTraceReferences(result: unknown): readonly string[] {
+  if (!isRecord(result)) return [];
+  const refs: string[] = [];
+  const single = readString(result, 'eventReferenceId');
+  if (single) refs.push(single);
+  for (const field of ['eventReferences', 'eventTraceReferences'] as const) {
+    const values = result[field];
+    if (Array.isArray(values))
+      refs.push(
+        ...values.filter((value): value is string => typeof value === 'string')
+      );
+  }
+  return refs;
+}
+
 export class CoreInMemoryCustomerIntakePlanRegistry implements CustomerIntakePlanRegistry {
   readonly #records = new Map<string, CustomerIntakePreviewRecord>();
   register(record: CustomerIntakePreviewRecord) {
@@ -349,6 +387,12 @@ export class CustomerIntakeWorkflow {
     if (!inputOk.ok) return inputOk;
     const gov = validatePreviewGovernance(request);
     if (!gov.ok) return gov;
+    if (request.input.taskPlan && !this.#taskApi)
+      return safe(
+        'DownstreamServiceRequired',
+        'Task API boundary is required when Customer Intake includes a task plan.',
+        request.governance.correlationId
+      );
     const expires = Date.parse(request.validUntil);
     if (!Number.isFinite(expires) || expires <= Date.parse(this.deps.now()))
       return safe(
@@ -418,6 +462,13 @@ export class CustomerIntakeWorkflow {
         'Preview was not found.',
         request.governance.correlationId
       );
+    const currentGovernance = validatePreviewGovernance({
+      workflowContractVersion: CORE_CUSTOMER_INTAKE_WORKFLOW_CONTRACT_VERSION,
+      input: record.input,
+      governance: request.governance,
+      validUntil: record.validUntil
+    });
+    if (!currentGovernance.ok) return currentGovernance;
     const run = this.deps.idempotencyRegistry.executeBehavior(
       {
         idempotencyKey: request.idempotencyKey,
@@ -476,6 +527,8 @@ export class CustomerIntakeWorkflow {
         'Governance context differs from preview.',
         request.governance.correlationId
       );
+    const invariant = this.#assertPlanCanExecute(record, request);
+    if (!invariant.ok) return invariant;
     if (record.approvalState !== 'Approved')
       return safe(
         'HumanReviewRequired',
@@ -485,7 +538,7 @@ export class CustomerIntakeWorkflow {
         request.governance.correlationId
       );
     const delegationOrder: string[] = [];
-    const eventTraceReferences: unknown[] = [];
+    const eventTraceReferences: string[] = [];
     const call = (
       api: CoreGovernedApiBoundary,
       domain: 'customer' | 'brand' | 'task',
@@ -501,7 +554,9 @@ export class CustomerIntakeWorkflow {
         permission: {
           ...request.governance.permission,
           intendedOperation: `${domain}.create`,
-          requiredPermissionKeys: [`${domain}:create`]
+          requiredPermissionKeys: [
+            domain === 'task' ? 'task:update' : `${domain}:create`
+          ]
         },
         policy: {
           ...request.governance.policy,
@@ -531,6 +586,9 @@ export class CustomerIntakeWorkflow {
         governance
       });
     };
+    const plannedOrder = record.orderedExecutionPlan.map(
+      (step) => step.owningApiOperation
+    );
     const customer = call(
       this.#customerApi,
       'customer',
@@ -540,19 +598,49 @@ export class CustomerIntakeWorkflow {
     );
     if (!customer.ok) return customer;
     delegationOrder.push('customer.create');
-    eventTraceReferences.push(customer.value.auditContext);
+    eventTraceReferences.push(
+      ...extractEventTraceReferences(customer.value.result)
+    );
+    const authoritativeCustomerReference = extractCustomerPublicReference(
+      customer.value.result
+    );
+    if (!authoritativeCustomerReference)
+      return safe(
+        'InvalidCustomerReference',
+        'Customer API result did not include an authoritative public Customer reference.',
+        request.governance.correlationId
+      );
     let brandResult: unknown;
     if (record.input.brand) {
+      const suppliedCustomerReference = readString(
+        record.input.brand,
+        'customerReferenceId'
+      );
+      if (
+        suppliedCustomerReference &&
+        suppliedCustomerReference !== authoritativeCustomerReference
+      )
+        return safe(
+          'InvalidBrandCustomerReference',
+          'Brand intake Customer reference conflicts with the Customer created by this Workflow.',
+          request.governance.correlationId
+        );
+      const brandPayload = {
+        ...record.input.brand,
+        customerReferenceId: authoritativeCustomerReference
+      };
       const brand = call(
         this.#brandApi,
         'brand',
         'create',
-        record.input.brand,
+        brandPayload,
         `${request.idempotencyKey}:brand`
       );
       if (!brand.ok) return brand;
       delegationOrder.push('brand.create');
-      eventTraceReferences.push(brand.value.auditContext);
+      eventTraceReferences.push(
+        ...extractEventTraceReferences(brand.value.result)
+      );
       brandResult = brand.value.result;
     }
     let taskPlanResult: unknown;
@@ -566,9 +654,17 @@ export class CustomerIntakeWorkflow {
       );
       if (!task.ok) return task;
       delegationOrder.push('task.create');
-      eventTraceReferences.push(task.value.auditContext);
+      eventTraceReferences.push(
+        ...extractEventTraceReferences(task.value.result)
+      );
       taskPlanResult = task.value.result;
     }
+    if (canonical(delegationOrder) !== canonical(plannedOrder))
+      return safe(
+        'ValidationFailed',
+        'Actual Customer Intake delegation order did not match the stored plan.',
+        request.governance.correlationId
+      );
     const result: CustomerIntakeApplyResult = {
       previewId: record.previewId,
       replayed: false,
@@ -583,6 +679,52 @@ export class CustomerIntakeWorkflow {
     };
     const consumed = this.deps.planRegistry.consume(record.previewId, result);
     return consumed.ok ? { ok: true, value: result } : consumed;
+  }
+
+  #assertPlanCanExecute(
+    record: CustomerIntakePreviewRecord,
+    request: CustomerIntakeApplyRequest
+  ): CoreBehaviorResult<null> {
+    const expected = plan(record.input);
+    if (record.orderedExecutionPlan.length !== expected.length)
+      return safe(
+        'ValidationFailed',
+        'Stored Customer Intake plan does not match the previewed input shape.',
+        request.governance.correlationId
+      );
+    const seen = new Set<string>();
+    for (let index = 0; index < expected.length; index += 1) {
+      const actual = record.orderedExecutionPlan[index];
+      const wanted = expected[index];
+      if (
+        !actual ||
+        actual.order !== index + 1 ||
+        actual.owningApiOperation !== wanted.owningApiOperation ||
+        actual.serviceOperation !== wanted.serviceOperation
+      )
+        return safe(
+          'ValidationFailed',
+          'Stored Customer Intake plan order is malformed or unsupported.',
+          request.governance.correlationId
+        );
+      if (seen.has(actual.owningApiOperation))
+        return safe(
+          'ValidationFailed',
+          'Stored Customer Intake plan contains duplicate steps.',
+          request.governance.correlationId
+        );
+      seen.add(actual.owningApiOperation);
+      if (
+        actual.owningApiOperation === 'task.create' &&
+        this.#taskApi === undefined
+      )
+        return safe(
+          'DownstreamServiceRequired',
+          'Stored Customer Intake plan requires an unavailable Task API boundary.',
+          request.governance.correlationId
+        );
+    }
+    return { ok: true, value: null };
   }
 }
 
@@ -621,6 +763,11 @@ export const CORE_TASK_058A_CUSTOMER_INTAKE_WORKFLOW_EVIDENCE = Object.freeze({
     'human review gate',
     'idempotency replay',
     'owning API delegation',
+    'plan/execution consistency',
+    'Customer-reference propagation',
+    'configured Task-step enforcement',
+    'genuine Event-reference aggregation',
+    'executable fixture scenario traceability',
     'trace-only event references'
   ],
   unresolvedCapabilities: [
