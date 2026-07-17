@@ -378,3 +378,12 @@ CORE-TASK-040 note: Classification Service core scope and validation behavior is
 - Unresolved Must Build requirements: 47, including 18 accepted Domain skeletons and 29 non-Domain completion blockers.
 - Acceptance remains 12 / 19; Book 02 MVP remains incomplete.
 - Next governed task: CORE-TASK-057A — Identity, Organization, User, Permission and Policy API validator and Service-delegation boundaries.
+
+## CORE-TASK-057A API boundary completion
+
+- Identity, Organization, User, Permission and Policy APIs meet validator and owning-Service delegation depth.
+- Five API requirements are complete; thirteen API requirements remain.
+- Current Must Build disposition: `73 / 3 / 34`, plus 5 boundary scaffolds and zero semantic overlaps.
+- Current unresolved inventory: 42; non-Domain completion blockers: 24.
+- API all-family acceptance remains open until CORE-TASK-057B and CORE-TASK-057C complete the remaining APIs and full no-direct-Event proof.
+- Next task: `CORE-TASK-057B`.

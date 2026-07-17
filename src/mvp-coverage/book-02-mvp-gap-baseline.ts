@@ -17,6 +17,10 @@ import {
   CORE_TEST_CONTRACT_SKELETONS,
   CORE_WORKFLOW_CATALOG_SKELETONS
 } from '../contracts/index.ts';
+import {
+  CORE_API_BOUNDARY_EVIDENCE,
+  validateCoreApiBoundaryEvidence
+} from '../api-coverage/index.ts';
 import { CORE_DOMAIN_REGISTRY } from '../domains/index.ts';
 import {
   CORE_SERVICE_BEHAVIOR_EVIDENCE,
@@ -148,8 +152,15 @@ export const BOOK_02_MVP_TEST_FAMILY_EVIDENCE = {
   },
   'api-contract-tests': {
     contractId: 'core-test-api-contract-tests-contract',
-    implementationFiles: ['src/contracts/api/core-api-contract-skeletons.ts'],
-    testFiles: ['tests/unit/core-api-contract-skeletons.test.ts'],
+    implementationFiles: [
+      'src/contracts/api/core-api-contract-skeletons.ts',
+      'src/api/core-governed-api-boundary.ts',
+      'src/api/core-governed-api-specs.ts'
+    ],
+    testFiles: [
+      'tests/unit/core-api-contract-skeletons.test.ts',
+      'tests/unit/core-task-057a-api-boundary-foundation.test.ts'
+    ],
     behaviorIds: [],
     provenCapabilities: [
       'contract specification',
@@ -159,10 +170,8 @@ export const BOOK_02_MVP_TEST_FAMILY_EVIDENCE = {
       'execution under pnpm test or a dedicated evidence runner'
     ],
     unresolvedCapabilities: [
-      'request/response validator behavior',
-      'Service delegation',
-      'no direct Domain mutation',
-      'no direct Event emission'
+      'remaining thirteen API validator/delegation boundaries',
+      'complete API-family no-direct-Event proof'
     ]
   },
   'workflow-contract-tests': {
@@ -697,18 +706,33 @@ function evidenceFor(identity: Book02MvpRequirementIdentity): CurrentEvidence {
       .replace(/^must-api-/, '')
       .replace(/^stub-api-/, '')
       .replace('-api-contract', '');
-    const found = CORE_API_CONTRACT_SKELETONS.find(
-      (entry) => entry.domainId === domainId
+    const evidence = CORE_API_BOUNDARY_EVIDENCE.find(
+      (entry) => entry.requirementId === identity.id
     );
+    const found = evidence
+      ? CORE_API_CONTRACT_SKELETONS.find(
+          (entry) => entry.id === evidence.apiContractId
+        )
+      : CORE_API_CONTRACT_SKELETONS.find(
+          (entry) => entry.domainId === domainId
+        );
     return found
-      ? {
-          contractIds: [String(found.id)],
-          implementationFiles: [
-            'src/contracts/api/core-api-contract-skeletons.ts'
-          ],
-          testFiles: [],
-          fixtureFiles: []
-        }
+      ? evidence
+        ? {
+            contractIds: [String(found.id)],
+            implementationFiles: existing(evidence.implementationFiles),
+            testFiles: existing(evidence.testFiles),
+            fixtureFiles: existing(evidence.fixtureFiles),
+            currentDepth: evidence.currentDepth
+          }
+        : {
+            contractIds: [String(found.id)],
+            implementationFiles: [
+              'src/contracts/api/core-api-contract-skeletons.ts'
+            ],
+            testFiles: [],
+            fixtureFiles: []
+          }
       : emptyEvidence();
   }
   if (identity.layer === 'workflow') {
@@ -899,6 +923,31 @@ function disposition(
       ev.implementationFiles.length > 1 &&
       ev.testFiles.length > 0 &&
       ev.fixtureFiles.length > 0
+    )
+      return 'meets_required_depth';
+    return ev.testFiles.length > 0
+      ? 'partial_evidence'
+      : ev.contractIds.length > 0
+        ? 'validated_skeleton_only'
+        : 'missing';
+  }
+  if (identity.layer === 'api') {
+    const evidence = CORE_API_BOUNDARY_EVIDENCE.find(
+      (entry) => entry.requirementId === identity.id
+    );
+    if (
+      evidence &&
+      validateCoreApiBoundaryEvidence().length === 0 &&
+      ev.currentDepth === 'level_2' &&
+      ev.implementationFiles.length > 1 &&
+      ev.testFiles.length > 0 &&
+      ev.fixtureFiles.length > 0 &&
+      identity.requiredCapabilities.every((capability) =>
+        evidence.provenCapabilities.includes(
+          capability as (typeof evidence.provenCapabilities)[number]
+        )
+      ) &&
+      evidence.unresolvedCapabilities.length === 0
     )
       return 'meets_required_depth';
     return ev.testFiles.length > 0

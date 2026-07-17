@@ -10,14 +10,14 @@
 
 All 18 Must Build Services meet Level 2–3 owning-behavior evidence. The Service gap is zero, but the Book 02 MVP is not complete.
 
-After CORE-TASK-056, the current Must Build disposition summary is `68 / 3 / 39`, with another 5 `boundary_scaffold_only` requirements and zero `semantic_overlap_only` requirements. The number `39` remains only the count of `validated_skeleton_only` requirements; it is not the total remaining workload.
+After CORE-TASK-057A, the current Must Build disposition summary is `73 / 3 / 34`, with another 5 `boundary_scaffold_only` requirements and zero `semantic_overlap_only` requirements. The number `34` is only the count of `validated_skeleton_only` requirements; it is not the total remaining workload.
 
-The complete unresolved Must Build inventory now contains 47 requirements:
+The complete unresolved Must Build inventory now contains 42 requirements:
 
 | Layer    | Count | Current evidence                                             |
 | -------- | ----: | ------------------------------------------------------------ |
 | Domain   |    18 | Validated skeletons with executable Domain tests             |
-| API      |    18 | Structural API contracts only                                |
+| API      |    13 | Remaining structural API contracts; five APIs now meet depth |
 | Workflow |     3 | Structural workflow contracts only                           |
 | Agent    |     5 | Generic boundary scaffold without five named Agent scaffolds |
 | Test     |     3 | API, Workflow and Agent test families remain partial         |
@@ -46,7 +46,7 @@ AND every non-Domain Must Build requirement reaches its required depth
 
 This replaces the over-strict interpretation that every Must Build requirement, including accepted Domain skeletons, must be labeled `meets_required_depth`. The correction does not weaken API, Workflow, Event, Agent or executable test requirements.
 
-After the exact Event lock, 29 non-Domain Must Build requirements still block completion: 18 APIs, 3 Workflows, 5 named Agent boundaries and 3 executable test families.
+After CORE-TASK-057A, 24 non-Domain Must Build requirements still block completion: 13 APIs, 3 Workflows, 5 named Agent boundaries and 3 executable test families.
 
 ## Dependency-ordered implementation plan
 
@@ -90,4 +90,4 @@ No runtime API, Workflow, Event emitter, Agent runtime, production integration o
 
 ## Validation boundary
 
-The final clean branch must independently reproduce this audit in the canonical Node.js 20 and 22 Validation matrix. Acceptance requires typecheck, lint, format check, all 48 fixture validators, the complete test suite, contract and behavior acceptance, Book 02 gap validation, and the post-service audit report to pass together without any temporary workflow or payload files.
+The final clean branch must independently reproduce this audit in the canonical Node.js 20 and 22 Validation matrix. Acceptance requires typecheck, lint, format check, all 49 fixture validators, the complete test suite, contract and behavior acceptance, Book 02 gap validation, and the post-service audit report to pass together without any temporary workflow or payload files.

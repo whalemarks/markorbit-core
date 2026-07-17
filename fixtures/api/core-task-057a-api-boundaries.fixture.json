@@ -1,0 +1,172 @@
+[
+  {
+    "requirementId": "must-api-identity-api-contract",
+    "domainId": "identity",
+    "apiType": "identity-api",
+    "apiContractId": "core-api-identity-api-contract",
+    "owningServiceContractId": "core-service-identity-resolution-service-contract",
+    "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/identity-api-contract.md",
+    "implementationTask": "CORE-TASK-057A",
+    "currentDepth": "level_2",
+    "operationCount": 8,
+    "provenCapabilities": [
+      "request validation",
+      "response validation",
+      "reference validation",
+      "permission context validation",
+      "policy context validation",
+      "idempotency validation where duplicate-sensitive",
+      "safe error behavior",
+      "version validation",
+      "owning Service delegation",
+      "no direct Domain mutation",
+      "no direct Event emission"
+    ],
+    "unresolvedCapabilities": [],
+    "implementationFiles": [
+      "src/api/core-governed-api-boundary.ts",
+      "src/api/core-governed-api-specs.ts",
+      "src/api/index.ts"
+    ],
+    "testFiles": ["tests/unit/core-task-057a-api-boundary-foundation.test.ts"],
+    "fixtureFiles": ["fixtures/api/core-task-057a-api-boundaries.fixture.json"],
+    "directDomainMutation": false,
+    "directEventEmission": false
+  },
+  {
+    "requirementId": "must-api-organization-api-contract",
+    "domainId": "organization",
+    "apiType": "organization-api",
+    "apiContractId": "core-api-organization-api-contract",
+    "owningServiceContractId": "core-service-organization-service-contract",
+    "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/organization-api-contract.md",
+    "implementationTask": "CORE-TASK-057A",
+    "currentDepth": "level_2",
+    "operationCount": 9,
+    "provenCapabilities": [
+      "request validation",
+      "response validation",
+      "reference validation",
+      "permission context validation",
+      "policy context validation",
+      "idempotency validation where duplicate-sensitive",
+      "safe error behavior",
+      "version validation",
+      "owning Service delegation",
+      "no direct Domain mutation",
+      "no direct Event emission"
+    ],
+    "unresolvedCapabilities": [],
+    "implementationFiles": [
+      "src/api/core-governed-api-boundary.ts",
+      "src/api/core-governed-api-specs.ts",
+      "src/api/index.ts"
+    ],
+    "testFiles": ["tests/unit/core-task-057a-api-boundary-foundation.test.ts"],
+    "fixtureFiles": ["fixtures/api/core-task-057a-api-boundaries.fixture.json"],
+    "directDomainMutation": false,
+    "directEventEmission": false
+  },
+  {
+    "requirementId": "must-api-user-api-contract",
+    "domainId": "user",
+    "apiType": "user-api",
+    "apiContractId": "core-api-user-api-contract",
+    "owningServiceContractId": "core-service-user-service-contract",
+    "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/user-api-contract.md",
+    "implementationTask": "CORE-TASK-057A",
+    "currentDepth": "level_2",
+    "operationCount": 10,
+    "provenCapabilities": [
+      "request validation",
+      "response validation",
+      "reference validation",
+      "permission context validation",
+      "policy context validation",
+      "idempotency validation where duplicate-sensitive",
+      "safe error behavior",
+      "version validation",
+      "owning Service delegation",
+      "no direct Domain mutation",
+      "no direct Event emission"
+    ],
+    "unresolvedCapabilities": [],
+    "implementationFiles": [
+      "src/api/core-governed-api-boundary.ts",
+      "src/api/core-governed-api-specs.ts",
+      "src/api/index.ts"
+    ],
+    "testFiles": ["tests/unit/core-task-057a-api-boundary-foundation.test.ts"],
+    "fixtureFiles": ["fixtures/api/core-task-057a-api-boundaries.fixture.json"],
+    "directDomainMutation": false,
+    "directEventEmission": false
+  },
+  {
+    "requirementId": "must-api-permission-api-contract",
+    "domainId": "permission",
+    "apiType": "permission-api",
+    "apiContractId": "core-api-permission-api-contract",
+    "owningServiceContractId": "core-service-permission-evaluation-service-contract",
+    "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/permission-api-contract.md",
+    "implementationTask": "CORE-TASK-057A",
+    "currentDepth": "level_2",
+    "operationCount": 8,
+    "provenCapabilities": [
+      "request validation",
+      "response validation",
+      "reference validation",
+      "permission context validation",
+      "policy context validation",
+      "idempotency validation where duplicate-sensitive",
+      "safe error behavior",
+      "version validation",
+      "owning Service delegation",
+      "no direct Domain mutation",
+      "no direct Event emission"
+    ],
+    "unresolvedCapabilities": [],
+    "implementationFiles": [
+      "src/api/core-governed-api-boundary.ts",
+      "src/api/core-governed-api-specs.ts",
+      "src/api/index.ts"
+    ],
+    "testFiles": ["tests/unit/core-task-057a-api-boundary-foundation.test.ts"],
+    "fixtureFiles": ["fixtures/api/core-task-057a-api-boundaries.fixture.json"],
+    "directDomainMutation": false,
+    "directEventEmission": false
+  },
+  {
+    "requirementId": "must-api-policy-api-contract",
+    "domainId": "policy",
+    "apiType": "policy-api",
+    "apiContractId": "core-api-policy-api-contract",
+    "owningServiceContractId": "core-service-policy-evaluation-service-contract",
+    "sourcePath": "books/book-02-core-specification/core-specs/contracts/api/policy-api-contract.md",
+    "implementationTask": "CORE-TASK-057A",
+    "currentDepth": "level_2",
+    "operationCount": 8,
+    "provenCapabilities": [
+      "request validation",
+      "response validation",
+      "reference validation",
+      "permission context validation",
+      "policy context validation",
+      "idempotency validation where duplicate-sensitive",
+      "safe error behavior",
+      "version validation",
+      "owning Service delegation",
+      "no direct Domain mutation",
+      "no direct Event emission"
+    ],
+    "unresolvedCapabilities": [],
+    "implementationFiles": [
+      "src/api/core-governed-api-boundary.ts",
+      "src/api/core-governed-api-specs.ts",
+      "src/api/index.ts"
+    ],
+    "testFiles": ["tests/unit/core-task-057a-api-boundary-foundation.test.ts"],
+    "fixtureFiles": ["fixtures/api/core-task-057a-api-boundaries.fixture.json"],
+    "directDomainMutation": false,
+    "directEventEmission": false
+  }
+]

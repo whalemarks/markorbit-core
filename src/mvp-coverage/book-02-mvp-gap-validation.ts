@@ -13,6 +13,10 @@ import {
 import { CORE_MVP_OBJECT_CANONICAL_PROFILES } from '../objects/core-mvp-object-profiles.ts';
 import { validateCoreMvpObjectBaseRecord } from '../objects/core-mvp-object-validation.ts';
 import {
+  CORE_API_BOUNDARY_EVIDENCE,
+  validateCoreApiBoundaryEvidence
+} from '../api-coverage/index.ts';
+import {
   CORE_SERVICE_BEHAVIOR_EVIDENCE,
   validateCoreServiceBehaviorEvidence
 } from '../service-coverage/index.ts';
@@ -782,6 +786,61 @@ export function validateBook02MvpRequirements(
           issue(
             'book02.service.cross_service_evidence',
             'A Service without its own evidence cannot be promoted by another Service implementation.',
+            `requirements[${index}]`
+          )
+        );
+      }
+    }
+
+    if (r.layer === 'api') {
+      const evidence = CORE_API_BOUNDARY_EVIDENCE.find(
+        (entry) => entry.requirementId === r.id
+      );
+      const apiIssues = validateCoreApiBoundaryEvidence();
+      if (evidence) {
+        if (apiIssues.length > 0)
+          issues.push(
+            issue(
+              'book02.api.fixture_validation_failed',
+              `${evidence.apiType} API evidence and fixture must validate.`,
+              `requirements[${index}]`
+            )
+          );
+        if (!r.contractIds.includes(evidence.apiContractId))
+          issues.push(
+            issue(
+              'book02.api.contract_mismatch',
+              `${evidence.apiType} must reference the exact API contract.`,
+              `requirements[${index}].contractIds`
+            )
+          );
+        const exactFiles = [
+          ...evidence.implementationFiles,
+          ...evidence.testFiles,
+          ...evidence.fixtureFiles
+        ].every((file) =>
+          [
+            ...r.implementationFiles,
+            ...r.testFiles,
+            ...r.fixtureFiles
+          ].includes(file)
+        );
+        if (
+          r.currentDisposition === 'meets_required_depth' &&
+          (r.currentDepth !== 'level_2' || !exactFiles)
+        )
+          issues.push(
+            issue(
+              'book02.api.depth_inconsistent',
+              `${evidence.apiType} meets_required_depth requires exact validator, delegation, tests and fixture evidence.`,
+              `requirements[${index}]`
+            )
+          );
+      } else if (r.currentDisposition === 'meets_required_depth') {
+        issues.push(
+          issue(
+            'book02.api.cross_api_evidence',
+            'An API without its own evidence cannot be promoted by another API implementation.',
             `requirements[${index}]`
           )
         );
