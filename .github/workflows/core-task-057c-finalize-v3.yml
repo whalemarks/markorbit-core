@@ -1,0 +1,71 @@
+name: CORE-TASK-057C Finalize v3
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - '.github/workflows/core-task-057c-finalize-v3.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  finalize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/core-task-057c-final-api-boundaries
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Extract formal steps
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          source=Path('.github/workflows/core-task-057c-finalize.yml').read_text().splitlines()
+          def extract(name):
+              start=next(i for i,l in enumerate(source) if l==f'      - name: {name}')
+              run=next(i for i in range(start+1,len(source)) if source[i]=='        run: |')
+              out=[]
+              for l in source[run+1:]:
+                  if l.startswith('      - name: ') or l.startswith('      - uses: '): break
+                  out.append(l[10:] if l.startswith('          ') else l)
+              return out
+          scripts={n:extract(label) for n,label in {
+              'generate':'Generate final API boundary implementation',
+              'fixtures':'Generate fixtures and migrate baselines',
+              'validate':'Validate repository',
+              'publish':'Publish clean commit'}.items()}
+          lines=[l for l in scripts['fixtures'] if l.strip()!='rm .generate-057c-baseline.mjs']
+          indices=[i for i,l in enumerate(lines) if l.strip()=='pnpm exec tsx .generate-057c-baseline.mjs']
+          if len(indices)!=2: raise SystemExit(f'expected two baseline executions, found {len(indices)}')
+          lines.insert(indices[-1]+1,'rm .generate-057c-baseline.mjs')
+          scripts['fixtures']=lines
+          cleanup=[
+              'rm -f .github/workflows/core-task-057c-finalize-v2.yml',
+              'rm -f .github/workflows/core-task-057c-finalize-v3.yml',
+              'rm -f .github/workflows/core-task-057c-finalizer-fix.yml']
+          publish=[]
+          for l in scripts['publish']:
+              publish.append(l)
+              if l.strip()=='rm -f .github/workflows/core-task-057c-finalize.yml': publish.extend(cleanup)
+          scripts['publish']=publish
+          for name,lines in scripts.items():
+              p=Path(f'/tmp/057c-{name}.sh'); p.write_text('#!/usr/bin/env bash\nset -euo pipefail\n'+'\n'.join(lines)+'\n'); p.chmod(0o755)
+          PY
+      - name: Generate implementation
+        run: /tmp/057c-generate.sh
+      - name: Install dependencies
+        run: |
+          npm install --global pnpm@10
+          pnpm install --frozen-lockfile
+      - name: Generate fixtures
+        run: /tmp/057c-fixtures.sh
+      - name: Validate repository
+        run: /tmp/057c-validate.sh
+      - name: Publish clean commit
+        run: /tmp/057c-publish.sh
