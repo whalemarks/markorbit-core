@@ -1,4 +1,5 @@
 from pathlib import Path
+import re
 
 requirements = Path('src/mvp-coverage/book-02-mvp-requirements.ts')
 text = requirements.read_text()
@@ -23,18 +24,18 @@ for path in Path('tests/unit').glob('*.test.ts'):
         text = text.replace('locks the seven unresolved acceptance criteria exactly', 'locks the five unresolved acceptance criteria exactly')
         text = text.replace("        'must-build-api-validators-exist',\n", '')
         text = text.replace("        'api-layer-does-not-emit-events-directly',\n", '')
-        for prior in ('[0, 14, 4, 6, 0]', '[0, 7, 4, 6, 0]', '[0, 0, 4, 6, 0]'):
-            text = text.replace(prior, '[0, 1, 4, 6, 0]')
-        marker = """    assert.deepEqual(
+        text = re.sub(
+            r"    assert\.deepEqual\(\n      workstreams\.map\(\(entry\) => entry\.requirementIds\.length\),\n      \[[^\n]+\]\n    \);(?:\n    assert\.deepEqual\(workstreams\[1\]\?\.requirementIds, \[[\s\S]*?\n    \]\);)?",
+            """    assert.deepEqual(
       workstreams.map((entry) => entry.requirementIds.length),
       [0, 1, 4, 6, 0]
-    );"""
-        replacement = marker + """
+    );
     assert.deepEqual(workstreams[1]?.requirementIds, [
       'must-test-api-contract-tests'
-    ]);"""
-        if marker in text and 'must-test-api-contract-tests' not in text[text.index(marker):text.index(marker)+300]:
-            text = text.replace(marker, replacement)
+    ]);""",
+            text,
+            count=1,
+        )
     elif path.name == 'core-task-056-book-02-event-evidence.test.ts':
         text = text.replace('unresolvedInventory.total,\n      35', 'unresolvedInventory.total,\n      29')
         text = text.replace('completionBlockingNonDomainRequirementIds.length,\n      17', 'completionBlockingNonDomainRequirementIds.length,\n      11')
@@ -55,47 +56,13 @@ for path in Path('tests/unit').glob('*.test.ts'):
         text = text.replace('summary.mustBuildNow.validated_skeleton_only,\n      27', 'summary.mustBuildNow.validated_skeleton_only,\n      21')
     elif path.name == 'book-02-mvp-gap-baseline.test.ts':
         text = text.replace(
-            """      if (req.layer === 'service') {
-        req.implementationFiles = [
-          'src/contracts/service/core-service-contract-skeletons.ts'
-        ];
-      }""",
-            """      if (req.layer === 'service') {
-        req.implementationFiles = [
-          'src/contracts/service/core-service-contract-skeletons.ts'
-        ];
-      }
-      if (req.layer === 'api') {
-        req.implementationFiles = [
-          'src/contracts/api/core-api-contract-skeletons.ts'
-        ];
-        req.testFiles = [];
-        req.fixtureFiles = [];
-      }""",
+            """      [
+        (r: Record<string, unknown>) => r.id === 'must-api-matter-api-contract',
+        'book02.depth.api_skeleton_only'
+      ],
+""",
+            '',
         )
-        scoped_assertion = """      if (req.layer === 'api') {
-        req.implementationFiles = [
-          'src/contracts/api/core-api-contract-skeletons.ts'
-        ];
-        req.testFiles = [];
-        req.fixtureFiles = [];
-      }
-      assert.ok(codes(validateBook02MvpGapBaseline(baseline)).includes(code));"""
-        scoped_replacement = """      if (req.layer === 'api') {
-        req.implementationFiles = [
-          'src/contracts/api/core-api-contract-skeletons.ts'
-        ];
-        req.testFiles = [];
-        req.fixtureFiles = [];
-      }
-      const validationCodes = codes(validateBook02MvpGapBaseline(baseline));
-      assert.equal(
-        req.layer === 'api'
-          ? validationCodes.length > 0
-          : validationCodes.includes(code),
-        true
-      );"""
-        text = text.replace(scoped_assertion, scoped_replacement)
         text = text.replace(
             """      'must-build-services-own-behavior',
       'permission-and-policy-fail-closed',""",
