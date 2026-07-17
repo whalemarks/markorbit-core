@@ -68,6 +68,7 @@ const validators = {
   core_mvp_event_contract_lock: validateCoreMvpEventContractLockFixture,
   core_task_057a_api_boundaries: validateCoreApiBoundaryFixture,
   core_task_057b_api_boundaries: validateCoreApiBoundaryFixture,
+  core_task_057c_api_boundaries: validateCoreApiBoundaryFixture,
   workflow_catalog_skeletons: validateCoreWorkflowCatalogSkeletonsFixture,
   permission_contract_skeletons: validateCorePermissionContractSkeletonsFixture,
   policy_contract_skeletons: validateCorePolicyContractSkeletonsFixture,

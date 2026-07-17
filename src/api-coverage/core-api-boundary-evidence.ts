@@ -3,6 +3,7 @@ import {
   CORE_GOVERNED_API_BOUNDARY_SPECS,
   CORE_TASK_057A_API_BOUNDARY_SPECS,
   CORE_TASK_057B_API_BOUNDARY_SPECS,
+  CORE_TASK_057C_API_BOUNDARY_SPECS,
   type CoreGovernedApiCapability
 } from '../api/index.ts';
 
@@ -13,7 +14,8 @@ export interface CoreApiBoundaryEvidence {
   readonly apiContractId: string;
   readonly owningServiceContractId: string;
   readonly sourcePath: string;
-  readonly implementationTask: 'CORE-TASK-057A' | 'CORE-TASK-057B';
+  readonly implementationTask:
+    'CORE-TASK-057A' | 'CORE-TASK-057B' | 'CORE-TASK-057C';
   readonly currentDepth: 'level_2';
   readonly operationCount: number;
   readonly provenCapabilities: readonly CoreGovernedApiCapability[];
@@ -33,7 +35,7 @@ const implementationFiles = [
 
 const evidenceFor = (
   specs: readonly import('../api/index.ts').CoreGovernedApiBoundarySpec[],
-  implementationTask: 'CORE-TASK-057A' | 'CORE-TASK-057B'
+  implementationTask: 'CORE-TASK-057A' | 'CORE-TASK-057B' | 'CORE-TASK-057C'
 ): readonly CoreApiBoundaryEvidence[] =>
   specs.map((spec) => ({
     requirementId: `must-api-${spec.domainId}-api-contract`,
@@ -47,12 +49,15 @@ const evidenceFor = (
     operationCount: spec.operations.length,
     provenCapabilities: CORE_GOVERNED_API_REQUIRED_CAPABILITIES,
     unresolvedCapabilities: [],
-    implementationFiles,
+    implementationFiles:
+      implementationTask === 'CORE-TASK-057C'
+        ? [...implementationFiles, 'src/api/core-governed-api-specs-057c.ts']
+        : implementationFiles,
     testFiles: [
-      `tests/unit/core-task-${implementationTask === 'CORE-TASK-057A' ? '057a' : '057b'}-api-boundary-foundation.test.ts`
+      `tests/unit/core-task-${implementationTask === 'CORE-TASK-057A' ? '057a' : implementationTask === 'CORE-TASK-057B' ? '057b' : '057c'}-api-boundary-foundation.test.ts`
     ],
     fixtureFiles: [
-      `fixtures/api/core-task-${implementationTask === 'CORE-TASK-057A' ? '057a' : '057b'}-api-boundaries.fixture.json`
+      `fixtures/api/core-task-${implementationTask === 'CORE-TASK-057A' ? '057a' : implementationTask === 'CORE-TASK-057B' ? '057b' : '057c'}-api-boundaries.fixture.json`
     ],
     directDomainMutation: false,
     directEventEmission: false
@@ -68,9 +73,15 @@ export const CORE_TASK_057B_API_BOUNDARY_EVIDENCE = evidenceFor(
   'CORE-TASK-057B'
 );
 
+export const CORE_TASK_057C_API_BOUNDARY_EVIDENCE = evidenceFor(
+  CORE_TASK_057C_API_BOUNDARY_SPECS,
+  'CORE-TASK-057C'
+);
+
 export const CORE_API_BOUNDARY_EVIDENCE = [
   ...CORE_TASK_057A_API_BOUNDARY_EVIDENCE,
-  ...CORE_TASK_057B_API_BOUNDARY_EVIDENCE
+  ...CORE_TASK_057B_API_BOUNDARY_EVIDENCE,
+  ...CORE_TASK_057C_API_BOUNDARY_EVIDENCE
 ] as readonly CoreApiBoundaryEvidence[];
 
 void CORE_GOVERNED_API_BOUNDARY_SPECS;

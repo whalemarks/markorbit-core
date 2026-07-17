@@ -2,6 +2,7 @@ import {
   CORE_API_BOUNDARY_EVIDENCE,
   CORE_TASK_057A_API_BOUNDARY_EVIDENCE,
   CORE_TASK_057B_API_BOUNDARY_EVIDENCE,
+  CORE_TASK_057C_API_BOUNDARY_EVIDENCE,
   validateCoreApiBoundaryEvidence,
   type CoreApiBoundaryEvidence
 } from '../api-coverage/index.ts';
@@ -29,7 +30,9 @@ export function validateCoreApiBoundaryFixture(fixture: unknown) {
     ? CORE_TASK_057A_API_BOUNDARY_EVIDENCE
     : typed.every((entry) => entry?.implementationTask === 'CORE-TASK-057B')
       ? CORE_TASK_057B_API_BOUNDARY_EVIDENCE
-      : CORE_API_BOUNDARY_EVIDENCE;
+      : typed.every((entry) => entry?.implementationTask === 'CORE-TASK-057C')
+        ? CORE_TASK_057C_API_BOUNDARY_EVIDENCE
+        : CORE_API_BOUNDARY_EVIDENCE;
   for (const message of validateCoreApiBoundaryEvidence(typed))
     issues.push({
       code: 'core.api_boundary.validation',

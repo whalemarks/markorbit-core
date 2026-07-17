@@ -35,14 +35,14 @@ describe('CORE-TASK-057A Book 02 API evidence', () => {
     }
   });
 
-  it('leaves the remaining six API requirements structural and fail-closed', () => {
+  it('confirms no Must Build API requirements remain structural', () => {
     const incomplete = BOOK_02_MVP_GAP_BASELINE.requirements.filter(
       (entry) =>
         entry.layer === 'api' &&
         entry.category === 'must_build_now' &&
         entry.currentDisposition !== 'meets_required_depth'
     );
-    assert.equal(incomplete.length, 6);
+    assert.equal(incomplete.length, 0);
     assert.ok(
       incomplete.every(
         (entry) => entry.currentDisposition === 'validated_skeleton_only'
@@ -50,12 +50,12 @@ describe('CORE-TASK-057A Book 02 API evidence', () => {
     );
   });
 
-  it('advances the baseline without falsely completing the API acceptance criterion', () => {
+  it('advances the baseline and completes the API acceptance criterion', () => {
     assert.deepEqual(BOOK_02_MVP_GAP_BASELINE.summary.mustBuildNow, {
       total: 115,
-      meets_required_depth: 80,
+      meets_required_depth: 86,
       partial_evidence: 3,
-      validated_skeleton_only: 27,
+      validated_skeleton_only: 21,
       boundary_scaffold_only: 5,
       semantic_overlap_only: 0,
       fixture_only: 0,
@@ -64,30 +64,31 @@ describe('CORE-TASK-057A Book 02 API evidence', () => {
     const apiCriterion = BOOK_02_MVP_GAP_BASELINE.acceptanceCriteria.find(
       (entry) => entry.id === 'must-build-api-validators-exist'
     );
-    assert.equal(apiCriterion?.satisfied, false);
+    assert.equal(apiCriterion?.satisfied, true);
     assert.equal(
       BOOK_02_MVP_GAP_BASELINE.summary.acceptance.book02MvpComplete,
       false
     );
   });
 
-  it('retains six unresolved API blockers and selects CORE-TASK-057C', () => {
+  it('closes API blockers and selects CORE-TASK-058A', () => {
     assert.equal(
       BOOK_02_POST_SERVICE_COMPLETION_AUDIT.unresolvedInventory.total,
-      35
+      29
     );
     assert.equal(
-      BOOK_02_POST_SERVICE_COMPLETION_AUDIT.unresolvedInventory.byLayer.api,
-      6
+      'api' in
+        BOOK_02_POST_SERVICE_COMPLETION_AUDIT.unresolvedInventory.byLayer,
+      false
     );
     assert.equal(
       BOOK_02_POST_SERVICE_COMPLETION_AUDIT.completionSemantics
         .completionBlockingNonDomainRequirementIds.length,
-      17
+      11
     );
     assert.equal(
       BOOK_02_POST_SERVICE_COMPLETION_AUDIT.nextTask,
-      'CORE-TASK-057C'
+      'CORE-TASK-058A'
     );
   });
 });
