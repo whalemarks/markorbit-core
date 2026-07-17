@@ -6,6 +6,10 @@ import {
   validateCoreApiBoundaryFixture
 } from '../../src/index.ts';
 
+const coreTask057aEvidence = CORE_API_BOUNDARY_EVIDENCE.filter(
+  (entry) => entry.implementationTask === 'CORE-TASK-057A'
+);
+
 describe('CORE-TASK-057A API boundary fixture', () => {
   it('matches deterministic source evidence and validates cleanly', async () => {
     const fixture = JSON.parse(
@@ -14,7 +18,7 @@ describe('CORE-TASK-057A API boundary fixture', () => {
         'utf8'
       )
     );
-    assert.deepEqual(fixture, CORE_API_BOUNDARY_EVIDENCE);
+    assert.deepEqual(fixture, coreTask057aEvidence);
     assert.equal(validateCoreApiBoundaryFixture(fixture).ok, true);
   });
 });
