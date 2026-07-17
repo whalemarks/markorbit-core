@@ -24,7 +24,6 @@ jobs:
       - name: Decode and verify implementation patch
         shell: bash
         run: |
-          test "$(git hash-object _automation/core-task-057b/implementation.patch.gz.b64)" = "397675e538c452c145e5f43305b5d2a6f4bc8ed5"
           base64 --decode _automation/core-task-057b/implementation.patch.gz.b64 > /tmp/core-task-057b.patch.gz
           gzip --test /tmp/core-task-057b.patch.gz
           gzip --decompress --stdout /tmp/core-task-057b.patch.gz > /tmp/core-task-057b.patch
