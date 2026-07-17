@@ -5,3 +5,4 @@ export * from './core-workflow-step.ts';
 export * from './core-workflow-transition.ts';
 export * from './core-workflow-contract.ts';
 export * from './core-workflow-contract-validation.ts';
+export * from './core-customer-intake-workflow.ts';

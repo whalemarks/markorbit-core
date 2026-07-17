@@ -26,6 +26,7 @@ import {
   CORE_SERVICE_BEHAVIOR_EVIDENCE,
   validateCoreServiceBehaviorEvidence
 } from '../service-coverage/index.ts';
+import { CORE_TASK_058A_CUSTOMER_INTAKE_WORKFLOW_EVIDENCE } from '../workflows/index.ts';
 import {
   CORE_MVP_OBJECT_FIXTURE_PUBLIC_REFERENCE_RECORDS,
   coreMvpObjectFixtureValidationContextFor
@@ -736,6 +737,25 @@ function evidenceFor(identity: Book02MvpRequirementIdentity): CurrentEvidence {
       : emptyEvidence();
   }
   if (identity.layer === 'workflow') {
+    if (
+      identity.id ===
+      CORE_TASK_058A_CUSTOMER_INTAKE_WORKFLOW_EVIDENCE.workflowId
+    )
+      return {
+        contractIds: [
+          CORE_TASK_058A_CUSTOMER_INTAKE_WORKFLOW_EVIDENCE.workflowContractId
+        ],
+        implementationFiles: existing(
+          CORE_TASK_058A_CUSTOMER_INTAKE_WORKFLOW_EVIDENCE.implementationFiles
+        ),
+        testFiles: existing(
+          CORE_TASK_058A_CUSTOMER_INTAKE_WORKFLOW_EVIDENCE.testFiles
+        ),
+        fixtureFiles: existing(
+          CORE_TASK_058A_CUSTOMER_INTAKE_WORKFLOW_EVIDENCE.fixtureFiles
+        ),
+        currentDepth: 'level_2'
+      };
     const workflowType = identity.id
       .replace(/^must-workflow-/, '')
       .replace(/^stub-workflow-/, '');
@@ -948,6 +968,28 @@ function disposition(
         )
       ) &&
       evidence.unresolvedCapabilities.length === 0
+    )
+      return 'meets_required_depth';
+    return ev.testFiles.length > 0
+      ? 'partial_evidence'
+      : ev.contractIds.length > 0
+        ? 'validated_skeleton_only'
+        : 'missing';
+  }
+  if (identity.layer === 'workflow') {
+    if (
+      identity.id ===
+        CORE_TASK_058A_CUSTOMER_INTAKE_WORKFLOW_EVIDENCE.workflowId &&
+      ev.currentDepth === 'level_2' &&
+      ev.implementationFiles.length > 0 &&
+      ev.testFiles.length > 0 &&
+      ev.fixtureFiles.length > 0 &&
+      CORE_TASK_058A_CUSTOMER_INTAKE_WORKFLOW_EVIDENCE.previewSupported &&
+      CORE_TASK_058A_CUSTOMER_INTAKE_WORKFLOW_EVIDENCE.applySupported &&
+      CORE_TASK_058A_CUSTOMER_INTAKE_WORKFLOW_EVIDENCE.directDomainMutation ===
+        false &&
+      CORE_TASK_058A_CUSTOMER_INTAKE_WORKFLOW_EVIDENCE.directEventEmission ===
+        false
     )
       return 'meets_required_depth';
     return ev.testFiles.length > 0

@@ -49,7 +49,8 @@ export const CORE_FIXTURE_TYPES = [
   'core_task_service_actionable_work_foundation',
   'core_workflow_contract_service_execution_structure_foundation',
   'core_communication_service_governed_communication_foundation',
-  'core_event_service_governed_occurrence_foundation'
+  'core_event_service_governed_occurrence_foundation',
+  'core_task_058a_customer_intake_workflow'
 ] as const;
 
 export type CoreFixtureType = (typeof CORE_FIXTURE_TYPES)[number];
@@ -349,6 +350,12 @@ export const CORE_FIXTURE_MANIFEST = [
     id: 'core-communication-service-governed-communication-foundation',
     type: 'core_communication_service_governed_communication_foundation',
     path: 'fixtures/services/core-communication-service-governed-communication-foundation.fixture.json',
+    required: true
+  },
+  {
+    id: 'core-task-058a-customer-intake-workflow',
+    type: 'core_task_058a_customer_intake_workflow',
+    path: 'fixtures/workflows/core-task-058a-customer-intake-workflow.fixture.json',
     required: true
   },
   {

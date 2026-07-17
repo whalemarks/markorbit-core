@@ -22,12 +22,12 @@ describe('CORE-TASK-048 Book 02 Workflow Contract Service evidence', () => {
     ]);
   });
 
-  it('derives 86 / 3 / 21 and closes the final foundational authority Service gap', () => {
+  it('derives 87 / 3 / 20 and closes the final foundational authority Service gap', () => {
     assert.deepEqual(BOOK_02_MVP_GAP_BASELINE.summary.mustBuildNow, {
       total: 115,
-      meets_required_depth: 86,
+      meets_required_depth: 87,
       partial_evidence: 3,
-      validated_skeleton_only: 21,
+      validated_skeleton_only: 20,
       boundary_scaffold_only: 5,
       semantic_overlap_only: 0,
       fixture_only: 0,

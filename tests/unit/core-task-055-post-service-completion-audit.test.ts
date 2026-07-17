@@ -18,27 +18,27 @@ describe('CORE-TASK-055 post-service completion audit', () => {
       zeroServiceGap: true
     });
     assert.equal(audit.sourceBaseline.book02MvpComplete, false);
-    assert.equal(audit.nextTask, 'CORE-TASK-058A');
+    assert.equal(audit.nextTask, 'CORE-TASK-058B');
   });
 
-  it('records Event closure and the remaining 29 unresolved Must Build requirements', () => {
+  it('records Event closure and the remaining 28 unresolved Must Build requirements', () => {
     const audit = BOOK_02_POST_SERVICE_COMPLETION_AUDIT;
-    assert.equal(audit.unresolvedInventory.total, 29);
+    assert.equal(audit.unresolvedInventory.total, 28);
     assert.deepEqual(audit.unresolvedInventory.byLayer, {
       domain: 18,
-      workflow: 3,
+      workflow: 2,
       agent: 5,
       test: 3
     });
     assert.deepEqual(audit.unresolvedInventory.byDisposition, {
-      validated_skeleton_only: 21,
+      validated_skeleton_only: 20,
       boundary_scaffold_only: 5,
       partial_evidence: 3
     });
     assert.equal(
       audit.completionSemantics.completionBlockingNonDomainRequirementIds
         .length,
-      11
+      10
     );
   });
 
@@ -47,7 +47,6 @@ describe('CORE-TASK-055 post-service completion audit', () => {
       BOOK_02_POST_SERVICE_COMPLETION_AUDIT.unresolvedInventory
         .unresolvedAcceptanceCriterionIds,
       [
-        'customer-intake-workflow-supports-preview-apply',
         'trademark-application-workflow-supports-preview-apply',
         'communication-review-workflow-supports-preview-apply',
         'workflow-layer-does-not-emit-events-directly',
@@ -83,7 +82,7 @@ describe('CORE-TASK-055 post-service completion audit', () => {
     assert.deepEqual(workstreams[1]?.requirementIds, [
       'must-test-api-contract-tests'
     ]);
-    assert.equal(workstreams[2]?.requirementIds.length, 4);
+    assert.equal(workstreams[2]?.requirementIds.length, 3);
     assert.equal(workstreams[3]?.requirementIds.length, 6);
     assert.deepEqual(workstreams[4]?.requirementIds, []);
   });
