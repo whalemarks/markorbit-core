@@ -847,11 +847,16 @@ const domainCrudOperations = (
         'objectRecord',
         'publicReferenceRecord',
         'sourceReference',
+        ...(domain === 'brand' ? ['customerReferenceId'] : []),
         'metadata',
         'aiInitiated',
         'agentContractReferenceId'
       ],
-      ['sourceReference', 'agentContractReferenceId'],
+      [
+        'sourceReference',
+        ...(domain === 'brand' ? ['customerReferenceId'] : []),
+        'agentContractReferenceId'
+      ],
       ['objectRecord', 'publicReferenceRecord', 'metadata'],
       [],
       ['aiInitiated']

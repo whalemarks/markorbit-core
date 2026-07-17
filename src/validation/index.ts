@@ -26,3 +26,4 @@ export * from './core-book-02-post-service-completion-audit-fixture-validation.t
 export * from './core-mvp-event-contract-lock-fixture-validation.ts';
 
 export * from './core-api-boundary-fixture-validation.ts';
+export * from './core-customer-intake-workflow-fixture-validation.ts';

@@ -90,7 +90,7 @@ describe('Book 02 MVP gap baseline validation', () => {
       'src/services/identity/core-identity-service.ts'
     ]);
     assert.deepEqual(workflow?.implementationFiles, [
-      'src/contracts/workflow/core-workflow-catalog-skeletons.ts'
+      'src/workflows/core-customer-intake-workflow.ts'
     ]);
     assert.notDeepEqual(
       domain?.implementationFiles,
@@ -470,7 +470,9 @@ describe('Book 02 MVP gap baseline validation', () => {
         'book02.depth.service_contract_index_only'
       ],
       [
-        (r: Record<string, unknown>) => r.layer === 'workflow',
+        (r: Record<string, unknown>) =>
+          r.layer === 'workflow' &&
+          r.currentDisposition === 'validated_skeleton_only',
         'book02.depth.workflow_skeleton_only'
       ],
       [
@@ -598,6 +600,7 @@ describe('Book 02 MVP gap baseline validation', () => {
       'must-build-objects-have-public-reference-ids',
       'must-build-services-own-behavior',
       'must-build-api-validators-exist',
+      'customer-intake-workflow-supports-preview-apply',
       'permission-and-policy-fail-closed',
       'ai-forbidden-actions-are-blocked',
       'human-review-gates-protected-actions',

@@ -68,7 +68,8 @@ export interface Book02PostServiceCompletionAudit {
     readonly resolvedFormula: 'acceptance_plus_non_domain_depth';
   };
   readonly executionWorkstreams: readonly Book02ExecutionWorkstream[];
-  readonly nextTask: 'CORE-TASK-057B' | 'CORE-TASK-057C' | 'CORE-TASK-058A';
+  readonly nextTask:
+    'CORE-TASK-057B' | 'CORE-TASK-057C' | 'CORE-TASK-058A' | 'CORE-TASK-058B';
 }
 
 const sortedIds = (requirements: readonly Book02MvpRequirement[]) =>
@@ -255,7 +256,11 @@ export function deriveBook02PostServiceCompletionAudit(
         ? 'CORE-TASK-057B'
         : apiIds.length > 0
           ? 'CORE-TASK-057C'
-          : 'CORE-TASK-058A'
+          : baseline.summary.acceptance.unresolvedCriteria.includes(
+                'customer-intake-workflow-supports-preview-apply'
+              )
+            ? 'CORE-TASK-058A'
+            : 'CORE-TASK-058B'
   };
 }
 
