@@ -46,7 +46,8 @@ jobs:
               'rm -f .github/workflows/core-task-057c-finalize-v4.yml',
               'rm -f .github/workflows/core-task-057c-finalize-v5.yml',
               'rm -f .github/workflows/core-task-057c-finalizer-fix.yml',
-              'rm -f .github/workflows/core-task-057c-typecheck-diagnostic.yml']
+              'rm -f .github/workflows/core-task-057c-typecheck-diagnostic.yml',
+              'rm -f .github/workflows/core-task-057c-fixture-diagnostic.yml']
           publish=[]
           for l in scripts['publish']:
               publish.append(l)
@@ -63,8 +64,7 @@ jobs:
           python - <<'PY'
           from pathlib import Path
           p=Path('src/api-coverage/core-api-boundary-evidence.ts')
-          s=p.read_text()
-          s=s.replace(
+          s=p.read_text().replace(
               "CORE_TASK_057B_API_BOUNDARY_SPECS,\n  CORE_TASK_057C_API_BOUNDARY_SPECS,\n  'CORE-TASK-057B'",
               "CORE_TASK_057B_API_BOUNDARY_SPECS,\n  'CORE-TASK-057B'"
           )
