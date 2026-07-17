@@ -96,8 +96,28 @@ jobs:
         run: |
           npm install --global pnpm@10
           pnpm install --frozen-lockfile
-      - name: Generate fixtures
-        run: /tmp/057c-fixtures.sh
+      - name: Generate fixtures and reapply terminal migration
+        shell: bash
+        run: |
+          /tmp/057c-fixtures.sh
+          python _automation/core-task-057c-terminal-migration.py
+          cat > .regenerate-057c-terminal-baseline.mjs <<'EOF'
+          import { writeFileSync } from 'node:fs';
+          import {
+            BOOK_02_MVP_GAP_BASELINE,
+            BOOK_02_POST_SERVICE_COMPLETION_AUDIT
+          } from './src/index.ts';
+          writeFileSync(
+            'fixtures/mvp-coverage/book-02-mvp-gap-baseline.fixture.json',
+            JSON.stringify(BOOK_02_MVP_GAP_BASELINE, null, 2) + '\n'
+          );
+          writeFileSync(
+            'fixtures/mvp-coverage/book-02-post-service-completion-audit.fixture.json',
+            JSON.stringify(BOOK_02_POST_SERVICE_COMPLETION_AUDIT, null, 2) + '\n'
+          );
+          EOF
+          pnpm exec tsx .regenerate-057c-terminal-baseline.mjs
+          rm .regenerate-057c-terminal-baseline.mjs
       - name: Format
         run: pnpm format
       - name: Upload generated audit test
