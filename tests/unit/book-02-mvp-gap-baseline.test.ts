@@ -472,7 +472,7 @@ describe('Book 02 MVP gap baseline validation', () => {
       [
         (r: Record<string, unknown>) =>
           r.layer === 'workflow' &&
-          r.currentDisposition === 'validated_skeleton_only',
+          r.currentDisposition === 'boundary_scaffold_only',
         'book02.depth.workflow_skeleton_only'
       ],
       [
@@ -602,6 +602,7 @@ describe('Book 02 MVP gap baseline validation', () => {
       'must-build-api-validators-exist',
       'customer-intake-workflow-supports-preview-apply',
       'trademark-application-workflow-supports-preview-apply',
+      'communication-review-workflow-supports-preview-apply',
       'permission-and-policy-fail-closed',
       'ai-forbidden-actions-are-blocked',
       'human-review-gates-protected-actions',

@@ -15,15 +15,15 @@
     "mustBuildTotal": 115,
     "dispositionCounts": {
       "total": 115,
-      "meets_required_depth": 88,
+      "meets_required_depth": 89,
       "partial_evidence": 3,
-      "validated_skeleton_only": 19,
+      "validated_skeleton_only": 18,
       "boundary_scaffold_only": 5,
       "semantic_overlap_only": 0,
       "fixture_only": 0,
       "missing": 0
     },
-    "acceptanceSatisfied": 16,
+    "acceptanceSatisfied": 17,
     "acceptanceTotal": 19,
     "book02MvpComplete": false
   },
@@ -34,15 +34,14 @@
     "zeroServiceGap": true
   },
   "unresolvedInventory": {
-    "total": 27,
+    "total": 26,
     "byLayer": {
       "domain": 18,
-      "workflow": 1,
       "agent": 5,
       "test": 3
     },
     "byDisposition": {
-      "validated_skeleton_only": 19,
+      "validated_skeleton_only": 18,
       "boundary_scaffold_only": 5,
       "partial_evidence": 3
     },
@@ -67,7 +66,6 @@
         "must-domain-user",
         "must-domain-workflow-contract"
       ],
-      "workflow": ["must-workflow-communication-review-workflow"],
       "agent": [
         "must-agent-audit-agent",
         "must-agent-communication-agent",
@@ -82,7 +80,6 @@
       ]
     },
     "unresolvedAcceptanceCriterionIds": [
-      "communication-review-workflow-supports-preview-apply",
       "workflow-layer-does-not-emit-events-directly",
       "agent-layer-does-not-emit-events-directly"
     ]
@@ -120,8 +117,7 @@
       "must-agent-workflow-agent",
       "must-test-agent-boundary-tests",
       "must-test-api-contract-tests",
-      "must-test-workflow-contract-tests",
-      "must-workflow-communication-review-workflow"
+      "must-test-workflow-contract-tests"
     ],
     "allAcceptanceCriteriaMustPass": true,
     "allNonDomainMustBuildRequirementsMustMeetDepth": true,
@@ -155,10 +151,7 @@
       "id": "workflow-preview-apply",
       "order": 3,
       "taskIds": ["CORE-TASK-058A", "CORE-TASK-058B", "CORE-TASK-058C"],
-      "requirementIds": [
-        "must-workflow-communication-review-workflow",
-        "must-test-workflow-contract-tests"
-      ],
+      "requirementIds": ["must-test-workflow-contract-tests"],
       "acceptanceCriterionIds": [
         "customer-intake-workflow-supports-preview-apply",
         "trademark-application-workflow-supports-preview-apply",
@@ -199,5 +192,5 @@
       "completionEffect": "Regenerate all fixtures, prove every non-Domain Must Build requirement reaches its locked depth, prove all 19 acceptance criteria pass, and set Book 02 MVP complete without deepening deferred or forbidden capabilities."
     }
   ],
-  "nextTask": "CORE-TASK-058C"
+  "nextTask": "CORE-TASK-059"
 }

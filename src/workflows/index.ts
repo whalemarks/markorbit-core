@@ -8,3 +8,5 @@ export * from './core-workflow-contract-validation.ts';
 export * from './core-customer-intake-workflow.ts';
 
 export * from './core-trademark-application-workflow.ts';
+
+export * from './core-communication-review-workflow.ts';

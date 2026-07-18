@@ -6,7 +6,7 @@ import {
 } from '../../src/index.ts';
 
 describe('CORE-TASK-058A Book 02 Workflow evidence', () => {
-  it('keeps Customer and Trademark Workflow evidence promoted while Communication remains unresolved', () => {
+  it('keeps Customer, Trademark, and Communication Workflow evidence promoted', () => {
     const evidence = CORE_TASK_058A_CUSTOMER_INTAKE_WORKFLOW_EVIDENCE;
     assert.equal(evidence.implementationTask, 'CORE-TASK-058A');
     assert.equal(evidence.previewSupported, true);
@@ -34,12 +34,12 @@ describe('CORE-TASK-058A Book 02 Workflow evidence', () => {
     );
     assert.equal(customer?.currentDisposition, 'meets_required_depth');
     assert.equal(trademark?.currentDisposition, 'meets_required_depth');
-    assert.notEqual(communication?.currentDisposition, 'meets_required_depth');
+    assert.equal(communication?.currentDisposition, 'meets_required_depth');
     assert.equal(
       BOOK_02_MVP_GAP_BASELINE.summary.acceptance.unresolvedCriteria.includes(
         'communication-review-workflow-supports-preview-apply'
       ),
-      true
+      false
     );
   });
 });

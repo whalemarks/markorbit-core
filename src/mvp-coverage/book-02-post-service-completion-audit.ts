@@ -73,7 +73,8 @@ export interface Book02PostServiceCompletionAudit {
     | 'CORE-TASK-057C'
     | 'CORE-TASK-058A'
     | 'CORE-TASK-058B'
-    | 'CORE-TASK-058C';
+    | 'CORE-TASK-058C'
+    | 'CORE-TASK-059';
 }
 
 const sortedIds = (requirements: readonly Book02MvpRequirement[]) =>
@@ -268,7 +269,11 @@ export function deriveBook02PostServiceCompletionAudit(
                   'trademark-application-workflow-supports-preview-apply'
                 )
               ? 'CORE-TASK-058B'
-              : 'CORE-TASK-058C'
+              : baseline.summary.acceptance.unresolvedCriteria.includes(
+                    'communication-review-workflow-supports-preview-apply'
+                  )
+                ? 'CORE-TASK-058C'
+                : 'CORE-TASK-059'
   };
 }
 
