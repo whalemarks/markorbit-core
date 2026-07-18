@@ -396,7 +396,7 @@ describe('Book 02 MVP gap baseline validation', () => {
         ['must-test-common-contract-tests', 'meets_required_depth'],
         ['must-test-api-contract-tests', 'partial_evidence'],
         ['must-test-workflow-contract-tests', 'partial_evidence'],
-        ['must-test-agent-boundary-tests', 'partial_evidence'],
+        ['must-test-agent-boundary-tests', 'meets_required_depth'],
         ['must-test-permission-policy-tests', 'meets_required_depth'],
         ['must-test-idempotency-event-tests', 'meets_required_depth'],
         ['must-test-error-versioning-tests', 'meets_required_depth']
@@ -488,6 +488,9 @@ describe('Book 02 MVP gap baseline validation', () => {
         req.implementationFiles = [
           'src/contracts/service/core-service-contract-skeletons.ts'
         ];
+      }
+      if (req.layer === 'agent') {
+        req.implementationFiles = ['src/behaviors/core-agent-boundary.ts'];
       }
       assert.ok(codes(validateBook02MvpGapBaseline(baseline)).includes(code));
     }
@@ -609,6 +612,7 @@ describe('Book 02 MVP gap baseline validation', () => {
       'idempotency-replay-and-conflict-are-tested',
       'event-trace-exists-and-is-not-command',
       'api-layer-does-not-emit-events-directly',
+      'agent-layer-does-not-emit-events-directly',
       'errors-are-safe',
       'unsupported-versions-fail-closed',
       'deferred-items-do-not-block-mvp',

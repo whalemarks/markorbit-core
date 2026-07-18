@@ -18,37 +18,32 @@ describe('CORE-TASK-055 post-service completion audit', () => {
       zeroServiceGap: true
     });
     assert.equal(audit.sourceBaseline.book02MvpComplete, false);
-    assert.equal(audit.nextTask, 'CORE-TASK-059');
+    assert.equal(audit.nextTask, 'CORE-TASK-060');
   });
 
-  it('records Event closure and the remaining 26 unresolved Must Build requirements', () => {
+  it('records Event closure and the remaining 20 unresolved Must Build requirements', () => {
     const audit = BOOK_02_POST_SERVICE_COMPLETION_AUDIT;
-    assert.equal(audit.unresolvedInventory.total, 26);
+    assert.equal(audit.unresolvedInventory.total, 20);
     assert.deepEqual(audit.unresolvedInventory.byLayer, {
       domain: 18,
-      agent: 5,
-      test: 3
+      test: 2
     });
     assert.deepEqual(audit.unresolvedInventory.byDisposition, {
       validated_skeleton_only: 18,
-      boundary_scaffold_only: 5,
-      partial_evidence: 3
+      partial_evidence: 2
     });
     assert.equal(
       audit.completionSemantics.completionBlockingNonDomainRequirementIds
         .length,
-      8
+      2
     );
   });
 
-  it('locks the three unresolved acceptance criteria exactly', () => {
+  it('locks the unresolved acceptance criteria exactly', () => {
     assert.deepEqual(
       BOOK_02_POST_SERVICE_COMPLETION_AUDIT.unresolvedInventory
         .unresolvedAcceptanceCriterionIds,
-      [
-        'workflow-layer-does-not-emit-events-directly',
-        'agent-layer-does-not-emit-events-directly'
-      ]
+      ['workflow-layer-does-not-emit-events-directly']
     );
   });
 
@@ -80,7 +75,7 @@ describe('CORE-TASK-055 post-service completion audit', () => {
       'must-test-api-contract-tests'
     ]);
     assert.equal(workstreams[2]?.requirementIds.length, 1);
-    assert.equal(workstreams[3]?.requirementIds.length, 6);
+    assert.equal(workstreams[3]?.requirementIds.length, 0);
     assert.deepEqual(workstreams[4]?.requirementIds, []);
   });
 

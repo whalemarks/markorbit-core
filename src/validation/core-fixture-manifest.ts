@@ -51,7 +51,8 @@ export const CORE_FIXTURE_TYPES = [
   'core_communication_service_governed_communication_foundation',
   'core_event_service_governed_occurrence_foundation',
   'core_task_058a_customer_intake_workflow',
-  'core_task_058c_communication_review_workflow'
+  'core_task_058c_communication_review_workflow',
+  'core_task_059_named_agent_boundaries'
 ] as const;
 
 export type CoreFixtureType = (typeof CORE_FIXTURE_TYPES)[number];
@@ -381,6 +382,12 @@ export const CORE_FIXTURE_MANIFEST = [
     id: 'book-02-mvp-gap-baseline',
     type: 'book_02_mvp_gap_baseline',
     path: 'fixtures/mvp-coverage/book-02-mvp-gap-baseline.fixture.json',
+    required: true
+  },
+  {
+    id: 'core-task-059-named-agent-boundaries',
+    type: 'core_task_059_named_agent_boundaries',
+    path: 'fixtures/agents/core-task-059-named-agent-boundaries.fixture.json',
     required: true
   }
 ] as const satisfies readonly CoreFixtureManifestEntry[];

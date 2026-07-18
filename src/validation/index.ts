@@ -29,3 +29,4 @@ export * from './core-api-boundary-fixture-validation.ts';
 export * from './core-customer-intake-workflow-fixture-validation.ts';
 
 export * from './core-communication-review-workflow-fixture-validation.ts';
+export * from './core-task-059-named-agent-boundaries-fixture-validation.ts';

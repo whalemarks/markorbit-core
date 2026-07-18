@@ -15,15 +15,15 @@
     "mustBuildTotal": 115,
     "dispositionCounts": {
       "total": 115,
-      "meets_required_depth": 89,
-      "partial_evidence": 3,
+      "meets_required_depth": 95,
+      "partial_evidence": 2,
       "validated_skeleton_only": 18,
-      "boundary_scaffold_only": 5,
+      "boundary_scaffold_only": 0,
       "semantic_overlap_only": 0,
       "fixture_only": 0,
       "missing": 0
     },
-    "acceptanceSatisfied": 17,
+    "acceptanceSatisfied": 18,
     "acceptanceTotal": 19,
     "book02MvpComplete": false
   },
@@ -34,16 +34,14 @@
     "zeroServiceGap": true
   },
   "unresolvedInventory": {
-    "total": 26,
+    "total": 20,
     "byLayer": {
       "domain": 18,
-      "agent": 5,
-      "test": 3
+      "test": 2
     },
     "byDisposition": {
       "validated_skeleton_only": 18,
-      "boundary_scaffold_only": 5,
-      "partial_evidence": 3
+      "partial_evidence": 2
     },
     "requirementIdsByLayer": {
       "domain": [
@@ -66,22 +64,13 @@
         "must-domain-user",
         "must-domain-workflow-contract"
       ],
-      "agent": [
-        "must-agent-audit-agent",
-        "must-agent-communication-agent",
-        "must-agent-knowledge-agent",
-        "must-agent-task-agent",
-        "must-agent-workflow-agent"
-      ],
       "test": [
-        "must-test-agent-boundary-tests",
         "must-test-api-contract-tests",
         "must-test-workflow-contract-tests"
       ]
     },
     "unresolvedAcceptanceCriterionIds": [
-      "workflow-layer-does-not-emit-events-directly",
-      "agent-layer-does-not-emit-events-directly"
+      "workflow-layer-does-not-emit-events-directly"
     ]
   },
   "completionSemantics": {
@@ -110,12 +99,6 @@
       "must-domain-workflow-contract"
     ],
     "completionBlockingNonDomainRequirementIds": [
-      "must-agent-audit-agent",
-      "must-agent-communication-agent",
-      "must-agent-knowledge-agent",
-      "must-agent-task-agent",
-      "must-agent-workflow-agent",
-      "must-test-agent-boundary-tests",
       "must-test-api-contract-tests",
       "must-test-workflow-contract-tests"
     ],
@@ -129,7 +112,9 @@
     {
       "id": "exact-event-contracts",
       "order": 1,
-      "taskIds": ["CORE-TASK-056"],
+      "taskIds": [
+        "CORE-TASK-056"
+      ],
       "requirementIds": [],
       "acceptanceCriterionIds": [],
       "dependencies": [],
@@ -138,49 +123,67 @@
     {
       "id": "api-validator-delegation",
       "order": 2,
-      "taskIds": ["CORE-TASK-057A", "CORE-TASK-057B", "CORE-TASK-057C"],
-      "requirementIds": ["must-test-api-contract-tests"],
+      "taskIds": [
+        "CORE-TASK-057A",
+        "CORE-TASK-057B",
+        "CORE-TASK-057C"
+      ],
+      "requirementIds": [
+        "must-test-api-contract-tests"
+      ],
       "acceptanceCriterionIds": [
         "must-build-api-validators-exist",
         "api-layer-does-not-emit-events-directly"
       ],
-      "dependencies": ["exact-event-contracts"],
+      "dependencies": [
+        "exact-event-contracts"
+      ],
       "completionEffect": "Add request/response/reference/governance/version/idempotency validators, Service delegation, safe errors, and executable no-direct-mutation/no-direct-Event tests for all 18 MVP APIs."
     },
     {
       "id": "workflow-preview-apply",
       "order": 3,
-      "taskIds": ["CORE-TASK-058A", "CORE-TASK-058B", "CORE-TASK-058C"],
-      "requirementIds": ["must-test-workflow-contract-tests"],
+      "taskIds": [
+        "CORE-TASK-058A",
+        "CORE-TASK-058B",
+        "CORE-TASK-058C"
+      ],
+      "requirementIds": [
+        "must-test-workflow-contract-tests"
+      ],
       "acceptanceCriterionIds": [
         "customer-intake-workflow-supports-preview-apply",
         "trademark-application-workflow-supports-preview-apply",
         "communication-review-workflow-supports-preview-apply",
         "workflow-layer-does-not-emit-events-directly"
       ],
-      "dependencies": ["exact-event-contracts", "api-validator-delegation"],
+      "dependencies": [
+        "exact-event-contracts",
+        "api-validator-delegation"
+      ],
       "completionEffect": "Implement bounded preview/apply validators, Task plans, review and AI boundaries, Permission/Policy and idempotency checks, safe Event references, and no direct Workflow Event emission."
     },
     {
       "id": "named-agent-boundaries",
       "order": 4,
-      "taskIds": ["CORE-TASK-059"],
-      "requirementIds": [
-        "must-agent-audit-agent",
-        "must-agent-communication-agent",
-        "must-agent-knowledge-agent",
-        "must-agent-task-agent",
-        "must-agent-workflow-agent",
-        "must-test-agent-boundary-tests"
+      "taskIds": [
+        "CORE-TASK-059"
       ],
-      "acceptanceCriterionIds": ["agent-layer-does-not-emit-events-directly"],
-      "dependencies": ["workflow-preview-apply"],
+      "requirementIds": [],
+      "acceptanceCriterionIds": [
+        "agent-layer-does-not-emit-events-directly"
+      ],
+      "dependencies": [
+        "workflow-preview-apply"
+      ],
       "completionEffect": "Create five named boundary-safe Agent scaffolds and executable forbidden-action/no-direct-Event tests without building a full Agent runtime."
     },
     {
       "id": "final-completion-audit",
       "order": 5,
-      "taskIds": ["CORE-TASK-060"],
+      "taskIds": [
+        "CORE-TASK-060"
+      ],
       "requirementIds": [],
       "acceptanceCriterionIds": [],
       "dependencies": [
@@ -192,5 +195,5 @@
       "completionEffect": "Regenerate all fixtures, prove every non-Domain Must Build requirement reaches its locked depth, prove all 19 acceptance criteria pass, and set Book 02 MVP complete without deepening deferred or forbidden capabilities."
     }
   ],
-  "nextTask": "CORE-TASK-059"
+  "nextTask": "CORE-TASK-060"
 }

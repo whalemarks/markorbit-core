@@ -32,7 +32,8 @@ import {
   validateBook02MvpGapBaselineFixture,
   validateCoreBook02PostServiceCompletionAuditFixture,
   validateCoreMvpObjectPublicReferenceFoundationFixture,
-  validateCoreCustomerServiceCoreLifecycleFixture
+  validateCoreCustomerServiceCoreLifecycleFixture,
+  validateCoreTask059NamedAgentBoundariesFixture
 } from '../src/validation/index.ts';
 import { validateCoreBrandServiceCoreLifecycleFixture } from '../src/validation/core-brand-service-fixture-validation.ts';
 import { validateCoreTrademarkServiceCoreLifecycleFixture } from '../src/validation/core-trademark-service-fixture-validation.ts';
@@ -136,7 +137,9 @@ const validators = {
   core_task_058a_customer_intake_workflow:
     validateCoreCustomerIntakeWorkflowFixture,
   core_task_058c_communication_review_workflow:
-    validateCoreCommunicationReviewWorkflowFixture
+    validateCoreCommunicationReviewWorkflowFixture,
+  core_task_059_named_agent_boundaries:
+    validateCoreTask059NamedAgentBoundariesFixture
 };
 
 let hasErrors = false;

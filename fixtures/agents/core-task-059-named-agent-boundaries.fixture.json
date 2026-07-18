@@ -1,0 +1,94 @@
+{
+  "fixtureType": "core_task_059_named_agent_boundaries",
+  "taskId": "CORE-TASK-059",
+  "schemaVersion": "core-agent-boundary-fixture.v1",
+  "agents": [
+    "knowledge-agent",
+    "task-agent",
+    "communication-agent",
+    "workflow-agent",
+    "audit-agent"
+  ],
+  "positiveScenarioInventory": [
+    "governed-reference-validation",
+    "recommendation-only-path",
+    "draft-only-output",
+    "preview-only-delegation",
+    "immutable-audit-inspection"
+  ],
+  "negativeScenarioInventory": [
+    "unknown-agent",
+    "missing-source",
+    "fabricated-reference",
+    "permission-rejection",
+    "policy-rejection",
+    "organization-mismatch",
+    "missing-human-review",
+    "direct-domain-mutation",
+    "direct-event-emission",
+    "event-command",
+    "external-protected-action",
+    "external-send",
+    "legal-certification",
+    "registrability-certification",
+    "deadline-certification",
+    "provider-final-selection",
+    "audit-history-rewrite",
+    "changed-plan"
+  ],
+  "delegationAllowlists": {
+    "knowledge-agent": ["knowledge-api", "task-api"],
+    "task-agent": ["task-api"],
+    "communication-agent": [
+      "communication-review-workflow",
+      "communication-api"
+    ],
+    "workflow-agent": ["workflow-preview-boundary"],
+    "audit-agent": ["audit-api", "task-api"]
+  },
+  "forbiddenOperationLists": {
+    "knowledge-agent": [
+      "legal-certification",
+      "registrability-certification",
+      "deadline-certification",
+      "direct-domain-mutation",
+      "direct-event-emission"
+    ],
+    "task-agent": [
+      "direct-domain-mutation",
+      "deadline-certification",
+      "autonomous-scheduling",
+      "changed-approved-plan"
+    ],
+    "communication-agent": [
+      "external-send",
+      "self-approval",
+      "alter-approved-content",
+      "direct-event-emission"
+    ],
+    "workflow-agent": [
+      "autonomous-apply",
+      "generic-workflow",
+      "provider-final-selection",
+      "direct-event-emission"
+    ],
+    "audit-agent": [
+      "audit-history-rewrite",
+      "direct-event-emission",
+      "event-command",
+      "compliance-certification",
+      "fabricated-completion"
+    ]
+  },
+  "expectedBook02AfterState": {
+    "allFiveMustBuildAgentsReachRequiredDepth": true,
+    "mustTestAgentBoundaryTestsReachRequiredDepth": true,
+    "agentLayerDoesNotEmitEventsDirectly": "satisfied",
+    "aiForbiddenActionsAreBlocked": "satisfied",
+    "humanReviewGatesProtectedActions": "satisfied",
+    "neverInMvpViolations": 0,
+    "nextTask": "CORE-TASK-060",
+    "book02MvpComplete": false
+  },
+  "productionOrExternalIntegrationData": false
+}

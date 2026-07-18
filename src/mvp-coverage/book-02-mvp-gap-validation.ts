@@ -965,7 +965,10 @@ function validateDispositionConsistency(
   if (
     r.layer === 'agent' &&
     r.currentDisposition === 'meets_required_depth' &&
-    r.implementationFiles.some((f) => f.includes('agent-boundary'))
+    r.implementationFiles.every(
+      (f) =>
+        f === 'src/behaviors/core-agent-boundary.ts' || f.includes('behaviors/')
+    )
   )
     issues.push(
       issue(
