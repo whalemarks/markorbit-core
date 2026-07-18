@@ -49,12 +49,12 @@ describe('CORE-TASK-042 Book 02 Service evidence', () => {
     );
   });
 
-  it('derives 87 / 3 / 20 and satisfies global Service behavior acceptance', () => {
+  it('derives 88 / 3 / 19 and satisfies global Service behavior acceptance', () => {
     assert.deepEqual(BOOK_02_MVP_GAP_BASELINE.summary.mustBuildNow, {
       total: 115,
-      meets_required_depth: 87,
+      meets_required_depth: 88,
       partial_evidence: 3,
-      validated_skeleton_only: 20,
+      validated_skeleton_only: 19,
       boundary_scaffold_only: 5,
       semantic_overlap_only: 0,
       fixture_only: 0,
@@ -66,7 +66,7 @@ describe('CORE-TASK-042 Book 02 Service evidence', () => {
     assert.equal(criterion?.satisfied, true);
     assert.equal(
       BOOK_02_MVP_GAP_BASELINE.summary.acceptance.acceptanceCriteriaSatisfied,
-      15
+      16
     );
     assert.equal(
       BOOK_02_MVP_GAP_BASELINE.summary.acceptance.book02MvpComplete,

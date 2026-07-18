@@ -601,6 +601,7 @@ describe('Book 02 MVP gap baseline validation', () => {
       'must-build-services-own-behavior',
       'must-build-api-validators-exist',
       'customer-intake-workflow-supports-preview-apply',
+      'trademark-application-workflow-supports-preview-apply',
       'permission-and-policy-fail-closed',
       'ai-forbidden-actions-are-blocked',
       'human-review-gates-protected-actions',
