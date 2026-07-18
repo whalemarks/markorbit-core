@@ -25,3 +25,5 @@ export * from './service-coverage/index.ts';
 
 export * from './api/index.ts';
 export * from './api-coverage/index.ts';
+
+export * from './workflows/core-communication-review-workflow.ts';

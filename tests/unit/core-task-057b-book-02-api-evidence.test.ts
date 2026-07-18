@@ -23,11 +23,11 @@ describe('CORE-TASK-057B Book 02 API evidence', () => {
     );
     assert.equal(
       BOOK_02_MVP_GAP_BASELINE.summary.mustBuildNow.meets_required_depth,
-      88
+      89
     );
     assert.equal(
       BOOK_02_MVP_GAP_BASELINE.summary.mustBuildNow.validated_skeleton_only,
-      19
+      18
     );
     assert.equal(
       BOOK_02_MVP_GAP_BASELINE.summary.acceptance.book02MvpComplete,

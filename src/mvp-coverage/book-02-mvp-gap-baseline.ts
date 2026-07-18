@@ -28,7 +28,8 @@ import {
 } from '../service-coverage/index.ts';
 import {
   CORE_TASK_058A_CUSTOMER_INTAKE_WORKFLOW_EVIDENCE,
-  CORE_TASK_058B_TRADEMARK_APPLICATION_WORKFLOW_EVIDENCE
+  CORE_TASK_058B_TRADEMARK_APPLICATION_WORKFLOW_EVIDENCE,
+  CORE_TASK_058C_COMMUNICATION_REVIEW_WORKFLOW_EVIDENCE
 } from '../workflows/index.ts';
 import {
   CORE_MVP_OBJECT_FIXTURE_PUBLIC_REFERENCE_RECORDS,
@@ -776,6 +777,25 @@ function evidenceFor(identity: Book02MvpRequirementIdentity): CurrentEvidence {
         fixtureFiles: [],
         currentDepth: 'level_2'
       };
+    if (
+      identity.id ===
+      CORE_TASK_058C_COMMUNICATION_REVIEW_WORKFLOW_EVIDENCE.workflowId
+    )
+      return {
+        contractIds: [
+          CORE_TASK_058C_COMMUNICATION_REVIEW_WORKFLOW_EVIDENCE.workflowContractId
+        ],
+        implementationFiles: existing(
+          CORE_TASK_058C_COMMUNICATION_REVIEW_WORKFLOW_EVIDENCE.implementationFiles
+        ),
+        testFiles: existing(
+          CORE_TASK_058C_COMMUNICATION_REVIEW_WORKFLOW_EVIDENCE.testFiles
+        ),
+        fixtureFiles: existing(
+          CORE_TASK_058C_COMMUNICATION_REVIEW_WORKFLOW_EVIDENCE.fixtureFiles
+        ),
+        currentDepth: 'level_2'
+      };
     const workflowType = identity.id
       .replace(/^must-workflow-/, '')
       .replace(/^stub-workflow-/, '');
@@ -1027,6 +1047,22 @@ function disposition(
       CORE_TASK_058B_TRADEMARK_APPLICATION_WORKFLOW_EVIDENCE.previewValidationPlan &&
       CORE_TASK_058B_TRADEMARK_APPLICATION_WORKFLOW_EVIDENCE.applyMutationPlan &&
       CORE_TASK_058B_TRADEMARK_APPLICATION_WORKFLOW_EVIDENCE.structuredPartialFailureEvidence
+    )
+      return 'meets_required_depth';
+    if (
+      identity.id ===
+        CORE_TASK_058C_COMMUNICATION_REVIEW_WORKFLOW_EVIDENCE.workflowId &&
+      ev.currentDepth === 'level_2' &&
+      ev.implementationFiles.length > 0 &&
+      ev.testFiles.length > 0 &&
+      ev.fixtureFiles.length > 0 &&
+      CORE_TASK_058C_COMMUNICATION_REVIEW_WORKFLOW_EVIDENCE.previewSupported &&
+      CORE_TASK_058C_COMMUNICATION_REVIEW_WORKFLOW_EVIDENCE.applySupported &&
+      CORE_TASK_058C_COMMUNICATION_REVIEW_WORKFLOW_EVIDENCE.previewValidationOnly &&
+      CORE_TASK_058C_COMMUNICATION_REVIEW_WORKFLOW_EVIDENCE.separatedPreviewValidationAndApplyMutationPlans &&
+      CORE_TASK_058C_COMMUNICATION_REVIEW_WORKFLOW_EVIDENCE.noDirectDomainMutation &&
+      CORE_TASK_058C_COMMUNICATION_REVIEW_WORKFLOW_EVIDENCE.noDirectEventEmission &&
+      CORE_TASK_058C_COMMUNICATION_REVIEW_WORKFLOW_EVIDENCE.eventReferencesTraceOnly
     )
       return 'meets_required_depth';
     return ev.testFiles.length > 0
