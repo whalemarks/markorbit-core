@@ -74,7 +74,8 @@ export interface Book02PostServiceCompletionAudit {
     | 'CORE-TASK-058A'
     | 'CORE-TASK-058B'
     | 'CORE-TASK-058C'
-    | 'CORE-TASK-059';
+    | 'CORE-TASK-059'
+    | 'CORE-TASK-060';
 }
 
 const sortedIds = (requirements: readonly Book02MvpRequirement[]) =>
@@ -273,7 +274,9 @@ export function deriveBook02PostServiceCompletionAudit(
                     'communication-review-workflow-supports-preview-apply'
                   )
                 ? 'CORE-TASK-058C'
-                : 'CORE-TASK-059'
+                : agentIds.length > 0
+                  ? 'CORE-TASK-059'
+                  : 'CORE-TASK-060'
   };
 }
 

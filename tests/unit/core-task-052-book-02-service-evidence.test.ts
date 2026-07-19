@@ -21,13 +21,13 @@ describe('CORE-TASK-052 Book 02 User Service evidence', () => {
     ]);
   });
 
-  it('derives 89 / 3 / 19 and closes the final Must Build Service gap', () => {
+  it('derives 95 / 2 / 19 and closes the final Must Build Service gap', () => {
     assert.deepEqual(BOOK_02_MVP_GAP_BASELINE.summary.mustBuildNow, {
       total: 115,
-      meets_required_depth: 89,
-      partial_evidence: 3,
+      meets_required_depth: 95,
+      partial_evidence: 2,
       validated_skeleton_only: 18,
-      boundary_scaffold_only: 5,
+      boundary_scaffold_only: 0,
       semantic_overlap_only: 0,
       fixture_only: 0,
       missing: 0

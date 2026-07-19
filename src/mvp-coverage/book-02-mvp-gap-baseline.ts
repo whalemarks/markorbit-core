@@ -32,6 +32,10 @@ import {
   CORE_TASK_058C_COMMUNICATION_REVIEW_WORKFLOW_EVIDENCE
 } from '../workflows/index.ts';
 import {
+  CORE_TASK_059_NAMED_AGENT_BOUNDARY_EVIDENCE,
+  validateCoreTask059NamedAgentBoundaryEvidence
+} from '../agents/index.ts';
+import {
   CORE_MVP_OBJECT_FIXTURE_PUBLIC_REFERENCE_RECORDS,
   coreMvpObjectFixtureValidationContextFor
 } from '../objects/core-mvp-object-base-record.ts';
@@ -198,11 +202,14 @@ export const BOOK_02_MVP_TEST_FAMILY_EVIDENCE = {
     implementationFiles: [
       'src/behaviors/core-agent-boundary.ts',
       'src/behaviors/core-ai-context-behavior.ts',
-      'src/behaviors/core-governance-behavior.ts'
+      'src/behaviors/core-governance-behavior.ts',
+      'src/agents/core-named-agent-boundary.ts',
+      'src/agents/core-named-agent-registry.ts'
     ],
     testFiles: [
       'tests/unit/core-safety-boundary-foundations.test.ts',
-      'tests/unit/core-governance-context-review-hooks.test.ts'
+      'tests/unit/core-governance-context-review-hooks.test.ts',
+      'tests/unit/core-task-059-named-agent-boundaries.test.ts'
     ],
     behaviorIds: ['agent-runtime', 'ai-context', 'human-review'],
     provenCapabilities: [
@@ -210,12 +217,13 @@ export const BOOK_02_MVP_TEST_FAMILY_EVIDENCE = {
       'mapped executable test files',
       'positive coverage',
       'negative coverage',
-      'execution under pnpm test or a dedicated evidence runner'
-    ],
-    unresolvedCapabilities: [
+      'execution under pnpm test or a dedicated evidence runner',
       'named Agent scaffold coverage',
-      'direct Event emission negative tests'
-    ]
+      'direct Event emission negative tests',
+      'event trace-not-command negative tests',
+      'deterministic normalized Agent output'
+    ],
+    unresolvedCapabilities: []
   },
   'permission-policy-tests': {
     contractId: 'core-test-permission-policy-tests-contract',
@@ -864,6 +872,18 @@ function evidenceFor(identity: Book02MvpRequirementIdentity): CurrentEvidence {
         : emptyEvidence();
   }
   if (identity.layer === 'agent') {
+    const agentEvidence =
+      CORE_TASK_059_NAMED_AGENT_BOUNDARY_EVIDENCE.agents.find(
+        (entry) => entry.book02RequirementId === identity.id
+      );
+    if (agentEvidence)
+      return {
+        contractIds: [],
+        implementationFiles: existing(agentEvidence.implementationFiles),
+        testFiles: existing(agentEvidence.testFiles),
+        fixtureFiles: existing(agentEvidence.fixtureFiles),
+        currentDepth: 'level_2'
+      };
     const behavior = behaviorById.get('agent-runtime');
     return {
       contractIds: [],
@@ -1081,10 +1101,19 @@ function disposition(
       return 'meets_required_depth';
     return ev.contractIds.length > 0 ? 'semantic_overlap_only' : 'missing';
   }
-  if (identity.layer === 'agent')
+  if (identity.layer === 'agent') {
+    if (
+      ev.currentDepth === 'level_2' &&
+      ev.implementationFiles.length > 0 &&
+      ev.testFiles.length > 0 &&
+      ev.fixtureFiles.length > 0 &&
+      validateCoreTask059NamedAgentBoundaryEvidence().length === 0
+    )
+      return 'meets_required_depth';
     return ev.implementationFiles.length > 0
       ? 'boundary_scaffold_only'
       : 'missing';
+  }
   if (identity.layer === 'test') {
     const family = identity.id.replace(
       'must-test-',
