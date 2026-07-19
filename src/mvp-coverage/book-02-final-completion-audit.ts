@@ -92,7 +92,7 @@ export function deriveBook02FinalCompletionAudit(): Book02FinalCompletionAudit {
   const workflowExecutableTestsPresent = WORKFLOW_TEST_FILES.every(existsSync);
   const workflowNoDirectEventProof =
     !CORE_TASK_058A_CUSTOMER_INTAKE_WORKFLOW_EVIDENCE.directEventEmission &&
-    !CORE_TASK_058C_COMMUNICATION_REVIEW_WORKFLOW_EVIDENCE.noDirectEventEmission &&
+    CORE_TASK_058C_COMMUNICATION_REVIEW_WORKFLOW_EVIDENCE.noDirectEventEmission &&
     CORE_TASK_058C_COMMUNICATION_REVIEW_WORKFLOW_EVIDENCE.eventReferencesTraceOnly;
   const apiTestClosure = apiEvidenceValid && apiExecutableTestsPresent;
   const workflowTestClosure =
