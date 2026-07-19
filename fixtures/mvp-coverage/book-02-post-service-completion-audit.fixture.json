@@ -112,9 +112,7 @@
     {
       "id": "exact-event-contracts",
       "order": 1,
-      "taskIds": [
-        "CORE-TASK-056"
-      ],
+      "taskIds": ["CORE-TASK-056"],
       "requirementIds": [],
       "acceptanceCriterionIds": [],
       "dependencies": [],
@@ -123,67 +121,42 @@
     {
       "id": "api-validator-delegation",
       "order": 2,
-      "taskIds": [
-        "CORE-TASK-057A",
-        "CORE-TASK-057B",
-        "CORE-TASK-057C"
-      ],
-      "requirementIds": [
-        "must-test-api-contract-tests"
-      ],
+      "taskIds": ["CORE-TASK-057A", "CORE-TASK-057B", "CORE-TASK-057C"],
+      "requirementIds": ["must-test-api-contract-tests"],
       "acceptanceCriterionIds": [
         "must-build-api-validators-exist",
         "api-layer-does-not-emit-events-directly"
       ],
-      "dependencies": [
-        "exact-event-contracts"
-      ],
+      "dependencies": ["exact-event-contracts"],
       "completionEffect": "Add request/response/reference/governance/version/idempotency validators, Service delegation, safe errors, and executable no-direct-mutation/no-direct-Event tests for all 18 MVP APIs."
     },
     {
       "id": "workflow-preview-apply",
       "order": 3,
-      "taskIds": [
-        "CORE-TASK-058A",
-        "CORE-TASK-058B",
-        "CORE-TASK-058C"
-      ],
-      "requirementIds": [
-        "must-test-workflow-contract-tests"
-      ],
+      "taskIds": ["CORE-TASK-058A", "CORE-TASK-058B", "CORE-TASK-058C"],
+      "requirementIds": ["must-test-workflow-contract-tests"],
       "acceptanceCriterionIds": [
         "customer-intake-workflow-supports-preview-apply",
         "trademark-application-workflow-supports-preview-apply",
         "communication-review-workflow-supports-preview-apply",
         "workflow-layer-does-not-emit-events-directly"
       ],
-      "dependencies": [
-        "exact-event-contracts",
-        "api-validator-delegation"
-      ],
+      "dependencies": ["exact-event-contracts", "api-validator-delegation"],
       "completionEffect": "Implement bounded preview/apply validators, Task plans, review and AI boundaries, Permission/Policy and idempotency checks, safe Event references, and no direct Workflow Event emission."
     },
     {
       "id": "named-agent-boundaries",
       "order": 4,
-      "taskIds": [
-        "CORE-TASK-059"
-      ],
+      "taskIds": ["CORE-TASK-059"],
       "requirementIds": [],
-      "acceptanceCriterionIds": [
-        "agent-layer-does-not-emit-events-directly"
-      ],
-      "dependencies": [
-        "workflow-preview-apply"
-      ],
+      "acceptanceCriterionIds": ["agent-layer-does-not-emit-events-directly"],
+      "dependencies": ["workflow-preview-apply"],
       "completionEffect": "Create five named boundary-safe Agent scaffolds and executable forbidden-action/no-direct-Event tests without building a full Agent runtime."
     },
     {
       "id": "final-completion-audit",
       "order": 5,
-      "taskIds": [
-        "CORE-TASK-060"
-      ],
+      "taskIds": ["CORE-TASK-060"],
       "requirementIds": [],
       "acceptanceCriterionIds": [],
       "dependencies": [
