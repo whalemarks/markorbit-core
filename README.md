@@ -1,5 +1,13 @@
 # MarkOrbit Core
 
+## Current state — CORE-TASK-061
+
+- Package identity: `@markorbit/core` version `0.1.0` (Book 02 MVP Engineering Baseline, not production-ready).
+- Book 02 MVP semantic baseline: COMPLETE via `CORE-TASK-060`.
+- Engineering distribution baseline: accepted only on merge of `CORE-TASK-061`.
+- Production readiness: NOT ACCEPTED.
+- Next program after acceptance: Execution consumer integration.
+
 `markorbit-core` is the engineering repository for **Book 02 — MarkOrbit Core Specification**. It provides the typed contracts, validation rules, fixtures, event primitives, workflow primitives, and testable package boundaries that future MarkOrbit systems consume.
 
 This repository is intentionally a specification implementation layer. It is consumed by future **Execution System** and **Product System** implementations, but it does not implement those systems here.

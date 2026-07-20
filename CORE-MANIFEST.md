@@ -1,5 +1,14 @@
 # MarkOrbit Core Manifest
 
+## Current state — CORE-TASK-061
+
+- Package identity is `@markorbit/core@0.1.0`.
+- Book 02 MVP semantic baseline: COMPLETE.
+- Engineering distribution baseline: accepted only on merge of CORE-TASK-061.
+- Production readiness: NOT ACCEPTED.
+- First intended downstream consumer: `whalemarks/markorbit-execution`.
+- Next program after acceptance: Execution consumer integration.
+
 ## Repository purpose
 
 `markorbit-core` implements Book 02 — MarkOrbit Core Specification as typed contracts, validation rules, fixtures, events, workflow primitives, and testable packages.
