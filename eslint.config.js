@@ -3,13 +3,7 @@ import tseslint from 'typescript-eslint';
 
 export default [
   {
-    ignores: [
-      'coverage/',
-      'dist/',
-      'node_modules/',
-      'pnpm-lock.yaml',
-      'tests/consumer/'
-    ]
+    ignores: ['coverage/', 'dist/', 'node_modules/', 'pnpm-lock.yaml']
   },
   js.configs.recommended,
   ...tseslint.configs.recommended,

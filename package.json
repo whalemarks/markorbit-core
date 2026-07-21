@@ -20,9 +20,9 @@
     "acceptance:behavior": "tsx scripts/report-core-contract-behavior-acceptance.mjs",
     "gaps:mvp": "tsx scripts/report-book-02-mvp-gaps.mjs",
     "audit:post-service": "tsx scripts/report-book-02-post-service-completion-audit.mjs",
-    "clean": "node -e \"require('node:fs').rmSync('dist',{recursive:true,force:true})\"",
+    "clean": "node -e \"const fs=require('node:fs'); fs.rmSync('dist',{recursive:true,force:true}); fs.rmSync('.tmp',{recursive:true,force:true})\"",
     "build": "node scripts/build-package.mjs",
-    "consumer:check": "pnpm build && pnpm exec tsc -p tests/consumer/tsconfig.json && node --test tests/consumer/package-consumer.test.ts",
+    "consumer:check": "pnpm build && pnpm exec tsc -p tests/consumer/tsconfig.json && node --test .tmp/consumer/package-consumer.test.js",
     "pack:check": "pnpm build && node scripts/check-package-contents.mjs",
     "audit:final": "tsx scripts/report-book-02-final-completion-audit.mjs",
     "validate": "pnpm typecheck && pnpm lint && pnpm format:check && pnpm validate:fixtures && pnpm test && pnpm coverage:contracts && pnpm gaps:contracts && pnpm acceptance:contracts && pnpm coverage:behavior && pnpm gaps:behavior && pnpm acceptance:behavior && pnpm gaps:mvp && pnpm audit:post-service && pnpm audit:final && pnpm build && pnpm consumer:check && pnpm pack:check"

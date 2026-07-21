@@ -9,7 +9,7 @@ import {
   sampleReference,
   sampleTask,
   sampleWorkflow
-} from './package-consumer.ts';
+} from './package-consumer.js';
 
 test('independent consumer resolves bounded package exports', () => {
   assert.equal(consumedCoreVersion, '0.1.0');
