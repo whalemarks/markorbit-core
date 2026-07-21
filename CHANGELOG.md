@@ -1,5 +1,11 @@
 # Changelog
 
+## CORE-TASK-061 — Engineering Distribution Baseline
+
+- Renamed the package to `@markorbit/core` and set version `0.1.0` for the Book 02 MVP Engineering Baseline.
+- Added deterministic build, declaration output, explicit package exports, consumer proof, package-content validation, CI validation, and a public API manifest.
+- Preserved Book 02 semantic completion while keeping production readiness, full Workflow Runtime, external protected actions, and autonomous AI authority excluded.
+
 ## CORE-TASK-032 — Validation and Traceability Lock
 
 - Declared repository-local TypeScript, ESLint, Prettier, tsx, and Node.js type dependencies for reproducible validation.

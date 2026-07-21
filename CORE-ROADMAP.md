@@ -1,5 +1,12 @@
 # MarkOrbit Core Roadmap
 
+## Current state — CORE-TASK-061
+
+- Book 02 MVP semantic baseline: COMPLETE.
+- Engineering distribution baseline: accepted only on merge of CORE-TASK-061.
+- Production readiness: NOT ACCEPTED.
+- Next program after acceptance: Execution consumer integration.
+
 ## Phase 0
 
 - Repository initialization.

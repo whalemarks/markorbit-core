@@ -5,7 +5,6 @@ on:
   push:
     branches:
       - main
-      - codex/core-task-032-validation-traceability-lock
 
 jobs:
   validation:
@@ -30,37 +29,5 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Typecheck
-        run: pnpm typecheck
-
-      - name: Lint
-        run: pnpm lint
-
-      - name: Check formatting
-        run: pnpm format:check
-
-      - name: Validate fixtures
-        run: pnpm validate:fixtures
-
-      - name: Test
-        run: pnpm test
-
-      - name: Contract coverage
-        run: pnpm coverage:contracts
-
-      - name: Contract gaps
-        run: pnpm gaps:contracts
-
-      - name: Contract acceptance
-        run: pnpm acceptance:contracts
-
-      - name: Behavior coverage
-        run: pnpm coverage:behavior
-
-      - name: Behavior gaps
-        run: pnpm gaps:behavior
-      - name: Behavior acceptance
-        run: pnpm acceptance:behavior
-
-      - name: Book 02 MVP gaps
-        run: pnpm gaps:mvp
+      - name: Validate Core package baseline
+        run: pnpm validate

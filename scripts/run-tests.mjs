@@ -3,6 +3,8 @@ import { join } from 'node:path';
 import { spawn } from 'node:child_process';
 
 async function collectTestFiles(directory) {
+  if (directory === 'tests/consumer') return [];
+
   const entries = await readdir(directory, { withFileTypes: true });
   const files = await Promise.all(
     entries.map(async (entry) => {

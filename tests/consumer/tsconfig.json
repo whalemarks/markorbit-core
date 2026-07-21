@@ -1,0 +1,17 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "target": "ES2022",
+    "rootDir": ".",
+    "outDir": "../../.tmp/consumer",
+    "noEmit": false,
+    "sourceMap": false,
+    "declaration": false,
+    "declarationMap": false,
+    "allowImportingTsExtensions": false
+  },
+  "include": ["./package-consumer.ts", "./package-consumer.test.ts"],
+  "exclude": []
+}

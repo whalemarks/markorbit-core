@@ -1,4 +1,4 @@
-export const MARKORBIT_CORE_VERSION = '0.0.0';
+export const MARKORBIT_CORE_VERSION = '0.1.0';
 
 export * from './domains/index.ts';
 export * from './objects/index.ts';
@@ -29,3 +29,5 @@ export * from './api-coverage/index.ts';
 export * from './workflows/core-communication-review-workflow.ts';
 
 export * from './agents/index.ts';
+
+export * from './distribution/index.ts';

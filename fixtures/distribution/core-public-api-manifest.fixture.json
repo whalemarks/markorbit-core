@@ -1,0 +1,34 @@
+{
+  "packageName": "@markorbit/core",
+  "packageVersion": "0.1.0",
+  "baselineIdentity": "book-02-mvp-engineering-baseline@0.1.0",
+  "baselineName": "Book 02 MVP Engineering Baseline",
+  "coreCompletionTask": "CORE-TASK-060",
+  "distributionTask": "CORE-TASK-061",
+  "supportedNodeVersions": ["20", "22"],
+  "moduleFormat": "esm",
+  "publicExportPaths": [
+    "@markorbit/core",
+    "@markorbit/core/objects",
+    "@markorbit/core/events",
+    "@markorbit/core/tasks",
+    "@markorbit/core/contracts",
+    "@markorbit/core/services",
+    "@markorbit/core/api",
+    "@markorbit/core/workflows",
+    "@markorbit/core/governance"
+  ],
+  "book02SemanticCompletion": true,
+  "engineeringDistributionBaseline": true,
+  "productionReadiness": false,
+  "fullWorkflowRuntime": "excluded",
+  "executionCoordinationOwnership": "markorbit-execution",
+  "externalProtectedActionStatus": "unauthorized",
+  "autonomousAiAuthority": "not_granted",
+  "supportedConsumerRepositories": ["whalemarks/markorbit-execution"],
+  "consumerProof": {
+    "mode": "internal_fixture_only",
+    "crossRepositoryConsumption": false
+  },
+  "nextGovernedTask": "EXECUTION-TASK-CONSUME-CORE-0.1.0"
+}
